@@ -45,7 +45,15 @@ public class PerformanceSettings extends SettingsPreferenceFragment
 
     private static final String USE_16BPP_ALPHA_PROP = "persist.sys.use_16bpp_alpha";
 
+    private static final String SCROLLINGCACHE_PREF = "pref_scrollingcache";
+
+    private static final String SCROLLINGCACHE_PERSIST_PROP = "persist.sys.scrollingcache";
+
+    private static final String SCROLLINGCACHE_DEFAULT = "2";
+
     private ListPreference mUseDitheringPref;
+
+    private ListPreference mScrollingCachePref;
 
     private CheckBoxPreference mUse16bppAlphaPref;
 
@@ -66,6 +74,11 @@ public class PerformanceSettings extends SettingsPreferenceFragment
             mUseDitheringPref.setOnPreferenceChangeListener(this);
             mUseDitheringPref.setValue(useDithering);
             mUseDitheringPref.setSummary(mUseDitheringPref.getEntry());
+
+            mScrollingCachePref = (ListPreference) prefSet.findPreference(SCROLLINGCACHE_PREF);
+            mScrollingCachePref.setValue(SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP,
+                    SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
+            mScrollingCachePref.setOnPreferenceChangeListener(this);
 
             mUse16bppAlphaPref = (CheckBoxPreference) prefSet.findPreference(USE_16BPP_ALPHA_PREF);
             String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
@@ -110,6 +123,11 @@ public class PerformanceSettings extends SettingsPreferenceFragment
             int index = mUseDitheringPref.findIndexOfValue(newVal);
             SystemProperties.set(USE_DITHERING_PERSIST_PROP, newVal);
             mUseDitheringPref.setSummary(mUseDitheringPref.getEntries()[index]);
+        } else if (preference == mScrollingCachePref) {
+            if (newValue != null) {
+                SystemProperties.set(SCROLLINGCACHE_PERSIST_PROP, (String)newValue);
+                return true;
+            }
         }
         return true;
     }
