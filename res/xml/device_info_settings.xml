@@ -86,6 +86,62 @@
         </PreferenceScreen>
 
         <PreferenceScreen
+            android:key="hardware_info"
+            android:title="@string/hardware_info">
+
+            <!-- Device codename -->
+            <Preference android:key="device_codename"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/device_codename"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device chipset info -->
+            <Preference android:key="device_chipset"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/device_chipset"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device cpu info -->
+            <Preference android:key="device_cpu_info"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/cpu_info"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device cpu type -->
+            <Preference android:key="device_cpu"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/cpu_type"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device gpu info -->
+            <Preference android:key="device_gpu"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/gpu_info"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device mem info -->
+            <Preference android:key="device_memory"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/mem_info"
+                android:summary="@string/device_info_default"/>
+
+            <!-- Device rear camera -->
+            <Preference android:key="device_rear_camera"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/device_rear_camera"/>
+
+            <!-- Device front camera -->
+            <Preference android:key="device_front_camera"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/device_front_camera"/>
+
+            <!-- Device screen resolution -->
+            <Preference android:key="device_screen_resolution"
+                style="?android:preferenceInformationStyle"
+                android:title="@string/device_screen_resolution"/>
+        </PreferenceScreen>
+
+        <PreferenceScreen
                 android:key="safetylegal"
                 android:title="@string/settings_safetylegal_title">
             <intent android:action="android.settings.SAFETY" />
@@ -146,18 +202,6 @@
         <Preference android:key="kernel_version"
                 style="?android:preferenceInformationStyle"
                 android:title="@string/kernel_version"
-                android:summary="@string/device_info_default"/>
-
-        <!-- Device cpu info -->
-        <Preference android:key="device_cpu"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/cpu_info"
-                android:summary="@string/device_info_default"/>
-
-        <!-- Device mem info -->
-        <Preference android:key="device_memory"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/mem_info"
                 android:summary="@string/device_info_default"/>
 
         <!-- Mod build date -->
