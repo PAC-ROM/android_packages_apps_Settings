@@ -91,6 +91,17 @@
         android:icon="@drawable/ic_settings_system"
         android:fragment="com.android.settings.cyanogenmod.SystemSettings"
         android:title="@string/system_settings_title" />
+        
+     <!-- ParanoidAndroid Header -->
+    <header
+        android:id="@+id/paranoid_settings"
+        android:icon="@drawable/ic_paranoid_settings"
+        android:title="@string/paranoid_settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
+    </header>
 
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />

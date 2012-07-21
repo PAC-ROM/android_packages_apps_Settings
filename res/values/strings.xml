@@ -4243,6 +4243,9 @@
     <!-- System Interface settings  -->
     <string name="system_settings_title">System</string>
     <string name="system_interface_title">System interface</string>
+    
+    <!-- ParanoidAndroid settings intent -->
+    <string name="paranoid_settings">Paranoid Settings</string>
 
     <!-- Notification Drawer  -->
     <string name="notification_drawer_title">Notification drawer</string>
