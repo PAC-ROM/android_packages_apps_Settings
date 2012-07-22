@@ -95,7 +95,7 @@
      <!-- ParanoidAndroid Header -->
     <header
         android:id="@+id/paranoid_settings"
-        android:icon="@drawable/ic_paranoid_settings"
+        android:icon="@drawable/ic_settings_paranoid"
         android:title="@string/paranoid_settings">
         <intent
             android:action="android.intent.action.MAIN"
