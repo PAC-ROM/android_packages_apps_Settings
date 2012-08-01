@@ -66,6 +66,12 @@
             android:summary="@string/adb_over_network_summary"
             android:dependency="enable_adb"/>
 
+        <CheckBoxPreference
+            android:key="adb_notify"
+            android:title="@string/adb_notify"
+            android:summary="@string/adb_notify_summary"
+            android:dependency="enable_adb"/>
+
         <com.android.settings.HostnamePreference
             android:key="device_hostname"
             android:title="@string/device_hostname"
@@ -202,6 +208,11 @@
             android:key="show_all_anrs"
             android:title="@string/show_all_anrs"
             android:summary="@string/show_all_anrs_summary"/>
+
+        <CheckBoxPreference
+            android:key="kill_app_longpress_back"
+            android:title="@string/kill_app_longpress_back"
+            android:summary="@string/kill_app_longpress_back_summary"/>
 
     </PreferenceCategory>
 

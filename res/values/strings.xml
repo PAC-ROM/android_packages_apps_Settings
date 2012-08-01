@@ -2838,6 +2838,10 @@
     <string name="enable_adb">Android debugging</string>
     <!-- Setting checkbox summary for Whether to enable USB debugging support on the phone -->
     <string name="enable_adb_summary">Allow Android debug mode, the adb interface on USB (or on network)</string>
+    <!-- Setting checkbox summary for displaying USB debugging notification -->
+    <string name="adb_notify">USB debugging notify</string>
+    <string name="adb_notify_summary">Display a notification when USB debugging is connected</string>
+
     <string name="keep_screen_on">Stay awake</string>
     <!-- setting Checkbox summary whether to keep the screen on when plugged in  -->
     <string name="keep_screen_on_summary">Screen will never sleep while charging</string>
@@ -4318,17 +4322,13 @@
     <string name="status_bar_clock_title">Clock</string>
     <string name="status_bar_general_title">General</string>
     <string name="status_bar_show_clock_title">Show clock</string>
-    <string name="status_bar_show_clock_summary">Show the clock in the status bar</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
-    <string name="status_bar_am_pm_summary">Display style of AM/PM next to clock</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
     <string name="status_bar_battery_title">Battery status style</string>
-    <string name="status_bar_battery_summary">Display style of battery status</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
-    <string name="status_bar_toggle_brightness_summary">Allows adjusting of brightness by sliding across statusbar</string>
+    <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
     <string name="status_bar_toggle_info">Automatic brightness is enabled</string>
     <string name="status_bar_signal_text_title">Signal status style</string>
-    <string name="status_bar_signal_text_summary">Display style of signal status</string>
     <string name="status_bar_signal_text_show_bars">Icon (default)</string>
     <string name="status_bar_signal_text_show_text">Text</string>
     <string name="status_bar_signal_text_hidden">Hidden</string>
@@ -4420,6 +4420,7 @@
     <string name="profiles_add">Add</string>
     <string name="profile_menu_delete">Delete</string>
     <string name="profile_settings_title">Profile</string>
+    <string name="profile_empty_list_profiles_off">To configure and use System profiles, turn Profiles on.</string>
 
     <!-- Add Profile -->
     <string name="add_profile_dialog_title">Create new profile</string>
@@ -4595,8 +4596,10 @@
     <string name="pref_purgeable_assets_summary">Purging of bitmap memory assets allows the freeing of more RAM when needed (requires reboot)</string>
 
     <!-- Performance Settings : Dithering -->
-    <string name="pref_use_dithering_title">Surface dithering</string>
-    <string name="pref_use_dithering_summary">Dithering improves image quality on some displays at the cost of performance (requires reboot)</string>
+    <string name="pref_use_dithering_title">Surface improvement</string>
+    <string name="dithering_no_dither">Disable dithering</string>
+    <string name="dithering_color_banding">Fix color banding (default)</string>
+    <string name="dithering_blur_effect">Fix color banding and blur effect</string>
 
     <!-- Performance Settings : 16bpp Alpha -->
     <string name="pref_use_16bpp_alpha_title">16bit transparency</string>
@@ -4660,8 +4663,10 @@
     <string name="icon_picker_camera">Camera</string>
     <string name="icon_picker_chrome">Chrome</string>
     <string name="icon_picker_email">Email</string>
+    <string name="icon_picker_email2">Email Holo</string>
     <string name="icon_picker_facebook">Facebook</string>
     <string name="icon_picker_gallery">Gallery</string>
+    <string name="icon_picker_google_small">Google (small)</string>
     <string name="icon_picker_googleplus">Google Plus</string>
     <string name="icon_picker_googletalk">Google Talk</string>
     <string name="icon_picker_maps">Maps</string>
@@ -4694,7 +4699,7 @@
 
     <!-- Status bar notification count -->
     <string name="status_bar_notif_count_title">Show notification count</string>
-    <string name="status_bar_notif_count_summary">Display number of pending notifications on the status bar</string>
+    <string name="status_bar_notif_count_summary">Display number of pending notifications</string>
 
     <string name="increasing_ring_title">Ascending ringtone</string>
     <!-- Sound settings screen, the caption of the checkbox for making incoming calls increase in volume -->
@@ -4781,6 +4786,14 @@
     <!-- Whether to display IME switcher notifcation -->
     <string name="ime_switcher_notify">Selector notification</string>
     <string name="ime_switcher_notify_summary">Display input method selector notification</string>
+
+    <!-- Change Log strings -->
+    <string name="changelog_title">View changelog</string>
+    <string name="changelog_dialog">Changelog</string>
+    <string name="changelog_loading">Loading changelog...</string>
+    <string name="changelog_error">Unable to load changelog</string>
+    <string name="changelog_unknown">Unknown</string>
+    <string name="changelog_version">Version</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
