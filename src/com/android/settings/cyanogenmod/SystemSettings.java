@@ -49,6 +49,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
     private CheckBoxPreference mScreenshotPref;
+    private PreferenceScreen mNavigationBar;
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -65,6 +66,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mScreenshotPref = (CheckBoxPreference) findPreference(KEY_SCREENSHOT);
         mScreenshotPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1));
+        mNavigationBar = (PreferenceScreen) findPreference(KEY_NAVIGATION_BAR);
 
         if (Utils.isTablet(getActivity())) {
             if (mPhoneDrawer != null) {
@@ -76,14 +78,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             }
         }
 
-        IWindowManager windowManager = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
-        try {
-            Preference naviBar = findPreference(KEY_NAVIGATION_BAR);
-            if (!windowManager.hasNavigationBar() && naviBar != null) {
-                getPreferenceScreen().removePreference(naviBar);
-            }
-        } catch (RemoteException e) {
-        }
     }
 
     int floatToIndex(float val) {

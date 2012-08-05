@@ -52,6 +52,11 @@
         android:title="@string/power_menu_screenshot_title"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="navigation_bar"
+        android:fragment="com.android.settings.cyanogenmod.NavigationBar"
+        android:title="@string/navigation_bar_title" />
+
 <!-- Hide until code is ported from CM9
     <PreferenceScreen
         android:key="navigation_bar"
