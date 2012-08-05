@@ -4333,7 +4333,7 @@
     <string name="status_bar_signal_text_show_text">Text</string>
     <string name="status_bar_signal_text_hidden">Hidden</string>
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
-    <string name="status_bar_max_notifications_summary">This applies only to portrait view!</string>
+    <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
 
     <string name="lock_screen_title">Lock screen</string>
 
