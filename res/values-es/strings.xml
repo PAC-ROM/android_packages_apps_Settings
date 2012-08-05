@@ -1971,7 +1971,7 @@
     <string name="profile_lockmode_default_summary">"Utilizar valores por defecto"</string>
     <string name="profile_lockmode_insecure_summary">"Utilizar bloqueo de pantalla no seguro"</string>
     <string name="profile_lockmode_disabled_summary">"Bloqueo de pantalla desactivado"</string>
-    <string name="profile_disable_screen_lock_summary">"Desactivar seguridad de bloqueo de pantalla mientras este perfil este activo"</string>
+    <string name="profile_disable_screen_lock_summary">"Desactivar seguridad de bloqueo de pantalla mientras este perfil esté activo"</string>
     <string name="possibleButtons">"Botones posibles"</string>
     <string name="toggleWifiAp">"Wi-Fi hotspot portátil"</string>
     <string name="toggleData">"Datos móviles"</string>
