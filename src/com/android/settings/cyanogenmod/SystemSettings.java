@@ -78,23 +78,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
                 getPreferenceScreen().removePreference(mTabletDrawer);
             }
         }
-
-        IWindowManager windowManager = IWindowManager.Stub.asInterface(
-                ServiceManager.getService(Context.WINDOW_SERVICE));
-        try {
-            if (!windowManager.hasNavigationBar()) {
-                Preference naviBar = findPreference(KEY_NAVIGATION_BAR);
-                if (naviBar != null) {
-                    getPreferenceScreen().removePreference(naviBar);
-                }
-            } else {
-                Preference hardKeys = findPreference(KEY_HARDWARE_KEYS);
-                if (hardKeys != null) {
-                    getPreferenceScreen().removePreference(hardKeys);
-                }
-            }
-        } catch (RemoteException e) {
-        }
     }
 
     int floatToIndex(float val) {
