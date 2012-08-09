@@ -4262,10 +4262,6 @@
     <!-- Navigation Bar  -->
     <string name="navigation_bar_title">Navigation bar</string>
     <string name="navigation_bar_summary">Show on screen software buttons</string>
-    <string name="hw_keys_title">Hardware Keys</string>
-    <string name="key_menu_enabled">Menu Key Enabled</string>
-    <string name="key_back_enabled">Back Key Enabled</string>
-    <string name="key_home_enabled">Home Key Enabled</string>
 
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
@@ -4276,6 +4272,9 @@
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>
+    <string name="key_menu_enabled">Menu Key</string>
+    <string name="key_back_enabled">Back Key</string>
+    <string name="key_home_enabled">Home Key</string>
     <string name="hardware_keys_bindings_title">Key actions</string>
     <string name="hardware_keys_enable_custom_title">Enable custom actions</string>
     <string name="hardware_keys_home_long_press_title">Home key (long press)</string>

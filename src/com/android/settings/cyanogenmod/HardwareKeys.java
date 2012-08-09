@@ -41,6 +41,9 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
     private static final String HARDWARE_KEYS_APP_SWITCH_PRESS = "hardware_keys_app_switch_press";
     private static final String HARDWARE_KEYS_APP_SWITCH_LONG_PRESS = "hardware_keys_app_switch_long_press";
     private static final String HARDWARE_KEYS_SHOW_OVERFLOW = "hardware_keys_show_overflow";
+    private static final String KEY_MENU_ENABLED = "key_menu_enabled";
+    private static final String KEY_BACK_ENABLED = "key_back_enabled";
+    private static final String KEY_HOME_ENABLED = "key_home_enabled";
 
     // Available custom actions to perform on a key press.
     // Must match values for KEY_HOME_LONG_PRESS_ACTION in:
@@ -60,6 +63,9 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
     private static final int KEY_MASK_ASSIST = 0x08;
     private static final int KEY_MASK_APP_SWITCH = 0x10;
 
+    private CheckBoxPreference mMenuKeyEnabled;
+    private CheckBoxPreference mBackKeyEnabled;
+    private CheckBoxPreference mHomeKeyEnabled;
     private CheckBoxPreference mEnableCustomBindings;
     private ListPreference mHomeLongPressAction;
     private ListPreference mMenuPressAction;
@@ -80,10 +86,17 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
         final boolean hasMenuKey = (deviceKeys & KEY_MASK_MENU) != 0;
         final boolean hasAssistKey = (deviceKeys & KEY_MASK_ASSIST) != 0;
         final boolean hasAppSwitchKey = (deviceKeys & KEY_MASK_APP_SWITCH) != 0;
+        final boolean hasBackKey = (deviceKeys & KEY_MASK_BACK) != 0;
 
         addPreferencesFromResource(R.xml.hardware_keys);
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        // Hardware key status, wether to enable or disable
+        mMenuKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_MENU_ENABLED);
+        mBackKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_BACK_ENABLED);
+        mHomeKeyEnabled = (CheckBoxPreference) prefSet.findPreference(KEY_HOME_ENABLED);
+
+        // Use custom binding for hardware keys
         mEnableCustomBindings = (CheckBoxPreference) prefSet.findPreference(
                 HARDWARE_KEYS_ENABLE_CUSTOM);
         mHomeLongPressAction = (ListPreference) prefSet.findPreference(
@@ -102,8 +115,19 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
                 HARDWARE_KEYS_APP_SWITCH_LONG_PRESS);
         mShowActionOverflow = (CheckBoxPreference) prefSet.findPreference(
                 HARDWARE_KEYS_SHOW_OVERFLOW);
+
         PreferenceCategory bindingsCategory = (PreferenceCategory) prefSet.findPreference(
                 HARDWARE_KEYS_CATEGORY_BINDINGS);
+
+        mMenuKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_MENU_ENABLED, 1) == 1));
+        mBackKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_BACK_ENABLED, 1) == 1));
+        mHomeKeyEnabled.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_HOME_ENABLED, 1) == 1));
+
+        if(!hasBackKey)
+            bindingsCategory.removePreference(mBackKeyEnabled);
 
         if (hasHomeKey) {
             int homeLongPressAction;
@@ -118,6 +142,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
             mHomeLongPressAction.setSummary(mHomeLongPressAction.getEntry());
             mHomeLongPressAction.setOnPreferenceChangeListener(this);
         } else {
+            bindingsCategory.removePreference(mHomeKeyEnabled);
             bindingsCategory.removePreference(mHomeLongPressAction);
         }
 
@@ -140,6 +165,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
             mMenuLongPressAction.setSummary(mMenuLongPressAction.getEntry());
             mMenuLongPressAction.setOnPreferenceChangeListener(this);
         } else {
+            bindingsCategory.removePreference(mMenuKeyEnabled);
             bindingsCategory.removePreference(mMenuPressAction);
             bindingsCategory.removePreference(mMenuLongPressAction);
         }
@@ -248,16 +274,32 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mEnableCustomBindings) {
+        boolean value;
+        if (preference == mMenuKeyEnabled) {
+            value = mMenuKeyEnabled.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_MENU_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mBackKeyEnabled) {
+            value = mBackKeyEnabled.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_BACK_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mHomeKeyEnabled) {
+            value = mHomeKeyEnabled.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_HOME_ENABLED, value ? 1 : 0);
+            return true;
+        } else if (preference == mEnableCustomBindings) {
             Settings.System.putInt(getContentResolver(), Settings.System.HARDWARE_KEY_REBINDING,
                     mEnableCustomBindings.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mShowActionOverflow) {
-            boolean enabled = mShowActionOverflow.isChecked();
+            value = mShowActionOverflow.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.UI_FORCE_OVERFLOW_BUTTON,
-                    enabled ? 1 : 0);
+                    value ? 1 : 0);
             // Show appropriate
-            if (enabled) {
+            if (value) {
                 Toast.makeText(getActivity(), R.string.hardware_keys_show_overflow_toast_enable,
                         Toast.LENGTH_LONG).show();
             } else {
