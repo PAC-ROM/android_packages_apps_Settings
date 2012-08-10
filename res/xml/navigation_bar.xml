@@ -22,10 +22,15 @@
         android:key="nav_bar_category"
         android:title="@string/navigation_bar_title">
 
-       <CheckBoxPreference
+        <CheckBoxPreference
             android:key="nav_bar_status"
             android:title="@string/navigation_bar_status_title"
             android:summary="@string/navigation_bar_status_summary" />
+
+        <PreferenceScreen
+            android:key="navigation_bar_editor"
+            android:fragment="com.android.settings.cyanogenmod.NavBarEditor"
+            android:title="@string/navigation_bar_title" />
 
         <CheckBoxPreference
             android:key="nav_bar_tabui_menu"

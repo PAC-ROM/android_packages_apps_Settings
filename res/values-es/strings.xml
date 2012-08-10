@@ -1840,6 +1840,8 @@
     <string name="navigation_bar_reset_message">¿Borrar configuración actual y restaurar valores por defecto?</string>
     <string name="navigation_bar_save_message">Barra de navegación guardada</string>
     <string name="navigation_bar_reset_toast">Barra de navegación restaurada</string>
+    <string name="navigation_bar_menu_editable">Editable</string>
+    <string name="navigation_bar_menu_locked">Bloqueado</string>
     <string name="hardware_keys_title">Teclas físicas</string>
     <string name="key_menu_enabled">Tecla menú</string>
     <string name="key_back_enabled">Tecla atrás</string>
