@@ -207,9 +207,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
         mEnableCustomBindings.setChecked((Settings.System.getInt(getActivity().
                 getApplicationContext().getContentResolver(),
                 Settings.System.HARDWARE_KEY_REBINDING, 0) == 1));
-        mShowActionOverflow.setChecked((Settings.System.getInt(getActivity().
-                getApplicationContext().getContentResolver(),
-                Settings.System.UI_FORCE_OVERFLOW_BUTTON, 0) == 1));
+        mShowActionOverflow.setChecked(!ViewConfiguration.get(getActivity()).hasPermanentMenuKey());
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -299,13 +297,12 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
             Settings.System.putInt(getContentResolver(), Settings.System.UI_FORCE_OVERFLOW_BUTTON,
                     value ? 1 : 0);
             // Show appropriate
-            if (value) {
+            if (value)
                 Toast.makeText(getActivity(), R.string.hardware_keys_show_overflow_toast_enable,
                         Toast.LENGTH_LONG).show();
-            } else {
+            else
                 Toast.makeText(getActivity(), R.string.hardware_keys_show_overflow_toast_disable,
                         Toast.LENGTH_LONG).show();
-            }
             return true;
         }
         return false;
