@@ -69,7 +69,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
                 Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1));
         mNavigationBar = (PreferenceScreen) findPreference(KEY_NAVIGATION_BAR);
 
-        if (Utils.isTablet(getActivity())) {
+        if (Utils.isTablet()) {
             if (mPhoneDrawer != null) {
                 getPreferenceScreen().removePreference(mPhoneDrawer);
             }

@@ -81,7 +81,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
         mBatteryStatus.setOnPreferenceChangeListener(this);
 
-        mIsScreenLarge = Utils.isTablet(getActivity());
+        mIsScreenLarge = Utils.isTablet();
 
         updateCustomBackgroundSummary();
     }
