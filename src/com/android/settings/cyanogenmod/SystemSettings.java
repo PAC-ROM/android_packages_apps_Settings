@@ -29,7 +29,6 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Display;
 import android.view.IWindowManager;
 
 import com.android.settings.R;
@@ -82,8 +81,8 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             }
         }
         
+        IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
-            IWindowManager wm = Display.getWindowManager();
             if(!wm.hasHardwareKeys())
                 getPreferenceScreen().removePreference(mHardwareKeys);
         } catch (RemoteException ex) {
