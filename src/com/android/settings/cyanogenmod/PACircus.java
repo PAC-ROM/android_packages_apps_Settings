@@ -1,4 +1,4 @@
-/*);
+/*
  * Copyright (C) 2012 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ import java.util.Random;
 
 import com.android.settings.R;
 
-public class CIDCircus extends Activity {
+public class PACircus extends Activity {
     final static boolean DEBUG = false;
 
     private static class Board extends FrameLayout
@@ -72,7 +72,7 @@ public class CIDCircus extends Activity {
             return array[sRNG.nextInt(array.length)];
         }
 
-        static int NUM_CIDS = 40;
+        static int NUM_PARANOIDS = 40;
         static float MIN_SCALE = 0.2f;
         static float MAX_SCALE = 1f;
 
@@ -80,29 +80,16 @@ public class CIDCircus extends Activity {
 
         static int MAX_RADIUS = (int)(576 * MAX_SCALE);
 
-        static int CIDS[] = {
-          R.drawable.cid_angry,
-          R.drawable.cid_angry,
-          R.drawable.cid_angry,
-          R.drawable.cid_angry,
-          R.drawable.cid_normal,
-          R.drawable.cid_normal,
-          R.drawable.cid_confused,
+        static int PARANOIDS[] = {
+          R.drawable.pa_blue,
+          R.drawable.pa_fucsia,
+          R.drawable.pa_green,
+          R.drawable.pa_purple,
+          R.drawable.pa_red,
+          R.drawable.pa_yellow
         };
 
-        static int COLORS[] = {
-            0xFF0099CC,
-            0xFF33B5E5,
-            0xFF669900,
-            0xFF99CC00,
-            0xFFCC0000,
-            0xFFFF8800,
-            0xFFFFBB33,
-            0xFF9933CC,
-            0xFFAA66CC,
-        };
-
-        public class CID extends ImageView {
+        public class PARANOID extends ImageView {
             public float x, y, a;
 
             public float va;
@@ -118,44 +105,33 @@ public class CIDCircus extends Activity {
             public float grabx, graby;
             private float grabx_offset, graby_offset;
 
-            public CID(Context context, AttributeSet as) {
+            public PARANOID(Context context, AttributeSet as) {
                 super(context, as);
             }
 
             public String toString() {
-                return String.format("<cid (%.1f, %.1f) (%d x %d)>",
+                return String.format("<pa (%.1f, %.1f) (%d x %d)>",
                     getX(), getY(), getWidth(), getHeight());
             }
 
-            private void pickCID() {
-                int cidId = pickInt(CIDS);
+            private void pickPARANOID() {
+                int paId = pickInt(PARANOIDS);
                 if (randfrange(0,1) <= LUCKY) {
-                    cidId = R.drawable.jandycane;
+                    paId = R.drawable.pa_stock;
                 }
-                BitmapDrawable cid = (BitmapDrawable) getContext().getResources().getDrawable(cidId);
-                Bitmap cidBits = cid.getBitmap();
-                h=cidBits.getHeight();
-                w=cidBits.getWidth();
+                BitmapDrawable pa = (BitmapDrawable) getContext().getResources().getDrawable(paId);
+                Bitmap paBits = pa.getBitmap();
+                h=paBits.getHeight();
+                w=paBits.getWidth();
 
                 if (DEBUG) {
-                    cid.setAlpha(0x80);
+                    pa.setAlpha(0x80);
                 }
-                this.setImageDrawable(cid);
-
-                Paint pt = new Paint();
-                final int color = pickInt(COLORS);
-                ColorMatrix CM = new ColorMatrix();
-                float[] M = CM.getArray();
-                // we assume the color information is in the red channel
-                /* R */ M[0]  = (float)((color & 0x00FF0000) >> 16) / 0xFF;
-                /* G */ M[5]  = (float)((color & 0x0000FF00) >> 8)  / 0xFF;
-                /* B */ M[10] = (float)((color & 0x000000FF))       / 0xFF;
-                pt.setColorFilter(new ColorMatrixColorFilter(M));
-                setLayerType(View.LAYER_TYPE_HARDWARE, (cidId == R.drawable.jandycane) ? null : pt);
+                this.setImageDrawable(pa);
             }
 
             public void reset() {
-                pickCID();
+                pickPARANOID();
 
                 final float scale = lerp(MIN_SCALE,MAX_SCALE,z);
                 setScaleX(scale); setScaleY(scale);
@@ -191,7 +167,7 @@ public class CIDCircus extends Activity {
                 }
             }
 
-            public float overlap(CID other) {
+            public float overlap(PARANOID other) {
                 final float dx = (x - other.x);
                 final float dy = (y - other.y);
                 return mag(dx, dy) - r - other.r;
@@ -241,10 +217,10 @@ public class CIDCircus extends Activity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
 
-            for(int i=0; i<NUM_CIDS; i++) {
-                CID nv = new CID(getContext(), null);
+            for(int i=0; i<NUM_PARANOIDS; i++) {
+                PARANOID nv = new PARANOID(getContext(), null);
                 addView(nv, wrap);
-                nv.z = ((float)i/NUM_CIDS);
+                nv.z = ((float)i/NUM_PARANOIDS);
                 nv.z *= nv.z;
                 nv.reset();
                 nv.x = (randfrange(0, boardWidth));
@@ -259,20 +235,20 @@ public class CIDCircus extends Activity {
                 public void onTimeUpdate(TimeAnimator animation, long totalTime, long deltaTime) {
                     if (DEBUG) {
                         for (int i=0; i<getChildCount(); i++) {
-                            android.util.Log.d("CIDCircus", "cid " + i + ": " + getChildAt(i));
+                            android.util.Log.d("PARANOIDCircus", "pa " + i + ": " + getChildAt(i));
                         }
                     }
 
                     for (int i=0; i<getChildCount(); i++) {
                         View v = getChildAt(i);
-                        if (!(v instanceof CID)) continue;
-                        CID nv = (CID) v;
+                        if (!(v instanceof PARANOID)) continue;
+                        PARANOID nv = (PARANOID) v;
                         nv.update(deltaTime / 1000f);
 
                         for (int j=i+1; j<getChildCount(); j++) {
                             View v2 = getChildAt(j);
-                            if (!(v2 instanceof CID)) continue;
-                            CID nv2 = (CID) v2;
+                            if (!(v2 instanceof PARANOID)) continue;
+                            PARANOID nv2 = (PARANOID) v2;
                             nv.overlap(nv2);
                         }
 
@@ -341,7 +317,7 @@ public class CIDCircus extends Activity {
                 pt.setColor(0xFFFFCC00);
                 pt.setStrokeWidth(1.0f);
                 for (int i=0; i<getChildCount(); i++) {
-                    CID b = (CID) getChildAt(i);
+                    PARANOID b = (PARANOID) getChildAt(i);
                     final float a = (360-b.a)/180f*3.14159f;
                     final float tx = b.getTranslationX();
                     final float ty = b.getTranslationY();
