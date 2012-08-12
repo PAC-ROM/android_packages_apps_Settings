@@ -35,7 +35,7 @@ import android.widget.Toast;
 
 import com.android.settings.R;
 
-public class CIDLogoActivity extends Activity {
+public class PALogoActivity extends Activity {
     Toast mToast;
     ImageView mContent;
     int mCount;
@@ -58,7 +58,7 @@ public class CIDLogoActivity extends Activity {
         Typeface light = Typeface.create("sans-serif-light", Typeface.NORMAL);
         Typeface normal = Typeface.create("sans-serif", Typeface.BOLD);
 
-        String cmversion = SystemProperties.get("ro.cm.version");
+        String paVersion = SystemProperties.get("ro.pa.version");
 
         final float size = 14 * metrics.density;
         final LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
@@ -72,7 +72,7 @@ public class CIDLogoActivity extends Activity {
         tv.setTextSize(1.25f*size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText("CyanogenMod");
+        tv.setText("ParanoidAndroid");
         view.addView(tv, lp);
    
         tv = new TextView(this);
@@ -80,7 +80,7 @@ public class CIDLogoActivity extends Activity {
         tv.setTextSize(size);
         tv.setTextColor(0xFFFFFFFF);
         tv.setShadowLayer(4*metrics.density, 0, 2*metrics.density, 0x66000000);
-        tv.setText(cmversion.replaceAll("(.+?)-.*","$1"));
+        tv.setText(paVersion);
         view.addView(tv, lp);
 
         return view;
@@ -97,7 +97,7 @@ public class CIDLogoActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         mContent = new ImageView(this);
-        mContent.setImageResource(R.drawable.cidlogo_alt);
+        mContent.setImageResource(R.drawable.palogo);
         mContent.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
         
         final int p = (int)(32 * metrics.density);
@@ -107,7 +107,6 @@ public class CIDLogoActivity extends Activity {
             @Override
             public void onClick(View v) {
                 mToast.show();
-                mContent.setImageResource(R.drawable.cidlogo);
             }
         });
 
@@ -119,10 +118,9 @@ public class CIDLogoActivity extends Activity {
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                        //.addCategory("com.android.internal.category.CIDLOGO"))
-                        .setClassName("com.android.settings","com.android.settings.cyanogenmod.CIDCircus"));
+                        .setClassName("com.android.settings","com.android.settings.cyanogenmod.PACircus"));
                 } catch (ActivityNotFoundException ex) {
-                    android.util.Log.e("CIDLogoActivity", "Couldn't find a circus of CID's.");
+                    android.util.Log.e("PALogoActivity", "Couldn't find a circus of PA's.");
                 }
                 finish();
                 return true;

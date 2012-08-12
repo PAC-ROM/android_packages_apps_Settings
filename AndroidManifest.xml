@@ -1514,14 +1514,23 @@
                 android:value="com.android.settings.cmstats.AnonymousStats" />
         </activity>
 
-        <activity android:name=".cyanogenmod.CIDLogoActivity"
+        <activity android:name=".cyanogenmod.ChangeLog" android:label="@string/changelog_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+
+        <!-- CyanogenMod activities End -->
+        
+        <!-- Based on CyanogenMod's CIDCircus, Android's easteregg -->
+        <activity android:name=".cyanogenmod.PALogoActivity"
                 android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
                 android:process=":ui">
         </activity>
         <activity
-            android:name=".cyanogenmod.CIDCircus"
+            android:name=".cyanogenmod.PACircus"
             android:exported="true"
-            android:label="CIDCircus"
+            android:label="PACircus"
             android:icon="@drawable/empty_icon"
             android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
             android:hardwareAccelerated="true"
@@ -1530,18 +1539,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name=".cyanogenmod.CIDLOGO" />
-<!--            <category android:name="android.intent.category.LAUNCHER" />-->
+                <category android:name=".cyanogenmod.PALOGO" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".cyanogenmod.ChangeLog" android:label="@string/changelog_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-            </intent-filter>
-        </activity>
-
-        <!-- CyanogenMod activities End -->
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"
