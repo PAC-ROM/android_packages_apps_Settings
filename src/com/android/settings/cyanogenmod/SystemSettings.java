@@ -51,6 +51,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mTabletDrawer;
     private CheckBoxPreference mScreenshotPref;
     private PreferenceScreen mNavigationBar;
+    private PreferenceScreen mHardwareKeys;
 
     private final Configuration mCurConfig = new Configuration();
 
@@ -68,6 +69,7 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mScreenshotPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1));
         mNavigationBar = (PreferenceScreen) findPreference(KEY_NAVIGATION_BAR);
+        mHardwareKeys = (PreferenceScreen) findPreference(KEY_HARDWARE_KEYS);
 
         if (Utils.isTablet()) {
             if (mPhoneDrawer != null) {
@@ -77,6 +79,14 @@ public class SystemSettings extends SettingsPreferenceFragment implements
             if (mTabletDrawer != null) {
                 getPreferenceScreen().removePreference(mTabletDrawer);
             }
+        }
+        
+        try {
+            IWindowManager wm = Display.getWindowManager();
+            if(!wm.hasHardwareKeys())
+                getPreferenceScreen().removePreference(mHardwareKeys);
+        } catch (RemoteException ex) {
+            // no WindowManager ?, and we're still alive?
         }
     }
 

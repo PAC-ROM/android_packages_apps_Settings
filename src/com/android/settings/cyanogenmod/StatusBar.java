@@ -128,6 +128,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
+            mPrefCategoryGeneral.removePreference(mMaxNotIcons);
             mPrefCategoryGeneral.removePreference(mCombinedBarAutoHide);
         }
     }
