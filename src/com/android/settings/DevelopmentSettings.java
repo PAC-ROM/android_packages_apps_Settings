@@ -888,7 +888,7 @@ public class DevelopmentSettings extends PreferenceFragment
                             getActivity().getResources().getString(
                                     R.string.dev_settings_warning_message))
                             .setTitle(R.string.dev_settings_warning_title)
-                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            ..setIconAttribute(android.R.attr.alertDialogIcon)
                             .setPositiveButton(android.R.string.yes, this)
                             .setNegativeButton(android.R.string.no, this)
                             .show();
@@ -933,7 +933,7 @@ public class DevelopmentSettings extends PreferenceFragment
                 mAdbDialog = new AlertDialog.Builder(getActivity()).setMessage(
                         getActivity().getResources().getString(R.string.adb_warning_message))
                         .setTitle(R.string.adb_warning_title)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        ..setIconAttribute(android.R.attr.alertDialogIcon)
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, this)
                         .show();
@@ -950,7 +950,7 @@ public class DevelopmentSettings extends PreferenceFragment
                 mAdbTcpDialog = new AlertDialog.Builder(getActivity()).setMessage(
                         getResources().getString(R.string.adb_over_network_warning))
                         .setTitle(R.string.adb_over_network)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        ..setIconAttribute(android.R.attr.alertDialogIcon)
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, this)
                         .show();
@@ -1048,7 +1048,7 @@ public class DevelopmentSettings extends PreferenceFragment
                 mRootDialog = new AlertDialog.Builder(getActivity())
                         .setMessage(getResources().getString(R.string.root_access_warning_message))
                         .setTitle(R.string.root_access_warning_title)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        ..setIconAttribute(android.R.attr.alertDialogIcon)
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, this).show();
                 mRootDialog.setOnDismissListener(this);
