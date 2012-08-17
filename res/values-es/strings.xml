@@ -2137,4 +2137,19 @@
     <string name="mod_version_default">"Desconocida"</string>
     <string name="build_date">"Fecha de compilación"</string>
     <string name="mem_info">"Memoria"</string>
+    <string name="ime_switcher_notify">Notificación del selector</string>
+    <string name="ime_switcher_notify_summary">Mostrar notificación del selector de métodos de entrada</string>
+    <string name="changelog_title">Ver cambios</string>
+    <string name="changelog_dialog">Cambios</string>
+    <string name="changelog_loading">Cargando cambios...</string>
+    <string name="changelog_error">No se ha podido cargar la lista de cambios</string>
+    <string name="changelog_unknown">Desconocido</string>
+    <string name="changelog_version">Versión</string>
+    <string name="stylus_icon_enabled_title">Mostrar icono al usar Stylus</string>
+    <string name="stylus_icon_enabled_summary">Mostrar el cursor cuando se arrastra o dibuja con Stylus</string>
+    <string name="power_menu_title">Menú global</string>
+    <string name="power_menu_reboot_title">Menú de reinicio</string>
+    <string name="power_menu_screenshot_title">Captura de pantalla</string>
+    <string name="power_menu_profiles_title">Perfiles</string>
+    <string name="development_tools_title">Herramientas de desarrollo</string>
 </resources>
