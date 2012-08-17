@@ -46,7 +46,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
     private ListPreference mFontSizePref;
     private PreferenceScreen mPhoneDrawer;
     private PreferenceScreen mTabletDrawer;
-    private CheckBoxPreference mScreenshotPref;
     private PreferenceScreen mNavigationBar;
     private PreferenceScreen mHardwareKeys;
 
@@ -62,9 +61,6 @@ public class SystemSettings extends SettingsPreferenceFragment implements
         mFontSizePref.setOnPreferenceChangeListener(this);
         mPhoneDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER);
         mTabletDrawer = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER_TABLET);
-        mScreenshotPref = (CheckBoxPreference) findPreference(KEY_SCREENSHOT);
-        mScreenshotPref.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.POWER_MENU_SCREENSHOT_ENABLED, 0) == 1));
         mNavigationBar = (PreferenceScreen) findPreference(KEY_NAVIGATION_BAR);
         mHardwareKeys = (PreferenceScreen) findPreference(KEY_HARDWARE_KEYS);
 
