@@ -79,6 +79,9 @@ public class BootReceiver extends BroadcastReceiver {
         DisplaySettings.restore(ctx);
         LocationSettings.restore(ctx);
         ButtonSettings.restoreKeyDisabler(ctx);
+
+        Intent service = new Intent(ctx, BootService.class);
+        ctx.startService(service);
     }
 
     private void initFreqCapFiles(Context ctx)

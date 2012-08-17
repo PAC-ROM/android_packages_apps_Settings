@@ -20,10 +20,9 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
-        android:fragment="com.android.settings.pac.NotificationDrawerStyle"
-        android:key="notification_style"
-        android:title="@string/notification_style_title"
-        android:summary="@string/notification_style_summary" />
+        android:key="weather"
+        android:fragment="com.android.settings.pac.Weather"
+        android:title="@string/title_weather"/>
 
     <PreferenceScreen
         settings:includeXmlForSearch="@xml/quick_settings_panel"
@@ -40,6 +39,12 @@
         android:key="heads_up"
         android:fragment="com.android.settings.pac.headsup.HeadsUp"
         android:title="@string/heads_up_title" />
+
+    <PreferenceScreen
+        android:fragment="com.android.settings.pac.NotificationDrawerStyle"
+        android:key="notification_style"
+        android:title="@string/notification_style_title"
+        android:summary="@string/notification_style_summary" />
 
     <ListPreference
         android:key="notification_drawer_collapse_on_dismiss"
