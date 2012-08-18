@@ -1,10 +1,11 @@
 /*
+ * Copyright (C) 2012 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -81,12 +82,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
         mBatteryStatus.setOnPreferenceChangeListener(this);
-
-        mVibratePref = (CheckBoxPreference) findPreference(KEY_VIBRATE_PREF);
-        boolean bVibrate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.LOCKSCREEN_VIBRATE_ENABLED, 1) == 1 ? true : false;
-        mVibratePref.setChecked(bVibrate);
-        mVibratePref.setOnPreferenceChangeListener(this);
 
         mIsScreenLarge = Utils.isTablet();
 
