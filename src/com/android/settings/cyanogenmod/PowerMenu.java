@@ -29,10 +29,12 @@ public class PowerMenu extends SettingsPreferenceFragment {
     private static final String TAG = "PowerMenu";
 
     private static final String KEY_REBOOT = "power_menu_reboot";
+    private static final String KEY_EXPANDED_DESKTOP = "power_menu_expanded_desktop";
     private static final String KEY_SCREENSHOT = "power_menu_screenshot";
     private static final String KEY_PROFILES = "power_menu_profiles";
 
     private CheckBoxPreference mRebootPref;
+    private CheckBoxPreference mExpandedDesktopPref;
     private CheckBoxPreference mScreenshotPref;
     private CheckBoxPreference mProfilesPref;
 
@@ -45,6 +47,10 @@ public class PowerMenu extends SettingsPreferenceFragment {
         mRebootPref = (CheckBoxPreference) findPreference(KEY_REBOOT);
         mRebootPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_REBOOT_ENABLED, 1) == 1));
+                
+        mExpandedDesktopPref = (CheckBoxPreference) findPreference(KEY_EXPANDED_DESKTOP);
+        mExpandedDesktopPref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED, 1) == 1));
 
         mScreenshotPref = (CheckBoxPreference) findPreference(KEY_SCREENSHOT);
         mScreenshotPref.setChecked((Settings.System.getInt(getContentResolver(),
@@ -74,6 +80,11 @@ public class PowerMenu extends SettingsPreferenceFragment {
             value = mRebootPref.isChecked();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_REBOOT_ENABLED,
+                    value ? 1 : 0);
+        } else if (preference == mExpandedDesktopPref) {
+            value = mExpandedDesktopPref.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.POWER_MENU_EXPANDED_DESKTOP_ENABLED,
                     value ? 1 : 0);
         } else if (preference == mProfilesPref) {
             value = mProfilesPref.isChecked();

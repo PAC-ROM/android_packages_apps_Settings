@@ -2149,6 +2149,7 @@
     <string name="stylus_icon_enabled_summary">Mostrar el cursor cuando se arrastra o dibuja con Stylus</string>
     <string name="power_menu_title">Menú global</string>
     <string name="power_menu_reboot_title">Menú de reinicio</string>
+    <string name="power_menu_expanded_desktop">Escritorio expandido</string>
     <string name="power_menu_screenshot_title">Captura de pantalla</string>
     <string name="power_menu_profiles_title">Perfiles</string>
     <string name="development_tools_title">Herramientas de desarrollo</string>
