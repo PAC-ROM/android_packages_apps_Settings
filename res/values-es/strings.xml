@@ -2153,5 +2153,5 @@
     <string name="power_menu_profiles_title">Perfiles</string>
     <string name="development_tools_title">Herramientas de desarrollo</string>
     <string name="usb_mass_storage_title">Almacenamiento masivo</string>
-    <string name="usb_mass_storage_summary">Permitir transferir otros archivos en ordenadores que no admitan MTP o PTP</string>
+    <string name="usb_mass_storage_summary">Permitir transferir otros archivos a ordenadores que no admitan MTP o PTP</string>
 </resources>
