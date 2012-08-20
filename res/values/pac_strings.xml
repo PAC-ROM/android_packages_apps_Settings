@@ -624,6 +624,12 @@
     <string name="status_bar_show_network_stats_title">Show network speeds</string>
     <string name="status_bar_network_stats_update_title">Update frequency</string>
 
+    <!-- NFC polling -->
+    <string name="nfc_polling_mode_title">NFC polling mode</string>
+    <string name="nfc_polling_mode_screen_off">Screen off</string>
+    <string name="nfc_polling_mode_screen_locked">Screen on, locked</string>
+    <string name="nfc_polling_mode_screen_unlocked">Screen on, unlocked (default)</string>
+
     <!-- Notification Drawer - Swipe to Switch full screen detection-->
     <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
     <string name="summary_full_screen_swipe">Use full screen detection for swipe to switch, not just the bottom bar</string>

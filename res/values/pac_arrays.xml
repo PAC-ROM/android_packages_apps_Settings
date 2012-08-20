@@ -521,6 +521,19 @@
         <item>5000</item>
     </string-array>
 
+    <!-- NFC polling -->
+    <string-array name="nfc_polling_mode_entries" translatable="false">
+        <item>@string/nfc_polling_mode_screen_off</item>
+        <item>@string/nfc_polling_mode_screen_locked</item>
+        <item>@string/nfc_polling_mode_screen_unlocked</item>
+    </string-array>
+
+    <string-array name="nfc_polling_mode_values" translatable="false">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <!-- Notification drawer background -->
     <string-array name="notification_wallpaper_entries">
         <item>@string/notification_background_color_fill</item>
