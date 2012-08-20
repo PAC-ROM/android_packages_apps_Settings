@@ -75,7 +75,7 @@ public class UsbSettings extends SettingsPreferenceFragment {
         mPtp = (CheckBoxPreference)root.findPreference(KEY_PTP);
         mUms = (CheckBoxPreference)root.findPreference(KEY_MASS_STORAGE);
         if (!storageVolumes[0].allowMassStorage()) {
-            mUms.setEnabled(false);
+            root.removePreference(mUms);
         }
 
         return root;
