@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cyanogenmod;
+package com.android.settings.paranoid;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -118,7 +118,7 @@ public class PALogoActivity extends Activity {
                         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                             | Intent.FLAG_ACTIVITY_CLEAR_TASK
                             | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS)
-                        .setClassName("com.android.settings","com.android.settings.cyanogenmod.PACircus"));
+                        .setClassName("com.android.settings","com.android.settings.paranoid.PACircus"));
                 } catch (ActivityNotFoundException ex) {
                     android.util.Log.e("PALogoActivity", "Couldn't find a circus of PA's.");
                 }

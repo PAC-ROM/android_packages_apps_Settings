@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.cyanogenmod;
+package com.android.settings.paranoid;
 
 import android.animation.TimeAnimator;
 import android.app.Activity;
