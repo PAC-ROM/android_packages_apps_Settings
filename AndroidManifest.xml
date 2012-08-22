@@ -1234,9 +1234,6 @@
                 android:value="com.android.settings.nfc.AndroidBeam" />
         </activity>
 
-
-
-
         <!-- Development settings -->
 
         <activity android:name="DebugIntentSender" android:label="@string/debug_intent_sender_label">
@@ -1491,11 +1488,12 @@
 
         <activity android:name=".ApnEditor" />
 
-        <activity android:name=".cyanogenmod.ChangeLog" android:label="@string/changelog_title">
+<!--        <activity android:name="#####" android:label="@string/changelog_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+->>
 
         <!-- CyanogenMod activities End -->
         
