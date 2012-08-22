@@ -2194,28 +2194,6 @@
     <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
     <string name="donate_settings_summary">""</string>
 
-    <!-- Anonymous Statistics  -->
-    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">CyanogenMod Statistikker</string>
-    <string name="anonymous_statistics_summary">Hjælp med at gøre CyanogenMod bedre ved at deltage i rapportering af anonyme statistikker</string>
-    <string name="anonymous_statistics_warning_title">Om</string>
-    <string name="anonymous_statistics_warning">Deltagelse af CyanogenMod Statistikker vil tillade ikke-personlige data, der skal forelægges for udviklerne af CyanogenMod at spore unikke installationer på tværs af enheder. De indsendte oplysninger omfatter en entydig identifikator, som ikke kompromittere dit privatliv eller personlige data. Dataene indsendes under hver boot.\n\nFor et eksempel på de data, der er indsendt, skal du trykke på Få vist data.</string>
-    <string name="enable_reporting_title">Aktiver rapportering</string>
-    <string name="preview_data_title">Få vist data</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">Vis statistikker</string>
-    <string name="anonymous_learn_more">Læs mere</string>
-
-    <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">Aktiver eller deaktiver CyanogenMod Statistikker</string>
-
-    <!-- Anonymous Statistics - Preview -->
-    <string name="preview_id_title">Unikt ID</string>
-    <string name="preview_device_title">Enhed</string>
-    <string name="preview_version_title">Version</string>
-    <string name="preview_country_title">Land</string>
-    <string name="preview_carrier_title">Operatør</string>
-
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_enabled">Aktiveret</string>

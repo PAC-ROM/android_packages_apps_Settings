@@ -554,31 +554,6 @@
     <!-- About device screen, list item summary. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
     <string name="donate_settings_summary">""</string>
 
-    <!-- Anonymous Statistics #CM -->
-    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">Statistiques CyanogenMod</string>
-    <string name="anonymous_statistics_summary">Aidez CyanogenMod en participant à l\'envoi de données anonymes pour comptabiliser les installations par type d\'appareil</string>
-    <string name="anonymous_statistics_warning_title">A propos</string>
-    <string name="anonymous_statistics_warning">Autoriser les statistiques CyanogenMod permet l\'envoi de données anonymes aux développeurs
-    du système CyanogenMod pour comptabiliser le nombre d\'installations par type d\'appareil. Les informations envoyées contiennent un identifiant unique de appareil
-    afin de limiter les doublons et en aucune manière ne compromet la sécurité de vos données. Ce jeu d\'informations est envoyé à chaque redémarrage pour ne conserver que les installations actives.
-    \n\nVous pouvez visualiser ces données en sélectionnant \"Prévisualiser les données\".</string>
-    <string name="enable_reporting_title">Activer le reporting</string>
-    <string name="preview_data_title">Prévisualiser les données</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">Afficher les statistiques</string>
-    <string name="anonymous_learn_more">En savoir plus</string>
-
-    <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">Activer ou non les statistiques CyanogenMod</string>
-
-    <!-- Anonymous Statistics - Preview -->
-    <string name="preview_id_title">Identifiant unique</string>
-    <string name="preview_device_title">Appareil</string>
-    <string name="preview_version_title">Version</string>
-    <string name="preview_country_title">Pays</string>
-    <string name="preview_carrier_title">Opérateur</string>
-
     <!-- Dock settings screen # -->
 <!--
     <string name="dock_usb_audio_enable_title">Audio sur station d\'accueil</string>
@@ -593,7 +568,7 @@
     <string name="safe_headset_restore_title">Sécurité volume écouteurs</string>
     <string name="safe_headset_restore_summary">Prévient d\'un volume trop élevé au branchement des écouteurs</string>
 
-<!-- End of CyanogenMod settings -->
+    <!-- End of CyanogenMod settings -->
 
     <string name="yes" msgid="4676390750360727396">"Oui"</string>
     <string name="no" msgid="6731231425810196216">"Non"</string>
