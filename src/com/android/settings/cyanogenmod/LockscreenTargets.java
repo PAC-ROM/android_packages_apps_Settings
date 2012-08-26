@@ -163,7 +163,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
             input = GlowPadView.DEFAULT_TARGETS;
         }
         mTargetStore.clear();
-        final int maxTargets = mIsScreenLarge ? GlowPadView.MAX_TABLET_TARGETS : GlowPadView.MAX_PHONE_TARGETS;
+        final int maxTargets = GlowPadView.MAX_TARGETS;
         final PackageManager packMan = mActivity.getPackageManager();
         final Drawable activeBack = mResources.getDrawable(com.android.internal.R.drawable.ic_lockscreen_target_activated);
         final String[] targetStore = input.split("\\|");
@@ -261,10 +261,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
     @Override
     public void onResume() {
         super.onResume();
-        // If running on a phone, remove padding around container
-        if (!mIsScreenLarge) {
-            mContainer.setPadding(0, 0, 0, 0);
-        }
+        mContainer.setPadding(0, 0, 0, 0);
     }
 
     @Override
@@ -323,7 +320,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
     private void saveAll() {
         StringBuilder targetLayout = new StringBuilder();
         ArrayList<String> existingImages = new ArrayList<String>();
-        final int maxTargets = mIsScreenLarge ? GlowPadView.MAX_TABLET_TARGETS : GlowPadView.MAX_PHONE_TARGETS;
+        final int maxTargets = GlowPadView.MAX_TARGETS;
         for (int i = mTargetOffset + 1; i <= mTargetOffset + maxTargets; i++) {
             String uri = mTargetStore.get(i).uri;
             String type = mTargetStore.get(i).iconType;
