@@ -56,9 +56,9 @@ public class PartitionInfo extends PreferenceActivity {
     private Preference mSDCardPartFATSize;
     private Preference mSDCardPartEXTSize;
     private Preference mDeviceName;
-    
+
     private boolean extfsIsMounted = false;
-    
+
     @Override
     protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -72,19 +72,18 @@ public class PartitionInfo extends PreferenceActivity {
     	mCachePartSize         = (Preference) prefSet.findPreference(CACHE_PART_SIZE);
     	mSDCardPartFATSize     = (Preference) prefSet.findPreference(SDCARDFAT_PART_SIZE);
     	mSDCardPartEXTSize     = (Preference) prefSet.findPreference(SDCARDEXT_PART_SIZE);
-      
-                    if (fileExists("/dev/block/mmcblk0p2") == true) {
-			Log.i(TAG, "sd: ext partition mounted");
-			extfsIsMounted = true;
-		    } else {
-			Log.i(TAG, "sd: ext partition not mounted");
-		    }
-    	
+
+        if (fileExists("/dev/block/mmcblk0p2") == true) {
+	    Log.i(TAG, "sd: ext partition mounted");
+            extfsIsMounted = true;
+	} else {
+            Log.i(TAG, "sd: ext partition not mounted");
+	}
     	try {
     	    mSystemPartSize.setSummary(ObtainFSPartSize    ("/system"));
     	    mDataPartSize.setSummary(ObtainFSPartSize      ("/data"));
     	    mCachePartSize.setSummary(ObtainFSPartSize     ("/cache"));
-    	    mSDCardPartFATSize.setSummary(ObtainFSPartSize ("/sdcard"));
+    	    mSDCardPartFATSize.setSummary(ObtainFSPartSize ("/storage/sdcard0"));
 
     	    if (extfsIsMounted == true) {
                 mSDCardPartEXTSize.setSummary(ObtainFSPartSize ("/sd-ext"));
@@ -95,7 +94,7 @@ public class PartitionInfo extends PreferenceActivity {
     	} catch (IllegalArgumentException e) {
     	  e.printStackTrace();
     	}
-        
+
     }
 
     private String ObtainFSPartSize(String PartitionPath) {
@@ -109,11 +108,11 @@ public class PartitionInfo extends PreferenceActivity {
     	retstr += Formatter.formatFileSize(this, eTotalBlocks * eBlockSize);
     	return retstr;
     }
-    
+
     public boolean fileExists(String filename) {
     	File f = new File(filename);
     	return f.exists();
     }
-    
+
 }
 
