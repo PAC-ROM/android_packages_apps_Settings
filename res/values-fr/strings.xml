@@ -542,7 +542,8 @@
     <string name="cpu_set_on_boot_summary">Modifie les fréquences du CPU au démarrage du système</string>
 
     <!-- About phone -->
-    <string name="mod_version">Version CyanogenMod</string>
+    <string name="cm_version">Version CyanogenMod</string>
+    <string name="pa_version">Version ParanoidAndroid</string>
     <string name="mod_version_default">Inconnue</string>
     <string name="build_date">Date de compilation</string>
     <string name="mem_info">Mémoire</string>

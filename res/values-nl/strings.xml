@@ -2354,7 +2354,8 @@ Schakel het scherm uit om de geselecteerde melding in actie te zien of annuleer 
     <string name="device_hostname">Hostnaam apparaat</string>
 
     <!-- About phone screen,  setting option name-->
-    <string name="mod_version">CyanogenMod-versie</string>
+    <string name="cm_version">CyanogenMod-versie</string>
+    <string name="pa_version">ParanoidAndroid-versie</string>
     <string name="mod_version_default">Onbekend</string>
     <!-- About phone screen, build date of ROM -->
     <string name="build_date">Build-datum</string>

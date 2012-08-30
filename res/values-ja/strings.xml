@@ -2265,7 +2265,8 @@
     <string name="donate_settings_summary">""</string>
 
     <!-- About device screen, version of modification of Android. -->
-    <string name="mod_version">CyanogenMod バージョン</string>
+    <string name="cm_version">CyanogenMod バージョン</string>
+    <string name="pa_version">ParanoidAndroid バージョン</string>
     <string name="mod_version_default">不明</string>
 
     <!-- About device screen, build date of ROM. -->
