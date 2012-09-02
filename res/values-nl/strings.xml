@@ -2195,28 +2195,6 @@ Schakel het scherm uit om de geselecteerde melding in actie te zien of annuleer 
     <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
     <string name="donate_settings_title">Doneren</string>
 
-    <!-- Anonymous Statistics  -->
-    <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">CyanogenMod-statistieken</string>
-    <string name="anonymous_statistics_summary">Help mee met het verbeteren van CyanogenMod door anonieme statistieken te verzenden</string>
-    <string name="anonymous_statistics_warning_title">Over</string>
-    <string name="anonymous_statistics_warning">CyanogenMod-statistieken verzenden toestaan zal anonieme gegevens naar de ontwikkelaars van CyanogenMod sturen om unieke installaties op alle apparaten te volgen. In de gegevens zit een uniek id-nummer, die uw privacy niet zal schenden. De gegevens worden tijdens het opstarten verstuurd. Voor een voorbeeld van de te verzenden gegevens, tik op \'Toon voorbeeld van gegevens\'.</string>
-    <string name="enable_reporting_title">Verzenden inschakelen</string>
-    <string name="preview_data_title">Voorbeeld van gegevens tonen</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">Statistieken tonen</string>
-    <string name="anonymous_learn_more">Lees meer</string>
-
-    <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">CyanogenMod-statistieken in-/uitschakelen</string>
-
-    <!-- Anonymous Statistics - Preview -->
-    <string name="preview_id_title">Uniek id</string>
-    <string name="preview_device_title">Apparaat</string>
-    <string name="preview_version_title">Versie</string>
-    <string name="preview_country_title">Land</string>
-    <string name="preview_carrier_title">Provider</string>
-
     <!-- Display - Rotation -->
     <string name="display_rotation_title">Scherm draaien</string>
     <string name="display_rotation_enabled">Ingeschakeld</string>
