@@ -1829,8 +1829,10 @@
     <string name="combined_bar_title">"Barra de estado"</string>
     <string name="combined_bar_auto_hide_title">"Ocultar automáticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permitir ocultar la barra de estado cuando una aplicación se muestra a pantalla completa"</string>
-    <string name="navigation_bar_title">Barra de navegación</string>
-    <string name="navigation_bar_summary">Mostrar los botones táctiles en la pantalla</string>
+    <string name="navigation_bar_status_title">Barra de navegación</string>
+    <string name="navigation_bar_status_summary">Mostrar los botones táctiles en la pantalla</string>
+    <string name="navigation_bar_tabui_menu_title">Separar menú</string>
+    <string name="navigation_bar_tabui_menu_summary">Mostrar botón de menú separado del botón de aplicaciones recientes</string>
     <string name="navigation_bar_help_text">1 - Para empezar a editar, toca el candado\n\n2 - Toca cualquier botón para asignar una acción\n\n3 - Mantén presionado un botón para reorganizar\n\n4 - Para guardar, toca el candado nuevamente\n\n5 - Para restaurar la configuración por defecto, toca el icono de resetear\n\n</string>
     <string name="navigation_bar_tips">&#8226; Solo se puede asignar una acción a un botón a la vez\n\n&#8226; El botón de inicio no puede ser reasignado\n\n&#8226; Los botones de los lados, no pueden ser reorganizados</string>
     <string name="navigation_bar_tips_title">Consejos rápidos</string>

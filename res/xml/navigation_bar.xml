@@ -19,12 +19,19 @@
     android:title="@string/navigation_bar_title">
 
     <PreferenceCategory
+        android:key="nav_bar_category"
         android:title="@string/navigation_bar_title">
 
        <CheckBoxPreference
             android:key="nav_bar_status"
-            android:title="@string/navigation_bar_title"
-            android:summary="@string/navigation_bar_summary" />
+            android:title="@string/navigation_bar_status_title"
+            android:summary="@string/navigation_bar_status_summary" />
+
+        <CheckBoxPreference
+            android:key="nav_bar_tabui_menu"
+            android:title="@string/navigation_bar_tabui_menu_title"
+            android:summary="@string/navigation_bar_tabui_menu_summary"
+            android:defaultValue="false" />
 
     </PreferenceCategory>
 
