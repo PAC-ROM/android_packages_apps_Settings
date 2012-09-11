@@ -30,8 +30,7 @@
         <CheckBoxPreference
             android:key="nav_bar_tabui_menu"
             android:title="@string/navigation_bar_tabui_menu_title"
-            android:summary="@string/navigation_bar_tabui_menu_summary"
-            android:defaultValue="false" />
+            android:summary="@string/navigation_bar_tabui_menu_summary" />
 
     </PreferenceCategory>
 
