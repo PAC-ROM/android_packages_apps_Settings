@@ -1829,7 +1829,8 @@
     <string name="combined_bar_title">"Barra de estado"</string>
     <string name="combined_bar_auto_hide_title">"Ocultar automáticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permitir ocultar la barra de estado cuando una aplicación se muestra a pantalla completa"</string>
-    <string name="navigation_bar_status_title">Barra de navegación</string>
+    <string name="navigation_bar_title">Barra de navegación</string>
+    <string name="navigation_bar_status_title">Botones virtuales</string>
     <string name="navigation_bar_status_summary">Mostrar los botones táctiles en la pantalla</string>
     <string name="navigation_bar_tabui_menu_title">Separar menú</string>
     <string name="navigation_bar_tabui_menu_summary">Mostrar botón de menú separado del botón de aplicaciones recientes</string>
