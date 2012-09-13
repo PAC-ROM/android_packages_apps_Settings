@@ -548,11 +548,6 @@
     <string name="pref_use_16bpp_alpha_title">Transparence 16 bits</string>
     <string name="pref_use_16bpp_alpha_summary">Utiliser le mode 16 bits améliore la vitesse de défilement et des animations, mais peut affecter l\'affichage des éléments transparents (nécessite un redémarrage)</string>
 
-    <!-- System Updates  -->
-    <!-- Donate  -->
-    <!-- About device screen, list item title. Takes the user to the screen about how to donate to the CyanogenMod Project. -->
-    <string name="donate_settings_title">Donation</string>
-
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Rotation</string>
     <string name="display_rotation_enabled">Activé.</string>
