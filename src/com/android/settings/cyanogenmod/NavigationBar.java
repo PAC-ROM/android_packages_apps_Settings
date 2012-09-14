@@ -66,6 +66,8 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
 
+        mMenuButtonShow.setEnabled(mNavigationBarShow.isChecked());
+
         mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
 
         if (!Utils.isTablet()) {
@@ -81,6 +83,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         boolean value;
         if (preference == mNavigationBarShow) {
             value = mNavigationBarShow.isChecked();
+            mMenuButtonShow.setEnabled(value);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_STATUS, value ? 1 : 0);
             return true;
