@@ -53,11 +53,13 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
     public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
+    private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
 
     private ListPreference mCustomBackground;
     private Preference mWeatherPref;
     private Preference mCalendarPref;
     private ListPreference mBatteryStatus;
+    private ListPreference mClockAlign;
     private Activity mActivity;
     ContentResolver mResolver;
 
@@ -84,6 +86,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mBatteryStatus.setOnPreferenceChangeListener(this);
 
         mIsScreenLarge = Utils.isTablet();
+
+        mClockAlign = (ListPreference) findPreference(KEY_CLOCK_ALIGN);
+        mClockAlign.setOnPreferenceChangeListener(this);
 
         updateCustomBackgroundSummary();
     }
@@ -151,6 +156,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 mBatteryStatus.setValueIndex(0);
             }
             mBatteryStatus.setSummary(mBatteryStatus.getEntry());
+        }
+
+        // Set the clock align value
+        if (mClockAlign != null) {
+            int clockAlign = Settings.System.getInt(mResolver,
+                    Settings.System.LOCKSCREEN_CLOCK_ALIGN, 2);
+            mClockAlign.setValue(String.valueOf(clockAlign));
+            mClockAlign.setSummary(mClockAlign.getEntries()[clockAlign]);
         }
     }
 
@@ -272,6 +285,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, value);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
+            return true;
+        } else if (preference == mClockAlign) {
+            int value = Integer.valueOf((String) objValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.LOCKSCREEN_CLOCK_ALIGN, value);
+            mClockAlign.setSummary(mClockAlign.getEntries()[value]);
             return true;
         }
         return false;
