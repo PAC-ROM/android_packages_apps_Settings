@@ -1994,6 +1994,10 @@
     <string name="lockscreen_battery_status_title">Estado de la batería</string>
     <string name="lockscreen_battery_status_charging">Solamente en carga</string>
     <string name="lockscreen_battery_status_alwayson">Siempre</string>
+    <string name="lockscreen_clock_align_title">Posición del reloj</string>
+    <string name="lockscreen_clock_align_left">Izquierda</string>
+    <string name="lockscreen_clock_align_center">Centro</string>
+    <string name="lockscreen_clock_align_right">Derecha</string>
     <string name="profiles_settings_title">"Perfiles"</string>
     <string name="profiles_general_title">"General"</string>
     <string name="profiles_add">"Añadir"</string>
