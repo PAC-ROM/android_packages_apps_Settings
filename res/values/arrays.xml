@@ -1036,6 +1036,22 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="entries_status_bar_transparency">
+        <item>0%</item>
+        <item>25%</item>
+        <item>50%</item>
+        <item>75%</item>
+        <item>100%</item>
+    </string-array>
+
+    <string-array name="values_status_bar_transparency" translatable="false">
+        <item>100</item>
+        <item>75</item>
+        <item>50</item>
+        <item>25</item>
+        <item>0</item>
+    </string-array>
+
     <string-array name="entries_status_bar_battery">
         <item>Icon (default)</item>
         <item>Percentage</item>
