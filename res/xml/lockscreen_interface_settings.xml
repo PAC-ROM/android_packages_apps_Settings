@@ -33,6 +33,11 @@
         android:entries="@array/lockscreen_background_entries"
         android:entryValues="@array/lockscreen_background_values"/>
 
+    <CheckBoxPreference
+        android:key="lockscreen_see_through"
+        android:title="@string/lockscreen_see_through_title"
+        android:summary="@string/lockscreen_see_through_summary" />
+
      <ListPreference
         android:key="lockscreen_clock_align"
         android:persistent="false"

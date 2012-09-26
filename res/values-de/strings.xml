@@ -2021,6 +2021,10 @@
     <string name="lockscreen_background_custom_image">Benutzerdefiniertes Bild</string>
     <string name="lockscreen_background_default_wallpaper">Standardbild</string>
 
+    <!-- Lock screen see through -->
+    <string name="lockscreen_see_through_title">Durchsichtiger Hintergrund</string> 
+    <string name="lockscreen_see_through_summary">Ermöglicht es, durch die Bildschirmsperre hindurch die darunterliegende Aktivität zu sehen. Benutzerdefinierte Hintergründe überschreiben diese Einstellung</string>
+
     <!-- Lock screen vibrate settings -->
     <string name="lockscreen_vibrate_enabled_title">Vibrieren</string>
     <string name="lockscreen_vibrate_enabled_head">Beim Entsperren vibrieren</string>

@@ -1998,6 +1998,8 @@
     <string name="lockscreen_background_color_fill">Relleno de color</string>
     <string name="lockscreen_background_custom_image">Imagen personalizada</string>
     <string name="lockscreen_background_default_wallpaper">Imagen por defecto</string>
+    <string name="lockscreen_see_through_title">Ver a través</string>
+    <string name="lockscreen_see_through_summary">Permite observar la aplicación detrás de la pantalla de bloqueo. Una imagen personalizada deshabilitará esta preferencia</string>
     <string name="lockscreen_vibrate_enabled_title">Vibración</string>
     <string name="lockscreen_vibrate_enabled_head">Vibrar al desbloquear</string>
     <string name="lockscreen_battery_status_title">Estado de la batería</string>
