@@ -78,6 +78,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String MENU_UNLOCK_PREF = "menu_unlock";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+    private static final String LOCK_SYNC_ENCRYPTION_PASSWORD = "lock_sync_encryption_password";
     public static final String KEY_VIBRATE_PREF = "lockscreen_vibrate";
 
     DevicePolicyManager mDPM;
@@ -580,6 +581,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
             lockPatternUtils.setTactileFeedbackEnabled(isToggled(preference));
         } else if (KEY_LOCK_BEFORE_UNLOCK.equals(key)) {
             lockPatternUtils.setLockBeforeUnlock(isToggled(preference));
+        } else if (LOCK_SYNC_ENCRYPTION_PASSWORD.equals(key)) {
+            lockPatternUtils.setSyncEncryptionPassword(isToggled(preference));
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (preference == mSlideLockDelayToggle) {

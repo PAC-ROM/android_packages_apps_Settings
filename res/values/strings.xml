@@ -4814,6 +4814,9 @@
     <!-- Security & location settings screen, setting check box title. This controls whether the device shows the slider widgets before the unlock option [CHAR LIMIT=28]-->
     <string name="lockpattern_settings_enable_lock_before_unlock">Show widgets before unlock</string>
 
+    <!-- Security & location settings screen, setting check box title. This controls whether to sync encryption password with lock screen token [CHAR LIMIT=28]-->
+    <string name="lockpattern_settings_enable_sync_enc_pass">Sync encryption password</string>
+
     <!-- Electron Beam -->
     <string name="display_category_animation_options_title">Animation</string>
     <string name="display_electron_beam_animation_on_title">Screen-on animation</string>
