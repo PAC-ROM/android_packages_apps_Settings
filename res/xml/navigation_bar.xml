@@ -28,9 +28,16 @@
             android:summary="@string/navigation_bar_status_summary" />
 
         <PreferenceScreen
-            android:key="navigation_bar_editor"
+            android:key="nav_bar_editor"
             android:fragment="com.android.settings.cyanogenmod.NavBarEditor"
             android:title="@string/navigation_bar_title" />
+
+        <ListPreference
+            android:key="nav_bar_transparency"
+            android:title="@string/navigation_bar_transparency_title"
+            android:summary="@string/navigation_bar_transparency_summary"
+            android:entries="@array/entries_transparency"
+            android:entryValues="@array/values_transparency"/>
 
         <CheckBoxPreference
             android:key="nav_bar_tabui_menu"

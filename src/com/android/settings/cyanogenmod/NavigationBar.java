@@ -38,10 +38,12 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
     private static final String NAV_BAR_STATUS = "nav_bar_status";
-    private static final String NAV_BAR_EDITOR = "navigation_bar_editor";
+    private static final String NAV_BAR_TRANSPARENCY = "nav_bar_transparency";
+    private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
 
     private CheckBoxPreference mNavigationBarShow;
+    private ListPreference mNavigationBarTransparency;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private PreferenceCategory mPrefCategory;
@@ -57,6 +59,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
+        mNavigationBarTransparency = (ListPreference) prefSet.findPreference(NAV_BAR_TRANSPARENCY);
 
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
@@ -72,17 +75,29 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         mNavigationBarEditor.setEnabled(mNavigationBarShow.isChecked());
         mMenuButtonShow.setEnabled(mNavigationBarShow.isChecked());
 
+        int navBarTransparency = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.NAV_BAR_TRANSPARENCY, 100);
+        mNavigationBarTransparency.setValue(String.valueOf(navBarTransparency));
+        mNavigationBarTransparency.setOnPreferenceChangeListener(this);
+
         mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
 
         if (!Utils.isTablet()) {
             mPrefCategory.removePreference(mMenuButtonShow);
         } else {
+            mPrefCategory.removePreference(mNavigationBarTransparency);
             mPrefCategory.removePreference(mNavigationBarEditor);
         }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        return true;
+        if (preference == mNavigationBarTransparency) {
+            int navBarTransparency = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.NAV_BAR_TRANSPARENCY, navBarTransparency);
+            return true;
+        }
+        return false;
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
