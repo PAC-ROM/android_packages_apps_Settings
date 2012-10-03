@@ -4287,8 +4287,42 @@
     <!-- ParanoidAndroid settings intent -->
     <string name="paranoid_settings">Paranoid Settings</string>
 
-    <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Notification drawer</string>
+    <!-- Statusbar Toggles -->
+    <string name="notification_drawer_toggles_title">Notification toggles</string>
+    <string name="toggle_style_title">Toggle style</string>
+    <string name="toggle_style_summary">Whether to show icon or text on toggles</string>
+    <string name="toggle_only_icon">Icon only</string>
+    <string name="toggle_only_text">Text only</string>
+    <string name="toggles_layout_title">Toggle Layout</string>
+    <string name="toggle_layout_icon">Icon layout</string>
+    <string name="toggle_layout_switch">Switch layout</string>
+    <string name="enabled_toggles_title">Enabled toggles</string>
+    <string name="enabled_toggles_summary">Choose toggles to display</string>
+    <string name="toggles_display_dialog">Choose which toggles to use</string>
+    <string name="toggles_display_close">Close</string>
+    <string name="toggles_order_title">Toggle order</string>
+    <string name="toggles_order_summary">Choose the order in which your toggles are displayed</string>
+    <string name="show_brightness_title">Show brightness slider</string>
+    <string name="show_brightness_summary">Shows a brightness slider on notificaion drawer</string>
+    <string name="clear_toggles_title">Clear toggles</string>
+    <string name="clear_toggles_summary">Removes all the toggles selected by user</string>
+
+    <!-- Toggle Strings to be called from device overlays -->
+    <string name="toggle_airplane_mode">Airplane Mode</string>
+    <string name="toggle_auto_rotate">Auto Rotate</string>
+    <string name="toggle_bluetooth">Bluetooth</string>
+    <string name="toggle_gps">GPS</string>
+    <string name="toggle_lte">LTE</string>
+    <string name="toggle_2g">2G</string>
+    <string name="toggle_data">Data</string>
+    <string name="toggle_nfc">NFC</string>
+    <string name="toggle_silent">Silent</string>
+    <string name="toggle_sync">Sync</string>
+    <string name="toggle_torch">Torch</string>
+    <string name="toggle_vibrate">Vibrate</string>
+    <string name="toggle_wifi">Wi-Fi</string>
+    <string name="toggle_wifi_ap">Wi-Fi AP</string>
+    <string name="toggle_usb_tether">USB Tether</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Combined bar</string>
@@ -4555,24 +4589,6 @@
 
     <string name="vibrator_type_ringer">Calls</string>
     <string name="vibrator_type_notification">Notifications</string>
-
-    <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Possible Buttons</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Portable Wi-Fi hotspot</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobile Data</string>
-    <string name="toggleSync">Data Sync</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Ring Mode</string>
-    <string name="toggleBrightness">Brightness</string>
-    <string name="toggleAutoRotate">Orientation</string>
-    <string name="toggleScreenTimeout">Screen Timeout</string>
-    <string name="toggleAirplane">Airplane</string>
-    <string name="toggleFlashlight">Flashlight</string>
-    <string name="toggleLockScreen">Lock Screen</string>
-    <string name="toggleWimax">WiMax</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Screen Security</string>
@@ -4851,6 +4867,4 @@
     <string name="volume_key_cursor_control_off">Disabled</string>
     <string name="volume_key_cursor_control_on">Volume up/down moves cursor left/right</string>
     <string name="volume_key_cursor_control_on_reverse">Volume up/down moves cursor right/left</string>
-
-    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

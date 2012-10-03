@@ -1478,5 +1478,50 @@
         <item>2</item>
     </string-array>
 
-    <!-- **** CYANOGENMOD EDITS END **** -->
+    <!-- toggle style -->
+    <string-array name="toggle_style_entries">
+        <item>@string/toggle_only_icon</item>
+        <item>@string/toggle_only_text</item>
+    </string-array>
+
+    <string-array name="toggle_style_values" translatable="false">
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="toggles_layout_entries">
+        <item>@string/toggle_layout_switch</item>
+        <item>@string/toggle_layout_icon</item>
+    </string-array>
+
+    <string-array name="toggles_layout_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <string-array name="available_toggles_entries">
+        <item>@string/toggle_auto_rotate</item>
+        <item>@string/toggle_bluetooth</item>
+        <item>@string/toggle_gps</item>
+        <item>@string/toggle_wifi</item>
+        <item>@string/toggle_airplane_mode</item>
+        <item>@string/toggle_vibrate</item>
+        <item>@string/toggle_silent</item>
+        <item>@string/toggle_torch</item>
+        <item>@string/toggle_sync</item>
+    </string-array>
+
+    <!-- Generic toggle overlay. Should be set per device in overlay -->
+    <string-array name="available_toggles_values" translatable="false">
+        <item>ROTATE</item>
+        <item>BLUETOOTH</item>
+        <item>GPS</item>
+        <item>WIFI</item>
+        <item>AIRPLANE_MODE</item>
+        <item>VIBRATE</item>
+        <item>SILENT</item>
+        <item>TORCH</item>
+        <item>SYNC</item>
+    </string-array>
+
 </resources>
