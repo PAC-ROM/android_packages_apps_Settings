@@ -28,26 +28,27 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Toggles extends SettingsPreferenceFragment implements OnPreferenceChangeListener {
 
     private static final String TAG = "TogglesLayout";
 
-    private static final String PREF_ENABLE_TOGGLES = "enable_toggles";
+    private static final String PREF_SHOW_TOGGLES = "enable_toggles";
+    private static final String PREF_ENABLED_TOGGLES = "enabled_toggles";
     private static final String PREF_SHOW_BRIGHTNESS = "show_brightness_slider";
     private static final String PREF_TOGGLES_STYLE = "toggle_style";
     private static final String PREF_TOGGLES_LAYOUT = "toggles_layout";
     private static final String PREF_ALT_BUTTON_LAYOUT = "toggles_layout_preference";
-    private static final String PREF_CLEAR_TOGGLES = "clear_toggles";
 
     private static String[] mValues;
 
+    CheckBoxPreference mShowToggles;
     Preference mEnabledToggles;
     Preference mLayout;
     CheckBoxPreference mShowBrightness;
     ListPreference mTogglesLayout;
     ListPreference mToggleStyle;
-    Preference mResetToggles;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,9 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.notification_drawer_toggles);
 
-        mEnabledToggles = findPreference(PREF_ENABLE_TOGGLES);
+        mShowToggles = (CheckBoxPreference) findPreference(PREF_SHOW_TOGGLES);
+        mShowToggles.setChecked(Settings.System.getInt(getActivity()
+                .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_ENABLE, 0) == 1);
 
         mShowBrightness = (CheckBoxPreference) findPreference(PREF_SHOW_BRIGHTNESS);
         mShowBrightness.setChecked(Settings.System.getInt(getActivity()
@@ -71,9 +74,9 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         mTogglesLayout.setValue(Integer.toString(Settings.System.getInt(getActivity()
                 .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1)));
 
-        mLayout = findPreference(PREF_TOGGLES_LAYOUT);
+        mEnabledToggles = findPreference(PREF_ENABLED_TOGGLES);
 
-        mResetToggles = findPreference(PREF_CLEAR_TOGGLES);
+        mLayout = findPreference(PREF_TOGGLES_LAYOUT);
 
         mValues = getResources().getStringArray(R.array.available_toggles_entries);
     }
@@ -84,6 +87,11 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
             boolean value = mShowBrightness.isChecked();
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_SHOW_BRIGHTNESS, value ? 1 : 0);
+            return true;
+        } else if(preference == mShowToggles) {
+            boolean value = mShowToggles.isChecked();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUSBAR_TOGGLES_ENABLE, value ? 1 : 0);
             return true;
         } else if (preference == mEnabledToggles) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -137,10 +145,6 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
             ft.addToBackStack(PREF_TOGGLES_LAYOUT);
             ft.replace(this.getId(), fragment);
             ft.commit();
-            return true;
-        } else if (preference == mResetToggles) {
-            Settings.System.putString(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_TOGGLES, null);
             return true;
         }
         return false;
@@ -331,13 +335,12 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
     public static void setTogglesFromStringArray(Context c, ArrayList<String> newGoodies) {
         String newToggles = "";
 
-        for (String s : newGoodies)
-            newToggles += s + "|";
+        for (int i = 0; i < newGoodies.size(); i++) {
+            newToggles += newGoodies.get(i);
 
-        // remote last |
-        try {
-            newToggles = newToggles.substring(0, newToggles.length() - 1);
-        } catch (StringIndexOutOfBoundsException e) {
+            if(i + 1 < newGoodies.size()) {
+                newToggles += "|";
+            }
         }
 
         Settings.System.putString(c.getContentResolver(), Settings.System.STATUSBAR_TOGGLES,
@@ -354,11 +357,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         }
 
         String[] togglesStringArray = cluster.split("\\|");
-        ArrayList<String> array = new ArrayList<String>();
-        for (String s : togglesStringArray) {
-            array.add(s);
-        }
 
-        return array;
+        return new ArrayList<String>(Arrays.asList(togglesStringArray));
     }
 }

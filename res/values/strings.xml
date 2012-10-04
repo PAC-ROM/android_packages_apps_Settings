@@ -4289,6 +4289,8 @@
 
     <!-- Statusbar Toggles -->
     <string name="notification_drawer_toggles_title">Notification toggles</string>
+    <string name="enable_toggles_title">Enable toggles</string>
+    <string name="enable_toggles_summary">Shows toggles on notification drawer</string>
     <string name="toggle_style_title">Toggle style</string>
     <string name="toggle_style_summary">Whether to show icon or text on toggles</string>
     <string name="toggle_only_icon">Icon only</string>
@@ -4304,8 +4306,6 @@
     <string name="toggles_order_summary">Choose the order in which your toggles are displayed</string>
     <string name="show_brightness_title">Show brightness slider</string>
     <string name="show_brightness_summary">Shows a brightness slider on notificaion drawer</string>
-    <string name="clear_toggles_title">Clear toggles</string>
-    <string name="clear_toggles_summary">Removes all the toggles selected by user</string>
 
     <!-- Toggle Strings to be called from device overlays -->
     <string name="toggle_airplane_mode">Airplane Mode</string>

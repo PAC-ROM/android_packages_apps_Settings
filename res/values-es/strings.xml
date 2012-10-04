@@ -1870,6 +1870,8 @@
     <string name="hardware_keys_action_voice_search">Búsqueda por voz</string>
     <string name="hardware_keys_action_in_app_search">Búsqueda dentro de la aplicación</string>
     <string name="notification_drawer_toggles_title">Controles de estado</string>
+    <string name="enable_toggles_title">Mostrar controles</string>
+    <string name="enable_toggles_summary">Muestra los controles de estado en la ventana de notificaciones</string>
     <string name="toggle_style_title">Estilo de los controles</string>
     <string name="toggle_style_summary">Usar iconos o texto en los controles</string>
     <string name="toggle_only_icon">Solo icono</string>
@@ -1885,8 +1887,6 @@
     <string name="toggles_order_summary">Seleccionar el orden en que son mostrados los controles</string>
     <string name="show_brightness_title">Mostrar ajuste de brillo</string>
     <string name="show_brightness_summary">Activar el control deslizante de brillo en la zona de controles</string>
-    <string name="clear_toggles_title">Limpiar controles</string>
-    <string name="clear_toggles_summary">Remueve todos los controles asignados por el usuario</string>
     <string name="toggle_airplane_mode">Modo avión</string>
     <string name="toggle_auto_rotate">Orientación automática</string>
     <string name="toggle_data">Datos móviles</string>
