@@ -1913,8 +1913,6 @@
     <string name="status_bar_signal_text_hidden">"Oculto"</string>
     <string name="status_bar_max_notifications_title">Numero de notificaciones</string>
     <string name="status_bar_max_notifications_summary">Solo aplica al modo retrato</string>
-    <string name="status_bar_transparency_title">Transparencia</string>
-    <string name="status_bar_transparency_summary">Ajustar transparencia de la barra de estado</string>
     <string name="lock_screen_title">"Bloqueo de pantalla"</string>
     <string name="lockscreen_target_info">Arrastre el control deslizante para ajustar los accesos directos</string>
     <string name="lockscreen_target_title">Accesos directos</string>
