@@ -36,12 +36,13 @@ import com.android.settings.Utils;
 public class SystemSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemSettings";
-
     private static final String KEY_FONT_SIZE = "font_size";
+    private static final String KEY_NOTIFICATION_DRAWER_TOGGLES = "notification_drawer_toggles";
     private static final String KEY_NAVIGATION_BAR = "navigation_bar";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";
 
     private ListPreference mFontSizePref;
+    private PreferenceScreen mStatusbarToggles;
     private PreferenceScreen mNavigationBar;
     private PreferenceScreen mHardwareKeys;
 
@@ -55,6 +56,8 @@ public class SystemSettings extends SettingsPreferenceFragment implements
 
         mFontSizePref = (ListPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
+
+        mStatusbarToggles = (PreferenceScreen) findPreference(KEY_NOTIFICATION_DRAWER_TOGGLES);
         mNavigationBar = (PreferenceScreen) findPreference(KEY_NAVIGATION_BAR);
         mHardwareKeys = (PreferenceScreen) findPreference(KEY_HARDWARE_KEYS);
         

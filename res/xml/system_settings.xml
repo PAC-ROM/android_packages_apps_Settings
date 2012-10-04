@@ -25,6 +25,11 @@
         android:title="@string/combined_status_bar_title" />
 
     <PreferenceScreen
+        android:key="notification_drawer_toggles"
+        android:fragment="com.android.settings.cyanogenmod.Toggles"
+        android:title="@string/notification_drawer_toggles_title" />
+
+    <PreferenceScreen
         android:key="wallpaper"
         android:title="@string/wallpaper_settings_title"
         android:fragment="com.android.settings.WallpaperTypeSettings" />
