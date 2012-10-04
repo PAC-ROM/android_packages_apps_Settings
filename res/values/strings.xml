@@ -4333,10 +4333,9 @@
     <string name="navigation_bar_title">Navigation bar</string>
     <string name="navigation_bar_status_title">Software buttons</string>
     <string name="navigation_bar_status_summary">Show on screen software buttons</string>
-    <string name="navigation_bar_transparency_title">Transparency</string>
-    <string name="navigation_bar_transparency_summary">Adjust navigation bar transparency</string>
     <string name="navigation_bar_tabui_menu_title">Split menu button</string>
     <string name="navigation_bar_tabui_menu_summary">Show separate menu button instead of merging it to recents button</string>
+
     <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
     <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
     <string name="navigation_bar_tips_title">Quick tips</string>
@@ -4390,8 +4389,8 @@
     <string name="status_bar_signal_text_hidden">Hidden</string>
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
-    <string name="status_bar_transparency_title">Transparency</string>
-    <string name="status_bar_transparency_summary">Adjust status bar transparency</string>
+    <string name="status_bar_transparency_title">Statusbar Transparency</string>
+    <string name="status_bar_transparency_summary">Adjust statusbar transparency</string>
 
     <string name="lock_screen_title">Lock screen</string>
 
