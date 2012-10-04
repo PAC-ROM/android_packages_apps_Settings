@@ -1816,6 +1816,7 @@
         <service android:name=".pac.weather.WeatherService" />
 
         <activity android:name=".pac.RamBar" />
+        <activity android:name=".util.ShowBuildProp" />
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to ass display rotation config -->
         <activity android:name="Settings$ASSRamBarActivity"

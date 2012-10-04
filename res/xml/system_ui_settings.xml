@@ -46,6 +46,11 @@
         android:summary="@string/header_summary_init_d" />
 
     <PreferenceScreen
+        android:key="buildprop_modder"
+        android:title="@string/propmodder_title"
+        android:fragment="com.android.settings.cyanogenmod.PropModder"/>
+
+    <PreferenceScreen
         android:key="weather"
         android:fragment="com.android.settings.pac.Weather"
         android:title="@string/title_weather"/>
