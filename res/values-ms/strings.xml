@@ -1199,7 +1199,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Tetap berjaga"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Skrin tidak sekali-kali akan tidur semasa pengecasan"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Benarkan lokasi olokan"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Benarkan lokasi olokan"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Benarkan penyahpepijatan USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Penyahpepijatan USB adalah dimaksudkan untuk tujuan pembangunan sahaja. Gunakannya untuk menyalin data antara komputer dan peranti anda, memasang aplikasi pada peranti anda tanpa pemberitahuan, dan membaca data log."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Benarkan tetapan pembangunan?"</string>

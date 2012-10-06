@@ -1211,7 +1211,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"不锁定屏幕"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充电时屏幕不会休眠"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"允许模拟位置"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"允许模拟位置"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"是否允许 USB 调试？"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB 调试仅适用于开发工作。该功能可用于在您的计算机和设备之间复制数据、在您的设备上安装应用而不发送通知以及读取日志数据。"</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"允许开发设置？"</string>
@@ -1875,7 +1874,6 @@
     <string name="system_interface_title">系统界面</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">通知栏</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">组合条</string>
@@ -1915,51 +1913,6 @@
     <string name="hardware_keys_action_in_app_search">程序内搜索</string>
 
     <!-- Power Widget  -->
-    <string name="power_widget_title">电控小部件</string>
-    <string name="title_expanded_widget">显示电控小部件</string>
-    <string name="power_widget_behavior">小部件行为</string>
-    <string name="title_expanded_hide_onchange">做出改变后关闭通知栏</string>
-    <string name="title_expanded_hide_scrollbar">隐藏滚动条</string>
-    <string name="title_widget_picker">电控按钮</string>
-    <string name="summary_widget_picker">查看或更改目前显示的电控按钮</string>
-    <string name="title_widget_order">电控按钮顺序</string>
-    <string name="summary_widget_order">查看或更改电控按钮的顺序</string>
-    <string name="title_buttons">按钮</string>
-    <string name="title_toggle_wifi">切换 Wi-Fi</string>
-    <string name="title_toggle_bluetooth">切换蓝牙</string>
-    <string name="title_toggle_gps">切换 GPS</string>
-    <string name="title_toggle_sound">切换声音</string>
-    <string name="title_toggle_brightness">切换亮度</string>
-    <string name="title_toggle_sync">切换同步</string>
-    <string name="title_toggle_wifiap">切换 Wifi 热点</string>
-    <string name="title_toggle_screentimeout">切换屏幕超时</string>
-    <string name="title_toggle_mobiledata">切换移动数据</string>
-    <string name="title_toggle_lockscreen">切换锁屏</string>
-    <string name="title_toggle_networkmode">切换 2G/3G</string>
-    <string name="title_toggle_autorotate">切换屏幕旋转</string>
-    <string name="title_toggle_airplane">切换飞行模式</string>
-    <string name="title_toggle_flashlight">切换 LED 手电筒</string>
-    <string name="title_toggle_sleep">睡眠模式</string>
-    <string name="title_toggle_media_play_pause">媒体: 切换播放/暂停</string>
-    <string name="title_toggle_media_previous">媒体: 跳到前一首</string>
-    <string name="title_toggle_media_next">媒体: 跳到下一首</string>
-    <string name="title_toggle_lte">切换 LTE</string>
-    <string name="title_toggle_wimax">切换 WiMax</string>
-    <string name="title_button_modes">按钮模式</string>
-    <string name="pref_brightness_mode_title">亮度切换模式</string>
-    <string name="pref_brightness_mode_summary">查看或更改亮度按钮的切换模式</string>
-    <string name="cm_brightness_mode_auto">自动</string>
-    <string name="cm_brightness_mode_dim">最暗</string>
-    <string name="pref_network_mode_title">网络切换模式</string>
-    <string name="pref_screentimeout_mode_title">屏幕超时切换模式</string>
-    <string name="pref_ring_mode_title">声音切换模式</string>
-    <string name="pref_ring_mode_summary">选择声音按钮的切换方式</string>
-    <string name="cm_sound_mode_silent">静音</string>
-    <string name="cm_sound_mode_vibrate">震动</string>
-    <string name="cm_sound_mode_sound">铃声</string>
-    <string name="cm_sound_mode_soundVibrate">铃声＋震动</string>
-    <string name="pref_flash_mode_title">手电筒切换模式</string>
-    <string name="expanded_haptic_feedback_title">触动反馈</string>
 
     <!-- Status bar  -->
     <string name="status_bar_title">状态栏</string>
@@ -2167,22 +2120,6 @@
     <string name="vibrator_type_notification">通知</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">可能的按钮</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">便携式 Wi-Fi 热点</string>
-    <string name="toggleBluetooth">蓝牙</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">移动数据</string>
-    <string name="toggleSync">数据同步</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">铃声模式</string>
-    <string name="toggleBrightness">亮度</string>
-    <string name="toggleAutoRotate">屏幕方向</string>
-    <string name="toggleScreenTimeout">屏幕超时</string>
-    <string name="toggleAirplane">飞行模式</string>
-    <string name="toggleFlashlight">手电筒</string>
-    <string name="toggleLockScreen">锁屏</string>
-    <string name="toggleWimax">WiMax</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">屏幕安全性</string>

@@ -1199,7 +1199,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Ne pokreći mirovanje"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Zaslon nikad neće prijeći u mirovanje tijekom punjenja"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Dopusti probne lokacije"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Dopusti probne lokacije"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Omogućiti rješavanje programske pogreške na USB-u?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Rješavanje programske pogreške USB-a namijenjeno je samo u razvojne svrhe. Može se upotrijebiti za kopiranje podataka s računala na uređaj i obrnuto, instalaciju aplikacija na uređaju bez obavijesti i za čitanje dnevničkih zapisa."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Dopustiti postavke razvojnih programera?"</string>

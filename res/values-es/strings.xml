@@ -1207,7 +1207,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Pantalla activa"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"La pantalla nunca entra en modo de suspensión si el dispositivo se está cargando"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Ubicaciones simuladas"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Permitir ubicaciones simuladas"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"¿Permitir depuración USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"La depuración USB solo está indicada para actividades de desarrollo. Puedes utilizarla para intercambiar datos entre el ordenador y el dispositivo, para instalar aplicaciones en el dispositivo sin recibir notificaciones y para leer datos de registro."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"¿Permitir ajustes de desarrollo?"</string>
@@ -1829,7 +1828,6 @@
     <string name="themes_settings_title">"Temas"</string>
     <string name="system_settings_title">"Sistema"</string>
     <string name="system_interface_title">"Interfaz de Sistema"</string>
-    <string name="notification_drawer_title">"Área de notificación"</string>
     <string name="combined_bar_title">"Barra de estado"</string>
     <string name="combined_bar_auto_hide_title">"Ocultar automáticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permitir ocultar la barra de estado cuando una aplicación se muestra a pantalla completa"</string>
@@ -2061,7 +2059,6 @@
     <string name="profile_disable_screen_lock_summary">"Desactivar seguridad de bloqueo de pantalla mientras este perfil esté activo"</string>
     <string name="vibrator_type_ringer">Llamadas</string>
     <string name="vibrator_type_notification">Notificaciones</string>
-    <string name="possibleButtons">"Botones posibles"</string>
     <string name="screen_security_category">"Seguridad de pantalla"</string>
     <string name="screen_security_title">"Bloqueo de pantalla"</string>
     <string name="screen_security_summary">"Ver o cambiar seguridad de bloqueo de pantalla, retardos y configuración de tiempos de espera"</string>

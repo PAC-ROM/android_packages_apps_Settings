@@ -1202,7 +1202,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Rimani attivo"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Lo schermo non va mai in stand-by se sotto carica"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Posizioni fittizie"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Consenti posizioni fittizie"</string>
     <string name="allow_mock_sms">Consenti SMS fittizi</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Consentire debug USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Il debug USB è solo a scopo di sviluppo. Utilizzalo per copiare dati tra il computer e il dispositivo, per installare applicazioni sul tuo dispositivo senza notifica e per leggere i dati dei log."</string>
@@ -1822,7 +1821,6 @@
     <string name="themes_settings_title">"Temi"</string>
     <string name="system_settings_title">"Sistema"</string>
     <string name="system_interface_title">"Interfaccia sistema"</string>
-    <string name="notification_drawer_title">"Menu notifiche"</string>
     <string name="combined_bar_title">"Barra combinata"</string>
     <string name="combined_bar_auto_hide_title">"Nascondi automaticamente"</string>
     <string name="combined_bar_auto_hide_summary">"Permetti di nascondere la barra combinata con applicazioni a pieno schermo"</string>
@@ -1855,51 +1853,6 @@
     <string name="hardware_keys_action_search">Assistente ricerca</string>
     <string name="hardware_keys_action_voice_search">Ricerca vocale</string>
     <string name="hardware_keys_action_in_app_search">Ricerca in applicazioni</string>
-    <string name="power_widget_title">"Power widget"</string>
-    <string name="title_expanded_widget">"Power widget"</string>
-    <string name="power_widget_behavior">"Comportamento widget"</string>
-    <string name="title_expanded_hide_onchange">"Nascondi dopo modifica"</string>
-    <string name="title_expanded_hide_scrollbar">"Nascondi barra scorrimento"</string>
-    <string name="title_widget_picker">"Pulsanti visualizzati"</string>
-    <string name="summary_widget_picker">"Visualizza o modifica i pulsanti visualizzati"</string>
-    <string name="title_widget_order">"Ordine dei pulsanti"</string>
-    <string name="summary_widget_order">"Visualizza o modifica l\'ordine dei pulsanti"</string>
-    <string name="title_buttons">"Pulsanti"</string>
-    <string name="title_toggle_wifi">"Wi-Fi"</string>
-    <string name="title_toggle_bluetooth">"Bluetooth"</string>
-    <string name="title_toggle_gps">"GPS"</string>
-    <string name="title_toggle_sound">"Suoneria"</string>
-    <string name="title_toggle_brightness">"Luminosità schermo"</string>
-    <string name="title_toggle_sync">"Sincronizzazione dati"</string>
-    <string name="title_toggle_wifiap">"Access Point Wi-Fi"</string>
-    <string name="title_toggle_screentimeout">"Sospensione schermo"</string>
-    <string name="title_toggle_mobiledata">"Dati mobili"</string>
-    <string name="title_toggle_lockscreen">"Blocco schermo"</string>
-    <string name="title_toggle_networkmode">"Modalità rete 2G/3G"</string>
-    <string name="title_toggle_autorotate">"Orientamento schermo"</string>
-    <string name="title_toggle_airplane">"Modalità aeroplano"</string>
-    <string name="title_toggle_flashlight">"Torcia LED"</string>
-    <string name="title_toggle_sleep">"Blocca telefono"</string>
-    <string name="title_toggle_media_play_pause">"Media: Play/Pause"</string>
-    <string name="title_toggle_media_previous">"Media: Traccia precedente"</string>
-    <string name="title_toggle_media_next">"Media: Traccia successiva"</string>
-    <string name="title_toggle_lte">"LTE"</string>
-    <string name="title_toggle_wimax">"WiMax"</string>
-    <string name="title_button_modes">"Modalità pulsante"</string>
-    <string name="pref_brightness_mode_title">"Modalità luminosità"</string>
-    <string name="pref_brightness_mode_summary">"Visualizza o modifica gli effetti del pulsante luminosità"</string>
-    <string name="cm_brightness_mode_auto">"Automatico"</string>
-    <string name="cm_brightness_mode_dim">"Oscuro"</string>
-    <string name="pref_network_mode_title">"Modalità di rete"</string>
-    <string name="pref_screentimeout_mode_title">"Modalità sospensione schermo"</string>
-    <string name="pref_ring_mode_title">"Modalità suoneria"</string>
-    <string name="pref_ring_mode_summary">"Visualizza o modifica gli effetti del pulsante audio"</string>
-    <string name="cm_sound_mode_silent">"Silenzioso"</string>
-    <string name="cm_sound_mode_vibrate">"Vibrazione"</string>
-    <string name="cm_sound_mode_sound">"Suoneria"</string>
-    <string name="cm_sound_mode_soundVibrate">"Suoneria+Vibrazione"</string>
-    <string name="pref_flash_mode_title">"Modalità torcia LED"</string>
-    <string name="expanded_haptic_feedback_title">"Vibrazione al tocco"</string>
     <string name="status_bar_title">"Barra di stato"</string>
     <string name="status_bar_clock_title">"Orologio"</string>
     <string name="status_bar_general_title">"Generico"</string>
@@ -2060,22 +2013,6 @@
     <string name="profile_disable_screen_lock_summary">"Disattiva protezioni per il sblocco schermo mentre questo profilo è attivo"</string>
     <string name="vibrator_type_ringer">Chiamate</string>
     <string name="vibrator_type_notification">Notifiche</string>
-    <string name="possibleButtons">"Pulsanti possibili"</string>
-    <string name="toggleWifi">"Wi-Fi"</string>
-    <string name="toggleWifiAp">"Hotspot Wi-Fi"</string>
-    <string name="toggleBluetooth">"Bluetooth"</string>
-    <string name="toggleGPS">"GPS"</string>
-    <string name="toggleData">"Dati mobili"</string>
-    <string name="toggleSync">"Sincronizzazione dati"</string>
-    <string name="toggle2g3g">"2G/3G"</string>
-    <string name="toggleSound">"Modalità suoneria"</string>
-    <string name="toggleBrightness">"Luminosità"</string>
-    <string name="toggleAutoRotate">"Orientamento"</string>
-    <string name="toggleScreenTimeout">"Sospensione schermo"</string>
-    <string name="toggleAirplane">"Modalità aereoplano"</string>
-    <string name="toggleFlashlight">"Torcia"</string>
-    <string name="toggleLockScreen">"Blocco schermo"</string>
-    <string name="toggleWimax">"WiMax"</string>
     <string name="screen_security_category">Schermata di sicurezza</string>
     <string name="screen_security_title">Schermata di sblocco</string>
     <string name="screen_security_summary">Visualizza o cambia il livello di sicurezza e le impostazioni per la schermata di sblocco</string>

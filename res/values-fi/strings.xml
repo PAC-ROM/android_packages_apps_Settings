@@ -1190,7 +1190,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Pysy käynnissä"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Näyttö ei sammu puhelimen latautuessa"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Salli sijaintien imitointi"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Salli sijaintien imitointi"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Sallitaanko USB-vianetsintä?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB-vianetsintä on tarkoitettu vain kehittäjien käyttöön. Sen avulla voidaan kopioida tietoja tietokoneesi ja laitteesi välillä, asentaa laitteeseesi sovelluksia ilmoittamatta siitä sinulle ja lukea lokitietoja."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Sallitaanko kehittäjäasetukset?"</string>
@@ -1801,7 +1800,6 @@
     <string name="themes_settings_title">Teemat</string>
     <string name="system_settings_title">Järjestelmä</string>
     <string name="system_interface_title">Järjestelmän käyttöliittymä</string>
-    <string name="notification_drawer_title">Ilmoitusvalikko</string>
     <string name="combined_bar_title">Yhdistetty palkki</string>
     <string name="combined_bar_auto_hide_title">Piilota automaattisesti</string>
     <string name="combined_bar_auto_hide_summary">Salli yhdistetyn palkin piilottaminen kokonäytön sovelluksissa</string>
@@ -1832,51 +1830,6 @@
     <string name="hardware_keys_action_search">Haku</string>
     <string name="hardware_keys_action_voice_search">Äänihaku</string>
     <string name="hardware_keys_action_in_app_search">Haku sovelluksessa</string>
-    <string name="power_widget_title">Pika-asetukset</string>
-    <string name="title_expanded_widget">Pika-asetukset</string>
-    <string name="power_widget_behavior">Painikkeen käytös</string>
-    <string name="title_expanded_hide_onchange">Piilota muutettaessa</string>
-    <string name="title_expanded_hide_scrollbar">Piilota vierityspalkki</string>
-    <string name="title_widget_picker">Pika-asetukset</string>
-    <string name="summary_widget_picker">Valitse mitkä painikkeet näytetään pika-asetuksissa</string>
-    <string name="title_widget_order">Painikkeiden järjestys</string>
-    <string name="summary_widget_order">Valitse painikkeiden järjestys </string>
-    <string name="title_buttons">Painikkeet</string>
-    <string name="title_toggle_wifi">Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Äänet</string>
-    <string name="title_toggle_brightness">Kirkkaus</string>
-    <string name="title_toggle_sync">Synkronointi</string>
-    <string name="title_toggle_wifiap">Wi-Fi-tukiasema</string>
-    <string name="title_toggle_screentimeout">Näytön aikakatkaisu</string>
-    <string name="title_toggle_mobiledata">Mobiilidata</string>
-    <string name="title_toggle_lockscreen">Lukitusnäyttö</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
-    <string name="title_toggle_autorotate">Näytön asento</string>
-    <string name="title_toggle_airplane">Lentokonetila</string>
-    <string name="title_toggle_flashlight">LED-valaisin</string>
-    <string name="title_toggle_sleep">Lepotila</string>
-    <string name="title_toggle_media_play_pause">Media: Play/Pause</string>
-    <string name="title_toggle_media_previous">Media: Edellinen</string>
-    <string name="title_toggle_media_next">Media: Seuraava</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMax</string>
-    <string name="title_button_modes">Painikevalinnat</string>
-    <string name="pref_brightness_mode_title">Kirkkauden valinnat</string>
-    <string name="pref_brightness_mode_summary">Valitse kirkkauspainikkeen valinnat</string>
-    <string name="cm_brightness_mode_auto">Automaattinen</string>
-    <string name="cm_brightness_mode_dim">Himmeä</string>
-    <string name="pref_network_mode_title">Verkkotilat</string>
-    <string name="pref_screentimeout_mode_title">Aikakatkaisun valinnat</string>
-    <string name="pref_ring_mode_title">Äänivalinnat</string>
-    <string name="pref_ring_mode_summary">Valitse äänitilojen valinnat</string>
-    <string name="cm_sound_mode_silent">Äänetön</string>
-    <string name="cm_sound_mode_vibrate">Värinä</string>
-    <string name="cm_sound_mode_sound">Äänet</string>
-    <string name="cm_sound_mode_soundVibrate">Äänet+Värinä</string>
-    <string name="pref_flash_mode_title">Valaisimen tilat</string>
-    <string name="expanded_haptic_feedback_title">Haptinen palaute</string>
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Tilapalkki</string>
     <string name="status_bar_clock_title">Kello</string>
@@ -2034,22 +1987,6 @@
     <string name="profile_disable_screen_lock_summary">Ota lukitusnäytön turvallisuus pois käytöstä, jos tämä profiili on aktiivinen</string>
     <string name="vibrator_type_ringer">Puhelut</string>
     <string name="vibrator_type_notification">Ilmoitukset</string>
-    <string name="possibleButtons">Mahdolliset näppäimet</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Langaton Wi-Fi tukiasema</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobiilidata</string>
-    <string name="toggleSync">Synkronointi</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Äänet</string>
-    <string name="toggleBrightness">Kirkkaus</string>
-    <string name="toggleAutoRotate">Näytön asento</string>
-    <string name="toggleScreenTimeout">Näytön aikakatkaisu</string>
-    <string name="toggleAirplane">Lentokone</string>
-    <string name="toggleFlashlight">Lamppu</string>
-    <string name="toggleLockScreen">Lukitusnäyttö</string>
-    <string name="toggleWimax">WiMAX</string>
     <string name="screen_security_category">Näytön turvallisuus</string>
     <string name="screen_security_title">Lukitusnäyttö</string>
     <string name="screen_security_summary">Muuta lukitusnäytön turvallisuutta, viivettä ja aikakatkaisun asetuksia</string>

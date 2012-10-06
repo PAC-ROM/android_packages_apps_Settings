@@ -1259,7 +1259,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Zostaw włączony"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Ekran nie będzie gaszony podczas ładowania telefonu"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Pozorowanie lokalizacji"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Zezwalaj na pozorowanie lokalizacji"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Czy zezwalać na debugowanie USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Debugowanie USB jest przeznaczone wyłącznie do celów programistycznych. Może służyć do kopiowania danych między komputerem a urządzeniem, instalowania aplikacji na urządzeniu bez powiadamiania, a także odczytu danych dziennika."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Zezwolić na ustawienia programistyczne?"</string>
@@ -1880,7 +1879,6 @@
     <string name="themes_settings_title">Motywy</string>
     <string name="system_settings_title">System</string>
     <string name="system_interface_title">Interfejs systemu</string>
-    <string name="notification_drawer_title">Obszar powiadomień</string>
     <string name="combined_bar_title">Pasek nawigacji</string>
     <string name="combined_bar_auto_hide_title">Automatyczne ukrywanie</string>
     <string name="combined_bar_auto_hide_summary">Ukryj pasek nawigacji w aplikacjach pełnoekranowych</string>
@@ -1911,51 +1909,6 @@
     <string name="hardware_keys_action_search">Asystent wyszukiwania</string>
     <string name="hardware_keys_action_voice_search">Wyszukiwanie głosowe</string>
     <string name="hardware_keys_action_in_app_search">Własna wyszukiwarka aplikacji</string>
-    <string name="power_widget_title">Widżet zasilania</string>
-    <string name="title_expanded_widget">Pokaż widżet</string>
-    <string name="power_widget_behavior">Zachowanie widżetu</string>
-    <string name="title_expanded_hide_onchange">Ukryj po zmianie</string>
-    <string name="title_expanded_hide_scrollbar">Ukryj pasek przewijania</string>
-    <string name="title_widget_picker">Przyciski widżetu</string>
-    <string name="summary_widget_picker">Wybierz przyciski do wyświetlania w widżecie zasilania</string>
-    <string name="title_widget_order">Kolejność przycisków</string>
-    <string name="summary_widget_order">Wybierz kolejność wyświetlania przycisków widżetu zasilania</string>
-    <string name="title_buttons">Przyciski</string>
-    <string name="title_toggle_wifi">Włącz Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Włącz Bluetooth</string>
-    <string name="title_toggle_gps">Włącz GPS</string>
-    <string name="title_toggle_sound">Zmień profil dźwięku</string>
-    <string name="title_toggle_brightness">Zmień poziom jasności</string>
-    <string name="title_toggle_sync">Włącz synchronizaję</string>
-    <string name="title_toggle_wifiap">Włącz hotspot Wi-Fi</string>
-    <string name="title_toggle_screentimeout">Wyłączanie ekranu</string>
-    <string name="title_toggle_mobiledata">Włącz dane mobilne</string>
-    <string name="title_toggle_lockscreen">Włącz ekran blokady</string>
-    <string name="title_toggle_networkmode">Przełącz 2G/3G</string>
-    <string name="title_toggle_autorotate">Włącz obrót ekranu</string>
-    <string name="title_toggle_airplane">Tryb samolotowy</string>
-    <string name="title_toggle_flashlight">Włącz latarkę</string>
-    <string name="title_toggle_sleep">Uśpij urządzenie</string>
-    <string name="title_toggle_media_play_pause">Media: Odtwórz/Pauza</string>
-    <string name="title_toggle_media_previous">Media: Poprzedni utwór</string>
-    <string name="title_toggle_media_next">Media: Następny utwór</string>
-    <string name="title_toggle_lte">Włącz LTE</string>
-    <string name="title_toggle_wimax">Włącz WiMAX</string>
-    <string name="title_button_modes">Tryby przycisków</string>
-    <string name="pref_brightness_mode_title">Poziomy jasności</string>
-    <string name="pref_brightness_mode_summary">Wybierz poziomy jasności do przełączania</string>
-    <string name="cm_brightness_mode_auto">Automatyczny</string>
-    <string name="cm_brightness_mode_dim">Przygaś</string>
-    <string name="pref_network_mode_title">Tryby sieci</string>
-    <string name="pref_screentimeout_mode_title">Wyłączanie ekranu</string>
-    <string name="pref_ring_mode_title">Profile dźwięku</string>
-    <string name="pref_ring_mode_summary">Wybierz profile dźwięku do przełączania</string>
-    <string name="cm_sound_mode_silent">Cichy</string>
-    <string name="cm_sound_mode_vibrate">Wibracje</string>
-    <string name="cm_sound_mode_sound">Dźwięk</string>
-    <string name="cm_sound_mode_soundVibrate">Dźwięk i wibracje</string>
-    <string name="pref_flash_mode_title">Siła latarki</string>
-    <string name="expanded_haptic_feedback_title">Wibracje dotyku</string>
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Pasek stanu</string>
     <string name="status_bar_clock_title">Zegar</string>
@@ -2113,22 +2066,6 @@
     <string name="profile_disable_screen_lock_summary">Wyłącz ekran blokady, gdy ten profil jest aktywny</string>
     <string name="vibrator_type_ringer">Połączenia</string>
     <string name="vibrator_type_notification">Powiadomienia</string>
-    <string name="possibleButtons">Dostępne przyciski</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Przenośny hotspot Wi-Fi</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Dane mobilne</string>
-    <string name="toggleSync">Synchronizacja</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Profil dźwięku</string>
-    <string name="toggleBrightness">Jasność</string>
-    <string name="toggleAutoRotate">Obrót ekranu</string>
-    <string name="toggleScreenTimeout">Wyłączenie ekranu</string>
-    <string name="toggleAirplane">Tryb samolotowy</string>
-    <string name="toggleFlashlight">Latarka</string>
-    <string name="toggleLockScreen">Ekran blokady</string>
-    <string name="toggleWimax">WiMAX</string>
     <string name="screen_security_category">Zabezpieczenia ekranu</string>
     <string name="screen_security_title">Ekran blokady</string>
     <string name="screen_security_summary">Zmień ustawienia bezpieczeństwa i opóźnienia ekranu blokady</string>
@@ -2200,26 +2137,6 @@
 
     <string name="donate_settings_title">Wspomóż</string>
     <string name="donate_settings_summary">""</string>
-
-    <string name="anonymous_statistics_title">Statystyki CyanogenMod</string>
-    <string name="anonymous_statistics_summary">Pomóż sprawić, by CyanogenMod stał się lepszy, wysyłając anonimowe statystyki</string>
-    <string name="anonymous_statistics_warning_title">O statystykach</string>
-    <string name="anonymous_statistics_warning">Zezwolenie na anonimowe satystyki pozwala śledzić twórcom CyanogenMod ilość jego instalacji.
-        Przesyłane informacje zawierają unikatowy identyfikator urządzenia,
-        co nie narusza twojej prywatności ani danych. Informacje są przesyłane podczas każdego uruchamiania systemu.\n\nMożesz sprawdzić, jakie informacje są przysałne, używając opcji Podgląd danych.</string>
-    <string name="enable_reporting_title">Włącz raportowanie</string>
-    <string name="preview_data_title">Podgląd danych</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">Zobacz statystyki</string>
-    <string name="anonymous_learn_more">Dowiedz się więcej</string>
-
-    <string name="anonymous_notification_desc">Włącz/Wyłącz statystyki CyanogenMod</string>
-
-    <string name="preview_id_title">ID urządzenia</string>
-    <string name="preview_device_title">Urządzenie</string>
-    <string name="preview_version_title">Wersja oprogramowania</string>
-    <string name="preview_country_title">Kraj</string>
-    <string name="preview_carrier_title">Operator</string>
 
     <string name="display_rotation_title">Obrót ekranu</string>
     <string name="display_rotation_enabled">Włączony</string>
@@ -2333,7 +2250,6 @@
 
     <string name="device_hostname">Nazwa hosta urządzenia</string>
 
-    <string name="mod_version">Wersja CyanogenMod</string>
     <string name="mod_version_default">Nieznana</string>
     <string name="build_date">Data kompilacji</string>
     <string name="build_date_default">2012-01-01-0000</string>

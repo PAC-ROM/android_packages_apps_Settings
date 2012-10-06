@@ -1199,7 +1199,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"保持清醒"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充電時螢幕不會進入休眠"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"允許模擬位置"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"允許模擬位置"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"允許 USB 偵錯嗎？"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB 偵錯是針對應用程式開發而設計的功能，可讓您複製電腦和裝置中的資料、不需經由通知即可在裝置上安裝應用程式，以及讀取記錄資料。"</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"允許開發設定？"</string>

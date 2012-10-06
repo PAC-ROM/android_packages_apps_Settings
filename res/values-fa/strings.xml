@@ -1199,7 +1199,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"بیدار ماندن"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"صفحه هرگز در حین شارژ شدن به حالت خواب نمی رود"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"مکان های کاذب مجاز هستند"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"مکان های کاذب مجاز هستند"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"رفع عیب USB انجام شود؟"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"رفع عیب USB فقط برای اهداف برنامه‌نویسی در نظر گرفته شده است. از آن برای رونوشت‌برداری داده بین رایانه و دستگاه خود، نصب برنامه‌ها در دستگاه خود بدون اعلان و خواندن داده‌های گزارش استفاده کنید."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"تنظیمات برنامه‌نویسی مجاز باشد؟"</string>

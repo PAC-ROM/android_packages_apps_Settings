@@ -52,7 +52,7 @@
     <string-array name="values_status_bar_max_notifications" translatable="false">
         <item>0</item>
         <item>1</item>
-        <item>2</item> 
+        <item>2</item>
 	    <item>3</item>
         <item>4</item>
         <item>5</item>
@@ -127,8 +127,8 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
-    <!-- Security settings.  The delay after screen is turned off until device locks. 
+
+    <!-- Security settings.  The delay after screen is turned off until device locks.
          These are shown in a list dialog. -->
     <string-array name="lock_after_timeout_entries">
         <item>Immediately</item>
@@ -163,7 +163,7 @@
         <!-- Do not translate. -->
         <item>1800000</item>
     </string-array>
-    
+
     <string-array name="entries_font_size">
         <item msgid="6490061470416867723">Small</item>
         <item msgid="3579015730662088893">Normal</item>
@@ -177,7 +177,7 @@
         <item>1.15</item>
         <item>1.30</item>
     </string-array>
-    
+
     <!-- TTS settings -->
 
     <!-- Default speech rate choices -->
@@ -597,7 +597,7 @@
     <string-array name="long_press_timeout_selector_titles">
         <!-- A title for the option for short long-press timeout [CHAR LIMIT=25] -->
         <item>Short</item>
-        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->        
+        <!-- A title for the option for medium long-press timeout [CHAR LIMIT=25] -->
         <item>Medium</item>
         <!-- A title for the option for long long-press timeout [CHAR LIMIT=25] -->
         <item>Long</item>
@@ -932,16 +932,8 @@
         <item>80</item>
         <item>90</item>
     </string-array>
-    
+
     <!-- Arrays required by Notification Widgets. -->
-    <string-array name="entries_brightness_widget" formatted="false" translatable="false">
-        <item>@string/cm_brightness_mode_auto</item>
-        <item>@string/cm_brightness_mode_dim</item>
-        <item>25%</item>
-        <item>50%</item>
-        <item>75%</item>
-        <item>100%</item>
-    </string-array>
 
    <string-array name="values_brightness_widget" translatable="false">
         <item>0</item>
@@ -953,8 +945,8 @@
     </string-array>
 
     <string-array name="entries_network_widget">
-        <item>2G/3G+2G</item>  
-        <item>2G/3G Only</item>   
+        <item>2G/3G+2G</item>
+        <item>2G/3G Only</item>
         <item>2G/3G Only/3G+2G</item>
     </string-array>
 
@@ -974,13 +966,6 @@
         <item>1</item>
     </string-array>
 
-    <string-array name="entries_ring_widget" translatable="false">
-        <item>@string/cm_sound_mode_silent</item>
-        <item>@string/cm_sound_mode_vibrate</item>
-        <item>@string/cm_sound_mode_sound</item>
-        <item>@string/cm_sound_mode_soundVibrate</item>
-    </string-array>
-
     <string-array name="values_ring_widget" translatable="false">
         <item>0</item>
         <item>1</item>
@@ -997,7 +982,7 @@
         <item>0</item>
         <item>1</item>
     </string-array>
-  
+
     <string-array name="haptic_feedback_entries">
         <item>Use global setting</item>
         <item>On</item>

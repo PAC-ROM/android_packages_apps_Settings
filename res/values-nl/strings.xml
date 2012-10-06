@@ -1170,7 +1170,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Stand-by"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Scherm gaat nooit uit tijdens het opladen"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Neplocaties toestaan"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Neplocaties toestaan"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"USB-foutopsporing toestaan?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB-foutopsporing is alleen bedoeld voor ontwikkeldoeleinden. Het kan worden gebruikt om gegevens te kopiëren tussen uw computer en uw apparaat, apps zonder melding op uw apparaat te installeren en logboekgegevens te lezen."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Ontwikkelingsinstellingen toestaan?"</string>
@@ -1815,7 +1814,6 @@ Schakel het scherm uit om de geselecteerde melding in actie te zien of annuleer 
     <string name="system_interface_title">Systeemuiterlijk</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Notificatiepaneel</string>
 
     <!-- Combined Bar -->
     <string name="combined_bar_title">Gecombineerde balk</string>
@@ -1854,51 +1852,6 @@ Schakel het scherm uit om de geselecteerde melding in actie te zien of annuleer 
     <string name="hardware_keys_action_in_app_search">In apps zoeken</string>
 
     <!-- Power Widget -->
-    <string name="power_widget_title">Energiewidget</string>
-    <string name="title_expanded_widget">Energiewidget tonen</string>
-    <string name="power_widget_behavior">Widgetgedrag</string>
-    <string name="title_expanded_hide_onchange">Verbergen bij veranderingen</string>
-    <string name="title_expanded_hide_scrollbar">Schuifbalk verbergen</string>
-    <string name="title_widget_picker">Widgetknoppen</string>
-    <string name="summary_widget_picker">Kies welke knoppen in de energiewidget getoond moeten worden</string>
-    <string name="title_widget_order">Volgorde van widgetknoppen</string>
-    <string name="summary_widget_order">Kies de knoppenvolgorde in de energiewidget</string>
-    <string name="title_buttons">Knoppen</string>
-    <string name="title_toggle_wifi">Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Geluid</string>
-    <string name="title_toggle_brightness">Helderheid</string>
-    <string name="title_toggle_sync">Synchronisatie</string>
-    <string name="title_toggle_wifiap">Wi-Fi-hotspot</string>
-    <string name="title_toggle_screentimeout">Time-out scherm</string>
-    <string name="title_toggle_mobiledata">Mobiele gegevens</string>
-    <string name="title_toggle_lockscreen">Vergrendelscherm</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
-    <string name="title_toggle_autorotate">Scherm autom. draaien</string>
-    <string name="title_toggle_airplane">Vliegtuigmodus</string>
-    <string name="title_toggle_flashlight">Zaklamp</string>
-    <string name="title_toggle_sleep">Slaapstand</string>
-    <string name="title_toggle_media_play_pause">Media: afspelen/pauzeren</string>
-    <string name="title_toggle_media_previous">Media: vorige</string>
-    <string name="title_toggle_media_next">Media: volgende</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMAX</string>
-    <string name="title_button_modes">Knoppenstanden</string>
-    <string name="pref_brightness_mode_title">Helderheidsstanden</string>
-    <string name="pref_brightness_mode_summary">Helderheidsknopstanden tonen/wijzigen</string>
-    <string name="cm_brightness_mode_auto">Auto</string>
-    <string name="cm_brightness_mode_dim">Dimmen</string>
-    <string name="pref_network_mode_title">Netwerkstanden</string>
-    <string name="pref_screentimeout_mode_title">Schermtime-outstanden</string>
-    <string name="pref_ring_mode_title">Geluidsstanden</string>
-    <string name="pref_ring_mode_summary">Geluidsknopstanden tonen/wijzigen</string>
-    <string name="cm_sound_mode_silent">Stil</string>
-    <string name="cm_sound_mode_vibrate">Trillen</string>
-    <string name="cm_sound_mode_sound">Geluid</string>
-    <string name="cm_sound_mode_soundVibrate">Geluid &amp; trillen</string>
-    <string name="pref_flash_mode_title">Zaklampmodus</string>
-    <string name="expanded_haptic_feedback_title">Trillen</string>
 
     <!-- Status bar -->
     <string name="status_bar_title">Statusbalk</string>
@@ -2104,22 +2057,6 @@ Schakel het scherm uit om de geselecteerde melding in actie te zien of annuleer 
     <string name="vibrator_type_notification">Meldingen</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Mogelijke knoppen</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Draagbare Wi-Fi-hotspot</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobiele gegevens</string>
-    <string name="toggleSync">Gegevenssynchronisatie</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Belmodus</string>
-    <string name="toggleBrightness">Helderheid</string>
-    <string name="toggleAutoRotate">Oriëntatie</string>
-    <string name="toggleScreenTimeout">Time-out scherm</string>
-    <string name="toggleAirplane">Vliegtuigmodus</string>
-    <string name="toggleFlashlight">Zaklamp</string>
-    <string name="toggleLockScreen">Vergrendelscherm</string>
-    <string name="toggleWimax">WiMax</string>
 
     <!-- Security settings (additions) -->
     <string name="screen_security_category">Schermbeveiliging</string>

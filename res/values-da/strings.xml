@@ -1196,7 +1196,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Undgå dvale"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Skærmen går ikke i dvale under opladning"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Imiterede placeringer"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Tillad imiterede placeringer"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Vil du tillade USB-fejlretning?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB-fejlretning er kun beregnet til udvikling og kan bruges til at kopiere data mellem din computer og enheden, installere apps på enheden uden meddelelser og læse logdata."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Vil du tillade udviklingsindstillinger?"</string>
@@ -1845,7 +1844,6 @@
     <string name="system_interface_title">Systembrugerflade</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Meddelelsespanel</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Kombineret bjælke</string>
@@ -1886,51 +1884,6 @@
     <string name="hardware_keys_action_in_app_search">Søgning i app</string>
 
     <!-- Power Widget  -->
-    <string name="power_widget_title">Strømwidget</string>
-    <string name="title_expanded_widget">Strømwidget</string>
-    <string name="power_widget_behavior">Widget-adfærd</string>
-    <string name="title_expanded_hide_onchange">Luk panel ved ændring</string>
-    <string name="title_expanded_hide_scrollbar">Skjul rullepanel</string>
-    <string name="title_widget_picker">Widget-knapper</string>
-    <string name="summary_widget_picker">Se eller ændre de viste knapper</string>
-    <string name="title_widget_order">Rækkefølge for knapper</string>
-    <string name="summary_widget_order">Se eller ændre rækkefølgen på knapperne</string>
-    <string name="title_buttons">Knapper</string>
-    <string name="title_toggle_wifi">Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Lyd</string>
-    <string name="title_toggle_brightness">Lysstyrke</string>
-    <string name="title_toggle_sync">Synkronisering</string>
-    <string name="title_toggle_wifiap">Wi-Fi Hotspot</string>
-    <string name="title_toggle_screentimeout">Timeout for skærmen</string>
-    <string name="title_toggle_mobiledata">Mobilt netværk</string>
-    <string name="title_toggle_lockscreen">Skærmlås</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
-    <string name="title_toggle_autorotate">Retning</string>
-    <string name="title_toggle_airplane">Flytilstand</string>
-    <string name="title_toggle_flashlight">Lommelygte</string>
-    <string name="title_toggle_sleep">Dvale</string>
-    <string name="title_toggle_media_play_pause">Medier: Afspil/Pause</string>
-    <string name="title_toggle_media_previous">Medier: Gå til forrige</string>
-    <string name="title_toggle_media_next">Medier: Gå til næste</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMax</string>
-    <string name="title_button_modes">Knap-tilstande</string>
-    <string name="pref_brightness_mode_title">Lysstyrke-tilstande</string>
-    <string name="pref_brightness_mode_summary">Se eller ændre lysstyrke-tilstande</string>
-    <string name="cm_brightness_mode_auto">Automatisk</string>
-    <string name="cm_brightness_mode_dim">Dæmpet</string>
-    <string name="pref_network_mode_title">Netværkstilstande</string>
-    <string name="pref_screentimeout_mode_title">Skærmens timeout-tilstande</string>
-    <string name="pref_ring_mode_title">Lydtilstande</string>
-    <string name="pref_ring_mode_summary">Se eller ændre lydtilstande</string>
-    <string name="cm_sound_mode_silent">Lydløs</string>
-    <string name="cm_sound_mode_vibrate">Vibrer</string>
-    <string name="cm_sound_mode_sound">Lyd</string>
-    <string name="cm_sound_mode_soundVibrate">Lyd + Vibrer</string>
-    <string name="pref_flash_mode_title">Lommelygte</string>
-    <string name="expanded_haptic_feedback_title">Berøringsvibration</string>
 
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
@@ -2147,22 +2100,6 @@
     <string name="vibrator_type_notification">Meddelelser</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Mulige knapper</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Wi-Fi Hotspot</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobilt netværk</string>
-    <string name="toggleSync">Synkronisering</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Ringetilstand</string>
-    <string name="toggleBrightness">Lysstyrke</string>
-    <string name="toggleAutoRotate">Retning</string>
-    <string name="toggleScreenTimeout">Timeout for skærmen</string>
-    <string name="toggleAirplane">Flytilstand</string>
-    <string name="toggleFlashlight">Lommelygte</string>
-    <string name="toggleLockScreen">Skærmlås</string>
-    <string name="toggleWimax">WiMax</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Skærmsikkerhed</string>
@@ -2262,25 +2199,10 @@
 
     <!-- Anonymous Statistics  -->
     <!-- About device screen, list item title. Takes the user to the screen about opting in or out of anonymous statistics. -->
-    <string name="anonymous_statistics_title">CyanogenMod-statistikker</string>
-    <string name="anonymous_statistics_summary">Hjælp med at gøre CyanogenMod bedre ved at deltage i rapportering af anonyme statistikker</string>
-    <string name="anonymous_statistics_warning_title">Om</string>
-    <string name="anonymous_statistics_warning">Deltagelse af CyanogenMod-statistikker vil tillade ikke-personlige data, der skal forelægges for udviklerne af CyanogenMod, at spore unikke installationer på tværs af enheder. De indsendte oplysninger omfatter en entydig indikator, som ikke kompromitterer dit privatliv eller personlige data. Dataene indsendes under hver opstart.\n\nFor et eksempel på de data, der er indsendt, skal du trykke på Få vist data.</string>
-    <string name="enable_reporting_title">Aktivér rapportering</string>
-    <string name="preview_data_title">Få vist data</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">Vis statistikker</string>
-    <string name="anonymous_learn_more">Læs mere</string>
 
     <!-- Anonymous Statistics - Notification -->
-    <string name="anonymous_notification_desc">Aktivér eller deaktiver CyanogenMod-statistikker</string>
 
     <!-- Anonymous Statistics - Preview -->
-    <string name="preview_id_title">Unikt ID</string>
-    <string name="preview_device_title">Enhed</string>
-    <string name="preview_version_title">Version</string>
-    <string name="preview_country_title">Land</string>
-    <string name="preview_carrier_title">Operatør</string>
 
     <!-- Display : Rotation  -->
     <string name="display_rotation_title">Rotation</string>

@@ -1199,7 +1199,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"البقاء في الوضع النشط"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"لا يتم مطلقًا دخول الشاشة في وضع السكون أثناء الشحن"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"السماح بمواقع وهمية"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"السماح بمواقع وهمية"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"هل تريد السماح بتصحيح أخطاء USB؟"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"تم تصميم تصحيح أخطاء USB لأغراض التطوير فقط. يمكن استخدامه لنسخ البيانات بين الكمبيوتر والجهاز، وتثبيت التطبيقات على جهازك بدون تنبيه، وقراءة بيانات السجل."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"هل تريد السماح لإعدادات التطوير؟"</string>

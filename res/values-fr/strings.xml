@@ -162,7 +162,6 @@
     <string name="system_interface_title">Interface système</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Barre de notification</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Barre combinée</string>
@@ -202,51 +201,6 @@
     <string name="hardware_keys_action_in_app_search">Recherche dans l\'application</string>
 
     <!-- Power Widget  -->
-    <string name="power_widget_title">Widget d\'alimentation</string>
-    <string name="title_expanded_widget">Widget d\'alimentation</string>
-    <string name="power_widget_behavior">Comportement du widget</string>
-    <string name="title_expanded_hide_onchange">Fermer après changement</string>
-    <string name="title_expanded_hide_scrollbar">Cacher barre de défilement</string>
-    <string name="title_widget_picker">Boutons du widget</string>
-    <string name="summary_widget_picker">Afficher ou modifier les boutons</string>
-    <string name="title_widget_order">Ordre des boutons du widget</string>
-    <string name="summary_widget_order">Afficher ou modifier l\'ordre des boutons présents sur le widget</string>
-    <string name="title_buttons">Boutons</string>
-    <string name="title_toggle_wifi">Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Son</string>
-    <string name="title_toggle_brightness">Luminosité</string>
-    <string name="title_toggle_sync">Sync. données</string>
-    <string name="title_toggle_wifiap">Partage Wi-Fi</string>
-    <string name="title_toggle_screentimeout">Veille écran</string>
-    <string name="title_toggle_mobiledata">Données mobile</string>
-    <string name="title_toggle_lockscreen">Verrouillage</string>
-    <string name="title_toggle_networkmode">Basculer 2G/3G</string>
-    <string name="title_toggle_autorotate">Orientation</string>
-    <string name="title_toggle_airplane">Mode Avion</string>
-    <string name="title_toggle_flashlight">Torche</string>
-    <string name="title_toggle_sleep">Mise en veille</string>
-    <string name="title_toggle_media_play_pause">Média: Lecture/Pause</string>
-    <string name="title_toggle_media_previous">Média: Précédent</string>
-    <string name="title_toggle_media_next">Média: Suivant</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMax</string>
-    <string name="title_button_modes">Modes des boutons</string>
-    <string name="pref_brightness_mode_title">Modes de luminosité</string>
-    <string name="pref_brightness_mode_summary">Sélection des modes de fonctionnement du bouton Luminosité</string>
-    <string name="cm_brightness_mode_auto">Auto.</string>
-    <string name="cm_brightness_mode_dim">Réduit</string>
-    <string name="pref_network_mode_title">Modes réseau</string>
-    <string name="pref_screentimeout_mode_title">Mode mise en veille de l\'écran</string>
-    <string name="pref_ring_mode_title">Sonnerie</string>
-    <string name="pref_ring_mode_summary">Sélection des modes de sonnerie disponibles</string>
-    <string name="cm_sound_mode_silent">Silencieux</string>
-    <string name="cm_sound_mode_vibrate">Vibreur</string>
-    <string name="cm_sound_mode_sound">Son</string>
-    <string name="cm_sound_mode_soundVibrate">Son + Vibreur</string>
-    <string name="pref_flash_mode_title">Mode torche</string>
-    <string name="expanded_haptic_feedback_title">Vibrer au toucher</string>
 
     <!-- Status bar  -->
     <string name="status_bar_title">Barre d\'état</string>
@@ -452,22 +406,6 @@
     <string name="vibrator_type_notification">Notifications</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Boutons possibles</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Partage Wi-Fi</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Données mobile</string>
-    <string name="toggleSync">Sync. données</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Son</string>
-    <string name="toggleBrightness">Luminosité</string>
-    <string name="toggleAutoRotate">Orientation</string>
-    <string name="toggleScreenTimeout">Veille écran</string>
-    <string name="toggleAirplane">Mode Avion</string>
-    <string name="toggleFlashlight">Torche</string>
-    <string name="toggleLockScreen">Verrouillage</string>
-    <string name="toggleWimax">WiMax</string>
 
     <!-- GPS Source selection -->
     <string name="location_gps_source_title">Source GPS</string>
@@ -1900,7 +1838,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Rester activé"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"L\'écran ne se met jamais en veille lors du chargement de la batterie"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Positions fictives"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Autoriser les positions fictives"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Autoriser le débogage USB ?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Le débogage USB est conçu uniquement pour le développement. Utilisez-le pour copier des données entre votre ordinateur et votre appareil, installer des applications sur votre appareil sans notification et lire les données de journal."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Activer les paramètres de développement ?"</string>

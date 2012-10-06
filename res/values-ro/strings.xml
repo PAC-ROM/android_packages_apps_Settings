@@ -1200,7 +1200,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Activ permanent"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Ecranul nu va fi inactiv pe durata încărcării"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Permiteţi locaţiile fictive"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Permiteţi locaţiile fictive"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Permiteţi depanarea USB?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Depanarea USB are exclusiv scopuri de dezvoltare. Utilizaţi-o pentru a copia date de pe computer pe dispozitiv, pentru a instala aplicaţii pe dispozitiv fără notificare şi pentru a citi datele din jurnale."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Permiteţi setările pentru dezvoltare?"</string>

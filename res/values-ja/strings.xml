@@ -1201,7 +1201,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"スリープモードにしない"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"充電中に画面をスリープにしない"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"擬似ロケーションを許可"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"擬似ロケーションを許可する"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"USBデバッグを許可しますか？"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USBデバッグは開発専用に設計されています。パソコンと端末の間でデータをコピーする場合や、アプリを通知なしで端末にインストールする場合、ログデータを読み取る場合に使用できます。"</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"開発用の設定を許可しますか？"</string>
@@ -1873,7 +1872,6 @@
     <string name="system_interface_title">システムインタフェース</string>
 
     <!-- Notification Drawer #CM -->
-    <string name="notification_drawer_title">通知領域</string>
 
     <!-- Combined Bar #CM -->
     <string name="combined_bar_title">コンバインドバー</string>
@@ -1913,51 +1911,6 @@
     <string name="hardware_keys_action_in_app_search">アプリ内検索</string>
 
     <!-- Power Widget #CM -->
-    <string name="power_widget_title">電源管理ウィジェット</string>
-    <string name="title_expanded_widget">電源管理ウィジェットを表示</string>
-    <string name="power_widget_behavior">ウィジェットの挙動</string>
-    <string name="title_expanded_hide_onchange">変更したら隠す</string>
-    <string name="title_expanded_hide_scrollbar">スクロールバーを隠す</string>
-    <string name="title_widget_picker">ウィジェットボタン</string>
-    <string name="summary_widget_picker">ウィジェットボタンを選択</string>
-    <string name="title_widget_order">ウィジェットボタンの並び</string>
-    <string name="summary_widget_order">ウィジェットボタンを並び替える</string>
-    <string name="title_buttons">ボタン</string>
-    <string name="title_toggle_wifi">Wi-Fiトグル</string>
-    <string name="title_toggle_bluetooth">Bluetoothトグル</string>
-    <string name="title_toggle_gps">GPSトグル</string>
-    <string name="title_toggle_sound">サウンドトグル</string>
-    <string name="title_toggle_brightness">明るさトグル</string>
-    <string name="title_toggle_sync">同期トグル</string>
-    <string name="title_toggle_wifiap">Wi-Fi APトグル</string>
-    <string name="title_toggle_screentimeout">スクリーンタイムアウトトグル</string>
-    <string name="title_toggle_mobiledata">モバイルデータトグル</string>
-    <string name="title_toggle_lockscreen">ロックスクリーントグル</string>
-    <string name="title_toggle_networkmode">2G/3Gトグル</string>
-    <string name="title_toggle_autorotate">回転トグル</string>
-    <string name="title_toggle_airplane">機内モードトグル</string>
-    <string name="title_toggle_flashlight">LEDフラッシュトグル</string>
-    <string name="title_toggle_sleep">スリープ</string>
-    <string name="title_toggle_media_play_pause">メディア: 再生/停止トグル</string>
-    <string name="title_toggle_media_previous">メディア: 前に戻る</string>
-    <string name="title_toggle_media_next">メディア: 次に進む</string>
-    <string name="title_toggle_wimax">WiMAXトグル</string>
-    <string name="title_toggle_lte">LTEトグル</string>
-    <string name="title_button_modes">ボタンモード</string>
-    <string name="pref_brightness_mode_title">明るさ</string>
-    <string name="pref_brightness_mode_summary">明るさトグルで変更するモードの選択</string>
-    <string name="cm_brightness_mode_auto">自動</string>
-    <string name="cm_brightness_mode_dim">暗い</string>
-    <string name="pref_network_mode_title">ネットワーク</string>
-    <string name="pref_screentimeout_mode_title">スクリーンタイムアウト</string>
-    <string name="pref_ring_mode_title">サウンド</string>
-    <string name="pref_ring_mode_summary">サウンドトグルで変更するモードの選択</string>
-    <string name="cm_sound_mode_silent">サイレント</string>
-    <string name="cm_sound_mode_vibrate">バイブレーション</string>
-    <string name="cm_sound_mode_sound">サウンド</string>
-    <string name="cm_sound_mode_soundVibrate">サウンドとバイブレーション</string>
-    <string name="pref_flash_mode_title">フラッシュ</string>
-    <string name="expanded_haptic_feedback_title">バイブフィードバック</string>
 
     <!-- Status bar #CM -->
     <string name="status_bar_title">ステータスバー</string>
@@ -2163,22 +2116,6 @@
     <string name="profile_disable_screen_lock_summary">このプロファイルを使用している間はロック画面のセキュリティを無効にする</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">可能なボタン</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">ポータブルアクセスポイント</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">データ通信</string>
-    <string name="toggleSync">データ同期</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">着信モード</string>
-    <string name="toggleBrightness">明るさ</string>
-    <string name="toggleAutoRotate">回転</string>
-    <string name="toggleScreenTimeout">スクリーンタイムアウト</string>
-    <string name="toggleAirplane">機内モード</string>
-    <string name="toggleFlashlight">フラッシュライト</string>
-    <string name="toggleLockScreen">画面のロック</string>
-    <string name="toggleWimax">WiMAX</string>
 
     <!-- misc #CM -->
     <string name="lockpattern_settings_enable_lock_before_unlock">解除する前にウィジェットを表示</string>

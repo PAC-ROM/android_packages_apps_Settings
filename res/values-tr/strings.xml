@@ -1201,7 +1201,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Uyanık kal"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"Şarj edilirken ekran hiçbir zaman uykuya geçmez"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Sahte konumlara izin ver"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Sahte konumlara izin ver"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"USB hata ayıklamasına izin verilsin mi?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"USB hata ayıklaması yalnızca geliştirme amaçlıdır. Verileri bilgisayarınızla cihazınız arasında kopyalamak, bildirim göndermeksizin uygulamaları cihazınıza yüklemek ve günlük verilerini okumak için kullanın."</string>
     <!-- START: Setting checkbox title for root access, #CM -->
@@ -1853,7 +1852,6 @@
     <string name="themes_settings_title">Temalar</string>
     <string name="system_settings_title">Sistem</string>
     <string name="system_interface_title">Sistem arayüzü</string>
-    <string name="notification_drawer_title">Bildirim ekranı</string>
     <!-- END: INTERFACE Settings #CM -->
     <!-- Combined Bar #CM -->
     <string name="combined_bar_title">Birleştirilmiş çubuk</string>
@@ -1889,51 +1887,7 @@
     <string name="hardware_keys_action_voice_search">Sesli ara</string>
     <string name="hardware_keys_action_in_app_search">Uygulamada ara</string>
     <!-- Power Widget #CM -->
-    <string name="power_widget_title">Gelişmiş durum çubuğu</string>
-    <string name="title_expanded_widget">Gelişmiş durum çubuğu</string>
-    <string name="power_widget_behavior">İşlemler</string>
-    <string name="title_expanded_hide_onchange">Değiştikten sonra gizle</string>
-    <string name="title_expanded_hide_scrollbar">Kaydırma çubuğunu gizle</string>
-    <string name="title_widget_picker">Gösterilecek düğmeler</string>
-    <string name="summary_widget_picker">Gösterilecek düğmeleri seçin</string>
-    <string name="title_widget_order">Düğme sırası</string>
-    <string name="summary_widget_order">Düğmelerin sırasını değiştirin</string>
-    <string name="title_buttons">Düğmeler</string>
-    <string name="title_toggle_wifi">Wifi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Ses</string>
-    <string name="title_toggle_brightness">Parlaklık</string>
-    <string name="title_toggle_sync">Senkronizasyon</string>
-    <string name="title_toggle_wifiap">Wifi paylaşımı</string>
-    <string name="title_toggle_screentimeout">Ekran kapanma süresi</string>
-    <string name="title_toggle_mobiledata">Mobil veri</string>
-    <string name="title_toggle_lockscreen">Kilit ekranı</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
-    <string name="title_toggle_autorotate">Ekran döndürme</string>
-    <string name="title_toggle_airplane">Uçak modu</string>
-    <string name="title_toggle_flashlight">El feneri</string>
-    <string name="title_toggle_sleep">Ekranı kilitle</string>
-    <string name="title_toggle_media_play_pause">Medya: Oynat/Durdur</string>
-    <string name="title_toggle_media_previous">Medya: Önceki</string>
-    <string name="title_toggle_media_next">Medya: Sonraki</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMAX</string>
-    <string name="title_button_modes">Düğme ayarları</string>
-    <string name="pref_brightness_mode_title">Parlaklık modları</string>
-    <string name="pref_brightness_mode_summary">Parlaklık düğmesi modunu değiştir</string>
-    <string name="cm_brightness_mode_auto">Otomatik</string>
-    <string name="cm_brightness_mode_dim">Sönük</string>
-    <string name="pref_network_mode_title">Şebeke modları</string>
-    <string name="pref_screentimeout_mode_title">Ekran kapanma modları</string>
-    <string name="pref_ring_mode_title">Ses modları</string>
-    <string name="pref_ring_mode_summary">Ses düğmesi modunu değiştir</string>
-    <string name="cm_sound_mode_silent">Sessiz</string>
-    <string name="cm_sound_mode_vibrate">Titreşim</string>
-    <string name="cm_sound_mode_sound">Ses</string>
-    <string name="cm_sound_mode_soundVibrate">Ses ve Titreşim</string>
-    <string name="pref_flash_mode_title">El feneri modu</string>
-    <string name="expanded_haptic_feedback_title">Dokunsal geribildirim</string>
+
     <!-- Status bar #CM -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Durum çubuğu</string>
@@ -2119,22 +2073,7 @@
     <string name="vibrator_type_ringer">Çağrılar</string>
     <string name="vibrator_type_notification">Bildirimler</string>
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Düğmeler</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Wi-Fi paylaşımı</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobil veri</string>
-    <string name="toggleSync">Veri senkronizasyonu</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Sessiz</string>
-    <string name="toggleBrightness">Parlaklık</string>
-    <string name="toggleAutoRotate">Ekran yönü</string>
-    <string name="toggleScreenTimeout">Ekran kapatma</string>
-    <string name="toggleAirplane">Uçak modu</string>
-    <string name="toggleFlashlight">El feneri</string>
-    <string name="toggleLockScreen">Kilit ekranı</string>
-    <string name="toggleWimax">WiMAX</string>
+
     <!-- END: Profiles settings #CM -->
     <!-- START: Screen security - Screen security  #CM -->
     <string name="screen_security_category">Ekran Güvenliği</string>
@@ -2204,27 +2143,7 @@
     <string name="donate_settings_title">Bağış Yap</string>
     <string name="donate_settings_summary">""</string>
     <!-- Anonymous Statistics #CM -->
-    <string name="anonymous_statistics_title">CyanogenMod İstatistikleri</string>
-    <string name="anonymous_statistics_summary">Anonim istatistik raporlamaya katılarak CM\'nin daha iyi olmasına katkıda bulunun</string>
-    <string name="anonymous_statistics_warning_title">Hakkında</string>
-    <string name="anonymous_statistics_warning">İsteğe bağlı anonim verilerin etkinleştirilmesi,
-    hangi cihazın hangi sürümü kullandığı gibi bilgileri
-    CyanogenMod geliştiricilerinin izlemesine izin vererek gönderir.
-    Gönderilen bilgi sadece benzersiz kimliktir, gizliliğinizi
-    ortaya çıkaran bilgiler iletilmez.
-    Veri, cihaz her açıldığında gönderilir. Gönderilen verilerin
-    örneğine aşağıdaki Verileri Önizle düğmesine tıklayarak bakabilirsiniz.</string>
-    <string name="enable_reporting_title">Raporlamayı Etkinleştir</string>
-    <string name="preview_data_title">Verileri Önizle</string>
-    <string name="preview_data_summary">%s</string>
-    <string name="view_stats_title">İstatistiklere Bak</string>
-    <string name="anonymous_learn_more">Daha Fazlası</string>
-    <string name="anonymous_notification_desc">CyanogenMod İstatistiklerini aç veya kapat</string>
-    <string name="preview_id_title">Benzersiz Kimlik</string>
-    <string name="preview_device_title">Cihaz</string>
-    <string name="preview_version_title">Sürüm</string>
-    <string name="preview_country_title">Ülke</string>
-    <string name="preview_carrier_title">Şebeke</string>
+
     <!-- Display : Rotation #CM -->
     <string name="display_rotation_title">Döndürme</string>
     <string name="display_rotation_enabled">Etkin.</string>
@@ -2337,7 +2256,6 @@
     <!-- Hostname setting -->
     <string name="device_hostname">Cihaz adı</string>
     <!-- About phone screen -->
-    <string name="mod_version">CyanogenMod sürümü</string>
     <string name="mod_version_default">Bilinmiyor</string>
     <string name="build_date">Derleme tarihi</string>
     <string name="cpu_info">İşlemci</string>

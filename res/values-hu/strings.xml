@@ -1212,7 +1212,6 @@
     <string name="keep_screen_on" msgid="1146389631208760344">"Nem kapcsolódik ki"</string>
     <string name="keep_screen_on_summary" msgid="2173114350754293009">"A képernyő soha nem kapcsol ki töltés során"</string>
     <string name="allow_mock_location" msgid="2787962564578664888">"Helyutánzatok engedélyezése"</string>
-    <string name="allow_mock_location_summary" msgid="317615105156345626">"Helyutánzatok engedélyezése"</string>
     <string name="adb_warning_title" msgid="6234463310896563253">"Engedélyezi az USB hibakeresést?"</string>
     <string name="adb_warning_message" msgid="7316799925425402244">"Az USB hibakeresés fejlesztési célokat szolgál. Használhatja adatok másolására a számítógép és a készülék között, alkalmazások a készülékre való értesítés nélküli telepítésére és naplózási adatok olvasására."</string>
     <string name="dev_settings_warning_title" msgid="7244607768088540165">"Engedélyezi a fejlesztői beállításokat?"</string>
@@ -1877,7 +1876,6 @@
     <string name="system_interface_title">Rendszer felület</string>
 
     <!-- Notification Drawer  -->
-    <string name="notification_drawer_title">Értesítési felület</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Értesítési sáv</string>
@@ -1918,51 +1916,6 @@
     <string name="hardware_keys_action_in_app_search">Alkalmazáson belüli keresés</string>
 
     <!-- Power Widget  -->
-    <string name="power_widget_title">Energiagazdálkodás</string>
-    <string name="title_expanded_widget">Engedélyezés</string>
-    <string name="power_widget_behavior">Viselkedés</string>
-    <string name="title_expanded_hide_onchange">Elrejtés kapcsoló kiválasztásakor</string>
-    <string name="title_expanded_hide_scrollbar">Görgetősáv elrejtése</string>
-    <string name="title_widget_picker">Modul kapcsolók</string>
-    <string name="summary_widget_picker">Állítsa be mely kapcsolók legyenek láthatóak az energiagazdálkodás felületén</string>
-    <string name="title_widget_order">Kapcsolók sorrendje</string>
-    <string name="summary_widget_order">Állítsa be az energiagazdálkodás kapcsolóinak sorrendjét</string>
-    <string name="title_buttons">Kapcsolók</string>
-    <string name="title_toggle_wifi">Wi-Fi</string>
-    <string name="title_toggle_bluetooth">Bluetooth</string>
-    <string name="title_toggle_gps">GPS</string>
-    <string name="title_toggle_sound">Hang</string>
-    <string name="title_toggle_brightness">Fényerő</string>
-    <string name="title_toggle_sync">Szinkronizálás</string>
-    <string name="title_toggle_wifiap">Wi-Fi AP</string>
-    <string name="title_toggle_screentimeout">Képernyő időkorlátja</string>
-    <string name="title_toggle_mobiledata">Mobilinternet</string>
-    <string name="title_toggle_lockscreen">Képernyőzár</string>
-    <string name="title_toggle_networkmode">2G/3G</string>
-    <string name="title_toggle_autorotate">Kijelző tájolás</string>
-    <string name="title_toggle_airplane">Repülőgép üzemmód</string>
-    <string name="title_toggle_flashlight">LED villanófény</string>
-    <string name="title_toggle_sleep">Alvó mód</string>
-    <string name="title_toggle_media_play_pause">Média: Lejátszás/Szünet</string>
-    <string name="title_toggle_media_previous">Média: Előző</string>
-    <string name="title_toggle_media_next">Média: Következő</string>
-    <string name="title_toggle_lte">LTE</string>
-    <string name="title_toggle_wimax">WiMAX</string>
-    <string name="title_button_modes">Kapcsolók beállításai</string>
-    <string name="pref_brightness_mode_title">Fényerő kapcsoló</string>
-    <string name="pref_brightness_mode_summary">Válassza ki a fényerő kapcsoló beállításait</string>
-    <string name="cm_brightness_mode_auto">Auto</string>
-    <string name="cm_brightness_mode_dim">Sötét</string>
-    <string name="pref_network_mode_title">Hálózati kapcsoló</string>
-    <string name="pref_screentimeout_mode_title">Képernyő időkorlát kapcsoló</string>
-    <string name="pref_ring_mode_title">Hang kapcsoló</string>
-    <string name="pref_ring_mode_summary">Válassza ki a hang kapcsoló beállításait</string>
-    <string name="cm_sound_mode_silent">Néma</string>
-    <string name="cm_sound_mode_vibrate">Rezgés</string>
-    <string name="cm_sound_mode_sound">Hang</string>
-    <string name="cm_sound_mode_soundVibrate">Hang+Rezgés</string>
-    <string name="pref_flash_mode_title">Villanófény kapcsoló</string>
-    <string name="expanded_haptic_feedback_title">Érintési visszajelzés</string>
 
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
@@ -2175,22 +2128,6 @@
     <string name="vibrator_type_notification">Értesítések</string>
 
     <!-- Connection override toggles (not all are used at this time ) -->
-    <string name="possibleButtons">Lehetséges kapcsolók</string>
-    <string name="toggleWifi">Wi-Fi</string>
-    <string name="toggleWifiAp">Hordozható Wi-Fi hotspot</string>
-    <string name="toggleBluetooth">Bluetooth</string>
-    <string name="toggleGPS">GPS</string>
-    <string name="toggleData">Mobilinternet</string>
-    <string name="toggleSync">Szinkronizálás</string>
-    <string name="toggle2g3g">2G/3G</string>
-    <string name="toggleSound">Csengetés módja</string>
-    <string name="toggleBrightness">Fényerő</string>
-    <string name="toggleAutoRotate">Tájolás</string>
-    <string name="toggleScreenTimeout">Képernyő időkorlátja</string>
-    <string name="toggleAirplane">Repülőgép üzemmód</string>
-    <string name="toggleFlashlight">Villanófény</string>
-    <string name="toggleLockScreen">Zárolt kijelző</string>
-    <string name="toggleWimax">WiMAX</string>
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Képernyővédelem</string>
