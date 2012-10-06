@@ -4323,6 +4323,7 @@
     <string name="toggle_wifi">Wi-Fi</string>
     <string name="toggle_wifi_ap">Wi-Fi AP</string>
     <string name="toggle_usb_tether">USB Tether</string>
+    <string name="toggle_ticker">Ticker Pop-up</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Combined bar</string>
