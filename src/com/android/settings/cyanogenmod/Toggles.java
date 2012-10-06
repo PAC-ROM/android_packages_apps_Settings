@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2011 The CyanogenMod Project
+ * Copyright (C) 2011 The AOKP Project
+ * This code has been modified.  Portions copyright (C) 2012, ParanoidAndroid Project.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.android.settings.cyanogenmod;
 
 import android.app.AlertDialog;
@@ -6,8 +24,11 @@ import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnMultiChoiceClickListener;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.wimax.WimaxHelper;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -15,6 +36,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +45,7 @@ import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.internal.telephony.Phone;
 import com.android.settings.cyanogenmod.TouchInterceptor;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
@@ -41,7 +64,29 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
     private static final String PREF_TOGGLES_LAYOUT = "toggles_layout";
     private static final String PREF_ALT_BUTTON_LAYOUT = "toggles_layout_preference";
 
+    private static final int ROTATE = 0;
+    private static final int BLUETOOTH = 1;
+    private static final int NETWORK = 2;
+    private static final int DATA = 3;
+    private static final int GPS = 4;
+    private static final int WIFI = 5;
+    private static final int WIFI_AP = 7;
+    private static final int USB_TETHER = 8;
+    private static final int LTE = 10;
+    private static final int TORCH = 12;
+    private static final int NFC = 14;
+
+    // Arrays containing the entire set of toggles
+    private static ArrayList<String> allEntries;
+    private static ArrayList<String> allValues;
+
+    // Filtered entries, removed unexistent hardware
     private static String[] mValues;
+    private static String[] mEntries;
+
+    private static PackageManager pm;
+
+    private static Context mContext;
 
     CheckBoxPreference mShowToggles;
     Preference mEnabledToggles;
@@ -56,55 +101,58 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.notification_drawer_toggles);
 
+        mContext = getActivity();
+
         mShowToggles = (CheckBoxPreference) findPreference(PREF_SHOW_TOGGLES);
-        mShowToggles.setChecked(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_ENABLE, 0) == 1);
+        mShowToggles.setChecked(Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.STATUSBAR_TOGGLES_ENABLE, 0) == 1);
 
         mShowBrightness = (CheckBoxPreference) findPreference(PREF_SHOW_BRIGHTNESS);
-        mShowBrightness.setChecked(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_SHOW_BRIGHTNESS, 0) == 1);
+        mShowBrightness.setChecked(Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.STATUSBAR_TOGGLES_SHOW_BRIGHTNESS, 0) == 1);
 
         mToggleStyle = (ListPreference) findPreference(PREF_TOGGLES_STYLE);
         mToggleStyle.setOnPreferenceChangeListener(this);
-        mToggleStyle.setValue(Integer.toString(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_STYLE, 3)));
+        mToggleStyle.setValue(Integer.toString(Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.STATUSBAR_TOGGLES_STYLE, 3)));
 
         mTogglesLayout = (ListPreference) findPreference(PREF_ALT_BUTTON_LAYOUT);
         mTogglesLayout.setOnPreferenceChangeListener(this);
-        mTogglesLayout.setValue(Integer.toString(Settings.System.getInt(getActivity()
-                .getContentResolver(), Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1)));
+        mTogglesLayout.setValue(Integer.toString(Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1)));
 
         mEnabledToggles = findPreference(PREF_ENABLED_TOGGLES);
 
         mLayout = findPreference(PREF_TOGGLES_LAYOUT);
 
-        mValues = getResources().getStringArray(R.array.available_toggles_entries);
+        pm = mContext.getPackageManager();
+
+        getAvailableToggleList(getResources()
+            .getStringArray(R.array.available_toggles_entries), getResources()
+            .getStringArray(R.array.available_toggles_values));
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mShowBrightness) {
             boolean value = mShowBrightness.isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_SHOW_BRIGHTNESS, value ? 1 : 0);
             return true;
         } else if(preference == mShowToggles) {
             boolean value = mShowToggles.isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_ENABLE, value ? 1 : 0);
             return true;
         } else if (preference == mEnabledToggles) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
 
-            ArrayList<String> enabledToggles = getTogglesStringArray(getActivity());
+            ArrayList<String> enabledToggles = getTogglesStringArray(mContext);
 
-            final String[] finalArray = getResources().getStringArray(
-                    R.array.available_toggles_values);
-
-            boolean checkedToggles[] = new boolean[finalArray.length];
+            boolean checkedToggles[] = new boolean[mValues.length];
 
             for (int i = 0; i < checkedToggles.length; i++) {
-                if (enabledToggles.contains(finalArray[i])) {
+                if (enabledToggles.contains(mValues[i])) {
                     checkedToggles[i] = true;
                 }
             }
@@ -120,16 +168,16 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                         }
                     });
 
-            builder.setMultiChoiceItems(mValues, checkedToggles, new OnMultiChoiceClickListener() {
+            builder.setMultiChoiceItems(mEntries, checkedToggles, new OnMultiChoiceClickListener() {
 
                 @Override
                 public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-                    String toggleKey = (finalArray[which]);
+                    String toggleKey = (mValues[which]);
 
                     if (isChecked) {
-                        addToggle(getActivity(), toggleKey);
+                        addToggle(mContext, toggleKey);
                     } else {
-                        removeToggle(getActivity(), toggleKey);
+                        removeToggle(mContext, toggleKey);
                     }
                 }
             });
@@ -155,12 +203,12 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         boolean result = false;
         if (preference == mToggleStyle) {
             int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_STYLE, val);
             return true;
         } else if (preference == mTogglesLayout) {
             int val = Integer.parseInt((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
+            Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, val);
             return true;
         }
@@ -183,15 +231,14 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
 
         private ListView mButtonList;
         private ButtonAdapter mButtonAdapter;
-        private Context mContext;
+        private Context mTogglesContext;
 
         /** Called when the activity is first created. */
         @Override
         public void onCreate(Bundle icicle) {
             super.onCreate(icicle);
 
-            mContext = getActivity().getBaseContext();
-
+            mTogglesContext = getActivity().getBaseContext();
         }
 
         @Override
@@ -208,7 +255,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
             super.onActivityCreated(savedInstanceState);
             mButtonList = this.getListView();
             ((TouchInterceptor) mButtonList).setDropListener(mDropListener);
-            mButtonAdapter = new ButtonAdapter(mContext);
+            mButtonAdapter = new ButtonAdapter(mTogglesContext);
             setListAdapter(mButtonAdapter);
         };
 
@@ -240,7 +287,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                         toggles.add(to, toggle);
 
                         // save our buttons
-                        setTogglesFromStringArray(mContext, toggles);
+                        setTogglesFromStringArray(mTogglesContext, toggles);
 
                         // tell our adapter/listview to reload
                         mButtonAdapter.reloadButtons();
@@ -251,16 +298,15 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         };
 
         private class ButtonAdapter extends BaseAdapter {
-            private Context mContext;
+            private Context mButtonContext;
             private Resources mSystemUIResources = null;
             private LayoutInflater mInflater;
             private ArrayList<Toggle> mToggles;
 
             public ButtonAdapter(Context c) {
-                mContext = c;
-                mInflater = LayoutInflater.from(mContext);
+                mButtonContext = c;
+                mInflater = LayoutInflater.from(mButtonContext);
 
-                PackageManager pm = mContext.getPackageManager();
                 if (pm != null) {
                     try {
                         mSystemUIResources = pm.getResourcesForApplication("com.android.systemui");
@@ -275,7 +321,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
 
             public void reloadButtons() {
                 mToggles = new ArrayList<Toggle>();
-                ArrayList<String> toggleArray = getTogglesStringArray(mContext);
+                ArrayList<String> toggleArray = getTogglesStringArray(mButtonContext);
 
                 for(int i = 0; i < toggleArray.size(); i++) {
                     mToggles.add(new Toggle(toggleArray.get(i)));
@@ -304,12 +350,10 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
 
                 Toggle toggle = mToggles.get(position);
                 final TextView name = (TextView) v.findViewById(R.id.name);
-                String[] toggleValues = getResources().getStringArray(
-                        R.array.available_toggles_values);
 
-                for(int i = 0; i < toggleValues.length; i++) {
-                    if(toggle.getId().equals(toggleValues[i])) {
-                        name.setText(mValues[i]);
+                for(int i = 0; i < mValues.length; i++) {
+                    if(toggle.getId().equals(mValues[i])) {
+                        name.setText(mEntries[i]);
                         break;
                     }
                 }
@@ -329,6 +373,86 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
 
         public String getId() {
             return mId;
+        }
+    }
+
+    public static void getAvailableToggleList(String[] entries, String[] values) {
+        allEntries = new ArrayList<String>(Arrays.asList(entries));
+        allValues = new ArrayList<String>(Arrays.asList(values));
+
+        // Check if device has gyroscope
+        if(!pm.hasSystemFeature(PackageManager.FEATURE_SENSOR_GYROSCOPE)) {
+            removeEntry(values[ROTATE]);
+        }
+
+        // Check if device has bluetooth
+        if (!pm.hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
+            removeEntry(values[BLUETOOTH]);
+        }
+
+        // Check if device has network capabilities
+        boolean hasMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
+        if (!hasMobileData) {
+            removeEntry(values[NETWORK]);
+            removeEntry(values[DATA]);
+        }
+
+        // Check if device has GPS
+        if(!pm.hasSystemFeature(PackageManager.FEATURE_LOCATION_GPS)) {
+            removeEntry(values[GPS]);
+        }
+
+        // Check if device has Wi-Fi
+        if(!pm.hasSystemFeature(PackageManager.FEATURE_WIFI)) {
+            removeEntry(values[WIFI]);
+        }
+
+        // Check if device has tethering capabilities
+        ConnectivityManager cm =
+                (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        String[] mUsbRegexs = cm.getTetherableUsbRegexs();
+        String[] mWifiRegexs = cm.getTetherableWifiRegexs();
+
+        final boolean usbAvailable = mUsbRegexs.length != 0;
+        final boolean wifiAvailable = mWifiRegexs.length != 0;
+
+        if (!wifiAvailable) {
+            removeEntry(values[WIFI_AP]);
+        }
+
+        if (!usbAvailable) {
+            removeEntry(values[USB_TETHER]);
+        }
+
+        // Check if device has LTE
+        if(Phone.LTE_ON_CDMA_TRUE != TelephonyManager.getDefault().getLteOnCdmaMode() ||
+                TelephonyManager.getDefault().getLteOnGsmMode() == 0) {
+            removeEntry(values[LTE]);
+        }
+
+        // Check if torch app is installed
+        try{
+            ApplicationInfo info = pm.getApplicationInfo("net.cactii.flash2", 0);
+        } catch(PackageManager.NameNotFoundException e){
+            removeEntry(values[TORCH]);
+        }
+
+        // Check if device has NFC
+        if(!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
+            removeEntry(values[NFC]);
+        }
+
+        mEntries = allEntries.toArray(new String[allEntries.size()]);
+        mValues = allValues.toArray(new String[allValues.size()]);
+    }
+
+    public static void removeEntry(String entry) {
+        for(int i = 0; i < allValues.size(); i++) {
+            if(allValues.get(i).equals(entry)) {
+                allValues.remove(i);
+                allEntries.remove(i);
+            }
         }
     }
 
