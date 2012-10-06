@@ -4587,6 +4587,24 @@
     <string name="vibrator_type_ringer">Calls</string>
     <string name="vibrator_type_notification">Notifications</string>
 
+    <!-- Connection override toggles (not all are used at this time ) -->
+    <string name="possibleButtons">Possible Buttons</string>
+    <string name="toggleWifi">Wi-Fi</string>
+    <string name="toggleWifiAp">Portable Wi-Fi hotspot</string>
+    <string name="toggleBluetooth">Bluetooth</string>
+    <string name="toggleGPS">GPS</string>
+    <string name="toggleData">Mobile Data</string>
+    <string name="toggleSync">Data Sync</string>
+    <string name="toggle2g3g">2G/3G</string>
+    <string name="toggleSound">Ring Mode</string>
+    <string name="toggleBrightness">Brightness</string>
+    <string name="toggleAutoRotate">Orientation</string>
+    <string name="toggleScreenTimeout">Screen Timeout</string>
+    <string name="toggleAirplane">Airplane</string>
+    <string name="toggleFlashlight">Flashlight</string>
+    <string name="toggleLockScreen">Lock Screen</string>
+    <string name="toggleWimax">WiMax</string>
+
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Screen Security</string>
     <string name="screen_security_title">Lock screen</string>
