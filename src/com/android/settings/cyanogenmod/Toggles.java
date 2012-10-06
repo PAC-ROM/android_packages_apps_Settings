@@ -44,6 +44,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.android.settings.Utils;
 
 import com.android.internal.telephony.Phone;
 import com.android.settings.cyanogenmod.TouchInterceptor;
@@ -75,6 +76,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
     private static final int LTE = 10;
     private static final int TORCH = 12;
     private static final int NFC = 14;
+    private static final int TICKER = 15;
 
     // Arrays containing the entire set of toggles
     private static ArrayList<String> allEntries;
@@ -441,6 +443,11 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         // Check if device has NFC
         if(!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
             removeEntry(values[NFC]);
+        }
+
+        // Check if Ticker is available for statusbar
+        if (!Utils.isTablet()) {
+            removeEntry(values[TICKER]);
         }
 
         mEntries = allEntries.toArray(new String[allEntries.size()]);
