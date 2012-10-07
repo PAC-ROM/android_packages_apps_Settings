@@ -1893,6 +1893,7 @@
     <string name="toggle_torch">Flash LED</string>
     <string name="toggle_vibrate">Vibrar</string>
     <string name="toggle_usb_tether">Anclaje de USB</string>
+    <string name="toggle_donotdisturb">No molestar</string>
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">"Barra de estado"</string>
     <string name="status_bar_clock_title">"Reloj"</string>
@@ -1911,6 +1912,8 @@
     <string name="status_bar_signal_text_hidden">"Oculto"</string>
     <string name="status_bar_max_notifications_title">Numero de notificaciones</string>
     <string name="status_bar_max_notifications_summary">Solo aplica al modo retrato</string>
+    <string name="status_bar_donotdisturb_title">No molestar</string>
+    <string name="status_bar_donotdisturb_summary">Desactivar la animación y el sonido para las notificaciones entrantes</string>
     <string name="lock_screen_title">"Bloqueo de pantalla"</string>
     <string name="lockscreen_target_info">Arrastre el control deslizante para ajustar los accesos directos</string>
     <string name="lockscreen_target_title">Accesos directos</string>

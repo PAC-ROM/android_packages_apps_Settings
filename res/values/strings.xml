@@ -4323,7 +4323,7 @@
     <string name="toggle_wifi">Wi-Fi</string>
     <string name="toggle_wifi_ap">Wi-Fi AP</string>
     <string name="toggle_usb_tether">USB Tether</string>
-    <string name="toggle_donotdisturb">Do not disturb</string>
+    <string name="toggle_donotdisturb">Don\'t disturb</string>
 
     <!-- Combined Bar  -->
     <string name="combined_bar_title">Combined bar</string>
@@ -4391,7 +4391,7 @@
     <string name="status_bar_max_notifications_title">Number of notification icons</string>
     <string name="status_bar_max_notifications_summary">Applies only to portrait view</string>
     <string name="status_bar_donotdisturb_title">Do not disturb</string>
-    <string name="status_bar_donotdisturb_summary">No ticker-overlay and sound for incoming notifications</string>
+    <string name="status_bar_donotdisturb_summary">Disable ticker animation and sound for incoming notifications</string>
 
     <string name="lock_screen_title">Lock screen</string>
 
