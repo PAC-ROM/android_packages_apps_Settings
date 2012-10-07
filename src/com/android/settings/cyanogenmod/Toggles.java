@@ -76,7 +76,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
     private static final int LTE = 10;
     private static final int TORCH = 12;
     private static final int NFC = 14;
-    private static final int TICKER = 15;
+    private static final int DONOTDISTURB = 15;
 
     // Arrays containing the entire set of toggles
     private static ArrayList<String> allEntries;
@@ -443,11 +443,6 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         // Check if device has NFC
         if(!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
             removeEntry(values[NFC]);
-        }
-
-        // Check if Ticker is available for statusbar
-        if (!Utils.isTablet()) {
-            removeEntry(values[TICKER]);
         }
 
         mEntries = allEntries.toArray(new String[allEntries.size()]);

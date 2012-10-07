@@ -43,7 +43,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
     private static final String COMBINED_BAR_AUTO_HIDE = "combined_bar_auto_hide";
     private static final String STATUS_BAR_NOTIF_COUNT = "status_bar_notif_count";
-    private static final String STATUS_BAR_TICKER = "status_bar_ticker";
+    private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
 
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
@@ -54,7 +54,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarBrightnessControl;
     private CheckBoxPreference mCombinedBarAutoHide;
     private CheckBoxPreference mStatusBarNotifCount;
-    private CheckBoxPreference mStatusBarTicker;
+    private CheckBoxPreference mStatusBarDoNotDisturb;
     private PreferenceCategory mPrefCategoryGeneral;
 
     @Override
@@ -72,7 +72,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBattery = (ListPreference) prefSet.findPreference(STATUS_BAR_BATTERY);
         mMaxNotIcons = (ListPreference) prefSet.findPreference(NUMBER_NOT_ICONS);
         mCombinedBarAutoHide = (CheckBoxPreference) prefSet.findPreference(COMBINED_BAR_AUTO_HIDE);
-        mStatusBarTicker = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_TICKER);
+        mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
         mStatusBarCmSignal = (ListPreference) prefSet.findPreference(STATUS_BAR_SIGNAL);
 
         mStatusBarClock.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -82,8 +82,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarCenterClock.setEnabled(mStatusBarClock.isChecked());
         mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
-        mStatusBarTicker.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NOTIFICATION_POPUP, 1) == 1));
+        mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
 
         try {
             if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(), 
@@ -140,7 +140,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             mPrefCategoryGeneral.removePreference(mStatusBarBrightnessControl);
             mPrefCategoryGeneral.removePreference(mStatusBarCmSignal);
         } else {
-            mPrefCategoryGeneral.removePreference(mStatusBarTicker);
             mPrefCategoryGeneral.removePreference(mMaxNotIcons);
             mPrefCategoryGeneral.removePreference(mCombinedBarAutoHide);
         }
@@ -191,10 +190,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_CENTER_CLOCK, value ? 1 : 0);
             return true;
-        } else if (preference == mStatusBarTicker) {
-            value = mStatusBarTicker.isChecked();
+        } else if (preference == mStatusBarDoNotDisturb) {
+            value = mStatusBarDoNotDisturb.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NOTIFICATION_POPUP, value ? 1 : 0);
+                    Settings.System.STATUS_BAR_DONOTDISTURB, value ? 1 : 0);
             return true;
         } else if (preference == mStatusBarBrightnessControl) {
             value = mStatusBarBrightnessControl.isChecked();
