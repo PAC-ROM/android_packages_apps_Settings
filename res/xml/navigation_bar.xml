@@ -37,6 +37,17 @@
             android:title="@string/navigation_bar_tabui_menu_title"
             android:summary="@string/navigation_bar_tabui_menu_summary" />
 
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+            android:key="navbar_color"
+            android:title="@string/navigation_bar_color_title"
+            android:summary="@string/navigation_bar_color_summary"
+            android:defaultValue="#000000" />
+
+        <Preference
+            android:key="navbar_color_default"
+            android:title="@string/navigation_bar_restore_stock_color"
+            android:summary="@string/navigation_bar_restore_stock_color_summary" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>

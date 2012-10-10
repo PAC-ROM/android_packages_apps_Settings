@@ -4362,6 +4362,10 @@
     <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
     <string name="navigation_bar_menu_editable">Editable</string>
     <string name="navigation_bar_menu_locked">Locked</string>
+    <string name="navigation_bar_color_title">Background color</string>
+    <string name="navigation_bar_color_summary">Change the color of the navigation bar</string>
+    <string name="navigation_bar_restore_stock_color">Restore color</string>
+    <string name="navigation_bar_restore_stock_color_summary">Restore default navigation bar color</string>
 
     <!-- Hardware keys -->
     <string name="hardware_keys_title">Hardware keys</string>
@@ -4917,6 +4921,16 @@
     <string name="sms_security_check_limit_title">SMS message limit</string>
     <string name="sms_security_check_limit_summary">Display an alert dialog to prevent applications from sending SMS messages too frequently. Current limit: %d messages in 15 minutes</string>
     <string name="sms_security_check_limit_default">30 (Default)</string>
+
+     <!-- Color Picker -->
+    <string name="dialog_color_picker">Color picker</string>
+    <string name="press_color_to_apply">Press on color to apply</string>
+    <string name="hex">Hex:</string>
+    <string name="set">Set</string>
+    <string name="hex_hint" translatable="false">#FF000000</string>
+    <string name="ics_color" translatable="false">!!!</string>
+    <string name="arrow_right" translatable="false">→</string>
+    <string name="arrow_down" translatable="false">↓</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>
