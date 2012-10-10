@@ -326,6 +326,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                 ArrayList<String> toggleArray = getTogglesStringArray(mButtonContext);
 
                 for(int i = 0; i < toggleArray.size(); i++) {
+                    Log.d("paranoid:reloadButtons", "string="+toggleArray.get(i));
                     mToggles.add(new Toggle(toggleArray.get(i)));
                 }
             }

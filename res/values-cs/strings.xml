@@ -299,7 +299,7 @@
     <string name="owner_info_settings_title" msgid="2723190010708381889">"Informace o vlastníkovi"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
     <string name="owner_info_settings_edit_text_hint" msgid="4608681417960923911">"Zadejte text, který se zobrazí na zamčené obrazovce"</string>
-    <string name="location_settings_title" msgid="8935806698251432196">"Služby určování polohy"</string>
+    <string name="location_settings_title" msgid="4483843407328665068">"Přístup k poloze"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Zabezpečení"</string>
     <string name="security_settings_summary" msgid="967393342537986570">"Moje poloha, odemknutí obrazovky, zámek SIM, zámek úložiště pověření"</string>
     <string name="cdma_security_settings_summary" msgid="6068799952798901542">"Nastavení funkce Moje poloha, odemknutí obrazovky a zamknutí úložiště pověření"</string>
@@ -899,16 +899,20 @@
     <string name="tethering_help_button_text" msgid="656117495547173630">"Nápověda"</string>
     <string name="network_settings_title" msgid="7967552516440151852">"Mobilní sítě"</string>
     <string name="location_title" msgid="1029961368397484576">"Moje poloha"</string>
-    <string name="location_network_based" msgid="5569673665032992664">"Určování polohy Google"</string>
-    <string name="location_neighborhood_level" msgid="2948129720516513300">"Povolit odesílání anonymních dat o poloze do Googlu a současně umožnit povoleným aplikacím, aby k určení vaší přibližné polohy využívaly data ze zdrojů, jako jsou sítě Wi-Fi a mobilní sítě."</string>
+    <string name="location_network_based" msgid="7472814266821714527">"Poloha Wi-Fi a mobilní sítě"</string>
+    <string name="location_neighborhood_level" msgid="5626515380188353712">"Povolit aplikacím používat službu polohy Google a rychleji odhadovat vaši polohu. Anonymní data budou sbírána a odesílána Googlu."</string>
     <string name="location_neighborhood_level_wifi" msgid="7457348712272184793">"Poloha určená sítí Wi-Fi"</string>
     <string name="location_gps" msgid="8392461023569708478">"Satelity GPS"</string>
-    <string name="location_street_level" msgid="4244496898967415234">"Povolit aplikacím určit vaši přesnou polohu pomocí systému GPS"</string>
+    <string name="location_street_level" product="tablet" msgid="1669562198260860802">"Povolit aplikacím ve vašem tabletu určovat polohu pomocí GPS"</string>
+    <string name="location_street_level" product="default" msgid="4617445745492014203">"Povolit aplikacím ve vašem telefonu určovat polohu pomocí GPS"</string>
     <string name="assisted_gps" msgid="4649317129586736885">"Použít systém A-GPS"</string>
     <string name="assisted_gps_enabled" msgid="8751899609589792803">"Vylepšit funkčnost GPS pomocí serveru (deaktivací této funkce snížíte využití sítě)"</string>
     <string name="assisted_gps_disabled" msgid="6982698333968010748">"Vylepšit funkčnost GPS pomocí serveru (zrušením této funkce zvýšíte výkon GPS)"</string>
     <string name="use_location_title" msgid="5206937465504979977">"Poloha a vyhledávání"</string>
     <string name="use_location_summary" msgid="3978805802386162520">"Povolit Googlu použít vaši polohu ke zlepšení výsledků vyhledávání a dalších služeb"</string>
+    <string name="location_access_title" msgid="7064108942964081243">"Přístup k údajům o mé poloze"</string>
+    <string name="location_access_summary" msgid="69031404093194341">"Povolit aplikacím, které o to požádaly, používat údaje o poloze"</string>
+    <string name="location_sources_heading" msgid="1278732419851088319">"Zdroje polohy"</string>
     <string name="about_settings" product="tablet" msgid="593457295516533765">"Informace o tabletu"</string>
     <string name="about_settings" product="default" msgid="1743378368185371685">"Informace o telefonu"</string>
     <string name="about_settings_summary" msgid="3371517697156165959">"Zobrazí právní informace, stav a verzi softwaru"</string>
@@ -1746,7 +1750,7 @@
     <string name="icon_picker_chrome">Chrome</string>
     <string name="icon_picker_google_small">Google (malý)</string>
     <string name="icon_picker_search">Hledat</string>
-    <string name="power_menu_title">Menu napájení</string>
+    <string name="power_menu_title">Nabídka tlačítka Vypnout</string>
     <string name="power_menu_reboot_title">Nabídka restartu</string>
     <string name="power_menu_screenshot_title">Snímek obrazovky</string>
     <string name="power_menu_profiles_title">Přepínač profilů</string>
@@ -2265,7 +2269,7 @@
     <string name="select_custom_app_title">Zvolte vlastní aplikaci</string>
     <string name="adb_over_network">ADB přes síť</string>
     <string name="adb_over_network_summary">Použít ladění přes síťové připojení (např. WiFi) místo USB. Toto nastavení bude obnoveno po restartu.</string>
-    <string name="adb_over_network_warning">OPOZORNĚNÍ: Pokud je povoleno ADB přes síťové připojení, zařízení je otevřené pro pokusy o průniky na všech připojených sítích, včetně GSM datové sítě!\n\nPoužijte tuto vlastnost pouze pokud jste připojeni k důvěryhodné síti.\n\nOpravdu chcete povolit tuto funkci?</string>
+    <string name="adb_over_network_warning">UPOZORNĚNÍ: Pokud je povoleno ADB přes síťové připojení, zařízení je otevřené pro pokusy o průniky na všech připojených sítích, včetně GSM datové sítě!\n\nPoužijte tuto vlastnost pouze pokud jste připojeni k důvěryhodné síti.\n\nOpravdu chcete povolit tuto funkci?</string>
     <string name="silent_mode_title" msgid="3181479108593217704">"Tichý režim"</string>
     <string name="pref_volume_wake_title">Probuzení ovladačem hlasitosti</string>
     <string name="pref_volume_wake_summary">Stisk tlačítek hlasitosti probudí zařízení. Určeno pro zařízení se špatně přístupným tlačítkem napájení</string>
@@ -2284,15 +2288,23 @@
     <string name="changelog_error">Chyba při načítání seznamu změn\u2026</string>
     <string name="changelog_unknown">Neznámý</string>
     <string name="changelog_version">Verze</string>
-    <string name="wifi_setting_countrycode_title">Oblastní Wi-Fi kód</string>
-    <string name="wifi_setting_countrycode_summary">Specifický oblastní kód pro Wi-Fi</string>
-    <string name="wifi_setting_countrycode_error">Byl tam problém nastavení oblastního kódu.</string>
-    <string name="accessibility_home_button_answers_call_title">Domovské tlačítko odpovídá hovoru</string>
+    <string name="wifi_setting_countrycode_title">Regionální Wi-Fi kód</string>
+    <string name="wifi_setting_countrycode_summary">Specifický regionální kód pro Wi-Fi</string>
+    <string name="wifi_setting_countrycode_error">Nastal problém s nastavením regionálního kódu.</string>
+    <string name="accessibility_home_button_answers_call_title">Tlačítko Domů přijímá hovor</string>
     <string name="navigation_bar_menu_editable">Možnost úprav</string>
     <string name="navigation_bar_menu_locked">Zamknutý</string>
     <string name="lockscreen_clock_align_title">Zarovnání hodin</string>
     <string name="lockscreen_clock_align_left">Vlevo</string>
-    <string name="lockscreen_clock_align_center">Na středu</string>
+    <string name="lockscreen_clock_align_center">Na střed</string>
     <string name="lockscreen_clock_align_right">Vpravo</string>
     <string name="title_expanded_widget">Power widget v oznamovací oblasti</string>
+    <string name="dock_force_undock_title">Nasilné odpojení doku</string>
+    <string name="dock_force_undock_summary_no_dock" product="tablet">Tablet není zapojen v doku</string>
+    <string name="dock_force_undock_summary_no_dock" product="default">Telefon není zapojen v doku</string>
+    <string name="dock_force_undock_summary" product="tablet">Odpojit tablet od doku</string>
+    <string name="dock_force_undock_summary" product="default">Odpojit telefon od doku</string>
+    <string name="allow_mock_sms">Povolit falešné SMS</string>
+    <string name="cmupdate_settings_title">Aktualizace CyanogenModu</string>
+    <string name="cmupdate_settings_summary">Zkontrolujte, zda jsou k dispozici aktualizace</string>
 </resources>
