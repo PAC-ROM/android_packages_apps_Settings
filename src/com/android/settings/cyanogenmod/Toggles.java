@@ -118,10 +118,16 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         mToggleStyle.setValue(Integer.toString(Settings.System.getInt(mContext.getContentResolver(), 
                 Settings.System.STATUSBAR_TOGGLES_STYLE, 3)));
 
+        int val = Settings.System.getInt(mContext.getContentResolver(), 
+                Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1);
+
+        if (val == 2) {
+            mToggleStyle.setEnabled(false);
+        }
+
         mTogglesLayout = (ListPreference) findPreference(PREF_ALT_BUTTON_LAYOUT);
         mTogglesLayout.setOnPreferenceChangeListener(this);
-        mTogglesLayout.setValue(Integer.toString(Settings.System.getInt(mContext.getContentResolver(), 
-                Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1)));
+        mTogglesLayout.setValue(Integer.toString(val));
 
         mEnabledToggles = findPreference(PREF_ENABLED_TOGGLES);
 
@@ -212,6 +218,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, val);
+            mToggleStyle.setEnabled(val != 2);
             return true;
         }
         return false;
