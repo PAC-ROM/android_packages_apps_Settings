@@ -1459,8 +1459,8 @@
     </string-array>
 
     <string-array name="toggles_layout_entries">
-        <item>@string/toggle_layout_toggle</item>
         <item>@string/toggle_layout_switch</item>
+        <item>@string/toggle_layout_toggle</item>
         <item>@string/toggle_layout_button</item>
     </string-array>
 

@@ -36,6 +36,12 @@
             android:entryValues="@array/toggle_style_values" />
 
         <CheckBoxPreference
+            android:key="disable_scrollbar"
+            android:title="@string/toggles_disable_scrolling_title"
+            android:summary="@string/toggles_disable_scrolling_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:key="show_brightness_slider"
             android:title="@string/show_brightness_title"
             android:summary="@string/show_brightness_summary"
