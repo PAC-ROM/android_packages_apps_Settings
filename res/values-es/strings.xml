@@ -1880,8 +1880,9 @@
     <string name="toggle_only_icon">Solo icono</string>
     <string name="toggle_only_text">Solo texto</string>
     <string name="toggles_layout_title">Disposición de los controles</string>
-    <string name="toggle_layout_icon">Botones</string>
-    <string name="toggle_layout_switch">Interruptores</string>
+    <string name="toggle_layout_toggle">Icono</string>
+    <string name="toggle_layout_switch">Interruptor</string>
+    <string name="toggle_layout_button">Botón</string>
     <string name="enabled_toggles_title">Controles activos</string>
     <string name="enabled_toggles_summary">Configurar los controles a mostrar</string>
     <string name="toggles_display_dialog">Seleccione los controles deseados:</string>

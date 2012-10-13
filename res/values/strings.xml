@@ -4310,7 +4310,7 @@
     <string name="toggle_only_text">Text only</string>
     <string name="toggles_layout_title">Toggle Layout</string>
     <string name="toggle_layout_toggle">Toggle</string>
-    <string name="toggle_layout_switch">Switch</string>    
+    <string name="toggle_layout_switch">Switch</string>
     <string name="toggle_layout_button">Button</string>
     <string name="enabled_toggles_title">Enabled toggles</string>
     <string name="enabled_toggles_summary">Choose toggles to display</string>

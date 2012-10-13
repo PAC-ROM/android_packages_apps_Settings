@@ -110,7 +110,7 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                 Settings.System.STATUSBAR_TOGGLES_ENABLE, 0) == 1);
 
         mShowBrightness = (CheckBoxPreference) findPreference(PREF_SHOW_BRIGHTNESS);
-        mShowBrightness.setChecked(Settings.System.getInt(mContext.getContentResolver(), 
+        mShowBrightness.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.STATUSBAR_TOGGLES_SHOW_BRIGHTNESS, 0) == 1);
 
         mToggleStyle = (ListPreference) findPreference(PREF_TOGGLES_STYLE);
