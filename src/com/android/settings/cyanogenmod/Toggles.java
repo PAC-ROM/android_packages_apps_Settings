@@ -349,9 +349,9 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
                 mToggles = new ArrayList<Toggle>();
                 ArrayList<String> toggleArray = getTogglesStringArray(mButtonContext);
 
-                for(int i = 0; i < toggleArray.size(); i++) {
-                    if(!toggleArray.get(i).equals("")) {
-                        mToggles.add(new Toggle(toggleArray.get(i)));
+                for(String toggle : toggleArray) {
+                    if(!toggle.equals("")) {
+                        mToggles.add(new Toggle(toggle));
                     }
                 }
             }
