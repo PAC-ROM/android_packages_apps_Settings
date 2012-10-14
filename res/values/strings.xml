@@ -4312,6 +4312,7 @@
     <string name="toggle_layout_switch">Switch</string>
     <string name="toggle_layout_toggle">Toggle</string>
     <string name="toggle_layout_button">Button</string>
+    <string name="toggle_layout_multirow">Multi-row</string>
     <string name="enabled_toggles_title">Enabled toggles</string>
     <string name="enabled_toggles_summary">Choose toggles to display</string>
     <string name="toggles_display_dialog">Choose which toggles to use</string>

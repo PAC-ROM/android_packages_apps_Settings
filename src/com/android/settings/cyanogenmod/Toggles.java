@@ -67,7 +67,9 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
     private static final String PREF_ALT_BUTTON_LAYOUT = "toggles_layout_preference";
 
     private static final int LAYOUT_SWITCH = 0;
+    private static final int LAYOUT_TOGGLE = 1;
     private static final int LAYOUT_BUTTON = 2;
+    private static final int LAYOUT_MULTIROW = 3;
 
     private static final int ROTATE = 0;
     private static final int BLUETOOTH = 1;
@@ -125,14 +127,16 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
         mToggleStyle = (ListPreference) findPreference(PREF_TOGGLES_STYLE);
         mToggleStyle.setOnPreferenceChangeListener(this);
         mToggleStyle.setValue(Integer.toString(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.STATUSBAR_TOGGLES_STYLE, 2)));
+                Settings.System.STATUSBAR_TOGGLES_STYLE, LAYOUT_TOGGLE)));
 
         int val = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, 1);
 
-        if (val == LAYOUT_BUTTON) {
+        if (val == LAYOUT_BUTTON || val == LAYOUT_MULTIROW) {
             mToggleStyle.setEnabled(false);
-        } else if (val == LAYOUT_SWITCH) {
+        }
+
+        if (val == LAYOUT_TOGGLE || val == LAYOUT_MULTIROW) {
             mDisableScrolling.setEnabled(false);
         }
 
@@ -234,8 +238,8 @@ public class Toggles extends SettingsPreferenceFragment implements OnPreferenceC
             int val = Integer.parseInt((String) newValue);
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.STATUSBAR_TOGGLES_USE_BUTTONS, val);
-            mToggleStyle.setEnabled(val != LAYOUT_BUTTON);
-            mDisableScrolling.setEnabled(val != LAYOUT_SWITCH);
+            mToggleStyle.setEnabled(val != LAYOUT_BUTTON && val != LAYOUT_MULTIROW);
+            mDisableScrolling.setEnabled(val != LAYOUT_TOGGLE && val != LAYOUT_MULTIROW);
             return true;
         }
         return false;

@@ -1466,12 +1466,14 @@
         <item>@string/toggle_layout_switch</item>
         <item>@string/toggle_layout_toggle</item>
         <item>@string/toggle_layout_button</item>
+        <item>@string/toggle_layout_multirow</item>
     </string-array>
 
     <string-array name="toggles_layout_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
+        <item>3</item>
     </string-array>
 
     <string-array name="available_toggles_entries">
