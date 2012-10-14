@@ -4397,6 +4397,8 @@
     <string name="status_bar_center_clock_title">Center clock</string>
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
+    <string name="status_bar_weekday_title">Day of the week style</string>
+    <string name="status_bar_weekday_summary">Abbreviated day of the week before the clock</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>
