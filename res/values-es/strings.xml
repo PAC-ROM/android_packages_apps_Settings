@@ -1880,9 +1880,10 @@
     <string name="toggle_only_icon">Solo icono</string>
     <string name="toggle_only_text">Solo texto</string>
     <string name="toggles_layout_title">Disposición de los controles</string>
-    <string name="toggle_layout_switch">Interruptores</string>
-    <string name="toggle_layout_toggle">Indicadores</string>
-    <string name="toggle_layout_button">Botones</string>
+    <string name="toggle_layout_switch">Interruptor</string>
+    <string name="toggle_layout_toggle">Botón alterno</string>
+    <string name="toggle_layout_button">Botón holo</string>
+    <string name="toggle_layout_multirow">Multiples filas</string>
     <string name="enabled_toggles_title">Controles activos</string>
     <string name="enabled_toggles_summary">Configurar los controles a mostrar</string>
     <string name="toggles_display_dialog">Seleccione los controles deseados:</string>
@@ -1910,6 +1911,8 @@
     <string name="status_bar_center_clock_title">Centrar reloj</string>
     <string name="status_bar_am_pm_title">"Estilo AM/PM"</string>
     <string name="status_bar_am_pm_info">Activado el modo 24-horas</string>
+    <string name="status_bar_weekday_title">Estilo dia de la semana</string>
+    <string name="status_bar_weekday_summary">Mostrar el dia de la semana al lado del reloj</string>
     <string name="status_bar_battery_title">"Estilo batería"</string>
     <string name="status_bar_toggle_brightness">"Ajuste de brillo"</string>
     <string name="status_bar_toggle_brightness_summary">"Permitir ajustar la luminosidad de la pantalla mediante el deslizamiento por la barra de estado"</string>
@@ -1922,7 +1925,7 @@
     <string name="status_bar_max_notifications_title">Numero de notificaciones</string>
     <string name="status_bar_max_notifications_summary">Solo aplica al modo retrato</string>
     <string name="status_bar_donotdisturb_title">No molestar</string>
-    <string name="status_bar_donotdisturb_summary">Desactivar la animación y el sonido para las notificaciones entrantes</string>
+    <string name="status_bar_donotdisturb_summary">Desactivar la animación para las notificaciones entrantes</string>
     <string name="status_bar_battery_status_percentage">"Porcentaje"</string>
     <string name="status_bar_battery_status_circle">Circular</string>
     <string name="status_bar_battery_status_circle_percentage">Circular con porcentaje</string>

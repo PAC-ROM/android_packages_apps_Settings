@@ -4308,7 +4308,7 @@
     <string name="toggle_style_summary">Whether to show icon or text on toggles</string>
     <string name="toggle_only_icon">Icon only</string>
     <string name="toggle_only_text">Text only</string>
-    <string name="toggles_layout_title">Toggle Layout</string>
+    <string name="toggles_layout_title">Toggle layout</string>
     <string name="toggle_layout_switch">On/off switch</string>
     <string name="toggle_layout_toggle">Toggle button</string>
     <string name="toggle_layout_button">Holo button</string>
@@ -4398,7 +4398,7 @@
     <string name="status_bar_am_pm_title">AM/PM style</string>
     <string name="status_bar_am_pm_info">24-hour clock is enabled</string>
     <string name="status_bar_weekday_title">Day of the week style</string>
-    <string name="status_bar_weekday_summary">Abbreviated day of the week before the clock</string>
+    <string name="status_bar_weekday_summary">Show abbreviated day of the week aside the clock</string>
     <string name="status_bar_battery_title">Battery status style</string>
     <string name="status_bar_toggle_brightness">Brightness control</string>
     <string name="status_bar_toggle_brightness_summary">Adjust brightness by sliding across status bar</string>

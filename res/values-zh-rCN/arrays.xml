@@ -375,7 +375,7 @@
         <item>26%</item>
     </string-array>
 
-    <string-array name="entries_status_bar_am_pm">
+    <string-array name="entries_status_bar_clock">
         <item>正常</item>
         <item>小</item>
         <item>无 (默认)</item>

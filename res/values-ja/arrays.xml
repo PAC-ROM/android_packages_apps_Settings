@@ -370,7 +370,7 @@
         <item>26%</item>
     </string-array>
 
-    <string-array name="entries_status_bar_am_pm">
+    <string-array name="entries_status_bar_clock">
         <item>ノーマル</item>
         <item>小さく</item>
         <item>無し(デフォルト)</item>

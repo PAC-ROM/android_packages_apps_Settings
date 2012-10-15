@@ -302,7 +302,7 @@
         <item>Désactivé</item>
     </string-array>
 
-    <string-array name="entries_status_bar_am_pm">
+    <string-array name="entries_status_bar_clock">
         <item>Normal</item>
         <item>Petit</item>
         <item>Aucun (Défaut)</item>
