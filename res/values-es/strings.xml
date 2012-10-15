@@ -1911,8 +1911,10 @@
     <string name="status_bar_center_clock_title">Centrar reloj</string>
     <string name="status_bar_am_pm_title">"Estilo AM/PM"</string>
     <string name="status_bar_am_pm_info">Activado el modo 24-horas</string>
-    <string name="status_bar_weekday_title">Estilo dia de la semana</string>
-    <string name="status_bar_weekday_summary">Mostrar el dia de la semana al lado del reloj</string>
+    <string name="status_bar_weekday_title">Estilo día de la semana</string>
+    <string name="status_bar_weekday_summary">Mostrar el día de la semana al lado del reloj</string>
+    <string name="status_bar_daymonth_title">Estilo día y mes</string>
+    <string name="status_bar_daymonth_summary">Mostrar el día y el mes al lado del reloj</string>
     <string name="status_bar_battery_title">"Estilo batería"</string>
     <string name="status_bar_toggle_brightness">"Ajuste de brillo"</string>
     <string name="status_bar_toggle_brightness_summary">"Permitir ajustar la luminosidad de la pantalla mediante el deslizamiento por la barra de estado"</string>
