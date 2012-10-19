@@ -49,12 +49,12 @@
         <net.margaritov.preference.colorpicker.ColorPickerPanelView
             android:id="@+id/old_color_panel"
             android:layout_width="0px"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="0.5" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
+                android:layout_height="match_parent"
                 android:text="@string/arrow_right"
                 android:textSize="20sp"
                 android:gravity="center"
@@ -69,41 +69,33 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginBottom="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
+            android:id="@+id/hex_string"
             android:text="@string/hex"
-            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
+            android:layout_marginRight="10dp"
+            android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/hex"
-                android:hint="@string/hex_hint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginRight="6dp"
-                android:layout_marginBottom="5dp" />
+        <EditText
+            android:id="@+id/hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/hex_string"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_marginBottom="5dp" />
 
-            <Button
-                android:id="@+id/enter"
-                android:text="@string/set"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <Button
-                android:id="@+id/ics_color"
-                android:text="@string/ics_color"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-    </LinearLayout>
+    </RelativeLayout>
 
 </LinearLayout>

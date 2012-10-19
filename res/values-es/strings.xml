@@ -2268,7 +2268,6 @@
      <!-- Color Picker -->
     <string name="dialog_color_picker">Selector de color</string>
     <string name="press_color_to_apply">Presione en el color para aplicar</string>
-    <string name="set">Establecer</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

@@ -46,7 +46,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
 
     private CheckBoxPreference mNavigationBarShow;
-    private ColorPickerPreference mNavBar;
+    private ColorPickerPreference mNavigationBarColor;
     private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
     private PreferenceCategory mPrefCategory;
@@ -60,8 +60,8 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mNavBar = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
-        mNavBar.setOnPreferenceChangeListener(this);
+        mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
+        mNavigationBarColor.setOnPreferenceChangeListener(this);
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
         mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
@@ -91,7 +91,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mNavBar) {
+        if (preference == mNavigationBarColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
@@ -106,9 +106,11 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
 
     @Override
     public boolean onPreferenceClick(Preference pref) {
-        if (pref.equals(mResetColor)) {
+        if (pref == mResetColor) {
+            int color = 0xFF000000;
             Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SYSTEMUI_NAVBAR_COLOR, 0xFF000000);
+                    Settings.System.SYSTEMUI_NAVBAR_COLOR, color);
+            mNavigationBarColor.onColorChanged(color);
         }
         return false;
     }

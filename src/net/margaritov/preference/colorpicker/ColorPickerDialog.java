@@ -19,6 +19,8 @@ package net.margaritov.preference.colorpicker;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.PixelFormat;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -37,8 +39,7 @@ public class ColorPickerDialog extends Dialog implements
     private ColorPickerPanelView mNewColor;
 
     private EditText mHex;
-    private Button mSetButton;
-    private Button mIcsColor;
+    private boolean isColorPickerBusy;
 
     private OnColorChangedListener mListener;
 
@@ -72,8 +73,6 @@ public class ColorPickerDialog extends Dialog implements
         mOldColor = (ColorPickerPanelView) layout.findViewById(R.id.old_color_panel);
         mNewColor = (ColorPickerPanelView) layout.findViewById(R.id.new_color_panel);
         mHex = (EditText) layout.findViewById(R.id.hex);
-        mSetButton = (Button) layout.findViewById(R.id.enter);
-        mIcsColor = (Button) layout.findViewById(R.id.ics_color);
 
         ((LinearLayout) mOldColor.getParent()).setPadding(Math.round(
             mColorPicker.getDrawingOffset()), 0, Math.round(
@@ -85,37 +84,33 @@ public class ColorPickerDialog extends Dialog implements
         mOldColor.setColor(color);
         mColorPicker.setColor(color, true);
         mHex.setText(ColorPickerPreference.convertToARGB(color));
-        mSetButton.setOnClickListener(new View.OnClickListener() {
-
+        mHex.addTextChangedListener(new TextWatcher() {
+         
             @Override
-            public void onClick(View v) {
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+         
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+         
+            @Override
+            public void afterTextChanged(Editable editable) {
                 String text = mHex.getText().toString();
-                try {
-                    int newColor = ColorPickerPreference.convertToColorInt(text);
-                    mColorPicker.setColor(newColor, true);
-                } catch (Exception e) { }
+                int newColor = ColorPickerPreference.convertToColorInt(text);
+                isColorPickerBusy = true;
+                mColorPicker.setColor(newColor, true);
             }
         });
-        mIcsColor.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                try {
-                    int newColor = 0xFF33B5E5;
-                    mColorPicker.setColor(newColor, true);
-                } catch (Exception e) {
-                }
-            }
-        });
-
     }
 
     @Override
     public void onColorChanged(int color) {
         mNewColor.setColor(color);
-        try {
+        if(!isColorPickerBusy) {
             mHex.setText(ColorPickerPreference.convertToARGB(color));
-        } catch (Exception e) { }
+        }
+        isColorPickerBusy = false;
     }
 
     public void setAlphaSliderVisible(boolean visible) {
