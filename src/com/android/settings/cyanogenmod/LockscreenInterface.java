@@ -43,10 +43,11 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.notificationlight.ColorPickerView;
+
+import net.margaritov.preference.colorpicker.*;
 
 public class LockscreenInterface extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener, ColorPickerDialog.OnColorChangedListener {
     private static final String TAG = "LockscreenInterface";
     private static final int LOCKSCREEN_BACKGROUND = 1024;
     public static final String KEY_WEATHER_PREF = "lockscreen_weather";
@@ -176,6 +177,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     }
 
     @Override
+    public void onColorChanged(int color) {
+        Settings.System.putInt(getContentResolver(),
+                Settings.System.LOCKSCREEN_BACKGROUND, color);
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == LOCKSCREEN_BACKGROUND) {
             if (resultCode == Activity.RESULT_OK) {
@@ -220,27 +227,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             switch (indexOf) {
                 //Displays color dialog when user has chosen color fill
                 case 0:
-                    final ColorPickerView colorView = new ColorPickerView(mActivity);
                     int currentColor = Settings.System.getInt(getContentResolver(),
                             Settings.System.LOCKSCREEN_BACKGROUND, -1);
-                    if (currentColor != -1) {
-                        colorView.setColor(currentColor);
-                    }
-                    colorView.setAlphaSliderVisible(true);
-                    new AlertDialog.Builder(mActivity)
-                    .setTitle(R.string.lockscreen_custom_background_dialog_title)
-                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BACKGROUND, colorView.getColor());
-                            updateCustomBackgroundSummary();
-                        }
-                    }).setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener(){
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    }).setView(colorView).show();
+                    ColorPickerDialog picker = new ColorPickerDialog(mActivity, currentColor);
+                    picker.setOnColorChangedListener(this);
+                    picker.setAlphaSliderVisible(true);
+                    picker.show();
                     return false;
                 //Launches intent for user to select an image/crop it to set as background
                 case 1:

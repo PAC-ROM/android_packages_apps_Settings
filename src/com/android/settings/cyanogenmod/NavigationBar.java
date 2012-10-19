@@ -94,7 +94,6 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         if (preference == mNavigationBarColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
-            preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.SYSTEMUI_NAVBAR_COLOR, intHex);
