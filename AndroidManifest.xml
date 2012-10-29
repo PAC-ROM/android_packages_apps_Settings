@@ -2103,6 +2103,16 @@
                 <action android:name="com.aokp.romcontrol.INTENT_WEATHER_REQUEST" />
             </intent-filter>
         </receiver>
+        <!-- github viewer -->
+        <activity
+            android:name=".aokp.github.GithubViewer"
+            android:label="@string/dynamic_changelog_title"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
 
         <service android:name=".aokp.service.BootService"/>
         <service android:name=".aokp.service.HeadphoneService"/>

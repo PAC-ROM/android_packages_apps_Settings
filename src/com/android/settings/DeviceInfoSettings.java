@@ -18,6 +18,7 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.ComponentName;
 import android.content.DialogInterface;
@@ -41,6 +42,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.android.settings.aokp.github.GithubViewer;
 
 import com.android.settings.R;
 
@@ -90,6 +93,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     long[] mHits = new long[3];
     int mDevHitCountdown;
     Toast mDevHitToast;
+    Preference mDynamicChangelog;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -115,6 +119,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setValueSummary(KEY_PAC_VERSION, "ro.pac.version");
         findPreference(KEY_PAC_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
+        mDynamicChangelog = findPreference("pac_dynamic_changelog");
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
@@ -189,7 +194,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
             // Remove for secondary users
             removePreference(KEY_SYSTEM_UPDATE_SETTINGS);
         }
-        
+
 
         // Read platform settings for additional system update setting
         removePreferenceIfBoolFalse(KEY_UPDATE_SETTING,
@@ -224,6 +229,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
             }
+        } else if (preference == mDynamicChangelog) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            GithubViewer changelogFragment = new GithubViewer();
+            transaction.addToBackStack(null);
+            transaction.replace(this.getId(), changelogFragment);
+            transaction.commit();
+            return true;
         } else if (preference.getKey().equals(KEY_BUILD_NUMBER)) {
             // Don't enable developer options for secondary users.
             if (UserHandle.myUserId() != UserHandle.USER_OWNER) return true;
