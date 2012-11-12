@@ -1925,8 +1925,6 @@
     <string name="hardware_keys_action_voice_search">Hangalapú keresés</string>
     <string name="hardware_keys_action_in_app_search">Alkalmazáson belüli keresés</string>
 
-    <!-- Power Widget  -->
-
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Értesítési sáv</string>
@@ -2042,6 +2040,18 @@
     <string name="lockscreen_clock_align_center">Középre</string>
     <string name="lockscreen_clock_align_right">Jobbra</string>
 
+    <string name="lockscreen_buttons_title">Gomb műveletek</string>
+    <string name="lockscreen_buttons_summary">Képernyőzár beállítások</string>
+    <string name="lockscreen_long_press_back_title">Hosszan nyomva tartott vissza gomb</string>
+    <string name="lockscreen_long_press_home_title">Hosszan nyomva tartott kezdő gomb</string>
+    <string name="lockscreen_long_press_menu_title">Hosszan nyomva tartott menü gomb</string>
+    <string name="lockscreen_buttons_no_action">Nincs művelet</string>
+    <string name="lockscreen_buttons_flashlight">Zseblámpa</string>
+    <string name="lockscreen_buttons_next">Következő zeneszám</string>
+    <string name="lockscreen_buttons_previous">Előző zeneszám</string>
+    <string name="lockscreen_buttons_playpause">Zene lejátszás/szünet</string>
+    <string name="lockscreen_buttons_toggle_sound">Hang mód</string>
+
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profilok</string>
     <string name="profiles_general_title">Általános</string>
@@ -2141,8 +2151,6 @@
 
     <string name="vibrator_type_ringer">Telefonhívások</string>
     <string name="vibrator_type_notification">Értesítések</string>
-
-    <!-- Connection override toggles (not all are used at this time ) -->
 
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Képernyővédelem</string>
@@ -2408,9 +2416,10 @@
     <string name="power_menu_title">Kikapcsoló menü</string>
     <string name="power_menu_reboot_title">Újraindítás</string>
     <string name="power_menu_screenshot_title">Képernyőmentés</string>
+    <string name="power_menu_expanded_desktop">Képernyő kiterjesztés</string>
     <string name="power_menu_profiles_title">Profil választó</string>
     <string name="power_menu_airplane_title">Repülőgép üzemmód</string>
-    <string name="power_menu_silent_title">Csendes mód</string>
+    <string name="power_menu_silent_title">Hang mód</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Fejlesztői eszközök</string>

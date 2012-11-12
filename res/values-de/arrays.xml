@@ -170,6 +170,7 @@
     <item>Korea</item>
     <item>Türkei</item>
     <item>Singapur</item>
+    <item>Brasilien</item>
   </string-array>
   <string-array name="usage_stats_display_order_types">
     <item msgid="2100172576767439288">"Nutzungszeit"</item>
@@ -386,12 +387,6 @@
       <item>10%</item>
       <item>18% (Standard)</item>
       <item>26%</item>
-    </string-array>
-
-    <string-array name="entries_status_bar_clock">
-      <item>Normal</item>
-      <item>Klein</item>
-      <item>Aus (Standard)</item>
     </string-array>
 
     <!-- Profile mode options. -->

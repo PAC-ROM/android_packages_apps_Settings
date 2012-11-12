@@ -157,6 +157,7 @@
     <item>Corea</item>
     <item>Turquía</item>
     <item>Singapur</item>
+    <item>Brasil</item>
   </string-array>
   <string-array name="usage_stats_display_order_types">
     <item msgid="2100172576767439288">"Tiempo de uso"</item>
@@ -359,11 +360,6 @@
         <item>10%</item>
         <item>18% (por defecto)</item>
         <item>26%</item>
-    </string-array>
-    <string-array name="entries_status_bar_clock">
-        <item>Normal</item>
-        <item>Pequeño</item>
-        <item>Ninguno (por defecto)</item>
     </string-array>
     <string-array name="profile_entries">
         <item>Activo</item>
