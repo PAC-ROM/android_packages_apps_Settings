@@ -76,7 +76,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_SOUND = "notification_sound";
     private static final String KEY_CATEGORY_CALLS = "category_calls_and_notification";
     private static final String KEY_QUIET_HOURS = "quiet_hours";
-    private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_SAFE_HEADSET_RESTORE = "safe_headset_restore";
 
     private static final String SILENT_MODE_OFF = "off";
@@ -101,7 +100,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mHapticFeedback;
     private Preference mMusicFx;
     private CheckBoxPreference mLockSounds;
-    private CheckBoxPreference mVolBtnMusicCtrl;
     private Preference mRingtonePreference;
     private Preference mVibrationPreference;
     private Preference mNotificationPreference;
@@ -215,10 +213,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockSounds.setPersistent(false);
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
-
-        mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
-        mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
-                Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mVibrationPreference = findPreference(KEY_VIBRATION);
@@ -405,9 +399,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.SAFE_HEADSET_VOLUME_RESTORE,
                     mSafeHeadsetRestore.isChecked() ? 1 : 0);
-	} else if (preference == mVolBtnMusicCtrl) {
-            Settings.System.putInt(getContentResolver(), Settings.System.VOLBTN_MUSIC_CONTROLS,
-                    mVolBtnMusicCtrl.isChecked() ? 1 : 0);
         } else if (preference == mVibrationPreference) {
             String uriString = VibrationPattern.getPhoneVibration(getActivity());
             DialogFragment newFragment = VibrationPickerDialog.newInstance(mHandler, false, uriString);
