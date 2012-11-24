@@ -435,6 +435,18 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="entries_status_bar_am_pm" translatable="false">
+        <item>@string/status_bar_am_pm_normal</item>
+        <item>@string/status_bar_am_pm_small</item>
+        <item>@string/status_bar_am_pm_none</item>
+    </string-array>
+
+    <string-array name="values_status_bar_am_pm" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <string-array name="entries_status_bar_battery" translatable="false">
         <item>@string/status_bar_style_icon_portrait</item>
         <item>@string/status_bar_style_icon_landscape</item>
@@ -447,5 +459,17 @@
         <item>5</item>
         <item>2</item>
         <item>4</item>
+    </string-array>
+
+    <string-array name="entries_status_bar_signal" translatable="false">
+        <item>@string/status_bar_style_icon</item>
+        <item>@string/status_bar_signal_text_show_text</item>
+        <item>@string/status_bar_style_hidden</item>
+    </string-array>
+
+    <string-array name="values_status_bar_signal" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
     </string-array>
 </resources>
