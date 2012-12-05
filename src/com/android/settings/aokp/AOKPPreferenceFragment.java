@@ -32,6 +32,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.provider.Settings;
 import android.util.DisplayMetrics;
+import android.util.ExtendedPropertiesUtils;
 import android.util.Log;
 import android.widget.Button;
 
@@ -78,8 +79,7 @@ public class AOKPPreferenceFragment extends PreferenceFragment implements Dialog
     }
 
     public static boolean isTablet(Context context) {
-        return Settings.System.getInt(context.getContentResolver(),
-                Settings.System.CURRENT_UI_MODE,0) == 1;
+        return ExtendedPropertiesUtils.isTablet();
     }
 
     public static boolean isPhablet(Context context) {

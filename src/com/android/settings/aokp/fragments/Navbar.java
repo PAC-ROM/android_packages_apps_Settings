@@ -103,6 +103,9 @@ public class Navbar extends AOKPPreferenceFragment implements
     ListPreference mNavBarMenuDisplay;
     ListPreference mNavBarButtonQty;
     SeekBarPreference mButtonAlpha;
+    Preference mWidthHelp;
+    SeekBarPreference mWidthPort;
+    SeekBarPreference mWidthLand;
     CheckBoxPreference mMenuArrowKeysCheckBox;
     Preference mConfigureWidgets;
 
@@ -177,12 +180,33 @@ public class Navbar extends AOKPPreferenceFragment implements
         mButtonAlpha.setInitValue((int) (defaultButtonAlpha * 100));
         mButtonAlpha.setOnPreferenceChangeListener(this);
 
+        mWidthHelp = (Preference) findPreference("width_help");
+
+        float defaultPort = Settings.System.getFloat(mContentRes,
+                Settings.System.NAVIGATION_BAR_WIDTH_PORT, 0f);
+        mWidthPort = (SeekBarPreference) findPreference("width_port");
+        mWidthPort.setInitValue((int) (defaultPort * 2.5f));
+        mWidthPort.setOnPreferenceChangeListener(this);
+
+        float defaultLand = Settings.System.getFloat(mContentRes,
+                Settings.System.NAVIGATION_BAR_WIDTH_LAND, 0f);
+        mWidthLand = (SeekBarPreference) findPreference("width_land");
+        mWidthLand.setInitValue((int) (defaultLand * 2.5f));
+        mWidthLand.setOnPreferenceChangeListener(this);
+
         mConfigureWidgets = findPreference(NAVIGATION_BAR_WIDGETS);
 
         mMenuArrowKeysCheckBox = (CheckBoxPreference) findPreference(PREF_MENU_ARROWS);
         mMenuArrowKeysCheckBox.setChecked(Settings.System.getBoolean(mContentRes,
                 Settings.System.NAVIGATION_BAR_MENU_ARROW_KEYS, true));
-
+		if (isTablet(mContext)) {
+            prefs.removePreference(mNavBarMenuDisplay);
+            prefs.removePreference(menuDisplayLocation);
+        } else {
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthHelp);
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthLand);
+            ((PreferenceGroup) findPreference("advanced_cat")).removePreference(mWidthPort);
+        }
         refreshSettings();
         setHasOptionsMenu(true);
     }
@@ -318,6 +342,19 @@ public class Navbar extends AOKPPreferenceFragment implements
                     val * 0.01f);
             refreshSettings();
             return true;
+        } else if (preference == mWidthPort) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(mContentRes,
+                    Settings.System.NAVIGATION_BAR_WIDTH_PORT,
+                    val * 0.4f);
+            return true;
+        } else if (preference == mWidthLand) {
+            float val = Float.parseFloat((String) newValue);
+            Settings.System.putFloat(mContentRes,
+                    Settings.System.NAVIGATION_BAR_WIDTH_LAND,
+                    val * 0.4f);
+            return true;
+
         }
         return false;
     }
