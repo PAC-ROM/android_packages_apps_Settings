@@ -115,6 +115,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         }
         mRingMode.setOnPreferenceChangeListener(this);
 
+		// Add the network mode preference
+        mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
+        mNetworkMode.setSummary(mNetworkMode.getEntry());
+        mNetworkMode.setOnPreferenceChangeListener(this);
+        
         // Screen timeout mode
         mScreenTimeoutMode = (ListPreference) prefSet.findPreference(EXP_SCREENTIMEOUT_MODE);
         mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntry());
@@ -153,12 +158,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         if (!isMobileData) {
             QuickSettingsUtil.TILES.remove(TILE_MOBILEDATA);
             QuickSettingsUtil.TILES.remove(TILE_WIFIAP);
+            QuickSettingsUtil.TILES.remove(TILE_NETWORKMODE);
+            prefSet.removePreference(mNetworkMode);
         } else {
             // We have telephony support however, some phones run on networks not supported
             // by the networkmode tile so remove both it and the associated options list
             int network_state = -99;
             try {
-                network_state = Settings.Global.getInt(resolver,
+                network_state = Settings.Global.getInt(getActivity()
+                        .getApplicationContext().getContentResolver(),
                         Settings.Global.PREFERRED_NETWORK_MODE);
             } catch (Settings.SettingNotFoundException e) {
                 Log.e(TAG, "Unable to retrieve PREFERRED_NETWORK_MODE", e);
@@ -170,6 +178,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
                 case Phone.NT_MODE_WCDMA_ONLY:
                 case Phone.NT_MODE_GSM_UMTS:
                 case Phone.NT_MODE_GSM_ONLY:
+                    break;
+                default:
+                    QuickSettingsUtil.TILES.remove(TILE_NETWORKMODE);
+                    prefSet.removePreference(mNetworkMode);
                     break;
             }
         }
@@ -244,6 +256,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
             mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
+            return true;
+        } else if (preference == mNetworkMode) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mNetworkMode.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.EXPANDED_NETWORK_MODE, value);
+            mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
             return true;
         }
         return false;
