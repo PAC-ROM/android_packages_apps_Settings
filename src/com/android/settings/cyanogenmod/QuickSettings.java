@@ -66,6 +66,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_USBTETHER = "dynamic_usbtether";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String COLLAPSE_PANEL = "collapse_panel";
     private static final String GENERAL_SETTINGS = "pref_general_settings";
     private static final String STATIC_TILES = "static_tiles";
@@ -83,6 +84,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     PreferenceCategory mGeneralSettings;
     PreferenceCategory mStaticTiles;
     PreferenceCategory mDynamicTiles;
+    ListPreference mQuickPulldown;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,6 +102,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
         mStaticTiles = (PreferenceCategory) prefSet.findPreference(STATIC_TILES);
         mDynamicTiles = (PreferenceCategory) prefSet.findPreference(DYNAMIC_TILES);
+
+        mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
+        if (!Utils.isPhone(getActivity())) {
+            prefSet.removePreference(mQuickPulldown);
+        } else {
+            mQuickPulldown.setOnPreferenceChangeListener(this);
+            int statusQuickPulldown = Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0);
+            mQuickPulldown.setValue(String.valueOf(statusQuickPulldown));
+            updatePulldownSummary();
+        }
 
         mCollapsePanel = (CheckBoxPreference) prefSet.findPreference(COLLAPSE_PANEL);
         mCollapsePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_COLLAPSE_PANEL, 0) == 1);
@@ -264,6 +276,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
                     Settings.System.EXPANDED_NETWORK_MODE, value);
             mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
             return true;
+        } else if (preference == mQuickPulldown) {
+            int statusQuickPulldown = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_QUICK_PULLDOWN,
+                    statusQuickPulldown);
+            updatePulldownSummary();
+            return true;
         }
         return false;
     }
@@ -286,6 +304,30 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             pref.setSummary(summary);
         } else {
             pref.setSummary(defSummary);
+        }
+    }
+
+    private void updatePulldownSummary() {
+        ContentResolver resolver = getActivity().getApplicationContext().getContentResolver();
+        int summaryId;
+        int directionId;
+        summaryId = R.string.summary_quick_pulldown;
+        String value = Settings.System.getString(resolver, Settings.System.QS_QUICK_PULLDOWN);
+        String[] pulldownArray = getResources().getStringArray(R.array.quick_pulldown_values);
+        if (pulldownArray[0].equals(value)) {
+            directionId = R.string.quick_pulldown_off;
+            mQuickPulldown.setValueIndex(0);
+            mQuickPulldown.setSummary(getResources().getString(directionId));
+        } else if (pulldownArray[1].equals(value)) {
+            directionId = R.string.quick_pulldown_right;
+            mQuickPulldown.setValueIndex(1);
+            mQuickPulldown.setSummary(getResources().getString(directionId)
+                    + " " + getResources().getString(summaryId));
+        } else {
+            directionId = R.string.quick_pulldown_left;
+            mQuickPulldown.setValueIndex(2);
+            mQuickPulldown.setSummary(getResources().getString(directionId)
+                    + " " + getResources().getString(summaryId));
         }
     }
 
