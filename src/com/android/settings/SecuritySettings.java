@@ -88,6 +88,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_CREDENTIALS_MANAGER = "credentials_management";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String PACKAGE_MIME_TYPE = "application/vnd.android.package-archive";
+    private static final String LOCK_SYNC_ENCRYPTION_PASSWORD = "lock_sync_encryption_password";
 
     // CyanogenMod Additions
     private static final String SLIDE_LOCK_DELAY_TOGGLE = "slide_lock_delay_toggle";
@@ -772,6 +773,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }  else if (preference == mVibratePref) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_VIBRATE_ENABLED, isToggled(preference) ? 1 : 0);
+        } else if (LOCK_SYNC_ENCRYPTION_PASSWORD.equals(key)) {
+            lockPatternUtils.setSyncEncryptionPassword(isToggled(preference));
         } else if (preference == mShowPassword) {
             Settings.System.putInt(getContentResolver(), Settings.System.TEXT_SHOW_PASSWORD,
                     mShowPassword.isChecked() ? 1 : 0);
