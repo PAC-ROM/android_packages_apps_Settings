@@ -1354,4 +1354,38 @@
         <item>6</item>
         <item>7</item>
     </string-array>
+
+    <string-array name="edge_swipe_entries">
+        <item>@string/edge_swipe_none</item>
+        <item>@string/edge_swipe_expand</item>
+        <item>@string/edge_swipe_hide</item>
+        <item>@string/edge_swipe_recents</item>
+        <item>@string/edge_swipe_back</item>
+        <item>@string/edge_swipe_home</item>
+        <item>@string/edge_swipe_menu</item>
+        <item>@string/edge_swipe_app</item>
+    </string-array>
+
+    <string-array name="edge_swipe_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="gesture_type_entries">
+        <item>@string/gesture_tap</item>
+        <item>@string/gesture_long_press</item>
+        <item>@string/gesture_swipe</item>
+    </string-array>
+
+    <string-array name="gesture_type_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

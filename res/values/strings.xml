@@ -5035,4 +5035,34 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+
+    <string name="edge_swipe_zone_one">Zone 1</string>
+    <string name="edge_swipe_zone_two">Zone 2</string>
+    <string name="edge_swipe_zone_three">Zone 3</string>
+    <string name="edge_swipe_zone_four">Zone 4</string>
+    <string name="edge_swipe_title">Gesture navigation</string>
+    <string name="edge_swipe_right_title">Zone 3 Action</string>
+    <string name="edge_swipe_left_title">Zone 1 Action</string>
+    <string name="edge_swipe_top_title">Zone 2 Action</string>
+    <string name="edge_swipe_bottom_title">Zone 4 Action</string>
+    <string name="edge_swipe_move_title">Capture touch events</string>
+    <string name="edge_swipe_move_summary">Stop touches in zones from reaching the application</string>
+    <string name="edge_swipe_none">No action</string>
+    <string name="edge_swipe_expand">Expand notifications</string>
+    <string name="edge_swipe_hide">Toggle status bar</string>
+    <string name="edge_swipe_recents">Expand quick settings</string>
+    <string name="edge_swipe_back">Back</string>
+    <string name="edge_swipe_home">Home</string>
+    <string name="edge_swipe_menu">Menu</string>
+    <string name="edge_swipe_app">Launch application ...</string>
+    <string name="edge_swipe_blacklist_title">Gesture app blacklist</string>
+    <string name="gesture_area_too_large">The selected gesture area is too large and will not be set.</string>
+    <string name="gesture_tap">Single tap</string>
+    <string name="gesture_long_press">Long press</string>
+    <string name="gesture_swipe">Swipe out of zone</string>
+    <string name="gesture_swipe_distance">Swipe distance</string>
+
+    <!-- Section title for list of downloaded apps [CHAR LIMIT=30] -->
+    <string name="user_market_apps_heading">Installed apps</string>
+
 </resources>

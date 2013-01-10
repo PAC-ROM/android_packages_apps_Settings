@@ -66,6 +66,7 @@
     <string name="header_summary_keys">@null</string>
     <string name="header_summary_drawer">@null</string>
     <string name="header_summary_statusbar_misc">@null</string>
+    <string name="header_summary_gesture">@null</string>
     <string name="ribbon_settings_summary">@null</string>
 
     <!-- Menu Strings -->

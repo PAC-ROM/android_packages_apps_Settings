@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2012 The CyanogenMod Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+    android:title="@string/edge_swipe_title">
+
+    <PreferenceScreen
+        android:key="edge_swipe_blacklist_header"
+        android:fragment="com.android.settings.cyanogenmod.EdgeSwipeNavigationBlacklist"
+        android:title="@string/edge_swipe_blacklist_title" />
+
+    <CheckBoxPreference
+            android:key="gesture_swipe_capture"
+            android:title="@string/edge_swipe_move_title"
+            android:summary="@string/edge_swipe_move_summary"
+            android:persistent="false"/>
+
+    <com.android.settings.cyanogenmod.SeekBarPreference
+            android:key="gesture_swipe_distance"
+            android:title="@string/gesture_swipe_distance"
+            android:max="150"
+            android:defaultValue="0" />
+
+    <PreferenceCategory
+            android:key="zone_one"
+            android:title="@string/edge_swipe_zone_one" />
+
+    <ListPreference android:key="gesture_one"
+            android:title="@string/edge_swipe_left_title"
+            android:entries="@array/edge_swipe_entries"
+            android:entryValues="@array/edge_swipe_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <com.android.settings.cyanogenmod.QuadNumberPickerPreference
+            android:key="zone_one_grid"
+            android:title="Zone 1 Size - White"
+            android:summary="Start and end points as percentage of screen size"
+            settings:pickerTitle1="X Start"
+            settings:pickerTitle2="X End"
+            settings:pickerTitle3="Y Start"
+            settings:pickerTitle4="Y End"
+            settings:defaultValue1="0"
+            settings:defaultValue2="6"
+            settings:defaultValue3="0"
+            settings:defaultValue4="100"
+            settings:max1="100"
+            settings:min1="0"
+            settings:max2="100"
+            settings:min2="0"
+            settings:max3="100"
+            settings:min3="0"
+            settings:max4="100"
+            settings:min4="0" />
+
+    <ListPreference android:key="gesture_type_one"
+            android:title="Zone 1 Type"
+            android:entries="@array/gesture_type_entries"
+            android:entryValues="@array/gesture_type_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <PreferenceCategory
+            android:key="zone_two"
+            android:title="@string/edge_swipe_zone_two" />
+
+    <ListPreference android:key="gesture_two"
+            android:title="@string/edge_swipe_top_title"
+            android:entries="@array/edge_swipe_entries"
+            android:entryValues="@array/edge_swipe_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <com.android.settings.cyanogenmod.QuadNumberPickerPreference
+            android:key="zone_two_grid"
+            android:title="Zone 2 Size - Red"
+            android:summary="Start and end points as percentage of screen size"
+            settings:pickerTitle1="X Start"
+            settings:pickerTitle2="X End"
+            settings:pickerTitle3="Y Start"
+            settings:pickerTitle4="Y End"
+            settings:defaultValue1="0"
+            settings:defaultValue2="100"
+            settings:defaultValue3="0"
+            settings:defaultValue4="6"
+            settings:max1="100"
+            settings:min1="0"
+            settings:max2="100"
+            settings:min2="0"
+            settings:max3="100"
+            settings:min3="0"
+            settings:max4="100"
+            settings:min4="0" />
+
+    <ListPreference android:key="gesture_type_two"
+            android:title="Zone 2 Type"
+            android:entries="@array/gesture_type_entries"
+            android:entryValues="@array/gesture_type_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <PreferenceCategory
+            android:key="zone_three"
+            android:title="@string/edge_swipe_zone_three" />
+
+    <ListPreference android:key="gesture_three"
+            android:title="@string/edge_swipe_right_title"
+            android:entries="@array/edge_swipe_entries"
+            android:entryValues="@array/edge_swipe_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <com.android.settings.cyanogenmod.QuadNumberPickerPreference
+            android:key="zone_three_grid"
+            android:title="Zone 3 Size - Green"
+            android:summary="Start and end points as percentage of screen size"
+            settings:pickerTitle1="X Start"
+            settings:pickerTitle2="X End"
+            settings:pickerTitle3="Y Start"
+            settings:pickerTitle4="Y End"
+            settings:defaultValue1="94"
+            settings:defaultValue2="100"
+            settings:defaultValue3="0"
+            settings:defaultValue4="100"
+            settings:max1="100"
+            settings:min1="0"
+            settings:max2="100"
+            settings:min2="0"
+            settings:max3="100"
+            settings:min3="0"
+            settings:max4="100"
+            settings:min4="0" />
+
+    <ListPreference android:key="gesture_type_three"
+            android:title="Zone 3 Type"
+            android:entries="@array/gesture_type_entries"
+            android:entryValues="@array/gesture_type_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <PreferenceCategory
+            android:key="zone_four"
+            android:title="@string/edge_swipe_zone_four" />
+
+    <ListPreference android:key="gesture_four"
+            android:title="@string/edge_swipe_bottom_title"
+            android:entries="@array/edge_swipe_entries"
+            android:entryValues="@array/edge_swipe_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+    <com.android.settings.cyanogenmod.QuadNumberPickerPreference
+            android:key="zone_four_grid"
+            android:title="Zone 4 Size - Blue"
+            android:summary="Start and end points as percentage of screen size"
+            settings:pickerTitle1="X Start"
+            settings:pickerTitle2="X End"
+            settings:pickerTitle3="Y Start"
+            settings:pickerTitle4="Y End"
+            settings:defaultValue1="0"
+            settings:defaultValue2="100"
+            settings:defaultValue3="94"
+            settings:defaultValue4="100"
+            settings:max1="100"
+            settings:min1="0"
+            settings:max2="100"
+            settings:min2="0"
+            settings:max3="100"
+            settings:min3="0"
+            settings:max4="100"
+            settings:min4="0" />
+
+    <ListPreference android:key="gesture_type_four"
+            android:title="Zone 4 Type"
+            android:entries="@array/gesture_type_entries"
+            android:entryValues="@array/gesture_type_values"
+            android:persistent="false"
+            android:defaultValue="0"/>
+
+</PreferenceScreen>

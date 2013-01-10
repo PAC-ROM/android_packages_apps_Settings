@@ -192,6 +192,13 @@
         android:title="@string/header_system" />
 
     <header
+        android:id="@+id/edge_swipe_navigation"
+        android:fragment="com.android.settings.cyanogenmod.EdgeSwipeNavigation"
+        android:icon="@drawable/ic_settings_gesture"
+        android:title="@string/edge_swipe_title"
+        android:summary="@string/header_summary_gesture" />
+
+    <header
         android:id="@+id/permissions_settings"
         android:icon="@drawable/ic_settings_permissions"
         android:title="@string/permissions_settings_title">
