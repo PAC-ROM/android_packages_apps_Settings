@@ -785,21 +785,21 @@
     <!-- **** CYANOGENMOD EDITS START **** -->
 
     <!-- Volume Overlay options. -->
-    <string-array name="volume_overlay_entries">
+<!--    <string-array name="volume_overlay_entries">
         <item>Single</item>
         <item>Expandable</item>
         <item>Expanded</item>
         <item>None</item>
     </string-array>
-
+-->
     <!-- Values for Volume Overlay. Do not translate. -->
-    <string-array name="volume_overlay_values" translatable="false">
+<!--    <string-array name="volume_overlay_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </string-array>
-
+-->
     <!-- Silent mode options. -->
     <string-array name="silent_mode_entries">
         <item>Off</item>

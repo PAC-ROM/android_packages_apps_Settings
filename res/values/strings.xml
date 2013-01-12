@@ -4928,7 +4928,7 @@
     <string name="display_electron_beam_animation_off_title">Screen-off animation</string>
 
     <!-- Sound settings screen -->
-    <string name="volume_overlay_title">Volume panel style</string>
+<!--    <string name="volume_overlay_title">Volume panel style</string> -->
     <string name="silent_mode_title">Silent mode</string>
     <string name="volume_ring_only_description">Ringtone</string>
 
@@ -4945,6 +4945,10 @@
     <!-- Development settings: a string to show when the "App ID" development identifier for this
          device cannot be read from internal settings. [CHAR LIMIT=60] -->
     <string name="verifier_device_identifier_not_available">Device information not available</string>
+
+    <!-- Kill app long-press back -->
+<!--    <string name="kill_app_longpress_back">Kill app back button</string>
+    <string name="kill_app_longpress_back_summary">Kill the foreground app by long-pressing the back key</string> -->
 
     <!-- Hostname setting -->
     <string name="device_hostname">Device hostname</string>

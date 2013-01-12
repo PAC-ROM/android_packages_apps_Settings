@@ -59,7 +59,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_EMERGENCY_TONE_VALUE = 0;
 
-    private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
+//    private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
     private static final String KEY_SILENT_MODE = "silent_mode";
     private static final String KEY_VIBRATE = "vibrate_when_ringing";
     private static final String KEY_VIBRATION = "vibration";
@@ -93,7 +93,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final int VIB_CANCEL = 11;
 
     private CheckBoxPreference mVibrateWhenRinging;
-    private ListPreference mVolumeOverlay;
+//    private ListPreference mVolumeOverlay;
     private ListPreference mSilentMode;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
@@ -161,14 +161,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(findPreference(KEY_EMERGENCY_TONE));
         }
 
-        mVolumeOverlay = (ListPreference) findPreference(KEY_VOLUME_OVERLAY);
+/*        mVolumeOverlay = (ListPreference) findPreference(KEY_VOLUME_OVERLAY);
         mVolumeOverlay.setOnPreferenceChangeListener(this);
         int volumeOverlay = Settings.System.getInt(getContentResolver(),
                 Settings.System.MODE_VOLUME_OVERLAY,
                 VolumePanel.VOLUME_OVERLAY_EXPANDABLE);
         mVolumeOverlay.setValue(Integer.toString(volumeOverlay));
         mVolumeOverlay.setSummary(mVolumeOverlay.getEntry());
-
+*/
         mSilentMode = (ListPreference) findPreference(KEY_SILENT_MODE);
         if (!getResources().getBoolean(R.bool.has_silent_mode)) {
             getPreferenceScreen().removePreference(mSilentMode);
@@ -425,12 +425,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             }
         } else if (preference == mSilentMode) {
             setPhoneSilentSettingValue(objValue.toString());
-        } else if (preference == mVolumeOverlay) {
+/*        } else if (preference == mVolumeOverlay) {
             final int value = Integer.valueOf((String) objValue);
             final int index = mVolumeOverlay.findIndexOfValue((String) objValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.MODE_VOLUME_OVERLAY, value);
-            mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);
+            mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);*/
         }
 
         return true;
