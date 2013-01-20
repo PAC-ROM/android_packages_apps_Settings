@@ -68,7 +68,7 @@ public class Weather extends SettingsPreferenceFragment implements
         // Setup the preferences
         mEnableWeather = (CheckBoxPreference) findPreference(KEY_ENABLE_WEATHER);
         mEnableWeather.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.LOCKSCREEN_WEATHER, 0) == 1);
+                Settings.System.LOCKSCREEN_WEATHER_CM, 0) == 1);
 
         mUseCustomLoc = (CheckBoxPreference) findPreference(KEY_USE_CUSTOM_LOCATION);
         mUseCustomLoc.setChecked(Settings.System.getInt(mResolver,
@@ -79,7 +79,7 @@ public class Weather extends SettingsPreferenceFragment implements
 
         mShowLocation = (CheckBoxPreference) findPreference(KEY_SHOW_LOCATION);
         mShowLocation.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.WEATHER_SHOW_LOCATION, 1) == 1);
+                Settings.System.WEATHER_SHOW_LOCATION_CM, 1) == 1);
 
         mShowTimestamp = (CheckBoxPreference) findPreference(KEY_SHOW_TIMESTAMP);
         mShowTimestamp.setChecked(Settings.System.getInt(mResolver,
@@ -124,7 +124,7 @@ public class Weather extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mEnableWeather) {
-            Settings.System.putInt(mResolver, Settings.System.LOCKSCREEN_WEATHER,
+            Settings.System.putInt(mResolver, Settings.System.LOCKSCREEN_WEATHER_CM,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
 
@@ -135,7 +135,7 @@ public class Weather extends SettingsPreferenceFragment implements
             return true;
 
         } else if (preference == mShowLocation) {
-            Settings.System.putInt(mResolver, Settings.System.WEATHER_SHOW_LOCATION,
+            Settings.System.putInt(mResolver, Settings.System.WEATHER_SHOW_LOCATION_CM,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
 

@@ -1918,14 +1918,13 @@
     <string name="hardware_keys_action_voice_search">Голосовой поиск</string>
     <string name="hardware_keys_action_in_app_search">Поиск в приложении</string>
 
-    <!-- Power Widget #CM -->
-
     <!-- Status bar #CM -->
     <string name="status_bar_title">Строка состояния</string>
+    <string name="status_bar_clock_normal">Нормальный</string>
+    <string name="status_bar_clock_small">Маленький (по умолчанию)</string>
     <string name="status_bar_clock_title">Часы</string>
     <string name="status_bar_general_title">Основные</string>
     <string name="status_bar_show_clock_title">Показывать часы</string>
-    <string name="status_bar_am_pm_title">Стиль AM/PM</string>
     <string name="status_bar_am_pm_info">Включен 24-часовой формат</string>
     <string name="status_bar_battery_title">Стиль батареи</string>
     <string name="status_bar_toggle_brightness">Управление яркостью</string>
@@ -1936,9 +1935,12 @@
     <string name="status_bar_style_hidden">Скрытый</string>
     <string name="status_bar_signal_text_show_text">Текст</string>
     <string name="status_bar_battery_status_percentage">Процентный</string>
+    <string name="status_bar_battery_status_circle">Круг</string>
+    <string name="status_bar_battery_status_circle_percentage">Круг с процентами</string>
 
     <string name="lock_screen_title">Экран блокировки</string>
 
+    <!-- Lock Screen Shortcuts -->
     <string name="lockscreen_target_info">Потяните ползунок к цели, чтобы назначить ярлык</string>
     <string name="lockscreen_target_title">Ярлыки экрана блокировки</string>
     <string name="lockscreen_target_summary">Установка или настройка ярлыков экрана блокировки</string>
@@ -2028,6 +2030,18 @@
     <string name="lockscreen_clock_align_left">Слева</string>
     <string name="lockscreen_clock_align_center">По центру</string>
     <string name="lockscreen_clock_align_right">Справа</string>
+
+    <string name="lockscreen_buttons_title">Действия кнопок</string>
+    <string name="lockscreen_buttons_summary">Просмотр или изменение действий кнопок экрана блокировки</string>
+    <string name="lockscreen_long_press_back_title">Долгое нажатие кнопки \"Назад\"</string>
+    <string name="lockscreen_long_press_home_title">Долгое нажатие кнопки \"Домой\"</string>
+    <string name="lockscreen_long_press_menu_title">Долгое нажатие кнопки \"Меню\"</string>
+    <string name="lockscreen_buttons_no_action">Нет действия</string>
+    <string name="lockscreen_buttons_flashlight">Фонарик</string>
+    <string name="lockscreen_buttons_next">Следующий трек</string>
+    <string name="lockscreen_buttons_previous">Предыдущий трек</string>
+    <string name="lockscreen_buttons_playpause">Воспр./Пауза</string>
+    <string name="lockscreen_buttons_toggle_sound">Режимы звука</string>
 
     <!-- Profiles settings -->
     <string name="profiles_settings_title">Профили</string>
@@ -2129,8 +2143,6 @@
     <string name="vibrator_type_ringer">Вызовы</string>
     <string name="vibrator_type_notification">Уведомления</string>
 
-    <!-- Connection override toggles (not all are used at this time ) -->
-
     <!-- Screen security - Screen security -->
     <string name="screen_security_category">Безопасность экрана</string>
     <string name="screen_security_title">Экран блокировки</string>
@@ -2138,6 +2150,8 @@
     <string name="additional_options_title">Дополнительные опции</string>
     <string name="unlock_menu_unlock_title">Разблок. по кнопке \"Меню\"</string>
     <string name="unlock_menu_unlock_summary">Нажатие кнопки \"Меню\" разблокирует устройство</string>
+    <string name="unlock_home_unlock_title">Разблок. по кнопке \"Домой\"</string>
+    <string name="unlock_home_unlock_summary">Нажатие кнопки \"Домой\" разблокирует устройство</string>
     <string name="unlock_quick_unlock_control_title">Быстрая разблокировка</string>
     <string name="unlock_quick_unlock_control_summary">Не требуется нажимать \"ОК\" после ввода пароля или PIN. Стирание засчитывается как неудачная попытка</string>
 
@@ -2374,11 +2388,14 @@
     <string name="stylus_icon_enabled_title">Значок стилуса</string>
     <string name="stylus_icon_enabled_summary">Показывать значок указателя при рисовании или управлении стилусом</string>
 
-    <!-- Power menu screenshot -->
+    <!-- Power menu enable disable -->
     <string name="power_menu_title">Меню \"Параметры устройства\"</string>
     <string name="power_menu_reboot_title">Перезагрузка</string>
     <string name="power_menu_screenshot_title">Скриншот</string>
+    <string name="power_menu_expanded_desktop">Расширенный рабочий стол</string>
     <string name="power_menu_profiles_title">Выбор профиля</string>
+    <string name="power_menu_airplane_title">Режим полёта</string>
+    <string name="power_menu_silent_title">Звуковая панель</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Запуск утилиты разработчика</string>
@@ -2396,5 +2413,40 @@
     <!-- CM Updater -->
     <string name="cmupdate_settings_title">Обновление CyanogenMod</string>
     <string name="cmupdate_settings_summary">Проверка и установка доступных обновлений</string>
+
+    <!--- Sms security limit -->
+    <string name="app_security_title">БЕЗОПАСНОСТЬ ПРИЛОЖЕНИЙ</string>
+    <string name="sms_security_check_limit_title">Ограничение SMS-сообщений</string>
+    <string name="sms_security_check_limit_summary">Показывать предупреждение при слишком частой отправке SMS-сообщений приложениями. Текущее значение: %d сообщений в 15 минут.</string>
+    <string name="sms_security_check_limit_default">30 (По умолч.)</string>
+
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">Поддержка пера</string>
+    <string name="category_spen_title">Жесты пера</string>
+    <string name="enable_subcat_title">Перо</string>
+    <string name="enable_spen_title_head">Включить жесты пером</string>
+    <string name="enable_spen_summary_head">Позволяет жестами пера запускать пользовательские приложения. Внимание: Для запуска приложения нажмите кнопку на пере и проведите по экрану в нужном направлении.</string>
+    <string name="gestures_subcat_title">Жесты</string>
+    <string name="gestures_left_spen_title_head">Провести влево</string>
+    <string name="gestures_left_spen_summary_head">Запустить пользовательское приложение жестом влево</string>
+    <string name="gestures_right_spen_title_head">Провести вправо</string>
+    <string name="gestures_right_spen_summary_head">Запустить пользовательское приложение жестом вправо</string>
+    <string name="gestures_up_spen_title_head">Провести вверх</string>
+    <string name="gestures_up_spen_summary_head">Запустить пользовательское приложение жестом вверх</string>
+    <string name="gestures_down_spen_title_head">Провести вниз</string>
+    <string name="gestures_down_spen_summary_head">Запустить пользовательское приложение жестом вниз</string>
+    <string name="gestures_long_spen_title_head">Долгое нажатие</string>
+    <string name="gestures_long_spen_summary_head">Запустить пользовательское приложение долгим нажатием на экран</string>
+    <string name="gestures_double_spen_title_head">Двойное нажатие</string>
+    <string name="gestures_double_spen_summary_head">Запустить пользовательское приложение двойным тапом по экрану</string>
+
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">Нет действия</string>
+    <string name="gestures_action_home">Домой</string>
+    <string name="gestures_action_back">Кнопка \"Назад\"</string>
+    <string name="gestures_action_menu">Кнопка \"Меню\"</string>
+    <string name="gestures_action_search">Поиск</string>
+    <string name="gestures_action_recent">Запущенные приложения</string>
+
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

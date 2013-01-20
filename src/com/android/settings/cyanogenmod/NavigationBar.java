@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
+import android.preference.ColorPickerPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -28,88 +29,137 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.util.ExtendedPropertiesUtils;
 import android.view.IWindowManager;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
-
 public class NavigationBar extends SettingsPreferenceFragment implements OnPreferenceChangeListener, Preference.OnPreferenceClickListener  {
 
+
     private static final String NAV_BAR_CATEGORY = "nav_bar_category";
-    private static final String PREF_NAV_BAR_COLOR = "navbar_color";
-    private static final String PREF_NAV_BAR_COLOR_DEF = "navbar_color_default";
     private static final String NAV_BAR_STATUS = "nav_bar_status";
-    private static final String NAV_BAR_EDITOR = "navigation_bar_editor";
+//    private static final String NAV_BAR_EDITOR = "nav_bar_editor";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
+    private static final String NAV_BAR_COLOR = "nav_bar_color";
+    private static final String NAV_BUTTON_COLOR = "nav_bar_button_color";
+    private static final String NAV_GLOW_COLOR = "nav_bar_glow_color";
+    private static final String NAV_BAR_COLOR_DEF = "nav_bar_color_default";
 
     private CheckBoxPreference mNavigationBarShow;
     private ColorPickerPreference mNavigationBarColor;
-    private PreferenceScreen mNavigationBarEditor;
+    private ColorPickerPreference mNavigationButtonColor;
+    private ColorPickerPreference mNavigationGlowColor;
+//    private PreferenceScreen mNavigationBarEditor;
     private CheckBoxPreference mMenuButtonShow;
+    private ListPreference mGlowTimes;
     private PreferenceCategory mPrefCategory;
     private Preference mResetColor;
+
+    private Context mContext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mContext = getActivity().getApplicationContext();
+
         addPreferencesFromResource(R.xml.navigation_bar);
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        mNavigationBarColor = (ColorPickerPreference) findPreference(PREF_NAV_BAR_COLOR);
+        mNavigationBarColor = (ColorPickerPreference) findPreference(NAV_BAR_COLOR);
         mNavigationBarColor.setOnPreferenceChangeListener(this);
+//        mNavigationBarColor.setAlphaSliderEnabled(true);
+        mNavigationBarColor.setAlphaSliderEnabled(false);
+
+        mNavigationButtonColor = (ColorPickerPreference) findPreference(NAV_BUTTON_COLOR);
+        mNavigationButtonColor.setOnPreferenceChangeListener(this);
+        mNavigationButtonColor.setAlphaSliderEnabled(true);
+
+        mNavigationGlowColor = (ColorPickerPreference) findPreference(NAV_GLOW_COLOR);
+        mNavigationGlowColor.setOnPreferenceChangeListener(this);
+        mNavigationGlowColor.setAlphaSliderEnabled(false);
+
         mNavigationBarShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_STATUS);
-        mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
+
+//        mNavigationBarEditor = (PreferenceScreen) prefSet.findPreference(NAV_BAR_EDITOR);
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
-        mResetColor = (Preference) findPreference(PREF_NAV_BAR_COLOR_DEF);
+        mResetColor = (Preference) findPreference(NAV_BAR_COLOR_DEF);
         mResetColor.setOnPreferenceClickListener(this);
+
         IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
         try {
-            mNavigationBarShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+            mNavigationBarShow.setChecked((Settings.System.getInt(mContext.getContentResolver(),
                     Settings.System.NAV_BAR_STATUS, !wm.hasHardwareKeys() ? 1 : 0) == 1));
         } catch (RemoteException ex) {
             // too bad, so sad, oh mom, oh dad
         }
 
-        mMenuButtonShow.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+        mMenuButtonShow.setChecked((Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.NAV_BAR_TABUI_MENU, 0) == 1));
 
-        mNavigationBarEditor.setEnabled(mNavigationBarShow.isChecked());
+//        mNavigationBarEditor.setEnabled(mNavigationBarShow.isChecked());
         mMenuButtonShow.setEnabled(mNavigationBarShow.isChecked());
 
         mPrefCategory = (PreferenceCategory) findPreference(NAV_BAR_CATEGORY);
 
         if (!Utils.isTablet()) {
             mPrefCategory.removePreference(mMenuButtonShow);
-        } else {
-            mPrefCategory.removePreference(mNavigationBarEditor);
+//        } else {
+//            mPrefCategory.removePreference(mNavigationBarEditor);
         }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        int index = -1;
         if (preference == mNavigationBarColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(newValue)));
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAV_BAR_COLOR, intHex);
+            index = ExtendedPropertiesUtils.PARANOID_COLORS_NAVBAR;
+        } else if (preference == mNavigationButtonColor) {
+            index = ExtendedPropertiesUtils.PARANOID_COLORS_NAVBUTTON;
+        } else if (preference == mNavigationGlowColor) {
+            index = ExtendedPropertiesUtils.PARANOID_COLORS_NAVGLOW;
+        }
+        
+        if (index != -1) {
+            String mSetting = Settings.System.getString(mContext.getContentResolver(),
+                    ExtendedPropertiesUtils.PARANOID_COLORS_SETTINGS[index]);
+            String[] mColors = (mSetting == null || mSetting.equals("") ?
+                    ExtendedPropertiesUtils.PARANOID_COLORS_DEFAULTS[index] :
+                    mSetting).split(ExtendedPropertiesUtils.PARANOID_STRING_DELIMITER);
+            Settings.System.putString(mContext.getContentResolver(),
+                    ExtendedPropertiesUtils.PARANOID_COLORS_SETTINGS[index],
+                    ColorPickerPreference.convertToARGB(Integer.valueOf(String.valueOf(
+                    newValue))).substring(1) + "|" + mColors[1] + "|1");
             return true;
         }
-
         return false;
     }
 
     @Override
     public boolean onPreferenceClick(Preference pref) {
         if (pref == mResetColor) {
-            int color = 0xFF000000;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAV_BAR_COLOR, color);
-            mNavigationBarColor.onColorChanged(color);
+            for (int i=ExtendedPropertiesUtils.PARANOID_COLORS_NAVBAR;
+                    i <= ExtendedPropertiesUtils.PARANOID_COLORS_NAVGLOW; i++) {
+                String mSetting = Settings.System.getString(mContext.getContentResolver(),
+                        ExtendedPropertiesUtils.PARANOID_COLORS_SETTINGS[i]);
+                String[] mColors = (mSetting == null || mSetting.equals("") ?
+                        ExtendedPropertiesUtils.PARANOID_COLORS_DEFAULTS[i] :
+                        mSetting).split(ExtendedPropertiesUtils.PARANOID_STRING_DELIMITER);
+                Settings.System.putString(getActivity().getContentResolver(),
+                        ExtendedPropertiesUtils.PARANOID_COLORS_SETTINGS[i], ExtendedPropertiesUtils.
+                        PARANOID_COLORS_DEFAULTS[i].split(ExtendedPropertiesUtils.PARANOID_STRING_DELIMITER)
+                        [0] + "|" + mColors[1] + "|1");
+            }
+
+            mNavigationBarColor.onColorChanged(ExtendedPropertiesUtils.PARANOID_COLORCODES_DEFAULTS[
+                    ExtendedPropertiesUtils.PARANOID_COLORS_NAVBAR]);
+            mNavigationButtonColor.onColorChanged(ExtendedPropertiesUtils.PARANOID_COLORCODES_DEFAULTS[
+                    ExtendedPropertiesUtils.PARANOID_COLORS_NAVBUTTON]);
+            mNavigationGlowColor.onColorChanged(ExtendedPropertiesUtils.PARANOID_COLORCODES_DEFAULTS[
+                    ExtendedPropertiesUtils.PARANOID_COLORS_NAVGLOW]);
         }
         return false;
     }
@@ -118,10 +168,11 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
         boolean value;
         if (preference == mNavigationBarShow) {
             value = mNavigationBarShow.isChecked();
+            mMenuButtonShow.setEnabled(value);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_STATUS, value ? 1 : 0);
-            mNavigationBarEditor.setEnabled(value);
-            mMenuButtonShow.setEnabled(value);
+//            mNavigationBarEditor.setEnabled(value);
+//            mMenuButtonShow.setEnabled(value);
             return true;
         }
         else if (preference == mMenuButtonShow) {
@@ -130,6 +181,7 @@ public class NavigationBar extends SettingsPreferenceFragment implements OnPrefe
                     Settings.System.NAV_BAR_TABUI_MENU, value ? 1 : 0);
             return true;
         }
-        return super.onPreferenceTreeClick(preferenceScreen, preference);
+        return false;
+//        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 }

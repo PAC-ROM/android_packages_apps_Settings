@@ -40,7 +40,7 @@ import java.util.List;
 public class Calendar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String KEY_SHOW_CALENDAR = "lockscreen_calendar";
+    private static final String KEY_SHOW_CALENDAR = "lockscreen_calendar_cm";
     private static final String KEY_CALENDARS = "lockscreen_calendars";
     private static final String KEY_REMINDERS_ONLY = "lockscreen_calendar_reminders_only";
     private static final String KEY_LOOKAHEAD = "lockscreen_calendar_lookahead";
@@ -69,7 +69,7 @@ public class Calendar extends SettingsPreferenceFragment implements
         // Show next calendar event on lock screen
         mCalendarPref = (CheckBoxPreference) prefSet.findPreference(KEY_SHOW_CALENDAR);
         mCalendarPref.setChecked(Settings.System.getInt(mResolver,
-                Settings.System.LOCKSCREEN_CALENDAR, 0) == 1);
+                Settings.System.LOCKSCREEN_CALENDAR_CM, 0) == 1);
 
         mCalendarsPref = (MultiSelectListPreference) prefSet.findPreference(KEY_CALENDARS);
         mCalendarsPref.setDefaultValue(Settings.System.getString(mResolver,
@@ -114,7 +114,7 @@ public class Calendar extends SettingsPreferenceFragment implements
         boolean value;
         if (preference == mCalendarPref) {
             value = mCalendarPref.isChecked();
-            Settings.System.putInt(mResolver, Settings.System.LOCKSCREEN_CALENDAR, value ? 1 : 0);
+            Settings.System.putInt(mResolver, Settings.System.LOCKSCREEN_CALENDAR_CM, value ? 1 : 0);
             return true;
         } else if (preference == mCalendarRemindersOnlyPref) {
             value = mCalendarRemindersOnlyPref.isChecked();

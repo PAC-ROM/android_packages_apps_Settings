@@ -20,6 +20,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import android.app.DialogFragment;
+import android.app.VibrationPickerDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -31,6 +33,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.media.AudioManager;
 import android.media.RingtoneManager;
+import android.media.VibrationPattern;
 import android.media.audiofx.AudioEffect;
 import android.net.Uri;
 import android.os.Bundle;
@@ -56,9 +59,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_EMERGENCY_TONE_VALUE = 0;
 
-    private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
+//    private static final String KEY_VOLUME_OVERLAY = "volume_overlay";
     private static final String KEY_SILENT_MODE = "silent_mode";
     private static final String KEY_VIBRATE = "vibrate_when_ringing";
+    private static final String KEY_VIBRATION = "vibration";
     private static final String KEY_RING_VOLUME = "ring_volume";
     private static final String KEY_INCREASING_RING = "increasing_ring";
     private static final String KEY_MUSICFX = "musicfx";
@@ -72,7 +76,6 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_SOUND = "notification_sound";
     private static final String KEY_CATEGORY_CALLS = "category_calls_and_notification";
     private static final String KEY_QUIET_HOURS = "quiet_hours";
-    private static final String KEY_VOLBTN_MUSIC_CTRL = "volbtn_music_controls";
     private static final String KEY_SAFE_HEADSET_RESTORE = "safe_headset_restore";
 
     private static final String SILENT_MODE_OFF = "off";
@@ -86,17 +89,19 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
     private static final int MSG_UPDATE_NOTIFICATION_SUMMARY = 2;
+    private static final int VIB_OK = 10;
+    private static final int VIB_CANCEL = 11;
 
     private CheckBoxPreference mVibrateWhenRinging;
-    private ListPreference mVolumeOverlay;
+//    private ListPreference mVolumeOverlay;
     private ListPreference mSilentMode;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
     private Preference mMusicFx;
     private CheckBoxPreference mLockSounds;
-    private CheckBoxPreference mVolBtnMusicCtrl;
     private Preference mRingtonePreference;
+    private Preference mVibrationPreference;
     private Preference mNotificationPreference;
     private PreferenceScreen mQuietHours;
     private CheckBoxPreference mSafeHeadsetRestore;
@@ -123,6 +128,18 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             case MSG_UPDATE_NOTIFICATION_SUMMARY:
                 mNotificationPreference.setSummary((CharSequence) msg.obj);
                 break;
+            case VIB_OK:
+                VibrationPattern mPattern = (VibrationPattern) msg.obj;
+                if (mPattern == null) {
+                    break;
+                }
+                mVibrationPreference.setSummary(mPattern.getName());
+                Settings.System.putString(getContentResolver(),
+                        Settings.System.PHONE_VIBRATION, mPattern.getUri().toString());
+                break;
+            case VIB_CANCEL:
+            default:
+                break;
             }
         }
     };
@@ -144,14 +161,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(findPreference(KEY_EMERGENCY_TONE));
         }
 
-        mVolumeOverlay = (ListPreference) findPreference(KEY_VOLUME_OVERLAY);
+/*        mVolumeOverlay = (ListPreference) findPreference(KEY_VOLUME_OVERLAY);
         mVolumeOverlay.setOnPreferenceChangeListener(this);
         int volumeOverlay = Settings.System.getInt(getContentResolver(),
                 Settings.System.MODE_VOLUME_OVERLAY,
                 VolumePanel.VOLUME_OVERLAY_EXPANDABLE);
         mVolumeOverlay.setValue(Integer.toString(volumeOverlay));
         mVolumeOverlay.setSummary(mVolumeOverlay.getEntry());
-
+*/
         mSilentMode = (ListPreference) findPreference(KEY_SILENT_MODE);
         if (!getResources().getBoolean(R.bool.has_silent_mode)) {
             getPreferenceScreen().removePreference(mSilentMode);
@@ -197,16 +214,14 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mLockSounds.setChecked(Settings.System.getInt(resolver,
                 Settings.System.LOCKSCREEN_SOUNDS_ENABLED, 1) != 0);
 
-        mVolBtnMusicCtrl = (CheckBoxPreference) findPreference(KEY_VOLBTN_MUSIC_CTRL);
-        mVolBtnMusicCtrl.setChecked(Settings.System.getInt(resolver,
-                Settings.System.VOLBTN_MUSIC_CONTROLS, 1) != 0);
-
         mRingtonePreference = findPreference(KEY_RINGTONE);
+        mVibrationPreference = findPreference(KEY_VIBRATION);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
 
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator == null || !vibrator.hasVibrator()) {
             getPreferenceScreen().removePreference(mVibrateWhenRinging);
+            getPreferenceScreen().removePreference(mVibrationPreference);
             getPreferenceScreen().removePreference(mHapticFeedback);
         }
 
@@ -254,6 +269,8 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 }
             }
         };
+
+        lookupVibrationName();
     }
 
     @Override
@@ -262,6 +279,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         updateState(true);
         lookupRingtoneNames();
+        lookupVibrationName();
 
         IntentFilter filter = new IntentFilter(AudioManager.RINGER_MODE_CHANGED_ACTION);
         getActivity().registerReceiver(mReceiver, filter);
@@ -381,10 +399,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.SAFE_HEADSET_VOLUME_RESTORE,
                     mSafeHeadsetRestore.isChecked() ? 1 : 0);
-
-		} else if (preference == mVolBtnMusicCtrl) {
-            Settings.System.putInt(getContentResolver(), Settings.System.VOLBTN_MUSIC_CONTROLS,
-                    mVolBtnMusicCtrl.isChecked() ? 1 : 0);
+        } else if (preference == mVibrationPreference) {
+            String uriString = VibrationPattern.getPhoneVibration(getActivity());
+            DialogFragment newFragment = VibrationPickerDialog.newInstance(mHandler, false, uriString);
+            newFragment.show(getFragmentManager(), "dialog");
+            return true;
 
         } else {
             // If we didn't handle it, let preferences handle it.
@@ -406,12 +425,12 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             }
         } else if (preference == mSilentMode) {
             setPhoneSilentSettingValue(objValue.toString());
-        } else if (preference == mVolumeOverlay) {
+/*        } else if (preference == mVolumeOverlay) {
             final int value = Integer.valueOf((String) objValue);
             final int index = mVolumeOverlay.findIndexOfValue((String) objValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.MODE_VOLUME_OVERLAY, value);
-            mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);
+            mVolumeOverlay.setSummary(mVolumeOverlay.getEntries()[index]);*/
         }
 
         return true;
@@ -431,6 +450,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         cal.set(Calendar.MINUTE, mn);
         Date date = cal.getTime();
         return DateFormat.getTimeFormat(getActivity().getApplicationContext()).format(date);
+    }
+
+    private void lookupVibrationName() {
+        String uriString = VibrationPattern.getPhoneVibration(getActivity());
+        mVibrationPreference.setSummary(new VibrationPattern(Uri.parse(uriString), getActivity()).getName());
     }
 
     @Override

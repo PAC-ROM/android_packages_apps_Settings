@@ -102,6 +102,17 @@
             android:targetClass="com.paranoid.preferences.PreferenceListActivity" />
     </header>
 
+    <!-- ROMControl -->
+    <header
+        android:id="@+id/rom_control"
+	android:icon="@drawable/ic_settings_rom_control"
+        android:title="@string/rom_control_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.aokp.romcontrol"
+            android:targetClass="com.aokp.romcontrol.ROMControlActivity" />
+    </header>
+
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />
 

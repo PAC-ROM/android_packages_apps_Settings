@@ -20,31 +20,49 @@
 
     <PreferenceCategory
         android:key="nav_bar_category"
-        android:title="@string/navigation_bar_title">
+        android:title="@string/navigation_bar_button_category">
 
         <CheckBoxPreference
             android:key="nav_bar_status"
             android:title="@string/navigation_bar_status_title"
             android:summary="@string/navigation_bar_status_summary" />
 
-        <PreferenceScreen
-            android:key="navigation_bar_editor"
+<!--        <PreferenceScreen
+            android:key="nav_bar_editor"
             android:fragment="com.android.settings.cyanogenmod.NavBarEditor"
-            android:title="@string/navigation_bar_title" />
-
+            android:title="@string/navigation_bar_editor_title" />
+-->
         <CheckBoxPreference
             android:key="nav_bar_tabui_menu"
             android:title="@string/navigation_bar_tabui_menu_title"
             android:summary="@string/navigation_bar_tabui_menu_summary" />
 
-        <net.margaritov.preference.colorpicker.ColorPickerPreference
-            android:key="navbar_color"
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="nav_bar_color_category"
+        android:title="@string/navigation_bar_color_category">
+
+        <ColorPickerPreference
+            android:key="nav_bar_color"
             android:title="@string/navigation_bar_color_title"
             android:summary="@string/navigation_bar_color_summary"
-            android:defaultValue="#000000" />
+            android:defaultValue="#FF000000" />
+
+        <ColorPickerPreference
+            android:key="nav_bar_button_color"
+            android:title="@string/navigation_bar_button_color_title"
+            android:summary="@string/navigation_bar_button_color_summary"
+            android:defaultValue="#FFFFFFFF" />
+
+        <ColorPickerPreference
+            android:key="nav_bar_glow_color"
+            android:title="@string/navigation_bar_glow_color_title"
+            android:summary="@string/navigation_bar_glow_color_summary"
+            android:defaultValue="#FFFFFFFF" />
 
         <Preference
-            android:key="navbar_color_default"
+            android:key="nav_bar_color_default"
             android:title="@string/navigation_bar_restore_stock_color"
             android:summary="@string/navigation_bar_restore_stock_color_summary" />
 

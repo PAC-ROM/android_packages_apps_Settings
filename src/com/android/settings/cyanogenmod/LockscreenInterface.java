@@ -21,8 +21,10 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ColorPickerDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -30,6 +32,9 @@ import android.graphics.Bitmap;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.preference.ColorPickerPreference;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -37,37 +42,40 @@ import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.Display;
+import android.view.IWindowManager;
 import android.view.Window;
 import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-
-import net.margaritov.preference.colorpicker.*;
+//import com.android.settings.notificationlight.ColorPickerView;
 
 public class LockscreenInterface extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener, ColorPickerDialog.OnColorChangedListener {
+        Preference.OnPreferenceChangeListener {
+//        Preference.OnPreferenceChangeListener, ColorPickerDialog.OnColorChangedListener {
     private static final String TAG = "LockscreenInterface";
-    private static final int LOCKSCREEN_BACKGROUND = 1024;
-    public static final String KEY_WEATHER_PREF = "lockscreen_weather";
-    public static final String KEY_CALENDAR_PREF = "lockscreen_calendar";
-    public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
-    public static final String KEY_SEE_TRHOUGH_PREF = "lockscreen_see_through";
+/*    private static final int LOCKSCREEN_BACKGROUND = 1024;*/
+//    public static final String KEY_WEATHER_PREF = "lockscreen_weather_cm";
+//    public static final String KEY_CALENDAR_PREF = "lockscreen_calendar_cm";
+//    public static final String KEY_BACKGROUND_PREF = "lockscreen_background";
+//    public static final String KEY_SEE_TRHOUGH_PREF = "lockscreen_see_through";
     private static final String KEY_ALWAYS_BATTERY_PREF = "lockscreen_battery_status";
-    private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
+//    private static final String KEY_CLOCK_ALIGN = "lockscreen_clock_align";
+    private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
 
     private ListPreference mCustomBackground;
-    private CheckBoxPreference mSeeThrough;
-    private Preference mWeatherPref;
-    private Preference mCalendarPref;
+//    private CheckBoxPreference mSeeThrough;
+//    private Preference mWeatherPref;
+/*    private Preference mCalendarPref;*/
     private ListPreference mBatteryStatus;
-    private ListPreference mClockAlign;
+//    private ListPreference mClockAlign;
+    private PreferenceScreen mLockscreenButtons;
     private Activity mActivity;
     ContentResolver mResolver;
 
-    private File wallpaperImage;
-    private File wallpaperTemporary;
+/*    private File wallpaperImage;
+    private File wallpaperTemporary;*/
     private boolean mIsScreenLarge;
 
     @Override
@@ -77,8 +85,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mResolver = mActivity.getContentResolver();
 
         addPreferencesFromResource(R.xml.lockscreen_interface_settings);
-        mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
-        mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
+//        mWeatherPref = (Preference) findPreference(KEY_WEATHER_PREF);
+/*        mCalendarPref = (Preference) findPreference(KEY_CALENDAR_PREF);
 
         mCustomBackground = (ListPreference) findPreference(KEY_BACKGROUND_PREF);
         mCustomBackground.setOnPreferenceChangeListener(this);
@@ -88,20 +96,30 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1));
 
         wallpaperImage = new File(mActivity.getFilesDir()+"/lockwallpaper");
-        wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");
+        wallpaperTemporary = new File(mActivity.getCacheDir()+"/lockwallpaper.tmp");*/
 
         mBatteryStatus = (ListPreference) findPreference(KEY_ALWAYS_BATTERY_PREF);
         mBatteryStatus.setOnPreferenceChangeListener(this);
 
         mIsScreenLarge = Utils.isTablet();
 
-        mClockAlign = (ListPreference) findPreference(KEY_CLOCK_ALIGN);
-        mClockAlign.setOnPreferenceChangeListener(this);
+//        mClockAlign = (ListPreference) findPreference(KEY_CLOCK_ALIGN);
+//        mClockAlign.setOnPreferenceChangeListener(this);
 
-        updateCustomBackgroundSummary();
+        mLockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
+        IWindowManager wm = IWindowManager.Stub.asInterface(ServiceManager.getService(Context.WINDOW_SERVICE));
+        try {
+            if(!wm.hasHardwareKeys()){
+                getPreferenceScreen().removePreference(mLockscreenButtons);
+            }
+        } catch (RemoteException ex) {
+            // too bad, so sad, oh mom, oh dad
+        }
+
+//        updateCustomBackgroundSummary();
     }
 
-    private void updateCustomBackgroundSummary() {
+/*    private void updateCustomBackgroundSummary() {
         int resId;
         String value = Settings.System.getString(getContentResolver(),
                 Settings.System.LOCKSCREEN_BACKGROUND);
@@ -117,7 +135,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mCustomBackground.setValueIndex(0);
         }
         mCustomBackground.setSummary(getResources().getString(resId));
-    }
+    }*/
 
     @Override
     public void onResume() {
@@ -133,27 +151,27 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private void updateState() {
         int resId;
 
-        // Set the weather description text
+/*        // Set the weather description text
         if (mWeatherPref != null) {
             boolean weatherEnabled = Settings.System.getInt(mResolver,
-                    Settings.System.LOCKSCREEN_WEATHER, 0) == 1;
+                    Settings.System.LOCKSCREEN_WEATHER_CM, 0) == 1;
             if (weatherEnabled) {
                 mWeatherPref.setSummary(R.string.lockscreen_weather_enabled);
             } else {
                 mWeatherPref.setSummary(R.string.lockscreen_weather_summary);
             }
-        }
+        }*/
 
-        // Set the calendar description text
+/*        // Set the calendar description text
         if (mCalendarPref != null) {
             boolean weatherEnabled = Settings.System.getInt(mResolver,
-                    Settings.System.LOCKSCREEN_CALENDAR, 0) == 1;
+                    Settings.System.LOCKSCREEN_CALENDAR_CM, 0) == 1;
             if (weatherEnabled) {
                 mCalendarPref.setSummary(R.string.lockscreen_calendar_enabled);
             } else {
                 mCalendarPref.setSummary(R.string.lockscreen_calendar_summary);
             }
-        }
+        }*/
 
         // Set the battery status description text
         if (mBatteryStatus != null) {
@@ -167,22 +185,22 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mBatteryStatus.setSummary(mBatteryStatus.getEntry());
         }
 
-        // Set the clock align value
+/*        // Set the clock align value
         if (mClockAlign != null) {
             int clockAlign = Settings.System.getInt(mResolver,
                     Settings.System.LOCKSCREEN_CLOCK_ALIGN, 2);
             mClockAlign.setValue(String.valueOf(clockAlign));
             mClockAlign.setSummary(mClockAlign.getEntries()[clockAlign]);
-        }
+        }*/
     }
 
-    @Override
+/*    @Override
     public void onColorChanged(int color) {
         Settings.System.putInt(getContentResolver(),
                 Settings.System.LOCKSCREEN_BACKGROUND, color);
-    }
+    }*/
 
-    @Override
+/*    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == LOCKSCREEN_BACKGROUND) {
             if (resultCode == Activity.RESULT_OK) {
@@ -206,22 +224,22 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                 mSeeThrough.setEnabled(true);
             }
         }
-    }
+    }*/
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mSeeThrough) {
+/*        if (preference == mSeeThrough) {
             int value = mSeeThrough.isChecked() ? 1 : 0;
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_SEE_THROUGH, value);
             return true;
         }
-
+*/
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mCustomBackground) {
+/*        if (preference == mCustomBackground) {
             int indexOf = mCustomBackground.findIndexOfValue(objValue.toString());
             mSeeThrough.setEnabled(indexOf != 1);
             switch (indexOf) {
@@ -289,19 +307,19 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     updateCustomBackgroundSummary();
                     break;
             }
-        } else if (preference == mBatteryStatus) {
+        } else*/ if (preference == mBatteryStatus) {
             int value = Integer.valueOf((String) objValue);
             int index = mBatteryStatus.findIndexOfValue((String) objValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_ALWAYS_SHOW_BATTERY, value);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[index]);
             return true;
-        } else if (preference == mClockAlign) {
+/*        } else if (preference == mClockAlign) {
             int value = Integer.valueOf((String) objValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.LOCKSCREEN_CLOCK_ALIGN, value);
             mClockAlign.setSummary(mClockAlign.getEntries()[value]);
-            return true;
+            return true;*/
         }
         return false;
     }

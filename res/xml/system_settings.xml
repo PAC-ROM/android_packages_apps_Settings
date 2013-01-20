@@ -25,9 +25,29 @@
         android:title="@string/combined_status_bar_title" />
 
     <PreferenceScreen
-        android:key="notification_drawer_toggles"
-        android:fragment="com.android.settings.cyanogenmod.Toggles"
-        android:title="@string/notification_drawer_toggles_title" />
+        android:key="navigation_bar"
+        android:fragment="com.android.settings.cyanogenmod.NavigationBar"
+        android:title="@string/navigation_bar_title" />
+
+    <PreferenceScreen
+        android:key="power_menu"
+        android:title="@string/power_menu_title"
+        android:fragment="com.android.settings.cyanogenmod.PowerMenu" />
+
+    <PreferenceScreen
+        android:key="hardware_keys"
+        android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
+        android:title="@string/hardware_keys_title" />
+
+    <PreferenceScreen
+        android:key="notification_drawer"
+        android:fragment="com.android.settings.cyanogenmod.PowerWidget"
+        android:title="@string/notification_drawer_title" />
+
+    <PreferenceScreen
+        android:key="notification_drawer_tablet"
+        android:fragment="com.android.settings.cyanogenmod.TabletPowerWidget"
+        android:title="@string/notification_drawer_title" />
 
     <PreferenceScreen
         android:key="wallpaper"
@@ -41,20 +61,5 @@
         android:entries="@array/entries_font_size"
         android:entryValues="@array/entryvalues_font_size"
         android:dialogTitle="@string/dialog_title_font_size" />
-
-    <PreferenceScreen
-        android:key="power_menu"
-        android:title="@string/power_menu_title"
-        android:fragment="com.android.settings.cyanogenmod.PowerMenu" />
-
-    <PreferenceScreen
-        android:key="navigation_bar"
-        android:fragment="com.android.settings.cyanogenmod.NavigationBar"
-        android:title="@string/navigation_bar_title" />
-
-    <PreferenceScreen
-        android:key="hardware_keys"
-        android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
-        android:title="@string/hardware_keys_title" />
 
 </PreferenceScreen>

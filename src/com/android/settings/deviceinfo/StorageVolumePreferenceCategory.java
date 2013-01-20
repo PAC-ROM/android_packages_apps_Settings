@@ -199,9 +199,15 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory implemen
             }
         }
 
+/*        if (mStorageVolume != null &&  mStorageVolume.isRemovable() && !mStorageVolume.allowMassStorage()) {
+        mMountTogglePreference = new Preference(getContext());
+        mMountTogglePreference.setTitle(R.string.usbdisk_eject);
+        mMountTogglePreference.setSummary(R.string.usbdisk_eject_summary);
+        } else {*/
         mMountTogglePreference = new Preference(getContext());
         mMountTogglePreference.setTitle(R.string.sd_eject);
         mMountTogglePreference.setSummary(R.string.sd_eject_summary);
+//        }
 
         if (mAllowFormat) {
             mFormatPreference = new Preference(getContext());
@@ -280,6 +286,33 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory implemen
             removePreference(mMountTogglePreference);
         }
 
+      if (mStorageVolume != null &&  mStorageVolume.isRemovable() && !mStorageVolume.allowMassStorage()) {
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            mPreferences[AVAILABLE].setSummary(mPreferences[AVAILABLE].getSummary() + readOnly);
+
+            mMountTogglePreference.setEnabled(true);
+            mMountTogglePreference.setTitle(mResources.getString(R.string.usbdisk_eject));
+            mMountTogglePreference.setSummary(mResources.getString(R.string.usbdisk_eject_summary));
+        } else {
+            if (Environment.MEDIA_UNMOUNTED.equals(state) || Environment.MEDIA_NOFS.equals(state)
+                    || Environment.MEDIA_UNMOUNTABLE.equals(state)) {
+                mMountTogglePreference.setEnabled(true);
+                mMountTogglePreference.setTitle(mResources.getString(R.string.usbdisk_mount));
+                mMountTogglePreference.setSummary(mResources.getString(R.string.usbdisk_mount_summary));
+            } else {
+                mMountTogglePreference.setEnabled(false);
+                mMountTogglePreference.setTitle(mResources.getString(R.string.usbdisk_mount));
+                mMountTogglePreference.setSummary(mResources.getString(R.string.usbdisk_insert_summary));
+            }
+
+            removePreference(mUsageBarPreference);
+            removePreference(mPreferences[TOTAL_SIZE]);
+            removePreference(mPreferences[AVAILABLE]);
+            if (mFormatPreference != null) {
+                removePreference(mFormatPreference);
+            }
+        }
+      } else {
         if (Environment.MEDIA_MOUNTED.equals(state)) {
             mPreferences[AVAILABLE].setSummary(mPreferences[AVAILABLE].getSummary() + readOnly);
 
@@ -305,6 +338,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory implemen
                 removePreference(mFormatPreference);
             }
         }
+      }
     }
 
     public void updateApproximate(long totalSize, long availSize) {

@@ -65,6 +65,8 @@ public class Memory extends SettingsPreferenceFragment {
     // Access using getMountService()
     private IMountService mMountService = null;
 
+    private StorageVolume mStorageVolume;
+
     private StorageManager mStorageManager = null;
 
     private StorageVolumePreferenceCategory mInternalStorageVolumePreferenceCategory;
@@ -255,8 +257,34 @@ public class Memory extends SettingsPreferenceFragment {
         }
     };
 
+
+    public StorageVolume getStorageVolume() {
+        return mStorageVolume;
+    }
+
     @Override
     public Dialog onCreateDialog(int id) {
+      if (mStorageVolume != null &&  mStorageVolume.isRemovable() && !mStorageVolume.allowMassStorage()) {
+        switch (id) {
+        case DLG_CONFIRM_UNMOUNT:
+                return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.dlg_confirm_usbdisk_unmount_title)
+                    .setPositiveButton(R.string.dlg_ok, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            doUnmount();
+                        }})
+                    .setNegativeButton(R.string.cancel, null)
+                    .setMessage(R.string.dlg_confirm_usbdisk_unmount_text)
+                    .create();
+        case DLG_ERROR_UNMOUNT:
+                return new AlertDialog.Builder(getActivity())
+            .setTitle(R.string.dlg_error_unmount_title)
+            .setNeutralButton(R.string.dlg_ok, null)
+            .setMessage(R.string.dlg_error_usbdisk_unmount_text)
+            .create();
+        }
+        return null;
+      } else {
         switch (id) {
         case DLG_CONFIRM_UNMOUNT:
                 return new AlertDialog.Builder(getActivity())
@@ -276,11 +304,16 @@ public class Memory extends SettingsPreferenceFragment {
             .create();
         }
         return null;
+      }
     }
 
     private void doUnmount() {
         // Present a toast here
+        if (mStorageVolume != null &&  mStorageVolume.isRemovable() && !mStorageVolume.allowMassStorage()) {
+        Toast.makeText(getActivity(), R.string.usbdisk_unmount_inform_text, Toast.LENGTH_SHORT).show();
+        } else {
         Toast.makeText(getActivity(), R.string.unmount_inform_text, Toast.LENGTH_SHORT).show();
+        }
         IMountService mountService = getMountService();
         try {
             mLastClickedMountToggle.setEnabled(false);

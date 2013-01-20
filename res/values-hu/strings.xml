@@ -159,6 +159,9 @@
     <string name="bluetooth_phonebook_request" msgid="457033227379858269">"Telefonkönyv kérése"</string>
     <string name="bluetooth_pb_acceptance_dialog_text" msgid="6555508756987053866">"A(z) %1$s szeretne hozzáférni névjegyeihez és a híváselőzményekhez. Megadja a hozzáférést a(z) %2$s eszköznek?"</string>
     <string name="bluetooth_pb_remember_choice" msgid="2901499974259177202">"Ne jelenjen meg többé"</string>
+    <string name="bluetooth_mas_request">"Üzenet kérése"</string>
+    <string name="bluetooth_mas_acceptance_dialog_text">"A(z) %1$s szeretne hozzáférni az üzeneteihez. Megadja a hozzáférést a(z) %2$s eszköznek?"</string>
+    <string name="bluetooth_mas_remember_choice">"Ne jelenjen meg többé"</string>
     <string name="date_and_time" msgid="4114084177056654663">"Dátum és idő beállításai"</string>
     <string name="date_time_12_hour_sample" msgid="3259617262618020574">"du. 1:00"</string>
     <string name="date_time_24_hour_sample" msgid="8916857570746212357">"13:00"</string>
@@ -1925,15 +1928,14 @@
     <string name="hardware_keys_action_voice_search">Hangalapú keresés</string>
     <string name="hardware_keys_action_in_app_search">Alkalmazáson belüli keresés</string>
 
-    <!-- Power Widget  -->
-
     <!-- Status bar  -->
     <string name="combined_status_bar_title">@string/status_bar_title</string>
     <string name="status_bar_title">Értesítési sáv</string>
+    <string name="status_bar_clock_normal">Normál</string>
+    <string name="status_bar_clock_small">Kicsi (alapbeállítás)</string>
     <string name="status_bar_clock_title">Óra</string>
     <string name="status_bar_general_title">Általános</string>
     <string name="status_bar_show_clock_title">Óra mutatása</string>
-    <string name="status_bar_am_pm_title">AM/PM stílus</string>
     <string name="status_bar_am_pm_info">24 órás megjelenítés aktív</string>
     <string name="status_bar_battery_title">Akkumulátor állapotjelző stílusa</string>
     <string name="status_bar_toggle_brightness">Fényerő vezérlés</string>
@@ -1944,6 +1946,9 @@
     <string name="status_bar_style_hidden">Rejtett</string>
     <string name="status_bar_signal_text_show_text">Szöveg</string>
     <string name="status_bar_battery_status_percentage">Százalék</string>
+    <string name="status_bar_battery_status_circle">Kör</string>
+    <string name="status_bar_battery_status_circle_percentage">Kör százalékkal</string>
+
 
     <string name="lock_screen_title">Képernyőzár</string>
 
@@ -2037,6 +2042,18 @@
     <string name="lockscreen_clock_align_left">Balra</string>
     <string name="lockscreen_clock_align_center">Középre</string>
     <string name="lockscreen_clock_align_right">Jobbra</string>
+
+    <string name="lockscreen_buttons_title">Gomb műveletek</string>
+    <string name="lockscreen_buttons_summary">Képernyőzár beállítások</string>
+    <string name="lockscreen_long_press_back_title">Hosszan nyomva tartott vissza gomb</string>
+    <string name="lockscreen_long_press_home_title">Hosszan nyomva tartott kezdő gomb</string>
+    <string name="lockscreen_long_press_menu_title">Hosszan nyomva tartott menü gomb</string>
+    <string name="lockscreen_buttons_no_action">Nincs művelet</string>
+    <string name="lockscreen_buttons_flashlight">Zseblámpa</string>
+    <string name="lockscreen_buttons_next">Következő zeneszám</string>
+    <string name="lockscreen_buttons_previous">Előző zeneszám</string>
+    <string name="lockscreen_buttons_playpause">Zene lejátszás/szünet</string>
+    <string name="lockscreen_buttons_toggle_sound">Hang mód</string>
 
     <!-- Profiles settings  -->
     <string name="profiles_settings_title">Profilok</string>
@@ -2138,15 +2155,15 @@
     <string name="vibrator_type_ringer">Telefonhívások</string>
     <string name="vibrator_type_notification">Értesítések</string>
 
-    <!-- Connection override toggles (not all are used at this time ) -->
-
     <!-- Screen security - Screen security   -->
     <string name="screen_security_category">Képernyővédelem</string>
     <string name="screen_security_title">Képernyőzár</string>
     <string name="screen_security_summary">Képernyőzár beállítások, biztonság, késleltetés</string>
     <string name="additional_options_title">További lehetőségek</string>
-    <string name="unlock_menu_unlock_title">Menü feloldás</string>
-    <string name="unlock_menu_unlock_summary">Készülék feloldása menü gomb megnyomásával</string>
+    <string name="unlock_menu_unlock_title">Menü gomb feloldás</string>
+    <string name="unlock_menu_unlock_summary">Készülék feloldása a menü gomb megnyomásával</string>
+    <string name="unlock_home_unlock_title">Kezdő gomb feloldás</string>
+    <string name="unlock_home_unlock_summary">Készülék feloldása a kezdő gomb megnyomásával</string>
     <string name="unlock_quick_unlock_control_title">Gyors feloldás</string>
     <string name="unlock_quick_unlock_control_summary">Automatikus feloldás a helyes jelszó/PIN kód beütése után</string>
 
@@ -2402,7 +2419,10 @@
     <string name="power_menu_title">Kikapcsoló menü</string>
     <string name="power_menu_reboot_title">Újraindítás</string>
     <string name="power_menu_screenshot_title">Képernyőmentés</string>
+    <string name="power_menu_expanded_desktop">Képernyő kiterjesztés</string>
     <string name="power_menu_profiles_title">Profil választó</string>
+    <string name="power_menu_airplane_title">Repülőgép üzemmód</string>
+    <string name="power_menu_silent_title">Hang mód</string>
 
     <!-- Launches Dev Tools -->
     <string name="development_tools_title">Fejlesztői eszközök</string>
@@ -2421,6 +2441,39 @@
     <string name="cmupdate_settings_title">CyanogenMod frissítések</string>
     <string name="cmupdate_settings_summary">Elérhető frissítések keresése, megtekintése, vagy telepítése</string>
 
-    <!-- **** CYANOGENMOD ADDITIONS END **** -->
+    <!--- Sms security limit -->
+    <string name="app_security_title">Alkalmazásbiztonság</string>
+    <string name="sms_security_check_limit_title">Üzenet korlát</string>
+    <string name="sms_security_check_limit_summary">Figyelmeztető ablak megjelenítése a túl gyakori üzenetküldés megakadályozására. Jelenlegi limit: %d üzenet 15 percenként</string>
+    <string name="sms_security_check_limit_default">30 (Alapbeállítás)</string>
 
+    <!-- Stylus Gestures -->
+    <string name="gestures_settings_title">Tollmozdulatok</string>
+    <string name="category_spen_title">Tollmozdulatok</string>
+    <string name="enable_subcat_title">Toll</string>
+    <string name="enable_spen_title_head">Tollmozdulatok engedélyezése</string>
+    <string name="enable_spen_summary_head">Lehetővé teszi egyéni műveletek társítását tollmozdulatokhoz. Figyelem: Az alkalmazások figyelmen kívül hagyják a műveleteket, amíg a ceruza gombja nyomva van.</string>
+    <string name="gestures_subcat_title">Mozdulatok</string>
+    <string name="gestures_left_spen_title_head">Balra húzás</string>
+    <string name="gestures_left_spen_summary_head">Egyéni művelet társítása balra húzáshoz</string>
+    <string name="gestures_right_spen_title_head">Jobbra húzás</string>
+    <string name="gestures_right_spen_summary_head">Egyéni művelet társítása jobbra húzáshoz</string>
+    <string name="gestures_up_spen_title_head">Felfelé húzás</string>
+    <string name="gestures_up_spen_summary_head">Egyéni művelet társítása felfelé húzáshoz</string>
+    <string name="gestures_down_spen_title_head">Lefelé húzás</string>
+    <string name="gestures_down_spen_summary_head">Egyéni művelet társítása lefelé húzáshoz</string>
+    <string name="gestures_long_spen_title_head">Hosszan nyomva</string>
+    <string name="gestures_long_spen_summary_head">Egyéni művelet társítása hosszan nyovatartáshoz</string>
+    <string name="gestures_double_spen_title_head">Dupla érintés</string>
+    <string name="gestures_double_spen_summary_head">Egyéni művelet társítása dupla érintéshez</string>
+
+    <!-- Gestures Options -->
+    <string name="gestures_action_empty">Nincs esemény</string>
+    <string name="gestures_action_home">Vissza a kezdőoldalra</string>
+    <string name="gestures_action_back">Vissza gomb emulálása</string>
+    <string name="gestures_action_menu">Menü gomb emulálása</string>
+    <string name="gestures_action_search">Keresés</string>
+    <string name="gestures_action_recent">Alkalmazás előzmények</string>
+
+    <!-- **** CYANOGENMOD ADDITIONS END **** -->
 </resources>

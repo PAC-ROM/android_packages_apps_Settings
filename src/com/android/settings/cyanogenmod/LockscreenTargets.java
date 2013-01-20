@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+/*
 package com.android.settings.cyanogenmod;
 
 import java.io.File;
@@ -125,7 +125,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
         mWaveView.setOnTriggerListener(this);
         initializeView(Settings.System.getString(mActivity.getContentResolver(), Settings.System.LOCKSCREEN_TARGETS));
     }
-
+*/
     /**
      * Create a layered drawable
      * @param back - Background image to use when target is active
@@ -134,7 +134,7 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
      * @param frontBlank - Whether the front image for active target should be blank
      * @return StateListDrawable
      */
-    private StateListDrawable getLayeredDrawable(Drawable back, Drawable front, int inset, boolean frontBlank) {
+/*    private StateListDrawable getLayeredDrawable(Drawable back, Drawable front, int inset, boolean frontBlank) {
         front.mutate();
         back.mutate();
         InsetDrawable[] inactivelayer = new InsetDrawable[2];
@@ -292,11 +292,11 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
                 return false;
         }
     }
-
+*/
     /**
      * Resets the target layout to stock
      */
-    private void resetAll() {
+/*    private void resetAll() {
         new AlertDialog.Builder(mActivity)
         .setTitle(R.string.lockscreen_target_reset_title)
         .setIconAttribute(android.R.attr.alertDialogIcon)
@@ -313,11 +313,11 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
         }).setNegativeButton(R.string.cancel, null)
         .create().show();
     }
-
+*/
     /**
      * Save targets to settings provider
      */
-    private void saveAll() {
+/*    private void saveAll() {
         StringBuilder targetLayout = new StringBuilder();
         ArrayList<String> existingImages = new ArrayList<String>();
         final int maxTargets = GlowPadView.MAX_TARGETS;
@@ -351,11 +351,11 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
             }
         }
     }
-
+*/
     /**
      * Updates a target in the GlowPadView
      */
-    private void setTarget(int position, String uri, Drawable draw, String iconType, String iconSource, String pkgName) {
+/*    private void setTarget(int position, String uri, Drawable draw, String iconType, String iconSource, String pkgName) {
         TargetInfo item = mTargetStore.get(position);
         StateListDrawable state = (StateListDrawable) item.icon;
         LayerDrawable inActiveLayer = (LayerDrawable) state.getStateDrawable(0);
@@ -568,4 +568,4 @@ public class LockscreenTargets extends Fragment implements ShortcutPickHelper.On
     @Override
     public void onFinishFinalAnimation() {
     }
-}
+}*/

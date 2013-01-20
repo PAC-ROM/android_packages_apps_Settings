@@ -55,6 +55,7 @@ public class HardwareKeys extends SettingsPreferenceFragment implements OnPrefer
     private static final int ACTION_SEARCH = 3;
     private static final int ACTION_VOICE_SEARCH = 4;
     private static final int ACTION_IN_APP_SEARCH = 5;
+    private static final int ACTION_TORCH = 6;
 
     // Masks for checking presence of hardware keys.
     // Must match values in frameworks/base/core/res/res/values/config.xml

@@ -32,12 +32,12 @@
             android:entries="@array/silent_mode_entries"
             android:entryValues="@array/silent_mode_values" />
 
-    <ListPreference
+<!--    <ListPreference
             android:key="volume_overlay"
             android:title="@string/volume_overlay_title"
             android:entries="@array/volume_overlay_entries"
             android:entryValues="@array/volume_overlay_values" />
-
+-->
     <Preference
             android:key="musicfx"
             android:title="@string/musicfx_title">
@@ -73,6 +73,13 @@
          android:key="vibrate_when_ringing"
          android:title="@string/vibrate_when_ringing_title"
          android:persistent="false" />
+
+    <Preference
+            android:key="vibration"
+            android:title="@string/vibration_title"
+            android:dependency="vibrate_when_ringing"
+            android:persistent="false"
+            android:defaultValue="false" />
 
     <com.android.settings.IncreasingRingPreference
             android:key="increasing_ring"
@@ -114,12 +121,6 @@
             android:key="haptic_feedback"
             android:title="@string/haptic_feedback_enable_title"
             android:defaultValue="true" />
-
-    <CheckBoxPreference
-            android:key="volbtn_music_controls"
-            android:title="@string/volbtn_music_controls_title"
-            android:summary="@string/volbtn_music_controls_summary"
-            android:persistent="false" />
 
     <ListPreference
             android:key="emergency_tone"

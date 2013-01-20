@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.paranoid;
+package com.android.settings.pac;
 
 import android.animation.TimeAnimator;
 import android.app.Activity;
@@ -36,7 +36,7 @@ import java.util.Random;
 
 import com.android.settings.R;
 
-public class PACircus extends Activity {
+public class PACCircus extends Activity {
     final static boolean DEBUG = false;
 
     private static class Board extends FrameLayout
@@ -72,7 +72,7 @@ public class PACircus extends Activity {
             return array[sRNG.nextInt(array.length)];
         }
 
-        static int NUM_PARANOIDS = 40;
+        static int NUM_PACS = 40;
         static float MIN_SCALE = 0.2f;
         static float MAX_SCALE = 1f;
 
@@ -80,16 +80,14 @@ public class PACircus extends Activity {
 
         static int MAX_RADIUS = (int)(576 * MAX_SCALE);
 
-        static int PARANOIDS[] = {
-          R.drawable.pa_blue,
-          R.drawable.pa_fucsia,
-          R.drawable.pa_green,
-          R.drawable.pa_purple,
-          R.drawable.pa_red,
-          R.drawable.pa_yellow
+        static int PACS[] = {
+          R.drawable.pac_yellow,
+          R.drawable.pac_green,
+          R.drawable.pac_pink,
+          R.drawable.pac_blue
         };
 
-        public class PARANOID extends ImageView {
+        public class PAC extends ImageView {
             public float x, y, a;
 
             public float va;
@@ -105,33 +103,33 @@ public class PACircus extends Activity {
             public float grabx, graby;
             private float grabx_offset, graby_offset;
 
-            public PARANOID(Context context, AttributeSet as) {
+            public PAC(Context context, AttributeSet as) {
                 super(context, as);
             }
 
             public String toString() {
-                return String.format("<pa (%.1f, %.1f) (%d x %d)>",
+                return String.format("<pac (%.1f, %.1f) (%d x %d)>",
                     getX(), getY(), getWidth(), getHeight());
             }
 
-            private void pickPARANOID() {
-                int paId = pickInt(PARANOIDS);
+            private void pickPAC() {
+                int pacId = pickInt(PACS);
                 if (randfrange(0,1) <= LUCKY) {
-                    paId = R.drawable.pa_stock;
+                    pacId = R.drawable.pac_stock;
                 }
-                BitmapDrawable pa = (BitmapDrawable) getContext().getResources().getDrawable(paId);
-                Bitmap paBits = pa.getBitmap();
-                h=paBits.getHeight();
-                w=paBits.getWidth();
+                BitmapDrawable pac = (BitmapDrawable) getContext().getResources().getDrawable(pacId);
+                Bitmap pacBits = pac.getBitmap();
+                h=pacBits.getHeight();
+                w=pacBits.getWidth();
 
                 if (DEBUG) {
-                    pa.setAlpha(0x80);
+                    pac.setAlpha(0x80);
                 }
-                this.setImageDrawable(pa);
+                this.setImageDrawable(pac);
             }
 
             public void reset() {
-                pickPARANOID();
+                pickPAC();
 
                 final float scale = lerp(MIN_SCALE,MAX_SCALE,z);
                 setScaleX(scale); setScaleY(scale);
@@ -167,7 +165,7 @@ public class PACircus extends Activity {
                 }
             }
 
-            public float overlap(PARANOID other) {
+            public float overlap(PAC other) {
                 final float dx = (x - other.x);
                 final float dy = (y - other.y);
                 return mag(dx, dy) - r - other.r;
@@ -217,10 +215,10 @@ public class PACircus extends Activity {
                         ViewGroup.LayoutParams.WRAP_CONTENT,
                         ViewGroup.LayoutParams.WRAP_CONTENT);
 
-            for(int i=0; i<NUM_PARANOIDS; i++) {
-                PARANOID nv = new PARANOID(getContext(), null);
+            for(int i=0; i<NUM_PACS; i++) {
+                PAC nv = new PAC(getContext(), null);
                 addView(nv, wrap);
-                nv.z = ((float)i/NUM_PARANOIDS);
+                nv.z = ((float)i/NUM_PACS);
                 nv.z *= nv.z;
                 nv.reset();
                 nv.x = (randfrange(0, boardWidth));
@@ -235,20 +233,20 @@ public class PACircus extends Activity {
                 public void onTimeUpdate(TimeAnimator animation, long totalTime, long deltaTime) {
                     if (DEBUG) {
                         for (int i=0; i<getChildCount(); i++) {
-                            android.util.Log.d("PARANOIDCircus", "pa " + i + ": " + getChildAt(i));
+                            android.util.Log.d("PACCircus", "pac " + i + ": " + getChildAt(i));
                         }
                     }
 
                     for (int i=0; i<getChildCount(); i++) {
                         View v = getChildAt(i);
-                        if (!(v instanceof PARANOID)) continue;
-                        PARANOID nv = (PARANOID) v;
+                        if (!(v instanceof PAC)) continue;
+                        PAC nv = (PAC) v;
                         nv.update(deltaTime / 1000f);
 
                         for (int j=i+1; j<getChildCount(); j++) {
                             View v2 = getChildAt(j);
-                            if (!(v2 instanceof PARANOID)) continue;
-                            PARANOID nv2 = (PARANOID) v2;
+                            if (!(v2 instanceof PAC)) continue;
+                            PAC nv2 = (PAC) v2;
                             nv.overlap(nv2);
                         }
 
@@ -317,7 +315,7 @@ public class PACircus extends Activity {
                 pt.setColor(0xFFFFCC00);
                 pt.setStrokeWidth(1.0f);
                 for (int i=0; i<getChildCount(); i++) {
-                    PARANOID b = (PARANOID) getChildAt(i);
+                    PAC b = (PAC) getChildAt(i);
                     final float a = (360-b.a)/180f*3.14159f;
                     final float tx = b.getTranslationX();
                     final float ty = b.getTranslationY();

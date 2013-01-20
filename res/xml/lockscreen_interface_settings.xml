@@ -25,26 +25,26 @@
          <extra android:name="cm_security" android:value="true" />
      </PreferenceScreen>
 
-     <ListPreference
+<!--     <ListPreference
         android:key="lockscreen_background"
         android:persistent="false"
         android:dialogTitle="@string/lockscreen_custom_background_title"
         android:title="@string/lockscreen_custom_background_title"
         android:entries="@array/lockscreen_background_entries"
-        android:entryValues="@array/lockscreen_background_values"/>
+        android:entryValues="@array/lockscreen_background_values"/>  -->
 
-    <CheckBoxPreference
+<!--     <CheckBoxPreference
         android:key="lockscreen_see_through"
         android:title="@string/lockscreen_see_through_title"
-        android:summary="@string/lockscreen_see_through_summary" />
+        android:summary="@string/lockscreen_see_through_summary" />  -->
 
-     <ListPreference
+<!--     <ListPreference
         android:key="lockscreen_clock_align"
         android:persistent="false"
         android:dialogTitle="@string/lockscreen_clock_align_title"
         android:title="@string/lockscreen_clock_align_title"
         android:entries="@array/lockscreen_clock_align_entries"
-        android:entryValues="@array/lockscreen_clock_align_values"/>
+        android:entryValues="@array/lockscreen_clock_align_values"/>  -->
 
      <ListPreference
         android:key="lockscreen_battery_status"
@@ -59,7 +59,7 @@
          android:key="owner_info_settings"
          android:title="@string/owner_info_settings_title"
          android:summary="@string/owner_info_settings_summary" />
-
+<!--
      <Preference
         android:fragment="com.android.settings.cyanogenmod.Weather"
         android:key="lockscreen_weather"
@@ -77,5 +77,11 @@
         android:key="lockscreen_targets"
         android:summary="@string/lockscreen_target_summary"
         android:title="@string/lockscreen_target_title" />
+-->
+     <PreferenceScreen
+        android:fragment="com.android.settings.cyanogenmod.LockscreenButtons"
+        android:key="lockscreen_buttons"
+        android:title="@string/lockscreen_buttons_title"
+        android:summary="@string/lockscreen_buttons_summary" />
 
 </PreferenceScreen>

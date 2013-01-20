@@ -20,7 +20,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
@@ -64,14 +63,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
+    private static final String KEY_AOKP_VERSION = "aokp_version";
     private static final String KEY_CYANOGENMOD_VERSION = "cm_version";
-    private static final String KEY_PARANOID_VERSION = "pa_version";
+    private static final String KEY_PAC_VERSION = "pac_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
     private static final String KEY_DEVICE_CPU = "device_cpu";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
-    private static final String KEY_CM_UPDATES = "cm_updates";
 
     long[] mHits = new long[3];
 
@@ -89,9 +88,12 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
+        setValueSummary(KEY_AOKP_VERSION, "ro.aokp.version");
+        findPreference(KEY_AOKP_VERSION).setEnabled(true);
         setValueSummary(KEY_CYANOGENMOD_VERSION, "ro.cm.version");
-        setValueSummary(KEY_PARANOID_VERSION, "ro.pa.version");
-        findPreference(KEY_PARANOID_VERSION).setEnabled(true);
+        findPreference(KEY_CYANOGENMOD_VERSION).setEnabled(true);
+        setValueSummary(KEY_PAC_VERSION, "ro.pac.version");
+        findPreference(KEY_PAC_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
 
         String cpuInfo = getCPUInfo();
@@ -170,13 +172,41 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 }
             }
         }
-        if (preference.getKey().equals(KEY_PARANOID_VERSION)) {
+        if (preference.getKey().equals(KEY_AOKP_VERSION)) {
             System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
             mHits[mHits.length-1] = SystemClock.uptimeMillis();
             if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
                 Intent intent = new Intent(Intent.ACTION_MAIN);
                 intent.setClassName("com.android.settings",
-                        com.android.settings.paranoid.PALogoActivity.class.getName());
+                        com.android.settings.aokp.AOKPLogoActivity.class.getName());
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
+                }
+            }
+        }
+        if (preference.getKey().equals(KEY_CYANOGENMOD_VERSION)) {
+            System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
+            mHits[mHits.length-1] = SystemClock.uptimeMillis();
+            if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setClassName("com.android.settings",
+                        com.android.settings.cyanogenmod.CIDLogoActivity.class.getName());
+                try {
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
+                }
+            }
+        }
+        if (preference.getKey().equals(KEY_PAC_VERSION)) {
+            System.arraycopy(mHits, 1, mHits, 0, mHits.length-1);
+            mHits[mHits.length-1] = SystemClock.uptimeMillis();
+            if (mHits[0] >= (SystemClock.uptimeMillis()-500)) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.setClassName("com.android.settings",
+                        com.android.settings.pac.PACLogoActivity.class.getName());
                 try {
                     startActivity(intent);
                 } catch (Exception e) {
@@ -253,7 +283,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 "(?:SMP\\s+)?" + /* ignore: SMP (optional) */
                 "(?:PREEMPT\\s+)?" + /* ignore: PREEMPT (optional) */
                 "(.+)"; /* group 4: date */
-
 
             Pattern p = Pattern.compile(PROC_VERSION_REGEX);
             Matcher m = p.matcher(procVersionStr);
@@ -338,23 +367,5 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         } catch (IOException e) {}
 
         return result;
-    }
-
-    private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
-        String intentUri=((PreferenceScreen) preference).getIntent().toUri(1);
-        Pattern pattern = Pattern.compile("component=([^/]+)/");
-        Matcher matcher = pattern.matcher(intentUri);
-
-        String packageName=matcher.find()?matcher.group(1):null;
-        if(packageName != null) {
-            try {
-                getPackageManager().getPackageInfo(packageName, 0);
-            } catch (NameNotFoundException e) {
-                Log.e(LOG_TAG,"package "+packageName+" not installed, hiding preference.");
-                getPreferenceScreen().removePreference(preference);
-                return true;
-            }
-        }
-        return false;
     }
 }

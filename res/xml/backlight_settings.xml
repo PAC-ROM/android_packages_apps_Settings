@@ -85,7 +85,7 @@
             android:persistent="false" />
 
         <!-- Level editor -->
-        <PreferenceScreen
+<!--        <PreferenceScreen
             android:key="light_levels_editor"
             android:title="@string/light_levels_editor_title"
             android:dependency="light_levels_enabled">
@@ -94,7 +94,7 @@
                 android:targetPackage="com.android.settings"
                 android:targetClass="com.android.settings.cyanogenmod.LightLevelsActivity" />
         </PreferenceScreen>
-
+ -->
         <!-- Allow screen brightness to decrease -->
         <CheckBoxPreference
             android:key="light_decrease_enabled"
