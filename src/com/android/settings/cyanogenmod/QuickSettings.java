@@ -88,7 +88,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     PreferenceCategory mDynamicTiles;
     ListPreference mQuickPulldown;
     CheckBoxPreference mNoNotificationsPulldown;
-
+    CheckBoxPreference mDisablePanel;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,12 +106,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
         mStaticTiles = (PreferenceCategory) prefSet.findPreference(STATIC_TILES);
         mDynamicTiles = (PreferenceCategory) prefSet.findPreference(DYNAMIC_TILES);
-
         mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
+        mDisablePanel = (CheckBoxPreference) prefSet.findPreference(DISABLE_PANEL);
         mNoNotificationsPulldown = (CheckBoxPreference) prefSet.findPreference(NO_NOTIFICATIONS_PULLDOWN);
         if (!Utils.isPhone(getActivity())) {
             if(mQuickPulldown != null)
             prefSet.removePreference(mQuickPulldown);
+            if(mDisablePanel != null)
+                mGeneralSettings.removePreference(mDisablePanel);
             if(mNoNotificationsPulldown != null)
                 prefSet.removePreference(mNoNotificationsPulldown);
         } else {
@@ -118,6 +121,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             int quickPulldownValue = Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0);
             mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
             updatePulldownSummary(quickPulldownValue);
+
+            mDisablePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DISABLE_PANEL, 0) == 0);
 
             mNoNotificationsPulldown.setChecked(Settings.System.getInt(resolver,
                 Settings.System.QS_NO_NOTIFICATION_PULLDOWN, 0) == 1);
@@ -244,6 +249,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         } else if (preference == mCollapsePanel) {
             Settings.System.putInt(resolver, Settings.System.QS_COLLAPSE_PANEL,
                     mCollapsePanel.isChecked() ? 1 : 0);
+            return true;
+        } else if (preference == mDisablePanel) {
+            Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
+                    mDisablePanel.isChecked() ? 0 : 1);
             return true;
         } else if (preference == mNoNotificationsPulldown) {
             Settings.System.putInt(resolver, Settings.System.QS_NO_NOTIFICATION_PULLDOWN,

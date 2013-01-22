@@ -14,6 +14,12 @@
             android:title="@string/title_no_notifications_pulldown"
             android:dependency="disable_quick_settings"
             android:summary="@string/summary_no_notifications_pulldown" />
+	    
+    <CheckBoxPreference
+            android:key="disable_quick_settings"
+            android:title="@string/disable_quick_settings_panel"
+            android:defaultValue="true"
+            android:summary="@string/disable_quick_settings_panel_summary" />
 
     <PreferenceScreen
         android:key="quick_settings_panel"
