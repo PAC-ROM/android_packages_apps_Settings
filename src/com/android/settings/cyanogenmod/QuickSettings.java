@@ -112,15 +112,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             if(mQuickPulldown != null)
             prefSet.removePreference(mQuickPulldown);
             if(mNoNotificationsPulldown != null)
-                mGeneralSettings.removePreference(mNoNotificationsPulldown);
+                prefSet.removePreference(mNoNotificationsPulldown);
         } else {
             mQuickPulldown.setOnPreferenceChangeListener(this);
             int quickPulldownValue = Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0);
             mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
             updatePulldownSummary(quickPulldownValue);
 
-            mDisablePanel.setChecked(Settings.System.getInt(resolver,
-                Settings.System.QS_DISABLE_PANEL, 0) == 0);
             mNoNotificationsPulldown.setChecked(Settings.System.getInt(resolver,
                 Settings.System.QS_NO_NOTIFICATION_PULLDOWN, 0) == 1);
         }

@@ -2,11 +2,18 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <ListPreference
+            android:key="quick_pulldown"
+            android:title="@string/title_quick_pulldown"
+            android:entries="@array/quick_pulldown_entries"
+            android:entryValues="@array/quick_pulldown_values"
+            android:persistent="false" />
+	    
     <CheckBoxPreference
-        android:key="quick_pulldown"
-        android:title="@string/quick_pulldown_title"
-        android:summary="@string/quick_pulldown_summary"
-        android:defaultValue="false" />
+            android:key="no_notifications_pulldown"
+            android:title="@string/title_no_notifications_pulldown"
+            android:dependency="disable_quick_settings"
+            android:summary="@string/summary_no_notifications_pulldown" />
 
     <PreferenceScreen
         android:key="quick_settings_panel"
