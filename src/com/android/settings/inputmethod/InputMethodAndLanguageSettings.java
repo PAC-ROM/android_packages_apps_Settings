@@ -222,9 +222,9 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 mVolumeKeyCursorControl.setValue(Integer.toString(Settings.System.getInt(getActivity()
                         .getContentResolver(), Settings.System.VOLUME_KEY_CURSOR_CONTROL, 0)));
                 mVolumeKeyCursorControl.setSummary(mVolumeKeyCursorControl.getEntry());
+            } else {
+                getPreferenceScreen().removePreference(mVolumeKeyCursorControl);
             }
-        } else {
-            getPreferenceScreen().removePreference(mVolumeKeyCursorControl);
         }
 
         mDisableFullscreenKeyboard = (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
