@@ -63,6 +63,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String STATUS_BAR_BRIGHTNESS_CONTROL = "status_bar_brightness_control";
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_ACCELEROMETER = "accelerometer";
+    private static final String KEY_SWAP_VOLUME_BUTTONS = "swap_volume_buttons";
     private static final String KEY_ROTATION = "rotation";
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
@@ -79,6 +80,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mStatusBarBrightnessControl;
 
     private CheckBoxPreference mAccelerometer;
+    private CheckBoxPreference mSwapVolumeButtons;
     private Preference mRotation;
     private WarnedListPreference mFontSizePref;
     private CheckBoxPreference mNotificationPulse;
@@ -132,6 +134,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mAccelerometer = (CheckBoxPreference) findPreference(KEY_ACCELEROMETER);
         mAccelerometer.setPersistent(false);
+
+        mSwapVolumeButtons = (CheckBoxPreference) prefSet.findPreference(KEY_SWAP_VOLUME_BUTTONS);
+        if (mSwapVolumeButtons != null) {
+            if (!Utils.hasVolumeRocker(getActivity())) {
+                prefSet.removePreference(mSwapVolumeButtons);
+            } else {
+                int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
+                        Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
+                mSwapVolumeButtons.setChecked(swapVolumeKeys > 0);
+            }
+        }
 
         mRotation = findPreference(KEY_ROTATION);
         mRotation.setOnPreferenceClickListener(this);
@@ -416,6 +429,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
                     getActivity(), !mAccelerometer.isChecked());
+        } else if (preference == mSwapVolumeButtons) {
+            Context context = getActivity().getApplicationContext();
+            Settings.System.putInt(context.getContentResolver(),
+                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION,
+                    mSwapVolumeButtons.isChecked()
+                    ? (Utils.isTablet() ? 2 : 1)
+                    : 0);
         } else if (preference == mNotificationPulse) {
             boolean value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
