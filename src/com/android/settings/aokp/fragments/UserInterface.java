@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.CheckBoxPreference;
+import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
@@ -68,7 +69,7 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
 @SuppressWarnings("InstanceVariableMayNotBeInitialized")
-public class UserInterface extends AOKPPreferenceFragment {
+public class UserInterface extends AOKPPreferenceFragment implements OnPreferenceChangeListener {
     public final String TAG = getClass().getSimpleName();
     private static final boolean DEBUG = false;
 
@@ -90,6 +91,7 @@ public class UserInterface extends AOKPPreferenceFragment {
     private static final CharSequence PREF_MISC = "misc";
     private static final CharSequence PREF_DISPLAY = "display";
     private static final CharSequence PREF_RECENTS_RAM_BAR = "recents_ram_bar";
+    private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     //private static final int REQUEST_PICK_CUSTOM_ICON = 202; //unused
@@ -114,6 +116,7 @@ public class UserInterface extends AOKPPreferenceFragment {
     CheckBoxPreference mRecentKillAll;
     AlertDialog mCustomBootAnimationDialog;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
+    ListPreference mLowBatteryWarning;
 
     private AnimationDrawable mAnimationPart1;
     private AnimationDrawable mAnimationPart2;
@@ -184,6 +187,13 @@ public class UserInterface extends AOKPPreferenceFragment {
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(mContentResolver,
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
+
+        mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
+        int lowBatteryWarning = Settings.System.getInt(mContentResolver,
+                                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
+        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
+        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
+        mLowBatteryWarning.setOnPreferenceChangeListener(this);
 
         // hide option if device is already set to never wake up
         if(!mContext.getResources().getBoolean(
@@ -268,6 +278,19 @@ public class UserInterface extends AOKPPreferenceFragment {
         } else {
             mCustomLabel.setSummary(mCustomLabelText);
         }
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mLowBatteryWarning) {
+            int lowBatteryWarning = Integer.valueOf((String) newValue);
+            int index = mLowBatteryWarning.findIndexOfValue((String) newValue);
+            Settings.System.putInt(mContentResolver,
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY,
+                    lowBatteryWarning);
+            mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
+            return true;
+        }
+        return false;
     }
 
     @Override
