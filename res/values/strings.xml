@@ -4740,4 +4740,6 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
 
+    <!-- Permissions Management -->
+    <string name="permissions_settings_title">Permissions</string>
 </resources>
