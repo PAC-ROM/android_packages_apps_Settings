@@ -2304,7 +2304,7 @@
     <string name="title_tile_settings">Configurações</string>
     <string name="title_tile_screen_timeout">Tempo limite de tela</string>
     <string name="title_tile_sound">Som</string>
-    <string name="title_tile_sync">Sincroniação</string>
+    <string name="title_tile_sync">Sincronização</string>
     <string name="title_tile_wifiap">Wi-Fi AP</string>
     <string name="title_tile_wifi">Wi-Fi</string>
     <string name="title_tile_wimax">WiMAX</string>
