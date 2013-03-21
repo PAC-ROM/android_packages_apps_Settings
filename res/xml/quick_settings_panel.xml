@@ -67,11 +67,6 @@
             android:entries="@array/entries_screentimeout_widget"
             android:entryValues="@array/values_screentimeout_widget" />
 
-        <CheckBoxPreference
-            android:key="flip_qs_tiles"
-            android:title="@string/flip_qs_tiles_title"
-            android:summary="@string/flip_qs_tiles_summary" />
-
         </PreferenceCategory>
 
         <PreferenceCategory
@@ -113,6 +108,27 @@
             android:key="qs_dyanmic_wifi"
             android:title="@string/title_dynamic_wifi"
             android:defaultValue="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/quicksettings_tiles_style_additional_options">
+
+        <CheckBoxPreference
+            android:key="flip_qs_tiles"
+            android:title="@string/flip_qs_tiles_title"
+            android:summary="@string/flip_qs_tiles_summary" />
+
+        <ListPreference
+            android:key="tiles_per_row"
+            android:entries="@array/tiles_per_row_entries"
+            android:entryValues="@array/tiles_per_row_values"
+            android:title="@string/tiles_per_row_title" />
+
+        <CheckBoxPreference
+            android:key="tiles_per_row_duplicate_landscape"
+            android:title="@string/tiles_per_row_duplicate_landscape_title"
+            android:summary="@string/tiles_per_row_duplicate_landscape_summary" />
 
     </PreferenceCategory>
 

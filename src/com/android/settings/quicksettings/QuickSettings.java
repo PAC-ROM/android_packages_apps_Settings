@@ -56,15 +56,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String STATIC_TILES = "static_tiles";
     private static final String DYNAMIC_TILES = "pref_dynamic_tiles";
     private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";
+    private static final String PREF_TILES_PER_ROW = "tiles_per_row";
+    private static final String PREF_TILES_PER_ROW_DUPLICATE_LANDSCAPE = "tiles_per_row_duplicate_landscape";
 
     private MultiSelectListPreference mRingMode;
     private ListPreference mNetworkMode;
     private ListPreference mScreenTimeoutMode;
     private ListPreference mQuickPulldown;
+    private ListPreference mTilesPerRow;
     private PreferenceCategory mGeneralSettings;
     private PreferenceCategory mStaticTiles;
     private PreferenceCategory mDynamicTiles;
     private CheckBoxPreference mFlipQsTiles;
+    private CheckBoxPreference mDuplicateColumnsLandscape;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -128,30 +132,34 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntry());
         mScreenTimeoutMode.setOnPreferenceChangeListener(this);
 
+        mTilesPerRow = (ListPreference) findPreference(PREF_TILES_PER_ROW);
+        int tilesPerRow = Settings.System.getInt(resolver,
+                Settings.System.QUICK_TILES_PER_ROW, 3);
+        mTilesPerRow.setValue(String.valueOf(tilesPerRow));
+        mTilesPerRow.setSummary(mTilesPerRow.getEntry());
+        mTilesPerRow.setOnPreferenceChangeListener(this);
+
+        mDuplicateColumnsLandscape = (CheckBoxPreference) findPreference(PREF_TILES_PER_ROW_DUPLICATE_LANDSCAPE);
+        mDuplicateColumnsLandscape.setChecked(Settings.System.getInt(resolver,
+                Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE, 1) == 1);
+
         // Remove unsupported options
+        Preference pref;
         if (!QSUtils.deviceSupportsDockBattery(getActivity())) {
-            Preference pref = findPreference(Settings.System.QS_DYNAMIC_DOCK_BATTERY);
-            if (pref != null) {
-                mDynamicTiles.removePreference(pref);
-            }
+            pref = findPreference(Settings.System.QS_DYNAMIC_DOCK_BATTERY);
+            if (pref != null) mDynamicTiles.removePreference(pref);
         }
         if (!QSUtils.deviceSupportsImeSwitcher(getActivity())) {
-            Preference pref = findPreference(Settings.System.QS_DYNAMIC_IME);
-            if (pref != null) {
-                mDynamicTiles.removePreference(pref);
-            }
+            pref = findPreference(Settings.System.QS_DYNAMIC_IME);
+            if (pref != null) mDynamicTiles.removePreference(pref);
         }
         if (!QSUtils.deviceSupportsUsbTether(getActivity())) {
-            Preference pref = findPreference(Settings.System.QS_DYNAMIC_USBTETHER);
-            if (pref != null) {
-                mDynamicTiles.removePreference(pref);
-            }
-        }
+            pref = findPreference(Settings.System.QS_DYNAMIC_USBTETHER);
+            if (pref != null) mDynamicTiles.removePreference(pref);
+       }
         if (!QSUtils.deviceSupportsWifiDisplay(getActivity())) {
-            Preference pref = findPreference(Settings.System.QS_DYNAMIC_WIFI);
-            if (pref != null) {
-                mDynamicTiles.removePreference(pref);
-            }
+            pref = findPreference(Settings.System.QS_DYNAMIC_WIFI);
+            if (pref != null) mDynamicTiles.removePreference(pref);
         }
     }
 
@@ -191,6 +199,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements
                     Settings.System.QUICK_SETTINGS_TILES_FLIP,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mDuplicateColumnsLandscape) {
+            Settings.System.putInt(resolver,
+                    Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -221,6 +234,12 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
             mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
+            return true;
+        } else if (preference == mTilesPerRow) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mTilesPerRow.findIndexOfValue((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QUICK_TILES_PER_ROW, value);
+            mTilesPerRow.setSummary(mTilesPerRow.getEntries()[index]);
             return true;
         }
         return false;
