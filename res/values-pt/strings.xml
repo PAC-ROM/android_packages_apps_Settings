@@ -1805,7 +1805,7 @@
     <string name="user_add_user_message_long" msgid="2278524063301283723">"Compartilhe este dispositivo com outras pessoas criando usuários adicionais. Cada usuário terá seu próprio espaço, que poderá personalizar com seus próprios aplicativos, plano de fundo, etc. Os usuários também poderão ajustar configurações do tablet que afetam a todos, como o Wi-Fi."\n\n"Depois que você cria um novo usuário, essa pessoa deve concluir o processo de configuração."\n\n"Qualquer usuário poderá aceitar permissões atualizadas de aplicativos em nome de todos os demais."</string>
     <string name="user_add_user_message_short" msgid="3310933423737035428">"Depois que você cria um novo usuário, essa pessoa deve concluir o processo de configuração."\n\n"Qualquer usuário poderá aceitar permissões atualizadas de aplicativos em nome de todos os demais."</string>
     <string name="user_setup_dialog_title" msgid="1765794166801864563">"Configurar o usuário agora?"</string>
-    <string name="user_setup_dialog_message" product="tablet" msgid="614037943337008555">"Certifique-se de que a pessoa está disponível para assumir o tablet e configurar seu espaço"</string>
+    <string name="user_setup_dialog_message" msgid="614037943337008555">"Certifique-se de que a pessoa está disponível para assumir o tablet e configurar seu espaço"</string>
     <string name="user_setup_button_setup_now" msgid="3391388430158437629">"Configurar agora"</string>
     <string name="user_setup_button_setup_later" msgid="3068729597269172401">"Agora não"</string>
     <string name="user_cannot_manage_message" product="tablet" msgid="8440449301994432789">"Somente o proprietário do tablet pode gerenciar os usuários."</string>
@@ -2242,7 +2242,7 @@
     <string name="status_bar_title">Barra de status</string>
     <string name="status_bar_clock_title">Relógio</string>
     <string name="status_bar_general_title">Geral</string>
-       <string name="status_bar_battery_title">Estilo do status da bateria</string>
+    <string name="status_bar_battery_title">Estilo do status da bateria</string>
     <string name="status_bar_toggle_brightness">Controle de brilho</string>
     <string name="status_bar_toggle_brightness_summary">Permite ajustar o brilho deslizando através da barra de status</string>
     <string name="status_bar_toggle_info">Brilho automático está habilitado</string>
@@ -2404,4 +2404,9 @@
     <string name="advanced_reboot_summary">Quando desbloqueado, incluir opções no menu de energia para reincializar para recuperação ou bootloader</string>
     <string name="lockpattern_settings_enable_error_path_title">Exibir erro no padrão</string>
     <string name="lockpattern_settings_enable_dots_title">Exibir pontos no padrão</string>
+    <string name="swap_volume_buttons_title">Inverter botões de volume</string>
+    <string name="swap_volume_buttons_summary">Inverter botões de volume quando virar a tela</string>
+    <string name="wifi_mode">Modo</string>
+    <string name="wifi_mode_ibss">Rede Ad-Hoc (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
 </resources>
