@@ -41,6 +41,8 @@ import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_DESKTOPMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_HYBRID;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
+import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
+import static com.android.internal.util.cm.QSUtils.deviceSupportsTelephony;
 
 import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.R;
@@ -141,9 +143,9 @@ public class QuickSettingsUtil {
 
     public static String getCurrentTiles(Context context) {
         String tiles = Settings.System.getString(context.getContentResolver(),
-                Settings.System.QUICK_SETTINGS);
+                Settings.System.QUICK_SETTINGS_TILES);
         if (tiles == null) {
-            tiles = TextUtils.join(TILE_DELIMITER, TILES_DEFAULT);
+            tiles = getDefaultTiles(context);
         }
         return tiles;
     }
@@ -197,6 +199,22 @@ public class QuickSettingsUtil {
             }
             return s;
         }
+    }
+
+    public static String getDefaultTiles(Context context) {
+        // Filter items not compatible with device
+        boolean bluetoothSupported = deviceSupportsBluetooth();
+        boolean telephonySupported = deviceSupportsTelephony(context);
+
+        if (!bluetoothSupported) {
+            TILES_DEFAULT.remove(TILE_BLUETOOTH);
+        }
+
+        if (!telephonySupported) {
+            TILES_DEFAULT.remove(TILE_MOBILEDATA);
+        }
+
+        return TextUtils.join(TILE_DELIMITER, TILES_DEFAULT);
     }
 
     public static class TileInfo {
