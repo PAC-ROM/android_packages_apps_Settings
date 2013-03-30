@@ -4599,7 +4599,7 @@
     <string name="tiles_reset_message">Restore the default displayed tiles and layout?</string>
 
     <!-- Pie controls -->
-    <string name="pie_controls_title">Pie controls</string>
+    <string name="pie_settings_title">Pie settings</string>
 
     <string name="pie_gravity_title">Pie gravity</string>
     <string name="pie_gravity_summary">Select the location where Pie will be placed at</string>

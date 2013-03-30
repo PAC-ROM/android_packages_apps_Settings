@@ -44,6 +44,11 @@
         android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
         android:title="@string/hardware_keys_title" />
 		
+    <PreferenceScreen
+        android:key="pie_settings"
+		android:fragment="com.android.settings.pac.PieSettings"
+		android:title="@string/pie_settings_title" />
+		
     <!-- Toolbar -->
     <PreferenceScreen
         android:key="tool_bar_settings"
