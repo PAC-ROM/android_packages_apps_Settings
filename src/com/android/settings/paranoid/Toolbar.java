@@ -38,17 +38,11 @@ import com.android.settings.Utils;
 public class Toolbar extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
-    private static final String KEY_QUICK_PULL_DOWN = "quick_pulldown";
-    private static final String STATUS_BAR_MAX_NOTIF = "status_bar_max_notifications";
     private static final String NAV_BAR_TABUI_MENU = "nav_bar_tabui_menu";
-    private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String NAV_BAR_CATEGORY = "toolbar_navigation";
     private static final String NAV_BAR_CONTROLS = "navigation_bar_controls";
     
-    private ListPreference mStatusBarMaxNotif;
-    private CheckBoxPreference mQuickPullDown;
     private CheckBoxPreference mMenuButtonShow;
-    private CheckBoxPreference mStatusBarDoNotDisturb;
     private PreferenceScreen mNavigationBarControls;
     private PreferenceCategory mNavigationCategory;
 
@@ -63,16 +57,6 @@ public class Toolbar extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         mContext = getActivity();
 
-        mQuickPullDown = (CheckBoxPreference) prefSet.findPreference(KEY_QUICK_PULL_DOWN);
-        mQuickPullDown.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.QS_QUICK_PULLDOWN, 0) == 1);
-        
-        mStatusBarMaxNotif = (ListPreference) prefSet.findPreference(STATUS_BAR_MAX_NOTIF);
-        int maxNotIcons = Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.MAX_NOTIFICATION_ICONS, 2);
-        mStatusBarMaxNotif.setValue(String.valueOf(maxNotIcons));
-        mStatusBarMaxNotif.setOnPreferenceChangeListener(this);
-
         mNavigationCategory = (PreferenceCategory) prefSet.findPreference(NAV_BAR_CATEGORY);
 
         mMenuButtonShow = (CheckBoxPreference) prefSet.findPreference(NAV_BAR_TABUI_MENU);
@@ -82,10 +66,7 @@ public class Toolbar extends SettingsPreferenceFragment
         mNavigationBarControls = (PreferenceScreen) prefSet.findPreference(NAV_BAR_CONTROLS);
 
         if (!Utils.isTablet()) {
-            prefSet.removePreference(mStatusBarMaxNotif);
             prefSet.removePreference(mMenuButtonShow);
-            prefSet.removePreference(mStatusBarDoNotDisturb);
-            prefSet.removePreference(mQuickPullDown);
         } 
     }
 
@@ -95,26 +76,11 @@ public class Toolbar extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.NAV_BAR_TABUI_MENU, mMenuButtonShow.isChecked() ? 1 : 0);
             return true;
-        } else if (preference == mQuickPullDown) {	
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.QS_QUICK_PULLDOWN,	mQuickPullDown.isChecked()
-                    ? 1 : 0);
-        } else if (preference == mStatusBarDoNotDisturb) {
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUS_BAR_DONOTDISTURB,
-                    mStatusBarDoNotDisturb.isChecked() ? 1 : 0);
-            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mStatusBarMaxNotif) {
-            int maxNotIcons = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.MAX_NOTIFICATION_ICONS, maxNotIcons);
-            return true;
-        }
         return false;
     }
 }
