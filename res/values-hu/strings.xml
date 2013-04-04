@@ -2462,7 +2462,6 @@
     <string name="tile_picker_title">Lapok és elrendezés</string>
     <string name="tile_picker_summary">Lapok megtekintése, kiválasztása vagy módosítása</string>
     <string name="tile_choose_title">Válasszon lapot</string>
-
     <string name="title_tile_airplane">Repülőgép üzemmód</string>
     <string name="title_tile_battery">Akkumulátor állapota</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
@@ -2488,16 +2487,16 @@
     <string name="title_tile_usb_tether">USB megosztás</string>
     <string name="title_tile_quiet_hours">Csendes órák</string>
     <string name="title_tile_volume">Hangerő</string>
-
+    <string name="title_tile_expanded_desktop">Képernyő kiterjesztés</string>
     <string name="title_dynamic_tiles">Dinamikus lapok</string>
     <string name="dynamic_tiles_note_title">Megjegyzés</string>
     <string name="dynamic_tiles_note_summary">Dinamikus lapok csak akkor láthatóak, ha egy rendszeresemény azt kíváltja</string>
     <string name="title_dynamic_alarm">Ébresztés</string>
     <string name="title_dynamic_bugreport">Hibajelentés</string>
+    <string name="title_dynamic_dock_battery">Dokkoló akkumulátora</string>
     <string name="title_dynamic_ime">IME változás</string>
     <string name="title_dynamic_usbtether">USB internetmegosztás</string>
     <string name="title_dynamic_wifi">Wi-Fi kijelző</string>
-
     <string name="title_general">Általános</string>
     <string name="title_quick_pulldown">Gyors legördítés</string>
     <string name="summary_quick_pulldown">Lapok megjelenítése az értesítési sáv %1$s oldalán történő legörgetéskor</string>
@@ -2508,39 +2507,24 @@
     <string name="quick_pulldown_right">Jobb</string>
     <string name="title_collapse_panel">Panel automatikus bezárása</string>
     <string name="summary_collapse_panel">Elrejtés lap kiválasztásakor</string>
-
-    <!-- Reset tiles -->
     <string name="tiles_reset_title">Visszaállítás</string>
     <string name="tiles_reset_message">Biztosan vissza kívánja állítani alaphelyzetbe a lapok beállításait?</string>
-
-    <!--- Volume key cursor control -->
     <string name="volume_key_cursor_control_title">Kurzor mozgatás</string>
     <string name="volume_key_cursor_control_off">Letiltva</string>
     <string name="volume_key_cursor_control_on">Hangerő fel/le - balra/jobbra</string>
     <string name="volume_key_cursor_control_on_reverse">Hangerő fel/le - jobbra/balra</string>
-
-    <!-- Wireless display -->
     <string name="pref_wifi_disable_hdcp_title">HDCP megerősítés tiltása</string>
     <string name="pref_wifi_disable_hdcp_summary">Próbálja ki ezt a beállítást, ha tud csatlakozni a képernyőhöz, de az nem mutat képet.</string>
-
-    <!--- Sms security limit -->
     <string name="app_security_title">Alkalmazásbiztonság</string>
     <string name="sms_security_check_limit_title">Üzenet korlát</string>
     <string name="sms_security_check_limit_summary">Figyelmeztető ablak megjelenítése a túl gyakori üzenetküldés megakadályozására. Jelenlegi limit: %d üzenet 15 percenként</string>
     <string name="sms_security_check_limit_default">30 (Alapbeállítás)</string>
-
-    <!--- Lock clock -->
     <string name="lock_clock_title">Óra modul</string>
     <string name="lock_clock_summary">A kezdőképernyőn, illetve a képernyőzáron található \"cLock\" modul beállításai</string>
-
-    <!-- Stylus Icon -->
     <string name="stylus_icon_enabled_title">Ikon megjelenítése stylus használatakor</string>
     <string name="stylus_icon_enabled_summary">Stylus használatakor megjelenít egy ikont az értesítési sávon</string>
-
     <string name="lockscreen_maximize_widgets_title">Teljes méretű modulok</string>
     <string name="lockscreen_maximize_widgets_summary">Modulok megjelenése maximális méretben (feloldás a lakat ikonnal)</string>
-
-    <!-- Custom lock screen background -->
     <string name="lockscreen_custom_background_title">Háttérkép</string>
     <string name="lockscreen_custom_background_dialog_title">Szín kiválasztása</string>
     <string name="lockscreen_background_result_successful">Háttérkép beállítva</string>
@@ -2548,20 +2532,12 @@
     <string name="lockscreen_background_color_fill">Szín kiválasztása</string>
     <string name="lockscreen_background_custom_image">Háttérkép kiválasztása</string>
     <string name="lockscreen_background_default_wallpaper">Alapértelmezett háttérkép</string>
-
-    <!-- Launch music player when headset is connected -->
     <string name="headset_connect_player_title">Zenelejátszó indítása csatlakoztatáskor</string>
     <string name="headset_connect_player_summary">Alapértelmezett zenelejátszó elindítása fülhallgató csatlakoztatásakor</string>
-
-    <!-- Safe headset volume restore checkbox -->
     <string name="safe_headset_volume_title">Biztonságos hangerő</string>
     <string name="safe_headset_volume_summary">Nagy hangerő megakadályozása fülhallgató csatlakoztatásakor</string>
-
-    <!-- Waiver -->
     <string name="cyanogenmod_waiver_title">Jogi felelősség átvállalása</string>
     <string name="cyanogenmod_waiver_body">A beállítás módosítása halláskárosodáshoz vezethet.\n\nAz \"OK\" gombbal Ön elfogadja ezt a figyelmeztetést és ezzel felmenti a CyanogenMod csapatot és minden közreműködőt az esetleges jogi kötelezettségek alól.</string>
-
-    <!-- Automatic brightness customization -->
     <string name="light_sensor_current_value">Fényérzékelő jelenlegi értéke: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatikus fényerő</string>
     <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> - <xliff:g id="end_level">%2$s</xliff:g>\nlux</string>
@@ -2578,18 +2554,43 @@
     <string name="auto_brightness_menu_edit_lux">Szerkesztés</string>
     <string name="auto_brightness_menu_split">Felosztás</string>
     <string name="auto_brightness_menu_remove">Eltávolítás</string>
-
-    <!-- Volume adjust sound preference -->
     <string name="volume_adjust_sounds_enable_title">Hang lejátszás beállításkor</string>
     <string name="volume_adjust_sounds_enable_summary">Hang lejátszása a hangerő beállítása közben</string>
-
-    <!-- Advanced reboot options -->
     <string name="advanced_reboot_title">Speciális újraindítás</string>
     <string name="advanced_reboot_summary">Recovery és Bootloader újraindítási mód megjelenítése a kikapcsoló menüben (feloldott kijelzőnél)</string>
-
-    <!-- Security & location settings screen -->
     <string name="lockpattern_settings_enable_error_path_title">Hibás minta megjelenítése</string>
     <string name="lockpattern_settings_enable_dots_title">Feloldási pontok megjelenítése</string>
+    <string name="navigation_bar_category">Navigációs sáv</string>
+    <string name="navigation_ring_title">Gyorsindítás</string>
+    <string name="navring_target_reset_message">Biztosan vissza kívánja állítani alaphelyzetbe a navigációs sáv összes hivatkozását?</string>
+    <string name="navring_target_reset">Alapbeállítások visszaállítva</string>
+    <string name="navring_target_save">Navigációs sáv hivatkozások elmentve</string>
+    <string name="navring_action_open_ime_switcher">Billentyűzet választó</string>
+    <string name="navring_action_kill_app">Alkalmazás leállítása</string>
+    <string name="navring_action_none">Nincs</string>
+    <string name="navring_action_take_screenshot">Képernyőmentés</string>
+    <string name="navring_action_ring_vibrate">Csengés/Rezgés</string>
+    <string name="navring_action_ring_silent">Csengés/Néma</string>
+    <string name="navring_action_ring_vibrate_silent">Csengés/Rezgés/Néma</string>
+    <string name="navring_action_screen_off">Kijelző kikapcsolása</string>
+    <string name="navring_action_torch">Zseblámpa</string>
+    <string name="navring_action_google_now">Google Now</string>
+    <string name="navring_choose_action_title">Válasszon eseményt</string>
+    <string name="swap_volume_buttons_title">Hangerőgombok felcserélése</string>
+    <string name="swap_volume_buttons_summary">Hangerőgombok felcserélése, ha a képernyő el van forgatva</string>
+    <string name="pie_control_title">Paletta beállítások</string>
+    <string name="pie_control_enabled">Engedélyezve bekapcsolt képernyő kiterjesztés esetén</string>
+    <string name="pie_control_disabled">Letiltva</string>
+    <string name="pie_control_size">Paletta méret</string>
+    <string name="pie_control_trigger_positions">Aktiválási pozíciók</string>
+    <string name="pie_control_trigger_left">Képernyő bal oldalán</string>
+    <string name="pie_control_trigger_bottom">Képernyő alján</string>
+    <string name="pie_control_trigger_right">Képernyő jobb oldalán</string>
+    <string name="pie_control_trigger_top">Képernyő tetején</string>
+    <string name="pie_control_trigger_top_summary">Csak a navigáció jelenik meg</string>
+    <string name="wifi_mode">Mód</string>
+    <string name="wifi_mode_ibss">Ad-Hoc (IBSS) hálózat</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
 
     <!-- **** CYANOGENMOD ADDITIONS END **** -->
 
