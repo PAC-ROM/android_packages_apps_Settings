@@ -20,6 +20,16 @@
     android:title="@string/quicksettings_tiles_style">
 
     <PreferenceCategory
+        android:title="@string/quicksettings_tiles_style">
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+             android:key="quick_tiles_text_color"
+             android:title="@string/quick_tiles_text_color_title"
+             android:defaultValue="0xffcccccc" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:title="@string/quicksettings_tiles_style_additional_options">
 
         <ListPreference

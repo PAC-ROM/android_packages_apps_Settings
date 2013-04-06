@@ -36,16 +36,22 @@ import android.view.MenuItem;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.util.Helpers;
+import com.android.settings.util.Helpers; 
+
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String PREF_TILES_PER_ROW = "tiles_per_row";
     private static final String PREF_TILES_PER_ROW_DUPLICATE_LANDSCAPE = "tiles_per_row_duplicate_landscape";
+    private static final String PREF_QUICK_TILES_TEXT_COLOR = "quick_tiles_text_color";
+
+    private static final int DEFAULT_QUICK_TILES_TEXT_COLOR = 0xffcccccc; 
 
     private ListPreference mTilesPerRow;
     private CheckBoxPreference mDuplicateColumnsLandscape;
+    private ColorPickerPreference mQuickTilesTextColor; 
 
     private boolean mCheckPreferences;
 
@@ -67,6 +73,17 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
 
         prefs = getPreferenceScreen();
 
+        mQuickTilesTextColor = (ColorPickerPreference) findPreference(PREF_QUICK_TILES_TEXT_COLOR);
+        mQuickTilesTextColor.setNewPreviewColor(DEFAULT_QUICK_TILES_TEXT_COLOR);
+        mQuickTilesTextColor.setOnPreferenceChangeListener(this);
+        int intColor = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.QUICK_TILES_TEXT_COLOR, -2);
+        if (intColor == -2) {
+            mQuickTilesTextColor.setSummary(getResources().getString(R.string.none));
+        } else {
+            mQuickTilesTextColor.setNewPreviewColor(intColor);
+        }
+
         mTilesPerRow = (ListPreference) prefs.findPreference(PREF_TILES_PER_ROW);
         int tilesPerRow = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.QUICK_TILES_PER_ROW, 3);
@@ -82,6 +99,27 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
         setHasOptionsMenu(true);
         mCheckPreferences = true;
         return prefs;
+    }
+ 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.quick_settings_tiles_style, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.reset:
+                Settings.System.putInt(getActivity().getContentResolver(),
+                        Settings.System.QUICK_TILES_TEXT_COLOR, -2);
+
+                refreshSettings();
+                return true;
+             default:
+                return super.onContextItemSelected(item);
+        }
     }
 
     @Override
@@ -110,6 +148,15 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                     value);
             mTilesPerRow.setSummary(mTilesPerRow.getEntries()[index]);
             Helpers.restartSystemUI();
+            return true;
+        } else if (preference == mQuickTilesTextColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(newValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.QUICK_TILES_TEXT_COLOR,
+                    intHex);
             return true;
         }
         return false;

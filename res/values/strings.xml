@@ -4598,6 +4598,9 @@
     <string name="tiles_per_row_title">Tiles per row</string>
     <string name="tiles_per_row_duplicate_landscape_title">Scale landscape quantity</string>
     <string name="tiles_per_row_duplicate_landscape_summary">Landscape view doubles tiles per row quantity</string>
+    <string name="quick_tiles_text_color_title">Tiles text color</string>
+    <string name="quick_settings_style_reset">Reset colors</string>
+    <string name="none">None</string> 
 
     <!-- Reset tiles -->
     <string name="tiles_add_title">Add</string>
