@@ -41,6 +41,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private static final String KEY_AIRPLANE = "power_menu_airplane";
     private static final String KEY_USER = "power_menu_user";
     private static final String KEY_SOUND = "power_menu_sound";
+    private static final String PREF_REBOOT_KEYGUARD = "show_reboot_keyguard";
 
     private CheckBoxPreference mRebootPref;
     private CheckBoxPreference mScreenshotPref;
@@ -49,6 +50,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAirplanePref;
     private CheckBoxPreference mUserPref;
     private CheckBoxPreference mSoundPref;
+    CheckBoxPreference mShowRebootKeyguard;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +98,10 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mSoundPref = (CheckBoxPreference) findPreference(KEY_SOUND);
         mSoundPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SOUND_ENABLED, 1) == 1));
+                
+        mShowRebootKeyguard = (CheckBoxPreference) findPreference(PREF_REBOOT_KEYGUARD);
+        mShowRebootKeyguard.setChecked(Settings.System.getBoolean(getActivity()
+                .getContentResolver(), Settings.System.POWER_DIALOG_SHOW_REBOOT_KEYGUARD, true));
 
     }
 
@@ -144,6 +150,10 @@ public class PowerMenu extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.POWER_MENU_SOUND_ENABLED,
                     value ? 1 : 0);
+        } else if (preference == mShowRebootKeyguard) {
+            Settings.System.putBoolean(getActivity().getContentResolver(),
+                    Settings.System.POWER_DIALOG_SHOW_REBOOT_KEYGUARD,
+                    ((CheckBoxPreference)preference).isChecked());
         } else {
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }

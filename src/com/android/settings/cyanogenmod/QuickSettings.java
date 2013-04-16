@@ -20,12 +20,14 @@ import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
+import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsUsbTether;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsWifiDisplay;
+import static com.android.internal.util.cm.QSUtils.systemProfilesEnabled;
 
 import android.content.ContentResolver;
 import android.content.pm.PackageManager;
@@ -194,6 +196,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         // Dont show the NFC tile if not supported
         if (!deviceSupportsNfc(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_NFC);
+        }
+
+        // Dont show the profiles tile if profiles are disabled
+        if (Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 1) {
+            QuickSettingsUtil.TILES.remove(TILE_PROFILE);
         }
     }
 

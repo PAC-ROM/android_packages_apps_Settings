@@ -5262,6 +5262,8 @@
     <string name="vibration_title">Phone vibration</string>
     
     <string name="notification_draw_settings_title">Shortcuts and WiFi display</string>
+    
+    <string name="title_show_reboot_keyguard">Show reboot on lockscreen</string>
    
     <!-- Notification Shortcuts -->
     <string name="notification_shortcuts_grouptitle">Shortcuts</string>
