@@ -40,7 +40,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
@@ -200,10 +199,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         mStylusIconEnabled = (CheckBoxPreference) findPreference(KEY_STYLUS_ICON_ENABLED);
         // remove stylus preference for non stylus devices
         if (!getResources().getBoolean(com.android.internal.R.bool.config_stylusGestures)) {
-            PreferenceGroup pointerSettingsCategory = (PreferenceGroup)
+            PreferenceCategory pointerSettingsCategory = (PreferenceCategory)
                     findPreference(KEY_POINTER_SETTINGS_CATEGORY);
-            pointerSettingsCategory.removePreference(mStylusGestures);
-            pointerSettingsCategory.removePreference(mStylusIconEnabled);
+            if (pointerSettingsCategory != null) {
+                pointerSettingsCategory.removePreference(mStylusGestures);
+                pointerSettingsCategory.removePreference(mStylusIconEnabled);
+            }
         }
 
         // Spell Checker
