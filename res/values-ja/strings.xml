@@ -2615,8 +2615,8 @@
     <!-- Automatic brightness customization -->
     <string name="light_sensor_current_value">現在の明るさセンサー値: <xliff:g id="light_level">%d</xliff:g> ルクス</string>
     <string name="auto_brightness_dialog_title">自動明るさレベル</string>
-    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> ルクス</string>
-    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
+    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> ルクス</string>
+    <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e ルクス</string>
     <string name="auto_brightness_adjust_button">調整</string>
     <string name="auto_brightness_reset_button">リセット</string>
     <string name="auto_brightness_lux_dialog_title">周囲の明るさの範囲</string>
