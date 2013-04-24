@@ -4512,16 +4512,12 @@
     <string name="icon_picker_nav">Navigation</string>
 
     <!-- Bars sub menu [CHAR LIMIT=30] -->
-    <string name="tool_bar_settings">Toolbars</string>
     <string name="tool_bar_status_header">Status bar</string>
-    <string name="tool_bar_navigation_header">Navigation bar</string>
 
     <!-- Quick pulldown -->
     <string name="quick_pulldown_title">Quick pulldown</string>
     <string name="quick_pulldown_summary">Edge of status bar will pull down Quick Settings</string>
-    <!-- Split menu -->
-    <string name="navigation_bar_tabui_menu_title">Split menu button</string>
-    <string name="navigation_bar_tabui_menu_summary">Show separate menu button instead of merging it to recents button</string>
+
     <!-- Status bar notification limit -->
     <string name="status_bar_max_notifications_title">Limit of notifications</string>
     <string name="status_bar_max_notifications_summary">Select the limit of notification icons to be shown on status bar. Applies only to portrait orientation</string>
