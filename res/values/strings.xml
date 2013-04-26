@@ -5286,6 +5286,9 @@
     <string name="aokp_version">AOKP version</string>
     <string name="aokp_version_default">Unknown</string>
 
+    <!-- TRDS Settings -->
+    <string name="trds_settings_title">The Real Dark Slim</string>
+
     <string name="vibration_title">Phone vibration</string>
     
     <string name="notification_draw_settings_title">Shortcuts and WiFi display</string>
