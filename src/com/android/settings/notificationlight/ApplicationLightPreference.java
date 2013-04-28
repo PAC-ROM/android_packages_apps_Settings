@@ -30,7 +30,6 @@ import android.graphics.drawable.shapes.RectShape;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,7 +55,6 @@ public class ApplicationLightPreference extends Preference implements
     private int mOffValue;
     private boolean mOnOffChangeable;
 
-    private OnLongClickListener mParent;
     private Resources mResources;
     private ScreenReceiver mReceiver = null;
     private AlertDialog mTestDialog;
@@ -71,7 +69,6 @@ public class ApplicationLightPreference extends Preference implements
         mOnValue = DEFAULT_TIME;
         mOffValue = DEFAULT_TIME;
         mOnOffChangeable = true;
-        mParent = null;
         init();
     }
 
@@ -86,7 +83,6 @@ public class ApplicationLightPreference extends Preference implements
         mColorValue = color;
         mOnValue = onValue;
         mOffValue = offValue;
-        mParent = null;
         mOnOffChangeable = true;
         init();
     }
@@ -107,41 +103,9 @@ public class ApplicationLightPreference extends Preference implements
         init();
     }
 
-    /**
-     * @param context
-     * @param onLongClickListener
-     * @param color
-     * @param onValue
-     * @param offValue
-     */
-    public ApplicationLightPreference(Context context, OnLongClickListener parent, int color, int onValue, int offValue) {
-        super(context);
-        mColorValue = color;
-        mOnValue = onValue;
-        mOffValue = offValue;
-        mParent = parent;
-        mOnOffChangeable = true;
-        init();
-    }
-
     private void init() {
         setLayoutResource(R.layout.preference_application_light);
         mResources = getContext().getResources();
-    }
-
-    @Override
-    public View getView(View convertView, ViewGroup parent) {
-        View view = super.getView(convertView, parent);
-
-        View lightPref = (LinearLayout) view.findViewById(R.id.app_light_pref);
-        if ((lightPref != null) && lightPref instanceof LinearLayout) {
-            lightPref.setOnClickListener(this);
-            if (mParent != null) {
-                lightPref.setOnLongClickListener(mParent);
-            }
-        }
-
-        return view;
     }
 
     @Override
