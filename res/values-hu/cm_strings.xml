@@ -13,8 +13,24 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="bluetooth_mas_request">Üzenethozzáférés</string>
+    <string name="bluetooth_mas_acceptance_dialog_text">"A(z) %1$s szeretne hozzáférni az üzeneteihez. Megadja a hozzáférést a(z) %2$s eszköznek?"</string>
+    <string name="bluetooth_mas_remember_choice">Ne jelenjen meg többé</string>
+    <string name="wifi_setting_countrycode_title">Wi-Fi régiókód</string>
+    <string name="wifi_setting_countrycode_summary">Adja meg a Wi-Fi régiókódját</string>
+    <string name="wifi_setting_countrycode_error">Hiba történt a régiókód beállítása közben.</string>
+    <string name="wifi_setting_priority_title">Wi-Fi prioritás</string>
+    <string name="wifi_setting_priority_summary">Wi-Fi hálózatok prioritásának beállítása</string>
+    <string name="root_access">Rendszergazda hozzáférés</string>
+    <string name="root_access_warning_title">Rendszergazdai hozzáférés engedélyezése</string>
+    <string name="root_access_warning_message">Veszélyes dolog rendszergazdai jogosultságot adni az alkalmazásoknak és veszélyes lehet a rendszerre!</string>
+    <string name="root_access_none">Letiltva</string>
+    <string name="root_access_apps">Csak alkalmazások</string>
+    <string name="root_access_adb">Csak ADB</string>
+    <string name="root_access_all">Alkalmazások és ADB</string>
+    <string name="accessibility_home_button_answers_call_prerefence_title">A kezdőgomb fogadja a hívást</string>
+    <string name="headset_category_title">Fejhallgató</string>
     <string name="ok">OK</string>
     <string name="quiet_hours_title">Csendes órák</string>
     <string name="quiet_hours_summary">Csendes órák beállításai</string>
