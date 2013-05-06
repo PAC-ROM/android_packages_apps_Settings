@@ -85,7 +85,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     PreferenceCategory mGeneralSettings;
     PreferenceCategory mStaticTiles;
     PreferenceCategory mDynamicTiles;
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,11 +117,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         }
         mRingMode.setOnPreferenceChangeListener(this);
 
-		// Add the network mode preference
+        // Add the network mode preference
         mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
-        mNetworkMode.setSummary(mNetworkMode.getEntry());
-        mNetworkMode.setOnPreferenceChangeListener(this);
-        
+        if(mNetworkMode != null){
+            mNetworkMode.setSummary(mNetworkMode.getEntry());
+            mNetworkMode.setOnPreferenceChangeListener(this);
+        }
+
         // Screen timeout mode
         mScreenTimeoutMode = (ListPreference) prefSet.findPreference(EXP_SCREENTIMEOUT_MODE);
         mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntry());
@@ -137,6 +139,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
         }
         mDynamicUsbTether = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_USBTETHER);
+
         if (mDynamicUsbTether != null) {
             if (deviceSupportsUsbTether(getActivity())) {
                 mDynamicUsbTether.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER, 1) == 1);
@@ -193,15 +196,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             QuickSettingsUtil.TILES.remove(TILE_BLUETOOTH);
         }
 
+        // Dont show the profiles tile if profiles are disabled
+        if (Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 1) {
+            QuickSettingsUtil.TILES.remove(TILE_PROFILE);
+        }
+
         // Dont show the NFC tile if not supported
         if (!deviceSupportsNfc(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_NFC);
         }
 
-        // Dont show the profiles tile if profiles are disabled
-        if (Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 1) {
-            QuickSettingsUtil.TILES.remove(TILE_PROFILE);
-        }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -257,19 +261,19 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
                     TextUtils.join(SEPARATOR, arrValue));
             updateSummary(TextUtils.join(SEPARATOR, arrValue), mRingMode, R.string.pref_ring_mode_summary);
             return true;
-        } else if (preference == mScreenTimeoutMode) {
-            int value = Integer.valueOf((String) newValue);
-            int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
-            mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
-            return true;
         } else if (preference == mNetworkMode) {
             int value = Integer.valueOf((String) newValue);
             int index = mNetworkMode.findIndexOfValue((String) newValue);
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.EXPANDED_NETWORK_MODE, value);
             mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
+            return true;
+        } else if (preference == mScreenTimeoutMode) {
+            int value = Integer.valueOf((String) newValue);
+            int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
+            mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
             return true;
         }
         return false;
