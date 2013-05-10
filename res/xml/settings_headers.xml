@@ -62,6 +62,23 @@
     <header android:id="@+id/customization_section"
         android:title="@string/header_category_customization" />
 
+    <!-- TRDS / PAC In Black-->
+    <header
+        android:id="@+id/trds_settings"
+        android:icon="@drawable/ic_settings_trds"
+        android:title="@string/trds_settings_title" />
+    
+    <!-- Themes -->
+    <header
+        android:id="@+id/themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tmobile.themechooser"
+            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </header>
+    
     <!-- Launcher -->
     <header
         android:id="@+id/launcher_settings"
@@ -74,41 +91,7 @@
         android:fragment="com.android.settings.paranoid.Lockscreen"
         android:icon="@drawable/ic_settings_lock_screen" 
         android:title="@string/lock_screen_settings" />
-
-    <!-- TRDS -->
-    <header
-        android:id="@+id/trds_settings"
-        android:icon="@drawable/ic_settings_trds"
-        android:title="@string/trds_settings_title" />
-
-    <!-- Themes -->
-    <header
-        android:id="@+id/themes_settings"
-        android:icon="@drawable/ic_settings_themes"
-        android:title="@string/themes_settings_title">
-        <intent
-            android:action="android.intent.action.MAIN"
-            android:targetPackage="com.tmobile.themechooser"
-            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
-    </header>
-
-    <!-- System -->
-    <header
-        android:id="@+id/system_settings"
-        android:icon="@drawable/ic_settings_system"
-        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
-        android:title="@string/system_settings_title" />
-
-    <!-- ROM Control -->
-    <header android:id="@+id/rom_control"
-            android:title="@string/rom_control_title"
-            android:icon="@drawable/ic_settings_rom_control" >
-        <intent
-                android:action="android.intent.action.MAIN"
-                android:targetClass="com.aokp.romcontrol.ROMControlActivity"
-                android:targetPackage="com.aokp.romcontrol" />
-    </header>
-
+        
     <!-- Hybrid options -->
     <header
         android:id="@+id/hybrid_settings"
@@ -119,6 +102,23 @@
             android:targetPackage="com.paranoid.preferences"
             android:targetClass="com.paranoid.preferences.MainActivity" />
     </header>
+        
+    <!-- ROM Control -->
+    <header android:id="@+id/rom_control"
+            android:title="@string/rom_control_title"
+            android:icon="@drawable/ic_settings_rom_control" >
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetClass="com.aokp.romcontrol.ROMControlActivity"
+                android:targetPackage="com.aokp.romcontrol" />
+    </header>
+    
+    <!-- System -->
+    <header
+        android:id="@+id/system_settings"
+        android:icon="@drawable/ic_settings_system"
+        android:fragment="com.android.settings.cyanogenmod.SystemSettings"
+        android:title="@string/system_settings_title" />
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
