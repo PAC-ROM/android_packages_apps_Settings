@@ -27,6 +27,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsImeSwitcher;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsLte;
+import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsUsbTether;
 import static com.android.internal.util.cm.QSUtils.deviceSupportsWifiDisplay;
@@ -166,8 +167,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         }
 
         // Don't show mobile data options if not supported
-        boolean isMobileData = pm.hasSystemFeature(PackageManager.FEATURE_TELEPHONY);
-        if (!isMobileData) {
+        if (!deviceSupportsMobileData(getActivity())) {
             QuickSettingsUtil.TILES.remove(TILE_MOBILEDATA);
             QuickSettingsUtil.TILES.remove(TILE_WIFIAP);
             QuickSettingsUtil.TILES.remove(TILE_NETWORKMODE);
