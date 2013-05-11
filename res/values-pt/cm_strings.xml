@@ -661,8 +661,7 @@
     <string name="power_notifications_vibrate_title">Vibrar</string>
     <string name="power_notifications_ringtone_title">Som de notificação</string>
     <string name="power_notifications_ringtone_silent">Silencioso</string>
-<<<<<<< HEAD
-=======
+
     <string name="auto_brightness_close_button">Fechar</string>
     <string name="auto_brightness_level_dialog_title">Configurações do nível de luz</string>
     <string name="auto_brightness_lux">Luminosidade do ambiente (lux)</string>
@@ -693,5 +692,4 @@ tanto editar o nível de luminosidade ambiante quanto inserir manualmente a lumi
 desejada. Selecionando \'Dividir\' permite você a duplicar uma linha  para que possa inserir pontos de
 controle adicionais. \'Remover\' apaga a linha selecionada.
     </string>
->>>>>>> acdf7df... Settings: PT-BR update translations
 </resources>
