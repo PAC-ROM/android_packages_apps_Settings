@@ -655,7 +655,6 @@
     <string name="wifi_ibss_freq_title">Canal / Frequência</string>
     <string name="wifi_channel">Canal</string>
     <string name="wifi_mhz">MHz</string>
-    <string name="notification_pulse_title">Luz de notificação</string>
     <string name="power_notifications_category_title">Notificação de carregamento</string>
     <string name="power_notifications_enable_title">Ativar</string>
     <string name="power_notifications_vibrate_title">Vibrar</string>
