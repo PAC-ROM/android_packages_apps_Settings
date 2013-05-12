@@ -62,7 +62,7 @@
     <header android:id="@+id/make_it_dark"
         android:title="@string/header_category_dark" />
 	
-	<!-- TRDS / PAC In Black-->
+    <!-- TRDS / PAC In Black-->
     <header
         android:id="@+id/trds_settings"
         android:icon="@drawable/ic_settings_trds"
@@ -132,7 +132,7 @@
             android:targetClass="com.cyanogenmod.settings.device.DeviceSettings" />
     </header>
 
-	<!-- CUSTOMIZATION -->
+    <!-- CUSTOMIZATION -->
     <header android:id="@+id/customization_section"
         android:title="@string/header_category_customization" />
         
