@@ -4606,7 +4606,7 @@
     <string name="pie_trigger_huge">@string/pie_gap_huge</string>
 
     <!-- Hybrid sub menu [CHAR LIMIT=30] -->
-    <string name="hybrid_settings">Hybrid properties</string>
+    <string name="hybrid_settings">Hybrid Properties</string>
 
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
@@ -4623,7 +4623,9 @@
     <string name="aokp_version">AOKP version</string>
     <string name="aokp_version_default">Unknown</string>
 
-    <!-- TRDS Settings -->
+    <!-- MAKE IT DARK HEADER -->
+	<string name="header_category_dark">Make It Dark</string>
+	<!-- TRDS Settings -->
     <string name="trds_settings_title">PAC in Black</string>
 
     <string name="vibration_title">Phone vibration</string>
