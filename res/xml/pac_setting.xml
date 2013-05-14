@@ -114,6 +114,13 @@
         android:summary="@string/header_summary_power_menu" />
 
     <header
+        android:id="@+id/app_bar"
+        android:fragment="com.android.settings.chameleonos.AppSidebar"
+        android:icon="@drawable/ic_rom_control_app_bar"
+        android:title="@string/app_bar_settings_title"
+        android:summary="@string/app_bar_settings_summary" />
+
+    <header
         android:id="@+id/ribbon_targets"
         android:fragment="com.android.settings.aokp.fragments.RibbonTargets"
         android:icon="@drawable/ic_rom_control_ribbon"

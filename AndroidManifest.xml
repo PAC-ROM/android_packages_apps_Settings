@@ -1956,7 +1956,10 @@
         <activity android:name=".initD" />
 
         <activity android:name=".cyanogenmod.hwui.HwuiManager" />
+
         <activity android:name=".cyanogenmod.hwui.HwuiAppListAdapter" />
+
+        <activity android:name=".chameleonos.AppSidebar" />
 
         <!-- AOKP -->
 

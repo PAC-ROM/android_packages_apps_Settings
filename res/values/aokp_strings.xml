@@ -46,6 +46,7 @@
     <string name="title_performance">Performance Settings</string>
     <string name="title_clipboard_share">Share to Clipboard</string>
     <string name="ribbon_settings_title">Ribbons</string>
+    <string name="app_bar_settings_title">Appbar</string>
 
     <!-- Header Summaries -->
     <string name="header_summary_clock">@null</string>
@@ -70,6 +71,7 @@
     <string name="header_summary_gesture">@null</string>
     <string name="header_summary_hwui">@null</string>
     <string name="ribbon_settings_summary">@null</string>
+    <string name="app_bar_settings_summary">@null</string>
 
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Reset NavBar</string>
