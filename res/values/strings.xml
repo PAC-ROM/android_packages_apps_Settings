@@ -2343,8 +2343,6 @@
     <string name="about_settings_summary">View legal info, status, software version</string>
     <!-- About phone settings screen, setting option name to go to dialog that shows legal info -->
     <string name="legal_information">Legal information</string>
-    <!-- About phone settings screen, setting option name to see a list of contributors -->
-    <string name="contributors_title">Contributors</string>
     <!-- About phone settings screen, setting option name to show regulatory information [CHAR LIMIT=25] -->
     <string name="regulatory_information">Regulatory information</string>
     <!-- Note: this may be replaced by a more-specific title of the activity that will get launched --> <skip />
@@ -4419,6 +4417,14 @@
     <string name="changelog_error">Unable to load changelog</string>
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
+
+    <!-- Contributors strings -->
+    <string name="pac_title">PAC-man info</string>
+    <string name="contributors_title">View contributors</string>
+    <string name="contributors_loading">Loading contributors\u2026</string>
+    <string name="contributors_error">Unable to load contributors</string>
+    <string name="contributors_unknown">Unknown</string>
+    <string name="contributors_version">Version</string>
 
     <!-- Sound settings screen -->
     <string name="volume_overlay_single">Single</string>
