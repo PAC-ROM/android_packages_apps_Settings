@@ -1156,6 +1156,16 @@
     <string name="memory" msgid="6609961111091483458">"RAM"</string>
     <!-- no translation found for service_process_name (4098932168654826656) -->
     <skip />
+    <string name="notification_show_wifi_ssid_title">Mostrar nombre de red wifi</string>
+    <string name="notification_show_wifi_ssid_summary">Muestra el nombre de la red wifi a la que estas conectada</string>
+<string name="display_category_animation_options_title">Opciones de animación</string>
+<string name="system_power_crt_screen_off_title">Deshabilitar animación CRT</string>
+<string name="system_power_crt_screen_off_summary">Animación Electron Beam cuando se apaga</string>
+<string name="system_power_crt_mode_title">Modo de animación CRT</string>
+<string name="system_power_crt_mode_dialog_title">Mostrar animación CRT</string>
+<string name="system_power_crt_mode_horizontal">Horizontal</string>
+<string name="system_power_crt_mode_vertical">Vertical</string>
+<string name="system_power_crt_mode_both">Orientación</string>
     <string name="running_process_item_user_label" msgid="3129887865552025943">"Usuario: <xliff:g id="USER_NAME">%1$s</xliff:g>"</string>
     <string name="running_process_item_removed_user_label" msgid="8250168004291472959">"Usuario eliminado"</string>
     <string name="running_processes_item_description_s_s" msgid="5790575965282023145">"<xliff:g id="NUMPROCESS">%1$d</xliff:g> proceso y <xliff:g id="NUMSERVICES">%2$d</xliff:g> servicio"</string>
@@ -1202,6 +1212,9 @@
     <string name="game_controller_settings_category" msgid="8794508575329923718">"Mandos de videojuegos"</string>
     <string name="vibrate_input_devices" msgid="2599591466928793082">"Usar vibración"</string>
     <string name="vibrate_input_devices_summary" msgid="4595570516865299153">"Redireccionar vibración al controlador de videojuego cuando esté conectado"</string>
+    <string name="keyboard_settings_additional_category">CONFIGURACIÓN ADICIONAL</string>
+    <string name="disable_fullscreen_keyboard_title">Deshabilitar a pantalla completa</string>
+    <string name="disable_fullscreen_keyboard_summary">El teclado nunca ocupara toda la pantalla</string>
     <string name="keyboard_layout_dialog_title" msgid="8030087214949381372">"Elige un tipo de teclado"</string>
     <string name="keyboard_layout_dialog_setup_button" msgid="8514583747236476384">"Configurar diseños de teclado"</string>
     <string name="keyboard_layout_dialog_switch_hint" msgid="3889961090676293795">"Para cambiar, pulsa Ctrl+espacio."</string>
@@ -1879,10 +1892,10 @@
     <string name="network_mode_2g_3g">2G/Sólo 3G</string>
     <string name="network_mode_2g_3g_3g2g">2G/Sólo 3G/3G+2G</string>
     <string name="add_title">Añadir</string>
-    <string name="pie_controls_title">Controles circulares</string>
     <string name="pie_controls_summary">Permite la navegación y el reporte de estado en el modo de escritorio expandido</string>
     <string name="pie_gravity_title">Ubicación de los controles</string>
     <string name="pie_gravity_summary">Seleccionar la ubicación donde se encontrarán los controles circulares</string>
+    <string name="pie_stick_title">Prevenir rotación </string>
     <string name="pie_gravity_top">Arriba</string>
     <string name="pie_gravity_bottom">Abajo</string>
     <string name="pie_gravity_right">Derecha</string>
@@ -1908,6 +1921,7 @@
     <string name="pie_center_summary">Alinear los controles en el centro de la pantalla, sin importar la posición de activación</string>
     <string name="pie_trigger_title">Area de disparo</string>
     <string name="pie_trigger_summary">Determinar el tamaño de el area que activará los controles circulares</string>
+    <string name="pie_trigger_none">Desactivado</string>
     <string name="pie_menu_title">Botón menú persistente</string>
     <string name="pie_menu_summary">Siempre mostrar el botón menú, incluso cuando no sea necesario</string>
     <string name="pie_search_title">Botón búsqueda</string>
@@ -1915,6 +1929,16 @@
     <string name="hybrid_settings">Propiedades Híbridas</string>
     <string name="pa_version">Versión ParanoidAndroid</string>
     <string name="pa_version_default">Desconocida</string>
+    <string name="pac_version">Versión PAC</string>
+    <string name="aokp_version">Versión AOKP</string>
+    <string name="aokp_version_default">Desconocida</string>
+    <!--  About device Screen, hardware info, rear camera -->
+    <string name="device_rear_camera">Camara posterior</string>
+    <!--  About device Screen, hardware info, front camera -->
+    <string name="device_front_camera">Camara frontal</string>
+    <!--  About device Screen, hardware info, screen res -->
+    <string name="device_screen_resolution">Resolución</string>
+
 
     <!-- CYANOGENMOD ADDITIONS START -->
 
@@ -1966,6 +1990,8 @@
     <string name="start_time_title">Inicio</string>
     <string name="end_time_title">Fin</string>
     <string name="notification_convert_sound_to_vibration_title">Vibración en notificaciones</string>
+    <string name="notification_draw_settings_title">ACCESOS DIRECTOS Y WIFI</string>
+    
     <string name="notification_convert_sound_to_vibration_summary">En el modo vibración todas las notificaciones vibrarán, independientemente de la configuración específica de la aplicación</string>
     <string name="device_hostname">Nombre del dispositivo</string>
     <string name="mod_version">Versión CyanogenMod</string>
@@ -2385,6 +2411,8 @@
     <string name="lockscreen_buttons_playpause">Reproducir/Pausar</string>
     <string name="lockscreen_buttons_toggle_sound">Alternar sonido</string>
     <string name="quick_settings_panel_title">Panel de ajustes rápidos</string>
+    <string name="title_no_notifications_pulldown">Despliegue rápido sin notificaciones</string>
+    <string name="summary_no_notifications_pulldown">Despliegue rápido si no hay notificaciones presentes</string>
     <string name="quick_settings_title">Ajustes rápidos</string>
     <string name="title_static_tiles">Controles estáticos</string>
     <string name="tile_picker_title">Controles y disposición</string>
@@ -2426,7 +2454,8 @@
     <string name="title_dynamic_usbtether">Anclaje USB</string>
     <string name="title_dynamic_wifi">Wi-Fi Direct</string>
     <string name="title_general">General</string>
-    <string name="title_quick_pulldown">Despliegue rápido</string>
+    <string name="disable_quick_settings_panel">Ajustes rápidos</string>
+    <string name="disable_quick_settings_panel_summary">Habilitar o deshabilitar ajustes rápidos</string>
     <string name="summary_quick_pulldown">El borde %1$s de la barra de notificaciones desplegará el panel de ajustes rápidos</string>
     <string name="quick_pulldown_summary_left">izquierdo</string>
     <string name="quick_pulldown_summary_right">derecho</string>
@@ -2508,6 +2537,7 @@
     <string name="navring_action_google_now">Google Now</string>
     <string name="navring_choose_action_title">Elegir acción</string>
     <string name="pie_control_title">Controles flotantes</string>
+    <string name="pie_settings_title">Controles flotantes</string>
     <string name="pie_control_enabled">Habilitados cuando el escritorio extendido esté activado</string>
     <string name="pie_control_disabled">Deshabilitados</string>
     <string name="pie_control_search_title">Mostrar botón Búsqueda</string>
@@ -2520,4 +2550,33 @@
     <string name="pie_control_trigger_top_summary">Sólo se mostrará en la parte superior</string>
 
     <!-- CYANOGENMOD ADDITIONS END -->
+
+<string name="title_show_reboot_keyguard">Mostrar reiniciar en la pantalla de desbloqueo</string>
+<string name="vibration_title">Vibración</string>
+<string name="title_quick_pulldown">Ajustes rápidos</string>
+ <string name="pie_stick_summary">Si lo selecciona los controles flotantes estarán en el sitio sin importar la orientación</string>
+<string name="notification_shortcuts_grouptitle">Accesos directos</string>
+    <string name="notification_shortcuts_settings_title">Accesos directos a notificaciones</string>
+    <string name="notification_shortcuts_settings_summary">Mostrar accesos directos en el buzón de notificaciones</string>
+    <string name="notification_shortcuts_empty_title">Vacío</string>
+    <string name="notification_shortcuts_edit_title">Editar accesos directos</string>
+    <string name="notification_shortcuts_edit_msg">Seleccione o cambie la aplicación o icono deseado</string>
+    <string name="notification_shortcuts_reset_title">Eliminar accesos directos</string>
+    <string name="notification_shortcuts_category_reset_title">Restablecer</string>
+        <string name="notification_shortcuts_title">Accesos directos</string>
+    <string name="notification_shortcuts_icon_picker_stock_icons_title">Iconos Stock</string>
+    <string name="notification_shortcuts_quantity_title">Número de accesos directos</string>
+    <string name="notification_shortcuts_quantity_summary">El número de accesos directos a mostrar</string>
+    <string name="notification_shortcuts_move_text">Cambiar el orden</string>
+    <string name="notification_shortcuts_move_up">Mover hacia <xliff:g id="app_name">%s</xliff:g> arriba</string>
+    <string name="notification_shortcuts_move_down">Mover hacia <xliff:g id="app_name">%s</xliff:g> abajo</string>
+    <string name="notification_shortcuts_color_title">Color de los iconos de los accesos directos</string>
+    <string name="notification_shortcuts_color_summary">Colorear las acciones y / o iconos de los accesos directos de la aplicación</string>
+    <string name="notification_shortcuts_colorize_toggle_title">Colorear los iconos de las aplicaciones</string>
+    <string name="notification_shortcuts_colorize_toggle_summary">Colorea los iconos de la aplicación con el color del icono elegido</string>
+    <string name="notification_shortcuts_hide_carrier_title">Ocultar nombre del operador</string>
+
+    <!-- Permissions Management -->
+    <string name="permissions_settings_title">Permisos</string>
+
 </resources>
