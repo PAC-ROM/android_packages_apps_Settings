@@ -23,27 +23,8 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
-import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
-import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
-import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
-import static com.android.internal.util.cm.QSConstants.TILE_NFC;
-import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
-import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
-import static com.android.internal.util.cm.QSConstants.TILE_LTE;
-import static com.android.internal.util.cm.QSConstants.TILE_TORCH;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsBluetooth;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsImeSwitcher;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsLte;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsMobileData;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsNfc;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsUsbTether;
-import static com.android.internal.util.cm.QSUtils.deviceSupportsWifiDisplay;
-import static com.android.internal.util.cm.QSUtils.systemProfilesEnabled;
-
 import android.content.ContentResolver;
 import android.content.res.Resources;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
@@ -54,9 +35,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
 
-import com.android.internal.telephony.Phone;
 import com.android.internal.util.cm.QSConstants;
 import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
@@ -95,6 +74,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private PreferenceScreen mQsTilesStyle;
     private PreferenceScreen mTilePicker;
 
+    private ContentResolver resolver;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +86,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         super.onActivityCreated(savedInstanceState);
 
         PreferenceScreen prefSet = getPreferenceScreen();
-        PackageManager pm = getPackageManager();
-        ContentResolver resolver = getActivity().getContentResolver();
+        resolver = getActivity().getContentResolver();
         mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
         mStaticTiles = (PreferenceCategory) prefSet.findPreference(STATIC_TILES);
         mDynamicTiles = (PreferenceCategory) prefSet.findPreference(DYNAMIC_TILES);
@@ -132,7 +111,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         // Add the network mode preference
         mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
-        if (mNetworkMode != null){
+        if (mNetworkMode != null) {
             mNetworkMode.setSummary(mNetworkMode.getEntry());
             mNetworkMode.setOnPreferenceChangeListener(this);
         }
@@ -153,62 +132,22 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_WIFI));
         }
 
-        // Don't show mobile data options if not supported
-        if (!deviceSupportsMobileData(getActivity())) {
-            QuickSettingsUtil.TILES.remove(TILE_MOBILEDATA);
-            QuickSettingsUtil.TILES.remove(TILE_WIFIAP);
-            QuickSettingsUtil.TILES.remove(TILE_NETWORKMODE);
-            prefSet.removePreference(mNetworkMode);
-        } else {
-            // We have telephony support however, some phones run on networks not supported
-            // by the networkmode tile so remove both it and the associated options list
-            int network_state = -99;
-            try {
-                network_state = Settings.Global.getInt(getActivity()
-                        .getApplicationContext().getContentResolver(),
-                        Settings.Global.PREFERRED_NETWORK_MODE);
-            } catch (Settings.SettingNotFoundException e) {
-                Log.e(TAG, "Unable to retrieve PREFERRED_NETWORK_MODE", e);
             }
 
-            switch (network_state) {
-                // list of supported network modes
-                case Phone.NT_MODE_WCDMA_PREF:
-                case Phone.NT_MODE_WCDMA_ONLY:
-                case Phone.NT_MODE_GSM_UMTS:
-                case Phone.NT_MODE_GSM_ONLY:
-                    break;
-                default:
-                    QuickSettingsUtil.TILES.remove(TILE_NETWORKMODE);
-                    prefSet.removePreference(mNetworkMode);
-                    break;
-            }
+    @Override
+    public void onResume() {
+        super.onResume();
+        QuickSettingsUtil.updateAvailableTiles(getActivity());
+
+        if (mNetworkMode != null) {
+            if (QuickSettingsUtil.isTileAvailable(QSConstants.TILE_NETWORKMODE)) {
+                mStaticTiles.addPreference(mNetworkMode);
+            } else {
+                mStaticTiles.removePreference(mNetworkMode);
         }
 
-        // Don't show the bluetooth options if not supported
-        if (!deviceSupportsBluetooth()) {
-            QuickSettingsUtil.TILES.remove(TILE_BLUETOOTH);
         }
 
-        // Dont show the profiles tile if profiles are disabled
-        if (Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 1) {
-            QuickSettingsUtil.TILES.remove(TILE_PROFILE);
-        }
-
-        // Dont show the NFC tile if not supported
-        if (!deviceSupportsNfc(getActivity())) {
-            QuickSettingsUtil.TILES.remove(TILE_NFC);
-        }
-
-        // Dont show the LTE tile if not supported
-        if (!deviceSupportsLte(getActivity())) {
-            QuickSettingsUtil.TILES.remove(TILE_LTE);
-        }
-
-        // Dont show the torch tile if not supported
-        if (!getResources().getBoolean(R.bool.has_led_flash)) {
-            QuickSettingsUtil.TILES.remove(TILE_TORCH);
-        }
         if (!Utils.isPhone(getActivity())) {
             if (mQuickPulldown != null) {
                 mGeneralSettings.removePreference(mQuickPulldown);
@@ -237,6 +176,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
             setEnablePreferences(disablePanel);
         }
+
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -328,15 +268,16 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     }
 
     private void updatePulldownSummary(int value) {
+        Resources res = getResources();
 
         if (value == 0) {
             /* quick pulldown deactivated */
-            mQuickPulldown.setSummary(getResources().getString(R.string.quick_pulldown_off));
+            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_off));
         } else {
-            String direction = getResources().getString(value == 2
+            String direction = res.getString(value == 2
                     ? R.string.quick_pulldown_summary_left
                     : R.string.quick_pulldown_summary_right);
-            mQuickPulldown.setSummary(getResources().getString(R.string.summary_quick_pulldown, direction));
+            mQuickPulldown.setSummary(res.getString(R.string.summary_quick_pulldown, direction));
         }
     }
 

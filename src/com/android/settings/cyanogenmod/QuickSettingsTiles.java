@@ -22,8 +22,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.provider.Settings;
 import android.view.Menu;
@@ -34,15 +36,20 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import static com.android.internal.util.cm.QSConstants.TILE_USER;
+import com.android.internal.util.cm.QSConstants;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.QuickSettingsUtil.TileInfo;
 
+import java.text.Collator;
 import java.util.ArrayList;
+
+import java.util.Arrays;
+import java.util.Comparator;
 
 public class QuickSettingsTiles extends Fragment {
 
@@ -53,7 +60,7 @@ public class QuickSettingsTiles extends Fragment {
     private LayoutInflater mInflater;
     private Resources mSystemUiResources;
     private TileAdapter mTileAdapter;
-    private boolean mConfigRibbon = false;
+    private boolean mConfigRibbon;
 
     private int mTileTextSize;
 
@@ -77,13 +84,35 @@ public class QuickSettingsTiles extends Fragment {
                 mSystemUiResources = null;
             }
         }
-        mTileAdapter = new TileAdapter(getActivity(), 0);
+        int panelWidth = getItemFromSystemUi("notification_panel_width", "dimen");
+        if (panelWidth != 0) {
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(panelWidth,
+                    FrameLayout.LayoutParams.MATCH_PARENT, Gravity.CENTER_HORIZONTAL);
+            mDragView.setLayoutParams(params);
+        }
+        mTileAdapter = new TileAdapter(getActivity(), mConfigRibbon);
         int colCount = Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.QUICK_TILES_PER_ROW, 3);
         updateTileTextSize(colCount);
         return mDragView;
     }
 
+    private int getItemFromSystemUi(String name, String type) {
+        if (mSystemUiResources != null) {
+            int resId = (int) mSystemUiResources.getIdentifier(name, type, "com.android.systemui");
+            if (resId > 0) {
+                try {
+                    if (type.equals("dimen")) {
+                        return (int) mSystemUiResources.getDimension(resId);
+                    } else {
+                        return mSystemUiResources.getInteger(resId);
+                    }
+                } catch (NotFoundException e) {
+                }
+            }
+        }
+        return 0;
+    }
     void genTiles() {
         mDragView.removeAllViews();
         ArrayList<String> tiles = QuickSettingsUtil.getTileListFromString(
@@ -108,12 +137,12 @@ public class QuickSettingsTiles extends Fragment {
         View tileView = null;
         if (iconRegId != 0) {
             tileView = (View) mInflater.inflate(R.layout.quick_settings_tile_generic, null, false);
-            TextView name = (TextView) tileView.findViewById(R.id.tile_textview);
+            final TextView name = (TextView) tileView.findViewById(R.id.tile_textview);
             name.setText(titleId);
             name.setTextSize(1, mTileTextSize);
             name.setCompoundDrawablesRelativeWithIntrinsicBounds(0, iconRegId, 0, 0);
         } else {
-            final boolean isUserTile = titleId == QuickSettingsUtil.TILES.get(TILE_USER).getTitleResId();
+            final boolean isUserTile = titleId == QuickSettingsUtil.TILES.get(QSConstants.TILE_USER).getTitleResId();
             if (mSystemUiResources != null && iconSysId != null) {
                 int resId = mSystemUiResources.getIdentifier(iconSysId, null, null);
                 if (resId > 0) {
@@ -252,17 +281,45 @@ public class QuickSettingsTiles extends Fragment {
         }
     }
 
-    @SuppressWarnings("rawtypes")
-    static class TileAdapter extends ArrayAdapter {
+    private static class TileAdapter extends ArrayAdapter<String> {
+        private static class Entry {
+            public final TileInfo tile;
+            public final String tileTitle;
+            public Entry(TileInfo tile, String tileTitle) {
+                this.tile = tile;
+                this.tileTitle = tileTitle;
+            }
+        }
 
-        String[] mTileKeys;
-        Resources mResources;
 
-        public TileAdapter(Context context, int textViewResourceId) {
+        private Entry[] mTiles;
+        private boolean mIsRibbon;
+
+        public TileAdapter(Context context, boolean isRibbon) {
             super(context, android.R.layout.simple_list_item_1);
-            mTileKeys = new String[getCount()];
-            QuickSettingsUtil.TILES.keySet().toArray(mTileKeys);
-            mResources = context.getResources();
+            mTiles = new Entry[getCount()];
+            mIsRibbon = isRibbon;
+            loadItems(context.getResources());
+            sortItems();
+        }
+
+        private void loadItems(Resources resources) {
+            int index = 0;
+            for (TileInfo t : QuickSettingsUtil.TILES.values()) {
+                mTiles[index++] = new Entry(t, resources.getString(t.getTitleResId()));
+            }
+        }
+
+        private void sortItems() {
+            final Collator collator = Collator.getInstance();
+            collator.setDecomposition(Collator.CANONICAL_DECOMPOSITION);
+            collator.setStrength(Collator.PRIMARY);
+            Arrays.sort(mTiles, new Comparator<Entry>() {
+                @Override
+                public int compare(Entry e1, Entry e2) {
+                    return collator.compare(e1.tileTitle, e2.tileTitle);
+                }
+            });
         }
 
         @Override
@@ -271,17 +328,13 @@ public class QuickSettingsTiles extends Fragment {
         }
 
         @Override
-        public Object getItem(int position) {
-            int resid = QuickSettingsUtil.TILES.get(mTileKeys[position])
-                    .getTitleResId();
-            return mResources.getString(resid);
+        public String getItem(int position) {
+            return mTiles[position].tileTitle;
         }
 
         public String getTileId(int position) {
-            return QuickSettingsUtil.TILES.get(mTileKeys[position])
-                    .getId();
+            return mTiles[position].tile.getId();
         }
-
     }
 
     public interface OnRearrangeListener {
