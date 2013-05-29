@@ -26,6 +26,7 @@ public class PieSettings extends SettingsPreferenceFragment
     private static final String PIE_MODE = "pie_mode";
     private static final String PIE_SIZE = "pie_size";
     private static final String PIE_TRIGGER = "pie_trigger";
+    private static final String PIE_ANGLE = "pie_angle";
     private static final String PIE_GAP = "pie_gap";
     private static final String PIE_MENU = "pie_menu";
     private static final String PIE_SEARCH = "pie_search";
@@ -36,6 +37,7 @@ public class PieSettings extends SettingsPreferenceFragment
     private ListPreference mPieSize;
     private ListPreference mPieGravity;
     private ListPreference mPieTrigger;
+    private ListPreference mPieAngle;
     private ListPreference mPieGap;
     private CheckBoxPreference mPieMenu;
     private CheckBoxPreference mPieSearch;
@@ -102,6 +104,12 @@ public class PieSettings extends SettingsPreferenceFragment
                 Settings.System.PIE_GAP, 3);
         mPieGap.setValue(String.valueOf(pieGap));
         mPieGap.setOnPreferenceChangeListener(this);
+
+        mPieAngle = (ListPreference) prefSet.findPreference(PIE_ANGLE);
+        int pieAngle = Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_ANGLE, 0);
+        mPieAngle.setValue(String.valueOf(pieAngle));
+        mPieAngle.setOnPreferenceChangeListener(this);
 	}
 	
 	public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -119,6 +127,11 @@ public class PieSettings extends SettingsPreferenceFragment
             int pieGravity = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.PIE_GRAVITY, pieGravity);
+            return true;
+        } else if (preference == mPieAngle) {
+            int pieAngle = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.PIE_ANGLE, pieAngle);
             return true;
         } else if (preference == mPieGap) {
             int pieGap = Integer.valueOf((String) newValue);
