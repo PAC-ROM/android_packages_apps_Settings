@@ -4616,8 +4616,8 @@
     <string name="pie_trigger_small">@string/pie_size_small</string>
     <string name="pie_trigger_normal">@string/pie_mode_default</string>
     <string name="pie_trigger_big">@string/pie_gap_big</string>
-    <string name="pie_trigger_huge">@string/pie_gap_huge</string>
- 
+    <string name="pie_trigger_huge">Huge</string>
+
 
     <!-- Hybrid sub menu [CHAR LIMIT=30] -->
     <string name="hybrid_settings">Hybrid Properties</string>
