@@ -20,4 +20,15 @@
     <string name="auto_brightness_sensitivity_medium">Media</string>
     <string name="auto_brightness_sensitivity_high">Alta</string>
     <string name="auto_brightness_sensitivity_veryhigh">Muy alta</string>
+
+    <!-- Category title for power sound notification specific Settings.
+         [CHAR LIMIT=40] -->
+    <string name="power_notifications_category_title">SONIDOS</string>
+
+    <!-- Sound settings, power notifications enable/disable, setting check box label -->
+    <string name="power_notifications_enable_title">Habilitar</string>
+    <!-- Sound settings, power notifications vibrate enable/disable, setting check box label -->
+    <string name="power_notifications_vibrate_title">Vibrar</string>
+    <!-- Sound settings, power notifications ringtone selection, preference label -->
+    <string name="power_notifications_ringtone_title">Sonido de notificación</string>
 </resources>
