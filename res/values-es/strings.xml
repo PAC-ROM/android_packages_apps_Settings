@@ -1917,12 +1917,13 @@
     <string name="pie_angle_small">Pequeño</string>
     <string name="pie_angle_big">Normal (defecto)</string>
     <string name="pie_angle_huge">Grande</string>
+    <string name="pie_angle_super">Enorme</string>
 
     <string name="pie_gap_title">Espacio entre los controles</string>
     <string name="pie_gap_summary">Ajustar el espacio entre los elementos</string>
     <string name="pie_gap_none">Sin espacio</string>
-    <string name="pie_gap_small">Pequeño (defecto)</string>
-    <string name="pie_gap_big">Grande</string>
+    <string name="pie_gap_small">Pequeño</string>
+    <string name="pie_gap_big">Grande (defecto)</string>
     <string name="pie_gap_huge">Enorme</string>
     <string name="pie_center_title">Alineación central</string>
     <string name="pie_center_summary">Alinear los controles en el centro de la pantalla, sin importar la posición de activación</string>
