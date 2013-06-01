@@ -31,4 +31,5 @@
     <string name="power_notifications_vibrate_title">Vibrar</string>
     <!-- Sound settings, power notifications ringtone selection, preference label -->
     <string name="power_notifications_ringtone_title">Sonido de notificación</string>
+<string name="volume_keys_control_ring_stream">Controlar volumen de llamada</string>
 </resources>

@@ -1911,6 +1911,13 @@
     <string name="pie_size_small">Pequeño</string>
     <string name="pie_size_large">Grande</string>
     <string name="pie_size_gigantic">Gigante</string>
+    <string name="pie_angle_title">Angulo de los controles</string>
+    <string name="pie_angle_summary">Ajustar el angulo de los controles</string>
+    <string name="pie_angle_none">Desactivado</string>
+    <string name="pie_angle_small">Pequeño</string>
+    <string name="pie_angle_big">Normal (defecto)</string>
+    <string name="pie_angle_huge">Grande</string>
+
     <string name="pie_gap_title">Espacio entre los controles</string>
     <string name="pie_gap_summary">Ajustar el espacio entre los elementos</string>
     <string name="pie_gap_none">Sin espacio</string>
@@ -2464,6 +2471,16 @@
     <string name="quick_pulldown_right">Borde derecho</string>
     <string name="title_collapse_panel">Cierre automático</string>
     <string name="summary_collapse_panel">Cerrar el panel de ajustes rápidos al pulsar un control</string>
+    <!-- QuickSettings style options -->
+    <string name="quicksettings_tiles_style">Estilo de ajustes rápidos</string>
+    <string name="summary_quicksettings_tiles_style">Mostrar o cambiar opciones de ajustes rápidos</string>
+    <string name="quicksettings_tiles_style_additional_options">Opciones Adicionales</string>
+    <string name="tiles_per_row_title">Controles por fila</string>
+    <string name="tiles_per_row_duplicate_landscape_title">Escalar cantidad horizontal</string>
+    <string name="tiles_per_row_duplicate_landscape_summary">En horizontal mostrar el doble de controles por fila</string>
+    <string name="quick_tiles_text_color_title">Color de texto de los controles</string>
+    <string name="quick_settings_style_reset">Restablecer colores</string>
+    <string name="none">Desactivado</string> 
     <string name="tiles_reset_title">Restablecer</string>
     <string name="tiles_reset_message">¿Restablecer los controles y la disposición?</string>
     <string name="volume_key_cursor_control_title">Control del cursor</string>
