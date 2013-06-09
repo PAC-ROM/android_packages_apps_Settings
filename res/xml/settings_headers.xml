@@ -293,6 +293,17 @@
                 android:targetClass="com.brewcrewfoo.performance.activities.MainActivity" />
     </header>
 
+    <!-- PacStats -->
+    <header
+        android:id="@+id/pacstats_settings"
+        android:icon="@drawable/ic_settings_pacstats"
+        android:title="@string/pacstats_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="android.pacstats"
+            android:targetClass="android.pacstats.PACStats" />
+    </header>
+
     <!-- About Device -->
     <header
         android:id="@+id/about_settings"
