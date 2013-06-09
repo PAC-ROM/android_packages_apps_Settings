@@ -1961,7 +1961,6 @@
 
 <string name="title_show_reboot_keyguard">Mostrar reiniciar en la pantalla de desbloqueo</string>
 <string name="vibration_title">Vibración</string>
-<string name="title_quick_pulldown">Ajustes rápidos</string>
  <string name="pie_stick_summary">Si lo selecciona los controles flotantes estarán en el sitio sin importar la orientación</string>
 <string name="notification_shortcuts_grouptitle">Accesos directos</string>
     <string name="notification_shortcuts_settings_title">Accesos directos a notificaciones</string>

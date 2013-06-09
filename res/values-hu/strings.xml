@@ -166,9 +166,6 @@
     <string name="bluetooth_phonebook_request" msgid="457033227379858269">"Telefonkönyv kérése"</string>
     <string name="bluetooth_pb_acceptance_dialog_text" msgid="6555508756987053866">"A(z) %1$s szeretne hozzáférni névjegyeihez és a híváselőzményekhez. Megadja a hozzáférést a(z) %2$s eszköznek?"</string>
     <string name="bluetooth_pb_remember_choice" msgid="2901499974259177202">"Ne jelenjen meg többé"</string>
-    <string name="bluetooth_mas_request">Üzenethozzáférés</string>
-    <string name="bluetooth_mas_acceptance_dialog_text">"A(z) %1$s szeretne hozzáférni az üzeneteihez. Megadja a hozzáférést a(z) %2$s eszköznek?"</string>
-    <string name="bluetooth_mas_remember_choice">Ne jelenjen meg többé</string>
     <string name="date_and_time" msgid="4114084177056654663">"Dátum és idő beállításai"</string>
     <string name="choose_timezone" msgid="1362834506479536274">"Válasszon időzónát"</string>
     <string name="normal_date_format" msgid="7636406984925498359">"Helyi (<xliff:g id="DATE">%s</xliff:g>)"</string>
@@ -533,11 +530,6 @@
     <string name="wifi_settings_category" msgid="2810363951104753710">"Wi-Fi beállítások"</string>
     <string name="wifi_settings_title" msgid="4351120897298124250">"Wi-Fi"</string>
     <string name="wifi_settings_summary" msgid="668767638556052820">"Vezeték nélküli hozzáférési pontok beállítása és kezelése"</string>
-    <string name="wifi_setting_countrycode_title">Wi-Fi régiókód</string>
-    <string name="wifi_setting_countrycode_summary">Adja meg a Wi-Fi régiókódját</string>
-    <string name="wifi_setting_countrycode_error">Hiba történt a régiókód beállítása közben.</string>
-    <string name="wifi_setting_priority_title">Wi-Fi prioritás</string>
-    <string name="wifi_setting_priority_summary">Wi-Fi hálózatok prioritásának beállítása</string>
     <string name="wifi_setup_wizard_title" msgid="70277346338812325">"Wi-Fi hálózat kiválasztása"</string>
     <string name="wifi_starting" msgid="6716593470710880000">"Wi-Fi bekapcsolása\u2026"</string>
     <string name="wifi_stopping" msgid="244864762599017659">"Wi-Fi kikapcsolása\u2026"</string>
@@ -1291,15 +1283,6 @@
     <string name="enforce_read_external_confirm_title" product="default" msgid="273220585729800783">"Védetté teszi az SD-kártyát?"</string>
     <string name="enforce_read_external_confirm_message" product="default" msgid="3858482712337574407">"Ha az SD-kártya védett, az alkalmazásoknak engedélyt kell kérniük a külső tárhelyen tárolt adatok olvasására."\n\n"Előfordulhat, hogy egyes alkalmazások nem működnek addig, amíg a fejlesztők nem frissítik azokat."</string>
 
-    <!-- Setting checkbox title for root access -->
-    <string name="root_access">Rendszergazda hozzáférés</string>
-    <string name="root_access_warning_title">Rendszergazdai hozzáférés engedélyezése</string>
-    <string name="root_access_warning_message">Veszélyes dolog rendszergazdai jogosultságot adni az alkalmazásoknak és veszélyes lehet a rendszerre!</string>
-    <string name="root_access_none">Letiltva</string>
-    <string name="root_access_apps">Csak alkalmazások</string>
-    <string name="root_access_adb">Csak ADB</string>
-    <string name="root_access_all">Alkalmazások és ADB</string>
-
     <string name="gadget_picker_title" msgid="98374951396755811">"Modul kiválasztása"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Modul kiválasztása"</string>
     <string name="allow_bind_app_widget_activity_allow_bind_title" msgid="2538303018392590627">"Létrehozza a modult, és engedélyezi a hozzáférést?"</string>
@@ -1330,7 +1313,6 @@
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_title" msgid="7218498768415430963">"Képernyőnagyítás automatikus frissítése"</string>
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_summary" msgid="4392059334816220155">"Nagyítás frissítése az alkalmazások közti átmeneteknél"</string>
     <string name="accessibility_power_button_ends_call_prerefence_title" msgid="6673851944175874235">"A bekapcsoló gomb megszakítja a hívást"</string>
-    <string name="accessibility_home_button_answers_call_prerefence_title">A kezdőgomb fogadja a hívást</string>
     <string name="accessibility_toggle_speak_password_preference_title" msgid="5986628515113204844">"Jelszavak kimondása"</string>
     <string name="accessibility_long_press_timeout_preference_title" msgid="6708467774619266508">"Érintés és tartási késleltetés"</string>
     <string name="accessibility_toggle_script_injection_preference_title" msgid="7950932054266694403">"Webelérhetőség fokozása"</string>
@@ -1549,7 +1531,6 @@
     <string name="sound_category_notification_title" msgid="3502115998790286943">"Értesítések"</string>
     <string name="sound_category_call_ringtone_vibrate_title" msgid="1543777228646645163">"Csengőhang és rezgés beállításai"</string>
     <string name="sound_category_system_title" msgid="1480844520622721141">"Rendszer"</string>
-    <string name="headset_category_title">Fejhallgató</string>
     <string name="wifi_setup_title" msgid="661074868726906436">"Wi-Fi beállítása"</string>
     <string name="wifi_setup_title_editing_network" msgid="7304321031985059969">"Csatlakozás <xliff:g id="NETWORK_NAME">%s</xliff:g> Wi-Fi hálózathoz"</string>
     <string name="wifi_setup_title_connecting_network" msgid="3747859666621319757">"Csatlakozás a(z) <xliff:g id="NETWORK_NAME">%s</xliff:g> Wi-Fi hálózathoz\u2026"</string>

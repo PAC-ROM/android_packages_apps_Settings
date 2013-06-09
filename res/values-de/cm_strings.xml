@@ -334,7 +334,6 @@
     <string name="link_volume_ringtones">Gleiche Lautstärke für Klingelton und Benachrichtigungen</string>
     <string name="link_volume_mutes">Klingelton und Benachrichtigungen gemeinsam stummschalten</string>
     <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Benachrichtigungslautstärke</string>
-    <string name="volume_keys_control_ring_stream">Lautstärketasten steuern Klingeltonlautstärke</string>
     <string name="hardware_keys_title">Hardware-Tasten</string>
     <string name="hardware_keys_bindings_title">Tastenaktionen</string>
     <string name="hardware_keys_enable_custom_title">Benutzerdefinierte Aktionen aktivieren</string>

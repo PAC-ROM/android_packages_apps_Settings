@@ -1829,25 +1829,4 @@
     <string name="user_picture_title" msgid="7297782792000291692">"Αναγνωριστικό φωτογραφίας"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Εκπομπές κινητής τηλεφωνίας"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Επιλέξτε τους τύπους ειδοποιήσεων έκτακτης ανάγκης που θα εμφανίζονται."</string>
-
-    <!-- Navigation bar buttons and shortcuts category title -->
-    <string name="navigation_bar_category">Μπάρα πλοήγησης</string>
-
-    <!-- Navigation ring shortcuts -->
-    <string name="navigation_ring_title">Συντομεύσεις γρήγορης εκκίνησης</string>
-    <string name="navring_target_reset_message">Διαγραφή όλων των συντομεύσεων της μπάρας πλοήγησης και επαναφορά στις προεπιλεγμένες;</string>
-    <string name="navring_target_reset">Έγινε επαναφορά των συντομεύσεων της μπάρας πλοήγησης στις προεπιλογές</string>
-    <string name="navring_target_save">Οι συντομεύσεις της μπάρας πλοήγησης αποθηκεύτηκαν</string>
-    <string name="navring_action_open_ime_switcher">Εναλλαγή μεθόδων εισόδου</string>
-    <string name="navring_action_kill_app">Τερματισμός εφαρμογής</string>
-    <string name="navring_action_none">Καμία</string>
-    <string name="navring_action_take_screenshot">Στιγμιότυπο οθόνης</string>
-    <string name="navring_action_ring_vibrate">Ήχος/Δόνηση</string>
-    <string name="navring_action_ring_silent">Ήχος/Αθόρυβο</string>
-    <string name="navring_action_ring_vibrate_silent">Ήχος/Δόνηση/Αθόρυβο</string>
-    <string name="navring_action_screen_off">Απενεργ. οθόνης</string>
-    <string name="navring_action_torch">Φακός</string>
-    <string name="navring_action_google_now">Google Now</string>
-    <string name="navring_choose_action_title">Επιλέξτε ενέργεια</string>
-
 </resources>

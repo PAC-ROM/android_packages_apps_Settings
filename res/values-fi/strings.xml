@@ -1819,11 +1819,4 @@
     <string name="user_picture_title" msgid="7297782792000291692">"Kuvatunnus"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Cell Broadcast -lähetykset"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Valitse näytettävät hätäilmoitukset."</string>
-    <string name="root_access">Root-oikeudet</string>
-    <string name="root_access_warning_title">Ota root-oikeudet käyttöön?</string>
-    <string name="root_access_warning_message">Root-oikeuksien käyttöönotto on vaarallista ja voi vahingoittaa laitettasi!</string>
-    <string name="root_access_none">Pois käytöstä</string>
-    <string name="root_access_apps">Vain sovellukset</string>
-    <string name="root_access_adb">Vain ADB</string>
-    <string name="root_access_all">Sovellukset ja ADB</string>
 </resources>

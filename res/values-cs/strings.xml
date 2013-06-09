@@ -1839,8 +1839,6 @@
     <string name="device_front_camera">Přední kamera</string>
     <string name="device_screen_resolution">Rozlišení obrazovky</string>
     <string name="gpu_info">GPU</string>
-    <string name="cpu_info">CPU</string>
-    <string name="mem_info">Operační paměť</string>
     <string name="nfc_polling_mode_title">Režim NFC</string>
     <string name="nfc_polling_mode_screen_off">Vypnutá obrazovka</string>
     <string name="nfc_polling_mode_screen_locked">Zapnutá obrazovka, uzamčeno</string>
@@ -1849,25 +1847,12 @@
     <string name="aokp_version">Verze AOKP</string>
     <string name="aokp_version_default">Neznámá</string>
     <!-- Automatic brightness customization -->
-    <string name="light_sensor_current_value">Aktuální hodnota světelného senzoru: <xliff:g id="light_level">%d</xliff:g> lux</string>
-    <string name="auto_brightness_dialog_title">Úrovně automatického podsvícení</string>
-    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> -\n<xliff:g id="end_level">%2$s</xliff:g> lux</string>
     <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
-    <string name="auto_brightness_adjust_button">Upravit</string>
-    <string name="auto_brightness_reset_button">Obnovit</string>
     <string name="auto_brightness_remove_button">Odstranit</string>
     <string name="auto_brightness_add_line">Přidat řádek</string>
     <string name="auto_brightness_lux_dialog_title">Rozsah okolního osvětlení</string>
-    <string name="auto_brightness_split_dialog_title">Rozdělit úroveň jasu</string>
     <string name="auto_brightness_start_lux">Začátek rozsahu (lux)</string>
     <string name="auto_brightness_end_lux">Konec rozsahu (lux)</string>
-    <string name="auto_brightness_reset_dialog_title">Obnovit úrovně?</string>
-    <string name="auto_brightness_reset_confirmation">Všechny úrovně jasu budou obnoveny na výchozí hodnoty.</string>
-    <string name="auto_brightness_split_lux_format">Rozdělit pozici (mezi <xliff:g id="min">%1$d</xliff:g> a <xliff:g id="max">%2$d</xliff:g> lux)</string>
-    <string name="auto_brightness_level_options">Možnosti úrovní podsvícení</string>
     <string name="auto_brightness_menu_edit_lux">Okolní rozsah jasu</string>
-    <string name="auto_brightness_menu_split">Rozdělit</string>
-    <string name="auto_brightness_menu_remove">Odstranit</string>
     <string name="vibration_title">Vibrace telefonu</string>
-    <string name="safe_headset_volume_title">Bezpečná hlasitost sluchátek</string>
 </resources>
