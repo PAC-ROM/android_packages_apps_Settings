@@ -51,7 +51,12 @@
 		
     <PreferenceScreen
         android:key="pie_settings"
-		android:fragment="com.android.settings.pac.PieSettings"
-		android:title="@string/pie_settings_title" />
+	android:fragment="com.android.settings.pac.PieSettings"
+	android:title="@string/pie_settings_title" />
+
+    <PreferenceScreen
+        android:key="halo_settings"
+	android:fragment="com.android.settings.paranoid.Halo"
+	android:title="@string/halo_settings_title" />
 
 </PreferenceScreen>
