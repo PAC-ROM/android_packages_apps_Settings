@@ -23,6 +23,16 @@
         android:title="@string/quicksettings_tiles_style">
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
+             android:key="quick_tiles_bg_color"
+             android:title="@string/quick_tiles_bg_color_title"
+             android:defaultValue="0xff161616" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
+             android:key="quick_tiles_bg_pressed_color"
+             android:title="@string/quick_tiles_bg_pressed_color_title"
+             android:defaultValue="0xff212121" />
+
+        <net.margaritov.preference.colorpicker.ColorPickerPreference
              android:key="quick_tiles_text_color"
              android:title="@string/quick_tiles_text_color_title"
              android:defaultValue="0xffcccccc" />

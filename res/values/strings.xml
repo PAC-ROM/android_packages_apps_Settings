@@ -4573,6 +4573,8 @@
     <string name="tiles_per_row_duplicate_landscape_summary">Landscape view doubles tiles per row quantity</string>
     <string name="quick_tiles_text_color_title">Tiles text color</string>
     <string name="quick_settings_style_reset">Reset colors</string>
+    <string name="quick_tiles_bg_color_title">Tiles background color</string>
+    <string name="quick_tiles_bg_pressed_color_title">Tiles pressed background color</string>
     <string name="none">None</string> 
 
     <!-- Reset tiles -->
