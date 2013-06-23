@@ -579,7 +579,6 @@
     <string name="cyanogenmod_waiver_body">Bu ayaları değiştirme hükümet ya da eyaletinizin yasalarına aykırı olabilir.\n\nAşağıdan \'Tamam\' butonuna bastığınızda bu uyarı ve feragat\'ı dikkate aldığınız ve CyanogenMod ve katkıcılarını her türlü cezai yükümlülükten sorumlu tutmayacağınızı kabul ediyorsunuz.</string>
     <string name="light_sensor_current_value">Şu anki ışık sensörü değeri: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatic brightness levels</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Ayarla</string>
     <string name="auto_brightness_close_button">Kapat</string>

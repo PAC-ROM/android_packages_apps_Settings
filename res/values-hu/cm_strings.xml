@@ -570,7 +570,6 @@
     <string name="cyanogenmod_waiver_body">A beállítás módosítása halláskárosodáshoz vezethet.\n\nAz \"OK\" gombbal Ön elfogadja ezt a figyelmeztetést és ezzel felmenti a CyanogenMod csapatot és minden közreműködőt az esetleges jogi kötelezettségek alól.</string>
     <string name="light_sensor_current_value">Fényérzékelő jelenlegi értéke: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Automatikus fényerő</string>
-    <string name="auto_brightness_level_format"><xliff:g id="start_level">%1$s</xliff:g> - <xliff:g id="end_level">%2$s</xliff:g>\nlux</string>
     <string name="auto_brightness_adjust_button">Beállítás</string>
     <string name="auto_brightness_close_button">Bezárás</string>
     <string name="auto_brightness_reset_button">Visszaállítás</string>

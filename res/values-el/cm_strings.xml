@@ -581,7 +581,6 @@
     <string name="cyanogenmod_waiver_body">Η αλλαγή αυτής της ρύθμισης μπορεί να είναι ενάντια στη νομοθεσία της πολιτείας ή της κυβέρνησης σας.\n\nΕπιλέγοντας \'OK\' παρακάτω, αποδέχεστε αυτή την προειδοποίηση και απαλλάσετε το CyanogenMod και τους συνεργάτες του από όλες τις νομικές ευθύνες και υποχρεώσεις.</string>
     <string name="light_sensor_current_value">Τρέχουσα τιμή του αισθητήρα φωτός: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Επίπεδα αυτόματης φωτεινότητας</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Ρύθμιση</string>
     <string name="auto_brightness_close_button">Κλείσιμο</string>

@@ -567,7 +567,6 @@
     <string name="expanded_desktop_no_status_bar">Barra de status oculta</string>
     <string name="light_sensor_current_value">Valor atual do sensor de luz: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Níveis automáticos de brilho</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Ajustar</string>
     <string name="auto_brightness_reset_button">Redefinir</string>

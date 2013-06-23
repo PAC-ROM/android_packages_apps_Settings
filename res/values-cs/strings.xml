@@ -1847,7 +1847,6 @@
     <string name="aokp_version">Verze AOKP</string>
     <string name="aokp_version_default">Neznámá</string>
     <!-- Automatic brightness customization -->
-    <string name="auto_brightness_brightness_format"><xliff:g id="percent">%s</xliff:g>%%</string>
     <string name="auto_brightness_remove_button">Odstranit</string>
     <string name="auto_brightness_add_line">Přidat řádek</string>
     <string name="auto_brightness_lux_dialog_title">Rozsah okolního osvětlení</string>

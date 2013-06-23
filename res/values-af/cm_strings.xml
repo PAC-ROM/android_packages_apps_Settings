@@ -602,7 +602,6 @@
     <string name="wifi_mode_ibss_short">Ad-Hoc</string>
     <string name="light_sensor_current_value">Huidige ligsensor waarde: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Outomatiese helderheidsvlakke</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Pas aan</string>
     <string name="auto_brightness_close_button">Sluit</string>

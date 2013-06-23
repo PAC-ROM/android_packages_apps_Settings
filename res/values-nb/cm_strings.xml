@@ -579,7 +579,6 @@
     <string name="cyanogenmod_waiver_body">Å endre denne innstillingen kan være mot loven.\n\nVed å velge \'OK\' nedenfor, godtar du denne advarslen og opphevelsen, sikrer og holder CyanogenMod og dens bidragsytere fra alle juridiske forpliktelser.</string>
     <string name="light_sensor_current_value">Nåværende verdi for lyssensor: <xliff:g id="light_level">%d</xliff:g> lux</string>
     <string name="auto_brightness_dialog_title">Nivåer for automatisk lysstyrke</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e lux</string>
     <string name="auto_brightness_adjust_button">Juster</string>
     <string name="auto_brightness_close_button">Lukk</string>

@@ -573,7 +573,6 @@
     <string name="cyanogenmod_waiver_body">Das Deaktivieren dieser Funktion kann gegen geltendes Recht verstoßen.\n\nDurch Ihre Bestätigung erklären Sie, dass Sie CyanogenMod sowie alle daran Mitwirkenden von sämtlichen damit verbunden rechtlichen Verbindlichkeiten, u.A. Schadensersatzpflichten, befreien.</string>
     <string name="light_sensor_current_value">Aktueller Sensorwert: <xliff:g id="light_level">%d</xliff:g> Lux</string>
     <string name="auto_brightness_dialog_title">Helligkeitsstufen</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> Lux</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e Lux</string>
     <string name="auto_brightness_adjust_button">Anpassen</string>
     <string name="auto_brightness_close_button">Schließen</string>

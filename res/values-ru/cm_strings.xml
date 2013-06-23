@@ -735,7 +735,6 @@
     <!-- Automatic brightness customization -->
     <string name="light_sensor_current_value">Текущее показание датчика: <xliff:g id="light_level">%d</xliff:g> лк</string>
     <string name="auto_brightness_dialog_title">Уровни автоматической подсветки</string>
-    <string name="auto_brightness_level_format"><xliff:g id="level">%1$d</xliff:g> лк</string>
     <string name="auto_brightness_last_level_format"><xliff:g id="level">%1$d</xliff:g> -\n\u221e лк</string>
     <string name="auto_brightness_adjust_button">Регулировка</string>
     <string name="auto_brightness_close_button">Закрыть</string>
