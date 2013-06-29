@@ -48,16 +48,19 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
     private static final String PREF_QUICK_TILES_TEXT_COLOR = "quick_tiles_text_color";
     private static final String PREF_QUICK_TILES_BG_COLOR = "quick_tiles_bg_color";
     private static final String PREF_QUICK_TILES_BG_PRESSED_COLOR = "quick_tiles_bg_pressed_color";
+    private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";
 
     private static final int DEFAULT_QUICK_TILES_TEXT_COLOR = 0xffcccccc;
     private static final int DEFAULT_QUICK_TILES_BG_COLOR = 0xff161616;
     private static final int DEFAULT_QUICK_TILES_BG_PRESSED_COLOR = 0xff212121;
+
 
     private ListPreference mTilesPerRow;
     private CheckBoxPreference mDuplicateColumnsLandscape;
     private ColorPickerPreference mQuickTilesTextColor;
     private ColorPickerPreference mQuickTilesBgColor;
     private ColorPickerPreference mQuickTilesBgPressedColor;
+    private CheckBoxPreference mFlipQsTiles;
 
     private boolean mCheckPreferences;
 
@@ -124,6 +127,10 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                 getActivity().getContentResolver(),
                 Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE, 1) == 1);
 
+        mFlipQsTiles = (CheckBoxPreference) findPreference(PREF_FLIP_QS_TILES);
+        mFlipQsTiles.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.QUICK_SETTINGS_TILES_FLIP, 1) == 1);
+
         setHasOptionsMenu(true);
         mCheckPreferences = true;
         return prefs;
@@ -146,7 +153,6 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                         Settings.System.QUICK_TILES_BG_COLOR, -2);
                 Settings.System.putInt(getActivity().getContentResolver(),
                         Settings.System.QUICK_TILES_BG_PRESSED_COLOR, -2);
-
                 refreshSettings();
                 return true;
              default:
@@ -162,6 +168,11 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                     Settings.System.QUICK_TILES_PER_ROW_DUPLICATE_LANDSCAPE,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             Helpers.restartSystemUI();
+            return true;
+        } else if (preference == mFlipQsTiles) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.QUICK_SETTINGS_TILES_FLIP,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

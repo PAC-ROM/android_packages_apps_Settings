@@ -53,6 +53,10 @@
             android:title="@string/tiles_per_row_duplicate_landscape_title"
             android:summary="@string/tiles_per_row_duplicate_landscape_summary" />
 
-    </PreferenceCategory>
+        <CheckBoxPreference
+            android:key="flip_qs_tiles"
+            android:title="@string/flip_qs_tiles_title"
+            android:summary="@string/flip_qs_tiles_summary" />
 
+    </PreferenceCategory>
 </PreferenceScreen>

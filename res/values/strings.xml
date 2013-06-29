@@ -4575,6 +4575,9 @@
     <string name="quick_settings_style_reset">Reset colors</string>
     <string name="quick_tiles_bg_color_title">Tiles background color</string>
     <string name="quick_tiles_bg_pressed_color_title">Tiles pressed background color</string>
+    <string name="flip_qs_tiles_title">Flip tiles</string>
+    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
+
     <string name="none">None</string> 
 
     <!-- Reset tiles -->
