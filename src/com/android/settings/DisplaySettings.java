@@ -121,10 +121,10 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mContext = getActivity();
 
         mStatusBarBrightnessControl = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_BRIGHTNESS_CONTROL);
-        mStatusBarBrightnessControl.setChecked((Settings.System.getInt(mContext.getContentResolver(),
+        mStatusBarBrightnessControl.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, 0) == 1));
         try {
-            if (Settings.System.getInt(mContext.getContentResolver(),
+            if (Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
                 mStatusBarBrightnessControl.setEnabled(false);
                 mStatusBarBrightnessControl.setSummary(R.string.status_bar_toggle_info);
@@ -421,10 +421,13 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+        
         if (preference == mStatusBarBrightnessControl) {
-            Settings.System.putInt(mContext.getContentResolver(),
+        value = mStatusBarBrightnessControl.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL,
-                    mStatusBarBrightnessControl.isChecked() ? 1 : 0);
+                    value ? 1 : 0);
             return true;
         } else if (preference == mAccelerometer) {
             RotationPolicy.setRotationLockForAccessibility(
@@ -437,7 +440,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     ? (Utils.isTablet() ? 2 : 1)
                     : 0);
         } else if (preference == mNotificationPulse) {
-            boolean value = mNotificationPulse.isChecked();
+            value = mNotificationPulse.isChecked();
             Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATION_LIGHT_PULSE,
                     value ? 1 : 0);
             return true;
