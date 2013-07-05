@@ -39,6 +39,8 @@ import java.io.InputStreamReader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.android.settings.R;
+
 public class DeviceInfoSettings extends SettingsPreferenceFragment {
 
     private static final String LOG_TAG = "DeviceInfoSettings";
@@ -67,6 +69,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
+	private static final String PAC_ROM_SHARE = "share";
     private static final String KEY_AOKP_VERSION = "aokp_version";
     private static final String KEY_CM_VERSION = "cm_version";
     private static final String KEY_PA_VERSION = "pa_version";
@@ -306,6 +309,13 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                     Log.e(LOG_TAG, "Unable to start activity " + intent.toString());
                 }
             }
+        } else if (preference.getKey().equals(PAC_ROM_SHARE)) {
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType("text/plain");
+            intent.putExtra(Intent.EXTRA_TEXT, String.format(
+                    getActivity().getString(R.string.share_message)));
+            startActivity(Intent.createChooser(intent, getActivity().getString(R.string.share_chooser_title)));
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

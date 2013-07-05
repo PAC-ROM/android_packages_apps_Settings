@@ -37,6 +37,12 @@
 	<PreferenceCategory
         android:title="@string/pac_title">
 
+        <!-- Share PAC-Man ROM -->
+        <Preference
+            android:key="share"
+            android:title="@string/share_pacrom"
+            android:summary="@string/share_pacrom_summary" />
+
         <!-- Change Log -->
         <PreferenceScreen android:key="changelog"
             android:title="@string/changelog_title"
