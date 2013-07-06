@@ -241,6 +241,7 @@
     <string name="display_rotation_title">Scherm draaien</string>
     <string name="display_rotation_disabled">Uitgeschakeld</string>
     <string name="display_rotation_unit">graden</string>
+	<string name="display_lockscreen_rotation_title">Vergrendelscherm automatisch draaien</string>
     <string name="display_rotation_category_title">Draaistanden</string>
     <string name="display_rotation_0_title">0 graden</string>
     <string name="display_rotation_90_title">90 graden</string>
@@ -448,7 +449,9 @@ Let op:\nAangezien het beginvolume hoger is ingesteld dan het beltoonvolume, wor
     <string name="adb_notify">USB-foutopsporingsmodus melden</string>
     <string name="adb_notify_summary">Melding tonen indien USB-foutopsporingmodus is ingeschakeld</string>
     <string name="development_tools_title">Tools openen</string>
-    <string name="adb_over_network">ADB over netwek</string>
+    <string name="storage_rescan_media">Mediabestanden op het opslagvolume opnieuw scannen</string>
+	<string name="storage_rescan_media_complete">Scannen voltooid</string>
+	<string name="adb_over_network">ADB over netwerk</string>
     <string name="adb_over_network_summary">TCP/IP-foutopsporing inschakelen over netwerkinterfaces (Wi-Fi, USB-netwerken etc.). Wordt hersteld bij opstarten</string>
     <string name="adb_over_network_warning">Let op: als ADB over netwerk is ingeschakeld, kan op uw apparaat worden ingebroken via alle aangesloten netwerken, inclusief via uw GSM-gegevensnetwerk!\n\nGebruik deze functie alleen indien u verbonden bent met vertrouwde netwerken.\n\nWeet u zeker dat u deze functie wilt inschakelen?</string>
     <string name="lockscreen_buttons_title">Knopacties</string>
