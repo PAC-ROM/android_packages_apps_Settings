@@ -852,6 +852,22 @@
         <item>3</item>
     </string-array>
 
+    <string-array name="entries_pie_size">
+        <item>@string/pie_size_small</item>
+        <item>@string/pie_size_default</item>
+        <item>@string/pie_size_large</item>
+        <item>@string/pie_size_gigantic</item>
+        <item>@string/pie_size_monster</item>
+    </string-array>
+
+    <string-array name="values_pie_size" translatable="false">
+        <item>0.9</item>
+        <item>1.0</item>
+        <item>1.1</item>
+        <item>1.2</item>
+        <item>1.4</item>
+    </string-array>
+
     <string-array name="entries_pie_mode">
         <item>@string/pie_mode_bare</item>
         <item>@string/pie_mode_quick</item>
@@ -864,22 +880,6 @@
         <item>0</item>
         <item>1</item>
         <item>2</item>
-    </string-array>
-
-    <string-array name="entries_pie_size">
-        <item>@string/pie_size_small</item>
-        <item>@string/pie_size_default</item>
-        <item>@string/pie_size_large</item>
-        <item>@string/pie_size_gigantic</item>
-        <item>@string/pie_size_monster</item>
-    </string-array>
-
-    <string-array name="values_pie_size" translatable="false">
-        <item>0.85</item>
-        <item>1.0</item>
-	<item>1.1</item>
-        <item>1.2</item>
-        <item>1.3</item>
     </string-array>
 
     <string-array name="entries_pie_gap">
