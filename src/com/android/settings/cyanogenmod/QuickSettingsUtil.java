@@ -22,6 +22,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_AUTOROTATE;
 import static com.android.internal.util.cm.QSConstants.TILE_BATTERY;
 import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
+import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
@@ -76,6 +77,9 @@ public class QuickSettingsUtil {
         TILES.put(TILE_BLUETOOTH, new QuickSettingsUtil.TileInfo(
                 TILE_BLUETOOTH, R.string.title_tile_bluetooth,
                 "com.android.systemui:drawable/ic_qs_bluetooth_neutral"));
+		TILES.put(TILE_CAMERA, new QuickSettingsUtil.TileInfo(
+				TILE_CAMERA, R.string.title_tile_camera,
+		        "com.android.systemui:drawable/ic_qs_camera"));		
         TILES.put(TILE_BRIGHTNESS, new QuickSettingsUtil.TileInfo(
                 TILE_BRIGHTNESS, R.string.title_tile_brightness,
                 "com.android.systemui:drawable/ic_qs_brightness_auto_off"));
