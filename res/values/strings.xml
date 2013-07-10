@@ -4613,9 +4613,9 @@
     <string name="pie_angle_summary">Adjust the angle between screen\'s edge and pie</string>
     <string name="pie_angle_none">None</string>
     <string name="pie_angle_small">Small</string>
-    <string name="pie_angle_big">Normal (default)</string>
-    <string name="pie_angle_huge">Big</string>
-    <string name="pie_angle_super">Huge</string>
+    <string name="pie_angle_normal">Normal (default)</string>
+    <string name="pie_angle_big">Big</string>
+    <string name="pie_angle_huge">Huge</string>
     
     <string name="pie_gap_title">Item gap</string>
     <string name="pie_gap_summary">Adjust the gap that separates pie elements</string>
@@ -4638,13 +4638,24 @@
 
     <string name="pie_trigger_title">Trigger area</string>
     <string name="pie_trigger_summary">Determine the size of the region that registers swipes</string>
-    <string name="pie_trigger_none">None</string>
+    <string name="pie_trigger_none">None (disable)</string>
     <string name="pie_trigger_small">@string/pie_size_small</string>
     <string name="pie_trigger_normal">@string/pie_mode_default</string>
-    <string name="pie_trigger_big">Big</string>
-    <string name="pie_trigger_huge">Huge</string>
+    <string name="pie_trigger_big">@string/pie_angle_big</string>
+    <string name="pie_trigger_huge">@string/pie_angle_huge</string>
 
-
+    <!-- Navigation Bar #CM -->
+    <string name="navigation_reset_title">@string/lock_screen_shortcuts_reset</string>
+    <string name="navigation_bar_title">Navigation controls</string>
+    <string name="navigation_bar_help_text">1 - To begin editing, tap the lock icon\n\n2 - Tap any button to assign or change functionality\n\n3 - Long press any button to rearrange the order\n\n4 - To save, tap the lock icon again\n\n5 - To restore system default, tap the reset button\n\n</string>
+    <string name="navigation_bar_tips">&#8226; Actions can only be assigned to one button at a time\n\n&#8226; The home button cannot be re-assigned\n\n&#8226; Side buttons cannot be rearranged</string>
+    <string name="navigation_bar_tips_title">Quick tips</string>
+    <string name="navigation_bar_reset_message">Delete current settings and restore to default?</string>
+    <string name="navigation_bar_save_message">Navigation bar settings saved</string>
+    <string name="navigation_bar_reset_toast">Navigation bar reset to default</string>
+    <string name="navigation_bar_menu_editable">Editable</string>
+    <string name="navigation_bar_menu_locked">Locked</string>
+    
     <!-- Hybrid sub menu [CHAR LIMIT=30] -->
     <string name="hybrid_settings">Hybrid Properties</string>
 
