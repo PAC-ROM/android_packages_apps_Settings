@@ -4471,7 +4471,7 @@
     <string name="icon_picker_nav">Navigation</string>
 
     <!-- Bars sub menu [CHAR LIMIT=30] -->
-    <string name="tool_bar_status_header">Status bar</string>
+    <string name="tool_bar_status_header">Other Status bar Options</string>
     <string name="tool_bar_navigation_header">Navigation bar</string>
 
     <!-- HALO -->
@@ -4562,6 +4562,11 @@
     <string name="quick_settings_disabled">Disabled</string>
     <string name="title_no_notifications_pulldown">Quick pulldown without notifications</string>
     <string name="summary_no_notifications_pulldown">Pulldown quick settings if no notifications are present</string>
+    <string name="no_notifications_pulldown_summary_nonperm">Pulldown quick settings if no non-permanent notifications are present</string>
+    <string name="no_notifications_pulldown_summary_all">Pulldown quick settings if no notifications are present</string>
+    <string name="no_notifications_pulldown_off">Off</string>
+    <string name="no_notifications_pulldown_nonperm">Non-permanent only</string>
+    <string name="no_notifications_pulldown_all">All Notifications</string>
 
     <!-- QuickSettings style options -->
     <string name="quicksettings_tiles_style">Quick Settings style</string>

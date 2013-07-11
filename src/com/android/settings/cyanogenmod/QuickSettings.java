@@ -73,10 +73,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_IME = "dynamic_ime";
     private static final String DYNAMIC_USBTETHER = "dynamic_usbtether";
     private static final String DYNAMIC_WIFI = "dynamic_wifi";
+    private static final String QUICK_PULLDOWN = "quick_pulldown";
+    private static final String NO_NOTIFICATIONS_PULLDOWN = "no_notifications_pulldown";
     private static final String COLLAPSE_PANEL = "collapse_panel";
+    private static final String DISABLE_PANEL = "disable_quick_settings";
     private static final String GENERAL_SETTINGS = "pref_general_settings";
     private static final String STATIC_TILES = "static_tiles";
     private static final String DYNAMIC_TILES = "pref_dynamic_tiles";
+    private static final String QS_TILES_STYLE = "quicksettings_tiles_style";
+    private static final String TILE_PICKER = "tile_picker";
 
     MultiSelectListPreference mRingMode;
     ListPreference mNetworkMode;
@@ -87,9 +92,14 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDynamicIme;
     CheckBoxPreference mDynamicUsbTether;
     CheckBoxPreference mCollapsePanel;
+    CheckBoxPreference mDisablePanel;
+    ListPreference mQuickPulldown;
+    ListPreference mNoNotificationsPulldown;
     PreferenceCategory mGeneralSettings;
     PreferenceCategory mStaticTiles;
     PreferenceCategory mDynamicTiles;
+    PreferenceScreen mQsTilesStyle;
+    PreferenceScreen mTilePicker;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,7 +117,11 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mGeneralSettings = (PreferenceCategory) prefSet.findPreference(GENERAL_SETTINGS);
         mStaticTiles = (PreferenceCategory) prefSet.findPreference(STATIC_TILES);
         mDynamicTiles = (PreferenceCategory) prefSet.findPreference(DYNAMIC_TILES);
-
+        mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
+        mNoNotificationsPulldown = (ListPreference) prefSet.findPreference(NO_NOTIFICATIONS_PULLDOWN);
+        mDisablePanel = (CheckBoxPreference) prefSet.findPreference(DISABLE_PANEL);
+        mQsTilesStyle = (PreferenceScreen) prefSet.findPreference(QS_TILES_STYLE);
+        mTilePicker = (PreferenceScreen) prefSet.findPreference(TILE_PICKER);
         mCollapsePanel = (CheckBoxPreference) prefSet.findPreference(COLLAPSE_PANEL);
         mCollapsePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_COLLAPSE_PANEL, 0) == 1);
 
@@ -223,7 +237,30 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         if (!getResources().getBoolean(R.bool.has_led_flash)) {
             QuickSettingsUtil.TILES.remove(TILE_TORCH);
         }
+      if (!Utils.isPhone(getActivity())) {
+            if(mQuickPulldown != null)
+                mGeneralSettings.removePreference(mQuickPulldown);
+            if(mDisablePanel != null)
+                mGeneralSettings.removePreference(mDisablePanel);
+            if(mNoNotificationsPulldown != null)
+                mGeneralSettings.removePreference(mNoNotificationsPulldown);
+        } else {
+            mQuickPulldown.setOnPreferenceChangeListener(this);
+            int quickPulldownValue = Settings.System.getInt(resolver, Settings.System.QS_QUICK_PULLDOWN, 0);
+            mQuickPulldown.setValue(String.valueOf(quickPulldownValue));
+            updatePulldownSummary(quickPulldownValue);
 
+            boolean disablePanel = Settings.System.getInt(resolver,
+                Settings.System.QS_DISABLE_PANEL, 0) == 0;
+            mDisablePanel.setChecked(disablePanel);
+
+            mNoNotificationsPulldown.setOnPreferenceChangeListener(this);
+            int noNotificationsPulldownValue = Settings.System.getInt(resolver, Settings.System.QS_NO_NOTIFICATION_PULLDOWN, 0);
+            mNoNotificationsPulldown.setValue(String.valueOf(noNotificationsPulldownValue));
+            updateNoNotificationsPulldownSummary(noNotificationsPulldownValue);
+
+            setEnablePreferences(disablePanel);
+        }
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -252,6 +289,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(resolver, Settings.System.QS_COLLAPSE_PANEL,
                     mCollapsePanel.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mDisablePanel) {
+            Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
+                    mDisablePanel.isChecked() ? 0 : 1);
+            setEnablePreferences(mDisablePanel.isChecked());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -286,6 +327,18 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
                     Settings.System.EXPANDED_NETWORK_MODE, value);
             mNetworkMode.setSummary(mNetworkMode.getEntries()[index]);
             return true;
+        } else if (preference == mQuickPulldown) {
+            int quickPulldownValue = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_QUICK_PULLDOWN,
+                    quickPulldownValue);
+            updatePulldownSummary(quickPulldownValue);
+            return true;
+        } else if (preference == mNoNotificationsPulldown) {
+            int noNotificationsPulldownValue = Integer.valueOf((String) newValue);
+            Settings.System.putInt(resolver, Settings.System.QS_NO_NOTIFICATION_PULLDOWN,
+                    noNotificationsPulldownValue);
+            updateNoNotificationsPulldownSummary(noNotificationsPulldownValue);
+            return true;
         } else if (preference == mScreenTimeoutMode) {
             int value = Integer.valueOf((String) newValue);
             int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
@@ -318,6 +371,31 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         }
     }
 
+    private void updatePulldownSummary(int value) {
+
+        if (value == 0) {
+            /* quick pulldown deactivated */
+            mQuickPulldown.setSummary(getResources().getString(R.string.quick_pulldown_off));
+        } else {
+            String direction = getResources().getString(value == 2
+                    ? R.string.quick_pulldown_summary_left
+                    : R.string.quick_pulldown_summary_right);
+            mQuickPulldown.setSummary(getResources().getString(R.string.summary_quick_pulldown, direction));
+        }
+    }
+
+    private void updateNoNotificationsPulldownSummary(int value) {
+
+        if (value == 0) {
+            /* No Notifications Pulldown deactivated */
+            mNoNotificationsPulldown.setSummary(getResources().getString(R.string.no_notifications_pulldown_off));
+        } else {
+            mNoNotificationsPulldown.setSummary(getResources().getString(value == 1
+                    ? R.string.no_notifications_pulldown_summary_nonperm
+                    : R.string.no_notifications_pulldown_summary_all));
+        }
+    }
+
     public static String[] parseStoredValue(CharSequence val) {
         if (TextUtils.isEmpty(val)) {
             return null;
@@ -325,4 +403,33 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             return val.toString().split(SEPARATOR);
         }
     }
+    private void setEnablePreferences(boolean status) {
+        if (mRingMode != null)
+            mRingMode.setEnabled(status);
+        if (mNetworkMode != null)
+            mNetworkMode.setEnabled(status);
+        if (mScreenTimeoutMode != null)
+            mScreenTimeoutMode.setEnabled(status);
+        if (mDynamicAlarm != null)
+            mDynamicAlarm.setEnabled(status);
+        if (mDynamicBugReport != null)
+            mDynamicBugReport.setEnabled(status);
+        if (mDynamicWifi != null)
+            mDynamicWifi.setEnabled(status);
+        if (mDynamicIme != null)
+            mDynamicIme.setEnabled(status);
+        if (mDynamicUsbTether != null)
+            mDynamicUsbTether.setEnabled(status);
+        if (mNoNotificationsPulldown != null)
+            mNoNotificationsPulldown.setEnabled(status);
+        if (mCollapsePanel != null)
+            mCollapsePanel.setEnabled(status);
+        if (mQuickPulldown != null)
+            mQuickPulldown.setEnabled(status);
+        if (mQsTilesStyle != null)
+            mQsTilesStyle.setEnabled(status);
+        if (mTilePicker != null)
+            mTilePicker.setEnabled(status);
+    }
+
 }

@@ -920,6 +920,19 @@
         <item>5</item>
     </string-array>
 
+    <!-- No Notifications pulldown -->
+    <string-array name="no_notifications_pulldown_entries">
+        <item>@string/no_notifications_pulldown_off</item>
+        <item>@string/no_notifications_pulldown_nonperm</item>
+        <item>@string/no_notifications_pulldown_all</item>
+    </string-array>
+
+    <string-array name="no_notifications_pulldown_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- Rotation mode options. -->
     <string-array name="rotation_mode_entries">
         <item>@string/rotation_0</item>

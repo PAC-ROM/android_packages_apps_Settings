@@ -41,8 +41,10 @@ public class SystemSettings extends SettingsPreferenceFragment {
     private static final String KEY_LOCK_CLOCK = "lock_clock";
     private static final String KEY_NOTIFICATION_DRAWER = "notification_drawer";
     private static final String KEY_POWER_MENU = "power_menu";
+    private static final String PREF_NOTIFICATION_QUICK_SETTINGS = "quick_settings_panel";
 
     private boolean mIsPrimary;
+    private Preference mQuickSettings;
 
     public boolean hasButtons() {
         return !getResources().getBoolean(com.android.internal.R.bool.config_showNavigationBar);
