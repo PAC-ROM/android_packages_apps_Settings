@@ -49,6 +49,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
     private static final String PREF_QUICK_TILES_BG_COLOR = "quick_tiles_bg_color";
     private static final String PREF_QUICK_TILES_BG_PRESSED_COLOR = "quick_tiles_bg_pressed_color";
     private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";
+    private static final String PREF_QS_TILES_RANDOM = "qs_tiles_random";
 
     private static final int DEFAULT_QUICK_TILES_TEXT_COLOR = 0xffcccccc;
     private static final int DEFAULT_QUICK_TILES_BG_COLOR = 0xff161616;
@@ -61,6 +62,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
     private ColorPickerPreference mQuickTilesBgColor;
     private ColorPickerPreference mQuickTilesBgPressedColor;
     private CheckBoxPreference mFlipQsTiles;
+    private CheckBoxPreference mQsTilesRandom;
 
     private boolean mCheckPreferences;
 
@@ -131,12 +133,15 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
         mFlipQsTiles.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.QUICK_SETTINGS_TILES_FLIP, 1) == 1);
 
+       mQsTilesRandom = (CheckBoxPreference) findPreference(PREF_QS_TILES_RANDOM);
+       mQsTilesRandom.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.QUICK_TILES_BG_COLOR_RANDOM, 1) == 1);
+
         setHasOptionsMenu(true);
         mCheckPreferences = true;
         return prefs;
     }
  
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
@@ -174,6 +179,12 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
                     Settings.System.QUICK_SETTINGS_TILES_FLIP,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mQsTilesRandom) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.QUICK_TILES_BG_COLOR_RANDOM,
+                    ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
+            Helpers.restartSystemUI();
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -209,6 +220,7 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
             Settings.System.putInt(getContentResolver(),
                    Settings.System.QUICK_TILES_BG_COLOR,
                    intHex);
+           Helpers.restartSystemUI();
            return true;
         } else if (preference == mQuickTilesBgPressedColor) {
             String hex = ColorPickerPreference.convertToARGB(

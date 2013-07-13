@@ -4581,7 +4581,8 @@
     <string name="quick_tiles_bg_pressed_color_title">Tiles pressed background color</string>
     <string name="flip_qs_tiles_title">Flip tiles</string>
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
-
+    <string name="qs_random_colors_title">QS Random colors </string>
+    <string name="qs_random_colors_summary">Sets Random colors for QS onFlip</string>
     <string name="none">None</string> 
 
     <!-- Reset tiles -->

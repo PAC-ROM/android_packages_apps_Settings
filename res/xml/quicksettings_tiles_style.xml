@@ -58,5 +58,10 @@
             android:title="@string/flip_qs_tiles_title"
             android:summary="@string/flip_qs_tiles_summary" />
 
+        <CheckBoxPreference
+            android:key="qs_tiles_random"
+            android:title="@string/qs_random_colors_title"
+            android:summary="@string/qs_random_colors_summary" />
+
     </PreferenceCategory>
 </PreferenceScreen>
