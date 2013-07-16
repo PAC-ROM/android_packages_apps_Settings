@@ -46,9 +46,11 @@ public class Halo extends SettingsPreferenceFragment
     private static final String KEY_HALO_STATE = "halo_state";
     private static final String KEY_HALO_HIDE = "halo_hide";
     private static final String KEY_HALO_REVERSED = "halo_reversed";
+    private static final String KEY_HALO_SIZE = "halo_size";
     private static final String KEY_HALO_PAUSE = "halo_pause";
 
     private ListPreference mHaloState;
+    private ListPreference mHaloSize;
     private CheckBoxPreference mHaloHide;
     private CheckBoxPreference mHaloReversed;
     private CheckBoxPreference mHaloPause;
@@ -71,6 +73,16 @@ public class Halo extends SettingsPreferenceFragment
         mHaloState = (ListPreference) prefSet.findPreference(KEY_HALO_STATE);
         mHaloState.setValue(String.valueOf((isHaloPolicyBlack() ? "1" : "0")));
         mHaloState.setOnPreferenceChangeListener(this);
+
+        mHaloSize = (ListPreference) prefSet.findPreference(KEY_HALO_SIZE);
+        try {
+            float haloSize = Settings.System.getFloat(mContext.getContentResolver(),
+                    Settings.System.HALO_SIZE, 1.0f);
+            mHaloSize.setValue(String.valueOf(haloSize));  
+        } catch(Exception ex) {
+            // So what
+        }
+        mHaloSize.setOnPreferenceChangeListener(this);
 
         mHaloHide = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_HIDE);
         mHaloHide.setChecked(Settings.System.getInt(mContext.getContentResolver(),
@@ -122,6 +134,11 @@ public class Halo extends SettingsPreferenceFragment
             } catch (android.os.RemoteException ex) {
                 // System dead
             }          
+            return true;
+        } else if (preference == mHaloSize) {
+            float haloSize = Float.valueOf((String) newValue);
+            Settings.System.putFloat(getActivity().getContentResolver(),
+                    Settings.System.HALO_SIZE, haloSize);
             return true;
         }
         return false;
