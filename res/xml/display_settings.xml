@@ -78,6 +78,12 @@
                 android:targetClass="com.cyanogenmod.settings.device.DisplaySettings" />
         </Preference>
 
+        <CheckBoxPreference
+            android:key="wake_when_plugged_or_unplugged"
+            android:title="@string/wake_when_plugged_or_unplugged_title"
+            android:summary="@string/wake_when_plugged_or_unplugged_summary"
+            android:defaultValue="false" />
+
         <PreferenceCategory
             android:key="listview_prefs"
             android:title="@string/listview_animation_header">
