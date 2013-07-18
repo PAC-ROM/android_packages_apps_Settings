@@ -133,9 +133,9 @@ public class QuickSettingsTilesStyle extends SettingsPreferenceFragment implemen
         mFlipQsTiles.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
                 Settings.System.QUICK_SETTINGS_TILES_FLIP, 1) == 1);
 
-       mQsTilesRandom = (CheckBoxPreference) findPreference(PREF_QS_TILES_RANDOM);
-       mQsTilesRandom.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.QUICK_TILES_BG_COLOR_RANDOM, 1) == 1);
+        mQsTilesRandom = (CheckBoxPreference) findPreference(PREF_QS_TILES_RANDOM);
+        mQsTilesRandom.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.QUICK_TILES_BG_COLOR_RANDOM, 0) == 1);
 
         setHasOptionsMenu(true);
         mCheckPreferences = true;
