@@ -49,6 +49,7 @@ import android.util.Log;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
+import com.android.settings.cyanogenmod.DisplayColor;
 import com.android.settings.Utils;
 
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_POWER_CRT_SCREEN_OFF = "system_power_crt_screen_off";
+    private static final String KEY_DISPLAY_COLOR = "color_calibration";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -98,7 +100,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private Preference mWifiDisplayPreference;
 
     private int mAllowedRotationModes;
-    
+
     private boolean mIsCrtOffChecked = false;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
@@ -193,6 +195,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             }
         }
 
+        if (!DisplayColor.isSupported()) {
+            removePreference(KEY_DISPLAY_COLOR);
+        }
 
         mDisplayManager = (DisplayManager)getActivity().getSystemService(
                 Context.DISPLAY_SERVICE);
@@ -207,7 +212,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (Utils.isTablet()) {
             prefSet.removePreference(mStatusBarBrightnessControl);
         }
-        
+
         // respect device default configuration
         // true fades while false animates
         boolean electronBeamFadesConfig = mContext.getResources().getBoolean(
@@ -312,7 +317,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         return indices.length-1;
     }
-    
+
     public void readFontSizePreference(ListPreference pref) {
         try {
             mCurConfig.updateFrom(ActivityManagerNative.getDefault().getConfiguration());
@@ -330,7 +335,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         pref.setSummary(String.format(res.getString(R.string.summary_font_size),
                 fontSizeNames[index]));
     }
-    
+
     @Override
     public void onResume() {
         super.onResume();
@@ -422,7 +427,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
-        
+
         if (preference == mStatusBarBrightnessControl) {
         value = mStatusBarBrightnessControl.isChecked();
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
@@ -467,7 +472,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
-        
+
         if (preference == mCrtMode) {
             int crtMode = Integer.valueOf((String) objValue);
             int index = mCrtMode.findIndexOfValue((String) objValue);
@@ -528,7 +533,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 public void onClick(DialogInterface dialog, int which) {
                     Settings.System.putInt(getActivity().getContentResolver(), Settings.System
                             .ACCELEROMETER_ROTATION_ANGLES, mAllowedRotationModes);
-                }				
+                }
             });
             d.show();
             return true;
