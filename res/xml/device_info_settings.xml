@@ -34,8 +34,15 @@
                     android:targetClass="@string/additional_system_update_menu" />
         </PreferenceScreen>
 
-	<PreferenceCategory
+        <PreferenceCategory
         android:title="@string/pac_title">
+
+        <!-- PAC Stats -->
+        <PreferenceScreen
+            android:key="pac_stats"
+            android:title="@string/pacman_stats"
+            android:summary="@string/pacman_stats_summary" >
+        </PreferenceScreen>
 
         <!-- Share PAC-Man ROM -->
         <Preference
@@ -53,7 +60,10 @@
             android:title="@string/contributors_title"
             android:fragment="com.android.settings.cyanogenmod.Contributors" >
         </PreferenceScreen>
-	</PreferenceCategory>
+        </PreferenceCategory>
+
+        <PreferenceCategory
+        android:title="@string/device_about_title">
 
         <!-- Device status - launches activity -->
         <PreferenceScreen android:key="status_info"
@@ -230,4 +240,5 @@
                 android:title="@string/selinux_status"
                 android:summary="@string/selinux_status_enforcing"/>
 
+       </PreferenceCategory>
 </PreferenceScreen>

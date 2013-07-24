@@ -4421,6 +4421,10 @@
     <string name="changelog_unknown">Unknown</string>
     <string name="changelog_version">Version</string>
 
+    <!-- About phone titles -->
+    <string name="pac_title">PAC-man info</string>
+    <string name="device_about_title">Device info</string>
+
     <!-- Contributors strings -->
     <string name="pac_title">PAC-man info</string>
     <string name="contributors_title">View contributors</string>
@@ -4804,7 +4808,9 @@
     <string name="permissions_settings_title">Permissions</string>
 
     <!-- PACStats -->
-    <string name="pacstats_settings_title">PACStats</string>
+    <string name="pacman_stats">PACStats</string>
+    <string name="pacman_stats_summary">View PAC-Man ROM statistics</string>
+
 
     <!-- Share PAC-Man ROM -->
    <string name="share_pacrom">Share PAC-Man ROM</string>
