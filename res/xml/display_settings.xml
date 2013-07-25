@@ -17,8 +17,8 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/display_settings"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
-	
-	<PreferenceCategory
+
+    <PreferenceCategory
         android:key="category_animation_options"
         android:title="@string/display_category_animation_options_title" >
 
@@ -34,13 +34,12 @@
             android:entries="@array/entries_system_power_crt_mode"
             android:entryValues="@array/values_system_power_crt_mode"
             android:dependency="system_power_crt_screen_off" />
-	    
-	</PreferenceCategory>
+
+    </PreferenceCategory>
 
         <com.android.settings.BrightnessPreference
-            android:key="brightness"
-            android:title="@string/brightness"
-            android:dialogTitle="@string/brightness" />
+                android:title="@string/brightness"
+                android:persistent="false"/>
 
         <CheckBoxPreference
             android:key="status_bar_brightness_control"
