@@ -200,6 +200,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
         }
         addPreferencesFromResource(resid);
 
+        // Application install
+        PreferenceGroup deviceAdminCategory= (PreferenceGroup)
+            root.findPreference(KEY_DEVICE_ADMIN_CATEGORY);
 
         // Add options for device encryption
         DevicePolicyManager dpm =
@@ -408,17 +411,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 removePreference(KEY_CREDENTIALS_MANAGER);
             }
 
-            // Application install
-            PreferenceGroup deviceAdminCategory= (PreferenceGroup)
-                root.findPreference(KEY_DEVICE_ADMIN_CATEGORY);
-
             mToggleAppInstallation = (CheckBoxPreference) findPreference(
                     KEY_TOGGLE_INSTALL_APPLICATIONS);
             mToggleAppInstallation.setChecked(isNonMarketAppsAllowed());
 
             // Side loading of apps.
             mToggleAppInstallation.setEnabled(mIsPrimary);
-
 
             // Package verification, only visible to primary user and if enabled
             mToggleVerifyApps = (CheckBoxPreference) findPreference(KEY_TOGGLE_VERIFY_APPLICATIONS);
@@ -430,8 +428,6 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     mToggleVerifyApps.setEnabled(false);
                 }
             } else {
-                PreferenceGroup deviceAdminCategory= (PreferenceGroup)
-                        root.findPreference(KEY_DEVICE_ADMIN_CATEGORY);
                 if (deviceAdminCategory != null) {
                     deviceAdminCategory.removePreference(mToggleVerifyApps);
                 } else {

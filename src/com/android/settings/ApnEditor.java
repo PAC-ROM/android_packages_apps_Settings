@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -236,7 +237,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         mCursor = qCursor.loadInBackground();
         mCursor.moveToFirst();
 
-        mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
         fillUi();
         setHasOptionsMenu(true);
@@ -526,7 +527,7 @@ public class ApnEditor extends SettingsPreferenceFragment
 
         ContentValues values = new ContentValues();
 
-        // Add a dummy name "Untitled", if the user exits the screen without adding a name but 
+        // Add a dummy name "Untitled", if the user exits the screen without adding a name but
         // entered other information worth keeping.
         values.put(Telephony.Carriers.NAME,
                 name.length() < 1 ? getResources().getString(R.string.untitled_apn) : name);

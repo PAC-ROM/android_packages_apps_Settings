@@ -76,7 +76,7 @@ public class MiscFilesHandler extends ListActivity {
         lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         lv.setMultiChoiceModeListener(new ModeCallback(this));
         setListAdapter(mAdapter);
-    } 
+    }
 
     private class ModeCallback implements ListView.MultiChoiceModeListener {
         private int mDataCount;
@@ -148,7 +148,7 @@ public class MiscFilesHandler extends ListActivity {
                     final IMediaContainerService imcs = IMediaContainerService.Stub.asInterface(
                             service);
                     try {
-                        imcs.deleteFile(mPath); // Works for file and directory   
+                        imcs.deleteFile(mPath); // Works for file and directory
                     } catch (Exception e) {
                         Log.w(TAG, "Problem in container service", e);
                     }
@@ -166,8 +166,8 @@ public class MiscFilesHandler extends ListActivity {
                 mPath = path;
                 Intent service = new Intent().setComponent(
                         StorageMeasurement.DEFAULT_CONTAINER_COMPONENT);
-                bindService(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
-                        UserHandle.USER_OWNER);
+                bindServiceAsUser(service, mDefContainerConn, Context.BIND_AUTO_CREATE,
+                        new UserHandle(UserHandle.USER_OWNER));
             }
         }
 
@@ -269,12 +269,12 @@ public class MiscFilesHandler extends ListActivity {
             final ListView listView = (ListView) parent;
             final int listPosition = position;
             view.getCheckBox().setOnCheckedChangeListener(new OnCheckedChangeListener() {
-                
+
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     listView.setItemChecked(listPosition, isChecked);
                 }
-                
+
             });
             view.setOnLongClickListener(new OnLongClickListener() {
                 @Override
