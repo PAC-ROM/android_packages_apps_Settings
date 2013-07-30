@@ -82,6 +82,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String DYNAMIC_TILES = "pref_dynamic_tiles";
     private static final String QS_TILES_STYLE = "quicksettings_tiles_style";
     private static final String TILE_PICKER = "tile_picker";
+    private static final String FLOATING_WINDOW ="floating_window";
 
     MultiSelectListPreference mRingMode;
     ListPreference mNetworkMode;
@@ -95,6 +96,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     CheckBoxPreference mDisablePanel;
     ListPreference mQuickPulldown;
     ListPreference mNoNotificationsPulldown;
+    CheckBoxPreference mFloatingWindow;
     PreferenceCategory mGeneralSettings;
     PreferenceCategory mStaticTiles;
     PreferenceCategory mDynamicTiles;
@@ -124,6 +126,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mTilePicker = (PreferenceScreen) prefSet.findPreference(TILE_PICKER);
         mCollapsePanel = (CheckBoxPreference) prefSet.findPreference(COLLAPSE_PANEL);
         mCollapsePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_COLLAPSE_PANEL, 0) == 1);
+        mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
+        mFloatingWindow.setChecked(Settings.System.getInt(resolver, Settings.System.QS_FLOATING_WINDOW, 0) == 1);
 
         // Add the sound mode
         mRingMode = (MultiSelectListPreference) prefSet.findPreference(EXP_RING_MODE);
@@ -293,6 +297,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
                     mDisablePanel.isChecked() ? 0 : 1);
             setEnablePreferences(mDisablePanel.isChecked());
+        } else if (preference == mFloatingWindow) {
+            Settings.System.putInt(resolver, Settings.System.QS_FLOATING_WINDOW,
+                    mFloatingWindow.isChecked() ? 1 : 0);
+            return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
