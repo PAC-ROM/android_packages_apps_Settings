@@ -3,6 +3,12 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <CheckBoxPreference
+        android:key="pie_enabled"
+        android:title="@string/pie_enabled_title"
+        android:summary="@string/pie_enabled_summary"
+        android:defaultValue="true" />
+
     <ListPreference
         android:key="pie_trigger"
         android:dialogTitle="@string/pie_trigger_title"
