@@ -14,5 +14,11 @@
         android:key="status_bar_donotdisturb"
         android:title="@string/status_bar_donotdisturb_title"
         android:summary="@string/status_bar_donotdisturb_summary"
-        android:defaultValue="false" />	
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
+        android:key="status_bar_traffic"
+        android:title="@string/show_network_speed"
+        android:summary="@string/show_network_speed_summary" />
+
 </PreferenceScreen>

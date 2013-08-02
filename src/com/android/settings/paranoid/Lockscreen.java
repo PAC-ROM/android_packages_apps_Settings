@@ -58,7 +58,6 @@ public class Lockscreen extends SettingsPreferenceFragment
     private static final int LOCKSCREEN_BACKGROUND_DEFAULT_WALLPAPER = 2;
 
     private static final String KEY_SEE_TRHOUGH = "see_through";
-    private static final String KEY_HOME_SCREEN_WIDGETS = "home_screen_widgets";
     private static final String KEY_BACKGROUND = "lockscreen_background";
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String KEY_SCREEN_SECURITY = "screen_security";
@@ -66,7 +65,6 @@ public class Lockscreen extends SettingsPreferenceFragment
     private ListPreference mCustomBackground;
 
     private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mHomeScreenWidgets;
 
     private Context mContext;
 
@@ -95,10 +93,6 @@ public class Lockscreen extends SettingsPreferenceFragment
             mSeeThrough.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                         Settings.System.LOCKSCREEN_SEE_THROUGH, 0) == 1);
 
-            mHomeScreenWidgets = (CheckBoxPreference) prefSet.findPreference(KEY_HOME_SCREEN_WIDGETS);
-            mHomeScreenWidgets.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                        Settings.System.HOME_SCREEN_WIDGETS, 0) == 1);
-
             PreferenceScreen lockscreenButtons = (PreferenceScreen) findPreference(KEY_LOCKSCREEN_BUTTONS);
             if (!hasButtons()) {
                 getPreferenceScreen().removePreference(lockscreenButtons);
@@ -108,7 +102,6 @@ public class Lockscreen extends SettingsPreferenceFragment
             PreferenceScreen prefScreen = getPreferenceScreen();
             prefScreen.removePreference(findPreference(KEY_SCREEN_SECURITY));
             prefScreen.removePreference(findPreference(KEY_SEE_TRHOUGH));
-            prefScreen.removePreference(findPreference(KEY_HOME_SCREEN_WIDGETS));
             prefScreen.removePreference(findPreference(KEY_LOCKSCREEN_BUTTONS));
         }
 
@@ -145,32 +138,6 @@ public class Lockscreen extends SettingsPreferenceFragment
                 Settings.System.putInt(mContext.getContentResolver(),
                         Settings.System.LOCKSCREEN_SEE_THROUGH, mSeeThrough.isChecked()
                         ? 1 : 0);
-            } else if (preference == mHomeScreenWidgets) {
-                final boolean isChecked = mHomeScreenWidgets.isChecked();
-                if(isChecked) {
-                    // Show warning
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle(R.string.home_screen_widgets_warning_title);
-                    builder.setMessage(getResources().getString(R.string.home_screen_widgets_warning))
-                            .setPositiveButton(com.android.internal.R.string.ok, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    Settings.System.putInt(mContext.getContentResolver(),
-                                            Settings.System.HOME_SCREEN_WIDGETS,
-                                            isChecked ? 1 : 0);
-                                }
-                            })
-                            .setNegativeButton(com.android.internal.R.string.cancel, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    mHomeScreenWidgets.setChecked(false);
-                                    dialog.dismiss();
-                                }
-                            });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                } else {
-                    Settings.System.putInt(mContext.getContentResolver(),
-                            Settings.System.HOME_SCREEN_WIDGETS, 0);
-                }
             }
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);

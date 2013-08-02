@@ -163,9 +163,41 @@
                 android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name="MainSetting"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings"
+                android:theme="@android:style/Theme.Holo.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.settings.SETTINGS" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name="SystemSettings"
+                android:label="@string/settings_label_launcher"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name="PacSettings"
+                android:label="@string/settings_label_launcher"
+                android:launchMode="singleTask"
+                android:taskAffinity="com.android.settings" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -794,7 +826,7 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/application_settings" />
         </activity-alias>
-        
+
         <!-- Provide direct entry into manage apps showing storage usage for apps.
              This is for compatibility with old shortcuts. -->
         <activity-alias android:name=".applications.StorageUse"
@@ -905,7 +937,7 @@
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/application_settings" /> -->
         </activity>
-        
+
         <activity android:name="Settings$LocationSettingsActivity"
                 android:label="@string/location_settings_title"
                 android:configChanges="orientation|keyboardHidden|screenSize"
@@ -1814,8 +1846,8 @@
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/appwidget_info" />
         </receiver>
-	
-	 <!-- Notification Shortcuts -->
+
+        <!-- Notification Shortcuts -->
 
         <activity android:name="Settings$NotificationShortcutsSettingsActivity"
                 android:label="@string/notification_shortcuts_settings_title"
@@ -1854,7 +1886,6 @@
                 <action android:name="android.provider.Contacts.PROFILE_CHANGED" />
             </intent-filter>
         </receiver>
-
 
         <activity android:name=".paranoid.PlatLogoActivity"
                 android:theme="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen"
@@ -1895,6 +1926,168 @@
                 <category android:name=".pac.PACLOGO" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".pac.PieSettings" />
+
+        <activity android:name=".pac.StatusBarSettings" />
+
+        <activity android:name=".paranoid.Halo" />
+
+        <activity android:name=".cyanogenmod.HardwareKeys" />
+
+        <activity android:name=".PacManSettings" />
+
+        <!-- AOKP -->
+
+        <activity
+            android:name=".aokp.fragments.UserInterface"
+            android:label="@string/title_ui">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.StatusBarClock"
+            android:label="@string/title_statusbar_clock">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.StatusBarBattery"
+            android:label="@string/title_statusbar_battery">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.Navbar"
+            android:label="@string/title_navbar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.NavRingTargets"
+            android:label="@string/title_navring" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.RibbonTargets"
+            android:label="@string/title_ribbon" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.LEDControl"
+            android:label="@string/title_led">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.Lockscreens"
+            android:label="@string/title_lockscreens">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.About"
+            android:label="@string/title_about">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.Sound"
+            android:label="@string/title_sound">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.ShareToClipboard"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:icon="@drawable/ic_menu_clipboard"
+            android:label="@string/title_clipboard_share">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.ALTERNATIVE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.StatusBarSignal"
+            android:label="@string/title_statusbar_signal">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".aokp.fragments.Vibrations"
+                android:label="@string/vibrations">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <provider android:name=".aokp.vibrations.VibrationsProvider"
+            android:exported="true"
+            android:authorities="com.aokp.romcontrol.Vibrations" />
+        <activity
+            android:name=".aokp.CreateShortcut"
+            android:theme="@style/Theme.CreateShortCut">
+            <intent-filter>
+                <action android:name="android.intent.action.CREATE_SHORTCUT"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aokp.fragments.Weather"
+            android:label="@string/title_weather" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <receiver
+            android:name=".aokp.service.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".aokp.service.ChangeFastChargeStateReceiver">
+            <intent-filter>
+                <action android:name="com.aokp.romcontrol.ACTION_CHANGE_FCHARGE_STATE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".aokp.service.CodeReceiver">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE"/>
+                <data
+                    android:scheme="android_secret_code"
+                    android:host="2657"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".aokp.weather.WeatherReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.aokp.romcontrol.INTENT_WEATHER_REQUEST" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name=".aokp.service.BootService"/>
+        <service android:name=".aokp.service.HeadphoneService"/>
+        <service android:name=".aokp.service.FlipService"/>
+        <service
+            android:name=".aokp.service.ExternalCommandService"
+            android:exported="false"/>
+        <service android:name=".aokp.weather.WeatherRefreshService" />
+        <service android:name=".aokp.weather.WeatherService" />
 
     </application>
 </manifest>

@@ -581,6 +581,10 @@
     <string name="settings_label">Settings</string>
     <!-- Title of the Settings activity shown in the Launcher. [CHAR LIMIT=20] -->
     <string name="settings_label_launcher">Settings</string>
+    <!-- System tab title. [CHAR LIMIT=20] -->
+    <string name="system_label">System</string>
+    <!-- PAC tab title. [CHAR LIMIT=20] -->
+    <string name="pac_label">PAC-man</string>
     <!-- Label for option to select a settings panel as a shortcut -->
     <string name="settings_shortcut">Settings shortcut</string>
     <!-- Wireless controls settings screen, setting check box label -->
@@ -4533,6 +4537,7 @@
     <string name="changelog_version">Version</string>
 
     <!-- About phone titles -->
+    <string name="pac_man_title">PAC-man</string>
     <string name="pac_title">PAC-man info</string>
     <string name="device_about_title">Device info</string>
 
@@ -4561,6 +4566,8 @@
 
     <!-- Customization main menu category heading [CHAR LIMIT=40] -->
     <string name="header_category_customization">Customization</string>
+    <!-- links main menu category heading [CHAR LIMIT=40] -->
+    <string name="header_category_links">Shortcuts</string>
 
     <!-- Lock screen sub menu [CHAR LIMIT=30] -->
     <string name="lock_screen_settings">Lock screen</string>
@@ -4590,7 +4597,7 @@
     <string name="tool_bar_navigation_header">Navigation bar</string>
 
     <!-- HALO -->
-    <string name="halo_settings_title">HALO Settings</string>
+    <string name="halo_settings_title">HALO</string>
     <string name="halo_hide_title">Hide HALO after activity</string>
     <string name="halo_hide_summary">HALO will appear for incoming tasks and scroll out of sight after a while</string>
     <string name="halo_reversed_title">Reverse HALO</string>
@@ -4634,7 +4641,7 @@
     <string name="title_tile_battery">Battery stats</string>
     <string name="title_tile_bluetooth">Bluetooth</string>
     <string name="title_tile_brightness">Brightness</string>
-	<string name="title_tile_camera">Camera</string>
+    <string name="title_tile_camera">Camera</string>
     <string name="title_tile_sleep">Go to sleep</string>
     <string name="title_tile_gps">GPS</string>
     <string name="title_tile_torch">Torch</string>
@@ -4715,7 +4722,7 @@
     <string name="tiles_reset_message">Restore the default displayed tiles and layout?</string>
 
     <!-- Pie controls -->
-    <string name="pie_settings_title">Pie settings</string>
+    <string name="pie_settings_title">Pie</string>
 
     <string name="pie_gravity_title">Pie gravity</string>
     <string name="pie_gravity_summary">Select the location where Pie will be placed at</string>

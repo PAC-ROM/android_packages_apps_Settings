@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 PAC-man ROM
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="make_it_dark"
+        android:title="@string/header_category_dark" />
+
+    <!-- TRDS / PAC In Black-->
+    <SwitchPreference
+        android:key="trds_settings"
+        android:icon="@drawable/ic_settings_pac"
+        android:title="@string/trds_settings_title" />
+
+    <!-- links -->
+    <PreferenceCategory android:key="links_section"
+        android:title="@string/header_category_links" />
+
+    <!-- Themes -->
+    <PreferenceScreen
+        android:key="themes_settings"
+        android:icon="@drawable/ic_settings_themes"
+        android:title="@string/themes_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.tmobile.themechooser"
+            android:targetClass="com.tmobile.themechooser.ThemeChooser" />
+    </PreferenceScreen>
+
+    <!-- Launcher -->
+    <PreferenceScreen
+        android:key="launcher_settings"
+        android:title="@string/launcher_settings_title"
+        android:icon="@drawable/ic_settings_cmlauncher" />
+
+    <!-- Hybrid options -->
+    <PreferenceScreen
+        android:key="hybrid_settings"
+        android:icon="@drawable/ic_settings_hybrid"
+        android:title="@string/hybrid_settings">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.preferences"
+            android:targetClass="com.paranoid.preferences.MainActivity" />
+    </PreferenceScreen>
+
+    <PreferenceCategory
+        android:title="@string/user_interface" />
+
+    <PreferenceScreen
+        android:key="user_interface"
+        android:fragment="com.android.settings.aokp.fragments.UserInterface"
+        android:title="@string/general_ui"
+        android:icon="@drawable/ic_rom_control_general_ui"
+        android:summary="@string/header_summary_general_ui" />
+
+    <PreferenceScreen
+        android:key="lockscreen"
+        android:fragment="com.android.settings.aokp.fragments.Lockscreens"
+        android:title="@string/lockscreen_options"
+        android:icon="@drawable/ic_rom_control_lockscreens"
+        android:summary="@string/header_summary_lockscreens" />
+
+    <PreferenceScreen
+        android:key="lock_screen_settings"
+        android:fragment="com.android.settings.paranoid.Lockscreen"
+        android:icon="@drawable/ic_settings_lock_screen"
+        android:title="@string/lock_screen_settings_widgets"
+        android:summary="@string/header_summary_lockscreens" />
+
+    <PreferenceScreen
+        android:key="nav_bar"
+        android:fragment="com.android.settings.aokp.fragments.Navbar"
+        android:title="@string/nav_bar"
+        android:icon="@drawable/ic_rom_control_navigation_bar"
+        android:summary="@string/header_summary_navigation_bar" />
+
+    <PreferenceScreen
+        android:key="nav_ring"
+        android:fragment="com.android.settings.aokp.fragments.NavRingTargets"
+        android:icon="@drawable/ic_rom_control_navigation_ring"
+        android:title="@string/interface_navring_settings_title"
+        android:summary="@string/interface_navring_settings_summary" />
+
+    <PreferenceScreen
+        android:key="power_menu"
+        android:fragment="com.android.settings.cyanogenmod.PowerMenu"
+        android:title="@string/power_menu"
+        android:icon="@drawable/ic_rom_control_power_menu"
+        android:summary="@string/header_summary_power_menu" />
+
+    <PreferenceScreen
+        android:key="ribbon_targets"
+        android:fragment="com.android.settings.aokp.fragments.RibbonTargets"
+        android:icon="@drawable/ic_rom_control_ribbon"
+        android:title="@string/ribbon_settings_title"
+        android:summary="@string/ribbon_settings_summary" />
+
+    <PreferenceScreen
+        android:key="pie_settings"
+        android:fragment="com.android.settings.pac.PieSettings"
+        android:title="@string/pie_settings_title"
+        android:icon="@drawable/ic_rom_control_pie"
+        android:summary="@string/header_summary_pie" />
+
+    <PreferenceScreen
+        android:key="halo_settings"
+        android:fragment="com.android.settings.paranoid.Halo"
+        android:title="@string/halo_settings_title"
+        android:icon="@drawable/ic_rom_control_halo"
+        android:summary="@string/header_summary_halo" />
+
+    <PreferenceCategory
+        android:key="statusbar"
+        android:title="@string/header_statusbar" />
+
+    <PreferenceScreen
+        android:key="notification_drawer"
+        android:fragment="com.android.settings.cyanogenmod.PowerWidget"
+        android:icon="@drawable/ic_rom_control_notification"
+        android:title="@string/notification_drawer_title"
+        android:summary="@string/header_summary_drawer" />
+
+    <PreferenceScreen
+        android:key="statusbar_toggles"
+        android:title="@string/toggles_layout"
+        android:fragment="com.android.settings.cyanogenmod.QuickSettings"
+        android:icon="@drawable/ic_rom_control_quick_settings"
+        android:summary="@string/header_summary_toggles" />
+
+    <PreferenceScreen
+        android:key="statusbar_battery"
+        android:title="@string/battery"
+        android:fragment="com.android.settings.aokp.fragments.StatusBarBattery"
+        android:icon="@drawable/ic_rom_control_battery"
+        android:summary="@string/header_summary_battery" />
+
+    <PreferenceScreen
+        android:key="statusbar_clock"
+        android:fragment="com.android.settings.aokp.fragments.StatusBarClock"
+        android:summary="@string/header_summary_clock"
+        android:icon="@drawable/ic_rom_control_clock"
+        android:title="@string/clock" />
+
+    <PreferenceScreen
+        android:key="statusbar_signal"
+        android:title="@string/signal"
+        android:fragment="com.android.settings.aokp.fragments.StatusBarSignal"
+        android:icon="@drawable/ic_rom_control_signal"
+        android:summary="@string/header_summary_signal" />
+
+    <PreferenceScreen
+        android:key="weather"
+        android:fragment="com.android.settings.aokp.fragments.Weather"
+        android:title="@string/weather"
+        android:summary="@string/header_summary_weather"
+        android:icon="@drawable/ic_rom_control_weather" />
+
+    <PreferenceScreen
+        android:key="status_bar_misc"
+        android:fragment="com.android.settings.pac.StatusBarSettings"
+        android:title="@string/status_bar_miscellaneous"
+        android:summary="@string/header_summary_statusbar_misc"
+        android:icon="@drawable/ic_settings_status_bar" />
+
+    <PreferenceCategory
+        android:key="system"
+        android:title="@string/header_system" />
+
+    <PreferenceScreen
+        android:key="permissions_settings"
+        android:icon="@drawable/ic_settings_permissions"
+        android:title="@string/permissions_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="org.chameleonos.permissionsmanager"
+            android:targetClass="org.chameleonos.permissionsmanager.activity.PermissionManagerActivity" />
+    </PreferenceScreen>
+
+    <PreferenceScreen
+        android:key="hardware_keys"
+        android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
+        android:icon="@drawable/ic_rom_control_keys"
+        android:title="@string/hardware_keys_title"
+        android:summary="@string/header_summary_keys" />
+
+    <PreferenceScreen
+        android:key="led"
+        android:fragment="com.android.settings.aokp.fragments.LEDControl"
+        android:title="@string/led_options"
+        android:icon="@drawable/ic_rom_control_led"
+        android:summary="@string/header_summary_led" />
+
+    <PreferenceScreen
+        android:key="sound"
+        android:fragment="com.android.settings.aokp.fragments.Sound"
+        android:title="@string/sound"
+        android:icon="@drawable/ic_rom_control_sound"
+        android:summary="@string/header_summary_sound" />
+
+    <PreferenceScreen
+        android:key="vibrations"
+        android:title="@string/vibrations"
+        android:summary="@string/header_summary_vibrations"
+        android:icon="@drawable/ic_rom_control_vibrations"
+        android:fragment="com.android.settings.aokp.fragments.Vibrations" />
+
+</PreferenceScreen>

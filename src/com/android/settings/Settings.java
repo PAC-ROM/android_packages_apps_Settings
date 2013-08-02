@@ -20,6 +20,7 @@ import com.android.settings.profiles.ProfileEnabler;
 import com.android.settings.slim.TRDSEnabler;
 import com.android.settings.vpn2.VpnSettings;
 import com.android.settings.wifi.WifiEnabler;
+import com.android.settings.GPSEnabler;
 
 import android.accounts.Account;
 import android.accounts.AccountManager;
@@ -129,12 +130,9 @@ public class Settings extends PreferenceActivity
             R.id.date_time_settings,
             R.id.about_settings,
             R.id.accessibility_settings,
-            R.id.customization_section,
             R.id.launcher_settings,
             R.id.lock_screen_settings,
             R.id.themes_settings,
-            R.id.system_settings,
-            R.id.rom_control,
             R.id.hybrid_settings,
             R.id.advanced_settings
     };
@@ -506,6 +504,14 @@ public class Settings extends PreferenceActivity
                 if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
                     target.remove(i);
                 }
+            } else if (id == R.id.pac_section) {
+                if (!onIsMultiPane()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.pac_settings) {
+                if (!onIsMultiPane()) {
+                    target.remove(i);
+                }
             }
 
             if (i < target.size() && target.get(i) == header
@@ -625,12 +631,14 @@ public class Settings extends PreferenceActivity
         static final int HEADER_TYPE_CATEGORY = 0;
         static final int HEADER_TYPE_NORMAL = 1;
         static final int HEADER_TYPE_SWITCH = 2;
-        private static final int HEADER_TYPE_COUNT = HEADER_TYPE_SWITCH + 1;
+        static final int HEADER_TYPE_STATUS = 3;
+        private static final int HEADER_TYPE_COUNT = HEADER_TYPE_STATUS + 1;
 
         private final WifiEnabler mWifiEnabler;
         private final BluetoothEnabler mBluetoothEnabler;
         private final ProfileEnabler mProfileEnabler;
         private final TRDSEnabler mTRDSEnabler;
+        private final GPSEnabler mGPSEnabler;
         private AuthenticatorHelper mAuthHelper;
 
         private static class HeaderViewHolder {
@@ -638,6 +646,7 @@ public class Settings extends PreferenceActivity
             TextView title;
             TextView summary;
             Switch switch_;
+            TextView status_;
         }
 
         private LayoutInflater mInflater;
@@ -648,6 +657,7 @@ public class Settings extends PreferenceActivity
             } else if (header.id == R.id.wifi_settings
                      || header.id == R.id.bluetooth_settings
                      || header.id == R.id.profiles_settings
+                     || header.id == R.id.location_settings
                      || header.id == R.id.trds_settings) {
                 return HEADER_TYPE_SWITCH;
             } else {
@@ -694,6 +704,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
             mProfileEnabler = new ProfileEnabler(context, new Switch(context));
             mTRDSEnabler = new TRDSEnabler(context, new Switch(context));
+            mGPSEnabler = new GPSEnabler(context, new Switch(context));
         }
 
         @Override
@@ -721,6 +732,17 @@ public class Settings extends PreferenceActivity
                         holder.summary = (TextView)
                                 view.findViewById(com.android.internal.R.id.summary);
                         holder.switch_ = (Switch) view.findViewById(R.id.switchWidget);
+                        break;
+
+                    case HEADER_TYPE_STATUS:
+                        view = mInflater.inflate(R.layout.preference_header_status_item, parent,
+                                false);
+                        holder.icon = (ImageView) view.findViewById(R.id.icon);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
+                        holder.status_ = (TextView) view.findViewById(R.id.textStatus);
                         break;
 
                     case HEADER_TYPE_NORMAL:
@@ -754,6 +776,8 @@ public class Settings extends PreferenceActivity
                         mBluetoothEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.profiles_settings) {
                         mProfileEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.location_settings) {
+                        mGPSEnabler.setSwitch(holder.switch_);
                     } else if (header.id == R.id.trds_settings) {
                         mTRDSSwitch = (Switch) view.findViewById(R.id.switchWidget);
                         mTRDSEnabler.setSwitch(holder.switch_);
@@ -795,6 +819,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.resume();
             mProfileEnabler.resume();
             mTRDSEnabler.resume();
+            mGPSEnabler.resume();
         }
 
         public void pause() {
@@ -802,6 +827,7 @@ public class Settings extends PreferenceActivity
             mBluetoothEnabler.pause();
             mProfileEnabler.pause();
             mTRDSEnabler.pause();
+            mGPSEnabler.pause();
         }
     }
 
