@@ -1829,7 +1829,153 @@
     <string name="user_picture_title" msgid="7297782792000291692">"Документ с фото"</string>
     <string name="cell_broadcast_settings" msgid="8415582011920085222">"Сообщения сети"</string>
     <string name="cell_broadcast_settings_summary" msgid="3301339398950905913">"Выберите типы экстренных оповещений на экране."</string>
-    
+
+    <string name="tool_bar_status_header">Доп.опции Строки состояния</string>
+    <string name="status_bar_max_notifications_title">Ограничение количества оповещений</string>
+    <string name="status_bar_max_notifications_summary">Укажите желаемое количество значков оповещений в строке состояния. Применимо только к портретному режиму</string>
+
+    <!-- Do not disturb -->
+    <string name="status_bar_donotdisturb_title">Не беспокоить</string>
+    <string name="status_bar_donotdisturb_summary">Отключить анимацию входящих оповещений</string>
+
+    <string name="title_show_reboot_keyguard">Перезагрузка на экране блокировки</string>
+
+    <!-- HALO -->
+    <string name="halo_settings_title">Параметры \"HALO\"</string>
+    <string name="halo_hide_title">Скрывать HALO автоматически</string>
+    <string name="halo_hide_summary">HALO автоматически появится и исчезнет с экрана</string>
+    <string name="halo_reversed_title">Режим двойного касания</string>
+    <string name="halo_reversed_summary">Перемещение HALO двойным кликом</string>
+    <string name="halo_state_title">Режим работы HALO</string>
+    <string name="halo_state_summary">Отображение оповещений HALO в режиме черного/белого списков</string>
+    <string name="halo_state_black">Черный список</string>
+    <string name="halo_state_white">Белый список</string>
+    <string name="halo_pause_title">Пауза активного приложения</string>
+    <string name="halo_pause_summary">Открытие доп.окна в режиме HALO приостановит активное приложение</string>
+
+    <string name="halo_size_title">Размер HALO</string>
+    <string name="halo_size_summary">Выберите желаемый размер HALO</string>
+    <string name="halo_size_miniscule">Крошечный</string>
+    <string name="halo_size_small">Маленький</string>
+    <string name="halo_size_default">@string/pie_mode_default</string>
+    <string name="halo_size_large">Большой</string>
+    <string name="halo_size_gigantic">Гигантский</string>
+    <string name="halo_size_monster">Монструозный</string>
+
+    <!-- Pie controls -->
+    <string name="pie_settings_title">Круг навигации</string>
+
+    <string name="pie_gravity_title">Расположение</string>
+    <string name="pie_gravity_summary">Выберите место расположения круга навигации</string>
+    <string name="pie_gravity_top">Сверху</string>
+    <string name="pie_gravity_bottom">Снизу</string>
+    <string name="pie_gravity_right">Справа</string>
+    <string name="pie_gravity_left">Слева</string>
+
+    <string name="pie_mode_title">Стиль</string>
+    <string name="pie_mode_summary">Выберите режим анимации и отображения статуса</string>
+    <string name="pie_mode_bare">Простой</string>
+    <string name="pie_mode_quick">Быстрый</string>
+    <string name="pie_mode_default">Нормальный (по умолчанию)</string>
+    <string name="pie_mode_slow">Медленный</string>
+
+    <string name="pie_size_title">Размер</string>
+    <string name="pie_size_summary">Размер круга навигации</string>
+    <string name="pie_size_small">Маленький</string>
+    <string name="pie_size_default">@string/pie_mode_default</string>
+    <string name="pie_size_large">Большой</string>
+    <string name="pie_size_gigantic">Гигантский</string>
+    <string name="pie_size_monster">Монструозный</string>
+
+    <string name="pie_angle_title">Нижний наклон</string>
+    <string name="pie_angle_summary">Угол между краем экрана и нижним краем круга навигации</string>
+    <string name="pie_angle_none">Отсутствует</string>
+    <string name="pie_angle_small">Небольшой</string>
+    <string name="pie_angle_normal">Нормальный (по умолчанию)</string>
+    <string name="pie_angle_big">Большой</string>
+    <string name="pie_angle_huge">Огромный</string>
+
+    <string name="pie_gap_title">Промежуток</string>
+    <string name="pie_gap_summary">Расстояние между элементами круга навигации</string>
+    <string name="pie_gap_none">Отсутствует</string>
+    <string name="pie_gap_small">Небольшое</string>
+    <string name="pie_gap_big">Большое (по умолчанию)</string>
+    <string name="pie_gap_huge">Огромное</string>
+
+    <string name="pie_center_title">Выравнивать по центру</string>
+    <string name="pie_center_summary">Выравнивать круг управления по центру области расположения</string>
+
+    <string name="pie_stick_title">Отключить вращение</string>
+    <string name="pie_stick_summary">Отключить вращение круга навигации вне зависимости от орентации устройства</string>
+
+    <string name="pie_menu_title">Кнопка меню</string>
+    <string name="pie_menu_summary">Всегда отображать кнопку \"меню\" в круге навигации</string>
+
+    <string name="pie_search_title">Кнопка поиска</string>
+    <string name="pie_search_summary">Отображать кнопку поиска в круге навигации</string>
+
+    <string name="pie_trigger_title">Область реагирования</string>
+    <string name="pie_trigger_summary">Размер области активирующей круг навигации</string>
+    <string name="pie_trigger_none">Отсутствует (отключить круг)</string>
+    <string name="pie_trigger_small">@string/pie_size_small</string>
+    <string name="pie_trigger_normal">@string/pie_mode_default</string>
+    <string name="pie_trigger_big">@string/pie_angle_big</string>
+    <string name="pie_trigger_huge">@string/pie_angle_huge</string>
+
+    <string name="notification_draw_settings_title">Отображение ярлыков и сети WiFi</string>
+
+    <string name="notification_shortcuts_settings_title">Ярлыки оповещений</string>
+    <string name="notification_shortcuts_settings_summary">Показывать ярлыки в меню оповещений</string>
+    <string name="notification_shortcuts_empty_title">Пусто</string>
+    <string name="notification_shortcuts_edit_title">Редактировать Ярлык</string>
+    <string name="notification_shortcuts_edit_msg">Выберите желаемое приложение или значок</string>
+    <string name="notification_shortcuts_reset_title">Очистить Ярлыки</string>
+    <string name="notification_shortcuts_category_reset_title">Сброс</string>
+    <string name="notification_shortcuts_title">Ярлыки</string>
+    <string name="notification_shortcuts_icon_picker_stock_icons_title">Системные иконки</string>
+    <string name="notification_shortcuts_quantity_title">Количество ярлыков</string>
+    <string name="notification_shortcuts_quantity_summary">Количество ярлыков для отображения</string>
+    <string name="notification_shortcuts_move_text">Изменить порядок</string>
+    <string name="notification_shortcuts_move_up">Переместить <xliff:g id="app_name">%s</xliff:g> на один пункт вверх</string>
+    <string name="notification_shortcuts_move_down">Переместить <xliff:g id="app_name">%s</xliff:g> на один пункт вниз</string>
+    <string name="notification_shortcuts_color_title">Цвет ярлыка</string>
+    <string name="notification_shortcuts_color_summary">Выберите желаемый цвет для иконки ярлыка</string>
+    <string name="notification_shortcuts_colorize_toggle_title">Менять цвет иконок приложений</string>
+    <string name="notification_shortcuts_colorize_toggle_summary">Позволяет меняет цвет иконок приложений на выбранный</string>
+    <string name="notification_shortcuts_hide_carrier_title">Не показывать название оператора сети</string>
+
+    <string name="notification_show_wifi_ssid_title">Показывать название Wifi сети</string>
+    <string name="notification_show_wifi_ssid_summary">Отображать название подключенной Wifi сети</string>
+
+    <string name="disable_quick_settings_panel">Быстрые настройки</string>
+    <string name="disable_quick_settings_panel_summary">Вкл/Выкл панели Быстрых настроек</string>
+    <string name="quick_settings_enabled">Вкл</string>
+    <string name="quick_settings_disabled">Выкл</string>
+    <string name="title_no_notifications_pulldown">\"Быстрый доступ\" при отсутствии оповещений</string>
+    <string name="summary_no_notifications_pulldown">\"Быстрый доступ\" при отсутствии оповещений</string>
+    <string name="no_notifications_pulldown_summary_nonperm">Открыть Быстрый доступ при наличии временных оповещений</string>
+    <string name="no_notifications_pulldown_summary_all">Открыть Быстрый доступ если оповещения отсутствуют</string>
+    <string name="no_notifications_pulldown_off">Выкл</string>
+    <string name="no_notifications_pulldown_nonperm">Только временные</string>
+    <string name="no_notifications_pulldown_all">Все оповещения</string>
+
+
+    <!-- QuickSettings style options -->
+    <string name="quicksettings_tiles_style">Стиль \"Быстрых настроек\"</string>
+    <string name="summary_quicksettings_tiles_style">Показать или изменить параметры стиля \"Быстрых настроек\"</string>
+    <string name="quicksettings_tiles_style_additional_options">Дополнительные опции</string>
+    <string name="tiles_per_row_title">Кол.во плиток в строке</string>
+    <string name="tiles_per_row_duplicate_landscape_title">Удвоить в ландшафтном режиме</string>
+    <string name="tiles_per_row_duplicate_landscape_summary">В ландшафтном режиме удваивать количество плиток в строке</string>
+    <string name="quick_tiles_text_color_title">Цвет текста</string>
+    <string name="quick_settings_style_reset">Сбросить цвета</string>
+    <string name="quick_tiles_bg_color_title">Цвет фона</string>
+    <string name="quick_tiles_bg_pressed_color_title">Цвет фона активной плитки</string>
+    <string name="flip_qs_tiles_title">Вращать плитки</string>
+    <string name="flip_qs_tiles_summary">Вращать плитки при касании</string>
+    <string name="qs_random_colors_title">Случайные цвета </string>
+    <string name="qs_random_colors_summary">Раскрашивать плитки в случайные цвета</string>
+
     <!-- ======================================================================================= -->
     <!-- AOKP -->
     <!-- ======================================================================================= -->
