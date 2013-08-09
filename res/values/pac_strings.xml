@@ -86,6 +86,9 @@
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
 
+    <!-- Battery bar -->
+    <string name="status_bar_battery_style_bar">Bar</string>
+
     <!-- ChaOS Seekbar -->
     <string name="seekbar_default">Default</string>
 
