@@ -41,10 +41,10 @@
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
     </PreferenceScreen>
 
-    <!-- Launcher -->
+    <!-- Homescreen -->
     <PreferenceScreen
-        android:key="launcher_settings"
-        android:title="@string/launcher_settings_title"
+        android:key="homescreen_settings"
+        android:title="@string/homescreen_settings_title"
         android:icon="@drawable/ic_settings_cmlauncher" />
 
     <!-- Hybrid options -->
@@ -193,9 +193,9 @@
 
     <PreferenceScreen
         android:key="hardware_keys"
-        android:fragment="com.android.settings.cyanogenmod.HardwareKeys"
-        android:icon="@drawable/ic_rom_control_keys"
-        android:title="@string/hardware_keys_title"
+        android:fragment="com.android.settings.cyanogenmod.ButtonSettings"
+        android:icon="@drawable/ic_settings_buttons"
+        android:title="@string/button_settings"
         android:summary="@string/header_summary_keys" />
 
     <PreferenceScreen

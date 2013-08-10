@@ -98,7 +98,7 @@ public class PowerMenu extends SettingsPreferenceFragment implements
         mSoundPref = (CheckBoxPreference) findPreference(KEY_SOUND);
         mSoundPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.POWER_MENU_SOUND_ENABLED, 1) == 1));
-                
+
         mShowRebootKeyguard = (CheckBoxPreference) findPreference(PREF_REBOOT_KEYGUARD);
         mShowRebootKeyguard.setChecked(Settings.System.getBoolean(getActivity()
                 .getContentResolver(), Settings.System.POWER_DIALOG_SHOW_REBOOT_KEYGUARD, true));

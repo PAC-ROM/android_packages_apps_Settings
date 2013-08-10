@@ -93,13 +93,16 @@ public class PacManSettings extends SettingsPreferenceFragment
         launcherIntent.addCategory(Intent.CATEGORY_HOME);
         launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
-        Intent launcherPreferencesIntent = new Intent(Intent.ACTION_MAIN);
-        launcherPreferencesIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+        Intent launcherPrefsIntent = new Intent(Intent.ACTION_MAIN);
+        launcherPrefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
 
-        ActivityInfo defaultLauncher = getPackageManager().resolveActivity(launcherIntent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
-        launcherPreferencesIntent.setPackage(defaultLauncher.packageName);
-        ResolveInfo launcherPreferences = getPackageManager().resolveActivity(launcherPreferencesIntent, 0);
-        if (launcherPreferences == null) {
+        final PackageManager pm = getPackageManager();
+        ActivityInfo defaultLauncher = pm.resolveActivity(launcherIntent,
+                PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
+
+        launcherPrefsIntent.setPackage(defaultLauncher.packageName);
+        ResolveInfo launcherPrefs = pm.resolveActivity(launcherPrefsIntent, 0);
+        if (launcherPrefs == null) {
             prefSet.removePreference(findPreference(LAUNCHER));
         }
 
@@ -148,15 +151,19 @@ public class PacManSettings extends SettingsPreferenceFragment
             launcherIntent.addCategory(Intent.CATEGORY_HOME);
             launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
 
-            Intent launcherPreferencesIntent = new Intent(Intent.ACTION_MAIN);
-            launcherPreferencesIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+            Intent launcherPrefsIntent = new Intent(Intent.ACTION_MAIN);
+            launcherPrefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
 
-            ActivityInfo defaultLauncher = getPackageManager().resolveActivity(launcherIntent, PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
-            launcherPreferencesIntent.setPackage(defaultLauncher.packageName);
-            ResolveInfo launcherPreferences = getPackageManager().resolveActivity(launcherPreferencesIntent, 0);
+            final PackageManager pm = getPackageManager();
+            ActivityInfo defaultLauncher = pm.resolveActivity(launcherIntent,
+                    PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
 
-            Intent intent=new Intent().setClassName(launcherPreferences.activityInfo.packageName,
-            launcherPreferences.activityInfo.name);
+            launcherPrefsIntent.setPackage(defaultLauncher.packageName);
+            ResolveInfo launcherPrefs = pm.resolveActivity(launcherPrefsIntent, 0);
+
+            Intent intent=new Intent().setClassName(
+                            launcherPrefs.activityInfo.packageName,
+                            launcherPrefs.activityInfo.name);
             startActivity(intent);
 
             return true;
