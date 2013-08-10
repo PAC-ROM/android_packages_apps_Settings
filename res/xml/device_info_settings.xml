@@ -37,29 +37,12 @@
         <PreferenceCategory
         android:title="@string/pac_title">
 
-        <!-- PAC Stats -->
-        <PreferenceScreen
-            android:key="pac_stats"
-            android:title="@string/pacman_stats"
-            android:summary="@string/pacman_stats_summary" >
-        </PreferenceScreen>
-
         <!-- Share PAC-Man ROM -->
         <Preference
             android:key="share"
             android:title="@string/share_pacrom"
             android:summary="@string/share_pacrom_summary" />
 
-        <!-- Change Log -->
-        <PreferenceScreen android:key="changelog"
-            android:title="@string/changelog_title"
-            android:fragment="com.android.settings.cyanogenmod.ChangeLog" >
-        </PreferenceScreen>
-        <!-- Contributors -->
-        <PreferenceScreen android:key="changelog"
-            android:title="@string/contributors_title"
-            android:fragment="com.android.settings.cyanogenmod.Contributors" >
-        </PreferenceScreen>
         </PreferenceCategory>
 
         <PreferenceCategory

@@ -239,6 +239,16 @@
         android:icon="@drawable/ic_settings_performance"
         android:title="@string/performance_settings_title" />
 
+    <!-- OTA -->
+    <header android:id="@+id/pacconsole"
+            android:title="@string/pacconsole_title"
+            android:icon="@drawable/ic_settings_pacstats" >
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.pac.console"
+                android:targetClass="com.pac.console.PacConsole" />
+    </header>
+
     <!-- About Device -->
     <header
         android:id="@+id/about_settings"
