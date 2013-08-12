@@ -136,7 +136,6 @@ public class Settings extends PreferenceActivity
             R.id.system_settings,
             R.id.rom_control,
             R.id.hybrid_settings,
-            R.id.performance,
             R.id.advanced_settings
     };
 
@@ -495,8 +494,7 @@ public class Settings extends PreferenceActivity
                         || Utils.isMonkeyRunning()) {
                     target.remove(i);
                 }
-            } else if (id == R.id.development_settings
-                    || id == R.id.performance) {
+            } else if (id == R.id.development_settings) {
                 if (!showDev) {
                     target.remove(i);
                 }
