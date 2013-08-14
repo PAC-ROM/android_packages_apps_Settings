@@ -125,4 +125,11 @@
         <attr name="pickerTitle3" format="string" />
         <attr name="pickerTitle4" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="IntervalSeekBar">
+        <attr name="min" format="float" />
+        <attr name="max" format="float" />
+        <attr name="defaultValue" format="float" />
+        <attr name="digits" format="integer" />
+    </declare-styleable>
 </resources>
