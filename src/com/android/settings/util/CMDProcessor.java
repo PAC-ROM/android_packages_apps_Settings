@@ -1,14 +1,14 @@
-
 package com.android.settings.util;
-
-import android.util.Log;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 
+import android.util.Log;
+
 public class CMDProcessor {
 
+    private static final String LD_LIBRARY_PATH = System.getenv("LD_LIBRARY_PATH");
     private static final String TAG = "CMD Processor";
     private Boolean can_su;
     public SH sh;
@@ -77,16 +77,23 @@ public class CMDProcessor {
             return out;
         }
 
-        public Process run(final String s) {
+        public Process run(final String cmd) {
             Process process = null;
+            Runtime runtime = Runtime.getRuntime();
             try {
-                process = Runtime.getRuntime().exec(SHELL);
+                process = runtime.exec(SHELL);
                 final DataOutputStream toProcess = new DataOutputStream(
                         process.getOutputStream());
-                toProcess.writeBytes("exec " + s + "\n");
+                // On some versions of Android (ICS) LD_LIBRARY_PATH is unset when using su
+                // We need to pass LD_LIBRARY_PATH over su for some commands to work correctly.
+                String setenv = "";
+                if ("su".equals(SHELL)) {
+                    setenv = "LD_LIBRARY_PATH=" + LD_LIBRARY_PATH + " ";
+                }
+                toProcess.writeBytes(setenv + "exec " + cmd + "\n");
                 toProcess.flush();
             } catch (final Exception e) {
-                Log.e(TAG, "Exception while trying to run: '" + s + "' "
+                Log.e(TAG, "Exception while trying to run: '" + cmd + "' "
                         + e.getMessage());
                 process = null;
             }
@@ -101,10 +108,52 @@ public class CMDProcessor {
             if (process != null) {
                 try {
                     exit_value = process.waitFor();
-
                     stdout = getStreamLines(process.getInputStream());
                     stderr = getStreamLines(process.getErrorStream());
+                } catch (final InterruptedException e) {
+                    Log.e(TAG, "runWaitFor " + e.toString());
+                } catch (final NullPointerException e) {
+                    Log.e(TAG, "runWaitFor " + e.toString());
+                }
+            }
+            return new CommandResult(exit_value, stdout, stderr);
+        }
 
+        public Process run(final String[] cmds) {
+            Process process = null;
+            try {
+                process = Runtime.getRuntime().exec(SHELL);
+                final DataOutputStream toProcess = new DataOutputStream(
+                        process.getOutputStream());
+                // On some versions of Android (ICS) LD_LIBRARY_PATH is unset when using su
+                // We need to pass LD_LIBRARY_PATH over su for some commands to work correctly.
+                String setenv = "";
+                if (SHELL.equals("su")) {
+                    setenv = "LD_LIBRARY_PATH=" + LD_LIBRARY_PATH + " ";
+                }
+                for (String cmd : cmds) {
+                    toProcess.writeBytes(setenv + cmd + "\n");
+                }
+                toProcess.writeBytes("exit\n");
+                toProcess.flush();
+            } catch (final Exception e) {
+                Log.e(TAG, "Exception while trying to run cmds"
+                        + e.getMessage());
+                process = null;
+            }
+            return process;
+        }
+
+        public CommandResult runWaitFor(final String cmds[]) {
+            final Process process = run(cmds);
+            Integer exit_value = null;
+            String stdout = null;
+            String stderr = null;
+            if (process != null) {
+                try {
+                    exit_value = process.waitFor();
+                    stdout = getStreamLines(process.getInputStream());
+                    stderr = getStreamLines(process.getErrorStream());
                 } catch (final InterruptedException e) {
                     Log.e(TAG, "runWaitFor " + e.toString());
                 } catch (final NullPointerException e) {

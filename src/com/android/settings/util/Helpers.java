@@ -1,35 +1,18 @@
-
 package com.android.settings.util;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.SecureRandom;
-import java.util.Properties;
-import java.util.Date;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.res.Configuration;
-import android.content.res.Resources;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.widget.Toast;
-
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import com.android.settings.util.CMDProcessor.CommandResult;
 
 public class Helpers {
 
@@ -37,7 +20,7 @@ public class Helpers {
 
     /**
      * Checks device for SuperUser permission
-     * 
+     *
      * @return If SU was granted or denied
      */
     public static boolean checkSu() {
@@ -63,30 +46,8 @@ public class Helpers {
     }
 
     /**
-     * Checks device for network connectivity
-     *
-     * @return If the device has data connectivity
-    */
-    public static boolean isNetworkAvailable(final Context c) {
-        boolean state = false;
-        if (c != null) {
-            ConnectivityManager cm = (ConnectivityManager) c
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            if (netInfo != null && netInfo.isConnected()) {
-                Log.i(TAG, "The device currently has data connectivity");
-                state = true;
-            } else {
-                Log.i(TAG, "The device does not currently have data connectivity");
-                state = false;
-            }
-        }
-        return state;
-    }
-
-    /**
      * Checks to see if Busybox is installed in "/system/"
-     * 
+     *
      * @return If busybox exists
      */
     public static boolean checkBusybox() {
@@ -122,9 +83,11 @@ public class Helpers {
                 }
             }
             br.close();
-        } catch (FileNotFoundException e) {
+        }
+        catch (FileNotFoundException e) {
             Log.d(TAG, "/proc/mounts does not exist");
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             Log.d(TAG, "Error reading /proc/mounts");
         }
         return null;
@@ -140,103 +103,57 @@ public class Helpers {
             final String device = mounts[0];
             final String path = mounts[1];
             final String point = mounts[2];
-            if (cmd.su.runWaitFor(
-                    "mount -o " + mount + ",remount -t " + point + " " + device + " " + path)
-                    .success())
+            if (cmd.su.runWaitFor("mount -o " + mount + ",remount -t " + point + " " + device + " " + path).success())
             {
                 return true;
             }
         }
-        return (cmd.su.runWaitFor("busybox mount -o remount," + mount + " /system").success());
+        return ( cmd.su.runWaitFor("busybox mount -o remount," + mount + " /system").success() );
     }
 
-    public static String readOneLine(String fname) {
-        BufferedReader br;
-        String line = null;
-        try {
-            br = new BufferedReader(new FileReader(fname), 512);
+    public static String getFile(final String filename) {
+        String s = "";
+        final File f = new File(filename);
+
+        if (f.exists() && f.canRead()) {
             try {
-                line = br.readLine();
-            } finally {
+                final BufferedReader br = new BufferedReader(new FileReader(f),
+                        256);
+                String buffer = null;
+                while ((buffer = br.readLine()) != null) {
+                    s += buffer + "\n";
+                }
+
                 br.close();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "IO Exception when reading sys file", e);
-            // attempt to do magic!
-            return readFileViaShell(fname, true);
-        }
-        return line;
-    }
-
-    public static String readFileViaShell(String filePath, boolean useSu) {
-        CMDProcessor.CommandResult cr = null;
-        if (useSu) {
-            cr = new CMDProcessor().su.runWaitFor("cat " + filePath);
-        } else {
-            cr = new CMDProcessor().sh.runWaitFor("cat " + filePath);
-        }
-        if (cr.success())
-            return cr.stdout;
-        return null;
-    }
-
-    public static boolean writeOneLine(String fname, String value) {
-        try {
-            FileWriter fw = new FileWriter(fname);
-            try {
-                fw.write(value);
-            } finally {
-                fw.close();
-            }
-        } catch (IOException e) {
-            String Error = "Error writing to " + fname + ". Exception: ";
-            Log.e(TAG, Error, e);
-            return false;
-        }
-        return true;
-    }
-
-    public static String[] getAvailableIOSchedulers() {
-        String[] schedulers = null;
-        String[] aux = readStringArray("/sys/block/mmcblk0/queue/scheduler");
-        if (aux != null) {
-            schedulers = new String[aux.length];
-            for (int i = 0; i < aux.length; i++) {
-                if (aux[i].charAt(0) == '[') {
-                    schedulers[i] = aux[i].substring(1, aux[i].length() - 1);
-                } else {
-                    schedulers[i] = aux[i];
-                }
+            } catch (final Exception e) {
+                Log.e(TAG, "Error reading file: " + filename, e);
+                s = null;
             }
         }
-        return schedulers;
+        return s;
     }
 
-    private static String[] readStringArray(String fname) {
-        String line = readOneLine(fname);
-        if (line != null) {
-            return line.split(" ");
+    public static void writeNewFile(String filePath, String fileContents) {
+        File f = new File(filePath);
+        if (f.exists()) {
+            f.delete();
         }
-        return null;
-    }
 
-    public static String getIOScheduler() {
-        String scheduler = null;
-        String[] schedulers = readStringArray("/sys/block/mmcblk0/queue/scheduler");
-        if (schedulers != null) {
-            for (String s : schedulers) {
-                if (s.charAt(0) == '[') {
-                    scheduler = s.substring(1, s.length() - 1);
-                    break;
-                }
-            }
+        try{
+            // Create file
+            FileWriter fstream = new FileWriter(f);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write(fileContents);
+            //Close the output stream
+            out.close();
+        }catch (Exception e){
+            Log.d( TAG, "Failed to create " + filePath + " File contents: " + fileContents);
         }
-        return scheduler;
     }
 
     /**
      * Long toast message
-     * 
+     *
      * @param c Application Context
      * @param msg Message to send
      */
@@ -248,7 +165,7 @@ public class Helpers {
 
     /**
      * Short toast message
-     * 
+     *
      * @param c Application Context
      * @param msg Message to send
      */
@@ -260,7 +177,7 @@ public class Helpers {
 
     /**
      * Long toast message
-     * 
+     *
      * @param c Application Context
      * @param msg Message to send
      */
@@ -268,68 +185,6 @@ public class Helpers {
         if (c != null && msg != null) {
             msgLong(c, msg);
         }
-    }
-
-    /*
-     * Mount System partition
-     *
-     * @param read_value ro for ReadOnly and rw for Read/Write
-     *
-     * @returns true for successful mount
-     */
-    public static boolean mountSystem(String read_value) {
-        String REMOUNT_CMD = "busybox mount -o %s,remount -t yaffs2 /dev/block/mtdblock1 /system";
-        final CMDProcessor cmd = new CMDProcessor();
-        Log.d(TAG, "Remounting /system " + read_value);
-        return cmd.su.runWaitFor(String.format(REMOUNT_CMD, read_value)).success();
-    }
-
-    /*
-     * Find value of build.prop item (/system can be ro or rw)
-     *
-     * @param prop /system/build.prop property name to find value of
-     *
-     * @returns String value of @param:prop
-     */
-    public static String findBuildPropValueOf(String prop) {
-        String mBuildPath = "/system/build.prop";
-        String DISABLE = "disable";
-        String value = null;
-        try {
-            //create properties construct and load build.prop
-            Properties mProps = new Properties();
-            mProps.load(new FileInputStream(mBuildPath));
-            //get the property
-            value = mProps.getProperty(prop, DISABLE);
-            Log.d(TAG, String.format("Helpers:findBuildPropValueOf found {%s} with the value (%s)", prop, value));
-        } catch (IOException ioe) {
-            Log.d(TAG, "failed to load input stream");
-        } catch (NullPointerException npe) {
-            //swallowed thrown by ill formatted requests
-        }
-
-        if (value != null) {
-            return value;
-        } else {
-            return DISABLE;
-        }
-    }
-
-    /**
-     * Return a timestamp
-     * 
-     * @param c Application Context
-     */
-    public static String getTimestamp(final Context context) {
-        String timestamp;
-        timestamp = "unknown";
-        Date now = new Date();
-        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
-        java.text.DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
-        if (dateFormat != null && timeFormat != null) {
-            timestamp = dateFormat.format(now) + " " + timeFormat.format(now);
-        }
-        return timestamp;
     }
 
     public static boolean isPackageInstalled(final String packageName,
@@ -349,23 +204,5 @@ public class Helpers {
 
     public static void restartSystemUI() {
         new CMDProcessor().su.run("pkill -TERM -f com.android.systemui");
-    }
-
-    public static void setSystemProp(String prop, String val) {
-        new CMDProcessor().su.run("setprop " + prop + " " + val);
-    }
-
-    public static String getSystemProp(String prop, String def) {
-        String result = getSystemProp(prop);
-        return result == null ? def : result;
-    }
-
-    private static String getSystemProp(String prop) {
-        CommandResult cr = new CMDProcessor().sh.runWaitFor("getprop " + prop);
-        if (cr.success()) {
-            return cr.stdout;
-        } else {
-            return null;
-        }
     }
 }

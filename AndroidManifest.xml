@@ -1931,6 +1931,8 @@
 
         <activity android:name=".PacManSettings" />
 
+        <activity android:name=".initD" />
+
         <!-- AOKP -->
 
         <activity

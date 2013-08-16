@@ -61,6 +61,7 @@
     <string name="header_summary_lockscreens">@null</string>
     <string name="header_summary_weather">@null</string>
     <string name="header_summary_vibrations">@null</string>
+    <string name="header_summary_init_d">@null</string>
     <string name="header_summary_pie">@null</string>
     <string name="header_summary_halo">@null</string>
     <string name="header_summary_keys">@null</string>

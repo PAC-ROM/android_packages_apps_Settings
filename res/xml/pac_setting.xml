@@ -209,6 +209,13 @@
     </header>
 
     <header
+        android:id="@+id/initD"
+        android:fragment="com.android.settings.InitD"
+        android:icon="@drawable/ic_rom_control_init"
+        android:title="@string/init_d_title"
+        android:summary="@string/header_summary_init_d" />
+
+    <header
         android:id="@+id/hardware_keys"
         android:fragment="com.android.settings.cyanogenmod.ButtonSettings"
         android:icon="@drawable/ic_settings_buttons"
