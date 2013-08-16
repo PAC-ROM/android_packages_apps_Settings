@@ -39,6 +39,11 @@
         android:fragment="com.android.settings.pac.Weather"
         android:title="@string/title_weather"/>
 
+     <header
+        android:key="@+id/initD"
+        android:fragment="com.android.settings.InitD"
+        android:title="@string/init_d_title" />
+
     <PreferenceCategory
         android:key="navigation_bar"
         android:title="@string/navigation_bar_category" >
