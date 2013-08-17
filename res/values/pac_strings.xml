@@ -521,5 +521,10 @@
     <!-- Slims Strings (Temporary) -->
     <string name="shortcut_image_not_valid">The chosen app did not return a valid icon or does not support image cropping. Use another app.</string>
 
+    <!-- Network stats -->
+    <string name="status_bar_network_title">Network traffic</string>
+    <string name="status_bar_show_network_stats_title">Show network speeds</string>
+    <string name="status_bar_network_stats_update_title">Update frequency</string>
+
 </resources>
 

@@ -38,10 +38,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
     private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
+    private static final String STATUS_BAR_NETWORK_STATS = "status_bar_show_network_stats";
+    private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_status_update";
 
     private ListPreference mStatusBarAmPm;
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarCmSignal;
+    private ListPreference mStatusBarNetStatsUpdate;
+    private CheckBoxPreference mStatusBarNetworkStats;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             mStatusBarAmPm.setOnPreferenceChangeListener(this);
         }
 
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        mStatusBarNetworkStats = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS);
+        mStatusBarNetStatsUpdate = (ListPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS_UPDATE);
+
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
@@ -85,6 +93,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         if (Utils.isWifiOnly(getActivity())) {
             generalCategory.removePreference(mStatusBarCmSignal);
         }
+
+        mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
+
+        long statsUpdate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+        mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
+        mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
+        mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -107,6 +124,23 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarCmSignal.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
+        } else if (preference == mStatusBarNetStatsUpdate) {
+            long updateInterval = Long.valueOf((String) newValue);
+            int index = mStatusBarNetStatsUpdate.findIndexOfValue((String) newValue);
+            Settings.System.putLong(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
+            mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntries()[index]);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+        if (preference == mStatusBarNetworkStats) {
+            value = mStatusBarNetworkStats.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
             return true;
         }
 
