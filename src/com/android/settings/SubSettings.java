@@ -23,7 +23,7 @@ import android.view.MenuItem;
  * Stub class for showing sub-settings; we can't use the main Settings class
  * since for our app it is a special singleTask class.
  */
-public class SubSettings extends Settings {
+public class SubSettings extends MainSetting {
 
     @Override
     public boolean onNavigateUp() {

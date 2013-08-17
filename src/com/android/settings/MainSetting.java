@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 PAC-man ROM
+ * Copyright (C) 2008 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,186 +16,943 @@
 
 package com.android.settings;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.android.settings.profiles.ProfileEnabler;
+import com.android.settings.slim.TRDSEnabler;
+import com.android.settings.vpn2.VpnSettings;
+import com.android.settings.wifi.WifiEnabler;
+import com.android.settings.GPSEnabler;
 
-import android.app.Activity;
-import android.app.LocalActivityManager;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.accounts.OnAccountsUpdateListener;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
+import android.content.RestrictionEntry;
+import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.os.INetworkManagementService;
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import android.os.UserHandle;
+import android.os.UserManager;
+import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.DisplayMetrics;
+import android.preference.PreferenceFragment;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.TranslateAnimation;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.view.LayoutInflater;
-import android.util.ExtendedPropertiesUtils;
-import android.util.Log;
 
-public class MainSetting extends Activity {
+import com.android.internal.util.ArrayUtils;
+import com.android.settings.AccessibilitySettings.ToggleAccessibilityServicePreferenceFragment;
+import com.android.settings.accounts.AccountSyncSettings;
+import com.android.settings.accounts.AuthenticatorHelper;
+import com.android.settings.accounts.ManageAccountsSettings;
+import com.android.settings.blacklist.BlacklistSettings;
+import com.android.settings.bluetooth.BluetoothEnabler;
+import com.android.settings.bluetooth.BluetoothSettings;
+import com.android.settings.wfd.WifiDisplaySettings;
+import com.android.settings.wifi.WifiEnabler;
+import com.android.settings.wifi.WifiSettings;
+import com.android.settings.wifi.p2p.WifiP2pSettings;
 
-    private ViewPager mPager;
-    private List<View> listViews;
-    private TextView pac_tab, system_tab;
-    private int offset = 0;
-    private int currIndex = 0;
-    private int bmpW;
-    private LocalActivityManager localManager;
-    private LayoutInflater mInflater;
-    private ViewPagerAdapter mPagerAdapter;
-    private static final String[] titles = { "System", "PAC-Man" };
-    private int mLayout = 0;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+/**
+ * Top-level settings activity to handle single pane and double pane UI layout.
+ */
+public class MainSetting extends PreferenceActivity
+        implements ButtonBarHandler, OnAccountsUpdateListener {
 
-        mLayout = ExtendedPropertiesUtils.getActualProperty("com.android.settings.layout");
-        if (mLayout == 720) {
-            Intent intent=new Intent(this, Settings.class);
-            intent.addCategory(Intent.CATEGORY_HOME);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-            return;
-        }
+    private static final String LOG_TAG = "Settings";
 
-        setContentView(R.layout.mainsetting);
-        localManager = new LocalActivityManager(this, true);
-        localManager.dispatchCreate(savedInstanceState);
+    private static final String META_DATA_KEY_HEADER_ID =
+        "com.android.settings.TOP_LEVEL_HEADER_ID";
+    private static final String META_DATA_KEY_FRAGMENT_CLASS =
+        "com.android.settings.FRAGMENT_CLASS";
+    private static final String META_DATA_KEY_PARENT_TITLE =
+        "com.android.settings.PARENT_FRAGMENT_TITLE";
+    private static final String META_DATA_KEY_PARENT_FRAGMENT_CLASS =
+        "com.android.settings.PARENT_FRAGMENT_CLASS";
 
-        InitViewPager();
+    private static final String EXTRA_UI_OPTIONS = "settings:ui_options";
 
-    }
+    private static final String SAVE_KEY_CURRENT_HEADER = "com.android.settings.CURRENT_HEADER";
+    private static final String SAVE_KEY_PARENT_HEADER = "com.android.settings.PARENT_HEADER";
 
-    private void InitViewPager() {
-        mInflater = getLayoutInflater();
-        mPager = (ViewPager) findViewById(R.id.viewPager);
-        listViews = new ArrayList<View>();
-        Intent SystemSettingsIntent = new Intent(this, Settings.class);
-        listViews.add(localManager.startActivity("SystemSettings",
-                SystemSettingsIntent).getDecorView());
-        Intent PacSettingsIntent = new Intent(this, PacSettings.class);
-        listViews.add(localManager.startActivity("PacSettings",
-                PacSettingsIntent).getDecorView());
-        mPagerAdapter = new ViewPagerAdapter(listViews);
-        mPager.setAdapter(mPagerAdapter);
-        mPager.setCurrentItem(0);
-        mPager.setOnPageChangeListener(new MyOnPageChangeListener());
-    }
+    private String mFragmentClass;
+    private int mTopLevelHeaderId;
+    private Header mFirstHeader;
+    private Header mCurrentHeader;
+    private Header mParentHeader;
+    private boolean mInLocalHeaderSwitch;
+    private static Switch mTRDSSwitch;
 
-    public class ViewPagerAdapter extends PagerAdapter {
-        public List<View> mListViews;
-
-        public ViewPagerAdapter(List<View> mListViews) {
-            this.mListViews = mListViews;
-        }
-
-        @Override
-        public void destroyItem(View arg0, int arg1, Object arg2) {
-            ((ViewPager) arg0).removeView(mListViews.get(arg1));
-        }
-
-        @Override
-        public void finishUpdate(View arg0) {
-        }
-
-        @Override
-        public int getCount() {
-            return mListViews.size();
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return titles[position];
-        }
-
-        @Override
-        public Object instantiateItem(View arg0, int arg1) {
-            ((ViewPager) arg0).addView(mListViews.get(arg1), 0);
-            return mListViews.get(arg1);
-        }
-
-        @Override
-        public boolean isViewFromObject(View arg0, Object arg1) {
-            return arg0 == (arg1);
-        }
-
-        @Override
-        public void restoreState(Parcelable arg0, ClassLoader arg1) {
-        }
-
-        @Override
-        public Parcelable saveState() {
-            return null;
-        }
-
-        @Override
-        public void startUpdate(View arg0) {
-        }
-    }
-
-    public class MyOnClickListener implements View.OnClickListener {
-        private int index = 0;
-
-        public MyOnClickListener(int i) {
-            index = i;
-        }
-
-        @Override
-        public void onClick(View v) {
-            mPager.setCurrentItem(index);
-        }
+    // Show only these settings for restricted users
+    private int[] SETTINGS_FOR_RESTRICTED = {
+            R.id.wireless_section,
+            R.id.wifi_settings,
+            R.id.bluetooth_settings,
+            R.id.data_usage_settings,
+            R.id.wireless_settings,
+            R.id.device_section,
+            R.id.sound_settings,
+            R.id.display_settings,
+            R.id.storage_settings,
+            R.id.application_settings,
+            R.id.battery_settings,
+            R.id.personal_section,
+            R.id.location_settings,
+            R.id.security_settings,
+            R.id.language_settings,
+            R.id.user_settings,
+            R.id.account_settings,
+            R.id.account_add,
+            R.id.system_section,
+            R.id.date_time_settings,
+            R.id.about_settings,
+            R.id.accessibility_settings,
+            R.id.homescreen_settings,
+            R.id.lock_screen_settings,
+            R.id.themes_settings,
+            R.id.hybrid_settings,
     };
 
-    public class MyOnPageChangeListener implements OnPageChangeListener {
+    private SharedPreferences mDevelopmentPreferences;
+    private SharedPreferences.OnSharedPreferenceChangeListener mDevelopmentPreferencesListener;
 
-        int one = offset + bmpW;
-        int two = one;
+    // TODO: Update Call Settings based on airplane mode state.
+
+    protected HashMap<Integer, Integer> mHeaderIndexMap = new HashMap<Integer, Integer>();
+
+    private AuthenticatorHelper mAuthenticatorHelper;
+    private Header mLastHeader;
+    private boolean mListeningToAccountUpdates;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        if (getIntent().hasExtra(EXTRA_UI_OPTIONS)) {
+            getWindow().setUiOptions(getIntent().getIntExtra(EXTRA_UI_OPTIONS, 0));
+        }
+
+        mAuthenticatorHelper = new AuthenticatorHelper();
+        mAuthenticatorHelper.updateAuthDescriptions(this);
+        mAuthenticatorHelper.onAccountsUpdated(this, null);
+
+        mDevelopmentPreferences = getSharedPreferences(DevelopmentSettings.PREF_FILE,
+                Context.MODE_PRIVATE);
+
+        getMetaData();
+        mInLocalHeaderSwitch = true;
+        super.onCreate(savedInstanceState);
+        mInLocalHeaderSwitch = false;
+
+        if (!onIsHidingHeaders() && onIsMultiPane()) {
+            highlightHeader(mTopLevelHeaderId);
+            // Force the title so that it doesn't get overridden by a direct launch of
+            // a specific settings screen.
+            setTitle(R.string.settings_label);
+        }
+
+        // Retrieve any saved state
+        if (savedInstanceState != null) {
+            mCurrentHeader = savedInstanceState.getParcelable(SAVE_KEY_CURRENT_HEADER);
+            mParentHeader = savedInstanceState.getParcelable(SAVE_KEY_PARENT_HEADER);
+        }
+
+        // If the current header was saved, switch to it
+        if (savedInstanceState != null && mCurrentHeader != null) {
+            //switchToHeaderLocal(mCurrentHeader);
+            showBreadCrumbs(mCurrentHeader.title, null);
+        }
+
+        if (mParentHeader != null) {
+            setParentTitle(mParentHeader.title, null, new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    switchToParent(mParentHeader.fragment);
+                }
+            });
+        }
+
+        // Override up navigation for multi-pane, since we handle it in the fragment breadcrumbs
+        if (onIsMultiPane()) {
+            getActionBar().setDisplayHomeAsUpEnabled(false);
+            getActionBar().setHomeButtonEnabled(false);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        // Save the current fragment, if it is the same as originally launched
+        if (mCurrentHeader != null) {
+            outState.putParcelable(SAVE_KEY_CURRENT_HEADER, mCurrentHeader);
+        }
+        if (mParentHeader != null) {
+            outState.putParcelable(SAVE_KEY_PARENT_HEADER, mParentHeader);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mDevelopmentPreferencesListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
+            @Override
+            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+                invalidateHeaders();
+            }
+        };
+        mDevelopmentPreferences.registerOnSharedPreferenceChangeListener(
+                mDevelopmentPreferencesListener);
+
+        ListAdapter listAdapter = getListAdapter();
+        if (listAdapter instanceof HeaderAdapter) {
+            ((HeaderAdapter) listAdapter).resume();
+        }
+        invalidateHeaders();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        ListAdapter listAdapter = getListAdapter();
+        if (listAdapter instanceof HeaderAdapter) {
+            ((HeaderAdapter) listAdapter).pause();
+        }
+
+        mDevelopmentPreferences.unregisterOnSharedPreferenceChangeListener(
+                mDevelopmentPreferencesListener);
+        mDevelopmentPreferencesListener = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mListeningToAccountUpdates) {
+            AccountManager.get(this).removeOnAccountsUpdatedListener(this);
+        }
+    }
+
+    private void switchToHeaderLocal(Header header) {
+        mInLocalHeaderSwitch = true;
+        switchToHeader(header);
+        mInLocalHeaderSwitch = false;
+    }
+
+    @Override
+    public void switchToHeader(Header header) {
+        if (!mInLocalHeaderSwitch) {
+            mCurrentHeader = null;
+            mParentHeader = null;
+        }
+        super.switchToHeader(header);
+    }
+
+    /**
+     * Switch to parent fragment and store the grand parent's info
+     * @param className name of the activity wrapper for the parent fragment.
+     */
+    private void switchToParent(String className) {
+        final ComponentName cn = new ComponentName(this, className);
+        try {
+            final PackageManager pm = getPackageManager();
+            final ActivityInfo parentInfo = pm.getActivityInfo(cn, PackageManager.GET_META_DATA);
+
+            if (parentInfo != null && parentInfo.metaData != null) {
+                String fragmentClass = parentInfo.metaData.getString(META_DATA_KEY_FRAGMENT_CLASS);
+                CharSequence fragmentTitle = parentInfo.loadLabel(pm);
+                Header parentHeader = new Header();
+                parentHeader.fragment = fragmentClass;
+                parentHeader.title = fragmentTitle;
+                mCurrentHeader = parentHeader;
+
+                switchToHeaderLocal(parentHeader);
+                highlightHeader(mTopLevelHeaderId);
+
+                mParentHeader = new Header();
+                mParentHeader.fragment
+                        = parentInfo.metaData.getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
+                mParentHeader.title = parentInfo.metaData.getString(META_DATA_KEY_PARENT_TITLE);
+            }
+        } catch (NameNotFoundException nnfe) {
+            Log.w(LOG_TAG, "Could not find parent activity : " + className);
+        }
+    }
+
+    @Override
+    public void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        // If it is not launched from history, then reset to top-level
+        if ((intent.getFlags() & Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY) == 0) {
+            if (mFirstHeader != null && !onIsHidingHeaders() && onIsMultiPane()) {
+                switchToHeaderLocal(mFirstHeader);
+            }
+            getListView().setSelectionFromTop(0, 0);
+        }
+    }
+
+    private void highlightHeader(int id) {
+        if (id != 0) {
+            Integer index = mHeaderIndexMap.get(id);
+            if (index != null) {
+                getListView().setItemChecked(index, true);
+                if (isMultiPane()) {
+                    getListView().smoothScrollToPosition(index);
+                }
+            }
+        }
+    }
+
+    @Override
+    public Intent getIntent() {
+        Intent superIntent = super.getIntent();
+        String startingFragment = getStartingFragmentClass(superIntent);
+        // This is called from super.onCreate, isMultiPane() is not yet reliable
+        // Do not use onIsHidingHeaders either, which relies itself on this method
+        if (startingFragment != null && !onIsMultiPane()) {
+            Intent modIntent = new Intent(superIntent);
+            modIntent.putExtra(EXTRA_SHOW_FRAGMENT, startingFragment);
+            Bundle args = superIntent.getExtras();
+            if (args != null) {
+                args = new Bundle(args);
+            } else {
+                args = new Bundle();
+            }
+            args.putParcelable("intent", superIntent);
+            modIntent.putExtra(EXTRA_SHOW_FRAGMENT_ARGUMENTS, superIntent.getExtras());
+            return modIntent;
+        }
+        return superIntent;
+    }
+
+    /**
+     * Checks if the component name in the intent is different from the Settings class and
+     * returns the class name to load as a fragment.
+     */
+    protected String getStartingFragmentClass(Intent intent) {
+        if (mFragmentClass != null) return mFragmentClass;
+
+        String intentClass = intent.getComponent().getClassName();
+        if (intentClass.equals(getClass().getName())) return null;
+
+        if ("com.android.settings.ManageApplications".equals(intentClass)
+                || "com.android.settings.RunningServices".equals(intentClass)
+                || "com.android.settings.applications.StorageUse".equals(intentClass)) {
+            // Old names of manage apps.
+            intentClass = com.android.settings.applications.ManageApplications.class.getName();
+        }
+
+        return intentClass;
+    }
+
+    /**
+     * Override initial header when an activity-alias is causing Settings to be launched
+     * for a specific fragment encoded in the android:name parameter.
+     */
+    @Override
+    public Header onGetInitialHeader() {
+        String fragmentClass = getStartingFragmentClass(super.getIntent());
+        if (fragmentClass != null) {
+            Header header = new Header();
+            header.fragment = fragmentClass;
+            header.title = getTitle();
+            header.fragmentArguments = getIntent().getExtras();
+            mCurrentHeader = header;
+            return header;
+        }
+
+        return mFirstHeader;
+    }
+
+    @Override
+    public Intent onBuildStartFragmentIntent(String fragmentName, Bundle args,
+            CharSequence titleText, CharSequence shortTitleText) {
+        Intent intent = super.onBuildStartFragmentIntent(fragmentName, args,
+                titleText, shortTitleText);
+        onBuildStartFragmentIntentHelper(fragmentName, intent);
+        return intent;
+    }
+
+    @Override
+    public Intent onBuildStartFragmentIntent(String fragmentName, Bundle args,
+            int titleRes, int shortTitleRes) {
+        Intent intent = super.onBuildStartFragmentIntent(fragmentName, args,
+                titleRes, shortTitleRes);
+        onBuildStartFragmentIntentHelper(fragmentName, intent);
+        return intent;
+    }
+
+    private void onBuildStartFragmentIntentHelper(String fragmentName, Intent intent) {
+        // Some fragments want split ActionBar; these should stay in sync with
+        // uiOptions for fragments also defined as activities in manifest.
+        if (WifiSettings.class.getName().equals(fragmentName) ||
+                WifiP2pSettings.class.getName().equals(fragmentName) ||
+                WifiDisplaySettings.class.getName().equals(fragmentName) ||
+                BluetoothSettings.class.getName().equals(fragmentName) ||
+                DreamSettings.class.getName().equals(fragmentName) ||
+                BlacklistSettings.class.getName().equals(fragmentName) ||
+                ToggleAccessibilityServicePreferenceFragment.class.getName().equals(fragmentName)) {
+            intent.putExtra(EXTRA_UI_OPTIONS, ActivityInfo.UIOPTION_SPLIT_ACTION_BAR_WHEN_NARROW);
+        }
+        intent.setClass(this, SubSettings.class);
+    }
+
+    /**
+     * Populate the activity with the top-level headers.
+     */
+    @Override
+    public void onBuildHeaders(List<Header> headers) {
+        loadHeadersFromResource(R.xml.settings_headers, headers);
+        updateHeaderList(headers);
+    }
+
+    private void updateHeaderList(List<Header> target) {
+        final boolean showDev = mDevelopmentPreferences.getBoolean(
+                DevelopmentSettings.PREF_SHOW,
+                android.os.Build.TYPE.equals("eng") || android.os.Build.TYPE.equals("userdebug"));
+        int i = 0;
+
+        final UserManager um = (UserManager) getSystemService(Context.USER_SERVICE);
+        mHeaderIndexMap.clear();
+        while (i < target.size()) {
+            Header header = target.get(i);
+            // Ids are integers, so downcasting
+            int id = (int) header.id;
+            if (id == R.id.operator_settings || id == R.id.manufacturer_settings ||
+                    id == R.id.hybrid_settings) {
+                Utils.updateHeaderToSpecificActivityFromMetaDataOrRemove(this, target, header);
+            } else if (id == R.id.homescreen_settings) {
+                Intent launcherIntent = new Intent(Intent.ACTION_MAIN);
+                launcherIntent.addCategory(Intent.CATEGORY_HOME);
+                launcherIntent.addCategory(Intent.CATEGORY_DEFAULT);
+
+                Intent launcherPrefsIntent = new Intent(Intent.ACTION_MAIN);
+                launcherPrefsIntent.addCategory("com.cyanogenmod.category.LAUNCHER_PREFERENCES");
+
+                final PackageManager pm = getPackageManager();
+                ActivityInfo defaultLauncher = pm.resolveActivity(launcherIntent,
+                        PackageManager.MATCH_DEFAULT_ONLY).activityInfo;
+
+                launcherPrefsIntent.setPackage(defaultLauncher.packageName);
+                ResolveInfo launcherPrefs = pm.resolveActivity(launcherPrefsIntent, 0);
+                if (launcherPrefs != null) {
+                    header.intent = new Intent().setClassName(
+                            launcherPrefs.activityInfo.packageName,
+                            launcherPrefs.activityInfo.name);
+                } else {
+                    target.remove(header);
+                }
+            } else if (id == R.id.wifi_settings) {
+                // Remove WiFi Settings if WiFi service is not available.
+                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI)) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.bluetooth_settings) {
+                // Remove Bluetooth Settings if Bluetooth service is not available.
+                if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_BLUETOOTH)) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.data_usage_settings) {
+                // Remove data usage when kernel module not enabled
+                final INetworkManagementService netManager = INetworkManagementService.Stub
+                        .asInterface(ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
+                try {
+                    if (!netManager.isBandwidthControlEnabled()) {
+                        target.remove(i);
+                    }
+                } catch (RemoteException e) {
+                    // ignored
+                }
+            } else if (id == R.id.account_settings) {
+                int headerIndex = i + 1;
+                i = insertAccountsHeaders(target, headerIndex);
+            } else if (id == R.id.user_settings) {
+                if (!UserHandle.MU_ENABLED
+                        || !UserManager.supportsMultipleUsers()
+                        || Utils.isMonkeyRunning()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.development_settings) {
+                if (!showDev) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.superuser) {
+                if (!DevelopmentSettings.isRootForAppsEnabled()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.account_add) {
+                if (um.hasUserRestriction(UserManager.DISALLOW_MODIFY_ACCOUNTS)) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.pac_section) {
+                if (!onIsMultiPane()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.pac_settings) {
+                if (!onIsMultiPane()) {
+                    target.remove(i);
+                }
+            } else if (id == R.id.display_settings) {
+                final Resources res = getResources();
+                boolean hasLed =
+                        res.getBoolean(com.android.internal.R.bool.config_intrusiveNotificationLed)
+                        || res.getBoolean(com.android.internal.R.bool.config_intrusiveBatteryLed);
+                if (hasLed) {
+                    header.titleRes = R.string.display_lights_settings_title;
+                }
+            }
+
+            if (i < target.size() && i < target.size() && target.get(i) == header
+                    && UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
+                    && !ArrayUtils.contains(SETTINGS_FOR_RESTRICTED, id)) {
+                target.remove(i);
+            }
+
+            // Increment if the current one wasn't removed by the Utils code.
+            if (i < target.size() && i < target.size() && target.get(i) == header) {
+                // Hold on to the first header, when we need to reset to the top-level
+                if (mFirstHeader == null &&
+                        HeaderAdapter.getHeaderType(header) != HeaderAdapter.HEADER_TYPE_CATEGORY) {
+                    mFirstHeader = header;
+                }
+                mHeaderIndexMap.put(id, i);
+                i++;
+            }
+        }
+    }
+
+    private int insertAccountsHeaders(List<Header> target, int headerIndex) {
+        String[] accountTypes = mAuthenticatorHelper.getEnabledAccountTypes();
+        List<Header> accountHeaders = new ArrayList<Header>(accountTypes.length);
+        for (String accountType : accountTypes) {
+            CharSequence label = mAuthenticatorHelper.getLabelForType(this, accountType);
+            if (label == null) {
+                continue;
+            }
+
+            Account[] accounts = AccountManager.get(this).getAccountsByType(accountType);
+            boolean skipToAccount = accounts.length == 1
+                    && !mAuthenticatorHelper.hasAccountPreferences(accountType);
+            Header accHeader = new Header();
+            accHeader.title = label;
+            if (accHeader.extras == null) {
+                accHeader.extras = new Bundle();
+            }
+            if (skipToAccount) {
+                accHeader.breadCrumbTitleRes = R.string.account_sync_settings_title;
+                accHeader.breadCrumbShortTitleRes = R.string.account_sync_settings_title;
+                accHeader.fragment = AccountSyncSettings.class.getName();
+                accHeader.fragmentArguments = new Bundle();
+                // Need this for the icon
+                accHeader.extras.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
+                accHeader.extras.putParcelable(AccountSyncSettings.ACCOUNT_KEY, accounts[0]);
+                accHeader.fragmentArguments.putParcelable(AccountSyncSettings.ACCOUNT_KEY,
+                        accounts[0]);
+            } else {
+                accHeader.breadCrumbTitle = label;
+                accHeader.breadCrumbShortTitle = label;
+                accHeader.fragment = ManageAccountsSettings.class.getName();
+                accHeader.fragmentArguments = new Bundle();
+                accHeader.extras.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE, accountType);
+                accHeader.fragmentArguments.putString(ManageAccountsSettings.KEY_ACCOUNT_TYPE,
+                        accountType);
+                if (!isMultiPane()) {
+                    accHeader.fragmentArguments.putString(ManageAccountsSettings.KEY_ACCOUNT_LABEL,
+                            label.toString());
+                }
+            }
+            accountHeaders.add(accHeader);
+        }
+
+        // Sort by label
+        Collections.sort(accountHeaders, new Comparator<Header>() {
+            @Override
+            public int compare(Header h1, Header h2) {
+                return h1.title.toString().compareTo(h2.title.toString());
+            }
+        });
+
+        for (Header header : accountHeaders) {
+            target.add(headerIndex++, header);
+        }
+        if (!mListeningToAccountUpdates) {
+            AccountManager.get(this).addOnAccountsUpdatedListener(this, null, true);
+            mListeningToAccountUpdates = true;
+        }
+        return headerIndex;
+    }
+
+    private void getMetaData() {
+        try {
+            ActivityInfo ai = getPackageManager().getActivityInfo(getComponentName(),
+                    PackageManager.GET_META_DATA);
+            if (ai == null || ai.metaData == null) return;
+            mTopLevelHeaderId = ai.metaData.getInt(META_DATA_KEY_HEADER_ID);
+            mFragmentClass = ai.metaData.getString(META_DATA_KEY_FRAGMENT_CLASS);
+
+            // Check if it has a parent specified and create a Header object
+            final int parentHeaderTitleRes = ai.metaData.getInt(META_DATA_KEY_PARENT_TITLE);
+            String parentFragmentClass = ai.metaData.getString(META_DATA_KEY_PARENT_FRAGMENT_CLASS);
+            if (parentFragmentClass != null) {
+                mParentHeader = new Header();
+                mParentHeader.fragment = parentFragmentClass;
+                if (parentHeaderTitleRes != 0) {
+                    mParentHeader.title = getResources().getString(parentHeaderTitleRes);
+                }
+            }
+        } catch (NameNotFoundException nnfe) {
+            // No recovery
+        }
+    }
+
+    @Override
+    public boolean hasNextButton() {
+        return super.hasNextButton();
+    }
+
+    @Override
+    public Button getNextButton() {
+        return super.getNextButton();
+    }
+
+    private static class HeaderAdapter extends ArrayAdapter<Header> {
+        static final int HEADER_TYPE_CATEGORY = 0;
+        static final int HEADER_TYPE_NORMAL = 1;
+        static final int HEADER_TYPE_SWITCH = 2;
+        static final int HEADER_TYPE_STATUS = 3;
+        private static final int HEADER_TYPE_COUNT = HEADER_TYPE_STATUS + 1;
+
+        private final WifiEnabler mWifiEnabler;
+        private final BluetoothEnabler mBluetoothEnabler;
+        private final ProfileEnabler mProfileEnabler;
+        private final TRDSEnabler mTRDSEnabler;
+        private final GPSEnabler mGPSEnabler;
+        private AuthenticatorHelper mAuthHelper;
+
+        private static class HeaderViewHolder {
+            ImageView icon;
+            TextView title;
+            TextView summary;
+            Switch switch_;
+            TextView status_;
+        }
+
+        private LayoutInflater mInflater;
+
+        static int getHeaderType(Header header) {
+            if (header.fragment == null && header.intent == null && header.id != R.id.trds_settings) {
+                return HEADER_TYPE_CATEGORY;
+            } else if (header.id == R.id.wifi_settings
+                     || header.id == R.id.bluetooth_settings
+                     || header.id == R.id.profiles_settings
+                     || header.id == R.id.location_settings
+                     || header.id == R.id.trds_settings) {
+                return HEADER_TYPE_SWITCH;
+            } else {
+                return HEADER_TYPE_NORMAL;
+            }
+        }
 
         @Override
-        public void onPageSelected(int arg0) {
-            Animation animation = null;
-            switch (arg0) {
-                case 0:
-                    if (currIndex == 1) {
-                        animation = new TranslateAnimation(one, 0, 0, 0);
-                    } else if (currIndex == 2) {
-                        animation = new TranslateAnimation(two, 0, 0, 0);
-                    }
+        public int getItemViewType(int position) {
+            Header header = getItem(position);
+            return getHeaderType(header);
+        }
+
+        @Override
+        public boolean areAllItemsEnabled() {
+            return false; // because of categories
+        }
+
+        @Override
+        public boolean isEnabled(int position) {
+            return getItemViewType(position) != HEADER_TYPE_CATEGORY;
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return HEADER_TYPE_COUNT;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return true;
+        }
+
+        public HeaderAdapter(Context context, List<Header> objects,
+                AuthenticatorHelper authenticatorHelper) {
+            super(context, 0, objects);
+
+            mAuthHelper = authenticatorHelper;
+            mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            // Temp Switches provided as placeholder until the adapter replaces these with actual
+            // Switches inflated from their layouts. Must be done before adapter is set in super
+            mWifiEnabler = new WifiEnabler(context, new Switch(context));
+            mBluetoothEnabler = new BluetoothEnabler(context, new Switch(context));
+            mProfileEnabler = new ProfileEnabler(context, new Switch(context));
+            mTRDSEnabler = new TRDSEnabler(context, new Switch(context));
+            mGPSEnabler = new GPSEnabler(context, new Switch(context));
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            HeaderViewHolder holder;
+            Header header = getItem(position);
+            int headerType = getHeaderType(header);
+            View view = null;
+
+            if (convertView == null || headerType == HEADER_TYPE_SWITCH) {
+                holder = new HeaderViewHolder();
+                switch (headerType) {
+                    case HEADER_TYPE_CATEGORY:
+                        view = new TextView(getContext(), null,
+                                android.R.attr.listSeparatorTextViewStyle);
+                        holder.title = (TextView) view;
+                        break;
+
+                    case HEADER_TYPE_SWITCH:
+                        view = mInflater.inflate(R.layout.preference_header_switch_item, parent,
+                                false);
+                        holder.icon = (ImageView) view.findViewById(R.id.icon);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
+                        holder.switch_ = (Switch) view.findViewById(R.id.switchWidget);
+                        break;
+
+                    case HEADER_TYPE_STATUS:
+                        view = mInflater.inflate(R.layout.preference_header_status_item, parent,
+                                false);
+                        holder.icon = (ImageView) view.findViewById(R.id.icon);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
+                        holder.status_ = (TextView) view.findViewById(R.id.textStatus);
+                        break;
+
+                    case HEADER_TYPE_NORMAL:
+                        view = mInflater.inflate(
+                                R.layout.preference_header_item, parent,
+                                false);
+                        holder.icon = (ImageView) view.findViewById(R.id.icon);
+                        holder.title = (TextView)
+                                view.findViewById(com.android.internal.R.id.title);
+                        holder.summary = (TextView)
+                                view.findViewById(com.android.internal.R.id.summary);
+                        break;
+                }
+                view.setTag(holder);
+            } else {
+                view = convertView;
+                holder = (HeaderViewHolder) view.getTag();
+            }
+
+            // All view fields must be updated every time, because the view may be recycled
+            switch (headerType) {
+                case HEADER_TYPE_CATEGORY:
+                    holder.title.setText(header.getTitle(getContext().getResources()));
                     break;
-                case 1:
-                    if (currIndex == 0) {
-                        animation = new TranslateAnimation(offset, one, 0, 0);
-                    } else if (currIndex == 2) {
-                        animation = new TranslateAnimation(two, one, 0, 0);
+
+                case HEADER_TYPE_SWITCH:
+                    // Would need a different treatment if the main menu had more switches
+                    if (header.id == R.id.wifi_settings) {
+                        mWifiEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.bluetooth_settings) {
+                        mBluetoothEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.profiles_settings) {
+                        mProfileEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.location_settings) {
+                        mGPSEnabler.setSwitch(holder.switch_);
+                    } else if (header.id == R.id.trds_settings) {
+                        mTRDSSwitch = (Switch) view.findViewById(R.id.switchWidget);
+                        mTRDSEnabler.setSwitch(holder.switch_);
+                    }
+                    // No break, fall through on purpose to update common fields
+
+                    //$FALL-THROUGH$
+                case HEADER_TYPE_NORMAL:
+                    if (header.extras != null
+                            && header.extras.containsKey(ManageAccountsSettings.KEY_ACCOUNT_TYPE)) {
+                        String accType = header.extras.getString(
+                                ManageAccountsSettings.KEY_ACCOUNT_TYPE);
+                        ViewGroup.LayoutParams lp = holder.icon.getLayoutParams();
+                        lp.width = getContext().getResources().getDimensionPixelSize(
+                                R.dimen.header_icon_width);
+                        lp.height = lp.width;
+                        holder.icon.setLayoutParams(lp);
+                        Drawable icon = mAuthHelper.getDrawableForType(getContext(), accType);
+                        holder.icon.setImageDrawable(icon);
+                    } else {
+                        holder.icon.setImageResource(header.iconRes);
+                    }
+                    holder.title.setText(header.getTitle(getContext().getResources()));
+                    CharSequence summary = header.getSummary(getContext().getResources());
+                    if (!TextUtils.isEmpty(summary)) {
+                        holder.summary.setVisibility(View.VISIBLE);
+                        holder.summary.setText(summary);
+                    } else {
+                        holder.summary.setVisibility(View.GONE);
                     }
                     break;
             }
-            currIndex = arg0;
-            animation.setFillAfter(true);
-            animation.setDuration(300);
+
+            return view;
         }
 
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
+        public void resume() {
+            mWifiEnabler.resume();
+            mBluetoothEnabler.resume();
+            mProfileEnabler.resume();
+            mTRDSEnabler.resume();
+            mGPSEnabler.resume();
         }
 
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
+        public void pause() {
+            mWifiEnabler.pause();
+            mBluetoothEnabler.pause();
+            mProfileEnabler.pause();
+            mTRDSEnabler.pause();
+            mGPSEnabler.pause();
         }
     }
+
+    @Override
+    public void onHeaderClick(Header header, int position) {
+        boolean revert = false;
+        if (header.id == R.id.account_add) {
+            revert = true;
+        }
+
+        super.onHeaderClick(header, position);
+
+        if (revert && mLastHeader != null) {
+            highlightHeader((int) mLastHeader.id);
+        } else {
+            mLastHeader = header;
+        }
+        if (header.id == R.id.trds_settings) {
+            mTRDSSwitch.toggle();
+        }
+    }
+
+    @Override
+    public boolean onPreferenceStartFragment(PreferenceFragment caller, Preference pref) {
+        // Override the fragment title for Wallpaper settings
+        int titleRes = pref.getTitleRes();
+        if (pref.getFragment().equals(WallpaperTypeSettings.class.getName())) {
+            titleRes = R.string.wallpaper_settings_fragment_title;
+        } else if (pref.getFragment().equals(OwnerInfoSettings.class.getName())
+                && UserHandle.myUserId() != UserHandle.USER_OWNER) {
+            if (UserManager.get(this).isLinkedUser()) {
+                titleRes = R.string.profile_info_settings_title;
+            } else {
+                titleRes = R.string.user_info_settings_title;
+            }
+        }
+        startPreferencePanel(pref.getFragment(), pref.getExtras(), titleRes, pref.getTitle(),
+                null, 0);
+        return true;
+    }
+
+    @Override
+    public boolean shouldUpRecreateTask(Intent targetIntent) {
+        return super.shouldUpRecreateTask(new Intent(this, MainSetting.class));
+    }
+
+    @Override
+    public void setListAdapter(ListAdapter adapter) {
+        if (adapter == null) {
+            super.setListAdapter(null);
+        } else {
+            super.setListAdapter(new HeaderAdapter(this, getHeaders(), mAuthenticatorHelper));
+        }
+    }
+
+    @Override
+    public void onAccountsUpdated(Account[] accounts) {
+        // TODO: watch for package upgrades to invalidate cache; see 7206643
+        mAuthenticatorHelper.updateAuthDescriptions(this);
+        mAuthenticatorHelper.onAccountsUpdated(this, accounts);
+        invalidateHeaders();
+    }
+
+    /*
+     * Settings subclasses for launching independently.
+     */
+    public static class BluetoothSettingsActivity extends MainSetting { /* empty */ }
+    public static class WirelessSettingsActivity extends MainSetting { /* empty */ }
+    public static class TetherSettingsActivity extends MainSetting { /* empty */ }
+    public static class VpnSettingsActivity extends MainSetting { /* empty */ }
+    public static class DateTimeSettingsActivity extends MainSetting { /* empty */ }
+    public static class StorageSettingsActivity extends MainSetting { /* empty */ }
+    public static class WifiSettingsActivity extends MainSetting { /* empty */ }
+    public static class WifiP2pSettingsActivity extends MainSetting { /* empty */ }
+    public static class InputMethodAndLanguageSettingsActivity extends MainSetting { /* empty */ }
+    public static class KeyboardLayoutPickerActivity extends MainSetting { /* empty */ }
+    public static class InputMethodAndSubtypeEnablerActivity extends MainSetting { /* empty */ }
+    public static class SpellCheckersSettingsActivity extends MainSetting { /* empty */ }
+    public static class LocalePickerActivity extends MainSetting { /* empty */ }
+    public static class UserDictionarySettingsActivity extends MainSetting { /* empty */ }
+    public static class SoundSettingsActivity extends MainSetting { /* empty */ }
+    public static class DisplaySettingsActivity extends MainSetting { /* empty */ }
+    public static class DeviceInfoSettingsActivity extends MainSetting { /* empty */ }
+    public static class ApplicationSettingsActivity extends MainSetting { /* empty */ }
+    public static class ManageApplicationsActivity extends MainSetting { /* empty */ }
+    public static class AppOpsSummaryActivity extends MainSetting { /* empty */ }
+    public static class StorageUseActivity extends MainSetting { /* empty */ }
+    public static class DevelopmentSettingsActivity extends MainSetting { /* empty */ }
+    public static class AccessibilitySettingsActivity extends MainSetting { /* empty */ }
+    public static class SecuritySettingsActivity extends MainSetting { /* empty */ }
+    public static class LocationSettingsActivity extends MainSetting { /* empty */ }
+    public static class PrivacySettingsActivity extends MainSetting { /* empty */ }
+    public static class RunningServicesActivity extends MainSetting { /* empty */ }
+    public static class ManageAccountsSettingsActivity extends MainSetting { /* empty */ }
+    public static class PowerUsageSummaryActivity extends MainSetting { /* empty */ }
+    public static class AccountSyncSettingsActivity extends MainSetting { /* empty */ }
+    public static class AccountSyncSettingsInAddAccountActivity extends MainSetting { /* empty */ }
+    public static class CryptKeeperSettingsActivity extends MainSetting { /* empty */ }
+    public static class DeviceAdminSettingsActivity extends MainSetting { /* empty */ }
+    public static class DataUsageSummaryActivity extends MainSetting { /* empty */ }
+    public static class AdvancedWifiSettingsActivity extends MainSetting { /* empty */ }
+    public static class TextToSpeechSettingsActivity extends MainSetting { /* empty */ }
+    public static class AndroidBeamSettingsActivity extends MainSetting { /* empty */ }
+    public static class WifiDisplaySettingsActivity extends MainSetting { /* empty */ }
+    public static class ApnSettingsActivity extends MainSetting { /* empty */ }
+    public static class ApnEditorActivity extends MainSetting { /* empty */ }
+    public static class DreamSettingsActivity extends MainSetting { /* empty */ }
+    public static class NotificationShortcutsSettingsActivity extends MainSetting { /* empty */ }
+    public static class QuietHoursSettingsActivity extends MainSetting { /* empty */ }
+    public static class ProfilesSettingsActivity extends MainSetting { /* empty */ }
+    public static class SystemSettingsActivity extends MainSetting { /* empty */ }
+    public static class NotificationStationActivity extends MainSetting { /* empty */ }
+    public static class UserSettingsActivity extends MainSetting { /* empty */ }
+    public static class NotificationAccessSettingsActivity extends MainSetting { /* empty */ }
+    public static class BlacklistSettingsActivity extends MainSetting { /* empty */ }
 }

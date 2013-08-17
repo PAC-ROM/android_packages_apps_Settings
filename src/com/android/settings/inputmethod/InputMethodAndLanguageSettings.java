@@ -17,8 +17,8 @@
 package com.android.settings.inputmethod;
 
 import com.android.settings.R;
-import com.android.settings.Settings.KeyboardLayoutPickerActivity;
-import com.android.settings.Settings.SpellCheckersSettingsActivity;
+import com.android.settings.MainSetting.KeyboardLayoutPickerActivity;
+import com.android.settings.MainSetting.SpellCheckersSettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.VoiceInputOutputSettings;

@@ -52,7 +52,7 @@ import android.widget.TextView;
 
 import com.android.settings.AccountPreference;
 import com.android.settings.R;
-import com.android.settings.Settings;
+import com.android.settings.MainSetting;
 import com.android.settings.Utils;
 
 import java.util.ArrayList;
@@ -77,7 +77,7 @@ public class ManageAccountsSettings extends AccountPreferenceBase
     private SettingsDialogFragment mDialogFragment;
     // If an account type is set, then show only accounts of that type
     private String mAccountType;
-    // Temporary hack, to deal with backward compatibility 
+    // Temporary hack, to deal with backward compatibility
     private Account mFirstAccount;
 
     @Override

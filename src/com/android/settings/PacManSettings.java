@@ -35,7 +35,7 @@ public class PacManSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
     private static final String TRDS = "trds_settings";
-    private static final String LAUNCHER = "launcher_settings";
+    private static final String LAUNCHER = "homescreen_settings";
     private static final String LED = "led";
     private static final String VIBRATIONS = "vibrations";
     private static final String KEY_HARDWARE_KEYS = "hardware_keys";

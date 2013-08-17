@@ -300,7 +300,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
                 if (mFormatPreference != null) {
                     removePreference(mFormatPreference);
                 }
-            }                
+            }
         } else {
             if (Environment.MEDIA_MOUNTED.equals(state)
                     || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
@@ -484,7 +484,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory
         } else if (pref == mItemApps) {
             intent = new Intent(Intent.ACTION_MANAGE_PACKAGE_STORAGE);
             intent.setClass(getContext(),
-                    com.android.settings.Settings.ManageApplicationsActivity.class);
+                    com.android.settings.MainSetting.ManageApplicationsActivity.class);
         } else if (pref == mItemDownloads) {
             intent = new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS).putExtra(
                     DownloadManager.INTENT_EXTRAS_SORT_BY_SIZE, true);
