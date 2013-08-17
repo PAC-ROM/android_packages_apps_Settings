@@ -40,6 +40,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
     private static final String STATUS_BAR_BATTERY = "status_bar_battery";
     private static final String STATUS_BAR_SIGNAL = "status_bar_signal";
+    private static final String STATUS_BAR_CATEGORY_GENERAL = "status_bar_general";
+    private static final String STATUS_BAR_NETWORK_STATS = "status_bar_show_network_stats";
+    private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_status_update";
 
     private static final String STATUS_BAR_BATTERY_SHOW_PERCENT = "status_bar_battery_show_percent";
     private static final String STATUS_BAR_CLOCK_STYLE = "status_bar_clock";
@@ -52,6 +55,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
     private ListPreference mStatusBarCmSignal;
     private CheckBoxPreference mStatusBarBrightnessControl;
+    private ListPreference mStatusBarNetStatsUpdate;
+    private CheckBoxPreference mStatusBarNetworkStats;
 
     private ContentObserver mSettingsObserver;
 
@@ -79,6 +84,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarClockStyle.setValue(String.valueOf(clockStyle));
         mStatusBarClockStyle.setSummary(mStatusBarClockStyle.getEntry());
         mStatusBarClockStyle.setOnPreferenceChangeListener(this);
+
+        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
+        mStatusBarNetworkStats = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS);
+        mStatusBarNetStatsUpdate = (ListPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS_UPDATE);
 
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
@@ -122,6 +131,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     public void onPause() {
         super.onPause();
         getContentResolver().unregisterContentObserver(mSettingsObserver);
+        mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
+
+        long statsUpdate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+        mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
+        mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
+        mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -146,6 +163,24 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarClockStyle.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_CLOCK, clockStyle);
             mStatusBarClockStyle.setSummary(mStatusBarClockStyle.getEntries()[index]);
+            return true;
+        } else if (preference == mStatusBarNetStatsUpdate) {
+            long updateInterval = Long.valueOf((String) newValue);
+            int index = mStatusBarNetStatsUpdate.findIndexOfValue((String) newValue);
+            Settings.System.putLong(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
+            mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntries()[index]);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        boolean value;
+        if (preference == mStatusBarNetworkStats) {
+            value = mStatusBarNetworkStats.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
             return true;
         }
 

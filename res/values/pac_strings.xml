@@ -384,6 +384,11 @@
     <string name="recent_clear_all_button_location_bottom_left">Bottom left</string>
     <string name="recent_clear_all_button_location_bottom_right">Bottom right</string>
 
+    <!-- Network stats -->
+    <string name="status_bar_network_title">Network traffic</string>
+    <string name="status_bar_show_network_stats_title">Show network speeds</string>
+    <string name="status_bar_network_stats_update_title">Update frequency</string>
+
     <!-- Notification Drawer - Swipe to Switch full screen detection-->
     <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
     <string name="summary_full_screen_swipe">Use full screen detection for swipe to switch, not just the bottom bar</string>
