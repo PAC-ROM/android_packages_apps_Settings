@@ -133,8 +133,6 @@ public class PieSettings extends SettingsPreferenceFragment
             mPieAngle.setEnabled(pieCheck);
             mPieSearch.setEnabled(pieCheck);
             mPieMenu.setEnabled(pieCheck);
-
-            Helpers.restartSystemUI();
         }
 
         public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -177,6 +175,7 @@ public class PieSettings extends SettingsPreferenceFragment
             Settings.System.putInt(mContext.getContentResolver(),
                     Settings.System.PIE_ENABLED, mPieEnabled.isChecked() ? 1 : 0);
                         checkControls();
+                        Helpers.restartSystemUI();
         } else if (preference == mPieMenu) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);
