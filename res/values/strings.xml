@@ -4617,6 +4617,7 @@
     <string name="halo_pause_title">Pause active app</string>
     <string name="halo_pause_summary">When opening an app with HALO the underlying app will get paused</string>
 
+    <!-- Defines HALO size -->
     <string name="halo_size_title">HALO size</string>
     <string name="halo_size_summary">Defines how big HALO is going to be</string>
     <string name="halo_size_miniscule">Miniscule</string>
