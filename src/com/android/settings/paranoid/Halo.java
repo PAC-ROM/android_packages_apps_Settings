@@ -58,9 +58,7 @@ public class Halo extends SettingsPreferenceFragment
     private static final String PREF_HALO_CIRCLE_COLOR = "halo_circle_color";
     private static final String PREF_HALO_EFFECT_COLOR = "halo_effect_color";
     private static final String PREF_HALO_BUBBLE_COLOR = "halo_bubble_color";
-    private static final String PREF_HALO_BUBBLE_TEXT_COLOR = "halo_bubble_text_color";
-
-
+    
     private ListPreference mHaloState;
     private SwitchPreference mHaloEnabled;
     private CheckBoxPreference mHaloHide;
@@ -121,8 +119,6 @@ public class Halo extends SettingsPreferenceFragment
         mHaloBubbleColor = (ColorPickerPreference) findPreference(PREF_HALO_BUBBLE_COLOR);
         mHaloBubbleColor.setOnPreferenceChangeListener(this);
 
-        mHaloBubbleTextColor = (ColorPickerPreference) findPreference(PREF_HALO_BUBBLE_TEXT_COLOR);
-        mHaloBubbleTextColor.setOnPreferenceChangeListener(this);
         }
 
     private boolean isHaloPolicyBlack() {
@@ -197,15 +193,7 @@ public class Halo extends SettingsPreferenceFragment
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.HALO_BUBBLE_COLOR, intHex);
             return true;
-        } else if (preference == mHaloBubbleTextColor) {
-            String hex = ColorPickerPreference.convertToARGB(
-                    Integer.valueOf(String.valueOf(Value)));
-            preference.setSummary(hex);
-            int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HALO_BUBBLE_TEXT_COLOR, intHex);
-            return true;
-        }
+        } 
         return false;
     }
 }
