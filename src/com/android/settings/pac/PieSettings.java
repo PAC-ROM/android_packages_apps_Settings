@@ -18,12 +18,10 @@ import android.provider.Settings.SettingNotFoundException;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-import com.android.settings.util.Helpers;
 
 public class PieSettings extends SettingsPreferenceFragment
-    implements Preference.OnPreferenceChangeListener {
-
-    private static final String PIE_ENABLED = "pie_enabled";
+        implements Preference.OnPreferenceChangeListener {
+	
     private static final String PIE_GRAVITY = "pie_gravity";
     private static final String PIE_MODE = "pie_mode";
     private static final String PIE_SIZE = "pie_size";
@@ -34,7 +32,7 @@ public class PieSettings extends SettingsPreferenceFragment
     private static final String PIE_SEARCH = "pie_search";
     private static final String PIE_CENTER = "pie_center";
     private static final String PIE_STICK = "pie_stick";
-
+	
     private ListPreference mPieMode;
     private ListPreference mPieSize;
     private ListPreference mPieGravity;
@@ -42,25 +40,20 @@ public class PieSettings extends SettingsPreferenceFragment
     private ListPreference mPieAngle;
     private ListPreference mPieGap;
     private CheckBoxPreference mPieMenu;
-    private CheckBoxPreference mPieEnabled;
     private CheckBoxPreference mPieSearch;
     private CheckBoxPreference mPieCenter;
     private CheckBoxPreference mPieStick;
-
+	
     private Context mContext;
     private int mAllowedLocations;
-
+	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.pie_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         mContext = getActivity();
-
-        mPieEnabled = (CheckBoxPreference) findPreference(PIE_ENABLED);
-        mPieEnabled.setChecked((Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_ENABLED, 1) == 1));
-
+		
         mPieMenu = (CheckBoxPreference) prefSet.findPreference(PIE_MENU);
         mPieMenu.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_MENU, 1) == 1);
@@ -76,7 +69,7 @@ public class PieSettings extends SettingsPreferenceFragment
         mPieStick = (CheckBoxPreference) prefSet.findPreference(PIE_STICK);
         mPieStick.setChecked(Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_STICK, 1) == 1);
-
+				
         mPieGravity = (ListPreference) prefSet.findPreference(PIE_GRAVITY);
         int pieGravity = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.PIE_GRAVITY, 3);
@@ -95,7 +88,7 @@ public class PieSettings extends SettingsPreferenceFragment
             float pieSize = Settings.System.getFloat(mContext.getContentResolver(),
                     Settings.System.PIE_SIZE, 1.0f);
             mPieSize.setValue(String.valueOf(pieSize));
-
+  
             float pieTrigger = Settings.System.getFloat(mContext.getContentResolver(),
                     Settings.System.PIE_TRIGGER);
             mPieTrigger.setValue(String.valueOf(pieTrigger));
@@ -117,28 +110,10 @@ public class PieSettings extends SettingsPreferenceFragment
                 Settings.System.PIE_ANGLE, 12);
         mPieAngle.setValue(String.valueOf(pieAngle));
         mPieAngle.setOnPreferenceChangeListener(this);
-
-                checkControls();
-        }
-
-        private void checkControls() {
-           boolean pieCheck = mPieEnabled.isChecked();
-            mPieGravity.setEnabled(pieCheck);
-            mPieMode.setEnabled(pieCheck);
-            mPieSize.setEnabled(pieCheck);
-            mPieStick.setEnabled(pieCheck);
-            mPieCenter.setEnabled(pieCheck);
-            mPieTrigger.setEnabled(pieCheck);
-            mPieGap.setEnabled(pieCheck);
-            mPieAngle.setEnabled(pieCheck);
-            mPieSearch.setEnabled(pieCheck);
-            mPieMenu.setEnabled(pieCheck);
-
-            Helpers.restartSystemUI();
-        }
-
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-          if (preference == mPieMode) {
+	}
+	
+	public boolean onPreferenceChange(Preference preference, Object newValue) {
+		if (preference == mPieMode) {
             int pieMode = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.PIE_MODE, pieMode);
@@ -167,17 +142,13 @@ public class PieSettings extends SettingsPreferenceFragment
             float pieTrigger = Float.valueOf((String) newValue);
             Settings.System.putFloat(getActivity().getContentResolver(),
                     Settings.System.PIE_TRIGGER, pieTrigger);
-                    return true;
-            }
-            return false;
+            return true;
         }
-
-        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-            if (preference == mPieEnabled) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.PIE_ENABLED, mPieEnabled.isChecked() ? 1 : 0);
-                        checkControls();
-        } else if (preference == mPieMenu) {
+		return false;
+	}
+	
+	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference == mPieMenu) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_MENU, mPieMenu.isChecked() ? 1 : 0);
         } else if (preference == mPieSearch) {
@@ -189,7 +160,7 @@ public class PieSettings extends SettingsPreferenceFragment
         } else if (preference == mPieStick) {
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.PIE_STICK, mPieStick.isChecked() ? 1 : 0);
-            }
-            return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
+		return super.onPreferenceTreeClick(preferenceScreen, preference);
+	}
 }
