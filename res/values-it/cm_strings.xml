@@ -275,6 +275,8 @@
     <string name="notification_light_default_value">Predefinito</string>
     <string name="notification_light_missed_call_title">Chiamata persa</string>
     <string name="notification_light_voicemail_title">Messaggio vocale</string>
+    <string name="adaptive_backlight_title">Retroilluminazione adattiva</string>
+    <string name="adaptive_backlight_summary">Varia intelligentemente la luminosità della retroilluminazione del display e ottimizza la durata della batteria</string>
     <string name="edit_light_settings">Modifica impostazioni luce</string>
     <string name="pulse_speed_title">Durata e velocità del lampeggio</string>
     <string name="default_time">Normale</string>
@@ -521,7 +523,7 @@
     <string name="lockscreen_background_custom_image">Immagine personalizzata</string>
     <string name="lockscreen_background_default_wallpaper">Sfondo predefinito</string>
     <string name="headset_connect_player_title">Lancia lettore musicale</string>
-    <string name="headset_connect_player_summary">Lancia il lettore musicale predefinito quando le cuffie vengono connesse</string>
+    <string name="headset_connect_player_summary">Lancia il lettore musicale predefinito quando vengono connesse le cuffie</string>
     <string name="cyanogenmod_waiver_title">Manleva</string>
     <string name="cyanogenmod_waiver_body">Cambiare questa impostazione può essere contro le leggi del tuo stato/governo.\n\nPremendo \'OK\' più sotto, accetti quanto riportato in questo avviso, e dichiari di esonerare e sollevare CyanogenMod e i suoi collaboratori da ogni responsabilità civile e penale.</string>
     <string name="light_sensor_current_value">Valore attuale sensore luminosità: <xliff:g id="light_level">%d</xliff:g> lux</string>
@@ -636,5 +638,5 @@ inserire punti di controllo aggiuntivi. \'Rimuovi\' cancella la riga selezionata
     <string name="power_notifications_ringtone_title">Suono di notifica</string>
     <string name="power_notifications_ringtone_silent">Silenzioso</string>
     <string name="screen_off_animation_title">Animazione spegnimento schermo</string>
-    <string name="screen_off_animation_summary">Visualizza l\'animazione fascio di elettroni quando lo schermo sta per spegnersi</string>
+    <string name="screen_off_animation_summary">Visualizza l\'animazione \'fascio di elettroni\' quando lo schermo sta per spegnersi</string>
 </resources>
