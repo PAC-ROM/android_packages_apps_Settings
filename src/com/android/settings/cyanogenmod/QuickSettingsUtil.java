@@ -156,7 +156,7 @@ public class QuickSettingsUtil {
 
     public static String getCurrentTiles(Context context) {
         String tiles = Settings.System.getString(context.getContentResolver(),
-                Settings.System.QUICK_SETTINGS);
+                Settings.System.QUICK_SETTINGS_TILES);
         if (tiles == null) {
             tiles = getDefaultTiles(context);
         }
@@ -165,13 +165,13 @@ public class QuickSettingsUtil {
 
     public static void saveCurrentTiles(Context context, String tiles) {
         Settings.System.putString(context.getContentResolver(),
-                Settings.System.QUICK_SETTINGS, tiles);
+                Settings.System.QUICK_SETTINGS_TILES, tiles);
     }
 
     public static void resetTiles(Context context) {
         String defaultTiles = TextUtils.join(TILE_DELIMITER, TILES_DEFAULT);
         Settings.System.putString(context.getContentResolver(),
-                Settings.System.QUICK_SETTINGS, defaultTiles);
+                Settings.System.QUICK_SETTINGS_TILES, defaultTiles);
     }
 
     public static String mergeInNewTileString(String oldString, String newString) {
