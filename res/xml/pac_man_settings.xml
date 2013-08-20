@@ -30,6 +30,17 @@
     <PreferenceCategory android:key="links_section"
         android:title="@string/header_category_links" />
 
+    <!-- OTA -->
+    <PreferenceScreen
+        android:key="pacconsole"
+            android:title="@string/pacconsole_title"
+            android:icon="@drawable/ic_settings_pac" >
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.pac.console"
+                android:targetClass="com.pac.console.PacConsole" />
+    </PreferenceScreen>
+
     <!-- Themes -->
     <PreferenceScreen
         android:key="themes_settings"

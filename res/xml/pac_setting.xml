@@ -31,6 +31,16 @@
     <header android:id="@+id/links_section"
         android:title="@string/header_category_links" />
 
+    <!-- OTA -->
+    <header android:id="@+id/pacconsole"
+            android:title="@string/pacconsole_title"
+            android:icon="@drawable/ic_settings_pac" >
+        <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.pac.console"
+                android:targetClass="com.pac.console.PacConsole" />
+    </header>
+
     <!-- Themes -->
     <header
         android:id="@+id/themes_settings"
