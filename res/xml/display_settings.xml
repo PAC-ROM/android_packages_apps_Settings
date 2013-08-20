@@ -93,9 +93,19 @@
             android:title="@string/listview_settings_title"
             android:fragment="com.android.settings.cyanogenmod.listview.ListviewSettings" />
 
+        <PreferenceScreen
+            android:key="wifi_display"
+            android:title="@string/wifi_display_settings_title"
+            android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
+
         <PreferenceCategory
             android:key="lights_prefs"
             android:title="@string/lights_category_title">
+
+            <PreferenceScreen
+                android:key="notification_pulse"
+                android:title="@string/notification_pulse_title"
+                android:fragment="com.android.settings.notificationlight.NotificationLightSettings" />
 
             <PreferenceScreen
                 android:key="battery_light"
@@ -104,8 +114,4 @@
 
         </PreferenceCategory>
 
-        <PreferenceScreen
-            android:key="wifi_display"
-            android:title="@string/wifi_display_settings_title"
-            android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 </PreferenceScreen>

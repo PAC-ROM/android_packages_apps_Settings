@@ -105,7 +105,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private int mAllowedRotationModes;
 
-
     private boolean mIsCrtOffChecked = false;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
