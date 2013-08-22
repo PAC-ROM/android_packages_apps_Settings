@@ -26,21 +26,21 @@
             android:key="slim_shortcuts_settings"
             android:title="@string/notification_shortcuts_settings_title"
             android:summary="@string/notification_shortcuts_settings_summary">
-	</PreferenceScreen>
-	    
+    </PreferenceScreen>
+
        <CheckBoxPreference
             android:key="notification_show_wifi_ssid"
             android:title="@string/notification_show_wifi_ssid_title"
             android:summary="@string/notification_show_wifi_ssid_summary" />
-    
+
     </PreferenceCategory>
-    
+
     <!-- Notification drawer Power Widget -->
     <PreferenceCategory
        android:title="@string/power_widget_title">
 
-        <CheckBoxPreference
-            android:key="expanded_widget"
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="expanded_view_widget"
             android:title="@string/title_expanded_widget"
             android:defaultValue="false" />
 
@@ -48,7 +48,7 @@
             android:key="widget_picker"
             android:title="@string/title_widget_picker"
             android:summary="@string/summary_widget_picker"
-            android:dependency="expanded_widget"
+            android:dependency="expanded_view_widget"
             android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetChooser">
         </PreferenceScreen>
 
@@ -56,7 +56,7 @@
             android:key="widget_order"
             android:title="@string/title_widget_order"
             android:summary="@string/summary_widget_order"
-            android:dependency="expanded_widget"
+            android:dependency="expanded_view_widget"
             android:fragment="com.android.settings.cyanogenmod.PowerWidget$PowerWidgetOrder">
         </PreferenceScreen>
 
@@ -65,17 +65,17 @@
     <PreferenceCategory
        android:title="@string/power_widget_behavior">
 
-        <CheckBoxPreference
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="expanded_hide_onchange"
             android:title="@string/title_expanded_hide_onchange"
             android:defaultValue="false"
-            android:dependency="expanded_widget" />
+            android:dependency="expanded_view_widget" />
 
-        <CheckBoxPreference
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="expanded_hide_scrollbar"
             android:title="@string/title_expanded_hide_scrollbar"
             android:defaultValue="false"
-            android:dependency="expanded_widget" />
+            android:dependency="expanded_view_widget" />
 
         <ListPreference
             android:key="expanded_haptic_feedback"
@@ -83,7 +83,7 @@
             android:title="@string/expanded_haptic_feedback_title"
             android:entries="@array/haptic_feedback_entries"
             android:entryValues="@array/haptic_feedback_values"
-            android:dependency="expanded_widget" />
+            android:dependency="expanded_view_widget" />
 
     </PreferenceCategory>
 

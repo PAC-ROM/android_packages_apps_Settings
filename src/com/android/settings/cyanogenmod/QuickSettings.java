@@ -50,6 +50,8 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.android.internal.telephony.Phone;
+import com.android.internal.util.cm.QSConstants;
+import com.android.internal.util.cm.QSUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
@@ -68,14 +70,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     private static final String EXP_RING_MODE = "pref_ring_mode";
     private static final String EXP_NETWORK_MODE = "pref_network_mode";
     private static final String EXP_SCREENTIMEOUT_MODE = "pref_screentimeout_mode";
-    private static final String DYNAMIC_ALARM = "dynamic_alarm";
-    private static final String DYNAMIC_BUGREPORT = "dynamic_bugreport";
-    private static final String DYNAMIC_IME = "dynamic_ime";
-    private static final String DYNAMIC_USBTETHER = "dynamic_usbtether";
-    private static final String DYNAMIC_WIFI = "dynamic_wifi";
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String NO_NOTIFICATIONS_PULLDOWN = "no_notifications_pulldown";
-    private static final String COLLAPSE_PANEL = "collapse_panel";
     private static final String DISABLE_PANEL = "disable_quick_settings";
     private static final String GENERAL_SETTINGS = "pref_general_settings";
     private static final String STATIC_TILES = "static_tiles";
@@ -87,11 +83,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
     MultiSelectListPreference mRingMode;
     ListPreference mNetworkMode;
     ListPreference mScreenTimeoutMode;
-    CheckBoxPreference mDynamicAlarm;
-    CheckBoxPreference mDynamicBugReport;
-    CheckBoxPreference mDynamicWifi;
-    CheckBoxPreference mDynamicIme;
-    CheckBoxPreference mDynamicUsbTether;
     CheckBoxPreference mCollapsePanel;
     CheckBoxPreference mDisablePanel;
     ListPreference mQuickPulldown;
@@ -124,8 +115,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mDisablePanel = (CheckBoxPreference) prefSet.findPreference(DISABLE_PANEL);
         mQsTilesStyle = (PreferenceScreen) prefSet.findPreference(QS_TILES_STYLE);
         mTilePicker = (PreferenceScreen) prefSet.findPreference(TILE_PICKER);
-        mCollapsePanel = (CheckBoxPreference) prefSet.findPreference(COLLAPSE_PANEL);
-        mCollapsePanel.setChecked(Settings.System.getInt(resolver, Settings.System.QS_COLLAPSE_PANEL, 0) == 1);
         mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
         mFloatingWindow.setChecked(Settings.System.getInt(resolver, Settings.System.QS_FLOATING_WINDOW, 0) == 1);
 
@@ -152,37 +141,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
         mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntry());
         mScreenTimeoutMode.setOnPreferenceChangeListener(this);
 
-        // Add the dynamic tiles checkboxes
-        mDynamicAlarm = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_ALARM);
-        mDynamicAlarm.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_ALARM, 1) == 1);
-        mDynamicBugReport = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_BUGREPORT);
-        mDynamicBugReport.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_BUGREPORT, 1) == 1);
-        mDynamicIme = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_IME);
-        if (mDynamicIme != null) {
-            if (deviceSupportsImeSwitcher(getActivity())) {
-                mDynamicIme.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_IME, 1) == 1);
-            } else {
-                mDynamicTiles.removePreference(mDynamicIme);
-                mDynamicIme = null;
-            }
+        // Remove unsupported options
+        if (!QSUtils.deviceSupportsImeSwitcher(getActivity())) {
+            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_IME));
         }
-        mDynamicUsbTether = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_USBTETHER);
-        if (mDynamicUsbTether != null) {
-            if (deviceSupportsUsbTether(getActivity())) {
-                mDynamicUsbTether.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER, 1) == 1);
-            } else {
-                mDynamicTiles.removePreference(mDynamicUsbTether);
-                mDynamicUsbTether = null;
-            }
+        if (!QSUtils.deviceSupportsUsbTether(getActivity())) {
+            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_USBTETHER));
         }
-        mDynamicWifi = (CheckBoxPreference) prefSet.findPreference(DYNAMIC_WIFI);
-        if (mDynamicWifi != null) {
-            if (deviceSupportsWifiDisplay(getActivity())) {
-                mDynamicWifi.setChecked(Settings.System.getInt(resolver, Settings.System.QS_DYNAMIC_WIFI, 1) == 1);
-            } else {
-                mDynamicTiles.removePreference(mDynamicWifi);
-                mDynamicWifi = null;
-            }
+        if (!QSUtils.deviceSupportsWifiDisplay(getActivity())) {
+            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_WIFI));
         }
 
         // Don't show mobile data options if not supported
@@ -269,31 +236,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mDynamicAlarm) {
-            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_ALARM,
-                    mDynamicAlarm.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mDynamicBugReport) {
-            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_BUGREPORT,
-                    mDynamicBugReport.isChecked() ? 1 : 0);
-            return true;
-        } else if (mDynamicIme != null && preference == mDynamicIme) {
-            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_IME,
-                    mDynamicIme.isChecked() ? 1 : 0);
-            return true;
-        } else if (mDynamicUsbTether != null && preference == mDynamicUsbTether) {
-            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_USBTETHER,
-                    mDynamicUsbTether.isChecked() ? 1 : 0);
-            return true;
-        } else if (mDynamicWifi != null && preference == mDynamicWifi) {
-            Settings.System.putInt(resolver, Settings.System.QS_DYNAMIC_WIFI,
-                    mDynamicWifi.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mCollapsePanel) {
-            Settings.System.putInt(resolver, Settings.System.QS_COLLAPSE_PANEL,
-                    mCollapsePanel.isChecked() ? 1 : 0);
-            return true;
-        } else if (preference == mDisablePanel) {
+        if (preference == mDisablePanel) {
             Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
                     mDisablePanel.isChecked() ? 0 : 1);
             setEnablePreferences(mDisablePanel.isChecked());
@@ -416,16 +359,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements OnPrefe
             mNetworkMode.setEnabled(status);
         if (mScreenTimeoutMode != null)
             mScreenTimeoutMode.setEnabled(status);
-        if (mDynamicAlarm != null)
-            mDynamicAlarm.setEnabled(status);
-        if (mDynamicBugReport != null)
-            mDynamicBugReport.setEnabled(status);
-        if (mDynamicWifi != null)
-            mDynamicWifi.setEnabled(status);
-        if (mDynamicIme != null)
-            mDynamicIme.setEnabled(status);
-        if (mDynamicUsbTether != null)
-            mDynamicUsbTether.setEnabled(status);
         if (mNoNotificationsPulldown != null)
             mNoNotificationsPulldown.setEnabled(status);
         if (mCollapsePanel != null)
