@@ -80,7 +80,6 @@ public class UserInterface extends AOKPPreferenceFragment {
     private static final CharSequence PREF_VIBRATE_NOTIF_EXPAND = "vibrate_notif_expand";
     private static final CharSequence PREF_LONGPRESS_TO_KILL = "longpress_to_kill";
     private static final CharSequence PREF_RECENT_KILL_ALL = "recent_kill_all";
-    private static final CharSequence PREF_RAM_USAGE_BAR = "ram_usage_bar";
     private static final CharSequence PREF_USER_MODE_UI = "user_mode_ui";
     private static final CharSequence PREF_HIDE_EXTRAS = "hide_extras";
     private static final CharSequence PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
@@ -90,6 +89,7 @@ public class UserInterface extends AOKPPreferenceFragment {
     private static final CharSequence PREF_NAVBAR = "navbar";
     private static final CharSequence PREF_MISC = "misc";
     private static final CharSequence PREF_DISPLAY = "display";
+    private static final CharSequence PREF_RECENTS_RAM_BAR = "recents_ram_bar";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     //private static final int REQUEST_PICK_CUSTOM_ICON = 202; //unused
@@ -105,13 +105,13 @@ public class UserInterface extends AOKPPreferenceFragment {
     Preference mWallpaperAlpha;
     Preference mCustomLabel;
     Preference mCustomBootAnimation;
+    Preference mRamBar;
     ImageView mView;
     TextView mError;
     CheckBoxPreference mShowActionOverflow;
     CheckBoxPreference mVibrateOnExpand;
     CheckBoxPreference mLongPressToKill;
     CheckBoxPreference mRecentKillAll;
-    CheckBoxPreference mRamBar;
     AlertDialog mCustomBootAnimationDialog;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
 
@@ -177,10 +177,6 @@ public class UserInterface extends AOKPPreferenceFragment {
         mRecentKillAll.setChecked(Settings.System.getBoolean(mContentResolver,
                 Settings.System.RECENT_KILL_ALL_BUTTON, false));
 
-        mRamBar = (CheckBoxPreference) findPreference(PREF_RAM_USAGE_BAR);
-        mRamBar.setChecked(Settings.System.getBoolean(mContentResolver,
-                Settings.System.RAM_USAGE_BAR, false));
-
         mShowActionOverflow = (CheckBoxPreference) findPreference(PREF_SHOW_OVERFLOW);
         mShowActionOverflow.setChecked(Settings.System.getBoolean(mContentResolver,
                         Settings.System.UI_FORCE_OVERFLOW_BUTTON, false));
@@ -195,6 +191,9 @@ public class UserInterface extends AOKPPreferenceFragment {
             ((PreferenceGroup) findPreference(PREF_DISPLAY)).removePreference(mWakeUpWhenPluggedOrUnplugged);
         }
 
+        mRamBar = findPreference(PREF_RECENTS_RAM_BAR);
+        updateRamBar();
+
         setHasOptionsMenu(true);
         resetBootAnimation();
     }
@@ -202,6 +201,7 @@ public class UserInterface extends AOKPPreferenceFragment {
     @Override
     public void onResume() {
         super.onResume();
+        updateRamBar();
         if (mDisableBootAnimation != null) {
             if (mDisableBootAnimation.isChecked()) {
                 Resources res = mContext.getResources();
@@ -213,6 +213,22 @@ public class UserInterface extends AOKPPreferenceFragment {
             }
         }
     }
+
+    @Override
+    public void onPause() {
+        super.onResume();
+        updateRamBar();
+    }
+
+    private void updateRamBar() {
+        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.RECENTS_RAM_BAR_MODE, 0);
+        if (ramBarMode != 0)
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
+        else
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_disabled));
+     }
+
 
     /**
      * Resets boot animation path. Essentially clears temporary-set boot animation
@@ -395,11 +411,6 @@ public class UserInterface extends AOKPPreferenceFragment {
             boolean checked = ((TwoStatePreference) preference).isChecked();
             Settings.System.putBoolean(mContentResolver,
                     Settings.System.RECENT_KILL_ALL_BUTTON, checked);
-            return true;
-        } else if (preference == mRamBar) {
-            boolean checked = ((TwoStatePreference) preference).isChecked();
-            Settings.System.putBoolean(mContentResolver,
-                    Settings.System.RAM_USAGE_BAR, checked);
             return true;
         } else if (preference == mWakeUpWhenPluggedOrUnplugged) {
             Settings.System.putBoolean(mContentResolver,
