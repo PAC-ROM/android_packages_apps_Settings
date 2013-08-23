@@ -5191,6 +5191,20 @@
 
     <!-- Auto-Hide Status Bar -->
     <string name="auto_hide_statusbar">Auto Hide statusbar</string>
-    <string name="auto_hide_statusbar_summary">Statusbar hides itself when there are no notifications</string>
+    <string name="auto_hide_statusbar_summary_nonperm">Auto Hide statusbar if no non-permanent notifications are present</string>
+    <string name="auto_hide_statusbar_summary_all">Auto Hide statusbar if no notifications are present</string>
+    <string name="auto_hide_statusbar_off">Off</string>
+    <string name="auto_hide_statusbar_nonperm">Non-permanent only</string>
+    <string name="auto_hide_statusbar_all">All Notifications</string>
+
+    <!-- Fullscreen Status Bar -->
+    <string name="fullscreen_statusbar_title">Fullscreen Statusbar</string>
+    <string name="fullscreen_statusbar_summary">Swiping down from the top of full screen apps shows status bar for some seconds.</string>
+    <string name="fullscreen_statusbar_timeout_title">Fullscreen Statusbar Timeout</string>
+    <string name="fullscreen_statusbar_timeout_summary">Timeout for Fullscreen Statusbar</string>
+    <string name="fullscreen_statusbar_2500">2.5 seconds</string>
+    <string name="fullscreen_statusbar_5000">5 seconds</string>
+    <string name="fullscreen_statusbar_7500">7.5 seconds</string>
+    <string name="fullscreen_statusbar_10000">10 seconds</string>
 
 </resources>

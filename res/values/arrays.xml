@@ -1417,4 +1417,31 @@
         <item>3</item>
     </string-array>
 
+    <!-- AutoHide StatusBar -->
+    <string-array name="entries_auto_hide_statusbar">
+        <item>@string/auto_hide_statusbar_off</item>
+        <item>@string/auto_hide_statusbar_nonperm</item>
+        <item>@string/auto_hide_statusbar_all</item>
+    </string-array>
+
+    <string-array name="values_auto_hide_statusbar" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Fullscreen Statusbar Timeout -->
+    <string-array name="fullscreen_statusbar_timeout_entries" translatable="false">
+        <item>@string/fullscreen_statusbar_2500</item>
+        <item>@string/fullscreen_statusbar_5000</item>
+        <item>@string/fullscreen_statusbar_7500</item>
+        <item>@string/fullscreen_statusbar_10000</item>
+    </string-array>
+    <string-array name="fullscreen_statusbar_timeout_values" translatable="false">
+        <item>2500</item>
+        <item>5000</item>
+        <item>7500</item>
+        <item>10000</item>
+    </string-array>
+
 </resources>

@@ -27,10 +27,25 @@
         android:entries="@array/notifs_beh_entries"
         android:entryValues="@array/notifs_beh_values" />
 
-    <CheckBoxPreference
+    <ListPreference
         android:key="status_bar_auto_hide"
         android:title="@string/auto_hide_statusbar"
-        android:summary="@string/auto_hide_statusbar_summary"
-        android:defaultValue="false" />
+        android:entries="@array/entries_auto_hide_statusbar"
+        android:entryValues="@array/values_auto_hide_statusbar"
+        android:persistent="false" />
+
+    <CheckBoxPreference
+        android:key="fullscreen_statusbar"
+        android:title="@string/fullscreen_statusbar_title"
+        android:summary="@string/fullscreen_statusbar_summary"
+        android:defaultValue="true" />
+
+    <ListPreference
+        android:key="fullscreen_statusbar_timeout"
+        android:entries="@array/fullscreen_statusbar_timeout_entries"
+        android:entryValues="@array/fullscreen_statusbar_timeout_values"
+        android:title="@string/fullscreen_statusbar_timeout_title"
+        android:summary="@string/fullscreen_statusbar_timeout_summary"
+        android:dependency="fullscreen_statusbar" />
 
 </PreferenceScreen>

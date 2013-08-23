@@ -28,12 +28,16 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
+    private static final String PREF_FULLSCREEN_STATUSBAR = "fullscreen_statusbar";
+    private static final String FREF_FULLSCREEN_STATUSBAR_TIMEOUT = "fullscreen_statusbar_timeout";
 
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private CheckBoxPreference mStatusBarTraffic;
+    private CheckBoxPreference mFullScreenStatusBar;
     private ListPreference mStatusBarMaxNotif;
     private ListPreference mNotificationsBehavior;
-    private CheckBoxPreference mStatusBarAutoHide;
+    private ListPreference mStatusBarAutoHide;
+    private ListPreference mFullScreenStatusBarTimeout;
 
     private Context mContext;
     private int mAllowedLocations;
@@ -46,33 +50,45 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         PreferenceScreen prefSet = getPreferenceScreen();
         mContext = getActivity();
 
-           mStatusBarMaxNotif = (ListPreference) prefSet.findPreference(STATUS_BAR_MAX_NOTIF);
-           int maxNotIcons = Settings.System.getInt(getActivity().getContentResolver(),
-           Settings.System.MAX_NOTIFICATION_ICONS, 2);
-           mStatusBarMaxNotif.setValue(String.valueOf(maxNotIcons));
-           mStatusBarMaxNotif.setOnPreferenceChangeListener(this);
+        mStatusBarMaxNotif = (ListPreference) prefSet.findPreference(STATUS_BAR_MAX_NOTIF);
+        int maxNotIcons = Settings.System.getInt(getActivity().getContentResolver(),
+        Settings.System.MAX_NOTIFICATION_ICONS, 2);
+        mStatusBarMaxNotif.setValue(String.valueOf(maxNotIcons));
+            mStatusBarMaxNotif.setOnPreferenceChangeListener(this);
 
-           mNotificationsBehavior = (ListPreference) findPreference(KEY_NOTIFICATION_BEHAVIOUR);
-           int CurrentBehavior = Settings.System.getInt(getContentResolver(), Settings.System.NOTIFICATIONS_BEHAVIOUR, 0);
-           mNotificationsBehavior.setValue(String.valueOf(CurrentBehavior));
-           mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntry());
-           mNotificationsBehavior.setOnPreferenceChangeListener(this);
+        mNotificationsBehavior = (ListPreference) findPreference(KEY_NOTIFICATION_BEHAVIOUR);
+        int CurrentBehavior = Settings.System.getInt(getContentResolver(), Settings.System.NOTIFICATIONS_BEHAVIOUR, 0);
+        mNotificationsBehavior.setValue(String.valueOf(CurrentBehavior));
+        mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntry());
+        mNotificationsBehavior.setOnPreferenceChangeListener(this);
 
-           mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
-           mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
-                   Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
+        mStatusBarAutoHide = (ListPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
+        int statusBarAutoHideValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.AUTO_HIDE_STATUSBAR, 0);
+        mStatusBarAutoHide.setValue(String.valueOf(statusBarAutoHideValue));
+        updateStatusBarAutoHideSummary(statusBarAutoHideValue);
+        mStatusBarAutoHide.setOnPreferenceChangeListener(this);
 
-           mStatusBarTraffic = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_TRAFFIC);
-           mStatusBarTraffic.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
-                   Settings.System.STATUS_BAR_TRAFFIC, false));
+        mFullScreenStatusBarTimeout = (ListPreference) findPreference(FREF_FULLSCREEN_STATUSBAR_TIMEOUT);
+        mFullScreenStatusBarTimeout.setOnPreferenceChangeListener(this);
+        mFullScreenStatusBarTimeout.setValue(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.FULLSCREEN_STATUSBAR_TIMEOUT, 10000) + "");
 
-           mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
-           mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                   Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1));
-        }
+        mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
+        mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
 
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if (preference == mStatusBarMaxNotif) {
+        mStatusBarTraffic = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_TRAFFIC);
+        mStatusBarTraffic.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_TRAFFIC, false));
+
+        mFullScreenStatusBar = (CheckBoxPreference)findPreference(PREF_FULLSCREEN_STATUSBAR);
+        mFullScreenStatusBar.setChecked(Settings.System.getBoolean(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.FULLSCREEN_STATUSBAR, true));
+    }
+
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        if (preference == mStatusBarMaxNotif) {
             int maxNotIcons = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.MAX_NOTIFICATION_ICONS, maxNotIcons);
@@ -84,11 +100,22 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             int index = mNotificationsBehavior.findIndexOfValue(val);
             mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntries()[index]);
             return true;
-            }
+        } else if (preference == mStatusBarAutoHide) {
+            int statusBarAutoHideValue = Integer.valueOf((String) newValue);
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR, statusBarAutoHideValue);
+            updateStatusBarAutoHideSummary(statusBarAutoHideValue);
+            return true;
+        } else if (preference == mFullScreenStatusBarTimeout) {
+            int val = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FULLSCREEN_STATUSBAR_TIMEOUT, val);
+            return true;
+        }
         return false;
     }
 
-        public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         boolean value;
         if (preference == mStatusBarDoNotDisturb) {
             Settings.System.putInt(getActivity().getContentResolver(),
@@ -99,14 +126,26 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, mStatusBarTraffic.isChecked());
             return true;
-        } else if (preference == mStatusBarAutoHide) {
-            value = mStatusBarAutoHide.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
-             return true;
+        } else if (preference == mFullScreenStatusBar) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FULLSCREEN_STATUSBAR,
+                    mFullScreenStatusBar.isChecked() ? 1 : 0);
+            return true;
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
         }
     }
+
+    private void updateStatusBarAutoHideSummary(int value) {
+        if (value == 0) {
+            /* StatusBar AutoHide deactivated */
+            mStatusBarAutoHide.setSummary(getResources().getString(R.string.auto_hide_statusbar_off));
+        } else {
+            mStatusBarAutoHide.setSummary(getResources().getString(value == 1
+                    ? R.string.auto_hide_statusbar_summary_nonperm
+                    : R.string.auto_hide_statusbar_summary_all));
+        }
+    }
+
 }
