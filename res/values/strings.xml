@@ -5006,9 +5006,6 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
 
-    <!-- Permissions Management -->
-    <string name="permissions_settings_title">Permissions</string>
-
     <!-- PACStats -->
     <string name="pacman_stats">PACStats</string>
     <string name="pacman_stats_summary">View PAC-Man ROM statistics</string>
