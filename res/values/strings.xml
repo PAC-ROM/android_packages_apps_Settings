@@ -5186,4 +5186,7 @@
     <string name="ram_bar_button_help">Help</string>
     <string name="ram_bar_button_reset">Reset colors</string>
 
+    <!-- Notification Behavior Preferences -->
+    <string name="notification_behaviour_title">Notification behavior</string>
+
 </resources>

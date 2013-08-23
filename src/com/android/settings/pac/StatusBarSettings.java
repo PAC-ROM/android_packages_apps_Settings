@@ -26,10 +26,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_MAX_NOTIF = "status_bar_max_notifications";
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+    private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
 
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private CheckBoxPreference mStatusBarTraffic;
     private ListPreference mStatusBarMaxNotif;
+    private ListPreference mNotificationsBehavior;
 
     private Context mContext;
     private int mAllowedLocations;
@@ -48,6 +50,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
            mStatusBarMaxNotif.setValue(String.valueOf(maxNotIcons));
            mStatusBarMaxNotif.setOnPreferenceChangeListener(this);
 
+           mNotificationsBehavior = (ListPreference) findPreference(KEY_NOTIFICATION_BEHAVIOUR);
+           int CurrentBehavior = Settings.System.getInt(getContentResolver(), Settings.System.NOTIFICATIONS_BEHAVIOUR, 0);
+           mNotificationsBehavior.setValue(String.valueOf(CurrentBehavior));
+           mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntry());
+           mNotificationsBehavior.setOnPreferenceChangeListener(this);
+
            mStatusBarDoNotDisturb = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_DONOTDISTURB);
            mStatusBarDoNotDisturb.setChecked((Settings.System.getInt(getActivity().getContentResolver(),
                    Settings.System.STATUS_BAR_DONOTDISTURB, 0) == 1));
@@ -62,6 +70,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             int maxNotIcons = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.MAX_NOTIFICATION_ICONS, maxNotIcons);
+            return true;
+        } else if (preference == mNotificationsBehavior) {
+            String val = (String) newValue;
+                     Settings.System.putInt(getContentResolver(), Settings.System.NOTIFICATIONS_BEHAVIOUR,
+            Integer.valueOf(val));
+            int index = mNotificationsBehavior.findIndexOfValue(val);
+            mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntries()[index]);
             return true;
             }
         return false;
