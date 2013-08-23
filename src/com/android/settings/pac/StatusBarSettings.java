@@ -27,11 +27,13 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
+    private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
 
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private CheckBoxPreference mStatusBarTraffic;
     private ListPreference mStatusBarMaxNotif;
     private ListPreference mNotificationsBehavior;
+    private CheckBoxPreference mStatusBarAutoHide;
 
     private Context mContext;
     private int mAllowedLocations;
@@ -63,6 +65,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
            mStatusBarTraffic = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_TRAFFIC);
            mStatusBarTraffic.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
                    Settings.System.STATUS_BAR_TRAFFIC, false));
+
+           mStatusBarAutoHide = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
+           mStatusBarAutoHide.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                   Settings.System.AUTO_HIDE_STATUSBAR, 0) == 1));
         }
 
         public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -93,6 +99,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, mStatusBarTraffic.isChecked());
             return true;
+        } else if (preference == mStatusBarAutoHide) {
+            value = mStatusBarAutoHide.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.AUTO_HIDE_STATUSBAR, value ? 1 : 0);
+             return true;
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);
