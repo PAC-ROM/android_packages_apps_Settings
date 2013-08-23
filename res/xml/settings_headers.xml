@@ -165,9 +165,9 @@
 
     <!-- Privacy -->
     <header
-        android:fragment="com.android.settings.applications.AppOpsSummary"
+        android:fragment="com.android.settings.cyanogenmod.privacyguard.PrivacyGuardManager"
         android:icon="@drawable/ic_privacy_guard"
-        android:title="@string/appops_settings_title"
+        android:title="@string/privacy_guard_manager_title"
         android:id="@+id/appops_settings" />
 
     <!-- Language -->

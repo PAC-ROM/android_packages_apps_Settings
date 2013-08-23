@@ -32,6 +32,7 @@ import android.content.pm.Signature;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,6 +47,7 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.android.settings.applications.AppOpsDetails;
 import com.android.settings.R;
 
 import java.util.ArrayList;
@@ -67,6 +69,8 @@ public class PrivacyGuardManager extends Fragment
     private Activity mActivity;
 
     private SharedPreferences mPreferences;
+
+    private static final int RESULT_APP_DETAILS = 1;
 
     // array of critical permissions where privacy guard
     // can hide the information
@@ -190,12 +194,12 @@ public class PrivacyGuardManager extends Fragment
         // on long click open app details window
         final AppInfo app = (AppInfo) parent.getItemAtPosition(position);
 
-        try {
-            startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                    Uri.parse("package:" + app.packageName)));
-        } catch (ActivityNotFoundException e) {
-            Log.e(TAG, "Couldn't open app details activity", e);
-        }
+        Bundle args = new Bundle();
+        args.putString(AppOpsDetails.ARG_PACKAGE_NAME, app.packageName);
+
+        PreferenceActivity pa = (PreferenceActivity)getActivity();
+        pa.startPreferencePanel(AppOpsDetails.class.getName(), args,
+                R.string.app_ops_settings, null, this, RESULT_APP_DETAILS);
 
         return true;
     }

@@ -5204,4 +5204,7 @@
     <string name="fullscreen_statusbar_7500">7.5 seconds</string>
     <string name="fullscreen_statusbar_10000">10 seconds</string>
 
+    <string name="privacy_guard_note_title">Note</string>
+    <string name="privacy_guard_note_summary">You can longpress on an application to open the application operations screen where you can block specific permissions</string>
+
 </resources>
