@@ -182,14 +182,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(appSwitchCategory);
         }
 
-        if (hasAnyBindableKey) {
-            mShowActionOverflow = (CheckBoxPreference)
-                prefScreen.findPreference(Settings.System.UI_FORCE_OVERFLOW_BUTTON);
-        } else {
-            prefScreen.removePreference(menuCategory);
-        }
-
         if (!hasAnyBindableKey) {
+            prefScreen.removePreference(menuCategory);
             prefScreen.removePreference(findPreference(Settings.System.HARDWARE_KEY_REBINDING));
         }
 
