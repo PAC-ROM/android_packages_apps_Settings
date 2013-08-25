@@ -186,13 +186,13 @@
 
     <!--  ACCOUNTS section -->
     <header
-            android:id="@+id/account_settings"
-            android:title="@string/account_settings" />
+        android:id="@+id/account_settings"
+        android:title="@string/account_settings" />
 
     <header
-            android:id="@+id/account_add"
-            android:title="@string/add_account_label"
-            android:icon="@drawable/ic_menu_add">
+        android:id="@+id/account_add"
+        android:title="@string/add_account_label"
+        android:icon="@drawable/ic_menu_add">
         <intent
             android:action="android.settings.ADD_ACCOUNT_SETTINGS"/>
     </header>

@@ -192,6 +192,14 @@
         android:key="system"
         android:title="@string/header_system" />
 
+    <PreferenceCategory
+        android:fragment="com.android.settings.cyanogenmod.hwui.HwuiManager"
+        android:icon="@drawable/ic_settings_dock"
+        android:title="@string/hwui_manager_title"
+        android:key="hwui"
+        android:summary="@string/header_summary_hwui" />
+
+
     <PreferenceScreen
         android:key="edge_swipe_navigation"
         android:fragment="com.android.settings.cyanogenmod.EdgeSwipeNavigation"
