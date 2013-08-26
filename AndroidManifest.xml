@@ -1935,6 +1935,8 @@
 
         <activity android:name=".cyanogenmod.HardwareKeys" />
 
+        <activity android:name=".cyanogenmod.NotificationDrawer" />
+
         <activity android:name=".PacManSettings" />
 
         <activity android:name=".initD" />

@@ -953,6 +953,12 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="hwui_note_title">Note</string>
     <string name="hwui_note_summary">When you toggle off an application it isn\'t possible for that application to use hardware acceleration this can cause some weird issues</string>
 
+    <!-- Quick access ribbon -->
+    <string name="category_quick_access">Quick Access ribbon</string>
+    <string name="title_quick_access">Show in drawer</string>
+    <string name="title_quick_access_linked">Linked layout</string>
+    <string name="summary_quick_access_linked">Use the same tiles and layout as the Quick Settings panel</string>
+
     <!-- Font size sample text. This needs to be a very short string, as it is shown in
     multiple font sizes in a limited amount of space. -->
     <string name="font_size_sample">Sample</string>
