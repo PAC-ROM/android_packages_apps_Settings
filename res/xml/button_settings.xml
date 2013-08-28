@@ -17,16 +17,16 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="hardware_key_rebinding"
-        android:title="@string/hardware_keys_enable_custom_title"
-        android:defaultValue="false" />
-
     <com.android.settings.cyanogenmod.ButtonBacklightBrightness
         android:key="button_backlight"
         android:title="@string/button_backlight_title"
         android:dialogTitle="@string/button_backlight_title"
         android:persistent="false" />
+
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="hardware_key_rebinding"
+        android:title="@string/hardware_keys_enable_custom_title"
+        android:defaultValue="false" />
 
     <PreferenceCategory
         android:key="home_key"
