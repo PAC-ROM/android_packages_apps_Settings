@@ -559,7 +559,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                 holder = new ViewHolder();
                 convertView.setTag(holder);
                 holder.title = (TextView) convertView.findViewById(com.android.internal.R.id.title);
-                holder.summary = (TextView) convertView.findViewById(com.android.internal.R.id.summary);
+//                holder.summary = (TextView) convertView.findViewById(com.android.internal.R.id.summary);
                 holder.icon = (ImageView) convertView.findViewById(R.id.icon);
             }
             PackageItem applicationInfo = getItem(position);
@@ -567,7 +567,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
             holder.title.setText(applicationInfo.title);
             holder.icon.setImageDrawable(applicationInfo.icon);
 
-            boolean needSummary = applicationInfo.activityTitles.size() > 0;
+/*            boolean needSummary = applicationInfo.activityTitles.size() > 0;
             if (applicationInfo.activityTitles.size() == 1) {
                 if (TextUtils.equals(applicationInfo.title, applicationInfo.activityTitles.first())) {
                     needSummary = false;
@@ -579,7 +579,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
                 holder.summary.setVisibility(View.VISIBLE);
             } else {
                 holder.summary.setVisibility(View.GONE);
-            }
+            } */
 
             return convertView;
         }
@@ -587,7 +587,7 @@ public class NotificationLightSettings extends SettingsPreferenceFragment implem
 
     static class ViewHolder {
         TextView title;
-        TextView summary;
+//        TextView summary;
         ImageView icon;
     }
 }
