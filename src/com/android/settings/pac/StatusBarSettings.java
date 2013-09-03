@@ -2,6 +2,7 @@ package com.android.settings.pac;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.ContentResolver;
 import android.content.res.Resources;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -26,6 +27,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_MAX_NOTIF = "status_bar_max_notifications";
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+    private static final String KEY_SMS_BREATH = "pref_key_sms_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
     private static final String PREF_FULLSCREEN_STATUSBAR = "fullscreen_statusbar";
@@ -36,6 +38,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mFullScreenStatusBar;
     private ListPreference mStatusBarMaxNotif;
     private ListPreference mNotificationsBehavior;
+    private CheckBoxPreference mSMSBreath;
     private ListPreference mStatusBarAutoHide;
     private ListPreference mFullScreenStatusBarTimeout;
 
@@ -45,6 +48,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ContentResolver resolver = getContentResolver();
 
         addPreferencesFromResource(R.xml.status_bar_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -61,6 +65,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mNotificationsBehavior.setValue(String.valueOf(CurrentBehavior));
         mNotificationsBehavior.setSummary(mNotificationsBehavior.getEntry());
         mNotificationsBehavior.setOnPreferenceChangeListener(this);
+
+        mSMSBreath = (CheckBoxPreference) findPreference(KEY_SMS_BREATH);
+        mSMSBreath.setChecked(Settings.System.getInt(resolver,
+                Settings.System.SMS_BREATH, 0) == 1);
 
         mStatusBarAutoHide = (ListPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
         int statusBarAutoHideValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -125,6 +133,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         } else if (preference == mStatusBarTraffic) {
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, mStatusBarTraffic.isChecked());
+            return true;
+        } else if (preference == mSMSBreath) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.SMS_BREATH,
+                    mSMSBreath.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mFullScreenStatusBar) {
             Settings.System.putInt(getActivity().getContentResolver(),
