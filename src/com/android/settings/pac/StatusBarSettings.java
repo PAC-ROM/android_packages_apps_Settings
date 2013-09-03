@@ -28,6 +28,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
     private static final String KEY_SMS_BREATH = "pref_key_sms_breath";
+    private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
     private static final String STATUS_BAR_AUTO_HIDE = "status_bar_auto_hide";
     private static final String PREF_FULLSCREEN_STATUSBAR = "fullscreen_statusbar";
@@ -39,6 +40,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarMaxNotif;
     private ListPreference mNotificationsBehavior;
     private CheckBoxPreference mSMSBreath;
+    private CheckBoxPreference mMissedCallBreath;
     private ListPreference mStatusBarAutoHide;
     private ListPreference mFullScreenStatusBarTimeout;
 
@@ -69,6 +71,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mSMSBreath = (CheckBoxPreference) findPreference(KEY_SMS_BREATH);
         mSMSBreath.setChecked(Settings.System.getInt(resolver,
                 Settings.System.SMS_BREATH, 0) == 1);
+
+        mMissedCallBreath = (CheckBoxPreference) findPreference(KEY_MISSED_CALL_BREATH);
+        mMissedCallBreath.setChecked(Settings.System.getInt(resolver,
+                Settings.System.MISSED_CALL_BREATH, 0) == 1);
 
         mStatusBarAutoHide = (ListPreference) prefSet.findPreference(STATUS_BAR_AUTO_HIDE);
         int statusBarAutoHideValue = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
@@ -134,16 +140,21 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, mStatusBarTraffic.isChecked());
             return true;
-        } else if (preference == mSMSBreath) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.SMS_BREATH,
-                    mSMSBreath.isChecked() ? 1 : 0);
-            return true;
         } else if (preference == mFullScreenStatusBar) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FULLSCREEN_STATUSBAR,
                     mFullScreenStatusBar.isChecked() ? 1 : 0);
             return true;
+        } else if (preference == mSMSBreath) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.SMS_BREATH,
+                    mSMSBreath.isChecked() ? 1 : 0);
+           return true;
+         } else if (preference == mMissedCallBreath) {
+            Settings.System.putInt(mContext.getContentResolver(),
+                    Settings.System.MISSED_CALL_BREATH,
+                    mMissedCallBreath.isChecked() ? 1 : 0);
+           return true;
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);

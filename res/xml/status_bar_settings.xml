@@ -28,6 +28,12 @@
         android:defaultValue="false" />
 
     <CheckBoxPreference
+        android:key="missed_call_breath"
+        android:title="@string/missed_call_breath"
+        android:summary="@string/missed_call_breath_summary"
+        android:defaultValue="false" />
+
+    <CheckBoxPreference
         android:key="status_bar_traffic"
         android:title="@string/show_network_speed"
         android:summary="@string/show_network_speed_summary" />
