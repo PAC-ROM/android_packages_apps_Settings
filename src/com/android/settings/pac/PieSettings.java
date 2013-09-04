@@ -76,11 +76,11 @@ public class PieSettings extends SettingsPreferenceFragment
 
         mPieKillTask = (CheckBoxPreference) prefSet.findPreference(PIE_KILLTASK);
         mPieKillTask.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_KILL_TASK, 1) == 1);
+                Settings.System.PIE_KILL_TASK, 0) == 1);
 
         mPieAppWindow = (CheckBoxPreference) prefSet.findPreference(PIE_APPWINDOW);
         mPieAppWindow.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.PIE_APP_WINDOW, 1) == 1);
+                Settings.System.PIE_APP_WINDOW, 0) == 1);
 
         mPieSearch = (CheckBoxPreference) prefSet.findPreference(PIE_SEARCH);
         mPieSearch.setChecked(Settings.System.getInt(mContext.getContentResolver(),
