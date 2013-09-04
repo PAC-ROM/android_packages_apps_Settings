@@ -75,4 +75,10 @@
         android:key="pie_search"
         android:title="@string/pie_search_title"
         android:summary="@string/pie_search_summary" />
+
+    <CheckBoxPreference
+        android:key="pie_lastapp"
+        android:title="@string/pie_lastapp_title"
+        android:summary="@string/pie_lastapp_summary" />
+
 </PreferenceScreen>

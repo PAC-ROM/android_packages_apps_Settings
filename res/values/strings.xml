@@ -4817,7 +4817,8 @@
 
     <string name="pie_power_title">Power button</string>
     <string name="pie_power_summary">Enable power button on Pie</string>
-
+    <string name="pie_lastapp_title">Last App button</string>
+    <string name="pie_lastapp_summary">Enable last app button on Pie</string>
     <string name="pie_size_title">Pie size</string>
     <string name="pie_size_summary">Define pie controls size</string>
     <string name="pie_size_small">Small</string>
