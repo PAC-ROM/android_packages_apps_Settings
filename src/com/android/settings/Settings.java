@@ -16,9 +16,6 @@
 
 package com.android.settings;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Intent;
@@ -31,6 +28,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.DisplayMetrics;
@@ -44,19 +42,23 @@ import android.view.LayoutInflater;
 import android.util.ExtendedPropertiesUtils;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Settings extends Activity {
 
-    private ViewPager mPager;
-    private List<View> listViews;
-    private TextView pac_tab, system_tab;
-    private int offset = 0;
-    private int currIndex = 0;
-    private int bmpW;
-    private LocalActivityManager localManager;
-    private LayoutInflater mInflater;
-    private ViewPagerAdapter mPagerAdapter;
     private static final String[] titles = { "System", "PAC-Man" };
+    private LayoutInflater mInflater;
+    private List<View> listViews;
+    private LocalActivityManager localManager;
+    private PagerTabStrip mTabStrip;
+    private TextView pac_tab, system_tab;
+    private ViewPager mPager;
+    private ViewPagerAdapter mPagerAdapter;
+    private int bmpW;
+    private int currIndex = 0;
     private int mLayout = 0;
+    private int offset = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -95,6 +97,8 @@ public class Settings extends Activity {
         mPager.setAdapter(mPagerAdapter);
         mPager.setCurrentItem(0);
         mPager.setOnPageChangeListener(new MyOnPageChangeListener());
+        mTabStrip = (PagerTabStrip) findViewById(R.id.pager_title_strip);
+        mTabStrip.setTabIndicatorColorResource(android.R.color.holo_blue_light);
     }
 
     public class ViewPagerAdapter extends PagerAdapter {
