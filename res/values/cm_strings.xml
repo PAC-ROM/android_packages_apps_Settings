@@ -661,6 +661,7 @@
     <string name="lockscreen_buttons_previous">Previous song</string>
     <string name="lockscreen_buttons_playpause">Play/Pause music</string>
     <string name="lockscreen_buttons_toggle_sound">Toggle sound</string>
+    <string name="lockscreen_buttons_sleep">Go to sleep</string>
 
     <string name="title_tile_expanded_desktop">Expanded desktop</string>
     <string name="title_tile_network_adb">ADB over network</string>
