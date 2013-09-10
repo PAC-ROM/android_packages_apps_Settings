@@ -663,6 +663,7 @@
     <string name="lockscreen_buttons_toggle_sound">Toggle sound</string>
 
     <string name="title_tile_expanded_desktop">Expanded desktop</string>
+    <string name="title_tile_network_adb">ADB over network</string>
 
     <string name="title_dynamic_dock_battery">Dock battery</string>
 
