@@ -23,7 +23,7 @@
         android:dialogTitle="@string/button_backlight_title"
         android:persistent="false" />
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+    <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="hardware_key_rebinding"
         android:title="@string/hardware_keys_enable_custom_title"
         android:defaultValue="false" />

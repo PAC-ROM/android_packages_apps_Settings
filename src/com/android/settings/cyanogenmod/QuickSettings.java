@@ -51,6 +51,7 @@ import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
@@ -84,7 +85,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private ListPreference mNetworkMode;
     private ListPreference mScreenTimeoutMode;
     private CheckBoxPreference mCollapsePanel;
-    private CheckBoxPreference mDisablePanel;
+    private SwitchPreference mDisablePanel;
     private ListPreference mQuickPulldown;
     private ListPreference mNoNotificationsPulldown;
     private CheckBoxPreference mFloatingWindow;
@@ -112,7 +113,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mDynamicTiles = (PreferenceCategory) prefSet.findPreference(DYNAMIC_TILES);
         mQuickPulldown = (ListPreference) prefSet.findPreference(QUICK_PULLDOWN);
         mNoNotificationsPulldown = (ListPreference) prefSet.findPreference(NO_NOTIFICATIONS_PULLDOWN);
-        mDisablePanel = (CheckBoxPreference) prefSet.findPreference(DISABLE_PANEL);
+        mDisablePanel = (SwitchPreference) prefSet.findPreference(DISABLE_PANEL);
         mQsTilesStyle = (PreferenceScreen) prefSet.findPreference(QS_TILES_STYLE);
         mTilePicker = (PreferenceScreen) prefSet.findPreference(TILE_PICKER);
         mFloatingWindow = (CheckBoxPreference) prefSet.findPreference(FLOATING_WINDOW);
@@ -208,7 +209,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         if (!getResources().getBoolean(R.bool.has_led_flash)) {
             QuickSettingsUtil.TILES.remove(TILE_TORCH);
         }
-      if (!Utils.isPhone(getActivity())) {
+        if (!Utils.isPhone(getActivity())) {
             if (mQuickPulldown != null) {
                 mGeneralSettings.removePreference(mQuickPulldown);
             }
@@ -227,6 +228,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             boolean disablePanel = Settings.System.getInt(resolver,
                 Settings.System.QS_DISABLE_PANEL, 0) == 0;
             mDisablePanel.setChecked(disablePanel);
+            mDisablePanel.setOnPreferenceChangeListener(this);
 
             mNoNotificationsPulldown.setOnPreferenceChangeListener(this);
             int noNotificationsPulldownValue = Settings.System.getInt(resolver, Settings.System.QS_NO_NOTIFICATION_PULLDOWN, 0);
@@ -239,11 +241,7 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mDisablePanel) {
-            Settings.System.putInt(resolver, Settings.System.QS_DISABLE_PANEL,
-                    mDisablePanel.isChecked() ? 0 : 1);
-            setEnablePreferences(mDisablePanel.isChecked());
-        } else if (preference == mFloatingWindow) {
+        if (preference == mFloatingWindow) {
             Settings.System.putInt(resolver, Settings.System.QS_FLOATING_WINDOW,
                     mFloatingWindow.isChecked() ? 1 : 0);
             return true;
@@ -297,6 +295,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             int index = mScreenTimeoutMode.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.EXPANDED_SCREENTIMEOUT_MODE, value);
             mScreenTimeoutMode.setSummary(mScreenTimeoutMode.getEntries()[index]);
+            return true;
+        } else if (preference == mDisablePanel) {
+            boolean value = ((Boolean)newValue).booleanValue();
+            Settings.System.putInt(resolver,
+                    Settings.System.QS_DISABLE_PANEL,
+                    value ? 0 : 1);
+            setEnablePreferences(mDisablePanel.isChecked());
             return true;
         }
         return false;
@@ -355,22 +360,56 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
     private void setEnablePreferences(boolean status) {
-        if (mRingMode != null)
+        if (status == true) {
+            status = false;
+        } else if (status == false) {
+            status = true;
+        }
+        if (mRingMode != null) {
             mRingMode.setEnabled(status);
-        if (mNetworkMode != null)
+        }
+        if (mNetworkMode != null) {
             mNetworkMode.setEnabled(status);
-        if (mScreenTimeoutMode != null)
+        }
+        if (mScreenTimeoutMode != null) {
             mScreenTimeoutMode.setEnabled(status);
-        if (mNoNotificationsPulldown != null)
+        }
+        if (mNoNotificationsPulldown != null) {
             mNoNotificationsPulldown.setEnabled(status);
-        if (mCollapsePanel != null)
+        }
+        if (mCollapsePanel != null) {
             mCollapsePanel.setEnabled(status);
-        if (mQuickPulldown != null)
+        }
+        if (mQuickPulldown != null) {
             mQuickPulldown.setEnabled(status);
-        if (mQsTilesStyle != null)
+        }
+        if (mQsTilesStyle != null) {
             mQsTilesStyle.setEnabled(status);
-        if (mTilePicker != null)
+        }
+        if (mTilePicker != null) {
             mTilePicker.setEnabled(status);
+        }
+        if (mFloatingWindow != null) {
+            mFloatingWindow.setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_COLLAPSE_PANEL) != null) {
+            findPreference(Settings.System.QS_COLLAPSE_PANEL).setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_DYNAMIC_ALARM) != null) {
+            findPreference(Settings.System.QS_DYNAMIC_ALARM).setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_DYNAMIC_BUGREPORT) != null) {
+            findPreference(Settings.System.QS_DYNAMIC_BUGREPORT).setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_DYNAMIC_IME) != null) {
+            findPreference(Settings.System.QS_DYNAMIC_IME).setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_DYNAMIC_USBTETHER) != null) {
+            findPreference(Settings.System.QS_DYNAMIC_USBTETHER).setEnabled(status);
+        }
+        if (findPreference(Settings.System.QS_DYNAMIC_WIFI) != null) {
+            findPreference(Settings.System.QS_DYNAMIC_WIFI).setEnabled(status);
+        }
     }
 
 }

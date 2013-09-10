@@ -21,7 +21,7 @@
         android:key="pref_general_settings"
         android:title="@string/title_general" >
 
-        <CheckBoxPreference
+        <SwitchPreference
             android:key="disable_quick_settings"
             android:title="@string/disable_quick_settings_panel"
             android:defaultValue="true"

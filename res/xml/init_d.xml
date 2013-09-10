@@ -2,32 +2,32 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <PreferenceCategory android:title="@string/pt_general" >
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="zipalign_apks"
             android:summary="@string/ps_zipalign_apks"
             android:title="@string/pt_zipalign_apks" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="fix_permissions"
             android:summary="@string/ps_fix_permissions"
             android:title="@string/pt_fix_permissions" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="enable_sysctl"
             android:summary="@string/ps_enable_sysctl"
             android:title="@string/pt_enable_sysctl" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="clear_data_cache"
             android:summary="@string/ps_clear_data_cache"
             android:title="@string/pt_clear_data_cache" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="enable_cron"
             android:summary="@string/ps_enable_cron"
             android:title="@string/pt_enable_cron" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="sd_boost"
             android:summary="@string/ps_sd_boost"
@@ -37,7 +37,7 @@
             android:dialogTitle="@string/pt_read_ahead_kb"
             android:key="read_ahead_kb"
             android:title="@string/pt_read_ahead_kb" />
-        <CheckBoxPreference
+        <SwitchPreference
             android:defaultValue="true"
             android:key="file_system_speedups"
             android:summary="@string/ps_file_system_speedups"

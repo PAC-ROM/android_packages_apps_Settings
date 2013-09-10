@@ -19,6 +19,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -39,7 +40,7 @@ public class Weather extends AOKPPreferenceFragment implements
 
     public static final String TAG = "Weather";
 
-    CheckBoxPreference mEnableWeather;
+    SwitchPreference mEnableWeather;
     CheckBoxPreference mUseCustomLoc;
     CheckBoxPreference mUseCelcius;
     ListPreference mStatusBarLocation;
@@ -81,9 +82,10 @@ public class Weather extends AOKPPreferenceFragment implements
         mCustomWeatherLoc
                 .setSummary(WeatherPrefs.getCustomLocation(mContext));
 
-        mEnableWeather = (CheckBoxPreference) findPreference("enable_weather");
+        mEnableWeather = (SwitchPreference) findPreference("enable_weather");
         mEnableWeather.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.USE_WEATHER, 0) == 1);
+        mEnableWeather.setOnPreferenceChangeListener(this);
 
         mUseCustomLoc = (CheckBoxPreference) findPreference(WeatherPrefs.KEY_USE_CUSTOM_LOCATION);
         mUseCustomLoc.setChecked(WeatherPrefs.getUseCustomLocation(mContext));
@@ -165,26 +167,7 @@ public class Weather extends AOKPPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mEnableWeather) {
-            // _stop_ alarm or start service
-            boolean check = ((CheckBoxPreference) preference).isChecked();
-            Intent i = new Intent(getActivity().getApplicationContext(),
-                    WeatherRefreshService.class);
-            i.setAction(WeatherService.INTENT_WEATHER_REQUEST);
-            i.putExtra(WeatherService.INTENT_EXTRA_ISMANUAL, true);
-            PendingIntent weatherRefreshIntent = PendingIntent.getService(getActivity(), 0, i, 0);
-            if (!check) {
-                AlarmManager alarms = (AlarmManager) getActivity().getSystemService(
-                        Context.ALARM_SERVICE);
-                alarms.cancel(weatherRefreshIntent);
-            } else {
-                getActivity().startService(i);
-            }
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.USE_WEATHER,
-                    check ? 1 : 0);
-            return true;
-        } else if (preference == mUseCustomLoc) {
+        if (preference == mUseCustomLoc) {
             return WeatherPrefs.setUseCustomLocation(mContext,
                     ((CheckBoxPreference) preference).isChecked());
         } else if (preference == mUseCelcius) {
@@ -198,7 +181,30 @@ public class Weather extends AOKPPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean result = false;
 
-        if (preference == mWeatherSyncInterval) {
+        if (preference == mEnableWeather) {
+            boolean value = ((Boolean)newValue).booleanValue();
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.USE_WEATHER,
+                    value ? 1 : 0);
+
+            boolean check = ((SwitchPreference) preference).isChecked();
+
+            Intent i = new Intent(getActivity().getApplicationContext(),
+                    WeatherRefreshService.class);
+            i.setAction(WeatherService.INTENT_WEATHER_REQUEST);
+            i.putExtra(WeatherService.INTENT_EXTRA_ISMANUAL, true);
+            PendingIntent weatherRefreshIntent = PendingIntent.getService(getActivity(), 0, i, 0);
+            if (!check) {
+                AlarmManager alarms = (AlarmManager) getActivity().getSystemService(
+                        Context.ALARM_SERVICE);
+                alarms.cancel(weatherRefreshIntent);
+            } else {
+                getActivity().startService(i);
+            }
+
+            return true;
+
+        } else if (preference == mWeatherSyncInterval) {
             int newVal = Integer.parseInt((String) newValue);
             preference.setSummary(newValue
                     + getResources().getString(R.string.weather_refresh_interval_minutes));
