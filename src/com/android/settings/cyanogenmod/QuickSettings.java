@@ -360,11 +360,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
     }
     private void setEnablePreferences(boolean status) {
-        if (status == true) {
-            status = false;
-        } else if (status == false) {
-            status = true;
-        }
         if (mRingMode != null) {
             mRingMode.setEnabled(status);
         }
