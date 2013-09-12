@@ -444,8 +444,6 @@
     <string name="hide_navbar_timeout_15000">15 Sec</string>
     <string name="hide_navbar_timeout_30000">30 Sec</string>
     <string name="navbar_buttons_instructions">Press icon to select actions or custom icon</string>
-    <string name="navbar_delete_menu">Delete button</string>
-    <string name="navbar_buttons_instructions">Press icon to select actions or custom icon</string>
     <string name="navbar_title_menu">Button options</string>
     <string name="navbar_actiontitle_menu">Action: %1$s</string>
     <string name="navbar_longpress_menu">Longpress: %1$s</string>
