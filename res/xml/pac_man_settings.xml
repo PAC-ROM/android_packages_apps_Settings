@@ -129,6 +129,13 @@
         android:summary="@string/ribbon_settings_summary" />
 
     <PreferenceScreen
+        android:id="@+id/animations"
+        android:fragment="com.android.settings.aokp.fragments.AnimationControls"
+        android:title="@string/title_animation_controls"
+        android:icon="@drawable/ic_rom_control_animations"
+         android:summary="@string/header_summary_vibrations" />
+
+    <PreferenceScreen
         android:key="pie_settings"
         android:fragment="com.android.settings.pac.PieSettings"
         android:title="@string/pie_settings_title"

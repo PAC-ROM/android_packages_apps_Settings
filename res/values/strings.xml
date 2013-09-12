@@ -5330,4 +5330,21 @@
     <string name="less_notification_sounds_title">Less Frequent Notification Sounds</string>
     <string name="less_notification_sounds_summary">Limit the notification sounds of each app to only play once per set time period</string>
 
+    <!-- Animation Controls -->
+    <string name="title_animation_controls">Animation Controls</string>
+    <string name="activity_open_title">Open In-App Activity Animation</string>
+    <string name="activity_close_title">Close In-App Activity Animation</string>
+    <string name="task_open_title">Launch From In App Animation</string>
+    <string name="task_close_title">Return To Previous Animation</string>
+    <string name="task_move_to_front_title">Move To Front Animation</string>
+    <string name="task_move_to_back_title">Move To Back Animation</string>
+    <string name="wallpaper_open_title">Return To Homescreen Animation</string>
+    <string name="wallpaper_close_title">Launch From Homescreen Aniamtion</string>
+    <string name="wallpaper_intra_open_title">Recents Page Open Animation</string>
+    <string name="wallpaper_intra_close_title">Recents Page Close Animation</string>
+    <string name="animation_duration_title">Animation Duration</string>
+    <string name="title_animation_no_override">Prevent App Overrides</string>
+    <string name="summary_animation_no_override">Prevent apps from overriding transitions.</string>
+    <string name="animation_duration_default">Default</string>
+
 </resources>
