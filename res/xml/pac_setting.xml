@@ -220,6 +220,20 @@
         android:title="@string/header_system" />
 
     <header
+        android:id="@+id/screen_state_service"
+        android:fragment="com.android.settings.aokp.fragments.ScreenStateToggles"
+        android:icon="@drawable/ic_rom_control_screen_state"
+        android:title="@string/screen_state_toggles_title"
+        android:summary="@string/screen_state_toggles_summary" />
+
+    <header
+        android:id="@+id/wakelock_blocker"
+        android:fragment="com.android.settings.aokp.fragments.WakeLockBlocker"
+        android:icon="@drawable/ic_rom_control_wakelock_blocker"
+        android:title="@string/wakelock_blocker"
+        android:summary="@string/wakelock_blocker_header_summary" />
+
+    <header
         android:fragment="com.android.settings.cyanogenmod.hwui.HwuiManager"
         android:icon="@drawable/ic_settings_dock"
         android:title="@string/hwui_manager_title"
