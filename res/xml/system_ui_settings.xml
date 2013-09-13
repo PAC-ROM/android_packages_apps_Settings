@@ -39,10 +39,20 @@
         android:fragment="com.android.settings.pac.Weather"
         android:title="@string/title_weather"/>
 
-     <header
+    <PreferenceScreen
         android:key="@+id/initD"
         android:fragment="com.android.settings.InitD"
         android:title="@string/init_d_title" />
+
+     <PreferenceScreen
+        android:key="screen_state_service"
+        android:fragment="com.android.settings.aokp.fragments.ScreenStateToggles"
+        android:title="@string/screen_state_toggles_title" />
+
+    <PreferenceScreen
+        android:key="wakelock_blocker"
+        android:fragment="com.android.settings.aokp.fragments.WakeLockBlocker"
+        android:title="@string/wakelock_blocker" />
 
     <PreferenceCategory
         android:key="navigation_bar"
