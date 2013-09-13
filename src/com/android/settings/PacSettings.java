@@ -107,6 +107,7 @@ public class PacSettings extends PreferenceActivity
             R.id.wifi_settings,
             R.id.bluetooth_settings,
             R.id.data_usage_settings,
+            R.id.button_settings,
             R.id.wireless_settings,
             R.id.device_section,
             R.id.sound_settings,
@@ -510,7 +511,7 @@ public class PacSettings extends PreferenceActivity
                 if (mVibrator == null || !mVibrator.hasVibrator()) {
                     target.remove(i);
                 }
-            } else if (header.id == R.id.hardware_keys) {
+            } else if (header.id == R.id.button_settings) {
                 if (!hasButtons()) {
                     target.remove(i);
                 }
