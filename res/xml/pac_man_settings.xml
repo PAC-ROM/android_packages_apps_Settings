@@ -149,6 +149,13 @@
         android:icon="@drawable/ic_rom_control_halo"
         android:summary="@string/header_summary_halo" />
 
+    <PreferenceScreen
+        android:key="active_display"
+        android:fragment="com.android.settings.chameleonos.ActiveDisplaySettings"
+        android:title="@string/ad_settings_title"
+        android:icon="@drawable/ic_rom_control_ad"
+        android:summary="@string/ad_summary" />
+
     <PreferenceCategory
         android:key="statusbar"
         android:title="@string/header_statusbar" />

@@ -72,6 +72,7 @@
     <string name="header_summary_hwui">@null</string>
     <string name="ribbon_settings_summary">@null</string>
     <string name="app_bar_settings_summary">@null</string>
+    <string name="ad_summary">@null</string>
 
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Reset NavBar</string>
