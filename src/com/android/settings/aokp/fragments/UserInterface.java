@@ -91,7 +91,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     private static final CharSequence PREF_MISC = "misc";
     private static final CharSequence PREF_DISPLAY = "display";
     private static final CharSequence PREF_RECENTS_RAM_BAR = "recents_ram_bar";
-    private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
+    private static final CharSequence PREF_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     //private static final int REQUEST_PICK_CUSTOM_ICON = 202; //unused
@@ -165,6 +165,13 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mVibrateOnExpand = (CheckBoxPreference) findPreference(PREF_VIBRATE_NOTIF_EXPAND);
         mVibrateOnExpand.setChecked(Settings.System.getBoolean(mContentResolver,
                 Settings.System.VIBRATE_NOTIF_EXPAND, true));
+
+	mLowBatteryWarning = (ListPreference) findPreference(PREF_LOW_BATTERY_WARNING_POLICY);
+	int lowBatteryWarning = Settings.System.getInt(mContentResolver, Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
+	mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
+	mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
+	mLowBatteryWarning.setOnPreferenceChangeListener(this);
+
         if (!hasVibration) {
             ((PreferenceGroup)findPreference(PREF_NOTIFICATION_VIBRATE)).removePreference(mVibrateOnExpand);
         }
@@ -172,9 +179,13 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mLongPressToKill = (CheckBoxPreference)findPreference(PREF_LONGPRESS_TO_KILL);
         mLongPressToKill.setChecked(Settings.System.getInt(mContentResolver,
                 Settings.System.KILL_APP_LONGPRESS_BACK, 0) == 1);
+
+
         if (!hasHardwareButtons) {
             getPreferenceScreen().removePreference(((PreferenceGroup) findPreference(PREF_MISC)));
-        }
+        } else {
+	    // do nothing
+	}
 
         mRecentKillAll = (CheckBoxPreference) findPreference(PREF_RECENT_KILL_ALL);
         mRecentKillAll.setChecked(Settings.System.getBoolean(mContentResolver,
@@ -187,13 +198,6 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mWakeUpWhenPluggedOrUnplugged = (CheckBoxPreference) findPreference(PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED);
         mWakeUpWhenPluggedOrUnplugged.setChecked(Settings.System.getBoolean(mContentResolver,
                         Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED, true));
-
-        mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
-        int lowBatteryWarning = Settings.System.getInt(mContentResolver,
-                                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
-        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
-        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
-        mLowBatteryWarning.setOnPreferenceChangeListener(this);
 
         // hide option if device is already set to never wake up
         if(!mContext.getResources().getBoolean(
