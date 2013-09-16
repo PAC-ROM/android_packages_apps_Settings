@@ -124,6 +124,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private DialogInterface mWarnInstallApps;
     private CheckBoxPreference mToggleVerifyApps;
     private CheckBoxPreference mPowerButtonInstantlyLocks;
+    private CheckBoxPreference lockBeforeUnlock;
 
     private Preference mNotificationAccess;
 
@@ -286,8 +287,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     findPreference(Settings.System.HOME_UNLOCK_SCREEN);
             CheckBoxPreference vibratePref = (CheckBoxPreference)
                     findPreference(Settings.System.LOCKSCREEN_VIBRATE_ENABLED);
-            CheckBoxPreference lockBeforeUnlock = (CheckBoxPreference)
-                    findPreference(Settings.Secure.LOCK_BEFORE_UNLOCK);
+            lockBeforeUnlock = (CheckBoxPreference)
+                    root.findPreference(Settings.Secure.LOCK_BEFORE_UNLOCK);
+
+            lockBeforeUnlock.setChecked(Settings.Secure.getInt(resolver, Settings.Secure.LOCK_BEFORE_UNLOCK, 0) == 1);
 
             // disable lock options if lock screen set to NONE
             // or if using pattern as a primary lock screen or
@@ -745,6 +748,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
             lockPatternUtils.setVisibleDotsEnabled(isToggled(preference));
         } else if (KEY_VISIBLE_GESTURE.equals(key)) {
             lockPatternUtils.setVisibleGestureEnabled(isToggled(preference));
+        } else if (preference == lockBeforeUnlock) {
+            Settings.Secure.putInt(getContentResolver(),
+                     Settings.Secure.LOCK_BEFORE_UNLOCK, lockBeforeUnlock.isChecked() ? 1 : 0);
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             lockPatternUtils.setPowerButtonInstantlyLocks(isToggled(preference));
         } else if (LOCK_SYNC_ENCRYPTION_PASSWORD.equals(key)) {
