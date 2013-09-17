@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.notificationshortcuts;
+package com.android.settings.util;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -48,7 +48,7 @@ public class IconPicker {
     private Activity mParent;
     private Resources mResources;
     private OnIconPickListener mIconListener;
-    private static final String ICON_ACTION = "com.cyanogenmod.ACTION_PICK_ICON";
+    private static final String ICON_ACTION = "com.slim.ACTION_PICK_ICON";
     public static final String RESOURCE_NAME = "resource_name";
     public static final String PACKAGE_NAME = "package_name";
     public static final int REQUEST_PICK_SYSTEM = 0;
@@ -72,7 +72,7 @@ public class IconPicker {
     public void pickIcon(final int fragmentId, final File image) {
         Intent iconPack = new Intent(ICON_ACTION);
         ArrayList<String> items = new ArrayList<String>();
-        items.add(mResources.getString(R.string.notification_shortcuts_icon_picker_stock_icons_title));
+        items.add(mResources.getString(R.string.icon_picker_system_icons_title));
         items.add(mResources.getString(R.string.icon_picker_gallery_title));
         ComponentName aInfo = iconPack.resolveActivity(mParent.getPackageManager());
         if (aInfo != null) {
@@ -146,8 +146,8 @@ public class IconPicker {
         TypedArray icons;
 
         public IconAdapter() {
-            labels = mResources.getStringArray(R.array.notification_shortcuts_icon_picker_labels);
-            icons = mResources.obtainTypedArray(R.array.notification_shortcuts_icon_picker_icons);
+            labels = mResources.getStringArray(R.array.lockscreen_icon_picker_labels);
+            icons = mResources.obtainTypedArray(R.array.lockscreen_icon_picker_icons);
         }
 
         @Override
@@ -181,10 +181,9 @@ public class IconPicker {
             TextView tt = (TextView) iView.findViewById(android.R.id.text1);
             tt.setText(labels[position]);
             Drawable ic = ((Drawable) getItem(position)).mutate();
-            int bound = mParent.getResources().getDimensionPixelSize(R.dimen.notification_shortcut_picker_left_padding);
+            int bound = mParent.getResources().getDimensionPixelSize(R.dimen.shortcut_picker_left_padding);
             ic.setBounds(0,  0, bound, bound);
             tt.setCompoundDrawables(ic, null, null, null);
-            tt.setCompoundDrawablePadding(36);
             return iView;
         }
 

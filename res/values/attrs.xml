@@ -138,4 +138,5 @@
         <attr name="unitsLeft" format="string" />
         <attr name="unitsRight" format="string" />
     </declare-styleable>
+    
 </resources>
