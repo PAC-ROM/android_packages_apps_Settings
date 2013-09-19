@@ -123,16 +123,22 @@ public class QuickSettings extends SettingsPreferenceFragment implements
 
         // Remove unsupported options
         if (!QSUtils.deviceSupportsImeSwitcher(getActivity())) {
-            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_IME));
+            if (findPreference(Settings.System.QS_DYNAMIC_IME) != null) {
+                mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_IME));
+            }
         }
         if (!QSUtils.deviceSupportsUsbTether(getActivity())) {
-            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_USBTETHER));
+            if (findPreference(Settings.System.QS_DYNAMIC_USBTETHER) != null) {
+                mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_USBTETHER));
+            }
         }
         if (!QSUtils.deviceSupportsWifiDisplay(getActivity())) {
-            mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_WIFI));
+            if (findPreference(Settings.System.QS_DYNAMIC_WIFI) != null) {
+                mDynamicTiles.removePreference(findPreference(Settings.System.QS_DYNAMIC_WIFI));
+            }
         }
 
-            }
+    }
 
     @Override
     public void onResume() {
