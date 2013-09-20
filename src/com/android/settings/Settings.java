@@ -19,6 +19,7 @@ package com.android.settings;
 import android.app.Activity;
 import android.app.LocalActivityManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -47,6 +48,7 @@ import java.util.List;
 
 public class Settings extends Activity {
 
+	private static final String SHAREDPREF_SETTINGS_SPLITUP = "settings_splitup";
     private static final String[] titles = { "System", "PAC-Man" };
     private LayoutInflater mInflater;
     private List<View> listViews;
@@ -63,24 +65,30 @@ public class Settings extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        SharedPreferences SETTINGS_SPLITUP = getSharedPreferences(SHAREDPREF_SETTINGS_SPLITUP, 0);
+        int settings_mode = SETTINGS_SPLITUP.getInt("settings_splitup", 1);
 
         mLayout = ExtendedPropertiesUtils.getActualProperty("com.android.settings.layout");
         if (mLayout == 720) {
-            Intent intent=new Intent(this, MainSetting.class);
+            Intent intent = new Intent(this, MainSetting.class);
             intent.addCategory(Intent.CATEGORY_HOME);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             finish();
             return;
+        } else if (settings_mode == 0) {
+        	Intent mTabs = new Intent(this, SettingsTabs.class);
+        	startActivity(mTabs);
+        	finish();
+        } else if (settings_mode == 1) {
+        	setContentView(R.layout.mainsetting);
+            localManager = new LocalActivityManager(this, true);
+            localManager.dispatchCreate(savedInstanceState);
+
+            InitViewPager();
         }
-
-        setContentView(R.layout.mainsetting);
-        localManager = new LocalActivityManager(this, true);
-        localManager.dispatchCreate(savedInstanceState);
-
-        InitViewPager();
-
     }
 
     private void InitViewPager() {

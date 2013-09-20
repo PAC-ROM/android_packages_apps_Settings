@@ -99,5 +99,15 @@
             android:summary="@string/longpress_to_kill_summary" />
 
     </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:key="settins_ui"
+        android:title="@string/settings_ui">
+
+        <PreferenceScreen
+            android:key="settings_splitup"
+            android:title="@string/settings_splitup" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>

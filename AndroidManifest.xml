@@ -2114,7 +2114,6 @@
             </intent-filter>
         </activity>
 
-
         <service android:name=".aokp.service.BootService"/>
         <service android:name=".aokp.service.HeadphoneService"/>
         <service android:name=".aokp.service.FlipService"/>
@@ -2123,6 +2122,8 @@
             android:exported="false"/>
         <service android:name=".aokp.weather.WeatherRefreshService" />
         <service android:name=".aokp.weather.WeatherService" />
+        
+        <activity android:name=".SettingsTabs" />
 
     </application>
 </manifest>

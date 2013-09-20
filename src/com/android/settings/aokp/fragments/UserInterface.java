@@ -2,10 +2,12 @@ package com.android.settings.aokp.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
@@ -45,6 +47,7 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.android.settings.aokp.AOKPPreferenceFragment;
 import com.android.settings.R;
 import com.android.settings.aokp.service.CodeReceiver;
@@ -92,6 +95,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     private static final CharSequence PREF_DISPLAY = "display";
     private static final CharSequence PREF_RECENTS_RAM_BAR = "recents_ram_bar";
     private static final CharSequence PREF_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
+    private static final CharSequence PREF_SETTINGS_SPLITUP = "settings_splitup";
 
     private static final int REQUEST_PICK_WALLPAPER = 201;
     //private static final int REQUEST_PICK_CUSTOM_ICON = 202; //unused
@@ -100,6 +104,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     private static final String WALLPAPER_NAME = "notification_wallpaper.jpg";
     private static final String BOOTANIMATION_USER_PATH = "/data/local/bootanimation.zip";
     private static final String BOOTANIMATION_SYSTEM_PATH = "/system/media/bootanimation.zip";
+    private static final String SHAREDPREF_SETTINGS_SPLITUP = "settings_splitup";
 
     CheckBoxPreference mDisableBootAnimation;
     CheckBoxPreference mStatusBarNotifCount;
@@ -108,6 +113,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     Preference mCustomLabel;
     Preference mCustomBootAnimation;
     Preference mRamBar;
+    private static Preference mSettingsSplitup;
     ImageView mView;
     TextView mError;
     CheckBoxPreference mShowActionOverflow;
@@ -132,6 +138,9 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     private int mSeekbarProgress;
     String mCustomLabelText = null;
     int mUserRotationAngles = -1;
+    
+    private static int selected = 0;
+	private static int buffKey = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -166,11 +175,11 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mVibrateOnExpand.setChecked(Settings.System.getBoolean(mContentResolver,
                 Settings.System.VIBRATE_NOTIF_EXPAND, true));
 
-	mLowBatteryWarning = (ListPreference) findPreference(PREF_LOW_BATTERY_WARNING_POLICY);
-	int lowBatteryWarning = Settings.System.getInt(mContentResolver, Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
-	mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
-	mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
-	mLowBatteryWarning.setOnPreferenceChangeListener(this);
+        mLowBatteryWarning = (ListPreference) findPreference(PREF_LOW_BATTERY_WARNING_POLICY);
+        int lowBatteryWarning = Settings.System.getInt(mContentResolver, Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
+        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
+        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
+        mLowBatteryWarning.setOnPreferenceChangeListener(this);
 
         if (!hasVibration) {
             ((PreferenceGroup)findPreference(PREF_NOTIFICATION_VIBRATE)).removePreference(mVibrateOnExpand);
@@ -180,12 +189,25 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mLongPressToKill.setChecked(Settings.System.getInt(mContentResolver,
                 Settings.System.KILL_APP_LONGPRESS_BACK, 0) == 1);
 
+        mSettingsSplitup = (Preference)findPreference(PREF_SETTINGS_SPLITUP);
+        SharedPreferences SETTINGS_SPLITUP = getActivity().getSharedPreferences(SHAREDPREF_SETTINGS_SPLITUP, 0);
+        int settings_mode = SETTINGS_SPLITUP.getInt("settings_splitup", 2);
+        switch(settings_mode) {
+        	case 0:
+        		mSettingsSplitup.setSummary(getResources().getString(R.string.settings_splitup_tabs));
+        		break;
+        	case 1:
+        		mSettingsSplitup.setSummary(getResources().getString(R.string.settings_splitup_tabsswipe));
+        		break;
+        	default:
+        		break;
+        }
 
         if (!hasHardwareButtons) {
             getPreferenceScreen().removePreference(((PreferenceGroup) findPreference(PREF_MISC)));
         } else {
 	    // do nothing
-	}
+        }
 
         mRecentKillAll = (CheckBoxPreference) findPreference(PREF_RECENT_KILL_ALL);
         mRecentKillAll.setChecked(Settings.System.getBoolean(mContentResolver,
@@ -443,6 +465,12 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
             Settings.System.putBoolean(mContentResolver,
                     Settings.System.WAKEUP_WHEN_PLUGGED_UNPLUGGED,
                     ((TwoStatePreference) preference).isChecked());
+        } else if (preference == mSettingsSplitup) {
+        	alertSplitup(getActivity(),
+        			getResources().getString(R.string.settings_splitup_title),
+        			getResources().getString(R.string.settings_splitup_tabs),
+        			getResources().getString(R.string.settings_splitup_tabsswipe),
+        			getResources().getString(R.string.cancel));
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -469,6 +497,46 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
                 // call to super is implicit
                 return onContextItemSelected(item);
         }
+    }
+    
+    private static void alertSplitup(final Activity activity, String title, String tabs, String tabsswipe, String cancel) {
+    	
+    	SharedPreferences SETTINGS_SPLITUP = activity.getSharedPreferences(SHAREDPREF_SETTINGS_SPLITUP, 0);
+    	
+    	final CharSequence[] choiceList = { tabs, tabsswipe };
+        
+    	int selected = SETTINGS_SPLITUP.getInt("settings_splitup", 1);
+    	
+    	final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    	builder.setTitle(title)
+        .setSingleChoiceItems(choiceList, selected, new DialogInterface.OnClickListener() {
+    		@Override
+    		public void onClick(DialogInterface dialog, int which) {
+    			dialog.cancel();
+    			SharedPreferences SETTINGS_SPLITUP = activity.getSharedPreferences(SHAREDPREF_SETTINGS_SPLITUP, 0);
+    	        SharedPreferences.Editor editor = SETTINGS_SPLITUP.edit();
+    	        editor.putInt("settings_splitup", which);
+    	        editor.commit();
+    	        
+    	        switch(which) {
+            	case 0:
+            		mSettingsSplitup.setSummary(activity.getResources().getString(R.string.settings_splitup_tabs));
+            		break;
+            	case 1:
+            		mSettingsSplitup.setSummary(activity.getResources().getString(R.string.settings_splitup_tabsswipe));
+            		break;
+            	default:
+            		break;
+    	        }
+    		}
+    	})
+    	.setNegativeButton(cancel, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+			}
+		});
+    	AlertDialog alert = builder.create();
+    	alert.show();
     }
 
     private Uri getNotificationExternalUri() {
