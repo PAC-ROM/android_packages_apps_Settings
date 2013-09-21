@@ -5319,4 +5319,8 @@
     <string name="remove_favs_or_view">Remove from favorites list or view commits?</string>
     <string name="changelog_remove_from_favs_list">Remove</string>
 
+    <!-- Lock volume keys -->
+    <string name="sound_lock_volume_keys_title">Lock volume keys</string>
+    <string name="sound_lock_volume_keys_summary">Prevents accidental unset of silent mode by pressing volume keys</string>
+
 </resources>
