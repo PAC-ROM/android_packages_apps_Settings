@@ -226,9 +226,9 @@ public class HwuiManager extends Fragment
             case R.id.reset:
                 resetHwui();
                 return true;
-            case R.id.filter_app_permissions:
+            case R.id.advanced:
             case R.id.show_system_apps:
-                final String prefName = item.getItemId() == R.id.filter_app_permissions
+                final String prefName = item.getItemId() == R.id.advanced
                         ? "filter_by_permission" : "show_system_apps";
                 // set the menu checkbox and save it in
                 // shared preference and rebuild the list
