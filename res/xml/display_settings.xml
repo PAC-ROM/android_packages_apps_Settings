@@ -93,6 +93,12 @@
         android:key="category_animation_options"
         android:title="@string/display_category_animation_options_title" >
 
+        <PreferenceScreen
+            android:id="@+id/animations"
+            android:title="@string/title_animation_controls"
+            android:summary="@string/header_summary_animation"
+            android:fragment="com.android.settings.cyanogenmod.fragments.AnimationControls" />
+
         <ListPreference
             android:key="system_power_crt_mode"
             android:dialogTitle="@string/system_power_crt_mode_dialog_title"
