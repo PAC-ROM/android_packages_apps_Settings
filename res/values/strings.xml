@@ -5339,7 +5339,7 @@
     <string name="task_move_to_front_title">Move To Front Animation</string>
     <string name="task_move_to_back_title">Move To Back Animation</string>
     <string name="wallpaper_open_title">Return To Homescreen Animation</string>
-    <string name="wallpaper_close_title">Launch From Homescreen Aniamtion</string>
+    <string name="wallpaper_close_title">Launch From Homescreen Animation</string>
     <string name="wallpaper_intra_open_title">Recents Page Open Animation</string>
     <string name="wallpaper_intra_close_title">Recents Page Close Animation</string>
     <string name="animation_duration_title">Animation Duration</string>
