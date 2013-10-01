@@ -80,6 +80,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private ListPreference mAssistLongPressAction;
     private ListPreference mAppSwitchPressAction;
     private ListPreference mAppSwitchLongPressAction;
+    private ListPreference mCameraPressAction;
+    private ListPreference mCameraLongPressAction;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
