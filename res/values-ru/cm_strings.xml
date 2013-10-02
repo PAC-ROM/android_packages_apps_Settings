@@ -238,30 +238,21 @@
     <!-- Performance Settings : Processor Settings -->
     <!-- Performance Settings : Processor settings title -->
     <string name="processor_title">Процессор</string>
-    <!-- Performance Settings : Processor settings summary. -->
-    <string name="processor_summary">Изменение режимов и частот ЦП</string>
 
     <!-- Performance Settings : Processor settings sub items -->
-    <string name="cpu_cur_freq_title">Текущая частота ЦП</string>
-    <string name="cpu_governors_title">Режим ЦП</string>
-    <string name="cpu_min_freq_title">Минимальная частота ЦП</string>
-    <string name="cpu_max_freq_title">Максимальная частота ЦП</string>
-    <string name="cpu_set_on_boot">Выставлять при загрузке</string>
-    <string name="cpu_set_on_boot_summary">Применить текущие настройки ЦП при загрузке</string>
+    <string name="cpu_cur_freq_title">Текущая частота</string>
+    <string name="cpu_governors_title">Алгоритм смены частоты</string>
+    <string name="cpu_min_freq_title">Минимальная частота</string>
+    <string name="cpu_max_freq_title">Максимальная частота</string>
 
     <!-- Performance Settings : I/O scheduler settings title -->
     <string name="io_scheds_title">Планировщик I/O</string>
-    <!-- Performance Settings : I/O scheduler settings summary. -->
-    <string name="io_scheds_summary">Изменить режим планировщика I/O (ввода/вывода)</string>
 
     <!-- Performance Settings : I/O scheduler settings sub items -->
     <string name="io_sched_title">Планировщик I/O</string>
-    <string name="io_sched_set_on_boot">Выставлять при загрузке</string>
-    <string name="io_sched_set_on_boot_summary">Применить текущие настройки планировщика I/O при загрузке</string>
 
     <!-- Memory Management -->
     <string name="memory_management_title">Управление памятью</string>
-    <string name="memory_management_summary">Настройка использования памяти для изменения производительности системы</string>
     <!-- zRam -->
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Сжатие памяти для увеличения виртуальной ёмкости (требуется перезагрузка)</string>

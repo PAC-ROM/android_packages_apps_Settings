@@ -167,20 +167,13 @@
     <string name="performance_settings_warning_title">Proceda com cautela</string>
     <string name="performance_settings_warning">Estas configurações são incluídas para testes e qualquer mudança feita nelas pode causar instabilidade, paradas, perda de dados ou falhas de hardware.\n\nPedimos que você não relate bugs se qualquer destas configurações estiverem diferentes do padrão.</string>
     <string name="processor_title">Processador</string>
-    <string name="processor_summary">Alterar gerenciador de CPU e velocidade do clock</string>
     <string name="cpu_cur_freq_title">Frequência de CPU atual</string>
     <string name="cpu_governors_title">Gerenciador de CPU</string>
     <string name="cpu_min_freq_title">Frequência mínima da CPU</string>
     <string name="cpu_max_freq_title">Frequência máxima da CPU</string>
-    <string name="cpu_set_on_boot">Definir na inicialização</string>
-    <string name="cpu_set_on_boot_summary">Restaurar as configurações do processador na inicialização</string>
     <string name="io_scheds_title">Escalonador de I/O</string>
-    <string name="io_scheds_summary">Modificar o escalonador I/O</string>
     <string name="io_sched_title">Escalonador I/O</string>
-    <string name="io_sched_set_on_boot">Definir na inicialização</string>
-    <string name="io_sched_set_on_boot_summary">Restaura as configurações do escalonador I/O na inicialização</string>
     <string name="memory_management_title">Gerenciamento de memória</string>
-    <string name="memory_management_summary">Personalizar o uso de memória para mudar o desempenho do sistema</string>
     <string name="pref_zram_title">zRam</string>
     <string name="pref_zram_summary">Comprime a memória para maior capacidade virtual (requer reinicialização)</string>
     <string name="pref_ksm_title">Kernel samepage merging</string>
@@ -701,4 +694,13 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
     <string name="backlight_summary_enabled_with_timeout">Ativado por <xliff:g id="timeout" xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">%s</xliff:g></string>
     <string name="backlight_summary_enabled">Ativado</string>
     <string name="font_size_sample">Amostra</string>
+    <string name="selinux_enable_title">Segurança Reforçada Android</string>
+    <string name="selinux_enable_warning">Você está prestes a ativar SEAndroid, um mecanismo de segurança avançado, no seu dispositivo.\n\nEsta opção existe para fins de depuração, e pode ser muito provável que seu dispositivo não esteja pronto para ele, no qual pode causar partes (ou todas) do seu dispositivo a bloquear ou travar.\n\nVocê tem certeza que deseja continuar?</string>
+    <string name="title_tile_network_adb">ADB pela rede</string>
+    <string name="lockscreen_battery_status_alwaysoff">Sempre desligado</string>
+    <string name="hardware_keys_camera_key_title">Botão da câmera</string>
+    <string name="hardware_keys_action_launch_camera">Abrir câmera</string>
+    <string name="lockscreen_buttons_sleep">Suspender</string>
+    <string name="gamma_tuning_contrast">Contraste</string>
+    <string name="gamma_tuning_brightness">Brilho</string>
 </resources>
