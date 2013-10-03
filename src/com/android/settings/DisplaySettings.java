@@ -170,6 +170,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
         mLcdDensityPreference = (ListPreference) findPreference(KEY_LCD_DENSITY);
         if (mLcdDensityPreference != null) {
+            final String defaultText = getResources().getString(R.string.lcd_density_default);
             int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
             int currentDensity = DisplayMetrics.DENSITY_CURRENT;
             if (currentDensity < 10 || currentDensity >= 1000) {
@@ -180,13 +181,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             String[] densityEntries = new String[8];
             String[] densityValues = new String[8];
             for (int idx = 0; idx < 8; ++idx) {
-                int pct = (75 + idx * 5);
+                int pct = (75 + idx*5);
                 int val = defaultDensity * pct / 100;
-
-                int valueFormatResId = pct == 100
-                        ? R.string.lcd_density_default_value_format
-                        : R.string.lcd_density_value_format;
-                densityEntries[idx] = getString(valueFormatResId, val);
+                densityEntries[idx] = Integer.toString(val);
+                if (pct == 100) {
+                    densityEntries[idx] += " (" + defaultText + ")";
+                }
                 densityValues[idx] = Integer.toString(val);
                 if (currentDensity == val) {
                     currentIndex = idx;
@@ -353,9 +353,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     }
 
     private void updateLcdDensityPreferenceDescription(int currentDensity) {
-        final int summaryResId = currentDensity == DisplayMetrics.DENSITY_DEVICE
-                ? R.string.lcd_density_default_value_format : R.string.lcd_density_value_format;
-        mLcdDensityPreference.setSummary(getString(summaryResId, currentDensity));
+        final String defaultText = getResources().getString(R.string.lcd_density_default);
+        int defaultDensity = DisplayMetrics.DENSITY_DEVICE;
+        ListPreference preference = mLcdDensityPreference;
+        String summary = getResources().getString(R.string.lcd_density_summary, currentDensity);
+        if (currentDensity == defaultDensity) {
+            summary += " (" + defaultText + ")";
+        }
+        preference.setSummary(summary);
     }
 
     private void disableUnusableTimeouts(ListPreference screenTimeoutPreference) {
