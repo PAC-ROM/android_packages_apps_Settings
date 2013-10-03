@@ -176,6 +176,9 @@
     <string name="lock_before_unlock_title">Show slider before secure unlock</string>
     <string name="lock_before_unlock_summary">Show slider lockscreen before secure unlock mechanism</string>
 
+    <!-- Lockscreen battery ring -->
+    <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
+
     <!-- Lockscreen blur -->
     <string name="blur_radius_title">Blur Radius</string>
     <string name="blur_radius_summary">Set the blur radius for the blur effect</string>

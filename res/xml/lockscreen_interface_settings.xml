@@ -101,6 +101,12 @@
         android:title="@string/misc_category"
         android:key="lockscreen_misc_category" >
 
+        <!-- Battery around unlock ring -->
+        <com.android.settings.pac.PacSettingCheckBoxPreference
+            android:key="battery_around_lockscreen_ring"
+            android:title="@string/battery_around_lockscreen_ring"
+            android:defaultValue="false" />
+
         <!-- See Through -->
         <CheckBoxPreference
             android:key="lockscreen_see_through"
