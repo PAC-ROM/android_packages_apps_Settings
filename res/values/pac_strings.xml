@@ -693,6 +693,9 @@
     <string name="partition_info_cache">/cache</string>
     <string name="partition_info_used_of">used out of</string>
 
+    <!-- Performance Control -->
+    <string name="performance_settings">Advanced Controls</string>
+
     <!-- Pie Control -->
     <string name="pie_navigation_title">Pie navigation</string>
     <string name="pie_control_title">Pie</string>
