@@ -1345,15 +1345,45 @@
 
     <!-- Fullscreen Statusbar Timeout -->
     <string-array name="fullscreen_statusbar_timeout_entries" translatable="false">
+        <item>@string/fullscreen_statusbar_1000</item>
+        <item>@string/fullscreen_statusbar_1500</item>
+        <item>@string/fullscreen_statusbar_2000</item>
         <item>@string/fullscreen_statusbar_2500</item>
+        <item>@string/fullscreen_statusbar_3000</item>
+        <item>@string/fullscreen_statusbar_3500</item>
+        <item>@string/fullscreen_statusbar_4000</item>
+        <item>@string/fullscreen_statusbar_4500</item>
         <item>@string/fullscreen_statusbar_5000</item>
+        <item>@string/fullscreen_statusbar_5500</item>
+        <item>@string/fullscreen_statusbar_6000</item>
+        <item>@string/fullscreen_statusbar_6500</item>
+        <item>@string/fullscreen_statusbar_7000</item>
         <item>@string/fullscreen_statusbar_7500</item>
+        <item>@string/fullscreen_statusbar_8000</item>
+        <item>@string/fullscreen_statusbar_8500</item>
+        <item>@string/fullscreen_statusbar_9000</item>
+        <item>@string/fullscreen_statusbar_9500</item>
         <item>@string/fullscreen_statusbar_10000</item>
     </string-array>
     <string-array name="fullscreen_statusbar_timeout_values" translatable="false">
+        <item>1000</item>
+        <item>1500</item>
+        <item>2000</item>
         <item>2500</item>
+        <item>3000</item>
+        <item>3500</item>
+        <item>4000</item>
+        <item>4500</item>
         <item>5000</item>
+        <item>5500</item>
+        <item>6000</item>
+        <item>6500</item>
+        <item>7000</item>
         <item>7500</item>
+        <item>8000</item>
+        <item>8500</item>
+        <item>9000</item>
+        <item>9500</item>
         <item>10000</item>
     </string-array>
 
@@ -1388,25 +1418,46 @@
 
     <string-array name="less_notification_sounds_entries">
         <item>Default Behaviour</item>
+        <item>1s</item>
+        <item>2s</item>
         <item>3s</item>
+        <item>4s</item>
         <item>5s</item>
         <item>10s</item>
         <item>15s</item>
+        <item>20s</item>
+        <item>25s</item>
         <item>30s</item>
+        <item>35s</item>
+        <item>40s</item>
         <item>45s</item>
+        <item>50s</item>
+        <item>55s</item>
         <item>1m</item>
         <item>2m</item>
+        <item>3m</item>
+        <item>4m</item>
         <item>5m</item>
+        <item>10m</item>
     </string-array>
 
     <string-array name="less_notification_sounds_values" translatable="false">
         <item>0</item>
+        <item>1000</item>
+        <item>2000</item>
         <item>3000</item>
+        <item>4000</item>
         <item>5000</item>
         <item>10000</item>
         <item>15000</item>
+        <item>20000</item>
+        <item>25000</item>
         <item>30000</item>
+        <item>35000</item>
+        <item>40000</item>
         <item>45000</item>
+        <item>50000</item>
+        <item>55000</item>
         <item>60000</item>
         <item>120000</item>
         <item>300000</item>
@@ -1440,7 +1491,15 @@
     <string-array name="ad_redisplay_entries" translatable="false">
         <item>@string/ad_redisplay_never</item>
         <item>@string/ad_redisplay_1m</item>
+        <item>@string/ad_redisplay_2m</item>
+        <item>@string/ad_redisplay_3m</item>
+        <item>@string/ad_redisplay_4m</item>
         <item>@string/ad_redisplay_5m</item>
+        <item>@string/ad_redisplay_6m</item>
+        <item>@string/ad_redisplay_7m</item>
+        <item>@string/ad_redisplay_8m</item>
+        <item>@string/ad_redisplay_9m</item>
+        <item>@string/ad_redisplay_10m</item>
         <item>@string/ad_redisplay_15m</item>
         <item>@string/ad_redisplay_30m</item>
         <item>@string/ad_redisplay_1h</item>
@@ -1460,18 +1519,30 @@
     </string-array>
 
     <string-array name="ad_timeout_entries" translatable="false">
+        <item>@string/ad_timeout_1s</item>
+        <item>@string/ad_timeout_2s</item>
         <item>@string/ad_timeout_3s</item>
+        <item>@string/ad_timeout_4s</item>
         <item>@string/ad_timeout_5s</item>
+        <item>@string/ad_timeout_6s</item>
+        <item>@string/ad_timeout_7s</item>
         <item>@string/ad_timeout_8s</item>
+        <item>@string/ad_timeout_9s</item>
         <item>@string/ad_timeout_10s</item>
         <item>@string/ad_timeout_15s</item>
         <item>@string/ad_timeout_25s</item>
     </string-array>
 
     <string-array name="ad_timeout_values" translatable="false">
+        <item>1000</item>
+        <item>2000</item>
         <item>3000</item>
+        <item>4000</item>
         <item>5000</item>
+        <item>6000</item>
+        <item>7000</item>
         <item>8000</item>
+        <item>9000</item>
         <item>10000</item>
         <item>15000</item>
         <item>25000</item>
