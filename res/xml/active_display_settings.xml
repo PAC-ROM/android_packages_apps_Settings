@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 Vanir - AOSP
+<!-- Copyright (C) 2013 The ChameleonOS Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -52,6 +52,13 @@
         android:summary="@string/ad_pocket_mode_summary"
         android:dependency="ad_enable"/>
 
+    <CheckBoxPreference
+        android:key="ad_sunlight_mode"
+        android:persistent="false"
+        android:title="@string/ad_sunlight_mode_title"
+        android:summary="@string/ad_sunlight_mode_summary"
+        android:dependency="ad_enable"/>
+
     <ListPreference
         android:key="ad_redisplay"
         android:persistent="false"
@@ -61,30 +68,43 @@
         android:entryValues="@array/ad_redisplay_values"
         android:dependency="ad_enable"/>
 
-    <CheckBoxPreference
-        android:key="ad_show_date"
-        android:persistent="false"
-        android:title="@string/ad_show_date_title"
-        android:summary="@string/ad_show_date_summary"
-        android:dependency="ad_enable" />
+    <PreferenceCategory
+        android:key="ad_customizations"
+        android:title="@string/ad_customizations_title" />
 
-    <CheckBoxPreference
-        android:key="ad_show_ampm"
-        android:persistent="false"
-        android:title="@string/ad_show_ampm_title"
-        android:summary="@string/ad_show_ampm_summary"
-        android:dependency="ad_enable"/>
+        <CheckBoxPreference
+            android:key="ad_show_date"
+            android:persistent="false"
+            android:title="@string/ad_show_date_title"
+            android:summary="@string/ad_show_date_summary"
+            android:dependency="ad_enable"/>
 
-    <com.android.settings.chameleonos.SeekBarPreference
-        android:key="ad_brightness"
-        android:persistent="false"
-        android:title="@string/ad_brightness_title"
-        android:summary="@string/ad_brightness_summary"
-        android:max="100"
-        settings:min="0"
-        settings:unitsLeft=""
-        settings:unitsRight="%"
-        android:defaultValue="100"
-        android:dependency="ad_enable" />
+        <CheckBoxPreference
+            android:key="ad_show_ampm"
+            android:persistent="false"
+            android:title="@string/ad_show_ampm_title"
+            android:summary="@string/ad_show_ampm_summary"
+            android:dependency="ad_enable"/>
+
+        <ListPreference
+            android:key="ad_timeout"
+            android:persistent="false"
+            android:dialogTitle="@string/ad_timeout_title"
+            android:title="@string/ad_timeout_title"
+            android:entries="@array/ad_timeout_entries"
+            android:entryValues="@array/ad_timeout_values"
+            android:dependency="ad_enable"/>
+
+        <com.android.settings.chameleonos.SeekBarPreference
+            android:key="ad_brightness"
+            android:persistent="false"
+            android:title="@string/ad_brightness_title"
+            android:summary="@string/ad_brightness_summary"
+            android:max="100"
+            settings:min="0"
+            settings:unitsLeft=""
+            settings:unitsRight="%"
+            android:defaultValue="100"
+            android:dependency="ad_enable" />
 
 </PreferenceScreen>

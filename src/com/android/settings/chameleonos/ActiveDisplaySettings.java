@@ -41,10 +41,12 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_ALL_NOTIFICATIONS = "ad_all_notifications";
     private static final String KEY_HIDE_LOW_PRIORITY = "ad_hide_low_priority";
     private static final String KEY_POCKET_MODE = "ad_pocket_mode";
+    private static final String KEY_SUNLIGHT_MODE = "ad_sunlight_mode";
     private static final String KEY_REDISPLAY = "ad_redisplay";
     private static final String KEY_SHOW_DATE = "ad_show_date";
     private static final String KEY_SHOW_AMPM = "ad_show_ampm";
     private static final String KEY_BRIGHTNESS = "ad_brightness";
+    private static final String KEY_TIMEOUT = "ad_timeout";
 
     private SwitchPreference mEnabledPref;
     private CheckBoxPreference mShowTextPref;
@@ -53,8 +55,10 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAllNotificationsPref;
     private CheckBoxPreference mHideLowPriorityPref;
     private CheckBoxPreference mPocketModePref;
+    private CheckBoxPreference mSunlightModePref;
     private ListPreference mRedisplayPref;
     private SeekBarPreference mBrightnessLevel;
+    private ListPreference mDisplayTimeout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,11 +79,22 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mAllNotificationsPref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.ACTIVE_DISPLAY_ALL_NOTIFICATIONS, 0) == 1));
 
+        mHideLowPriorityPref = (CheckBoxPreference) findPreference(KEY_HIDE_LOW_PRIORITY);
+        mHideLowPriorityPref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.ACTIVE_DISPLAY_HIDE_LOW_PRIORITY_NOTIFICATIONS, 0) == 1));
+
         mPocketModePref = (CheckBoxPreference) findPreference(KEY_POCKET_MODE);
         mPocketModePref.setChecked((Settings.System.getInt(getContentResolver(),
                 Settings.System.ACTIVE_DISPLAY_POCKET_MODE, 0) == 1));
         if (!hasProximitySensor()) {
             getPreferenceScreen().removePreference(mPocketModePref);
+        }
+
+        mSunlightModePref = (CheckBoxPreference) findPreference(KEY_SUNLIGHT_MODE);
+        mSunlightModePref.setChecked((Settings.System.getInt(getContentResolver(),
+                Settings.System.ACTIVE_DISPLAY_SUNLIGHT_MODE, 0) == 1));
+        if (!hasLightSensor()) {
+            getPreferenceScreen().removePreference(mSunlightModePref);
         }
 
         PreferenceScreen prefSet = getPreferenceScreen();
@@ -90,22 +105,26 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mRedisplayPref.setValue(String.valueOf(timeout));
         updateRedisplaySummary(timeout);
 
-        mHideLowPriorityPref = (CheckBoxPreference) findPreference(KEY_HIDE_LOW_PRIORITY);
-        mHideLowPriorityPref.setChecked((Settings.System.getInt(getContentResolver(),
-                Settings.System.ACTIVE_DISPLAY_HIDE_LOW_PRIORITY_NOTIFICATIONS, 0) == 1));
-
         mShowDatePref = (CheckBoxPreference) findPreference(KEY_SHOW_DATE);
         mShowDatePref.setChecked((Settings.System.getInt(getContentResolver(),
-            Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0) == 1));
+                Settings.System.ACTIVE_DISPLAY_SHOW_DATE, 0) == 1));
 
         mShowAmPmPref = (CheckBoxPreference) findPreference(KEY_SHOW_AMPM);
         mShowAmPmPref.setChecked((Settings.System.getInt(getContentResolver(),
-        Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0) == 1));
+                Settings.System.ACTIVE_DISPLAY_SHOW_AMPM, 0) == 1));
 
         mBrightnessLevel = (SeekBarPreference) findPreference(KEY_BRIGHTNESS);
         mBrightnessLevel.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.ACTIVE_DISPLAY_BRIGHTNESS, 100));
         mBrightnessLevel.setOnPreferenceChangeListener(this);
+
+        mDisplayTimeout = (ListPreference) prefSet.findPreference(KEY_TIMEOUT);
+        mDisplayTimeout.setOnPreferenceChangeListener(this);
+        timeout = Settings.System.getLong(getContentResolver(),
+                Settings.System.ACTIVE_DISPLAY_TIMEOUT, 8000L);
+        mDisplayTimeout.setValue(String.valueOf(timeout));
+        updateTimeoutSummary(timeout);
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -122,6 +141,10 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
             int brightness = ((Integer)newValue).intValue();
             Settings.System.putInt(getContentResolver(),
                     Settings.System.ACTIVE_DISPLAY_BRIGHTNESS, brightness);
+            return true;
+        } else if (preference == mDisplayTimeout) {
+            long timeout = Integer.valueOf((String) newValue);
+            updateTimeoutSummary(timeout);
             return true;
         }
         return false;
@@ -151,6 +174,11 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.ACTIVE_DISPLAY_POCKET_MODE,
                     value ? 1 : 0);
+        } else if (preference == mSunlightModePref) {
+            value = mSunlightModePref.isChecked();
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.ACTIVE_DISPLAY_SUNLIGHT_MODE,
+                    value ? 1 : 0);
         } else if (preference == mShowDatePref) {
             value = mShowDatePref.isChecked();
             Settings.System.putInt(getContentResolver(),
@@ -174,8 +202,22 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
                 Settings.System.ACTIVE_DISPLAY_REDISPLAY, value);
     }
 
+     private void updateTimeoutSummary(long value) {
+        try {
+            mDisplayTimeout.setSummary(mDisplayTimeout.getEntries()[mDisplayTimeout.findIndexOfValue("" + value)]);
+            Settings.System.putLong(getContentResolver(),
+                    Settings.System.ACTIVE_DISPLAY_TIMEOUT, value);
+        } catch (ArrayIndexOutOfBoundsException e) {
+        }
+    }
+
     private boolean hasProximitySensor() {
         SensorManager sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         return sm.getDefaultSensor(TYPE_PROXIMITY) != null;
+    }
+
+    private boolean hasLightSensor() {
+        SensorManager sm = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        return sm.getDefaultSensor(TYPE_LIGHT) != null;
     }
 }
