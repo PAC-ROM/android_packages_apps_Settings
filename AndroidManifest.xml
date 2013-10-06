@@ -1738,6 +1738,22 @@
                 android:resource="@id/security_settings" />
         </activity>
 
+        <activity android:name="Settings$BlacklistSettingsActivity"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:uiOptions="splitActionBarWhenNarrow"
+                android:label="@string/blacklist_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.blacklist.BlacklistSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@id/security_settings" />
+        </activity>
+
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
@@ -2131,7 +2147,7 @@
             android:exported="false"/>
         <service android:name=".aokp.weather.WeatherRefreshService" />
         <service android:name=".aokp.weather.WeatherService" />
-        
+
         <activity android:name=".SettingsTabs" />
 
     </application>
