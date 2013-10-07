@@ -1825,6 +1825,10 @@
         </activity>
 
         <activity android:name=".pac.AppSidebar" />
+
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
+
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
         <!-- PAC-Rom activities End -->
 
         <!-- CyanogenMod activities Start -->

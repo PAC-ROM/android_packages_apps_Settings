@@ -39,6 +39,13 @@
         android:title="@string/progressbar_title"
         android:icon="@drawable/ic_settings_progressbar" />
 
+    <!-- Gesture Anywhere -->
+    <PreferenceScreen
+        android:key="@+id/gesture_anywhere"
+        android:fragment="com.android.settings.pac.gestureanywhere.GestureAnywhereSettings"
+        android:icon="@drawable/ic_settings_gesture_anywhere"
+        android:title="@string/gesture_anywhere_title" />
+
     <!-- PAC Console -->
     <PreferenceScreen
         android:id="@+id/pac_console"
