@@ -156,6 +156,13 @@
         android:icon="@drawable/ic_rom_control_ad"
         android:summary="@string/ad_summary" />
 
+    <PreferenceScreen
+        android:key="gesture_anywhere"
+        android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
+        android:icon="@drawable/ic_settings_gesture_anywhere"
+        android:title="@string/gesture_anywhere_title"
+        android:summary="@string/gesture_anywhere_summary" />
+
     <PreferenceCategory
         android:key="statusbar"
         android:title="@string/header_statusbar" />
