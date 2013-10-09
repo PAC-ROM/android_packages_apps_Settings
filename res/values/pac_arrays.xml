@@ -103,7 +103,7 @@
     <string-array name="weather_statusbar_location_entries" translatable="false">
         <item>@string/above_carrier_text</item>
         <item>@string/weather_panel</item>
-        <item>@string/disabled</item>
+        <item>@string/weather_notification</item>
     </string-array>
 
     <string-array name="weather_statusbar_location_values" translatable="false">

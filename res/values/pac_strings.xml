@@ -126,6 +126,7 @@
     <string name="time_8_hours">8 hours</string>
     <string name="above_carrier_text">Above carrier text</string>
     <string name="weather_panel">Weather panel</string>
+    <string name="weather_notification">Persistent notification</string>
     <string name="title_weather">Weather</string>
     <string name="text">Text</string>
     <string name="weather_enable">Enable weather</string>
@@ -639,6 +640,12 @@
     <string name="breathing_notifications_title">Breathing Notifications</string>
     <string name="sms_breath">Breathing SMS</string>
     <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar</string>
+
+    <!-- Custom Carrier Label Options -->
+    <string name="carrier_label_title">Carrier Label</string>
+    <string name="custom_carrier_label_title">Custom carrier label</string>
+    <string name="custom_carrier_label_explain">Please enter a new label. Enter an empty label to revert to stock label.</string>
+    <string name="custom_carrier_label_notset">Custom label currently not set</string>
 
 </resources>
 
