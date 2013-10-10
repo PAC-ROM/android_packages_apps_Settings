@@ -84,7 +84,7 @@ public class MainSetting extends PreferenceActivity
         implements ButtonBarHandler, OnAccountsUpdateListener {
 
     private static final String LOG_TAG = "Settings";
-    
+
     private static final String META_DATA_KEY_HEADER_ID =
         "com.android.settings.TOP_LEVEL_HEADER_ID";
     private static final String META_DATA_KEY_FRAGMENT_CLASS =
@@ -431,7 +431,7 @@ public class MainSetting extends PreferenceActivity
     }
 
     private void updateHeaderList(List<Header> target) {
-    	
+
         final boolean showDev = mDevelopmentPreferences.getBoolean(
                 DevelopmentSettings.PREF_SHOW,
                 android.os.Build.TYPE.equals("eng") || android.os.Build.TYPE.equals("userdebug"));
@@ -926,6 +926,7 @@ public class MainSetting extends PreferenceActivity
     public static class DeviceInfoSettingsActivity extends MainSetting { /* empty */ }
     public static class ApplicationSettingsActivity extends MainSetting { /* empty */ }
     public static class ManageApplicationsActivity extends MainSetting { /* empty */ }
+    public static class AppOpsDetailsActivity extends MainSetting { /* empty */ }
     public static class AppOpsSummaryActivity extends MainSetting { /* empty */ }
     public static class StorageUseActivity extends MainSetting { /* empty */ }
     public static class DevelopmentSettingsActivity extends MainSetting { /* empty */ }

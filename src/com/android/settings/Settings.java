@@ -65,7 +65,7 @@ public class Settings extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         SharedPreferences SETTINGS_SPLITUP = getSharedPreferences(SHAREDPREF_SETTINGS_SPLITUP, 0);
         int settings_mode = SETTINGS_SPLITUP.getInt("settings_splitup", 1);
 
@@ -233,6 +233,7 @@ public class Settings extends Activity {
     public static class DeviceInfoSettingsActivity extends MainSetting { /* empty */ }
     public static class ApplicationSettingsActivity extends MainSetting { /* empty */ }
     public static class ManageApplicationsActivity extends MainSetting { /* empty */ }
+    public static class AppOpsDetailsActivity extends MainSetting { /* empty */ }
     public static class AppOpsSummaryActivity extends MainSetting { /* empty */ }
     public static class StorageUseActivity extends MainSetting { /* empty */ }
     public static class DevelopmentSettingsActivity extends MainSetting { /* empty */ }
