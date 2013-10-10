@@ -393,6 +393,7 @@
 
         <activity android:name="MainSetting$BluetoothSettingsActivity"
                 android:uiOptions="splitActionBarWhenNarrow"
+                android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/bluetooth_settings_title"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
