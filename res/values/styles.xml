@@ -237,14 +237,4 @@
         <item name="android:background">@drawable/vib_button</item>
     </style>
 
-    <style name="Theme.PAC" parent="@android:Theme.Holo">
-        <item name="android:switchStyle">@style/PACSwitch</item>
-    </style>
-
-    <style name="PACSwitch" parent="@android:Widget.Holo.Light.CompoundButton.Switch">
-        <item name="android:thumbTextPadding">5dip</item>
-        <item name="android:switchMinWidth">70dip</item>
-        <item name="android:switchPadding">10dip</item>
-    </style>
-
 </resources>

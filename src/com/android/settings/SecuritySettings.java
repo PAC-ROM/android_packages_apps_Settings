@@ -98,6 +98,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String SLIDE_LOCK_SCREENOFF_DELAY = "slide_lock_screenoff_delay";
     private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
     private static final String KEY_SMS_SECURITY_CHECK_PREF = "sms_security_check_limit";
+    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
     private static final String KEY_APP_SECURITY_CATEGORY = "app_security";
     private static final String KEY_BLACKLIST = "blacklist";
     private static final String CATEGORY_ADDITIONAL = "additional_options";
@@ -107,6 +108,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockPatternUtils;
+    private ListPreference mLockNumpadRandom;
     private ListPreference mLockAfter;
 
     private CheckBoxPreference mBiometricWeakLiveliness;
@@ -292,6 +294,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
             lockBeforeUnlock.setChecked(Settings.Secure.getInt(resolver, Settings.Secure.LOCK_BEFORE_UNLOCK, 0) == 1);
 
+            // Lock Numpad Random
+            mLockNumpadRandom = (ListPreference) root.findPreference(LOCK_NUMPAD_RANDOM);
+            mLockNumpadRandom.setValue(String.valueOf(Settings.Secure.getInt(resolver,
+                    Settings.Secure.LOCK_NUMPAD_RANDOM, 0)));
+            mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
+            mLockNumpadRandom.setOnPreferenceChangeListener(this);
+
             // disable lock options if lock screen set to NONE
             // or if using pattern as a primary lock screen or
             // as a backup to biometric
@@ -301,11 +310,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 menuUnlock.setEnabled(false);
                 homeUnlock.setEnabled(false);
                 vibratePref.setEnabled(false);
-                if (mLockPatternUtils.isLockPatternEnabled()) {
-                    lockBeforeUnlock.setEnabled(true);
-                } else {
-                    lockBeforeUnlock.setEnabled(false);
-                }
+                mLockNumpadRandom.setEnabled(false);
+                lockBeforeUnlock.setEnabled(mLockPatternUtils.isLockPatternEnabled());
             // disable menu unlock and vibrate on unlock options if
             // using PIN/password as primary lock screen or as
             // backup to biometric
@@ -315,11 +321,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 menuUnlock.setEnabled(false);
                 homeUnlock.setEnabled(false);
                 vibratePref.setEnabled(false);
+                mLockNumpadRandom.setEnabled(mLockPatternUtils.isLockNumericPasswordEnabled());
             // Disable the quick unlock if its not using PIN/password
             // as a primary lock screen or as a backup to biometric
             } else {
                 quickUnlockScreen.setEnabled(false);
                 lockBeforeUnlock.setEnabled(false);
+                mLockNumpadRandom.setEnabled(false);
             }
 
             final int deviceKeys = res.getInteger(
@@ -829,6 +837,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
             Settings.Global.putInt(getContentResolver(), Settings.Global.SMS_OUTGOING_CHECK_MAX_COUNT,
                      smsSecurityCheck);
             updateSmsSecuritySummary(smsSecurityCheck);
+        } else if (preference == mLockNumpadRandom) {
+            Settings.Secure.putInt(getActivity().getContentResolver(),
+                    Settings.Secure.LOCK_NUMPAD_RANDOM,
+                    Integer.valueOf((String) value));
+            mLockNumpadRandom.setValue(String.valueOf(value));
+            mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
         }
         return true;
     }
