@@ -3,37 +3,48 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <SwitchPreference
+        android:key="pie_enabled"
+        android:title="@string/pie_enabled_title"
+        android:summary="@string/pie_enabled_summary"
+        android:defaultValue="false" />
+
     <ListPreference
         android:key="pie_trigger"
         android:dialogTitle="@string/pie_trigger_title"
         android:title="@string/pie_trigger_title"
         android:summary="@string/pie_trigger_summary"
+        android:dependency="pie_enabled"
         android:entries="@array/entries_pie_trigger"
         android:entryValues="@array/values_pie_trigger" />
 
     <CheckBoxPreference
         android:key="pie_stick"
         android:title="@string/pie_stick_title"
-        android:summary="@string/pie_stick_summary" />
+        android:summary="@string/pie_stick_summary"
+        android:dependency="pie_enabled" />
 
     <ListPreference
         android:key="pie_gravity"
         android:dialogTitle="@string/pie_gravity_title"
         android:title="@string/pie_gravity_title"
         android:summary="@string/pie_gravity_summary"
+        android:dependency="pie_enabled"
         android:entries="@array/entries_pie_gravity"
         android:entryValues="@array/values_pie_gravity" />
 
     <CheckBoxPreference
         android:key="pie_center"
         android:title="@string/pie_center_title"
-        android:summary="@string/pie_center_summary" />
+        android:summary="@string/pie_center_summary"
+        android:dependency="pie_enabled" />
 
     <ListPreference
         android:key="pie_mode"
         android:dialogTitle="@string/pie_mode_title"
         android:title="@string/pie_mode_title"
         android:summary="@string/pie_mode_summary"
+        android:dependency="pie_enabled"
         android:entries="@array/entries_pie_mode"
         android:entryValues="@array/values_pie_mode" />
 
@@ -42,53 +53,62 @@
         android:dialogTitle="@string/pie_size_title"
         android:title="@string/pie_size_title"
         android:summary="@string/pie_size_summary"
+        android:dependency="pie_enabled"
         android:entries="@array/entries_pie_size"
         android:entryValues="@array/values_pie_size" />
 
     <ListPreference
-            android:key="pie_angle"
-            android:dialogTitle="@string/pie_angle_title"
-            android:title="@string/pie_angle_title"
-            android:summary="@string/pie_angle_summary"
-            android:entries="@array/entries_pie_angle"
-            android:entryValues="@array/values_pie_angle" />
+        android:key="pie_angle"
+        android:dialogTitle="@string/pie_angle_title"
+        android:title="@string/pie_angle_title"
+        android:summary="@string/pie_angle_summary"
+        android:dependency="pie_enabled"
+        android:entries="@array/entries_pie_angle"
+        android:entryValues="@array/values_pie_angle" />
 
     <ListPreference 
         android:key="pie_gap"
         android:dialogTitle="@string/pie_gap_title"
         android:title="@string/pie_gap_title"
         android:summary="@string/pie_gap_summary"
+        android:dependency="pie_enabled"
         android:entries="@array/entries_pie_gap"
         android:entryValues="@array/values_pie_gap" />
 
     <CheckBoxPreference
         android:key="pie_menu"
         android:title="@string/pie_menu_title"
-        android:summary="@string/pie_menu_summary" />
+        android:summary="@string/pie_menu_summary"
+        android:dependency="pie_enabled" />
 
     <CheckBoxPreference
         android:key="pie_power"
         android:title="@string/pie_power_title"
-        android:summary="@string/pie_power_summary" />
+        android:summary="@string/pie_power_summary"
+        android:dependency="pie_enabled" />
 
     <CheckBoxPreference
         android:key="pie_search"
         android:title="@string/pie_search_title"
-        android:summary="@string/pie_search_summary" />
+        android:summary="@string/pie_search_summary"
+        android:dependency="pie_enabled" />
 
     <CheckBoxPreference
         android:key="pie_lastapp"
         android:title="@string/pie_lastapp_title"
-        android:summary="@string/pie_lastapp_summary" />
+        android:summary="@string/pie_lastapp_summary"
+        android:dependency="pie_enabled" />
 
     <CheckBoxPreference
         android:key="pie_killtask"
         android:title="@string/pie_killtask_title"
-        android:summary="@string/pie_killtask_summary" />
+        android:summary="@string/pie_killtask_summary"
+        android:dependency="pie_enabled" />
 
     <CheckBoxPreference
         android:key="pie_appwindow"
         android:title="@string/pie_appwindow_title"
-        android:summary="@string/pie_appwindow_summary" />
+        android:summary="@string/pie_appwindow_summary"
+        android:dependency="pie_enabled" />
 
 </PreferenceScreen>

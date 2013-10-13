@@ -4876,6 +4876,9 @@
     <!-- Pie controls -->
     <string name="pie_settings_title">Pie</string>
 
+    <string name="pie_enabled_title">Enable Pie</string>
+    <string name="pie_enabled_summary">Completely enable or disable Pie</string>
+
     <string name="pie_gravity_title">Pie gravity</string>
     <string name="pie_gravity_summary">Select the location where Pie will be placed at</string>
     <string name="pie_gravity_top">Top</string>

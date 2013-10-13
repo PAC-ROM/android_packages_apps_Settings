@@ -12,6 +12,7 @@ import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceClickListener;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 
@@ -22,6 +23,7 @@ import com.android.settings.Utils;
 public class PieSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
 
+    private static final String PIE_ENABLED = "pie_enabled";
     private static final String PIE_GRAVITY = "pie_gravity";
     private static final String PIE_MODE = "pie_mode";
     private static final String PIE_SIZE = "pie_size";
@@ -37,6 +39,7 @@ public class PieSettings extends SettingsPreferenceFragment
     private static final String PIE_CENTER = "pie_center";
     private static final String PIE_STICK = "pie_stick";
 
+    private SwitchPreference mPieEnabled;
     private ListPreference mPieMode;
     private ListPreference mPieSize;
     private ListPreference mPieGravity;
@@ -61,6 +64,11 @@ public class PieSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.pie_settings);
         PreferenceScreen prefSet = getPreferenceScreen();
         mContext = getActivity();
+
+        mPieEnabled = (SwitchPreference) findPreference(PIE_ENABLED);
+        mPieEnabled.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                Settings.System.PIE_ENABLED, 0) == 1);
+        mPieEnabled.setOnPreferenceChangeListener(this);
 
         mPieMenu = (CheckBoxPreference) prefSet.findPreference(PIE_MENU);
         mPieMenu.setChecked(Settings.System.getInt(mContext.getContentResolver(),
@@ -137,7 +145,22 @@ public class PieSettings extends SettingsPreferenceFragment
         }
 
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-                if (preference == mPieMode) {
+        if (preference == mPieEnabled) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.PIE_ENABLED, (Boolean) newValue ? 1 : 0);
+            try {
+                if (Settings.System.getInt(getActivity().getContentResolver(),Settings.System.PIE_ENABLED) == 0) {
+                    Settings.System.putFloat(getActivity().getContentResolver(),
+                            Settings.System.PIE_TRIGGER, 0);
+                } else if (Settings.System.getInt(getActivity().getContentResolver(),Settings.System.PIE_ENABLED) == 1) {
+                    Settings.System.putFloat(getActivity().getContentResolver(),
+                            Settings.System.PIE_TRIGGER, 1);
+                }
+            } catch (SettingNotFoundException ex) {
+                    // So what
+            }
+            return true;
+        } else if (preference == mPieMode) {
             int pieMode = Integer.valueOf((String) newValue);
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.PIE_MODE, pieMode);
