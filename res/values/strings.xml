@@ -5093,7 +5093,7 @@
     <string name="pacman_stats_summary">View PAC-Man ROM statistics</string>
 
     <!-- PAC Console -->
-    <string name="pacconsole_title">PAC-MAN Rom Settings</string>
+    <string name="pacconsole_title">PAC Console</string>
 
     <!-- Share PAC-Man ROM -->
     <string name="share_pacrom">Share PAC-Man ROM</string>
