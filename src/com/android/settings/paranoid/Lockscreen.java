@@ -61,10 +61,12 @@ public class Lockscreen extends SettingsPreferenceFragment
     private static final String KEY_BACKGROUND = "lockscreen_background";
     private static final String KEY_LOCKSCREEN_BUTTONS = "lockscreen_buttons";
     private static final String KEY_SCREEN_SECURITY = "screen_security";
+    private static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
     private ListPreference mCustomBackground;
 
     private CheckBoxPreference mSeeThrough;
+    private CheckBoxPreference mLockRingBattery;
 
     private Context mContext;
 
@@ -112,6 +114,10 @@ public class Lockscreen extends SettingsPreferenceFragment
 
         mWallpaperImage = new File(getActivity().getFilesDir() + "/lockwallpaper");
         mWallpaperTemporary = new File(getActivity().getCacheDir() + "/lockwallpaper.tmp");
+
+        mLockRingBattery = (CheckBoxPreference) prefSet.findPreference(BATTERY_AROUND_LOCKSCREEN_RING);
+        mLockRingBattery.setChecked(Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, 0) == 1);
     }
 
     private void updateCustomBackgroundSummary() {
@@ -137,6 +143,10 @@ public class Lockscreen extends SettingsPreferenceFragment
             if (preference == mSeeThrough) {
                 Settings.System.putInt(mContext.getContentResolver(),
                         Settings.System.LOCKSCREEN_SEE_THROUGH, mSeeThrough.isChecked()
+                        ? 1 : 0);
+            } else if (preference == mLockRingBattery) {
+                Settings.System.putInt(mContext.getContentResolver(),
+                        Settings.System.BATTERY_AROUND_LOCKSCREEN_RING, mLockRingBattery.isChecked()
                         ? 1 : 0);
             }
         }

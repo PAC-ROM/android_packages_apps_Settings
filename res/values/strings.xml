@@ -4654,6 +4654,8 @@
     <!-- Lock screen see through -->
     <string name="see_through_title">See through</string>
     <string name="see_through_summary">Allows to see the application behind the lock screen</string>
+    <!-- Lockscreen Ring Battery -->
+    <string name="battery_around_lockscreen_ring">Battery level around lock ring</string>
     <!-- Home screen widgets -->
     <string name="home_screen_widgets_title">Home screen widgets</string>
     <string name="home_screen_widgets_summary">Allows widgets from the home screen to be added on lock screen</string>
@@ -4959,7 +4961,7 @@
     <string name="partition_info_system">/system</string>
     <string name="partition_info_data">/data</string>
     <string name="partition_info_cache">/cache</string>
-    <string name="partition_info_sdcard">/sdcard (FAT)</string>
+    <string name="partition_info_sdcard">/internal-sd</string>
     <string name="partition_info_sdext">/external-sd</string>
     <string name="partition_info_used_of">/</string>
 
