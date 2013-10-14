@@ -27,6 +27,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_MAX_NOTIF = "status_bar_max_notifications";
     private static final String STATUS_BAR_DONOTDISTURB = "status_bar_donotdisturb";
     private static final String STATUS_BAR_TRAFFIC = "status_bar_traffic";
+    private static final String STATUS_BAR_NETWORK_STATS = "status_bar_show_network_stats";
+    private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_status_update";
     private static final String KEY_SMS_BREATH = "pref_key_sms_breath";
     private static final String KEY_MISSED_CALL_BREATH = "missed_call_breath";
     private static final String KEY_NOTIFICATION_BEHAVIOUR = "notifications_behaviour";
@@ -36,6 +38,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
     private CheckBoxPreference mStatusBarDoNotDisturb;
     private CheckBoxPreference mStatusBarTraffic;
+    private ListPreference mStatusBarNetStatsUpdate;
+    private CheckBoxPreference mStatusBarNetworkStats;
     private CheckBoxPreference mFullScreenStatusBar;
     private ListPreference mStatusBarMaxNotif;
     private ListPreference mNotificationsBehavior;
@@ -96,6 +100,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarTraffic.setChecked(Settings.System.getBoolean(getActivity().getContentResolver(),
                 Settings.System.STATUS_BAR_TRAFFIC, false));
 
+        mStatusBarNetworkStats = (CheckBoxPreference) findPreference(STATUS_BAR_NETWORK_STATS);
+        mStatusBarNetworkStats.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1);
+
         mFullScreenStatusBar = (CheckBoxPreference)findPreference(PREF_FULLSCREEN_STATUSBAR);
         mFullScreenStatusBar.setChecked(Settings.System.getBoolean(getActivity().getApplicationContext().getContentResolver(),
                 Settings.System.FULLSCREEN_STATUSBAR, true));
@@ -140,6 +148,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             Settings.System.putBoolean(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_TRAFFIC, mStatusBarTraffic.isChecked());
             return true;
+        } else if (preference == mStatusBarNetworkStats) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.STATUS_BAR_NETWORK_STATS,
+                    ((CheckBoxPreference)preference).isChecked() ? 1 : 0);
+             return true;
         } else if (preference == mFullScreenStatusBar) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.FULLSCREEN_STATUSBAR,
