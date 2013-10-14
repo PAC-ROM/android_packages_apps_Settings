@@ -725,4 +725,5 @@ zmaže zvolený riadok.
     <string name="title_quick_access_linked">Spojené rozloženie</string>
     <string name="summary_quick_access_linked">Použiť rovnaké dlaždice a rozloženie ako u panela rýchleho nastavenia</string>
     <string name="font_size_sample">Ukážka</string>
+    <string name="perf_profile_title">Profil</string>
 </resources>

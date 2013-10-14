@@ -251,6 +251,9 @@
     <!-- Performance Settings : I/O scheduler settings sub items -->
     <string name="io_sched_title">Планировщик I/O</string>
 
+    <!-- Performance Settings : Performance profile settings -->
+    <string name="perf_profile_title">Профиль</string>
+
     <!-- Memory Management -->
     <string name="memory_management_title">Управление памятью</string>
     <!-- zRam -->

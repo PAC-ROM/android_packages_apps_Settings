@@ -703,4 +703,5 @@ controle adicionais. \'Remover\' apaga a linha selecionada.
     <string name="lockscreen_buttons_sleep">Suspender</string>
     <string name="gamma_tuning_contrast">Contraste</string>
     <string name="gamma_tuning_brightness">Brilho</string>
+    <string name="perf_profile_title">Perfil</string>
 </resources>
