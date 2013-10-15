@@ -112,6 +112,7 @@ public class Lockscreens extends AOKPPreferenceFragment implements
     private Switch mLockAllWidgetsSwitch;
     private Switch mLockUnlimitedWidgetsSwitch;
     private Button mLockTextColorButton;
+    private Switch mCameraWidgetSwitch;
 
     private TextView mLockEightTargetsText;
     private TextView mLockTextColorText;
@@ -124,6 +125,7 @@ public class Lockscreens extends AOKPPreferenceFragment implements
     private TextView mLockCarouselText;
     private TextView mLockAllWidgetsText;
     private TextView mLockUnlimitedWidgetsText;
+    private TextView mCameraWidgetText;
 
     private ShortcutPickHelper mPicker;
     private ImageButton mDialogIcon;
@@ -323,13 +325,6 @@ public class Lockscreens extends AOKPPreferenceFragment implements
                     }
                 });
 
-        if (isSW600DPScreen(mContext)) {
-            Settings.System.putBoolean(cr,
-                Settings.System.LOCKSCREEN_MINIMIZE_LOCKSCREEN_CHALLENGE, false);
-            mLockMinimizeChallangeText.setVisibility(View.GONE);
-            mLockMinimizeChallangeSwitch.setVisibility(View.GONE);
-        }
-
         mLockCarouselText = ((TextView) mActivity.findViewById(R.id.lockscreen_carousel_id));
         mLockCarouselText.setOnClickListener(mLockCarouselTextListener);
         mLockCarouselSwitch = (Switch) mActivity.findViewById(R.id.lockscreen_carousel_switch);
@@ -353,8 +348,34 @@ public class Lockscreens extends AOKPPreferenceFragment implements
                 Settings.System.putBoolean(cr, Settings.System.LOCKSCREEN_TARGETS_USE_EIGHT,
                         checked);
                 updateSwitches();
-            }
-        });
+                    }
+               });
+   
+        mCameraWidgetText = ((TextView) getActivity().findViewById(R.id.lockscreen_camera_widget_id));
+        mCameraWidgetText.setOnClickListener(mCameraWidgetTextListener);
+        mCameraWidgetSwitch = (Switch) getActivity().findViewById(R.id.lockscreen_camera_widget_switch);
+        mCameraWidgetSwitch
+                .setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton v, boolean checked) {
+                        Settings.System.putBoolean(cr,
+                                Settings.System.LOCKSCREEN_CAMERA_WIDGET_SHOW, checked);
+                        updateSwitches();
+                    }
+                });
+
+        if (isSW600DPScreen(mContext)) {
+            // Lockscreen Camera Widget doesn't appear at SW600DP
+            Settings.System.putBoolean(cr,
+                    Settings.System.LOCKSCREEN_CAMERA_WIDGET_SHOW, false);
+            Settings.System.putBoolean(cr,
+                    Settings.System.LOCKSCREEN_MINIMIZE_LOCKSCREEN_CHALLENGE, false);
+            mLockMinimizeChallangeText.setVisibility(View.GONE);
+            mLockMinimizeChallangeSwitch.setVisibility(View.GONE);
+            mCameraWidgetText.setVisibility(View.GONE);
+            mCameraWidgetSwitch.setVisibility(View.GONE);
+        }
+
         updateSwitches();
     }
 
@@ -448,6 +469,16 @@ public class Lockscreens extends AOKPPreferenceFragment implements
         }
     };
 
+     private TextView.OnClickListener mCameraWidgetTextListener = new TextView.OnClickListener() {
+        public void onClick(View v) {
+            createMessage(
+                    getResources().getString(
+                            R.string.lockscreen_camera_widget_title),
+                    getResources().getString(
+                            R.string.lockscreen_camera_widget_summary));
+        }
+    };
+
     private void updateSwitches() {
         mLockBatterySwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_BATTERY, false));
@@ -467,8 +498,10 @@ public class Lockscreens extends AOKPPreferenceFragment implements
                 Settings.System.LOCKSCREEN_MINIMIZE_LOCKSCREEN_CHALLENGE, false));
         mLockCarouselSwitch.setChecked(Settings.System.getBoolean(cr,
                 Settings.System.LOCKSCREEN_USE_WIDGET_CONTAINER_CAROUSEL, false));
-        mLockEightTargetsSwitch.setChecked(Settings.System.getBoolean(cr,
-                        Settings.System.LOCKSCREEN_TARGETS_USE_EIGHT, false));
+        mLockEightTargetsSwitch.setChecked(Settings.System.getBoolean(cr,                       
+                Settings.System.LOCKSCREEN_TARGETS_USE_EIGHT, false));
+        mCameraWidgetSwitch.setChecked(Settings.System.getBoolean(cr,
+                Settings.System.LOCKSCREEN_CAMERA_WIDGET_SHOW, true));
     }
 
    /**
