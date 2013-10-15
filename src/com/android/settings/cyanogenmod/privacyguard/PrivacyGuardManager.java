@@ -34,7 +34,6 @@ import android.content.pm.Signature;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -50,7 +49,6 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.android.settings.applications.AppOpsDetails;
 import com.android.settings.R;
 import com.android.settings.Settings.AppOpsSummaryActivity;
 import com.android.settings.applications.AppOpsDetails;
@@ -76,8 +74,6 @@ public class PrivacyGuardManager extends Fragment
     private Activity mActivity;
 
     private SharedPreferences mPreferences;
-
-    private static final int RESULT_APP_DETAILS = 1;
 
     private AppOpsManager mAppOps;
 
@@ -266,12 +262,13 @@ public class PrivacyGuardManager extends Fragment
         // on long click open app details window
         final AppInfo app = (AppInfo) parent.getItemAtPosition(position);
 
-        Bundle args = new Bundle();
-        args.putString(AppOpsDetails.ARG_PACKAGE_NAME, app.packageName);
+        try {
+            startActivity(new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                    Uri.parse("package:" + app.packageName)));
+        } catch (ActivityNotFoundException e) {
+            Log.e(TAG, "Couldn't open app details activity", e);
+        }
 
-        PreferenceActivity pa = (PreferenceActivity)getActivity();
-        pa.startPreferencePanel(AppOpsDetails.class.getName(), args,
-                R.string.app_ops_settings, null, this, 2);
         return true;
     }
 

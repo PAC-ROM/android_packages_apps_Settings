@@ -17,12 +17,6 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Preference
-        style="?android:preferenceInformationStyle"
-        android:title="@string/privacy_guard_note_title"
-        android:summary="@string/privacy_guard_note_summary"
-        android:selectable="false" />
-
     <CheckBoxPreference
         android:key="privacy_guard_default"
         android:title="@string/privacy_guard_default_title"
