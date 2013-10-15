@@ -1007,4 +1007,13 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- GPS download data over wi-fi only -->
     <string name="gps_download_data_wifi_only">Download GPS assisted data only over Wi-Fi networks</string>
+
+    <string name="app_ops_allowed">Allowed</string>
+    <string name="app_ops_ignored">Denied</string>
+    <string name="appops_show_user_apps">Show user apps</string>
+    <string name="appops_show_system_apps">Show built-in apps</string>
+    <string name="appops_reset_counters">Reset allow/ignore counters</string>
+    <string name="appops_reset_confirm_title">Confirm counters reset</string>
+    <string name="appops_reset_confirm_mesg">Are you sure you wish to reset AppOps counters ?</string>
+
 </resources>

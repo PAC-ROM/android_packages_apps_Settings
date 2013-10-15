@@ -586,7 +586,10 @@
 
     <!-- Names of categories of app ops tabs -->
     <string-array name="app_ops_categories">
-        <item>Operations</item>
+        <item>Location</item>
+        <item>Personal</item>
+        <item>Messaging</item>
+        <item>Device</item>
     </string-array>
 
     <!-- User display names for app ops codes -->
@@ -622,6 +625,10 @@
         <item>play audio</item>
         <item>read clipboard</item>
         <item>modify clipboard</item>
+        <item>wifi change</item>
+        <item>bluetooth change</item>
+        <item>data change</item>
+        <item>alarm wakeup</item>
     </string-array>
 
     <!-- User display names for app ops codes -->
@@ -657,6 +664,10 @@
         <item>Play audio</item>
         <item>Read clipboard</item>
         <item>Modify clipboard</item>
+        <item>Wifi change</item>
+        <item>Bluetooth change</item>
+        <item>Data change</item>
+        <item>Alarm wakeup</item>
     </string-array>
 
     <!-- Titles for the list of long press timeout options. -->

@@ -21,6 +21,11 @@
         android:key="app_security"
         android:title="@string/app_security_title">
 
+        <Preference
+            android:fragment="com.android.settings.applications.AppOpsSummary"
+            android:key="appops_settings"
+            android:title="@string/appops_settings_title" />
+
         <PreferenceScreen
             android:key="blacklist"
             android:title="@string/blacklist_title"
