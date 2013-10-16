@@ -4920,7 +4920,7 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
-	
+
     <string name="pac_version">PAC version</string>
 
     <string name="aokp_version">AOKP version</string>
