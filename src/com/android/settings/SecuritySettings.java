@@ -292,6 +292,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
                     findPreference(Settings.System.MENU_UNLOCK_SCREEN);
             CheckBoxPreference homeUnlock = (CheckBoxPreference)
                     findPreference(Settings.System.HOME_UNLOCK_SCREEN);
+            CheckBoxPreference cameraUnlock = (CheckBoxPreference)
+                    findPreference(Settings.System.CAMERA_UNLOCK_SCREEN);
             CheckBoxPreference vibratePref = (CheckBoxPreference)
                     findPreference(Settings.System.LOCKSCREEN_VIBRATE_ENABLED);
             lockBeforeUnlock = (CheckBoxPreference)
@@ -306,6 +308,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
             mLockNumpadRandom.setOnPreferenceChangeListener(this);
 
+            final int deviceKeys = res.getInteger(
+                    com.android.internal.R.integer.config_deviceHardwareKeys);
+            final PreferenceGroup additionalPrefs =
+                    (PreferenceGroup) findPreference(CATEGORY_ADDITIONAL);
             // disable lock options if lock screen set to NONE
             // or if using pattern as a primary lock screen or
             // as a backup to biometric
@@ -317,6 +323,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 vibratePref.setEnabled(false);
                 mLockNumpadRandom.setEnabled(false);
                 lockBeforeUnlock.setEnabled(mLockPatternUtils.isLockPatternEnabled());
+                root.removePreference(additionalPrefs);
             // disable menu unlock and vibrate on unlock options if
             // using PIN/password as primary lock screen or as
             // backup to biometric
@@ -327,26 +334,27 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 homeUnlock.setEnabled(false);
                 vibratePref.setEnabled(false);
                 mLockNumpadRandom.setEnabled(mLockPatternUtils.isLockNumericPasswordEnabled());
+                additionalPrefs.removePreference(vibratePref);
             // Disable the quick unlock if its not using PIN/password
             // as a primary lock screen or as a backup to biometric
             } else {
                 quickUnlockScreen.setEnabled(false);
                 lockBeforeUnlock.setEnabled(false);
                 mLockNumpadRandom.setEnabled(false);
+                additionalPrefs.removePreference(quickUnlockScreen);
             }
-
-            final int deviceKeys = res.getInteger(
-                    com.android.internal.R.integer.config_deviceHardwareKeys);
-            final PreferenceGroup additionalPrefs =
-                    (PreferenceGroup) findPreference(CATEGORY_ADDITIONAL);
 
             // Hide the MenuUnlock setting if no menu button is available
             if ((deviceKeys & ButtonSettings.KEY_MASK_MENU) == 0) {
                 additionalPrefs.removePreference(menuUnlock);
             }
-            // Disable the HomeUnlock setting if no home button is available
+            // Hide the HomeUnlock setting if no home button is available
             if ((deviceKeys & ButtonSettings.KEY_MASK_HOME) == 0) {
                 additionalPrefs.removePreference(homeUnlock);
+            }
+            // Hide the CameraUnlock setting if no camera button is available
+            if ((deviceKeys & ButtonSettings.KEY_MASK_CAMERA) == 0) {
+                additionalPrefs.removePreference(cameraUnlock);
             }
         }
 
