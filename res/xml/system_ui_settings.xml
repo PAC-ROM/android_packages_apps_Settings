@@ -50,6 +50,11 @@
         android:title="@string/gesture_anywhere_title" />
 
     <PreferenceScreen
+        android:key="identicons"
+        android:fragment="com.android.settings.chameleonos.labs.identicons.IdenticonsSettings"
+        android:title="@string/identicons_title" />
+
+    <PreferenceScreen
         android:id="@+id/initD"
         android:fragment="com.android.settings.InitD"
         android:title="@string/init_d_title"

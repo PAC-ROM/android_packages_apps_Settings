@@ -1760,6 +1760,12 @@
 
         <activity android:name=".chameleonos.labs.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
+        <activity android:name=".pac.RamBar" />
+
+        <activity android:name=".pac.AppSidebar" />
+
+        <activity android:name=".util.ShowBuildProp" />
+
         <activity android:name=".profiles.NFCProfile"
                 android:theme="@android:style/Theme.NoDisplay">
             <intent-filter>
@@ -1835,12 +1841,16 @@
         </receiver>
 
         <service android:name=".cyanogenmod.BootService"/>
+
         <service android:name=".pac.weather.WeatherRefreshService" />
+
         <service android:name=".pac.weather.WeatherService" />
 
-        <activity android:name=".pac.RamBar" />
-        <activity android:name=".pac.AppSidebar" />
-        <activity android:name=".util.ShowBuildProp" />
+        <service android:name=".chameleonos.labs.identicons.IdenticonCreationService"
+                 android:exported="false" />
+
+        <service android:name=".chameleonos.labs.identicons.IdenticonRemovalService"
+                 android:exported="false" />
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to ass display rotation config -->
         <activity android:name="Settings$ASSRamBarActivity"
