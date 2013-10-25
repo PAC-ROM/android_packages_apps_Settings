@@ -187,10 +187,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             prefScreen.removePreference(appSwitchCategory);
         }
 
-        if (!hasAnyBindableKey) {
-            prefScreen.removePreference(findPreference(Settings.System.HARDWARE_KEY_REBINDING));
-        }
-
         if (Utils.hasVolumeRocker(getActivity())) {
             int swapVolumeKeys = Settings.System.getInt(getContentResolver(),
                     Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, 0);
