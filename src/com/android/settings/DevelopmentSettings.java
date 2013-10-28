@@ -497,7 +497,7 @@ public class DevelopmentSettings extends PreferenceFragment
         mAdbNotify.setChecked(Settings.Secure.getInt(cr,
                 Settings.Secure.ADB_NOTIFY, 1) != 0);
         updateCheckBox(mBugreportInPower, Settings.Secure.getInt(cr,
-                Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0);
+                Settings.Global.BUGREPORT_IN_POWER_MENU, 0) != 0);
         updateCheckBox(mKeepScreenOn, Settings.Global.getInt(cr,
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         updateCheckBox(mEnforceReadExternal, isPermissionEnforced(READ_EXTERNAL_STORAGE));
@@ -743,7 +743,7 @@ public class DevelopmentSettings extends PreferenceFragment
                 mBugreport.setEnabled(false);
                 mBugreportInPower.setEnabled(false);
                 mBugreportInPower.setChecked(false);
-                Settings.Secure.putInt(resolver, Settings.Secure.BUGREPORT_IN_POWER_MENU, 0);
+                Settings.Secure.putInt(resolver, Settings.Global.BUGREPORT_IN_POWER_MENU, 0);
             }
         } else {
             mBugreportInPower.setEnabled(true);
@@ -1242,7 +1242,7 @@ public class DevelopmentSettings extends PreferenceFragment
                         .show();
         } else if (preference == mBugreportInPower) {
             Settings.Secure.putInt(getActivity().getContentResolver(),
-                    Settings.Secure.BUGREPORT_IN_POWER_MENU,
+                    Settings.Global.BUGREPORT_IN_POWER_MENU,
                     mBugreportInPower.isChecked() ? 1 : 0);
         } else if (preference == mAdbNotify) {
             Settings.Secure.putInt(getActivity().getContentResolver(),
