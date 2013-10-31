@@ -48,7 +48,7 @@ import java.util.List;
 
 public class Settings extends Activity {
 
-	private static final String SHAREDPREF_SETTINGS_SPLITUP = "settings_splitup";
+    private static final String SHAREDPREF_SETTINGS_SPLITUP = "settings_splitup";
     private static final String[] titles = { "System", "PAC-Man" };
     private LayoutInflater mInflater;
     private List<View> listViews;
