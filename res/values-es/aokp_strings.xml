@@ -71,6 +71,9 @@
     <string name="ribbon_settings_summary">@null</string>
     <string name="app_bar_settings_summary">@null</string>
     <string name="ad_summary">@null</string>
+    <string name="gesture_anywhere_summary">@null</string>
+    <string name="screen_state_toggles_summary">@null</string>
+    <string name="wakelock_blocker_header_summary">@null</string>
 
     <!-- Menu Strings -->
     <string name="menu_nav_bar_reset">Volver a valores por defecto</string>
@@ -130,7 +133,7 @@
     <string name="about_aokp_summary">@null</string>
 
     <!-- General UI -->
-    <string name="bootani_cat">Boot Animation</string>
+    <string name="bootani_cat">Animacion Inicio</string>
     <string name="notification_cat">Notificación</string>
     <string name="recents_cat">Recientes</string>
     <string name="tabletUI_cat">Tablet UI</string>
@@ -450,7 +453,7 @@
     <string name="navbar_actiontitle_menu">Accion: %1$s</string>
     <string name="navbar_longpress_menu">Puls. Larga: %1$s</string>
     <string name="navbar_icon_menu">Icono personalizado</string>
-    <string name="navbar_delete_menu">Boton borrado</string>
+    <string name="navbar_delete_menu">Boton borrar</string>
 
     <!-- Nav Ring Targets -->
     <string name="navbar_ring_cat">Accesos barra de navegación</string>
@@ -467,7 +470,7 @@
     <string name="summary_navring_amount">Elige el numero de accesos en la barra de navegacion</string>
     <string name="interface_navring_settings_title">Barra de navegación Accesos</string>
     <string name="interface_navring_settings_summary">@null</string>
-    <string name="navring_target_info">Mueve tu dedo a lo accesos para asignar acciones</string>
+    <string name="navring_target_info">Mueve tu dedo a los accesos para asignar acciones</string>
     <string name="navring_short">Accion corta</string>
     <string name="navring_long">Accion larga</string>
     <string name="navring_icon">Icono personalizado</string>
@@ -526,7 +529,7 @@
     <string name="bottom">Abajo</string>
     <string name="never">Nunca</string>
     <string name="always">Siempre</string>
-    <string name="not_bar">Ninguna acciona navbar</string>
+    <string name="not_bar">Ninguna accion navbar</string>
     <string name="multi_select_title">Selecciona objetivos para añadir</string>
     <string name="ribbon_animation_type_title">Estilo de animacion</string>
     <string name="ribbon_toggles_button_title">Toggles button on bottom</string>
@@ -614,10 +617,15 @@
     <string name="lockscreen_battery_title">Porcentaje de batería en pantalla de desbloqueo</string>
     <string name="lockscreen_battery_summary">Mostrar siempre el porcentaje de la batería en pantalla de desbloqueo
     </string>
+    <string name="lockscreen_hide_initial_page_hints_title">Ocultar marcadores de pagina al inicio</string>
+    <string name="lockscreen_hide_initial_page_hints_summary">Selecciona cuando los marcadores de widgets izquierda y derecha se mostraran al encender la pantalla.
+    </string>
     <string name="lockscreen_minimize_challenge_title">Minimizar acciones bloqueo</string>
     <string name="lockscreen_minimize_challenge_summary">Selecciona como se muestran las acciones de bloqueo al encender la pantalla</string>
     <string name="lockscreen_use_widget_container_carousel_title">Usar widget carousel</string>
     <string name="lockscreen_use_widget_container_carousel_summary">Usar la animacion carousel cuando cambias entre widget de la pantalla de bloqueo</string>
+    <string name="lockscreen_camera_widget_title">Widget Camara en desbloqueo</string>
+    <string name="lockscreen_camera_widget_summary">Permite desactivar la camara en la pantalla de desbloqueo.</string>
     <string name="volume_rocker_wake_title">Desbloquear con volumen</string>
     <string name="volume_rocker_wake_summary">Desbloquear pantalla con los botones de volumen</string>
     <string name="volume_music_controls_title">Control de volumen de musica</string>
@@ -672,8 +680,6 @@
     <!-- Lockscreen Targets-->
     <string name="lockscreen_target_title">Accesos de pantalla de bloqueo</string>
     <string name="lockscreen_target_summary">Ver o cambiar los accesos directos personalizados de bloqueo de pantalla</string>
-    <string name="number_of_targets_title">Cantidad de accesos en pantalla de bloqueo</string>
-    <string name="number_of_targets_summary">Cuantos accesos quieres?</string>
     <string name="lockscreen_target_use_eight_text">8 objetivos en pantalla de bloqueo</string>
     <string name="lockscreen_camera">Camara</string>
     <string name="lockscreen_unlock">Desbloqueo</string>
@@ -858,6 +864,8 @@
     <string name="protekk_oclock">"ProTekk O'Clock"</string>
     <string name="small_weekday">Día de la semana pequeño</string>
     <string name="regular_weekday">Día de la semana normal</string>
+    <string name="short_month">Mes corto</string>
+    <string name="long_month">Mes largo</string>
 
     <!-- toggle style -->
     <string name="icon_only">Solo icono</string>
@@ -897,7 +905,7 @@
     <string name="menu">Menú</string>
     <string name="toggle_widgets">Interruptores widgets</string>
     <string name="open_ime_switcher">Abrir Selector de escritura</string>
-    <string name="kill_app">Matar app</string>
+    <string name="kill_app">Cerrar app</string>
     <string name="lastapp">Ultima app</string>
     <string name="power">Apagado</string>
     <string name="notifications">Notificaciones</string>
@@ -1057,8 +1065,39 @@
     <string name="icon_picker_gallery_title">Galeria</string>
     <string name="profile_applist_title">Aplicaciones</string>
 
-    <!-- Network speed -->
+    <!-- network usage stats (ChaOS) -->
+    <string name="status_bar_network_title">Trafico de Red</string>
+    <string name="status_bar_network_color_title">Color de Red</string>
+    <string name="status_bar_network_color_reset">Reiniciar color de Red</string>
+    <string name="status_bar_show_network_stats_title">Mostrar velocidad</string>
+    <string name="status_bar_show_network_stats_summary">Muestra la velocidad de Red en barra de estado (ChaOS)</string>
+    <string name="status_bar_network_stats_update_title">Frecuencia de actualizacion</string>
+
+    <!-- Network speed (Thinking Bridge)-->
     <string name="show_network_speed">Medidor de velocidad de red</string>
-    <string name="show_network_speed_summary">Muestra un medidor de velocidad de red en la barra de estado</string>
+    <string name="show_network_speed_summary">Muestra un medidor de velocidad de red en la barra de estado (Bridge)</string>
+
+    <!-- screen state service -->
+    <string name="screen_state_toggles_title">Suspender Acciones</string>
+    <string name="screen_state_toggles_enable_title">Activado</string>
+    <string name="screen_state_toggles_enable_summary">Las acciones seran ejecutadas con la pantalla Off. Con la pantalla encendida se restaura al estado anterior.</string>
+    <string name="screen_state_toggles_mobile_title">Redes Moviles</string>
+    <string name="screen_state_toggles_location_title">Localizacion</string>
+    <string name="screen_state_toggles_twog">Cambiar a 2G</string>
+    <string name="screen_state_toggles_twog_summary">La red movil cambiara a 2G con pantalla OFF</string>
+    <string name="screen_state_toggles_gps">Desactivar GPS</string>
+    <string name="screen_state_toggles_gps_summary">Servicio de localizacion basada en GPS sera desactivado con la pantalla OFF</string>
+    <string name="screen_state_toggles_mobile_data">Desactivar datos moviles</string>
+    <string name="screen_state_toggles_mobile_data_summary">Datos moviles se desactivaran con la pantalla OFF</string>
+
+    <!-- Wakelock Blocker -->
+    <string name="wakelock_blocker">Wakelock Blocker</string>
+    <string name="wakelock_blocker_title">Activado</string>
+    <string name="wakelock_blocker_summary">Activar bloqueador para comprobaciones wakelocks</string>
+    <string name="wakelock_blocker_save">Guardar</string>
+    <string name="wakelock_list_header">Wakelocks Disponibles</string>
+    <string name="wakelock_blocker_reload">Recargar</string>
+    <string name="wakelock_blocker_warning_title">Proceder con Cuidado</string>
+    <string name="wakelock_blocker_warning">Bloquear wakelocks puede causar inestabilidad, cierre de apps o perdida de datos.</string>
 
 </resources>
