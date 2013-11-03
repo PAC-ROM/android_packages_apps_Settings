@@ -142,4 +142,16 @@
         android:summary="@string/navigation_bar_left_summary"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="screen_state_service"
+        android:fragment="com.android.settings.cyanogenmod.fragments.ScreenStateToggles"
+        android:title="@string/screen_state_toggles_title"
+        android:summary="@string/screen_state_toggles_summary" />
+
+    <PreferenceScreen
+        android:key="wakelock_blocker"
+        android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
+        android:title="@string/wakelock_blocker"
+        android:summary="@string/wakelock_blocker_header_summary" />
+
 </PreferenceScreen>
