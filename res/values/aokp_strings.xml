@@ -191,6 +191,8 @@
     <string name="lefty_mode_summary">Swap NavBar location (requires UI restart)</string>
     <string name="recent_kill_all">Enable Kill-All-button</string>
     <string name="recent_kill_all_summary">Displays a button that kills all apps in the Recent Apps window</string>
+    <string name="recent_app_shortcuts">Enable App Shortcuts</string>
+    <string name="recent_app_shortcuts_summary">Displays buttons for some selected apps (if installed) on top of Kill-All-Button for quick access</string>
     <string name="ram_bar">Recents RAM bar</string>
     <string name="ram_bar_summary">Shows RAM usage in the Recent Apps window</string>
     <string name="longpress_to_kill">Hardware Back-to-kill</string>

@@ -84,6 +84,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     private static final CharSequence PREF_VIBRATE_NOTIF_EXPAND = "vibrate_notif_expand";
     private static final CharSequence PREF_LONGPRESS_TO_KILL = "longpress_to_kill";
     private static final CharSequence PREF_RECENT_KILL_ALL = "recent_kill_all";
+    private static final CharSequence PREF_RECENT_APP_SHORTCUTS = "recent_app_shortcuts";
     private static final CharSequence PREF_USER_MODE_UI = "user_mode_ui";
     private static final CharSequence PREF_HIDE_EXTRAS = "hide_extras";
     private static final CharSequence PREF_WAKEUP_WHEN_PLUGGED_UNPLUGGED = "wakeup_when_plugged_unplugged";
@@ -120,6 +121,7 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
     CheckBoxPreference mVibrateOnExpand;
     CheckBoxPreference mLongPressToKill;
     CheckBoxPreference mRecentKillAll;
+    CheckBoxPreference mRecentAppShortcuts;
     AlertDialog mCustomBootAnimationDialog;
     CheckBoxPreference mWakeUpWhenPluggedOrUnplugged;
     ListPreference mLowBatteryWarning;
@@ -212,6 +214,10 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
         mRecentKillAll = (CheckBoxPreference) findPreference(PREF_RECENT_KILL_ALL);
         mRecentKillAll.setChecked(Settings.System.getBoolean(mContentResolver,
                 Settings.System.RECENT_KILL_ALL_BUTTON, false));
+
+        mRecentAppShortcuts = (CheckBoxPreference) findPreference(PREF_RECENT_APP_SHORTCUTS);
+        mRecentAppShortcuts.setChecked(Settings.System.getBoolean(mContentResolver,
+                Settings.System.RECENT_APP_SHORTCUTS, false));
 
         mShowActionOverflow = (CheckBoxPreference) findPreference(PREF_SHOW_OVERFLOW);
         mShowActionOverflow.setChecked(Settings.System.getBoolean(mContentResolver,
@@ -460,6 +466,11 @@ public class UserInterface extends AOKPPreferenceFragment implements OnPreferenc
             boolean checked = ((TwoStatePreference) preference).isChecked();
             Settings.System.putBoolean(mContentResolver,
                     Settings.System.RECENT_KILL_ALL_BUTTON, checked);
+            return true;
+        } else if (preference == mRecentAppShortcuts) {
+            boolean checked = ((TwoStatePreference) preference).isChecked();
+            Settings.System.putBoolean(mContentResolver,
+                    Settings.System.RECENT_APP_SHORTCUTS, checked);
             return true;
         } else if (preference == mWakeUpWhenPluggedOrUnplugged) {
             Settings.System.putBoolean(mContentResolver,
