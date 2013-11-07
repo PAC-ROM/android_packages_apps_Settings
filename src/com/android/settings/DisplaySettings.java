@@ -86,6 +86,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
 
+    private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
+
     private DisplayManager mDisplayManager;
 
     private PreferenceScreen mDisplayRotationPreference;
@@ -106,6 +108,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+
+    private ListPreference mLowBatteryWarning;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -209,6 +213,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
            mListViewInterpolator.setValue(String.valueOf(listViewInterpolator));
         }
         mListViewInterpolator.setOnPreferenceChangeListener(this);
+
+        // Low battery warning
+        mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
+        int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY, 0);
+        mLowBatteryWarning.setValue(String.valueOf(lowBatteryWarning));
+        mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntry());
+        mLowBatteryWarning.setOnPreferenceChangeListener(this);
     }
 
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
@@ -484,6 +496,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+        if (preference == mLowBatteryWarning) {
+            int lowBatteryWarning = Integer.valueOf((String) objValue);
+            int index = mLowBatteryWarning.findIndexOfValue((String) objValue);
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.POWER_UI_LOW_BATTERY_WARNING_POLICY,
+                    lowBatteryWarning);
+            mLowBatteryWarning.setSummary(mLowBatteryWarning.getEntries()[index]);
         }
 
         return true;
