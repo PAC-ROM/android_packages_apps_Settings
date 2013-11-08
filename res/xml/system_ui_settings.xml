@@ -40,6 +40,11 @@
         android:title="@string/ad_settings_title"/>
 
     <PreferenceScreen
+        android:key="app_sidebar"
+        android:fragment="com.android.settings.pac.AppSidebar"
+        android:title="@string/app_sidebar_title"/>
+
+    <PreferenceScreen
         android:id="@+id/initD"
         android:fragment="com.android.settings.InitD"
         android:title="@string/init_d_title"
