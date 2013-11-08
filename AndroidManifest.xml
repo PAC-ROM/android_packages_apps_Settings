@@ -1819,6 +1819,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".pac.AppSidebar" />
         <!-- PAC-Rom activities End -->
 
         <!-- CyanogenMod activities Start -->
