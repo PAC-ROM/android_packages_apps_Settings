@@ -2347,6 +2347,8 @@
         <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
+        <activity android:name=".pac.AppSidebar" />
+
         <!-- End of PAC Activities -->
     </application>
 </manifest>
