@@ -89,6 +89,19 @@
             android:summary="@string/wake_when_plugged_or_unplugged_summary"
             android:defaultValue="false" />
 
+    <PreferenceCategory
+        android:key="category_animation_options"
+        android:title="@string/display_category_animation_options_title" >
+
+        <ListPreference
+            android:key="system_power_crt_mode"
+            android:dialogTitle="@string/system_power_crt_mode_dialog_title"
+            android:title="@string/system_power_crt_mode_title"
+            android:entries="@array/entries_system_power_crt_mode"
+            android:entryValues="@array/values_system_power_crt_mode" />
+
+    </PreferenceCategory>
+
         <PreferenceCategory
             android:key="listview_prefs"
             android:title="@string/listview_animation_header">
