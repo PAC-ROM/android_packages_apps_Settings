@@ -282,11 +282,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
             Toast.makeText(getActivity(), toastResId, Toast.LENGTH_LONG).show();
             return true;
-        } else if (preference == mSwapVolumeButtons) {
-            int value = mSwapVolumeButtons.isChecked()
-                    ? (Utils.isTablet(getActivity()) ? 2 : 1) : 0;
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.SWAP_VOLUME_KEYS_ON_ROTATION, value);
         } else if (preference == mCameraWake) {
             // Disable camera music controls if camera wake is enabled
             boolean isCameraWakeEnabled = mCameraWake.isChecked();
