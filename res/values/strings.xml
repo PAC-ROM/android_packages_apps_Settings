@@ -4732,6 +4732,9 @@
     <string name="rotation_180">180 degrees</string>
     <string name="rotation_270">270 degrees</string>
 
+    <string name="choose_app">Choose app</string>
+    <string name="notification_light_add">Add</string>
+
     <!-- Customization main menu category heading [CHAR LIMIT=40] -->
     <string name="header_category_customization">Customization</string>
     <!-- links main menu category heading [CHAR LIMIT=40] -->
