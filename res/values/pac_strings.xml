@@ -369,5 +369,9 @@
     <!-- Header on first screen of choose gesture flow [CHAR LIMIT=30] -->
     <string name="lockpassword_choose_your_gesture_header">Draw your gesture</string>
 
+     <!--Lockscreen See Through-->
+     <string name="see_through_title">See through</string>
+     <string name="see_through_summary">Shows the content behind your lockscreen</string>
+
 </resources>
 
