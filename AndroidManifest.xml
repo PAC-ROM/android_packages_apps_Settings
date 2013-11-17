@@ -1719,6 +1719,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".cyanogenmod.LockscreenTargets" />
+
         <activity android:name=".cyanogenmod.PerformanceSettings" />
 
         <activity android:name="Settings$AnonymousStatsActivity"
@@ -1734,6 +1736,8 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".cyanogenmod.LockscreenInterface" />
 
         <activity android:name=".notificationlight.NotificationLightSettings" />
 
