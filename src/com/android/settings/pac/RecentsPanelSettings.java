@@ -35,9 +35,11 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
     private static final String RECENT_MENU_CLEAR_ALL = "recent_menu_clear_all";
     private static final String RECENT_MENU_CLEAR_ALL_LOCATION = "recent_menu_clear_all_location";
+    private static final String RECENT_RAM_BAR = "recents_ram_bar";
 
     private CheckBoxPreference mRecentClearAll;
     private ListPreference mRecentClearAllPosition;
+    private Preference mRecentRamBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,6 +59,10 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
              mRecentClearAllPosition.setValue(recentClearAllPosition);
         }
         mRecentClearAllPosition.setOnPreferenceChangeListener(this);
+
+        mRecentRamBar = findPreference(RECENT_RAM_BAR);
+        updateRamBarStatus();
+
     }
 
     @Override
@@ -78,4 +84,26 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
         return true;
     }
+
+    private void updateRamBarStatus() {
+        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.RECENTS_RAM_BAR_MODE, 0);
+        if (ramBarMode != 0)
+            mRecentRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
+        else
+            mRecentRamBar.setSummary(getResources().getString(R.string.ram_bar_color_disabled));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateRamBarStatus();
+    }
+
+    @Override
+    public void onPause() {
+        super.onResume();
+        updateRamBarStatus();
+    }
+
 }

@@ -18,6 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+  <!-- Clear Recent Button -->
     <PreferenceCategory
             android:key="category_recent_panel"
             android:title="@string/recents_panel_settings_title"/>
@@ -36,5 +37,15 @@
             android:entryValues="@array/recent_clear_all_button_location_values"
             android:defaultValue="2"
             android:dependency="recent_menu_clear_all" />
+
+    <!-- RAM Bar -->
+    <PreferenceCategory
+            android:key="category_rambar"
+            android:title="@string/ram_bar_settings_category"/>
+
+    <PreferenceScreen
+            android:key="recents_ram_bar"
+            android:fragment="com.android.settings.pac.RamBar"
+            android:title="@string/ram_bar" />
 
 </PreferenceScreen>
