@@ -39,10 +39,15 @@
         android:fragment="com.android.settings.pac.Weather"
         android:title="@string/title_weather"/>
 
-     <header
+    <PreferenceScreen
         android:key="@+id/initD"
         android:fragment="com.android.settings.InitD"
         android:title="@string/init_d_title" />
+
+    <PreferenceScreen
+        android:key="recents_ram_bar"
+        android:fragment="com.android.settings.pac.RamBar"
+        android:title="@string/ram_bar" />
 
     <PreferenceCategory
         android:key="navigation_bar"
