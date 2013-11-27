@@ -878,7 +878,6 @@
 
         <activity android:name="Settings$AppOpsSummaryActivity"
                 android:label="@string/app_ops_settings"
-                android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings"
                 android:taskAffinity=""
                 android:excludeFromRecents="true">
