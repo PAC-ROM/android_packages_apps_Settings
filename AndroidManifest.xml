@@ -1764,6 +1764,8 @@
 
         <activity android:name=".pac.AppSidebar" />
 
+        <activity android:name=".pac.NotificationDrawerStyle" />
+
         <activity android:name=".slim.themes.ThemeSettings" />
 
         <activity android:name=".util.ShowBuildProp" />
