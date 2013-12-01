@@ -18,6 +18,7 @@ package com.android.settings.pac;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -64,6 +65,8 @@ public class RamBar extends SettingsPreferenceFragment implements OnPreferenceCh
     private ColorPickerPreference mRamBarAppMemColor;
     private ColorPickerPreference mRamBarCacheMemColor;
     private ColorPickerPreference mRamBarTotalMemColor;
+
+    protected Context mContext;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

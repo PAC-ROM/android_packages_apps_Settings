@@ -196,7 +196,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         //ListView Animations
-        mListViewAnimation = (ListPreference) prefSet.findPreference(KEY_LISTVIEW_ANIMATION);
+        mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
         if (mListViewAnimation != null) {
            int listViewAnimation = Settings.System.getInt(getContentResolver(),
                     Settings.System.LISTVIEW_ANIMATION, 1);
@@ -205,7 +205,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
         mListViewAnimation.setOnPreferenceChangeListener(this);
 
-        mListViewInterpolator = (ListPreference) prefSet.findPreference(KEY_LISTVIEW_INTERPOLATOR);
+        mListViewInterpolator = (ListPreference) findPreference(KEY_LISTVIEW_INTERPOLATOR);
         if (mListViewInterpolator != null) {
            int listViewInterpolator = Settings.System.getInt(getContentResolver(),
                     Settings.System.LISTVIEW_INTERPOLATOR, 1);

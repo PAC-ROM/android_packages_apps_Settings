@@ -255,7 +255,7 @@
     <string name="aokp_version_default">Unknown</string>
 
     <string name="pa_version">ParanoidAndroid version</string>
-    <string name="pa_version_default">Unknown</string>s
+    <string name="pa_version_default">Unknown</string>
 
     <string name="custom_statusbar_header_title">Contextual notification panel header</string>
     <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
@@ -328,6 +328,15 @@
     <string name="low_battery_warning_policy_notif">Notification only</string>
     <string name="low_battery_warning_policy_sound">Sound only</string>
     <string name="low_battery_warning_policy_disabled">Disabled</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
 
 </resources>
 
