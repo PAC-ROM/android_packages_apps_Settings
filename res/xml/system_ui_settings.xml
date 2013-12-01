@@ -40,11 +40,6 @@
         android:title="@string/title_weather"/>
 
     <PreferenceScreen
-        android:key="@+id/initD"
-        android:fragment="com.android.settings.InitD"
-        android:title="@string/init_d_title" />
-
-    <PreferenceScreen
         android:key="recents_ram_bar"
         android:fragment="com.android.settings.pac.RamBar"
         android:title="@string/ram_bar" />
@@ -60,7 +55,6 @@
         android:key="expanded_desktop_no_navbar"
         android:title="@string/power_menu_expanded_desktop"
         android:persistent="true" />
-
 
     <PreferenceCategory
         android:key="navigation_bar"

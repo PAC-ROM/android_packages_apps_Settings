@@ -1789,8 +1789,6 @@
         <service android:name=".pac.weather.WeatherRefreshService" />
         <service android:name=".pac.weather.WeatherService" />
 
-        <activity android:name=".initD" />
-
         <activity android:name=".pac.RamBar" />
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to ass display rotation config -->
