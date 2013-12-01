@@ -1785,6 +1785,7 @@
             </intent-filter>
         </receiver>
 
+        <service android:name=".cyanogenmod.BootService"/>
         <service android:name=".pac.weather.WeatherRefreshService" />
         <service android:name=".pac.weather.WeatherService" />
 

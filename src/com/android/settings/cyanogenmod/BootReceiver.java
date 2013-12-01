@@ -75,6 +75,9 @@ public class BootReceiver extends BroadcastReceiver {
         DisplayGamma.restore(ctx);
         VibratorIntensity.restore(ctx);
         DisplaySettings.restore(ctx);
+
+        Intent service = new Intent(ctx, BootService.class);
+        ctx.startService(service);
     }
 
     private void initFreqCapFiles(Context ctx)
