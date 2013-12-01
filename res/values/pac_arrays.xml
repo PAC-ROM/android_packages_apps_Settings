@@ -69,4 +69,59 @@
         <item>2</item>
     </string-array>
 
+    <!-- weather arrays -->
+    <string-array name="weather_interval_entries" translatable="false">
+        <item>@string/off</item>
+        <item>@string/time_1_minute</item>
+        <item>@string/time_5_minutes</item>
+        <item>@string/time_10_minutes</item>
+        <item>@string/time_30_minutes</item>
+        <item>@string/time_45_minutes</item>
+        <item>@string/time_60_minutes</item>
+        <item>@string/time_2_hours</item>
+        <item>@string/time_3_hours</item>
+        <item>@string/time_4_hours</item>
+        <item>@string/time_6_hours</item>
+        <item>@string/time_8_hours</item>
+    </string-array>
+
+    <string-array name="weather_interval_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>5</item>
+        <item>10</item>
+        <item>30</item>
+        <item>45</item>
+        <item>60</item>
+        <item>120</item>
+        <item>180</item>
+        <item>240</item>
+        <item>360</item>
+        <item>480</item>
+    </string-array>
+
+    <string-array name="weather_statusbar_location_entries" translatable="false">
+        <item>@string/above_carrier_text</item>
+        <item>@string/weather_panel</item>
+        <item>@string/disabled</item>
+    </string-array>
+
+    <string-array name="weather_statusbar_location_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="weather_action_entries" translatable="false">
+        <item>@string/nothing</item>
+        <item>@string/update</item>
+        <item>@string/custom_app</item>
+    </string-array>
+
+    <string-array name="weather_action_values" translatable="false">
+        <item>**nothing**</item>
+        <item>**update**</item>
+        <item>**app**</item>
+    </string-array>
+
 </resources>

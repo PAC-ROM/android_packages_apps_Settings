@@ -85,13 +85,6 @@
             android:targetPackage="com.tmobile.themechooser"
             android:targetClass="com.tmobile.themechooser.ThemeChooser" />
     </header>
-    
-    <!-- Active display -->	
-    <header	
-        android:key="active_display"	
-        android:fragment="com.android.settings.crdroid.ActiveDisplaySettings"	
-        android:title="@string/ad_settings_title"	
-        android:summary="@string/ad_settings_summary" />    
 
     <!-- System UI -->
     <header
