@@ -97,6 +97,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 
+    private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
+    private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+
     private CheckBoxPreference mAccelerometer;
     private FontDialogPreference mFontSizePref;
     private CheckBoxPreference mWakeWhenPluggedOrUnplugged;
@@ -116,6 +119,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mAdaptiveBacklight;
     private CheckBoxPreference mColorEnhancement;
     private CheckBoxPreference mTapToWake;
+
+    private ListPreference mListViewAnimation;
+    private ListPreference mListViewInterpolator;
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -295,6 +301,25 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         } else {
             getPreferenceScreen().removePreference(lightPrefs);
         }
+
+        //ListView Animations
+        mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
+        if (mListViewAnimation != null) {
+           int listViewAnimation = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.LISTVIEW_ANIMATION, 1);
+           mListViewAnimation.setSummary(mListViewAnimation.getEntry());
+           mListViewAnimation.setValue(String.valueOf(listViewAnimation));
+        }
+        mListViewAnimation.setOnPreferenceChangeListener(this);
+
+        mListViewInterpolator = (ListPreference) findPreference(KEY_LISTVIEW_INTERPOLATOR);
+        if (mListViewInterpolator != null) {
+           int listViewInterpolator = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.LISTVIEW_INTERPOLATOR, 1);
+           mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
+           mListViewInterpolator.setValue(String.valueOf(listViewInterpolator));
+        }
+        mListViewInterpolator.setOnPreferenceChangeListener(this);
     }
 
     private void updateDisplayRotationPreferenceDescription() {
@@ -600,6 +625,22 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
+        if (KEY_LISTVIEW_ANIMATION.equals(key)) {
+            int value = Integer.parseInt((String) objValue);
+            int index = mListViewAnimation.findIndexOfValue((String) objValue);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.LISTVIEW_ANIMATION,
+                    value);
+            mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
+        }
+        if (KEY_LISTVIEW_INTERPOLATOR.equals(key)) {
+            int value = Integer.parseInt((String) objValue);
+            int index = mListViewInterpolator.findIndexOfValue((String) objValue);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.LISTVIEW_INTERPOLATOR,
+                    value);
+            mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
         if (KEY_SCREEN_ANIMATION_STYLE.equals(key)) {
             int value = Integer.parseInt((String) objValue);
             try {
@@ -623,7 +664,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist screen animation style setting", e);
             }
         }
-
         return true;
     }
 
