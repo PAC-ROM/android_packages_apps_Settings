@@ -53,9 +53,6 @@ public class RamBar extends SettingsPreferenceFragment implements OnPreferenceCh
     private static final String RAM_BAR_COLOR_TOTAL_MEM = "ram_bar_color_total_mem";
 
     private static final int MENU_RESET = Menu.FIRST;
-    private static final int MENU_HELP = MENU_RESET + 1;
-
-    private static final String EXPLANATION_URL = "http://www.slimroms.net/index.php/faq/slimbean/238-why-do-i-have-less-memory-free-on-my-device";
 
     static final int DEFAULT_MEM_COLOR = 0xff8d8d8d;
     static final int DEFAULT_CACHE_COLOR = 0xff00aa00;
@@ -120,9 +117,6 @@ public class RamBar extends SettingsPreferenceFragment implements OnPreferenceCh
         menu.add(0, MENU_RESET, 0, R.string.ram_bar_button_reset)
                 .setIcon(R.drawable.ic_settings_backup) // use the backup icon
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-        menu.add(0, MENU_HELP, 0, R.string.ram_bar_button_help)
-                .setIcon(R.drawable.ic_settings_about)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
     @Override
@@ -130,11 +124,6 @@ public class RamBar extends SettingsPreferenceFragment implements OnPreferenceCh
         switch (item.getItemId()) {
             case MENU_RESET:
                 resetToDefault();
-                return true;
-            case MENU_HELP:
-                final Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(EXPLANATION_URL));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(intent);
                 return true;
             default:
                 return super.onContextItemSelected(item);
