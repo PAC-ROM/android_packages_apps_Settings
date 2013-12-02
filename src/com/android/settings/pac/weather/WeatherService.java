@@ -106,10 +106,20 @@ public class WeatherService extends IntentService {
                     final LocationManager locationManager = (LocationManager) this
                             .getSystemService(Context.LOCATION_SERVICE);
 
-                    Criteria crit = new Criteria();
-                    crit.setAccuracy(Criteria.ACCURACY_COARSE);
-                    String bestProvider = locationManager.getBestProvider(crit, true);
-
+                    boolean network_enabled = false;
+                    try {
+                        network_enabled=locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+                    } catch(Exception ex) {
+                    } // do sweet FA and move right along on exception
+                    String bestProvider;
+                    if (!network_enabled) { // i dont want to use gps if the coarse network is available...
+                        Criteria crit = new Criteria();
+                        crit.setAccuracy(Criteria.ACCURACY_COARSE);
+                        bestProvider = locationManager.getBestProvider(crit, true);
+                    } else { // so override it
+                        bestProvider = LocationManager.NETWORK_PROVIDER;
+                    }
+                    // continue as before.
                     if (!intent.hasExtra(INTENT_EXTRA_NEWLOCATION)) {
                         intent.putExtra(INTENT_EXTRA_NEWLOCATION, true);
                         PendingIntent pi = PendingIntent.getService(getApplicationContext(), 0,
@@ -124,7 +134,6 @@ public class WeatherService extends IntentService {
                         }
                         return;
                     }
-
                     Location loc = null;
                     if (bestProvider != null) {
                         loc = locationManager.getLastKnownLocation(bestProvider);
