@@ -22,15 +22,21 @@
                 android:title="@string/brightness"
                 android:persistent="false"/>
 
-        <PreferenceScreen
-                android:key="wallpaper"
-                android:title="@string/wallpaper_settings_title"
-                android:fragment="com.android.settings.WallpaperTypeSettings" />
+        <CheckBoxPreference
+                android:key="status_bar_brightness_control"
+                android:title="@string/status_bar_toggle_brightness"
+                android:summary="@string/status_bar_toggle_brightness_summary"
+                android:defaultValue="false" />
 
         <PreferenceScreen
                 android:key="display_rotation"
                 android:fragment="com.android.settings.pac.DisplayRotation"
                 android:title="@string/display_rotation_title" />
+
+        <PreferenceScreen
+                android:key="wallpaper"
+                android:title="@string/wallpaper_settings_title"
+                android:fragment="com.android.settings.WallpaperTypeSettings" />
 
         <ListPreference
                 android:key="screen_timeout"
