@@ -98,7 +98,7 @@
 
     </PreferenceCategory>
 
-<PreferenceCategory
+    <PreferenceCategory
         android:title="@string/lockscreen_glowpad_doubletap_gesture" >
 
     <CheckBoxPreference
@@ -112,6 +112,21 @@
         android:entryValues="@array/glowpad_doubletap_option_values"
         android:dependency="glowpad_doubletap"
         android:persistent="false" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="lockscreen_background_category"
+        android:title="@string/lockscreen_background">
+
+        <ListPreference
+            android:key="lockscreen_background_style"
+            android:persistent="false"
+            android:dialogTitle="@string/lockscreen_background_style_title"
+            android:summary="%s"
+            android:title="@string/lockscreen_background_style_title"
+            android:entries="@array/lockscreen_background_entries"
+            android:entryValues="@array/lockscreen_background_values" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
