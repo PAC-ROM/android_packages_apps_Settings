@@ -307,7 +307,7 @@ public class ChooseLockGesture extends PreferenceActivity {
             mGestureStore.setOrientationStyle(GestureStore.ORIENTATION_SENSITIVE);
             try {
                 mMinPredictionScore = getActivity().getResources().getInteger(
-                        com.android.internal.R.integer.min_gesture_prediction_score);
+                        R.integer.min_gesture_prediction_score);
             } catch (Resources.NotFoundException e) {
                 mMinPredictionScore = 2;
             }
