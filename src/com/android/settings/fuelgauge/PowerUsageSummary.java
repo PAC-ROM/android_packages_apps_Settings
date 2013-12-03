@@ -156,10 +156,26 @@ public class PowerUsageSummary extends PreferenceFragment {
                     .setAlphabeticShortcut('t');
         }
         MenuItem refresh = menu.add(0, MENU_STATS_REFRESH, 0, R.string.menu_stats_refresh)
-                .setIcon(R.drawable.ic_menu_refresh_holo_dark)
+                .setIcon(R.drawable.ic_action_refresh)
                 .setAlphabeticShortcut('r');
-        refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM |
-                MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+        refresh.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
+
+        SubMenu batteryStyle = menu.addSubMenu(1, MENU_BATTERY_STYLE, 1, R.string.battery_status_icon_title);
+
+        batteryStyle.add(1, SUBMENU_BATTERY_BAR, 1, R.string.battery_bar)
+                    .setChecked(selectedIcon == 0);
+        batteryStyle.add(1, SUBMENU_BATTERY_BAR_PERCENT, 2, R.string.battery_bar_percent)
+                    .setChecked(selectedIcon == 1);
+        batteryStyle.add(1, SUBMENU_BATTERY_CIRCLE, 3, R.string.battery_circle)
+                    .setChecked(selectedIcon == 2);
+        batteryStyle.add(1, SUBMENU_BATTERY_CIRCLE_PERCENT, 4, R.string.battery_circle_percent)
+                    .setChecked(selectedIcon == 3);
+        batteryStyle.setGroupCheckable(1, true, true);
+
+        MenuItem batteryIcon = batteryStyle.getItem();
+        batteryIcon.setIcon(R.drawable.ic_action_battery_status)
+                   .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 
         String helpUrl;
         if (!TextUtils.isEmpty(helpUrl = getResources().getString(R.string.help_url_battery))) {
