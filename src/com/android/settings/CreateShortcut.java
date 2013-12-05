@@ -60,7 +60,7 @@ public class CreateShortcut extends LauncherActivity {
         String c = className.substring(className.lastIndexOf(".") + 1);
 
         if (c.equals("WakeLockBlocker"))
-            return R.drawable.ic_wakelock_blocker;
+            return R.drawable.ic_settings_wakelock_blocker;
         else
             return R.mipmap.ic_launcher_settings;
     }
