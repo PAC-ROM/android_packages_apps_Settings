@@ -310,7 +310,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
             }
         }
 
-
         // Show password
         mShowPassword = (CheckBoxPreference) root.findPreference(KEY_SHOW_PASSWORD);
         mResetCredentials = root.findPreference(KEY_RESET_CREDENTIALS);
