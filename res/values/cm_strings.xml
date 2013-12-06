@@ -524,26 +524,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="performance_set_on_boot">Set on boot</string>
     <string name="performance_set_on_boot_summary">Restore the settings on boot</string>
 
-    <!-- Performance Settings : Processor Settings -->
-    <!-- Performance Settings : Processor settings title -->
-    <string name="processor_title">Processor</string>
-
-    <!-- Performance Settings : Processor settings sub items -->
-    <string name="cpu_cur_freq_title">Current CPU frequency</string>
-    <string name="cpu_governors_title">CPU governor</string>
-    <string name="cpu_governors_summary" translatable="false">%S</string>
-    <string name="cpu_min_freq_title">Minimum CPU frequency</string>
-    <string name="cpu_min_freq_summary" translatable="false">%s</string>
-    <string name="cpu_max_freq_title">Maximum CPU frequency</string>
-    <string name="cpu_max_freq_summary" translatable="false">%s</string>
-
-    <!-- Performance Settings : I/O scheduler settings title -->
-    <string name="io_scheds_title">I/O scheduler</string>
-
-    <!-- Performance Settings : I/O scheduler settings sub items -->
-    <string name="io_sched_title">I/O scheduler</string>
-    <string name="io_sched_summary" translatable="false">%S</string>
-
     <!-- Performance Settings : Performance profile settings -->
     <string name="perf_profile_title">Profile</string>
     <string name="perf_profile_summary" translatable="false">%s</string>
@@ -959,5 +939,4 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="pref_scrollingcache_default_enable">Default enable</string>
     <string name="pref_scrollingcache_default_disable">Default disable</string>
     <string name="pref_scrollingcache_force_disable">Force disable</string>
-
 </resources>

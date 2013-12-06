@@ -855,4 +855,7 @@
     <string name="tiles_per_row_duplicate_landscape_title">Scale landscape quantity</string>
     <string name="tiles_per_row_duplicate_landscape_summary">Landscape view doubles tiles per row quantity</string>
 
+    <!-- Performance control -->
+    <string name="performance_settings">Performance control</string>
+
 </resources>
