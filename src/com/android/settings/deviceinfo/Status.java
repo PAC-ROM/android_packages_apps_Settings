@@ -427,6 +427,7 @@ public class Status extends PreferenceActivity {
         return false;
     }
 
+    @Override
     protected void onResume() {
         super.onResume();
 
