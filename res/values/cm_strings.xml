@@ -1148,4 +1148,10 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="notification_shortcuts_color_mode_title">Icon color mode</string>
     <string name="notification_shortcuts_color_mode_summary">Change the shorcuts icon color mode</string>
 
+    <!-- WhisperPush -->
+    <string name="whisperpush_title">WhisperPush</string>
+    <string name="whisperpush_registration_title">Register</string>
+    <string name="whisperpush_registration_summary">Register for WhisperPush to enable encrypted SMS.</string>
+    <string name="whisperpush_identitykey_title">Review identity keys</string>
+
 </resources>
