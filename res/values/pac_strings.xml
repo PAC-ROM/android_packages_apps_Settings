@@ -162,8 +162,9 @@
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
 
-    <!-- QS Power menu -->
+    <!-- QS and navring Power menu -->
     <string name="title_tile_power">Power Menu</string>
+    <string name="navring_action_power_menu">Power menu</string>
 
     <!-- QuickSettings fliptiles -->
     <string name="flip_qs_tiles_title">Flip tiles</string>
