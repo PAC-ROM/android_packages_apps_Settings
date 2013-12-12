@@ -312,8 +312,8 @@ public class ChooseLockPattern extends PreferenceActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
 
-            mPatternSize = getActivity().getIntent()
-                .getByteExtra("pattern_size", LockPatternUtils.PATTERN_SIZE_DEFAULT);
+            mPatternSize = getActivity().getIntent().getByteExtra("pattern_size",
+                    LockPatternUtils.PATTERN_SIZE_DEFAULT);
             LockPatternView.Cell.updateSize(mPatternSize);
             mAnimatePattern = Collections.unmodifiableList(Lists.newArrayList(
                     LockPatternView.Cell.of(0, 0, mPatternSize),
@@ -330,6 +330,7 @@ public class ChooseLockPattern extends PreferenceActivity {
             mLockPatternView.setTactileFeedbackEnabled(
                     mChooseLockSettingsHelper.utils().isTactileFeedbackEnabled());
             mLockPatternView.setLockPatternSize(mPatternSize);
+            mLockPatternView.setLockPatternUtils(mChooseLockSettingsHelper.utils());
 
             mFooterText = (TextView) view.findViewById(R.id.footerText);
 
