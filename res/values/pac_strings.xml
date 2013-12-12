@@ -384,6 +384,10 @@
     <string name="recent_clear_all_button_location_bottom_left">Bottom left</string>
     <string name="recent_clear_all_button_location_bottom_right">Bottom right</string>
 
+    <!-- Notification Drawer - Swipe to Switch full screen detection-->
+    <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
+    <string name="summary_full_screen_swipe">Use full screen detection for swipe to switch, not just the bottom bar</string>
+
     <!-- Recents Ram Bar -->
     <string name="ram_bar">Recents RAM bar</string>
     <string name="ram_bar_note_title">Note</string>
