@@ -820,6 +820,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="status_bar_battery_status_circle_percentage">Circle with percentage</string>
     <string name="status_bar_notif_count_title">Show notification count</string>
     <string name="status_bar_notif_count_summary">Display the number of pending notifications</string>
+    <string name="status_bar_double_tap_to_sleep_title">Double-tap to sleep</string>
 
     <!-- Development shortcut -->
     <string name="development_shortcut_title">Development shortcut</string>
