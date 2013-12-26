@@ -16,7 +16,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-  <!-- Clear recents button location -->
+    <!-- Clear recents button location -->
     <string-array name="recent_clear_all_button_location_entries" translatable="false">
         <item>@string/recent_clear_all_button_location_top_left</item>
         <item>@string/recent_clear_all_button_location_top_right</item>
@@ -31,7 +31,26 @@
         <item>3</item>
     </string-array>
 
-  <!-- Navigation bar custom dimensions -->
+    <!-- Low battery warning policy -->
+    <string-array name="pref_low_battery_warning_policy_entries">
+        <item>@string/low_battery_warning_policy_popup_sound</item>
+        <item>@string/low_battery_warning_policy_notif_sound</item>
+        <item>@string/low_battery_warning_policy_popup</item>
+        <item>@string/low_battery_warning_policy_notif</item>
+        <item>@string/low_battery_warning_policy_sound</item>
+        <item>@string/disabled</item>
+    </string-array>
+
+    <string-array name="pref_low_battery_warning_policy_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <!-- Navigation bar custom dimensions -->
     <string-array name="navigation_bar_width_entries" translatable="false">
         <item>@string/navigation_bar_size_42_dp_default</item>
         <item>@string/navigation_bar_size_40_dp</item>
