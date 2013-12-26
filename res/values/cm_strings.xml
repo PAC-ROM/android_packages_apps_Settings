@@ -282,6 +282,7 @@
     <string name="title_tile_mobiledata">Mobile data</string>
     <string name="title_tile_profile">Profile</string>
     <string name="title_tile_performance_profile">Performance profile</string>
+    <string name="title_tile_quick_record">Quick Record</string>
     <string name="title_tile_autorotate">Orientation</string>
     <string name="title_tile_settings">Settings</string>
     <string name="title_tile_sound">Sound</string>
