@@ -6,7 +6,8 @@
     <ListPreference
         android:key="screen_recorder_info"
         android:title="@string/screen_recorder_info_title"
-        android:summary="@string/screen_recorder_info_summary" />
+        android:summary="@string/screen_recorder_info_summary"
+        android:selectable="false" />
 
     <ListPreference
         android:key="screen_recorder_size"
