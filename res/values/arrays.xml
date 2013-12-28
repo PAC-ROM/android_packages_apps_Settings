@@ -1230,4 +1230,5 @@
         <item>@string/screen_recorder_bitrate_50000000</item>
         <item>@string/screen_recorder_bitrate_100000000</item>
     </string-array>
+
 </resources>

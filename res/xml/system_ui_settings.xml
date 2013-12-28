@@ -101,4 +101,9 @@
             android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
     </Preference>
 
+    <PreferenceScreen
+        android:key="navigation_bar_ring"
+        android:fragment="com.android.settings.pac.NavRingTargets"
+        android:title="@string/category_navring" />
+
 </PreferenceScreen>
