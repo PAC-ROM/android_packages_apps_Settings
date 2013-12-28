@@ -529,10 +529,10 @@
     <!-- App sidebar -->
     <string name="app_sidebar_title">Appbar</string>
     <string name="app_sidebar_enable_title">Enable Appbar</string>
-    <string name="app_sidebar_enable_summaryOn">\@appbar is enabled</string>
-    <string name="app_sidebar_enable_summaryOff">\@appbar is disabled</string>
+    <string name="app_sidebar_enable_summaryOn">Appbar is enabled</string>
+    <string name="app_sidebar_enable_summaryOff">Appbar is disabled</string>
     <string name="app_sidebar_setup_items_title">Setup Appbar content</string>
-    <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the @ppbar</string>
+    <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the Appbar</string>
     <string name="app_sidebar_transparency_title">Appbar transparency</string>
     <string name="app_sidebar_transparency_summary">Adjust the Appbar transparency level</string>
     <string name="app_sidebar_position_title">Appbar position</string>
@@ -543,7 +543,7 @@
     <string name="app_sidebar_hide_labels_summary">Hide Appbar icon labels</string>
     <string name="tab_category">Visible Tab</string>
     <string name="use_tab_title">Display tab</string>
-    <string name="use_tab_summary">Display a visible tab on the side which will display the \@appbar when touched.</string>
+    <string name="use_tab_summary">Display a visible tab on the side which will display the Appbar when touched.</string>
     <string name="tab_position_title">Tab location</string>
     <string name="tab_position_summary">Display the tab on the top, middle, or bottom on the side of the screen.</string>
     <string name="tab_size_title">Tab size</string>
