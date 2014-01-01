@@ -1272,6 +1272,8 @@
     <string name="shortcuts_color_mode_title">Icon color mode</string>
     <string name="shortcuts_color_mode_summary">Change the shorcuts icon color mode</string>
 
+    <string name="notification_light_screenon_title">Enable while screen on</string>
+
     <!-- Notification drawer settings -->
     <string name="notification_hide_carrier_title">Hide carrier label</string>
     <string name="notification_shortcuts_settings_title">Shortcuts</string>
