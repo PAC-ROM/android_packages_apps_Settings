@@ -635,5 +635,10 @@
     <string name="theme_auto_mode_twilight">On daytime</string>
     <string name="theme_auto_switch_mode_error">Automatic light condition change mode is enabled. Manual switching is not possible.</string>
 
+    <!-- Breathing Notifications -->
+    <string name="breathing_notifications_title">Breathing Notifications</string>
+    <string name="sms_breath">Breathing SMS</string>
+    <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar</string>
+
 </resources>
 

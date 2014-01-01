@@ -41,6 +41,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_NETWORK_STATS = "status_bar_show_network_stats";
     private static final String STATUS_BAR_NETWORK_STATS_UPDATE = "status_bar_network_status_update";
     private static final String STATUS_BAR_BATTERY_SHOW_PERCENT = "status_bar_battery_show_percent";
+    private static final String KEY_SMS_BREATH = "pref_key_sms_breath";
 
     private static final String STATUS_BAR_STYLE_HIDDEN = "5";
     private static final String STATUS_BAR_STYLE_TEXT = "6";
@@ -50,6 +51,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private ListPreference mStatusBarCmSignal;
     private ListPreference mStatusBarNetStatsUpdate;
     private CheckBoxPreference mStatusBarNetworkStats;
+    private CheckBoxPreference mSMSBreath;
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
 
     @Override
@@ -84,6 +86,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarBatteryShowPercent =
                 (SystemSettingCheckBoxPreference) findPreference(STATUS_BAR_BATTERY_SHOW_PERCENT);
 
+        mSMSBreath = (CheckBoxPreference) prefSet.findPreference(KEY_SMS_BREATH);
+
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
@@ -109,6 +113,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
         mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
         mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
+
+        mSMSBreath.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.KEY_SMS_BREATH, 0) == 1));
     }
 
     @Override
@@ -151,8 +158,12 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
                     Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
             return true;
+        } else if (preference == mSMSBreath) {
+            value = mSMSBreath.isChecked();
+            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
+            return true;
         }
-
         return false;
     }
 
