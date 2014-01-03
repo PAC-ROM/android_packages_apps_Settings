@@ -19,4 +19,7 @@
     <!-- Gesture Anywhere -->
     <color name="ga_gesture_color">@android:color/holo_blue_light</color>
 
+    <color name="extension_list_item_color">#ffc9c9c9</color>
+    <color name="setting_separator">#ff484848</color>
+
 </resources>

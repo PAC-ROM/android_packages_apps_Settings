@@ -66,7 +66,7 @@
 
         <PreferenceScreen
                 android:key="navigation_bar"
-                android:fragment="com.android.settings.cyanogenmod.NavBar"
+                android:fragment="com.android.settings.pac.navbar.NavbarTabHostFragment"
                 android:title="@string/navigation_bar_title" />
 
         <PreferenceScreen
@@ -86,10 +86,10 @@
                 android:defaultValue="false" />
 
         <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="navigation_bar_menu_arrow_keys"
+                android:key="navigation_bar_dpad_keys"
                 android:title="@string/navigation_bar_arrow_keys_title"
                 android:summary="@string/navigation_bar_arrow_keys_summary"
-                android:defaultValue="true" />
+                android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

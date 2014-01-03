@@ -853,6 +853,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
 
     <!-- Navigation Bar -->
     <string name="navigation_bar_category">Navigation bar</string>
+    <string name="navigation_bar_title">Buttons and layout</string>
     <string name="navigation_bar_left_title">Left-handed mode</string>
     <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
     <string name="navigation_bar_arrow_keys_title">Arrow keys while typing</string>

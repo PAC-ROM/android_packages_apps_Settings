@@ -24,4 +24,11 @@
     <!-- Minimal notification row height used to calculate max notification count -->
     <dimen name="notification_row_min_height">70dp</dimen>
 
+    <dimen name="drag_grip_ridge_size">4dp</dimen>
+    <dimen name="drag_grip_ridge_gap">2dp</dimen>
+
+    <dimen name="list_toggle_height">64dp</dimen>
+    <dimen name="list_toggle_width">320dp</dimen>
+    <dimen name="toggle_rearrange_dialog_title_height">68dp</dimen>
+
 </resources>
