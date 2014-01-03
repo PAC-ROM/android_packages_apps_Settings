@@ -102,6 +102,11 @@
     </Preference>
 
     <PreferenceScreen
+        android:key="navigation_bar"
+        android:fragment="com.android.settings.pac.navbar.NavbarTabHostFragment"
+        android:title="@string/category_navbar" />
+
+    <PreferenceScreen
         android:key="navigation_bar_ring"
         android:fragment="com.android.settings.pac.NavRingTargets"
         android:title="@string/category_navring" />

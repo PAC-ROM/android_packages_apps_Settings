@@ -1770,6 +1770,8 @@
 
         <activity android:name=".pac.NavRingTargets" />
 
+        <activity android:name=".pac.navbar.NavbarTabHostFragment" />
+
         <activity android:name=".slim.themes.ThemeSettings" />
 
         <activity android:name=".util.ShowBuildProp" />
