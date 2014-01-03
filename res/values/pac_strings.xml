@@ -640,6 +640,8 @@
     <string name="breathing_notifications_title">Breathing Notifications</string>
     <string name="sms_breath">Breathing SMS</string>
     <string name="sms_breath_summary">Will give your sms notifications a breathing effect in the statusbar</string>
+    <string name="title_missed_call_breath">Breathing Missed Call</string>
+    <string name="missed_call_breath_summary">Will give your missed call notifications a breathing effect in the statusbar</string>
 
     <!-- Custom Carrier Label Options -->
     <string name="carrier_label_title">Carrier Label</string>

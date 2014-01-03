@@ -135,9 +135,15 @@
     <PreferenceCategory
         android:title="@string/breathing_notifications_title">
 
-        <CheckBoxPreference android:key="pref_key_sms_breath"
+        <CheckBoxPreference android:key="sms_breath"
             android:title="@string/sms_breath"
             android:summary="@string/sms_breath_summary"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
+            android:key="missed_call_breath"
+            android:title="@string/title_missed_call_breath"
+            android:summary="@string/missed_call_breath_summary"
             android:defaultValue="false" />
 
     </PreferenceCategory>
