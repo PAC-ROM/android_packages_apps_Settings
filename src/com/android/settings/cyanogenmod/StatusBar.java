@@ -153,6 +153,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
         updateBatteryBarOptions();
+        enableDependents();
     }
 
     @Override
@@ -237,9 +238,14 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     }
 
     private void enableDependents() {
-        mStatusBarBatteryShowPercent.setEnabled(
-                mStatusBarBattery.getValue().equals(STATUS_BAR_STYLE_TEXT)
-                || mStatusBarBattery.getValue().equals(STATUS_BAR_STYLE_HIDDEN));
+        if (Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_BATTERY, 0) == 4 ||
+            Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_BATTERY, 0) == 6) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+        }
     }
 
     private void updateBatteryBarOptions() {
