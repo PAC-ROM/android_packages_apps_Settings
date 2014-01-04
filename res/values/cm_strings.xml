@@ -25,6 +25,8 @@
     <string name="wifi_setting_priority_title">Wi-Fi priority</string>
     <!-- Wi-Fi settings screen, setting summary for setting the Wi-Fi priority-->
     <string name="wifi_setting_priority_summary">Specify the priority of the Wi-Fi networks</string>
+    <!-- WiFi forget all networks -->
+    <string name="wifi_menu_forget_all">Forget all networks</string>
 
     <string name="lock_screen_title">Lock screen</string>
 
