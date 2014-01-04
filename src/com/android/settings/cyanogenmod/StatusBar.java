@@ -117,8 +117,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             generalCategory.removePreference(mStatusBarCmSignal);
         }
 
-        mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
+        mStatusBarNetworkStats.setChecked((Settings.System.getInt(resolver, Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
 
         long statsUpdate = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
         mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
@@ -217,21 +216,19 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     }
 
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        ContentResolver resolver = getActivity().getContentResolver();
         boolean value;
         if (preference == mStatusBarNetworkStats) {
             value = mStatusBarNetworkStats.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
+            Settings.System.putInt(resolver, Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
             return true;
         } else if (preference == mSMSBreath) {
             value = mSMSBreath.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
+            Settings.System.putInt(resolver, Settings.System.KEY_SMS_BREATH, value ? 1 : 0);
             return true;
         } else if (preference == mBatteryBarChargingAnimation) {
             value = mBatteryBarChargingAnimation.isChecked();
-            Settings.System.putInt(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_BAR_ANIMATE, value ? 1 : 0);
+            Settings.System.putInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_ANIMATE, value ? 1 : 0);
             return true;
         }
         return false;
