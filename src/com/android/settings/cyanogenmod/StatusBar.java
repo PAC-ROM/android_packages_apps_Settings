@@ -185,6 +185,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             int index = mStatusBarCmSignal.findIndexOfValue((String) newValue);
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_SIGNAL_TEXT, signalStyle);
             mStatusBarCmSignal.setSummary(mStatusBarCmSignal.getEntries()[index]);
+            return true;
         } else if (preference == mStatusBarNetStatsUpdate) {
             long updateInterval = Long.valueOf((String) newValue);
             int index = mStatusBarNetStatsUpdate.findIndexOfValue((String) newValue);
