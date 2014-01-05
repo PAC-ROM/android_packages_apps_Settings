@@ -38,11 +38,13 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
     private static final String STATUS_BAR_CUSTOM_HEADER = "custom_status_bar_header";
     private static final String SWIPE_TO_SWITCH_SCREEN_DETECTION = "full_swipe_to_switch_detection";
+    private static final String PREF_NOTIFICATION_SHOW_WIFI_SSID = "notification_show_wifi_ssid";
     private static final String PREF_CUSTOM_CARRIER_LABEL = "custom_carrier_label";
 
     private ListPreference mCollapseOnDismiss;
     private CheckBoxPreference mStatusBarCustomHeader;
     private CheckBoxPreference mFullScreenDetection;
+    private CheckBoxPreference mShowWifiName;
     private Preference mCustomLabel;
 
     String mCustomLabelText = null;
@@ -72,6 +74,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         mFullScreenDetection.setChecked(Settings.System.getInt(getContentResolver(),
                 Settings.System.SWIPE_TO_SWITCH_SCREEN_DETECTION, 0) == 1);
         mFullScreenDetection.setOnPreferenceChangeListener(this);
+
+        mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
+        mShowWifiName.setChecked(Settings.System.getInt(getContentResolver(),
+                Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
+        mShowWifiName.setOnPreferenceChangeListener(this);
 
         // Custom Carrier Label Text
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
@@ -139,6 +146,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getContentResolver(),
                 Settings.System.SWIPE_TO_SWITCH_SCREEN_DETECTION, value ? 1 : 0);
+            return true;
+        } else if (preference == mShowWifiName) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getContentResolver(),
+                Settings.System.NOTIFICATION_SHOW_WIFI_SSID, value ? 1 : 0);
             return true;
         }
 

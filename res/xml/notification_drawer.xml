@@ -44,6 +44,12 @@
         android:summary="@string/summary_full_screen_swipe"
         android:defaultValue="false" />
 
+    <CheckBoxPreference
+        android:key="notification_show_wifi_ssid"
+        android:title="@string/notification_show_wifi_ssid_title"
+        android:summary="@string/notification_show_wifi_ssid_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/category_quick_access" >
 
