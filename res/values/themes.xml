@@ -71,4 +71,8 @@
     <style name="Theme.Settings.DialogWhenLarge" parent="@android:style/Theme.Holo.DialogWhenLarge">
         <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
     </style>
+
+    <style name="Theme.DialogWhenLarge" parent="@android:style/Theme.Holo.DialogWhenLarge">
+        <item name="android:actionBarStyle">@android:style/Widget.Holo.ActionBar.Solid</item>
+    </style>
 </resources>
