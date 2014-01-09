@@ -79,6 +79,13 @@
     <string name="excluded_apps_summary">Excluded applications will not show up as lockscreen notifications</string>
     <string name="notification_color">Notification background color</string>
 
+    <!-- Lockscreen pin shuffle -->
+    <string name="lock_numpad_random_title">Change the order of PIN pad numbers</string>
+    <string name="lock_numpad_random_dialog_title">PIN pad random order</string>
+    <string name="lock_numpad_random_off">Disabled</string>
+    <string name="lock_numpad_random_always">Always</string>
+    <string name="lock_numpad_random_on_request">On request</string>
+
     <!-- Lockscreen See Through -->
     <string name="see_through_title">See through</string>
     <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
