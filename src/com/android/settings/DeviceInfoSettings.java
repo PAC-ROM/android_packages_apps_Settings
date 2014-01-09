@@ -105,7 +105,7 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
         setValueSummary(KEY_AOKP_VERSION, "ro.aokp.version");
         findPreference(KEY_AOKP_VERSION).setEnabled(true);
-        setValueSummary(KEY_CM_VERSION, "ro.cm.version");
+        setValueSummary(KEY_CM_VERSION, "ro.cm.display.version");
         findPreference(KEY_CM_VERSION).setEnabled(true);
         setValueSummary(KEY_PA_VERSION, "ro.pa.version");
         findPreference(KEY_PA_VERSION).setEnabled(true);
