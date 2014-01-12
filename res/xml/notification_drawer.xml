@@ -102,6 +102,30 @@
         </PreferenceScreen>
     </PreferenceCategory>
 
+    <CheckBoxPreference
+            android:key="custom_status_bar_header"
+            android:title="@string/custom_statusbar_header_title"
+            android:summary="@string/custom_statusbar_header_summary"
+            android:persistent="false"/>
+
+    <PreferenceCategory
+            android:key="shortcuts"
+            android:title="@string/notification_bar_shortcuts">
+
+        <com.android.settings.omni.preference.AppSelectListPreference
+                android:key="clock_shortcut"
+                android:title="@string/clock_shortcut_title"
+                android:positiveButtonText="@string/default_shortcut"
+                android:persistent="false"/>
+
+        <com.android.settings.omni.preference.AppSelectListPreference
+                android:key="calendar_shortcut"
+                android:title="@string/calendar_shortcut_title"
+                android:positiveButtonText="@string/default_shortcut"
+                android:persistent="false"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory
         android:title="@string/noti_reminder_category" />
 

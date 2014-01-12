@@ -16,9 +16,12 @@
 
 package com.android.settings.cyanogenmod;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -37,11 +40,18 @@ import android.os.UserHandle;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.quicklaunch.BookmarkPicker;
+
+import java.net.URISyntaxException;
+
+import com.android.settings.omni.preference.AppSelectListPreference;
 
 import com.android.internal.util.slim.DeviceUtils;
 
 public class NotificationDrawer extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
+    private static final String CLOCK_SHORTCUT = "clock_shortcut";
+    private static final String CALENDAR_SHORTCUT = "calendar_shortcut";
     private static final String TAG = "NotificationDrawer";
 
     private static final String UI_COLLAPSE_BEHAVIOUR = "notification_drawer_collapse_on_dismiss";
@@ -59,6 +69,8 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private CheckBoxPreference mStatusBarCustomHeader;
     private CheckBoxPreference mFullScreenDetection;
     private CheckBoxPreference mShowWifiName;
+    private AppSelectListPreference mClockShortcut;
+    private AppSelectListPreference mCalendarShortcut;
     private Preference mCustomLabel;
     CheckBoxPreference mReminder;
     ListPreference mReminderInterval;
@@ -79,6 +91,13 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         int collapseBehaviour = Settings.System.getInt(getContentResolver(),
                 Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS,
                 Settings.System.STATUS_BAR_COLLAPSE_IF_NO_CLEARABLE);
+        mClockShortcut = (AppSelectListPreference) findPreference(CLOCK_SHORTCUT);
+        mClockShortcut.setOnPreferenceChangeListener(this);
+
+        mCalendarShortcut = (AppSelectListPreference) findPreference(CALENDAR_SHORTCUT);
+        mCalendarShortcut.setOnPreferenceChangeListener(this);
+
+        updateClockCalendarSummary();
         mCollapseOnDismiss = (ListPreference) findPreference(UI_COLLAPSE_BEHAVIOUR);
         mCollapseOnDismiss.setValue(String.valueOf(collapseBehaviour));
         mCollapseOnDismiss.setOnPreferenceChangeListener(this);
@@ -193,7 +212,17 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mCollapseOnDismiss) {
+        if (preference == mClockShortcut) {
+            String value = (String) objValue;
+            // a value of null means to use the default
+            Settings.System.putString(getContentResolver(), Settings.System.CLOCK_SHORTCUT, value);
+            updateClockCalendarSummary();
+        } else if (preference == mCalendarShortcut) {
+            String value = (String) objValue;
+            // a value of null means to use the default
+            Settings.System.putString(getContentResolver(), Settings.System.CALENDAR_SHORTCUT, value);
+            updateClockCalendarSummary();
+        } else if (preference == mCollapseOnDismiss) {
             int value = Integer.valueOf((String) objValue);
             Settings.System.putInt(getContentResolver(),
                     Settings.System.STATUS_BAR_COLLAPSE_ON_DISMISS, value);
@@ -300,5 +329,46 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
                 break;
         }
         mReminderMode.setSummary(getResources().getString(resId));
+    }
+
+    private void updateClockCalendarSummary() {
+        final PackageManager packageManager = getPackageManager();
+
+        mClockShortcut.setSummary(getResources().getString(R.string.default_shortcut));
+        mCalendarShortcut.setSummary(getResources().getString(R.string.default_shortcut));
+
+        String clockShortcutIntentUri = Settings.System.getString(getContentResolver(), Settings.System.CLOCK_SHORTCUT);
+        if (clockShortcutIntentUri != null) {
+            Intent clockShortcutIntent = null;
+            try {
+                clockShortcutIntent = Intent.parseUri(clockShortcutIntentUri, 0);
+            } catch (URISyntaxException e) {
+                clockShortcutIntent = null;
+            }
+
+            if(clockShortcutIntent != null) {
+                ResolveInfo info = packageManager.resolveActivity(clockShortcutIntent, 0);
+                if (info != null) {
+                    mClockShortcut.setSummary(info.loadLabel(packageManager));
+                }
+            }
+        }
+
+        String calendarShortcutIntentUri = Settings.System.getString(getContentResolver(), Settings.System.CALENDAR_SHORTCUT);
+        if (calendarShortcutIntentUri != null) {
+            Intent calendarShortcutIntent = null;
+            try {
+                calendarShortcutIntent = Intent.parseUri(calendarShortcutIntentUri, 0);
+            } catch (URISyntaxException e) {
+                calendarShortcutIntent = null;
+            }
+
+            if(calendarShortcutIntent != null) {
+                ResolveInfo info = packageManager.resolveActivity(calendarShortcutIntent, 0);
+                if (info != null) {
+                    mCalendarShortcut.setSummary(info.loadLabel(packageManager));
+                }
+            }
+        }
     }
 }

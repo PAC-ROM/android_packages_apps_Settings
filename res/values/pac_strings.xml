@@ -261,8 +261,8 @@
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
 
-    <string name="custom_statusbar_header_title">Contextual notification panel header</string>
-    <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
+    <string name="custom_statusbar_header_title">Contextual header</string>
+    <string name="custom_statusbar_header_summary">Sets the background of the header to an image based on the current date and time</string>
 
     <!-- Display : Rotation -->
     <string name="display_rotation_title">Rotation</string>
@@ -1288,5 +1288,11 @@
     <string name="wakelock_blocker_reload">Reload</string>
     <string name="wakelock_blocker_warning_title">Proceed with Caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss.</string>
+
+    <!-- Notification Panel Shortcuts -->
+    <string name="notification_bar_shortcuts">Header shortcuts</string>
+    <string name="clock_shortcut_title">Time</string>
+    <string name="calendar_shortcut_title">Date</string>
+    <string name="default_shortcut">Default</string>
 
 </resources>
