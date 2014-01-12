@@ -248,7 +248,6 @@
 
     <!-- ListView animation -->
     <string name="bars_and_menus_category_system_title">System</string>
-    <string name="listview_animation_header">Animation</string>
     <string name="listview_animation_title">ListView Animation</string>
     <string name="listview_off">Off</string>
     <string name="listview_wave_left">Wave (Left)</string>
@@ -723,8 +722,8 @@
     <string name="toggles_arrange_instructions">Rearrange by dragging by the handle on the right. Remove by swiping.</string>
 
     <!-- Display : Animation options -->
-    <string name="display_category_animation_options_title">Animation options</string>
-    <string name="system_power_crt_mode_title">CRT animation </string>
+    <string name="display_category_animation_options_title">Animations</string>
+    <string name="system_power_crt_mode_title">CRT animation</string>
     <string name="system_power_crt_mode_dialog_title">CRT animation</string>
     <string name="system_power_crt_mode_off">Don\'t show</string>
     <string name="system_power_crt_mode_horizontal">Collapse horizontal</string>

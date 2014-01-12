@@ -100,12 +100,6 @@
             android:entries="@array/entries_system_power_crt_mode"
             android:entryValues="@array/values_system_power_crt_mode" />
 
-    </PreferenceCategory>
-
-        <PreferenceCategory
-            android:key="listview_prefs"
-            android:title="@string/listview_animation_header">
-
             <ListPreference
                 android:key="listview_animation"
                 android:dialogTitle="@string/listview_animation_title"
