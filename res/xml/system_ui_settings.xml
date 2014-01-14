@@ -124,4 +124,10 @@
         android:title="@string/category_navring"
         android:dependency="enable_nav_bar" />
 
+    <CheckBoxPreference
+        android:key="navigation_bar_left"
+        android:title="@string/navigation_bar_left_title"
+        android:summary="@string/navigation_bar_left_summary"
+        android:defaultValue="false" />
+
 </PreferenceScreen>
