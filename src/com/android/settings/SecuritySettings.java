@@ -287,8 +287,6 @@ public class SecuritySettings extends RestrictedSettingsFragment
                     findPreference(Settings.System.MENU_UNLOCK_SCREEN);
             CheckBoxPreference homeUnlock = (CheckBoxPreference)
                     findPreference(Settings.System.HOME_UNLOCK_SCREEN);
-            CheckBoxPreference vibratePref = (CheckBoxPreference)
-                    findPreference(Settings.System.LOCKSCREEN_VIBRATE_ENABLED);
 
             final int deviceKeys = res.getInteger(
                     com.android.internal.R.integer.config_deviceHardwareKeys);
@@ -298,14 +296,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
             // hide all lock options if lock screen set to NONE
             if (mLockPatternUtils.isLockScreenDisabled()) {
                 root.removePreference(additionalPrefs);
-            // hide the quick unlock and vibrate if using Pattern
+            // hide the quick unlock if using Pattern
             } else if (mLockPatternUtils.isLockPatternEnabled()) {
-                additionalPrefs.removePreference(vibratePref);
                 additionalPrefs.removePreference(quickUnlockScreen);
-            // hide vibrate on unlock options if using PIN/password
-            // as primary lock screen or as backup to biometric
-            } else if (mLockPatternUtils.isLockPasswordEnabled()) {
-                additionalPrefs.removePreference(vibratePref);
             // hide the quick unlock if its not using PIN/password
             // as a primary lock screen or as a backup to biometric
             } else {
