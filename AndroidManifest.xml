@@ -1832,6 +1832,8 @@
                 android:resource="@id/security_settings" />
         </activity>
 
+        <activity android:name=".cyanogenmod.PrivacySettings" />
+
         <!-- CyanogenMod activities End -->
 
         <activity android:name=".crdroid.ActiveDisplaySettings" />
