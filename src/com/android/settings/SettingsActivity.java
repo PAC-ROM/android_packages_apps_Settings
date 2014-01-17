@@ -1335,6 +1335,17 @@ public class SettingsActivity extends Activity
                             CMContextConstants.Features.WEATHER_SERVICES)) {
                         removeTile = true;
                     }
+                } else if (id == R.id.supersu_settings) {
+                    // Embedding into Settings is supported from SuperSU v1.85 and up
+                    boolean hasSuperSU = false;
+                    try {
+                        hasSuperSU = (getPackageManager().getPackageInfo(
+                                     "eu.chainfire.supersu", 0).versionCode >= 185);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+                    if (!hasSuperSU) {
+                        removeTile = true;
+                    }
                 }
 
                 if (UserHandle.MU_ENABLED && UserHandle.myUserId() != 0
