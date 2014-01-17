@@ -180,7 +180,7 @@ public class Settings extends PreferenceActivity
             R.id.interface_section,
             R.id.lock_screen_settings,
             R.id.system_settings,
-            R.id.privacy_guard_manager,
+            R.id.privacy_settings_cyanogenmod,
             R.id.button_settings
     };
 
