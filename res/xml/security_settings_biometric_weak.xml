@@ -61,10 +61,6 @@
             android:title="@string/lock_before_unlock_title"
             android:summary="@string/lock_before_unlock_summary" />
 
-        <CheckBoxPreference
-            android:key="keyguard_enable_widgets"
-            android:title="@string/security_enable_widgets_title"/>
-
         <PreferenceScreen
             android:fragment="com.android.settings.OwnerInfoSettings"
             android:key="owner_info_settings"
