@@ -29,4 +29,10 @@
             android:targetClass="com.pac.console.PacConsole" />
     </PreferenceScreen>
 
+    <PreferenceScreen
+        android:key="@+id/recents_panel"
+        android:fragment="com.android.settings.pac.RecentsPanelSettings"
+        android:title="@string/recents_panel_settings_title"
+        android:icon="@drawable/ic_settings_recents" />
+
 </PreferenceScreen>
