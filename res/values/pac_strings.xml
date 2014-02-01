@@ -978,4 +978,8 @@
     <string name="background_result_successful">Background changed</string>
     <string name="background_result_not_successful">Background not changed</string>
 
+    <!-- ADB Paranoia settings -->
+    <string name="adb_paranoid">ADB paranoia mode</string>
+    <string name="adb_paranoid_summary">Immediately reboot if an unknown computer is connected while device is locked</string>
+
 </resources>
