@@ -57,8 +57,7 @@ public class AppOpsSummary extends Fragment {
         AppOpsState.PERSONAL_TEMPLATE,
         AppOpsState.MESSAGING_TEMPLATE,
         AppOpsState.MEDIA_TEMPLATE,
-        AppOpsState.DEVICE_TEMPLATE,
-        AppOpsState.BOOTUP_TEMPLATE
+        AppOpsState.DEVICE_TEMPLATE
     };
 
     int mCurPos;
@@ -123,7 +122,7 @@ public class AppOpsSummary extends Fragment {
         mContentContainer = container;
         mRootView = rootView;
 
-        mPageNames = getResources().getTextArray(R.array.app_ops_categories_cm);
+        mPageNames = getResources().getTextArray(R.array.app_ops_categories);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mAdapter = new MyPagerAdapter(getChildFragmentManager());
