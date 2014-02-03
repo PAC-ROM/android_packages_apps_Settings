@@ -51,6 +51,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_LOCKSCREEN_SEE_THROUGH = "lockscreen_see_through";
     private static final String KEY_LOCKSCREEN_BLUR_BEHIND = "lockscreen_blur_behind";
     private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
+    private static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
@@ -59,9 +60,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ListPreference mBatteryStatus;
     private Preference mLockscreenTargets;
 
+    // PAC-Rom additions
     private CheckBoxPreference mSeeThrough;
     private CheckBoxPreference mBlurBehind;
     private SeekBarPreference mBlurRadius;
+    private CheckBoxPreference mLockBeforeUnlock;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -114,6 +117,13 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         if (!hasButtons()) {
             generalCategory.removePreference(findPreference(KEY_LOCKSCREEN_BUTTONS));
         }
+
+        // Enable or disable lockscreen widgets based on policy
+        checkDisabledByPolicy(mEnableKeyguardWidgets,
+                DevicePolicyManager.KEYGUARD_DISABLE_WIDGETS_ALL);
+
+        // Lock before Unlock
+        mLockBeforeUnlock = (CheckBoxPreference) findPreference(LOCK_BEFORE_UNLOCK);
 
         // Enable or disable camera widget based on device and policy
         if (Camera.getNumberOfCameras() == 0) {
@@ -228,6 +238,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_BEHIND,
                     mBlurBehind.isChecked() ? 1 : 0);
             mBlurRadius.setEnabled(mBlurBehind.isChecked());
+        } else if (preference == mLockBeforeUnlock) {
+            Settings.Secure.putInt(getContentResolver(), Settings.Secure.LOCK_BEFORE_UNLOCK,
+                    mLockBeforeUnlock.isChecked() ? 1 : 0);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
