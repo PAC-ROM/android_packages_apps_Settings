@@ -47,4 +47,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:key="progressbar"
+        android:title="@string/progressbar_title" >
+
+    <PreferenceScreen
+        android:key="progressbar_settings"
+        android:fragment="com.android.settings.pac.ProgressBar"
+        android:title="@string/progressbar_title" >
+    </PreferenceScreen>
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
