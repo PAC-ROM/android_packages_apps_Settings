@@ -25,7 +25,7 @@
         <item>18000000</item>
     </string-array>
 
-    <!-- Activ display pocket mode -->
+    <!-- Active display pocket mode -->
     <string-array name="ad_pocket_mode_entries" translatable="false">
         <item>@string/ad_pocket_mode_off</item>
         <item>@string/ad_pocket_mode_notifications</item>
