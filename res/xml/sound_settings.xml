@@ -68,6 +68,7 @@
             android:title="@string/sound_category_call_ringtone_vibrate_title"/>
 
     <!-- Do not nest these, or removals in code will break -->
+
     <com.android.settings.DefaultRingtonePreference
             android:key="ringtone"
             android:title="@string/ringtone_title"
@@ -112,6 +113,11 @@
             android:title="@string/sound_category_system_title"/>
 
     <!-- Do not nest these, or removals in code will break -->
+
+    <PreferenceScreen
+            android:key="sound_packages"
+            android:fragment="com.android.settings.omni.sounds.SoundPackageSettings"
+            android:title="@string/sound_packages_title" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
             android:key="dtmf_tone"
