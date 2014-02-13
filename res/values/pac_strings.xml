@@ -490,6 +490,9 @@
     <string name="qs_screenshot_tile">Screenshot</string>
     <string name="qs_tile_reboot">Reboot</string>
 
+    <!-- Quick settings: Vibrate -->
+    <string name="qs_tiles_vibrate_title">Vibrate on touch</string>
+
     <!-- Recent panel -->
     <string name="recent_panel_category">Recent apps panel</string>
     <string name="use_slim_recents_title">Slim recents</string>
