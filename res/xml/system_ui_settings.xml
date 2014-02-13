@@ -80,11 +80,6 @@
         android:fragment="com.android.settings.slim.RecentsPanel"
         android:title="@string/recent_apps_panel_title" />
 
-    <PreferenceScreen
-        android:key="recents_ram_bar"
-        android:fragment="com.android.settings.pac.RamBar"
-        android:title="@string/ram_bar" />
-
     <ListPreference
         android:key="expanded_desktop"
         android:title="@string/power_menu_expanded_desktop"
