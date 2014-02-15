@@ -78,12 +78,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
                 mExpandedDesktopPref.setValue(String.valueOf(expandedDesktopValue));
                 updateExpandedDesktop(expandedDesktopValue);
                 prefScreen.removePreference(mExpandedDesktopNoNavbarPref);
-
-                if (!Utils.isPhone(getActivity())) {
-                    PreferenceCategory navCategory =
-                            (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
-                    navCategory.removePreference(mNavigationBarLeftPref);
-                }
+                prefScreen.removePreference(mNavigationBarLeftPref);
             } else {
                 // Hide no-op "Status bar visible" expanded desktop mode
                 mExpandedDesktopNoNavbarPref.setOnPreferenceChangeListener(this);
