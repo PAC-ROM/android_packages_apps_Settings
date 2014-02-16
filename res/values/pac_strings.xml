@@ -1029,4 +1029,8 @@
     <string name="toast_SlideLeftRight_animation">Slide Left To Right Animation</string>
     <string name="toast_SlideRightLeft_animation">Slide Right To Left Animation</string>
 
+    <!-- Volume steps -->
+    <string name="volume_steps_title">Volume steps</string>
+    <string name="volume_steps_summary">Fine grained control of volume for specified sound streams</string>
+
 </resources>
