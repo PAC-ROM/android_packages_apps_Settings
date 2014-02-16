@@ -47,6 +47,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
 
     private static final String RECENT_MENU_CLEAR_ALL = "recent_menu_clear_all";
     private static final String RECENT_MENU_CLEAR_ALL_LOCATION = "recent_menu_clear_all_location";
+    private static final String KEY_RECENTS_RAM_BAR = "recents_ram_bar";
 
     private static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
     private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
@@ -63,6 +64,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private CheckBoxPreference mRecentsUseOmniSwitch;
     private Preference mOmniSwitchSettings;
     private boolean mOmniSwitchStarted;
+    private Preference mRamBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,9 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         }
         mRecentClearAllPosition.setOnPreferenceChangeListener(this);
         mRecentClearAllPosition.setEnabled(!useOmniSwitch);
+
+        mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
+        updateRamBar();
     }
 
     @Override
@@ -161,5 +166,26 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
                 public void onClick(DialogInterface dialog, int whichButton) {
                 }
             }).show();
+    }
+
+    private void updateRamBar() {
+        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.RECENTS_RAM_BAR_MODE, 0);
+        if (ramBarMode != 0)
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
+        else
+            mRamBar.setSummary(getResources().getString(R.string.ram_bar_color_disabled));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateRamBar();
+    }
+
+    @Override
+    public void onPause() {
+        super.onResume();
+        updateRamBar();
     }
 }
