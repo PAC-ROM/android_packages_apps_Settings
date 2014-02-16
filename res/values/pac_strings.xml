@@ -904,12 +904,6 @@
     <string name="animation_duration_default">Default</string>
     <string name="header_summary_animation">@null</string>
 
-    <!--User preferences settings-->
-    <string name="personalization">Personalization</string>
-    <string name="reset_user_preferences_title">Reset preferences</string>
-    <string name="reset_user_preferences_summary">Restores user interface preferences to default values</string>
-    <string name="reset_user_preferences_dialog">Are you sure you want to reset your preferences?</string>
-
     <!--  Recents clear all -->
     <string name="recent_apps_panel_title" >Recents Apps Panel</string>
     <string name="show_recent_clear_all_button_title">Show clear all button</string>
@@ -993,4 +987,5 @@
     <string name="wakelock_blocker_reload">Reload</string>
     <string name="wakelock_blocker_warning_title">Proceed with Caution</string>
     <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss.</string>
+
 </resources>
