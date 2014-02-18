@@ -448,6 +448,7 @@
     <string name="progressbar_color_3_title">Color3</string>
     <string name="progressbar_color_4_title">Color4</string>
     <string name="sample_progressbar_text">ProgressBar : Preview</string>
+    <string name="progressbar_reset_message">Reset progress bar style to default?</string>
 
     <!-- UI debug setting: show CPU info? [CHAR LIMIT=25] -->
     <string name="show_cpu_info">Show CPU info</string>
