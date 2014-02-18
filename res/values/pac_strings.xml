@@ -962,6 +962,7 @@
     <string name="progressbar_color_3_title">Color3</string>
     <string name="progressbar_color_4_title">Color4</string>
     <string name="sample_progressbar_text">ProgressBar : Preview</string>
+    <string name="progressbar_reset_message">Reset progress bar style to default?</string>
 
     <!-- Screen state service -->
     <string name="screen_state_toggles_summary">@null</string>
