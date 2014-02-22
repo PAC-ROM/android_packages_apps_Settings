@@ -28,6 +28,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.WindowManagerGlobal;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -45,8 +46,10 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
     private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
+    private static final String KEY_TOAST_ANIMATION = "toast_animation";
 
     private ListPreference mExpandedDesktopPref;
+    private ListPreference mToastAnimation;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
     private CheckBoxPreference mEnableNavigationBar;
     private CheckBoxPreference mNavigationBarLeftPref;
@@ -116,6 +119,14 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         mNavigationBarRing.setEnabled(show);
         mNavigationBarLeftPref.setEnabled(show);
         mNavigationBarDimensions.setEnabled(show);
+
+        mToastAnimation = (ListPreference)findPreference(KEY_TOAST_ANIMATION);
+        mToastAnimation.setSummary(mToastAnimation.getEntry());
+        int CurrentToastAnimation = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
+        mToastAnimation.setValueIndex(CurrentToastAnimation);
+        mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
+        mToastAnimation.setOnPreferenceChangeListener(this);
+
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -133,8 +144,13 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
                     ((Boolean) objValue) ? 1 : 0);
             updateNavbarPreferences((Boolean) objValue);
             return true;
+        } else if (preference == mToastAnimation) {
+            int index = mToastAnimation.findIndexOfValue((String) objValue);
+            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) objValue);
+            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
+            return true;
         }
-
         return false;
     }
 
