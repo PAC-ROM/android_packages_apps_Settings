@@ -1873,18 +1873,6 @@
 
         <!-- CyanogenMod activities End -->
 
-        <!-- Telo -->
-        <activity android:name=".aosb.TeloRadioSettings"
-            android:label="@string/telo_radio_settings_title"
-            android:launchMode="singleTask"
-            android:process="com.android.phone">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".crdroid.ActiveDisplaySettings" />
 
         <activity
