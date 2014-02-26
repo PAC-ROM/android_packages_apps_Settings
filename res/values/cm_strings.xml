@@ -666,9 +666,9 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- Lockscreen battery ring -->
     <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
 
-    <!-- System Interface settings  -->
-    <string name="system_settings_title">Interface</string>
-    <string name="system_interface_title">System interface</string>
+    <!-- PAC Pellets settings  -->
+    <string name="system_settings_title">PAC Pellets</string>
+    <string name="system_interface_title">System PAC Pellets</string>
 
     <!-- Notification Drawer  -->
     <string name="notification_drawer_title">Notification drawer</string>
