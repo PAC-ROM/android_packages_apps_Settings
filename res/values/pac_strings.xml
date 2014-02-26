@@ -924,6 +924,9 @@
     <string name="omniswitch_first_time_title">Information</string>
     <string name="omniswitch_first_time_message">Make sure you have enabled OmniSwitch. You can do this by using \"Settings\" below</string>
 
+   <!-- PAC Console -->
+    <string name="pac_console_title">PAC Console</string>
+
    <!-- Smooth ProgressBar -->
     <string name="progressbar_title">Custom ProgressBar</string>
     <string name="progressbar_mirror_title">Mirror Mode</string>
