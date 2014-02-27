@@ -110,6 +110,7 @@
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.pac.console"
             android:targetClass="com.pac.console.pac.console.PacConsole" />
+    </header>
 
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
