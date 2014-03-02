@@ -44,11 +44,20 @@
         android:summary="@string/summary_full_screen_swipe"
         android:defaultValue="false" />
 
-    <CheckBoxPreference
-        android:key="notification_show_wifi_ssid"
-        android:title="@string/notification_show_wifi_ssid_title"
-        android:summary="@string/notification_show_wifi_ssid_summary"
-        android:defaultValue="false" />
+    <PreferenceCategory
+        android:title="@string/carrier_label_title" >
+
+        <Preference
+            android:key="custom_carrier_label"
+            android:title="@string/custom_carrier_label_title" />
+
+        <CheckBoxPreference
+            android:key="notification_show_wifi_ssid"
+            android:title="@string/notification_show_wifi_ssid_title"
+            android:summary="@string/notification_show_wifi_ssid_summary"
+            android:defaultValue="false" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory
         android:title="@string/category_quick_access" >
@@ -77,12 +86,28 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/carrier_label_title" >
+        android:title="@string/noti_reminder_category" />
 
-        <Preference
-            android:key="custom_carrier_label"
-            android:title="@string/custom_carrier_label_title" />
+    <CheckBoxPreference
+        android:key="noti_reminder_enabled"
+        android:title="@string/noti_reminder_enable_title"
+        android:summaryOn="@string/enabled"
+        android:summaryOff="@string/disabled"
+        android:defaultValue="false" />
 
-    </PreferenceCategory>
+    <ListPreference
+        android:key="noti_reminder_sound"
+        android:defaultValue="0"
+        android:title="@string/noti_reminder_sound_title"
+        android:entries="@array/noti_reminder_sound_entries"
+        android:entryValues="@array/noti_reminder_sound_values"
+        android:dependency="noti_reminder_enabled" />
+
+    <RingtonePreference
+        android:key="noti_reminder_ringtone"
+        android:title="@string/noti_reminder_ringtone"
+        android:ringtoneType="all"
+        android:showSilent="false"
+        android:dependency="noti_reminder_enabled" />
 
 </PreferenceScreen>
