@@ -41,6 +41,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
@@ -84,6 +85,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
     private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
+    private static final String KEY_TOAST_ANIMATION = "toast_animation";
 
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
 
@@ -108,6 +110,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
+    private ListPreference mToastAnimation;
 
     private ListPreference mLowBatteryWarning;
 
@@ -219,6 +222,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
            mListViewInterpolator.setValue(String.valueOf(listViewInterpolator));
         }
         mListViewInterpolator.setOnPreferenceChangeListener(this);
+
+        // Toast animation
+        mToastAnimation = (ListPreference)findPreference(KEY_TOAST_ANIMATION);
+        mToastAnimation.setSummary(mToastAnimation.getEntry());
+        int CurrentToastAnimation = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
+        mToastAnimation.setValueIndex(CurrentToastAnimation);
+        mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
+        mToastAnimation.setOnPreferenceChangeListener(this);
 
         // Low battery warning
         mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
@@ -527,6 +538,12 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     Settings.System.LISTVIEW_INTERPOLATOR,
                     value);
             mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
+        }
+        if (preference == mToastAnimation) {
+            int index = mToastAnimation.findIndexOfValue((String) objValue);
+            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) objValue);
+            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
         }
         if (preference == mLowBatteryWarning) {
             int lowBatteryWarning = Integer.valueOf((String) objValue);
