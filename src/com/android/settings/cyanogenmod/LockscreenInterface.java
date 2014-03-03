@@ -52,6 +52,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_LOCKSCREEN_BLUR_BEHIND = "lockscreen_blur_behind";
     private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
     private static final String LOCK_BEFORE_UNLOCK = "lock_before_unlock";
+    private static final String KEY_LOCKSCREEN_GLOWPAD_DOUBLETAP = "glowpad_doubletap_option";
+    private static final String KEY_LOCKSCREEN_GLOWPAD = "glowpad_doubletap";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
@@ -64,6 +66,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSeeThrough;
     private SeekBarPreference mBlurRadius;
     private CheckBoxPreference mLockBeforeUnlock;
+    private ListPreference mGlowpadOption;
+    private CheckBoxPreference mGlowpadDoubletap;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -97,6 +101,15 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                        Settings.PAC.LOCKSCREEN_BLUR_RADIUS, 12));
         mBlurRadius.setOnPreferenceChangeListener(this);
         mBlurRadius.setEnabled(mSeeThrough.isChecked());
+
+        // Glowpad double tap
+        mGlowpadDoubletap = (CheckBoxPreference)findPreference(KEY_LOCKSCREEN_GLOWPAD);
+        mGlowpadDoubletap.setChecked(Settings.PAC.getInt(getContentResolver(), Settings.PAC.DOUBLE_TAP_GLOWPAD_GESTURE, 0) == 1);
+        mGlowpadOption = (ListPreference)findPreference(KEY_LOCKSCREEN_GLOWPAD_DOUBLETAP);
+        int CurrentGlowpadOption = Settings.PAC.getInt(getContentResolver(), Settings.PAC.LOCKSCREEN_GLOWPAD_DOUBLETAP_OPTION, 0);
+        mGlowpadOption.setSummary(mGlowpadOption.getEntries()[CurrentGlowpadOption]);
+        mGlowpadOption.setValueIndex(CurrentGlowpadOption);
+        mGlowpadOption.setOnPreferenceChangeListener(this);
 
         mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
         if (mEnableModLock != null) {
@@ -224,13 +237,17 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (KEY_ENABLE_CAMERA.equals(key)) {
             mLockUtils.setCameraEnabled(mEnableCameraWidget.isChecked());
             return true;
-        } else if (preference == mSeeThrough) {
+        } else if (KEY_LOCKSCREEN_SEE_THROUGH.equals(key)) {
             Settings.PAC.putInt(getContentResolver(), Settings.PAC.LOCKSCREEN_SEE_THROUGH,
                     mSeeThrough.isChecked() ? 1 : 0);
             mBlurRadius.setEnabled(mSeeThrough.isChecked());
-        } else if (preference == mLockBeforeUnlock) {
+        } else if (LOCK_BEFORE_UNLOCK.equals(key)) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.LOCK_BEFORE_UNLOCK,
                     mLockBeforeUnlock.isChecked() ? 1 : 0);
+        } else if (KEY_LOCKSCREEN_GLOWPAD.equals(key)) {
+            boolean value = mGlowpadDoubletap.isChecked();
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.DOUBLE_TAP_GLOWPAD_GESTURE, value ? 1 : 0);
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -255,6 +272,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mBlurRadius) {
                Settings.PAC.putInt(getContentResolver(), Settings.PAC.LOCKSCREEN_BLUR_RADIUS, (Integer)objValue);
+            return true;
+        } else if (preference == mGlowpadOption) {
+            int index = mGlowpadOption.findIndexOfValue((String) objValue);
+            Settings.PAC.putString(cr, Settings.PAC.LOCKSCREEN_GLOWPAD_DOUBLETAP_OPTION, (String) objValue);
+            mGlowpadOption.setSummary(mGlowpadOption.getEntries()[index]);
             return true;
         }
 
