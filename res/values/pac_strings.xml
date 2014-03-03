@@ -110,9 +110,12 @@
     <string name="lock_pattern_size_5">5x5</string>
     <string name="lock_pattern_size_6">6x6</string>
 
-    <!-- Lockscreen Torch settings -->
-    <string name="lockscreen_glowpad_torch_title">Slider torch</string>
-    <string name="lockscreen_glowpad_torch_summary">Double-tap and hold the slider to start torch</string>
+    <!-- LockScreen GlowPad DoubleTap Option -->
+    <string name="lockscreen_glowpad_doubletap_gesture">DoubleTap Gesture</string>
+    <string name="lockscreen_glowpad_doubletap_checkbox_title">Glowpad Doubletap Gesture</string>
+    <string name="lockscreen_glowpad_doubletap_title">Glowpad Doubletap Option</string>
+    <string name="lockscreen_glowpad_doubletap_sleep">Sleep</string>
+    <string name="lockscreen_glowpad_doubletap_torch">Torch</string>
 
     <!-- Shortcut picker -->
     <string name="use_custom_app_title">Use custom application</string>
