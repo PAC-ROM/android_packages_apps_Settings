@@ -149,4 +149,18 @@
         <item>Apparaat</item>
         <item>@string/app_ops_categories_bootup</item>
     </string-array>
+    <string-array name="data_usage_cycle_length">
+        <item>Dagelijks</item>
+        <item>Wekelijks</item>
+        <item>Maandelijks</item>
+    </string-array>
+    <string-array name="data_usage_cycle_weekdays">
+        <item>Zondag</item>
+        <item>Maandag</item>
+        <item>Dinsdag</item>
+        <item>Woensdag</item>
+        <item>Donderdag</item>
+        <item>Vrijdag</item>
+        <item>Zaterdag</item>
+    </string-array>
 </resources>
