@@ -35,9 +35,10 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
 
+
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
+import com.android.settings.util.Helpers;
 import com.android.internal.util.slim.DeviceUtils;
 import com.android.internal.util.omni.OmniSwitchConstants;
 
@@ -52,6 +53,8 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private static final String RECENTS_USE_OMNISWITCH = "recents_use_omniswitch";
     private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
 
+    private static final String RECENTS_USE_SLIM = "recents_use_slim";
+
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
 
@@ -65,6 +68,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private Preference mOmniSwitchSettings;
     private boolean mOmniSwitchStarted;
     private Preference mRamBar;
+    private CheckBoxPreference mRecentsUseSlim;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,16 +79,21 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         PreferenceScreen prefSet = getPreferenceScreen();
 
         boolean useOmniSwitch = false;
+        boolean useSlimRecents = false;
+
         try {
             useOmniSwitch = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH) == 1
                                 && isOmniSwitchServiceRunning();
+            useSlimRecents = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM) == 1;
         } catch(SettingNotFoundException e) {
+               e.printStackTrace();
         }
 
         // OmniSwitch
         mRecentsUseOmniSwitch = (CheckBoxPreference) prefSet.findPreference(RECENTS_USE_OMNISWITCH);
         mRecentsUseOmniSwitch.setChecked(useOmniSwitch);
         mRecentsUseOmniSwitch.setOnPreferenceChangeListener(this);
+        mRecentsUseOmniSwitch.setEnabled(!useSlimRecents);
 
         mOmniSwitchSettings = (Preference) prefSet.findPreference(OMNISWITCH_START_SETTINGS);
         mOmniSwitchSettings.setEnabled(useOmniSwitch);
@@ -94,7 +103,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         mRecentClearAll.setChecked(Settings.System.getInt(getContentResolver(),
             Settings.System.SHOW_CLEAR_RECENTS_BUTTON, 1) == 1);
         mRecentClearAll.setOnPreferenceChangeListener(this);
-        mRecentClearAll.setEnabled(!useOmniSwitch);
+        mRecentClearAll.setEnabled(!useOmniSwitch && !useSlimRecents);
 
         mRecentClearAllPosition = (ListPreference) prefSet.findPreference(RECENT_MENU_CLEAR_ALL_LOCATION);
         String recentClearAllPosition = Settings.System.getString(getContentResolver(), Settings.System.CLEAR_RECENTS_BUTTON_LOCATION);
@@ -102,7 +111,13 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
              mRecentClearAllPosition.setValue(recentClearAllPosition);
         }
         mRecentClearAllPosition.setOnPreferenceChangeListener(this);
-        mRecentClearAllPosition.setEnabled(!useOmniSwitch);
+        mRecentClearAllPosition.setEnabled(!useOmniSwitch && !useSlimRecents);
+
+        // Slim recents
+        mRecentsUseSlim = (CheckBoxPreference) prefSet.findPreference(RECENTS_USE_SLIM);
+        mRecentsUseSlim.setChecked(useSlimRecents);
+        mRecentsUseSlim.setOnPreferenceChangeListener(this);
+        mRecentsUseSlim.setEnabled(!useOmniSwitch);
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         updateRamBar();
@@ -142,8 +157,28 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
             // Update default recents UI components
             mRecentClearAll.setEnabled(!omniSwitchEnabled);
             mRecentClearAllPosition.setEnabled(!omniSwitchEnabled);
-        }
 
+            // Update Slim recents UI components
+            mRecentsUseSlim.setEnabled(!omniSwitchEnabled);
+            return true;
+        } else if (preference == mRecentsUseSlim) {
+            boolean useSlimRecents = (Boolean) newValue;
+
+            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM,
+                    useSlimRecents ? 1 : 0);
+
+            // Give user information that Slim Recents needs restart SystemUI
+            openSlimRecentsWarning();
+
+            // Update OmniSwitch UI components
+            mRecentsUseOmniSwitch.setEnabled(!useSlimRecents);
+            mRecentsUseSlim.setChecked(useSlimRecents);
+
+            // Update default recents UI components
+            mRecentClearAll.setEnabled(!useSlimRecents);
+            mRecentClearAllPosition.setEnabled(!useSlimRecents);
+            return true;
+        }
         return false;
     }
 
@@ -164,6 +199,17 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
             .setMessage(getResources().getString(R.string.omniswitch_first_time_message))
             .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
+                }
+            }).show();
+    }
+
+    private void openSlimRecentsWarning() {
+        new AlertDialog.Builder(getActivity())
+            .setTitle(getResources().getString(R.string.slim_recents_warning_title))
+            .setMessage(getResources().getString(R.string.slim_recents_warning_message))
+            .setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    Helpers.restartSystemUI();
                 }
             }).show();
     }
