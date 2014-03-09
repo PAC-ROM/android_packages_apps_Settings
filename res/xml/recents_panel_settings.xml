@@ -63,4 +63,14 @@
             android:fragment="com.android.settings.pac.RamBar"
             android:title="@string/ram_bar" />
 
+    <!-- Slim Recents -->
+    <PreferenceCategory
+            android:key="category_slimrecents"
+            android:title="@string/slim_recents_category"/>
+
+    <CheckBoxPreference
+            android:key="recents_use_slim"
+            android:title="@string/recents_use_slim_title"
+            android:summary="@string/recents_use_slim_summary" />
+
 </PreferenceScreen>
