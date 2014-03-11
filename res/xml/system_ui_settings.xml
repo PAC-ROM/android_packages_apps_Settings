@@ -19,72 +19,103 @@
     android:title="@string/system_interface_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="status_bar"
-        android:fragment="com.android.settings.cyanogenmod.StatusBar"
-        android:title="@string/status_bar_title" />
+    <!-- Status bar Category -->
+    <PreferenceCategory
+        android:title="@string/status_bar_title" >
 
-    <PreferenceScreen
-        android:key="progressbar_settings"
-        android:fragment="com.android.settings.cyanogenmod.ProgressBar"
-        android:title="@string/progressbar_title" />
+        <PreferenceScreen
+            android:key="notification_drawer"
+            android:fragment="com.android.settings.cyanogenmod.NotificationDrawer"
+            android:title="@string/notification_drawer_title" />
 
-    <PreferenceScreen
-        android:key="quick_settings_panel"
-        android:fragment="com.android.settings.quicksettings.QuickSettings"
-        android:title="@string/quick_settings_panel_title" />
+        <PreferenceScreen
+            android:key="quick_settings_panel"
+            android:fragment="com.android.settings.quicksettings.QuickSettings"
+            android:title="@string/quick_settings_panel_title" />
 
-    <PreferenceScreen
-        android:key="notification_drawer"
-        android:fragment="com.android.settings.cyanogenmod.NotificationDrawer"
-        android:title="@string/notification_drawer_title" />
+        <PreferenceScreen
+            android:key="status_bar"
+            android:fragment="com.android.settings.cyanogenmod.StatusBar"
+            android:title="@string/status_bar_title" />
 
-    <PreferenceScreen
-        android:id="@+id/lockscreen_notifcation_settings"
-        android:fragment="com.android.settings.pac.LockscreenNotifications"
-        android:title="@string/lockscreen_notifications" />
+        <PreferenceScreen
+            android:key="weather"
+            android:fragment="com.android.settings.pac.Weather"
+            android:title="@string/title_weather"/>
 
-    <PreferenceScreen
-        android:key="active_display"
-        android:fragment="com.android.settings.crdroid.ActiveDisplaySettings"
-        android:title="@string/ad_settings_title"/>
+    </PreferenceCategory>
 
-    <PreferenceScreen
-        android:key="app_sidebar"
-        android:fragment="com.android.settings.pac.AppSidebar"
-        android:title="@string/app_sidebar_title"/>
+    <!-- Interface Category -->
+    <PreferenceCategory
+        android:title="@string/interface_category" >
 
-    <PreferenceScreen
-        android:key="gesture_anywhere"
-        android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
-        android:title="@string/gesture_anywhere_title" />
+        <PreferenceScreen
+            android:key="active_display"
+            android:fragment="com.android.settings.crdroid.ActiveDisplaySettings"
+            android:title="@string/ad_settings_title"/>
 
-    <PreferenceScreen
-        android:key="identicons"
-        android:fragment="com.android.settings.chameleonos.labs.identicons.IdenticonsSettings"
-        android:title="@string/identicons_title" />
+        <PreferenceScreen
+            android:key="app_sidebar"
+            android:fragment="com.android.settings.pac.AppSidebar"
+            android:title="@string/app_sidebar_title"/>
 
-    <PreferenceScreen
-        android:id="@+id/initD"
-        android:fragment="com.android.settings.InitD"
-        android:title="@string/init_d_title"
-        android:summary="@string/header_summary_init_d" />
+        <PreferenceScreen
+            android:key="gesture_anywhere"
+            android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
+            android:title="@string/gesture_anywhere_title" />
 
-    <PreferenceScreen
-        android:key="buildprop_modder"
-        android:title="@string/propmodder_title"
-        android:fragment="com.android.settings.cyanogenmod.PropModder"/>
+        <PreferenceScreen
+            android:key="identicons"
+            android:fragment="com.android.settings.chameleonos.labs.identicons.IdenticonsSettings"
+            android:title="@string/identicons_title" />
 
-    <PreferenceScreen
-        android:key="weather"
-        android:fragment="com.android.settings.pac.Weather"
-        android:title="@string/title_weather"/>
+        <PreferenceScreen
+            android:id="@+id/lockscreen_notifcation_settings"
+            android:fragment="com.android.settings.pac.LockscreenNotifications"
+            android:title="@string/lockscreen_notifications" />
 
-    <PreferenceScreen
-        android:key="recents_apps_panel"
-        android:fragment="com.android.settings.slim.RecentsPanel"
-        android:title="@string/recent_apps_panel_title" />
+        <PreferenceScreen
+            android:key="progressbar_settings"
+            android:fragment="com.android.settings.cyanogenmod.ProgressBar"
+            android:title="@string/progressbar_title" />
 
+        <PreferenceScreen
+            android:key="recents_apps_panel"
+            android:fragment="com.android.settings.slim.RecentsPanel"
+            android:title="@string/recent_apps_panel_title" />
+
+    </PreferenceCategory>
+
+    <!-- Miscellaneous Category -->
+    <PreferenceCategory
+        android:title="@string/miscellaneous_category" >
+
+        <PreferenceScreen
+            android:key="buildprop_modder"
+            android:title="@string/propmodder_title"
+            android:fragment="com.android.settings.cyanogenmod.PropModder"/>
+
+        <PreferenceScreen
+            android:id="@+id/initD"
+            android:fragment="com.android.settings.InitD"
+            android:title="@string/init_d_title"
+            android:summary="@string/header_summary_init_d" />
+
+        <PreferenceScreen
+            android:key="screen_state_service"
+            android:fragment="com.android.settings.cyanogenmod.fragments.ScreenStateToggles"
+            android:title="@string/screen_state_toggles_title"
+            android:summary="@string/screen_state_toggles_summary" />
+
+        <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
+            android:title="@string/wakelock_blocker"
+            android:summary="@string/wakelock_blocker_header_summary" />
+
+    </PreferenceCategory>
+
+    <!-- Expanded Desktop Category -->
     <PreferenceCategory
             android:key="expanded_desktop_category"
             android:title="@string/power_menu_expanded_desktop" >
@@ -118,42 +149,36 @@
             android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
     </Preference>
 
-    <CheckBoxPreference
-        android:key="enable_nav_bar"
-        android:title="@string/navbar_enable_bar"
-        android:summary="@string/navbar_enable_bar_summary" />
+    <!-- Navigation Bar Category -->
+    <PreferenceCategory
+        android:title="@string/category_navbar" >
 
-    <PreferenceScreen
-        android:key="navbar_style_dimen_settings"
-        android:fragment="com.android.settings.pac.navbar.NavbarDimenSettings"
-        android:title="@string/navbar_style_dimen_title" />
+        <CheckBoxPreference
+            android:key="enable_nav_bar"
+            android:title="@string/navbar_enable_bar"
+            android:summary="@string/navbar_enable_bar_summary" />
 
-    <PreferenceScreen
-        android:key="navigation_bar"
-        android:fragment="com.android.settings.pac.navbar.NavbarTabHostFragment"
-        android:title="@string/category_navbar" />
+        <PreferenceScreen
+            android:key="navbar_style_dimen_settings"
+            android:fragment="com.android.settings.pac.navbar.NavbarDimenSettings"
+            android:title="@string/navbar_style_dimen_title" />
 
-    <PreferenceScreen
-        android:key="navigation_bar_ring"
-        android:fragment="com.android.settings.pac.NavRingTargets"
-        android:title="@string/category_navring" />
+        <PreferenceScreen
+            android:key="navigation_bar"
+            android:fragment="com.android.settings.pac.navbar.NavbarTabHostFragment"
+            android:title="@string/category_navbar" />
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="navigation_bar_left"
-        android:title="@string/navigation_bar_left_title"
-        android:summary="@string/navigation_bar_left_summary"
-        android:defaultValue="false" />
+        <PreferenceScreen
+            android:key="navigation_bar_ring"
+            android:fragment="com.android.settings.pac.NavRingTargets"
+            android:title="@string/category_navring" />
 
-    <PreferenceScreen
-        android:key="screen_state_service"
-        android:fragment="com.android.settings.cyanogenmod.fragments.ScreenStateToggles"
-        android:title="@string/screen_state_toggles_title"
-        android:summary="@string/screen_state_toggles_summary" />
+        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+            android:key="navigation_bar_left"
+            android:title="@string/navigation_bar_left_title"
+            android:summary="@string/navigation_bar_left_summary"
+            android:defaultValue="false" />
 
-    <PreferenceScreen
-        android:key="wakelock_blocker"
-        android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
-        android:title="@string/wakelock_blocker"
-        android:summary="@string/wakelock_blocker_header_summary" />
+    </PreferenceCategory>
 
 </PreferenceScreen>

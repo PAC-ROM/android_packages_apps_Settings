@@ -739,7 +739,6 @@
     <string name="five_targets">5 targets</string>
     <string name="custom_app_icon_successfully">"'s icon set successfully!"</string>
     <string name="add_button">Add button</string>
-    <string name="category_navbar">Navigation bar</string>
     <string name="navbar_tab_arrange">Rearrange</string>
     <string name="navbar_tab_settings">Settings</string>
 
@@ -1048,5 +1047,9 @@
     <string name="noti_reminder_interval_3s">3 seconds</string>
     <string name="noti_reminder_interval_3dot5s">3.5 second</string>
     <string name="noti_reminder_interval_4s">4 seconds</string>
+
+    <!-- Interface Categories -->
+    <string name="interface_category">Interface</string>
+    <string name="miscellaneous_category">Miscellaneous</string>
 
 </resources>
