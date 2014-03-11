@@ -38,6 +38,8 @@ import android.os.UserHandle;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
+import com.android.internal.util.slim.DeviceUtils;
+
 public class NotificationDrawer extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "NotificationDrawer";
@@ -51,6 +53,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String PREF_NOTI_REMINDER_ENABLED = "noti_reminder_enabled";
     private static final String PREF_NOTI_REMINDER_INTERVAL = "noti_reminder_interval";
     private static final String PREF_NOTI_REMINDER_RINGTONE = "noti_reminder_ringtone";
+    private static final String PREF_NOTIFICATION_HIDE_CARRIER = "notification_hide_carrier";
 
     private ListPreference mCollapseOnDismiss;
     private CheckBoxPreference mStatusBarCustomHeader;
@@ -61,6 +64,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     ListPreference mReminderInterval;
     ListPreference mReminderMode;
     RingtonePreference mReminderRingtone;
+    CheckBoxPreference mHideCarrier;
 
     String mCustomLabelText = null;
 
@@ -98,6 +102,12 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         // Custom Carrier Label Text
         mCustomLabel = findPreference(PREF_CUSTOM_CARRIER_LABEL);
         updateCustomLabelTextSummary();
+
+        mHideCarrier = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_HIDE_CARRIER);
+        boolean hideCarrier = Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.NOTIFICATION_HIDE_CARRIER, 0) == 1;
+        mHideCarrier.setChecked(hideCarrier);
+        mHideCarrier.setOnPreferenceChangeListener(this);
 
         // Notification Remider
         mReminder = (CheckBoxPreference) findPreference(PREF_NOTI_REMINDER_ENABLED);
@@ -230,6 +240,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             Settings.System.putStringForUser(getContentResolver(),
                     Settings.System.REMINDER_ALERT_RINGER,
                     val.toString(), UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mHideCarrier) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NOTIFICATION_HIDE_CARRIER,
+                    (Boolean) objValue ? 1 : 0);
             return true;
         }
 
