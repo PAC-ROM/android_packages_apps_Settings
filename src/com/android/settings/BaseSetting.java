@@ -138,11 +138,7 @@ public class BaseSetting extends LinearLayout {
         // dirty dirty! use reflection to allow compilation via gradle/android studio
         try {
             String className = "android.provider.Settings$";
-            if ("system".equalsIgnoreCase(getTable())) {
                 className += "System";
-            } else {
-                className += "AOKP";
-            }
             Class<?> clazz = Class.forName(className);
 
             Class[] params = new Class[3];

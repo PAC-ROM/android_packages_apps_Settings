@@ -892,6 +892,8 @@
     <string name="performance_settings">Performance control</string>
 
     <!-- Navigation bar -->
+    <string name="enable_navigation_bar_title">Enable navigation bar</string>
+    <string name="enable_navigation_bar_summary">Enable the on-screen navigation bar</string>
     <string name="navigation_bar_left_title">Left handed mode</string>
     <string name="navigation_bar_left_summary">Place the navigation bar on the left side of the screen in landscape mode</string>
 
