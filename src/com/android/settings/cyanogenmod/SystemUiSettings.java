@@ -42,12 +42,10 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String CATEGORY_EXPANDED_DESKTOP = "expanded_desktop_category";
     private static final String CATEGORY_NAVBAR = "navigation_bar";
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
-    private static final String ENABLE_NAVIGATION_BAR = "enable_nav_bar"; // Enable/disable nav bar
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
-    private CheckBoxPreference mEnableNavigationBar; // Enable/disable nav bar
     private CheckBoxPreference mNavigationBarLeftPref;
 
     @Override
@@ -94,21 +92,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
             Log.e(TAG, "Error getting navigation bar status");
         }
 
-        // Booleans to enable/disable nav bar
-        // overriding overlays
-        boolean hasNavBarByDefault = getResources().getBoolean(
-                com.android.internal.R.bool.config_showNavigationBar);
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
-        mEnableNavigationBar = (CheckBoxPreference) findPreference(ENABLE_NAVIGATION_BAR);
-        mEnableNavigationBar.setChecked(enableNavigationBar);
-        mEnableNavigationBar.setOnPreferenceChangeListener(this);
-
-        updateNavbarPreferences(enableNavigationBar);
     }
-
-    // Enable/disbale nav bar
-    private void updateNavbarPreferences(boolean show) {}
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mExpandedDesktopPref) {
@@ -118,12 +102,6 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         } else if (preference == mExpandedDesktopNoNavbarPref) {
             boolean value = (Boolean) objValue;
             updateExpandedDesktop(value ? 2 : 0);
-            return true;
-        } else if (preference == mEnableNavigationBar) { // Enable/disbale nav bar (used in custom nav bar dimensions)
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_SHOW,
-                    ((Boolean) objValue) ? 1 : 0);
-            updateNavbarPreferences((Boolean) objValue);
             return true;
         }
         return false;
