@@ -98,7 +98,7 @@ public class BaseSetting extends LinearLayout {
 
             aTable = attrs.getAttributeValue(null, "table");
             if (aTable == null) {
-                aTable = "aokp";
+                aTable = "system";
             }
         }
 
@@ -138,7 +138,7 @@ public class BaseSetting extends LinearLayout {
         // dirty dirty! use reflection to allow compilation via gradle/android studio
         try {
             String className = "android.provider.Settings$";
-                className += "System";
+            className += "System";
             Class<?> clazz = Class.forName(className);
 
             Class[] params = new Class[3];
@@ -181,11 +181,7 @@ public class BaseSetting extends LinearLayout {
         // dirty dirty! use reflection to allow compilation via gradle/android studio
         try {
             String className = "android.provider.Settings$";
-            if ("system".equalsIgnoreCase(getTable())) {
-                className += "System";
-            } else {
-                className += "AOKP";
-            }
+            className += "System";
             Class<?> clazz = Class.forName(className);
             Class[] params = new Class[2];
             params[0] = ContentResolver.class;
