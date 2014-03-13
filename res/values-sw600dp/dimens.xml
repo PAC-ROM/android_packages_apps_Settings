@@ -38,4 +38,14 @@
     <dimen name="keyguard_appwidget_picker_margin_left">2dip</dimen>
     <dimen name="keyguard_appwidget_picker_margin_right">2dip</dimen>
     <integer name="keyguard_appwidget_picker_cols">2</integer>
+
+    <!-- Default distance beyond which snaps to the matching target -->
+    <dimen name="navbar_search_snap_margin">40dip</dimen>
+    <!-- Diameter of outer shape drawable shown in navbar search. -->
+    <dimen name="navbar_search_outerring_radius">200dp</dimen>
+    <!-- Diameter of outer shape drawable shown in navbar search-->
+    <dimen name="navbar_search_outerring_diameter">400dp</dimen>
+    <!-- Height of search panel including navigation bar height -->
+    <dimen name="navbar_search_panel_height">230dip</dimen>
+
 </resources>
