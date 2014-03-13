@@ -84,6 +84,11 @@
             android:fragment="com.android.settings.slim.RecentsPanel"
             android:title="@string/recent_apps_panel_title" />
 
+        <PreferenceScreen
+            android:key="ribbons"
+            android:fragment="com.android.settings.aokp.ribbons.RibbonsFragment"
+            android:title="@string/category_ribbons" />
+
     </PreferenceCategory>
 
     <!-- Miscellaneous Category -->
