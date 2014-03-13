@@ -102,9 +102,4 @@
         <attr name="digits" format="integer" />
     </declare-styleable>
 
-    <declare-styleable name="CheckboxSetting">
-        <attr name="descriptionOn" format="string"/>
-        <attr name="descriptionOff" format="string"/>
-    </declare-styleable>
-
 </resources>
