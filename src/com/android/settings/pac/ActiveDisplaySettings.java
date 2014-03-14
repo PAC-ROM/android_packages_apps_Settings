@@ -43,8 +43,6 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-import android.util.Log;
-
 public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
     private static final String TAG = "ActiveDisplaySettings";
@@ -62,6 +60,9 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_TIMEOUT = "ad_timeout";
     private static final String KEY_THRESHOLD = "ad_threshold";
     private static final String KEY_TURNOFF_MODE = "ad_turnoff_mode";
+    private static final String KEY_SHAKE_THRESHOLD = "ad_shake_threshold";
+    private static final String KEY_SHAKE_LONGTHRESHOLD = "ad_shake_long_threshold";
+    private static final String KEY_SHAKE_TIMEOUT = "ad_shake_timeout";
 
     private ContentResolver mResolver;
     private Context mContext;
@@ -75,13 +76,15 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mTurnOffModePref;
     private SeekBarPreferenceCHOS mBrightnessLevel;
     private SeekBarPreferenceCHOS mAnnoyingNotification;
+    private SeekBarPreferenceCHOS mShakeThreshold;
+    private SeekBarPreferenceCHOS mShakeLongThreshold;
+    private SeekBarPreferenceCHOS mShakeTimeout;
     private ListPreference mDisplayTimeout;
     private ListPreference mPocketModePref;
     private ListPreference mProximityThreshold;
     private ListPreference mRedisplayPref;
     private int mMinimumBacklight;
     private int mMaximumBacklight;
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -144,10 +147,25 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mRedisplayPref.setSummary(mRedisplayPref.getEntry());
         mRedisplayPref.setOnPreferenceChangeListener(this);
 
-        mAnnoyingNotification = (SeekBarPreference) prefSet.findPreference(KEY_ANNOYING);
+        mAnnoyingNotification = (SeekBarPreferenceCHOS) prefSet.findPreference(KEY_ANNOYING);
         mAnnoyingNotification.setValue(Settings.PAC.getInt(mResolver,
                 Settings.PAC.ACTIVE_DISPLAY_ANNOYING, 0));
         mAnnoyingNotification.setOnPreferenceChangeListener(this);
+
+        mShakeThreshold = (SeekBarPreferenceCHOS) prefSet.findPreference(KEY_SHAKE_THRESHOLD);
+        mShakeThreshold.setValue(Settings.PAC.getInt(mResolver,
+                Settings.PAC.ACTIVE_DISPLAY_SHAKE_THRESHOLD, 10));
+        mShakeThreshold.setOnPreferenceChangeListener(this);
+
+        mShakeLongThreshold = (SeekBarPreferenceCHOS) prefSet.findPreference(KEY_SHAKE_LONGTHRESHOLD);
+        mShakeLongThreshold.setValue(Settings.PAC.getInt(mResolver,
+                Settings.PAC.ACTIVE_DISPLAY_SHAKE_LONGTHRESHOLD, 2));
+        mShakeLongThreshold.setOnPreferenceChangeListener(this);
+
+        mShakeTimeout = (SeekBarPreferenceCHOS) prefSet.findPreference(KEY_SHAKE_TIMEOUT);
+        mShakeTimeout.setValue(Settings.PAC.getInt(mResolver,
+                Settings.PAC.ACTIVE_DISPLAY_SHAKE_TIMEOUT, 10));
+        mShakeTimeout.setOnPreferenceChangeListener(this);
 
         mExcludedAppsPref = (AppMultiSelectListPreference) prefSet.findPreference(KEY_EXCLUDED_APPS);
         Set<String> excludedApps = getExcludedApps();
@@ -166,17 +184,27 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
         mShowAmPmPref = (CheckBoxPreference) prefSet.findPreference(KEY_SHOW_AMPM);
         mShowAmPmPref.setChecked((Settings.PAC.getInt(mResolver,
                 Settings.PAC.ACTIVE_DISPLAY_SHOW_AMPM, 0) == 1));
+        mShowAmPmPref.setEnabled(!is24Hour());
 
         PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mMinimumBacklight = pm.getMinimumScreenBrightnessSetting();
         mMaximumBacklight = pm.getMaximumScreenBrightnessSetting();
 
-        mBrightnessLevel = (SeekBarPreference) prefSet.findPreference(KEY_BRIGHTNESS);
+        mBrightnessLevel = (SeekBarPreferenceCHOS) prefSet.findPreference(KEY_BRIGHTNESS);
         int brightness = Settings.PAC.getInt(mResolver,
                 Settings.PAC.ACTIVE_DISPLAY_BRIGHTNESS, mMaximumBacklight);
         int realBrightness =  Math.round(((float)brightness / (float)mMaximumBacklight) * 100);
         mBrightnessLevel.setValue(realBrightness);
         mBrightnessLevel.setOnPreferenceChangeListener(this);
+
+        try {
+            if (Settings.System.getInt(mResolver,
+                    Settings.System.SCREEN_BRIGHTNESS_MODE) == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC) {
+                mBrightnessLevel.setEnabled(false);
+                mBrightnessLevel.setSummary(R.string.status_bar_toggle_info);
+            }
+        } catch (SettingNotFoundException e) {
+        }
 
         mDisplayTimeout = (ListPreference) prefSet.findPreference(KEY_TIMEOUT);
         timeout = Settings.PAC.getLong(mResolver,
@@ -217,6 +245,21 @@ public class ActiveDisplaySettings extends SettingsPreferenceFragment implements
             int annoying = ((Integer)newValue).intValue();
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.ACTIVE_DISPLAY_ANNOYING, annoying);
+            return true;
+        } else if (preference == mShakeThreshold) {
+            int threshold = ((Integer)newValue).intValue();
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ACTIVE_DISPLAY_SHAKE_THRESHOLD, threshold);
+            return true;
+        } else if (preference == mShakeLongThreshold) {
+            int longThreshold = ((Integer)newValue).intValue();
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ACTIVE_DISPLAY_SHAKE_LONGTHRESHOLD, longThreshold);
+            return true;
+        } else if (preference == mShakeTimeout) {
+            int timeout = ((Integer)newValue).intValue();
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ACTIVE_DISPLAY_SHAKE_TIMEOUT, timeout);
             return true;
         } else if (preference == mBrightnessLevel) {
             int brightness = ((Integer)newValue).intValue();
