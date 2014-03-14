@@ -983,4 +983,7 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <!-- EdgeGesture service -->
     <string name="edge_gesture_service_title">Block gesture touch events</string>
     <string name="edge_gesture_service_summary">Don\'t send touch events for navigation and status bar gestures to apps</string>
+
+    <!-- Content description of the sync in progress icon for accessibility. [CHAR LIMIT=NONE] -->
+    <string name="accessibility_sync_in_progress">Sync in progress.</string>
 </resources>
