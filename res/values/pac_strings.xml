@@ -738,6 +738,8 @@
     <string name="four_targets">4 targets</string>
     <string name="five_targets">5 targets</string>
     <string name="custom_app_icon_successfully">"'s icon set successfully!"</string>
+    <string name="enable_navring_title">Enable navigation ring</string>
+    <string name="enable_navring_summary">@null</string>
     <string name="add_button">Add button</string>
     <string name="navbar_tab_arrange">Rearrange</string>
     <string name="navbar_tab_settings">Settings</string>
