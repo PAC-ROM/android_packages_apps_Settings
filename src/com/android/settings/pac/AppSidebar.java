@@ -176,7 +176,7 @@ public class AppSidebar extends SettingsPreferenceFragment implements
 
     @Override
     public void onResume() {
-        super.onResume();    //To change body of overridden methods use File | Settings | File Templates.
+        super.onResume();
         Settings.System.putInt(getContentResolver(),
                 Settings.System.APP_SIDEBAR_SHOW_TRIGGER, 1);
     }
