@@ -1296,4 +1296,9 @@
     <string name="navigation_bar_menu_force">Force show menu</string>
     <string name="navigation_bar_menu_force_summary">Always show the menu button(s)</string>
 
+    <!-- On-The-Go Mode -->
+    <string name="title_tile_onthego">On-The-Go</string>
+    <string name="power_menu_onthego_title">On-The-Go Mode</string>
+    <string name="power_menu_onthego_summary">Show the camera overlay under all windows</string>
+
 </resources>
