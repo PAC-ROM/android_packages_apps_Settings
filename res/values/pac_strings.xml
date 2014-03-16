@@ -1098,4 +1098,11 @@
     <string name="window_size_title">Icon Size</string>
     <string name="window_settings">Window Settings</string>
 
+    <!-- Slim Recents -->
+    <string name="slim_recents_category">Slim Recents</string>
+    <string name="slim_recents_warning_title">Warning</string>
+    <string name="slim_recents_warning_message">SystemUI will restart to apply changes</string>
+    <string name="recents_use_slim_title">Use for recents</string>
+    <string name="recents_use_slim_summary">Use Slim Recents instead of default recents view</string>
+
 </resources>
