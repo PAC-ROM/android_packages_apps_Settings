@@ -33,6 +33,7 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
+import android.view.Gravity;
 import android.util.Log;
 
 
@@ -54,6 +55,8 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private static final String OMNISWITCH_START_SETTINGS = "omniswitch_start_settings";
 
     private static final String RECENTS_USE_SLIM = "recents_use_slim";
+    private static final String RECENT_PANEL_LEFTY_MODE = "recent_panel_lefty_mode";
+    private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
 
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -63,12 +66,15 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
          .setClassName(OMNISWITCH_PACKAGE_NAME, OMNISWITCH_PACKAGE_NAME + ".SettingsActivity");
 
     private CheckBoxPreference mRecentClearAll;
-    private ListPreference mRecentClearAllPosition;
     private CheckBoxPreference mRecentsUseOmniSwitch;
-    private Preference mOmniSwitchSettings;
-    private boolean mOmniSwitchStarted;
-    private Preference mRamBar;
     private CheckBoxPreference mRecentsUseSlim;
+    private CheckBoxPreference mRecentPanelLeftyMode;
+    private ListPreference mRecentPanelScale;
+    private ListPreference mRecentClearAllPosition;
+    private Preference mOmniSwitchSettings;
+    private Preference mRamBar;
+
+    private boolean mOmniSwitchStarted;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -81,13 +87,9 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         boolean useOmniSwitch = false;
         boolean useSlimRecents = false;
 
-        try {
-            useOmniSwitch = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH) == 1
-                                && isOmniSwitchServiceRunning();
-            useSlimRecents = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM) == 1;
-        } catch(SettingNotFoundException e) {
-               e.printStackTrace();
-        }
+        useOmniSwitch = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH, 0) == 1
+                            && isOmniSwitchServiceRunning();
+        useSlimRecents = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM, 0) == 1;
 
         // OmniSwitch
         mRecentsUseOmniSwitch = (CheckBoxPreference) prefSet.findPreference(RECENTS_USE_OMNISWITCH);
@@ -118,6 +120,20 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         mRecentsUseSlim.setChecked(useSlimRecents);
         mRecentsUseSlim.setOnPreferenceChangeListener(this);
         mRecentsUseSlim.setEnabled(!useOmniSwitch);
+
+        mRecentPanelLeftyMode = (CheckBoxPreference) findPreference(RECENT_PANEL_LEFTY_MODE);
+        mRecentPanelLeftyMode.setOnPreferenceChangeListener(this);
+
+        mRecentPanelScale = (ListPreference) findPreference(RECENT_PANEL_SCALE);
+        mRecentPanelScale.setOnPreferenceChangeListener(this);
+
+        final boolean recentLeftyMode = Settings.System.getInt(getContentResolver(),
+                Settings.System.RECENT_PANEL_GRAVITY, Gravity.RIGHT) == Gravity.LEFT;
+        mRecentPanelLeftyMode.setChecked(recentLeftyMode);
+
+        final int recentScale = Settings.System.getInt(getContentResolver(),
+                Settings.System.RECENT_PANEL_SCALE_FACTOR, 100);
+        mRecentPanelScale.setValue(recentScale + "");
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         mRamBar.setEnabled(!useOmniSwitch && !useSlimRecents);
@@ -180,6 +196,16 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
             mRecentClearAll.setEnabled(!useSlimRecents);
             mRecentClearAllPosition.setEnabled(!useSlimRecents);
             mRamBar.setEnabled(!useSlimRecents);
+            return true;
+        } else if (preference == mRecentPanelScale) {
+            int value = Integer.parseInt((String) newValue);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.RECENT_PANEL_SCALE_FACTOR, value);
+            return true;
+        } else if (preference == mRecentPanelLeftyMode) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.RECENT_PANEL_GRAVITY,
+                    ((Boolean) newValue) ? Gravity.LEFT : Gravity.RIGHT);
             return true;
         }
         return false;
