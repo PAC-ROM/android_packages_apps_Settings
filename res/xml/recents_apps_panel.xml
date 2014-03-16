@@ -25,6 +25,15 @@
             android:title="@string/ram_bar" />
 
     <PreferenceCategory
+            android:key="category_slimrecents"
+            android:title="@string/slim_recents_category"/>
+
+    <CheckBoxPreference
+            android:key="recents_use_slim"
+            android:title="@string/recents_use_slim_title"
+            android:summary="@string/recents_use_slim_summary" />
+
+    <PreferenceCategory
             android:key="category_omniswitch"
             android:title="@string/omniswitch_category"/>
 
@@ -56,14 +65,5 @@
             android:entryValues="@array/recent_clear_all_button_location_values"
             android:defaultValue="2"
             android:dependency="recent_menu_clear_all" />
-
-    <PreferenceCategory
-            android:key="category_slimrecents"
-            android:title="@string/slim_recents_category"/>
-
-    <CheckBoxPreference
-            android:key="recents_use_slim"
-            android:title="@string/recents_use_slim_title"
-            android:summary="@string/recents_use_slim_summary" />
 
 </PreferenceScreen>
