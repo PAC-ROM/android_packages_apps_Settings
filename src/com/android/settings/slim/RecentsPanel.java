@@ -120,6 +120,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         mRecentsUseSlim.setEnabled(!useOmniSwitch);
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
+        mRamBar.setEnabled(!useOmniSwitch && !useSlimRecents);
         updateRamBar();
     }
 
@@ -160,6 +161,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
 
             // Update Slim recents UI components
             mRecentsUseSlim.setEnabled(!omniSwitchEnabled);
+            mRamBar.setEnabled(!omniSwitchEnabled);
             return true;
         } else if (preference == mRecentsUseSlim) {
             boolean useSlimRecents = (Boolean) newValue;
@@ -177,6 +179,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
             // Update default recents UI components
             mRecentClearAll.setEnabled(!useSlimRecents);
             mRecentClearAllPosition.setEnabled(!useSlimRecents);
+            mRamBar.setEnabled(!useSlimRecents);
             return true;
         }
         return false;
