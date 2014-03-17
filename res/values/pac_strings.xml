@@ -1227,5 +1227,12 @@
     <!-- ATTENTION: RTL languages need to replace left with right -->
     <string name="recent_panel_lefty_mode_title">Show on the left edge</string>
     <string name="recent_panel_lefty_mode_summary">Show recent apps panel on the left edge.</string>
+    <string name="menu_button_location">Menu button location</string>
+    <string name="menu_location_right">Right</string>
+    <string name="menu_location_left">Left</string>
+    <string name="menu_location_both">Both</string>
+
+    <string name="navigation_bar_menu_force">Force show menu</string>
+    <string name="navigation_bar_menu_force_summary">Always show the menu button(s)</string>
 
 </resources>

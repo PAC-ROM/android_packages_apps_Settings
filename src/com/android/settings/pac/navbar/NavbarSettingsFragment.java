@@ -18,13 +18,13 @@ public class NavbarSettingsFragment extends Fragment implements OnSettingChanged
 
     protected Context mContext;
 
-    SingleChoiceSetting navbar_width, navbar_height, navbar_height_landscape;
+    SingleChoiceSetting navbar_width, navbar_height, navbar_height_landscape, navigation_menu;
 
     public NavbarSettingsFragment() {
 
     }
 
-    CheckboxSetting mToggleNavbar, mToggleLeftyNavbar;
+    CheckboxSetting mToggleNavbar, mToggleLeftyNavbar, mMenuForce;
 
     boolean hasNavbar;
 
@@ -50,9 +50,15 @@ public class NavbarSettingsFragment extends Fragment implements OnSettingChanged
         mToggleLeftyNavbar.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, false));
 
+        mMenuForce = (CheckboxSetting) v.findViewById(R.id.setting_navigation_bar_menu_force);
+        mMenuForce.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+                Settings.System.NAVIGATION_MENU_FORCE, false));
+
         navbar_width = (SingleChoiceSetting) v.findViewById(R.id.navigation_bar_width);
         navbar_height = (SingleChoiceSetting) v.findViewById(R.id.navigation_bar_height);
         navbar_height_landscape = (SingleChoiceSetting) v.findViewById(R.id.navigation_bar_height_landscape);
+
+        navigation_menu = (SingleChoiceSetting) v.findViewById(R.id.navigation_menu);
 
         if (isTablet()) {
             navbar_width.setVisibility(View.GONE);
