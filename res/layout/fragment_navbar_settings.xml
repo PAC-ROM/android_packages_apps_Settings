@@ -17,6 +17,15 @@
                 android:key="enable_navigation_bar"
                 android:defaultValue="false" />
 
+        <com.android.settings.CheckboxSetting
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/setting_navigation_bar_left"
+                android:title="@string/navigation_bar_left_title"
+                android:summary="@string/navigation_bar_left_summary"
+                android:key="navigation_bar_left"
+                android:defaultValue="false" />
+
         <com.android.settings.SingleChoiceSetting
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

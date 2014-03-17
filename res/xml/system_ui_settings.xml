@@ -163,12 +163,6 @@
             android:fragment="com.android.settings.pac.NavRingTargets"
             android:title="@string/category_navring" />
 
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-            android:key="navigation_bar_left"
-            android:title="@string/navigation_bar_left_title"
-            android:summary="@string/navigation_bar_left_summary"
-            android:defaultValue="false" />
-
     </PreferenceCategory>
 
 </PreferenceScreen>
