@@ -730,7 +730,7 @@
     <string name="description_target_unlock">Unlock</string>
     <string name="description_direction_up">Slide up for unlock</string>
     <string name="description_direction_down">Slide down for unlock</string>
-    <string name="description_direction_left">"Slide left for unlock</string>
+    <string name="description_direction_left">Slide left for unlock</string>
     <string name="description_direction_right">Slide right for unlock</string>
     <string name="one_target">1 target</string>
     <string name="two_targets">2 targets</string>
@@ -764,7 +764,7 @@
     <string name="keyboard_rotation_toggle_summary">Force auto-rotate when keyboard is shown</string>
     <string name="keyboard_rotation_timeout_title">Auto-rotate timeout</string>
     <string name="keyboard_rotation_timeout_summary">Disables auto-rotate sensor <xliff:g id="rotate_timeout">%1$s</xliff:g> seconds after keyboard is hidden</string>
-    <string name="keyboard_rotation_dialog">This feature forces auto-rotate to turn on temporarily while the keyboard is shown.  It has no effect when auto-rotate is already enabled.</string>
+    <string name="keyboard_rotation_dialog">This feature forces auto-rotate to turn on temporarily while the keyboard is shown. It has no effect when auto-rotate is already enabled.</string>
     <string name="show_enter_key_title">Show enter key</string>
     <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
     <string name="ime_switcher_notify">Selector notification</string>
@@ -968,7 +968,7 @@
     <string name="progressbar_color_2_title">Color2</string>
     <string name="progressbar_color_3_title">Color3</string>
     <string name="progressbar_color_4_title">Color4</string>
-    <string name="sample_progressbar_text">ProgressBar : Preview</string>
+    <string name="sample_progressbar_text">ProgressBar preview:</string>
     <string name="progressbar_reset_message">Reset progress bar style to default?</string>
 
     <!-- Screen state service -->
@@ -1139,7 +1139,7 @@
     <string name="shortcut_action_help_shortcut">shortcut</string>
     <string name="shortcut_action_help_button">button</string>
     <string name="shortcut_action_help_icon">, while selecting the icon will bring up customization options</string>
-    <string name="shortcut_action_help_main">To add a %1$s, select the Add icon. Once a %1$s is added, selecting the row will change the target%2$s\n\nTo remove a %1$s, swipe the row horizontally left or right. Re-order a %1$s in the list by vertically dragging the anchor on the left.\n\nTo clear or reset to defaults, select the Reset icon.</string>
+    <string name="shortcut_action_help_main">To add a %1$s, select the Add icon. Once a %1$s is added, selecting the row will change the target %2$s\n\nTo remove a %1$s, swipe the row horizontally left or right. Re-order a %1$s in the list by vertically dragging the anchor on the left.\n\nTo clear or reset to defaults, select the Reset icon.</string>
     <string name="shortcut_action_help_delete_last_entry">Removing every %1$s in the list will disable the feature entirely.</string>
     <string name="shortcut_action_help">Help</string>
 
