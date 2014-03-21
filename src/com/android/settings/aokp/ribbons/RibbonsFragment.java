@@ -8,6 +8,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.PreferenceFrameLayout;
 import android.provider.Settings;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -54,6 +55,9 @@ public class RibbonsFragment extends Fragment {
         mPager.setAdapter(mAdapter);
         mTabs = (PagerSlidingTabStrip) main.findViewById(R.id.tabs);
         mTabs.setViewPager(mPager);
+
+        if (container instanceof PreferenceFrameLayout)
+            ((PreferenceFrameLayout.LayoutParams) main.getLayoutParams()).removeBorders = true;
         return main;
     }
 
