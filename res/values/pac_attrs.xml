@@ -23,6 +23,11 @@
         <attr name="unitsRight" format="string|reference" />
     </declare-styleable>
 
+    <declare-styleable name="NEWSeekBarPreference">
+        <attr name="maximum" format="integer" />
+        <attr name="minimum" format="integer" />
+    </declare-styleable>
+
     <declare-styleable name="ImageListPreference">
         <attr name="entryImages" format="reference" />
     </declare-styleable>
