@@ -34,7 +34,7 @@
      <string name="appops_settings_title">Alk. adatvédelem</string>
 
     <!-- Active display settings -->
-    <string name="ad_settings_title">Aktív kijelző</string>
+    <string name="ad_settings_title">Aktív Kijelző</string>
     <string name="ad_settings_summary">Aktív kijelző beállításainak módosítás</string>
     <string name="ad_enable_title">Engedélyez</string>
     <string name="ad_enable_summary_on">Aktív kijelző engedélyezve</string>
@@ -112,7 +112,7 @@
     <string name="lock_pattern_size_6">6x6</string>
 
     <!-- LockScreen GlowPad DoubleTap Option -->
-    <string name="lockscreen_glowpad_doubletap_gesture">Dupla koppintási gesztus</string>
+    <string name="lockscreen_glowpad_doubletap_gesture">Dupla-kopp gesztus</string>
     <string name="lockscreen_glowpad_doubletap_checkbox_title">Glowpad dupla koppintási gesztus</string>
     <string name="lockscreen_glowpad_doubletap_title">Glowpad dupla koppintási beállítások</string>
     <string name="lockscreen_glowpad_doubletap_sleep">Alvás</string>
@@ -128,7 +128,7 @@
     <string name="off">Ki</string>
     <string name="nothing">Semmi</string>
     <string name="custom_app">Egyedi alkalmazás</string>
-    <string name="time_0_seconds_instant_off">0 másodperc (Azonnal)</string>
+    <string name="time_0_seconds_instant_off">0 másodperc (azonnal)</string>
     <string name="time_15_seconds">15 másodperc</string>
     <string name="time_30_seconds">30 másodperc</string>
     <string name="time_45_seconds">45 másodperc</string>
@@ -149,21 +149,21 @@
     <string name="time_4_hours">4 óra</string>
     <string name="time_6_hours">6 óra</string>
     <string name="time_8_hours">8 óra</string>
-    <string name="above_carrier_text">Szolgáltató szövege felett</string>
+    <string name="above_carrier_text">Szolgáltató neve felett</string>
     <string name="weather_panel">Időjárás panel</string>
     <string name="weather_notification">Állandó értesítés</string>
     <string name="title_weather">Időjárás</string>
     <string name="text">Szöveg</string>
     <string name="weather_enable">Időjárás engedélyezése</string>
-    <string name="weather_enable_summary">Whether to pull weather information and display it throughout the ROM.</string>
+    <string name="weather_enable_summary">Időjárás információk megjenelítése a ROM-ban.</string>
     <string name="weather_use_custom_location">Egyedi hely használata</string>
     <string name="weather_use_custom_location_summary">Egyedi hely beállításával energiát spórolhatsz meg. Egyébként a hálózati helymeghatározó fogja meghatározni a poziciódat.</string>
     <string name="weather_custom_location_dialog_title">Hely meagása</string>
-    <string name="weather_custom_location_dialog_message">Ügyelj arra, hogy kövesd a példát! Érvénytelen hely megadása megakadályoz abban, hogy az időjárás frissüljön, illetve váratlan viselkedést is okozhat.\n\nPéldák: New York,NY // New York, NY // 10033 // London, England</string>
+    <string name="weather_custom_location_dialog_message">Ügyelj arra, hogy kövesd a példát! Érvénytelen hely megadása megakadályozza, hogy az időjárás frissüljön, illetve váratlan viselkedést is okozhat.\n\nPéldák: New York,NY // New York, NY // 10033 // London, England</string>
     <string name="weather_custom_location_title">Egyedi hely</string>
     <string name="location_unavailable">Nem sikerült lekérni a helyre vonatkozó információt az időjárás frissítéséhez</string>
     <string name="weather_show_location_title">Hely mutatása</string>
-    <string name="weather_show_location_summary">A helyzeted mutatása.</string>
+    <string name="weather_show_location_summary">A tartózkodási hely mutatása.</string>
     <string name="weather_refresh_interval">Frissítési gyakoriság</string>
     <string name="weather_refresh_interval_minutes">" perc"</string>
     <string name="weather_use_celcius">Metrikus mértékegységek</string>
@@ -304,16 +304,16 @@
     <string name="notification_show_wifi_ssid_summary">Az aktuálisan csatlakozott Wifi hálózat nevének megjelenítése</string>
 
     <!-- Recents Ram Bar -->
-    <string name="ram_bar">Legutóbbi RAM sáv</string>
+    <string name="ram_bar">RAM sáv</string>
     <string name="ram_bar_note_title">Megjegyzés</string>
-    <string name="ram_bar_note_summary">Ez a RAM sáv mutatja az aktuális android memória (RAM) felhasználását. Kérjük, vegye figyelembe, hogy a cache-elt alkalmazások segítségével a készülék az alkalmazások sokkal gyorsabban nyitja meg. Az android memória (RAM) menedzsment működésének további magyarázatát a súgó menü tartalmazza.</string>
-    <string name="ram_bar_mode_title">Legutóbbi RAM sáv mód</string>
-    <string name="ram_bar_mode_dialog_title">Legutóbbi RAM sávon mutasd</string>
+    <string name="ram_bar_note_summary">Ez a RAM sáv mutatja az aktuális android memória (RAM) felhasználását. Kérjük, vedd figyelembe, hogy a cache-elt alkalmazások segítségével a készülék az alkalmazásokat sokkal gyorsabban nyitja meg. Az android memória (RAM) menedzsment működésének további magyarázatát a súgó menü tartalmazza.</string>
+    <string name="ram_bar_mode_title">RAM sáv mód</string>
+    <string name="ram_bar_mode_dialog_title">RAM sávon mutasd</string>
     <string name="ram_bar_none">Semelyik</string>
     <string name="ram_bar_apps">Alkalmazások</string>
     <string name="ram_bar_cache">Alkalmazások és cache</string>
     <string name="ram_bar_other">Alkalmazások, cache és egyéb</string>
-    <string name="ram_bar_style_cat">Recents RAM bar stílus</string>
+    <string name="ram_bar_style_cat">RAM sáv stílus</string>
     <string name="ram_bar_color_app_mem_color">Alkalmazások RAM színe</string>
     <string name="ram_bar_color_cache_mem_color">Cache RAM színe</string>
     <string name="ram_bar_color_total_mem_color">Egyéb RAM színe</string>
@@ -423,7 +423,7 @@
     <string name="app_name">Init.d beállítások</string>
     <string name="pt_general">Általános</string>
     <string name="pt_zipalign_apks">Zipalign alkalmazások</string>
-    <string name="ps_zipalign_apks">Zipalign minden nem igazított alk. minden újraindításnál</string>
+    <string name="ps_zipalign_apks">Zipalign minden nem igazított alk.-ra, minden rendszerindításnál</string>
     <string name="pt_fix_permissions">Jogosultságok javítása</string>
     <string name="ps_fix_permissions">Alkalmazások és azok adatainak jogosultsági javítása minden rendszerindításkor</string>
     <string name="pt_enable_sysctl">Sysctl engedélyezése</string>
@@ -487,22 +487,22 @@
     <!-- PropModder -->
     <string name="propmodder_title">Build.prop módosítások</string>
     <string name="propmodder_switches">Kapcsolók</string>
-    <string name="buildprop_title">build.prop mods (újraindítás szükséges)</string>
-    <string name="buildprop_settings_warning">Ezek a beállítások a kísérletezés érdekében szerepelnek és bármilyen változtatás potenciálisan instabilitást, összeomlást, adatvesztést vagy hardveres hibát okozhat.\n\nArra kérünk, ne tegyél hibabejelentést, ha bármely alapértelmezett ésrtéket megváltoztattál.</string>
+    <string name="buildprop_title">Build.prop módosítások (újraindítás szükséges)</string>
+    <string name="buildprop_settings_warning">Ezek a beállítások a kísérletezés érdekében szerepelnek és bármilyen változtatás potenciálisan instabilitást, összeomlást, adatvesztést vagy hardveres hibát okozhat.\n\nArra kérünk, ne tegyél hibabejelentést, ha bármely alapértelmezett értéket megváltoztattál.</string>
     <string name="nonprop_cat_title">Modósítások init.d script segítségével</string>
     <string name="pref_wifi_scan_interval_title">Wifi keresési időköz</string>
     <string name="pref_wifi_scan_interval_summary">A wifi kereséséi időköz, ha nem áll rendelkezésre tárolt hozzáférési pont</string>
     <string name="pref_wifi_scan_alt_summary">Wifi keresés időköze: %s</string>
     <string name="pref_max_events_title">Ablakkezelő max eseményei másodpercenként</string>
-    <string name="pref_max_events_summary">Ez egy futtatási érték, mely a rendszer másodpecenkénti események számát szabályozza</string>
+    <string name="pref_max_events_summary">Ez egy futtatási érték, amely a rendszer másodpecenkénti események számát szabályozza</string>
     <string name="pref_max_events_alt_summary">Rendszer események max száma: %s</string>
     <string name="pref_ring_delay_title">Telefon csengésének késleltetése</string>
     <string name="pref_ring_delay_summary">Az az idő, ami a rendszer által rögzített bejövő hívás és a csengetés között telik el</string>
     <string name="pref_ring_delay_alt_summary">Bejövő hívás késleltetése: %s</string>
     <string name="pref_vm_heapsize_title">Dalvik cache méret</string>
-    <string name="pref_vm_heapsize_summary">Ez szabályozza a cache méretét, melyhez a Dalvik VM hozzáférhet</string>
+    <string name="pref_vm_heapsize_summary">Ez szabályozza a cache méretét, amelyhez a Dalvik VM hozzáférhet</string>
     <string name="pref_vm_heapsize_alt_summary">Dalvik VM cache méret: %s</string>
-    <string name="showbuild_title">Build.Prop mutatása</string>
+    <string name="showbuild_title">Build.prop mutatása</string>
     <string name="buildprop_summary">Tudd meg, mi van benne</string>
     <string name="showbuild_dialog">Mutatás: /system/Build.Prop</string>
     <string name="showbuild_loading">Betöltés: build.prop\u2026</string>
@@ -530,7 +530,7 @@
     <string name="pref_g_speed_title">3G sebesség hack</string>
     <string name="pref_g_speed_summary">3g sebesség felszabadítása</string>
     <string name="pref_gpu_title">GPU gyorsítás</string>
-    <string name="pref_gpu_summary">EHardveres gyorsítás engedélyezése, ahol a GPU vezérli a felhasználói felületet, nem a CPU</string>
+    <string name="pref_gpu_summary">Hardveres gyorsítás engedélyezése, ahol a GPU vezérli a felhasználói felületet, nem a CPU</string>
 
     <!-- Lockscreen style settings -->
     <string name="lockscreen_style_reset_message">Zárképernyő színek alaphelyzetbe állítása?</string>
@@ -557,25 +557,25 @@
     <string name="status_bar_network_stats_update_title">Frissítési gyakoriság</string>
 
     <!-- App sidebar -->
-    <string name="app_sidebar_title">Appbar</string>
-    <string name="app_sidebar_enable_title">Appbar engedélyezése</string>
-    <string name="app_sidebar_enable_summaryOn">Appbar engedélyezve</string>
-    <string name="app_sidebar_enable_summaryOff">Appbar letiltva</string>
-    <string name="app_sidebar_setup_items_title">Appbar tartalom beállítása</string>
-    <string name="app_sidebar_setup_items_summary">Hozzáadás, törlés, sorrend beállítása az Appbar-ban</string>
-    <string name="app_sidebar_transparency_title">Appbar átlátszóság</string>
-    <string name="app_sidebar_transparency_summary">Állítsd be az Appbar átlátszósági szintjét</string>
-    <string name="app_sidebar_position_title">Appbar pozíció</string>
-    <string name="app_sidebar_position_summary">Appbar a képernyő bal vagy jobb oldalán</string>
+    <string name="app_sidebar_title">Alkalmazás Sáv</string>
+    <string name="app_sidebar_enable_title">Alkalmazás sáv engedélyezése</string>
+    <string name="app_sidebar_enable_summaryOn">Alkalmazás sáv engedélyezve</string>
+    <string name="app_sidebar_enable_summaryOff">Alkalmazás sáv letiltva</string>
+    <string name="app_sidebar_setup_items_title">Alkalmazás sáv tartalmának beállítása</string>
+    <string name="app_sidebar_setup_items_summary">Hozzáadás, törlés, sorrend beállítása az Alkalmazás sávban</string>
+    <string name="app_sidebar_transparency_title">Alkalmazás sáv átlátszóság</string>
+    <string name="app_sidebar_transparency_summary">Állítsd be az Alkalmazás sáv átlátszósági szintjét</string>
+    <string name="app_sidebar_position_title">Alkalmazás sáv pozíció</string>
+    <string name="app_sidebar_position_summary">Alkalmazás sáv a képernyő bal vagy jobb oldalán</string>
     <string name="app_sidebar_position_left">Bal</string>
     <string name="app_sidebar_position_right">Jobb</string>
     <string name="app_sidebar_hide_labels_title">Ikon feliratok elrejtése</string>
-    <string name="app_sidebar_hide_labels_summary">Appbar ikonok feliratának elrejtése</string>
+    <string name="app_sidebar_hide_labels_summary">Alkalmazás sáv ikonfeliratainak elrejtése</string>
     <string name="tab_category">Látható fül</string>
     <string name="use_tab_title">Fül megjelnítése</string>
-    <string name="use_tab_summary">Látható fül megjelenítése oldalt, amely megjeleníti az AppBar-t amikor megérinted.</string>
+    <string name="use_tab_summary">Látható fül megjelenítése oldalt, amely megjeleníti az Alkalmazás sávot amikor megérinted.</string>
     <string name="tab_position_title">Fül helye</string>
-    <string name="tab_position_summary">A fül megjelenítése a képernyő oldaln alul, középen, vagy felül.</string>
+    <string name="tab_position_summary">A fül megjelenítése a képernyő oldalán alul, középen, vagy felül.</string>
     <string name="tab_size_title">Fül mérete</string>
     <string name="tab_size_summary">Látható fül méretének megváltoztatása.</string>
     <string name="trigger_category">Indítási régió</string>
@@ -633,20 +633,20 @@
     <string name="ga_gestures_error_loading">Nem tudom betülteni: %s. Győződj meg róla, hogy a tárolóhely rendelkezésre áll e.</string>
 
     <!-- Identicons -->
-    <string name="identicons_title">Identicons</string>
-    <string name="identicons_enabled_title">Identicons</string>
-    <string name="identicons_enabled_summary">Identicon használata, mint alapértelmezett személyi kép, ha új személyt veszel fel</string>
-    <string name="identicons_style_title">Identicon stílus</string>
-    <string name="identicons_style_summary">Válassz egy identicon stílust</string>
-    <string name="identicons_create_title">Identicon-ok létrehozása</string>
-    <string name="identicons_create_summary">Identicon-ok létrehozása meglévő, fotó nélküli személyekhez</string>
-    <string name="identicons_creation_service_running_title">Identicon-ok létrehozása</string>
+    <string name="identicons_title">Azonosító-ikon</string>
+    <string name="identicons_enabled_title">Azonosító-ikonok</string>
+    <string name="identicons_enabled_summary">Azonosító-ikon használata, mint alapértelmezett személyi kép, ha új személyt veszel fel</string>
+    <string name="identicons_style_title">Azonosító-ikon stílus</string>
+    <string name="identicons_style_summary">Válassz egy Azonosító-ikon stílust</string>
+    <string name="identicons_create_title">Azonosító-ikonok létrehozása</string>
+    <string name="identicons_create_summary">Azonosító-ikonok létrehozása meglévő, fotó nélküli személyekhez</string>
+    <string name="identicons_creation_service_running_title">Azonosító-ikonok létrehozása</string>
     <string name="identicons_creation_service_running_summary"></string>
     <string name="identicons_creation_service_contact_summary">Feldolgozás %s</string>
     <string name="identicons_creation_service_contact_summary_finishing">Nyomok eltüntetése...</string>
-    <string name="identicons_remove_title">Identicon-ok eltávolítása</string>
-    <string name="identicons_remove_summary">Identicon-ok eltávolítása azon személyeknél, ahol be lett állítva</string>
-    <string name="identicons_remove_service_running_title">Identicon-ok eltávolítása</string>
+    <string name="identicons_remove_title">Azonosító-ikonok eltávolítása</string>
+    <string name="identicons_remove_summary">Azonosító-ikonok eltávolítása azon személyeknél, ahol be lett állítva</string>
+    <string name="identicons_remove_service_running_title">Azonosító-ikonok eltávolítása</string>
     <string name="identicons_remove_service_running_summary"></string>
     <string name="identicons_remove_service_contact_summary">Feldolgozott fotó %1$d/%2$d</string>
     <string name="identicons_remove_service_contact_summary_finishing">Nyomok eltüntetése...</string>
@@ -658,7 +658,7 @@
 
     <!-- Themes -->
     <string name="theme_settings_title">PAC feketében</string>
-    <string name="theme_auto_mode_title">Téma váltsa</string>
+    <string name="theme_auto_mode_title">Téma váltása</string>
     <string name="theme_auto_mode_off">Kézi</string>
     <string name="theme_auto_mode_lightsensor">Fényviszonyok változásával</string>
     <string name="theme_auto_mode_twilight">Napközben</string>
@@ -719,7 +719,7 @@
     <string name="summary_navring_amount">Válaszd ki a navigációs gyűrű céljainak számát</string>
     <string name="interface_navring_settings_title">Navigációs gyűrűg</string>
     <string name="interface_navring_settings_summary">@null</string>
-    <string name="navring_target_info">Húzd az ujjad célokhoz a művelet hozzárendeléséhez</string>
+    <string name="navring_target_info">Húzd az ujjad a célokhoz a művelet hozzárendeléséhez</string>
     <string name="navring_clear">Művelet törlése</string>
     <string name="action_short">Rövid művelet</string>
     <string name="action_long">Hosszú művelet</string>
@@ -758,15 +758,15 @@
 
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Speciális beállítások</string>
-    <string name="disable_fullscreen_keyboard_title">Teljesképernyős billentyűzet letiltása</string>
+    <string name="disable_fullscreen_keyboard_title">Teljes képernyős billentyűzet letiltása</string>
     <string name="disable_fullscreen_keyboard_summary">A fekvő billentyűzet soha nem fogalalja el a teljes képernyőt</string>
     <string name="keyboard_rotation_toggle_title">Automata billentyűzet forgatás</string>
-    <string name="keyboard_rotation_toggle_summary">Autoforgatás kényszerítés ha a billentyűzet látszik</string>
-    <string name="keyboard_rotation_timeout_title">Autoforgatás időtúllépése</string>
+    <string name="keyboard_rotation_toggle_summary">Automatikus forgatás kényszerítés ha a billentyűzet látszik</string>
+    <string name="keyboard_rotation_timeout_title">Automatikus forgatás időtúllépése</string>
     <string name="keyboard_rotation_timeout_summary">Automata forgatási szenzor kikacsolása <xliff:g id="rotate_timeout">%1$s</xliff:g> másodperccel a billentyűzet elrejtése után</string>
     <string name="keyboard_rotation_dialog">Ezzel a funkcióval kényszerítheted az automatikus forgatás bekapcsolsát, ha a billentyűzet megjelenik. Nincs hatása, ha az automatikus forgatás már engedélyezve van.</string>
     <string name="show_enter_key_title">Enter gomb mutatása</string>
-    <string name="show_enter_key_summary">A billentyűzet kényszerítése az enter gomb mutatására a hangulatjelek helyett</string>
+    <string name="show_enter_key_summary">A billentyűzet kényszerítése az Enter gomb mutatására a hangulatjelek helyett</string>
     <string name="ime_switcher_notify">Billentyűzetváltó értesítés</string>
     <string name="ime_switcher_notify_summary">Beviteli mód választási értesítő mutatása</string>
 
@@ -786,9 +786,9 @@
     <string name="hide_non_clearable">Nem törölhető elrejtése</string>
     <string name="hide_non_clearable_summary">Minden nem törölhető értesítés elrejtése</string>
     <string name="dismiss_all">Az összes értesítés elutasításának engedélyezése</string>
-    <string name="dismiss_all_summary">Még a nem törölhető értesítések elutasítását is engedélyezésheted. Természetesen ezek csak a zárképernyőn rejtettek, nem az értesítési panelen.</string>
+    <string name="dismiss_all_summary">Még a nem törölhető értesítések elutasítását is engedélyezheted. Természetesen ezek csak a zárképernyőn rejtettek, nem az értesítési panelen.</string>
     <string name="expanded_view">Kibővített értesítési nézet</string>
-    <string name="expanded_view_summary">Engedélyezheted a hosszú érintéses váltást a normál és a kibővített nézet között. A kibővített nézet néha több személyes adatot tartalmazhat, így lehet ki akarod kapcsolni.</string>
+    <string name="expanded_view_summary">Hosszú érintéses váltás engedélyezése a normál és a kibővített nézet között. A kibővített nézet néha több személyes adatot is tartalmazhat, így lehet ki akarod kapcsolni.</string>
     <string name="force_expanded_view">Kibővített nézet kényszerítése</string>
     <string name="force_expanded_view_summary">Alapértelmezetten kibővített nézet mutatása. A kibővített és normál nézet közötti váltás még mindig lehetséges.</string>
     <string name="wake_on_notification">Értesítésre ébred</string>
@@ -805,7 +805,7 @@
     <string name="notification_color">Értesítések háttérszíne</string>
 
     <!-- Partition Info -->
-    <string name="partition_info_title">Partíció info</string>
+    <string name="partition_info_title">Partíció információ</string>
     <string name="partition_info_system">/system</string>
     <string name="partition_info_data">/data</string>
     <string name="partition_info_cache">/cache</string>
@@ -826,14 +826,14 @@
 
     <!--- Volume key cursor control -->
     <string name="volume_key_cursor_control_title">Hangerő gomb kurzor vezérlés</string>
-    <string name="volume_key_cursor_control_off">Disabled</string>
+    <string name="volume_key_cursor_control_off">Letiltva</string>
     <string name="volume_key_cursor_control_on">Hangerő fel/le a kurzort balra/jobbra mozgatja</string>
     <string name="volume_key_cursor_control_on_reverse">Hangerő fel/le a kurzort jobbra/balra mozgatja</string>
     <!-- Screen recorder -->
-    <string name="screen_recorder_title">Képernyő rögzítő</string>
-    <string name="screen_recorder_summary">Képernyő rögzítő beállításainak megadása</string>
+    <string name="screen_recorder_title">Képernyő felvevő</string>
+    <string name="screen_recorder_summary">Képernyő felvevő beállításainak megadása</string>
     <string name="screen_recorder_info_title">FIGYELEM!</string>
-    <string name="screen_recorder_info_summary">A képernyő rögzítő az 1 GB, vagy több RAM-mal rendelkező készülékekre lett szánva. Ha a készüléked alacsonyabb teljesítménnyel rendelkezik, akkor csak saját felelősségre használd!</string>
+    <string name="screen_recorder_info_summary">A képernyő felvevő az 1 GB, vagy több RAM-mal rendelkező készülékekre lett szánva. Ha a készüléked alacsonyabb teljesítménnyel rendelkezik, akkor csak saját felelősségre használd!</string>
     <string name="screen_recorder_video_dimensions_title">Video mérete</string>
     <string name="screen_recorder_video_bitrate_title">Bitráta</string>
     <string name="screen_recorder_record_audio_title">Hangfelvétel</string>
@@ -906,11 +906,11 @@
     <string name="navigation_bar_width_summary">Navigációs sáv szélessége oldalsó helyen</string>
 
     <!-- Dimens -->
-    <string name="size_42_dp_default">42 dp (alapértelmezett)</string>
+    <string name="size_42_dp_default">42 dp (alapért.)</string>
     <string name="size_36_dp">36 dp</string>
     <string name="size_30_dp">30 dp</string>
     <string name="size_24_dp">24 dp</string>
-    <string name="size_48_dp_default">48 dp (alapértelmezett)</string>
+    <string name="size_48_dp_default">48 dp (alapért.)</string>
     <string name="size_44_dp">44 dp</string>
     <string name="size_40_dp">40 dp</string>
     <string name="size_42_dp">42 dp</string>
@@ -973,7 +973,7 @@
 
     <!-- Screen state service -->
     <string name="screen_state_toggles_summary">@null</string>
-    <string name="screen_state_toggles_title">Felfüggesztési műveletek</string>
+    <string name="screen_state_toggles_title">Lebegő műveletek</string>
     <string name="screen_state_toggles_enable_title">Enedélyezés</string>
     <string name="screen_state_toggles_enable_summary">A műveletek a képernyő kikapcsolásakor lépnek érvénybe. A képernyő bekapcsolásakor visszavált az előző állapotra.</string>
     <string name="screen_state_toggles_mobile_title">Mobil hálózatok</string>
@@ -998,13 +998,13 @@
 
     <!-- Lockscreen background -->
     <string name="lockscreen_background">Háttér</string>
-    <string name="lockscreen_background_style_title">Zárképernyő héttér stílus</string>
+    <string name="lockscreen_background_style_title">Zárképernyő háttér stílus</string>
     <string name="background_color_fill_title">Háttér szín</string>
     <string name="background_default">Alapértelmezett háttér stílus</string>
     <string name="background_color_fill">Kitöltőszín</string>
     <string name="background_wallpaper">Egyedi háttérkép</string>
     <string name="transparency">Háttér átlátszósága</string>
-    <string name="background_result_successful">Héttér megváltoztatva</string>
+    <string name="background_result_successful">Háttér megváltoztatva</string>
     <string name="background_result_not_successful">Háttér nem változott</string>
 
     <!-- ADB Paranoia settings -->
@@ -1036,11 +1036,11 @@
 
     <!-- Notification Reminders -->
     <string name="noti_reminder_category">Értesítés emlékeztető</string>
-    <string name="noti_reminder_enable_title">értesítés emlékeztető engedélyezése</string>
+    <string name="noti_reminder_enable_title">Értesítés emlékeztető engedélyezése</string>
     <string name="noti_reminder_sound_title">Értesítési hang</string>
     <string name="noti_reminder_sound_looping">Elutasításig</string>
     <string name="noti_reminder_ringtone">Értesítési csengőhang</string>
-    <string name="noti_reminder_interval">Felfordítási időköz</string>
+    <string name="noti_reminder_interval">Átváltási időköz</string>
     <string name="noti_reminder_interval_1s">1 másodperc</string>
     <string name="noti_reminder_interval_1dot5s">1.5 másodperc</string>
     <string name="noti_reminder_interval_2s">2 másodperc</string>
@@ -1172,9 +1172,9 @@
     <string name="shortcuts_icon_picker_google_small">Google</string>
     <string name="shortcuts_icon_picker_gplus">Google Plus</string>
     <string name="shortcuts_icon_picker_gtalk">Hangouts</string>
-    <string name="shortcuts_icon_picker_help">Help</string>
+    <string name="shortcuts_icon_picker_help">Súgó</string>
     <string name="shortcuts_icon_picker_joystick">Joystick</string>
-    <string name="shortcuts_icon_picker_key">Keys/Accounts</string>
+    <string name="shortcuts_icon_picker_key">Kulcsok/Fiókok</string>
     <string name="shortcuts_icon_picker_laptop">Laptop</string>
     <string name="shortcuts_icon_picker_notes">Jegyzetek</string>
     <string name="shortcuts_icon_picker_luggage">Utazás</string>
@@ -1184,7 +1184,7 @@
     <string name="shortcuts_icon_picker_music">Zenék</string>
     <string name="shortcuts_icon_picker_nav">Navigáció</string>
     <string name="shortcuts_icon_picker_phone">Telefon</string>
-    <string name="shortcuts_icon_picker_package">Package</string>
+    <string name="shortcuts_icon_picker_package">Csomag</string>
     <string name="shortcuts_icon_picker_pinterest">Pinterest</string>
     <string name="shortcuts_icon_picker_play">Play</string>
     <string name="shortcuts_icon_picker_pocket">Zseb</string>
@@ -1195,7 +1195,7 @@
     <string name="shortcuts_icon_picker_sms">Üzenetek</string>
     <string name="shortcuts_icon_picker_tasks">Feladatok</string>
     <string name="shortcuts_icon_picker_terminal">Terminál</string>
-    <string name="shortcuts_icon_picker_transit">Transit</string>
+    <string name="shortcuts_icon_picker_transit">Tranzit</string>
     <string name="shortcuts_icon_picker_tv">TV</string>
     <string name="shortcuts_icon_picker_twitter">Twitter</string>
     <string name="shortcuts_icon_picker_unlock">Feloldás</string>
