@@ -298,6 +298,8 @@
     <string name="listview_overshoot_interpolator">Overshoot</string>
     <string name="listview_anticipate_overshoot_interpolator">Anticipate/Overshoot</string>
     <string name="listview_bounce_interpolator">Bounce</string>
+    <string name="listview_cycle_interpolator">Cycle</string>
+    <string name="listview_linear_interpolator">Linear</string>
 
     <!-- Notification Drawer - Swipe to Switch full screen detection-->
     <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
@@ -1033,6 +1035,32 @@
     <string name="toast_Translucent_animation">Translucent Animation</string>
     <string name="toast_SlideLeftRight_animation">Slide Left To Right Animation</string>
     <string name="toast_SlideRightLeft_animation">Slide Right To Left Animation</string>
+
+    <!-- IME animations -->
+    <string name="animation_settings_reset_message">Reset all animation settings to default?</string>
+    <string name="animation_duration_summary">Set duration</string>
+    <string name="animation_default">Default</string>
+    <string name="animation_fade">Fade</string>
+    <string name="animation_slide_right">Slide in right</string>
+    <string name="animation_slide_left">Slide in left</string>
+    <string name="animation_slide_right_no_fade">Slide in right (No fade)</string>
+    <string name="animation_slide_left_no_fade">Slide in left (No fade)</string>
+    <string name="animation_slide_up">Slide in bottom</string>
+    <string name="animation_slide_down">Slide in top</string>
+    <string name="animation_translucent">Translucent</string>
+    <string name="animation_grow_shrink">Grow in (Top)</string>
+    <string name="animation_grow_shrink_center">Grow in (Center)</string>
+    <string name="animation_grow_shrink_bottom">Grow in (Bottom)</string>
+    <string name="animation_grow_shrink_left">Grow in (Left)</string>
+    <string name="animation_grow_shrink_right">Grow in (Right)</string>
+    <string name="animation_random">Random</string>
+    <string name="ime_animation_title">IME animations</string>
+    <string name="ime_animation_summary">Set keyboard animations</string>
+    <string name="ime_animation_test_title">Test IME Animation Here</string>
+    <string name="ime_enter_animation_title">Enter Animation</string>
+    <string name="ime_exit_animation_title">Exit Animation</string>
+    <string name="ime_interpolator_title">Interpolator</string>
+    <string name="ime_duration_title">IME Duration</string>
 
     <!-- Volume steps -->
     <string name="volume_steps_title">Volume steps</string>
