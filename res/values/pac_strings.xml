@@ -1295,4 +1295,7 @@
     <string name="calendar_shortcut_title">Date</string>
     <string name="default_shortcut">Default</string>
 
+    <!-- Lockscreen rotation -->
+    <string name="display_lockscreen_rotation_title">Lockscreen</string>
+
 </resources>
