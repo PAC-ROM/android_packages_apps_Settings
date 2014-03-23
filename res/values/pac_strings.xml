@@ -1151,6 +1151,8 @@
     <string name="icon_default">Default</string>
     <string name="icon_presets">System icons</string>
     <string name="icon_custom">Gallery</string>
+    <string name="icon_pack">Icon pack</string>
+    <string name="icon_picker_choose_icon_title">Choose icon</string>
     <string name="shortcuts_icon_picker_alarm">Alarm</string>
     <string name="shortcuts_icon_picker_andy">Andy</string>
     <string name="shortcuts_icon_picker_battery">Battery</string>
