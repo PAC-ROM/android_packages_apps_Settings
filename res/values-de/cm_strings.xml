@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-     Copyright (C) 2012-2013 The CyanogenMod Project
+     Copyright (C) 2012-2014 The CyanogenMod Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -746,10 +746,6 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="app_ops_reset_confirm_title">Zurücksetzen bestätigen</string>
   <string name="app_ops_reset_confirm_mesg">Sollen die Zähler zurückgesetzt werden?</string>
 
-    <!-- Untranslated AOSP strings -->
-    <string name="intent_sender_data_label"><xliff:g id="data">Daten:</xliff:g></string>
-    <string name="wifi_disabled_association_rejected">Verbindung wurde abgelehnt</string>
-
     <!-- CAF strings -->
     <string name="bluetooth_enter_pin_msg_hs">Geben Sie zum Pairing mit &lt;br&gt;&lt;b&gt;<xliff:g id="device_name">%1$s</xliff:g>&lt;/b&gt;&lt;br&gt;&lt;br&gt; die erforderliche, aus mindestens 16 Stellen bestehende, PIN des Geräts ein:</string>
     <string name="bluetooth_confirm_passkey_msg">Stellen Sie sicher, dass bei der Verbindung mit &lt;br>&lt;b><xliff:g id="device_name">%1$s</xliff:g>&lt;/b>&lt;br>&lt;br> dieses Kennwort angezeigt wird: &lt;br>&lt;b><xliff:g id="passkey">%2$s</xliff:g>&lt;/b></string>
@@ -759,4 +755,12 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
     <string name="bluetooth_dun_profile_summary_connected">Verbunden mit Einwahldienst</string>
     <string name="bluetooth_sap_profile_summary_use_for">Für SIM-Zugriff verwenden</string>
     <string name="bluetooth_dun_profile_summary_use_for">Für Einwahlverbindungen verwenden</string>
+
+    <string name="accessibility_sync_in_progress">Synchronisierung aktiv</string>
+    <string name="wifi_mode">Modus</string>
+    <string name="wifi_mode_ibss">Ad-Hoc-Netz (IBSS)</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
+    <string name="wifi_ibss_freq_title">Kanal / Frequenz</string>
+    <string name="wifi_channel">Kanal</string>
+    <string name="wifi_mhz">MHz</string>
 </resources>
