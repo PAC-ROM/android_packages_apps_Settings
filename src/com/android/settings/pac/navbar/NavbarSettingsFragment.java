@@ -47,8 +47,13 @@ public class NavbarSettingsFragment extends Fragment implements OnSettingChanged
                 Settings.System.ENABLE_NAVIGATION_BAR, hasNavbar));
 
         mToggleLeftyNavbar = (CheckboxSetting) v.findViewById(R.id.setting_navigation_bar_left);
-        mToggleLeftyNavbar.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
+
+        if (isTablet()) {
+            mToggleLeftyNavbar.setVisibility(View.GONE);
+        } else {
+            mToggleLeftyNavbar.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
                 Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, false));
+        }
 
         mMenuForce = (CheckboxSetting) v.findViewById(R.id.setting_navigation_bar_menu_force);
         mMenuForce.setChecked(Settings.System.getBoolean(mContext.getContentResolver(),
