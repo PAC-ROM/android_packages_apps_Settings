@@ -35,6 +35,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.UserHandle;
+import android.preference.PreferenceFrameLayout;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -171,8 +172,11 @@ public class NavRingTargets extends Fragment implements
         }
 
         mPicker = new ShortcutPickerHelper(this, this);
-        return inflater.inflate(R.layout.navigation_ring_targets, container,
+        View main = inflater.inflate(R.layout.navigation_ring_targets, container,
                 false);
+        if (container instanceof PreferenceFrameLayout)
+            ((PreferenceFrameLayout.LayoutParams) main.getLayoutParams()).removeBorders = true;
+        return main;
     }
 
     @Override
