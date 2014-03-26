@@ -76,6 +76,7 @@ public class LockscreenNotifications extends SettingsPreferenceFragment implemen
         mLockscreenNotifications = (SwitchPreference) prefs.findPreference(KEY_LOCKSCREEN_NOTIFICATIONS);
         mLockscreenNotifications.setChecked(Settings.System.getInt(cr,
                 Settings.System.LOCKSCREEN_NOTIFICATIONS, 0) == 1);
+        mLockscreenNotifications.setOnPreferenceChangeListener(this);
 
         mPocketMode = (CheckBoxPreference) prefs.findPreference(KEY_POCKET_MODE);
         mPocketMode.setChecked(Settings.System.getInt(cr,
@@ -167,10 +168,7 @@ public class LockscreenNotifications extends SettingsPreferenceFragment implemen
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         ContentResolver cr = getActivity().getContentResolver();
-        if (preference == mLockscreenNotifications) {
-            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_NOTIFICATIONS,
-                    mLockscreenNotifications.isChecked() ? 1 : 0);
-        } else if (preference == mPocketMode) {
+        if (preference == mPocketMode) {
             Settings.System.putInt(cr, Settings.System.LOCKSCREEN_NOTIFICATIONS_POCKET_MODE,
                     mPocketMode.isChecked() ? 1 : 0);
             mShowAlways.setEnabled(mPocketMode.isChecked());
@@ -235,7 +233,11 @@ public class LockscreenNotifications extends SettingsPreferenceFragment implemen
 
     @Override
     public boolean onPreferenceChange(Preference pref, Object value) {
-        if (pref == mNotificationsHeight) {
+        if (pref == mLockscreenNotifications) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.LOCKSCREEN_NOTIFICATIONS,
+                    ((Boolean) value).booleanValue() ? 1 : 0);
+        } else if (pref == mNotificationsHeight) {
             Settings.System.putInt(getContentResolver(),
                     Settings.System.LOCKSCREEN_NOTIFICATIONS_HEIGHT, (Integer)value);
         } else if (pref == mOffsetTop) {
