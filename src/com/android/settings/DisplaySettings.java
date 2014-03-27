@@ -43,7 +43,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
-import android.widget.Toast;
+
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
@@ -75,8 +75,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_BATTERY_LIGHT = "battery_light";
     private static final String KEY_WAKE_WHEN_PLUGGED_OR_UNPLUGGED = "wake_when_plugged_or_unplugged";
-    private static final String KEY_ANIMATION_OPTIONS = "category_animation_options";
-    private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_SCREEN_COLOR_SETTINGS = "screencolor_settings";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
@@ -85,10 +83,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String ROTATION_ANGLE_90 = "90";
     private static final String ROTATION_ANGLE_180 = "180";
     private static final String ROTATION_ANGLE_270 = "270";
-
-    private static final String KEY_LISTVIEW_ANIMATION = "listview_animation";
-    private static final String KEY_LISTVIEW_INTERPOLATOR = "listview_interpolator";
-    private static final String KEY_TOAST_ANIMATION = "toast_animation";
 
     private static final String KEY_LOW_BATTERY_WARNING_POLICY = "pref_low_battery_warning_policy";
 
@@ -110,14 +104,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mTapToWake;
     private CheckBoxPreference mStatusBarBrightnessControl;
 
-    private ListPreference mCrtMode;
-
-    private ListPreference mListViewAnimation;
-    private ListPreference mListViewInterpolator;
-    private ListPreference mToastAnimation;
-
     private ListPreference mLowBatteryWarning;
-
 
     private ContentObserver mAccelerometerRotationObserver =
             new ContentObserver(new Handler()) {
@@ -213,33 +200,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             getPreferenceScreen().removePreference(mScreenColorSettings);
         }
 
-        //ListView Animations
-        mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
-        if (mListViewAnimation != null) {
-           int listViewAnimation = Settings.System.getInt(getContentResolver(),
-                    Settings.System.LISTVIEW_ANIMATION, 1);
-           mListViewAnimation.setSummary(mListViewAnimation.getEntry());
-           mListViewAnimation.setValue(String.valueOf(listViewAnimation));
-        }
-        mListViewAnimation.setOnPreferenceChangeListener(this);
-
-        mListViewInterpolator = (ListPreference) findPreference(KEY_LISTVIEW_INTERPOLATOR);
-        if (mListViewInterpolator != null) {
-           int listViewInterpolator = Settings.System.getInt(getContentResolver(),
-                    Settings.System.LISTVIEW_INTERPOLATOR, 1);
-           mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
-           mListViewInterpolator.setValue(String.valueOf(listViewInterpolator));
-        }
-        mListViewInterpolator.setOnPreferenceChangeListener(this);
-
-        // Toast animation
-        mToastAnimation = (ListPreference)findPreference(KEY_TOAST_ANIMATION);
-        mToastAnimation.setSummary(mToastAnimation.getEntry());
-        int CurrentToastAnimation = Settings.System.getInt(getContentResolver(), Settings.System.TOAST_ANIMATION, 1);
-        mToastAnimation.setValueIndex(CurrentToastAnimation);
-        mToastAnimation.setSummary(mToastAnimation.getEntries()[CurrentToastAnimation]);
-        mToastAnimation.setOnPreferenceChangeListener(this);
-
         // Low battery warning
         mLowBatteryWarning = (ListPreference) findPreference(KEY_LOW_BATTERY_WARNING_POLICY);
         int lowBatteryWarning = Settings.System.getInt(getActivity().getContentResolver(),
@@ -260,23 +220,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 mStatusBarBrightnessControl.setSummary(R.string.status_bar_toggle_info);
             }
         } catch (SettingNotFoundException e) {
-        }
-
-        // respect device default configuration
-        // true fades while false animates
-        boolean electronBeamFadesConfig = getResources().getBoolean(
-                com.android.internal.R.bool.config_animateScreenLights);
-        PreferenceCategory animationOptions =
-            (PreferenceCategory) prefSet.findPreference(KEY_ANIMATION_OPTIONS);
-        mCrtMode = (ListPreference) prefSet.findPreference(KEY_POWER_CRT_MODE);
-        if (!electronBeamFadesConfig && mCrtMode != null) {
-            int crtMode = Settings.System.getInt(getContentResolver(),
-                    Settings.System.SYSTEM_POWER_CRT_MODE, 1);
-            mCrtMode.setValue(String.valueOf(crtMode));
-            mCrtMode.setSummary(mCrtMode.getEntry());
-            mCrtMode.setOnPreferenceChangeListener(this);
-        } else if (animationOptions != null) {
-//            prefSet.removePreference(animationOptions);
         }
     }
 
@@ -532,28 +475,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_FONT_SIZE.equals(key)) {
             writeFontSizePreference(objValue);
         }
-        if (KEY_LISTVIEW_ANIMATION.equals(key)) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mListViewAnimation.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LISTVIEW_ANIMATION,
-                    value);
-            mListViewAnimation.setSummary(mListViewAnimation.getEntries()[index]);
-        }
-        if (KEY_LISTVIEW_INTERPOLATOR.equals(key)) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mListViewInterpolator.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.LISTVIEW_INTERPOLATOR,
-                    value);
-            mListViewInterpolator.setSummary(mListViewInterpolator.getEntries()[index]);
-        }
-        if (preference == mToastAnimation) {
-            int index = mToastAnimation.findIndexOfValue((String) objValue);
-            Settings.System.putString(getContentResolver(), Settings.System.TOAST_ANIMATION, (String) objValue);
-            mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
-            Toast.makeText(mContext, "Toast Test", Toast.LENGTH_SHORT).show();
-        }
         if (preference == mLowBatteryWarning) {
             int lowBatteryWarning = Integer.valueOf((String) objValue);
             int index = mLowBatteryWarning.findIndexOfValue((String) objValue);
@@ -566,14 +487,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             boolean value = (Boolean) objValue;
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.STATUS_BAR_BRIGHTNESS_CONTROL, value ? 1 : 0);
-        }
-        if (KEY_POWER_CRT_MODE.equals(key)) {
-            int value = Integer.parseInt((String) objValue);
-            int index = mCrtMode.findIndexOfValue((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.SYSTEM_POWER_CRT_MODE,
-                    value);
-            mCrtMode.setSummary(mCrtMode.getEntries()[index]);
         }
         return true;
     }
