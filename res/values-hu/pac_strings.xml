@@ -45,6 +45,10 @@
     <string name="ad_text_summary">Mutasd a értesítés szövegét a gyűrű körül.</string>
     <string name="ad_content_title">Egyéni értesítés nézet használata</string>
     <string name="ad_content_summary">Értesítések részleteinek megjelenítése során az Aktív kijelző stílusának használata a rendszer stílussal szemben</string>
+    <string name="ad_annoying_title">Kevésbé gyakori értesítések</string>
+    <string name="ad_annoying_summary">Értesítések korlátozása egyszer egy időintervallumra</string>
+    <string name="ad_double_tap_title">Alváshoz dupla érintés</string>
+    <string name="ad_double_tap_summary">Képernyő kikapcsolása dupla érintésre</string>
     <string name="ad_all_notifications_title">Folyamatban lévő értesítések</string>
     <string name="ad_all_notifications_summary">Mutasd a folyamatos, nem törölhető értesítéseket</string>
     <string name="ad_hide_low_priority_title">Alacsony prioritásúak elrejtése</string>
@@ -294,6 +298,8 @@
     <string name="listview_overshoot_interpolator">Túlzó</string>
     <string name="listview_anticipate_overshoot_interpolator">Sejtető/Túlzó</string>
     <string name="listview_bounce_interpolator">Ugráló</string>
+    <string name="listview_cycle_interpolator">Ciklikus</string>
+    <string name="listview_linear_interpolator">Lineáris</string>
 
     <!-- Notification Drawer - Swipe to Switch full screen detection-->
     <string name="title_full_screen_swipe">Swipe-és-Válts felismerés</string>
@@ -547,6 +553,10 @@
     <string name="lockscreen_lock_color_summary">Lakat ikon színe</string>
     <string name="lockscreen_dots_color_title">Pontok színe</string>
     <string name="lockscreen_dots_color_summary">A fénylő pontok színe</string>
+    <string name="lockscreen_targets_color_title">Célok színe</string>
+    <string name="lockscreen_targets_color_summary">A célok színe</string>
+    <string name="lockscreen_misc_color_title">Egyéb szín</string>
+    <string name="lockscreen_misc_color_summary">A többi elem színe</string>
 
     <!-- Slims Strings (Temporary) -->
     <string name="shortcut_image_not_valid">A kiválasztott alkalmazáshoz nem tartozik érvényes ikon, vagy nem támogatja a képkivágást. Használj egy másik alkalmazást.</string>
@@ -1011,6 +1021,20 @@
     <string name="adb_paranoid">ADB paranoia mód</string>
     <string name="adb_paranoid_summary">Azonnal újraindítás, ha egy ismeretlen számítógépet csatlakoztatnak, miközben készülék le van zárva</string>
 
+    <!-- Scrolling Animation Controls -->
+    <string name="scrolling_title">Görgetés módosítások</string>
+    <string name="scrolling_summary">Görgetési animációk megtekintése és módosítása</string>
+    <string name="animation_fling_velocity_title">Hajítási sebesség</string>
+    <string name="animation_scroll_friction_title">Görgetési súrlódás</string>
+    <string name="animation_overscroll_distance_title">Túlgörgetési távolság</string>
+    <string name="animation_overfling_distance_title">Túlhajítási távolság</string>
+    <string name="animation_duration_summary">Időtartam beállítása</string>
+    <string name="animation_no_scroll_title">Testreszabott görgetés módosítások</string>
+    <string name="animation_no_scroll_summary_on">Engedélyezve</string>
+    <string name="animation_no_scroll_summary_off">Letiltva</string>
+    <string name="scroll_disclaimer_summary">Megjegyzés: A legtöbb alkalmazást újra kell indítani az egyéni értékek életbe lépéséhez</string>
+    <string name="animation_settings_reset_message">Az összes animációt alaphelyzetbe állítsuk?</string>
+
     <!-- Toast Animation -->
     <string name="toast_animation_title">Buborékszöveg animációk</string>
     <string name="toast_none_animation">Nincs</string>
@@ -1029,6 +1053,32 @@
     <string name="toast_Translucent_animation">Áttetsző animáció</string>
     <string name="toast_SlideLeftRight_animation">Balról jobbra animáció</string>
     <string name="toast_SlideRightLeft_animation">Jobbról balra animáció</string>
+
+    <!-- IME animations -->
+    <string name="animation_settings_reset_message">Az összes animációt alaphelyzetbe állítsuk?</string>
+    <string name="animation_duration_summary">Időtartam beállítása</string>
+    <string name="animation_default">Alapértelmezett</string>
+    <string name="animation_fade">Halványuló</string>
+    <string name="animation_slide_right">Beúszás jobb</string>
+    <string name="animation_slide_left">Beúszás bal</string>
+    <string name="animation_slide_right_no_fade">Beúszás jobb (Nincs halványulás)</string>
+    <string name="animation_slide_left_no_fade">Beúszás bal (Nincs halványulás)</string>
+    <string name="animation_slide_up">Beúszás lent</string>
+    <string name="animation_slide_down">Beúszás fent</string>
+    <string name="animation_translucent">Áttetsző</string>
+    <string name="animation_grow_shrink">Növekvő (Fent)</string>
+    <string name="animation_grow_shrink_center">Növekvő (Közép)</string>
+    <string name="animation_grow_shrink_bottom">Növekvő (Lent)</string>
+    <string name="animation_grow_shrink_left">Növekvő (Bal)</string>
+    <string name="animation_grow_shrink_right">Növekvő (Jobb)</string>
+    <string name="animation_random">Véletlenszerű</string>
+    <string name="ime_animation_title">IME animációk</string>
+    <string name="ime_animation_summary">Billentyűzet animációk beállítása</string>
+    <string name="ime_animation_test_title">IME Animációk Tesztelése Itt</string>
+    <string name="ime_enter_animation_title">Megjelenítési animáció</string>
+    <string name="ime_exit_animation_title">Kilépési animáció</string>
+    <string name="ime_interpolator_title">Interpolátor</string>
+    <string name="ime_duration_title">IME időtartam</string>
 
     <!-- Volume steps -->
     <string name="volume_steps_title">Hangerő léptetés</string>
@@ -1147,6 +1197,8 @@
     <string name="icon_default">Alapértelmezett</string>
     <string name="icon_presets">Rendszer ikonok</string>
     <string name="icon_custom">Galéria</string>
+    <string name="icon_pack">Ikon csomag</string>
+    <string name="icon_picker_choose_icon_title">Ikon választása</string>
     <string name="shortcuts_icon_picker_alarm">Ébresztő</string>
     <string name="shortcuts_icon_picker_andy">Andy</string>
     <string name="shortcuts_icon_picker_battery">Akkumulátor</string>
