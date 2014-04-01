@@ -380,7 +380,8 @@ public class Settings extends PreferenceActivity
         PerformanceSettings.class.getName(),
         PolicyNativeFragment.class.getName(),
         com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
-        com.android.settings.quicksettings.QuickSettingsTiles.class.getName()
+        com.android.settings.quicksettings.QuickSettingsTiles.class.getName(),
+        com.android.settings.cyanogenmod.QuietHours.class.getName()
     };
 
     @Override
@@ -1218,4 +1219,5 @@ public class Settings extends PreferenceActivity
     public static class SystemSettingsActivity extends Settings { /* empty */ }
     public static class PerformanceSettingsActivity extends Settings { /* empty */ }
     public static class QuickSettingsConfigActivity extends Settings { /* empty */ }
+    public static class QuietHoursSettingsActivity extends Settings { /* empty */ }
 }
