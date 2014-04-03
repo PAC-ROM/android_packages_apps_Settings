@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.vanir.BatterySaverHelper;
 
 public class SystemUiSettings extends SettingsPreferenceFragment  implements
         Preference.OnPreferenceChangeListener {
@@ -48,7 +49,9 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
     private static final String KEY_POWER_CRT_MODE = "system_power_crt_mode";
     private static final String KEY_SCREEN_GESTURE_SETTINGS = "touch_screen_gesture_settings";
     private static final String KEY_TOAST_ANIMATION = "toast_animation";
+    private static final String BATTERY_SAVER = "interface_battery_saver";
 
+    private PreferenceScreen mBatterySaver;
     private ListPreference mExpandedDesktopPref;
     private CheckBoxPreference mExpandedDesktopNoNavbarPref;
 
@@ -63,9 +66,16 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.system_ui_settings);
+        Context context = getActivity();
         PreferenceScreen prefScreen = getPreferenceScreen();
         PreferenceCategory expandedCategory =
                 (PreferenceCategory) findPreference(CATEGORY_EXPANDED_DESKTOP);
+
+        // Battery Saver
+        mBatterySaver = (PreferenceScreen) prefSet.findPreference(BATTERY_SAVER);
+        if (!BatterySaverHelper.deviceSupportsMobileData(context)) {
+            prefSet.removePreference(mBatterySaver);
+        }
 
         // Expanded desktop
         mExpandedDesktopPref = (ListPreference) findPreference(KEY_EXPANDED_DESKTOP);
