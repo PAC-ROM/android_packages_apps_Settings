@@ -1851,22 +1851,6 @@
 
         <activity android:name=".cyanogenmod.LockscreenInterface" />
 
-        <activity
-            android:name=".cyanogenmod.fragments.ScreenStateToggles"
-            android:label="@string/screen_state_toggles_title" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".cyanogenmod.fragments.WakeLockBlocker"
-            android:label="@string/wakelock_blocker" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-
         <activity android:name=".notificationlight.NotificationLightSettings" />
 
         <activity android:name=".notificationlight.BatteryLightSettings" />

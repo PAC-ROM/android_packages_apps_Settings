@@ -157,18 +157,6 @@
             android:title="@string/init_d_title"
             android:summary="@string/header_summary_init_d" />
 
-        <PreferenceScreen
-            android:key="screen_state_service"
-            android:fragment="com.android.settings.cyanogenmod.fragments.ScreenStateToggles"
-            android:title="@string/screen_state_toggles_title"
-            android:summary="@string/screen_state_toggles_summary" />
-
-        <PreferenceScreen
-            android:key="wakelock_blocker"
-            android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
-            android:title="@string/wakelock_blocker"
-            android:summary="@string/wakelock_blocker_header_summary" />
-
     </PreferenceCategory>
 
     <!-- Expanded Desktop Category -->
