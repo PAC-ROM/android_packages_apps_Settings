@@ -60,6 +60,11 @@
             android:title="@string/app_sidebar_title"/>
 
         <PreferenceScreen
+            android:key="progressbar_settings"
+            android:fragment="com.android.settings.cyanogenmod.ProgressBar"
+            android:title="@string/progressbar_title" />
+
+        <PreferenceScreen
             android:key="gesture_anywhere"
             android:fragment="com.android.settings.chameleonos.labs.gestureanywhere.GestureAnywhereSettings"
             android:title="@string/gesture_anywhere_title" />
@@ -68,11 +73,6 @@
             android:key="identicons"
             android:fragment="com.android.settings.chameleonos.labs.identicons.IdenticonsSettings"
             android:title="@string/identicons_title" />
-
-        <PreferenceScreen
-            android:key="progressbar_settings"
-            android:fragment="com.android.settings.cyanogenmod.ProgressBar"
-            android:title="@string/progressbar_title" />
 
         <PreferenceScreen
             android:key="recents_apps_panel"
@@ -161,6 +161,12 @@
             android:fragment="com.android.settings.InitD"
             android:title="@string/init_d_title"
             android:summary="@string/header_summary_init_d" />
+
+        <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
+            android:title="@string/wakelock_blocker"
+            android:summary="@string/wakelock_blocker_header_summary" />
 
     </PreferenceCategory>
 
