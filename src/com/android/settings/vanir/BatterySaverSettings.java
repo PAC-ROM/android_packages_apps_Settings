@@ -36,7 +36,7 @@ import android.provider.Settings.SettingNotFoundException;
 import android.telephony.TelephonyManager;
 import com.android.internal.telephony.Phone;
 
-import com.android.settings.vanir.SeekBarPreference;
+import com.android.settings.cyanogenmod.SeekBarPreference;
 import com.android.settings.vanir.BatterySaverHelper;
 import com.android.settings.cyanogenmod.TimeRangePreference;
 import com.android.settings.SettingsPreferenceFragment;

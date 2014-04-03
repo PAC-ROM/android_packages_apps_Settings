@@ -24,6 +24,6 @@ public class BatterySaverReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        BatterySaverHelper.scheduleService(context)
+        BatterySaverHelper.scheduleService(context);
     }
 }
