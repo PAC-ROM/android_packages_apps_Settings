@@ -56,6 +56,15 @@ public class CreateShortcut extends LauncherActivity {
         finish();
     }
 
+    private int getProperShortcutIcon(String className) {
+        String c = className.substring(className.lastIndexOf(".") + 1);
+
+        if (c.equals("WakeLockBlocker"))
+            return R.drawable.ic_wakelock_blocker;
+        else
+            return R.mipmap.ic_launcher_settings;
+    }
+
     @Override
     protected boolean onEvaluateShowIcons() {
         return false;
