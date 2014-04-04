@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string-array name="entries_fast_up_explain">
+        <item>移除</item>
+        <item>HSUPA 已禁用 (有上限)</item>
+        <item>HSUPA 已启用</item>
+        <item>HSUPA 已启用 (无上限)</item>
+    </string-array>
+
+    <string-array name="entries_prox_delay_explain">
+        <item>移除</item>
+        <item>0</item>
+        <item>50</item>
+        <item>75</item>
+        <item>125</item>
+        <item>150</item>
+        <item>175</item>
+        <item>200</item>
+        <item>225</item>
+        <item>250</item>
+        <item>275</item>
+        <item>300</item>
+        <item>325</item>
+        <item>350</item>
+        <item>375</item>
+        <item>400</item>
+        <item>425</item>
+        <item>450</item>
+        <item>475</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="entries_prox_delay">
+        <item>禁用</item>
+        <item>0</item>
+        <item>50</item>
+        <item>75</item>
+        <item>125</item>
+        <item>150</item>
+        <item>175</item>
+        <item>200</item>
+        <item>225</item>
+        <item>250</item>
+        <item>275</item>
+        <item>300</item>
+        <item>325</item>
+        <item>350</item>
+        <item>375</item>
+        <item>400</item>
+        <item>425</item>
+        <item>450</item>
+        <item>475</item>
+        <item>500</item>
+    </string-array>
+
+    <string-array name="entries_sleep_explain">
+        <item>禁用</item>
+        <item>强制关闭</item>
+        <item>待机时关闭电源 (最佳)</item>
+        <item>只程序休眠</item>
+        <item>降低频率</item>
+        <item>始终等待关闭命令</item>
+    </string-array>
+
+    <string-array name="entries_sleep">
+        <item>禁用</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+        <!-- Network stats -->
+    <string-array name="entries_status_bar_network_stats_update">
+        <item>&#189; 秒</item>
+        <item>1 秒</item>
+        <item>2 秒</item>
+        <item>5 秒</item>
+    </string-array>
+
+    <string-array name="tab_position_entries">
+        <item>顶部</item>
+        <item>中部</item>
+        <item>底部</item>
+    </string-array>
+
+    <string-array name="tab_size_entries">
+        <item>小</item>
+        <item>中</item>
+        <item>大</item>
+    </string-array>
+
+    <string-array name="battery_bar_entries">
+        <item>隐藏</item>
+        <item>状态栏</item>
+        <item>导航栏顶部</item>
+        <item>导航栏底部</item>
+    </string-array>
+
+    <string-array name="battery_bar_style_entries">
+        <item>正常</item>
+        <item>中心镜像</item>
+    </string-array>
+
+    <!-- Data usage settings. Entries for cycle length. -->
+    <string-array name="data_usage_cycle_length">
+        <item>每日</item>
+        <item>每周</item>
+        <item>每月</item>
+    </string-array>
+
+    <!-- Data usage settings. Weekdays -->
+    <string-array name="data_usage_cycle_weekdays">
+        <item>星期日</item>
+        <item>星期一</item>
+        <item>星期二</item>
+        <item>星期三</item>
+        <item>星期四</item>
+        <item>星期五</item>
+        <item>星期六</item>
+    </string-array>
+</resources>
