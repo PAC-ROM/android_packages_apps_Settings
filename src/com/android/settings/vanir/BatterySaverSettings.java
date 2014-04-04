@@ -56,6 +56,8 @@ public class BatterySaverSettings extends SettingsPreferenceFragment implements
     private static final String PREF_KEY_BATTERY_SAVER_MODE_NETWORK = "pref_battery_saver_mode_network";
     private static final String PREF_KEY_BATTERY_SAVER_MODE_NOSIGNAL = "pref_battery_saver_mode_nosignal";
     private static final String PREF_KEY_BATTERY_SAVER_TIMERANGE = "pref_battery_saver_timerange";
+    private static final String PREF_KEY_BATTERY_SAVER_MODE_WIFI = "pref_battery_saver_mode_wifi";
+    private static final String PREF_KEY_BATTERY_SAVER_BATTERY_MODE = "pref_battery_saver_battery_mode";
 
     private static final String CATEGORY_RADIO = "category_battery_saver_radio";
     private static final String CATEGORY_NETWORK = "category_battery_saver_network";
@@ -80,6 +82,8 @@ public class BatterySaverSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mSmartNoSignalEnabled;
     private ListPreference mUserCheckIntervalTime;
     private TimeRangePreference mBatterySaverTimeRange;
+    private CheckBoxPreference mWifiModeChanger;
+    private CheckBoxPreference mSmartBatteryEnabled;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +122,16 @@ public class BatterySaverSettings extends SettingsPreferenceFragment implements
         mLowBatteryLevel.setValue(Settings.Global.getInt(mResolver,
                      Settings.Global.BATTERY_SAVER_BATTERY_LEVEL, lowBatteryLevels));
         mLowBatteryLevel.setOnPreferenceChangeListener(this);
+
+        mWifiModeChanger = (CheckBoxPreference) prefSet.findPreference(PREF_KEY_BATTERY_SAVER_MODE_WIFI);
+        mWifiModeChanger.setChecked(Settings.Global.getInt(mResolver,
+                 Settings.Global.BATTERY_SAVER_WIFI_MODE, 0) == 1);
+        mWifiModeChanger.setOnPreferenceChangeListener(this);
+
+        mSmartBatteryEnabled = (CheckBoxPreference) prefSet.findPreference(PREF_KEY_BATTERY_SAVER_BATTERY_MODE);
+        mSmartBatteryEnabled.setChecked(Settings.Global.getInt(mResolver,
+                 Settings.Global.BATTERY_SAVER_BATTERY_MODE, 0) == 1);
+        mSmartBatteryEnabled.setOnPreferenceChangeListener(this);
 
         if (BatterySaverHelper.deviceSupportsMobileData(mContext)) {
             TelephonyManager telephonyManager = (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
@@ -309,6 +323,14 @@ public class BatterySaverSettings extends SettingsPreferenceFragment implements
             int val = ((Integer)newValue).intValue();
             Settings.Global.putInt(mResolver,
                      Settings.Global.BATTERY_SAVER_BATTERY_LEVEL, val);
+        } else if (preference == mWifiModeChanger) {
+            boolean value = (Boolean) newValue;
+            Settings.Global.putInt(mResolver,
+                     Settings.Global.BATTERY_SAVER_WIFI_MODE, value ? 1 : 0);
+        } else if (preference == mSmartBatteryEnabled) {
+            boolean value = (Boolean) newValue;
+            Settings.Global.putInt(mResolver,
+                     Settings.Global.BATTERY_SAVER_BATTERY_MODE, value ? 1 : 0);
         } else {
             return false;
         }
