@@ -44,7 +44,7 @@
         android:dependency="pref_battery_saver_enable" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="battery_saver_show_toast"
+        android:key="pref_battery_saver_show_toast"
         android:title="@string/pref_battery_saver_toast_title"
         android:summary="@string/pref_battery_saver_toast_summary"
         android:dependency="pref_battery_saver_enable"/>
@@ -68,7 +68,7 @@
             android:title="@string/battery_saver_battery_title" />
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="battery_saver_battery_mode"
+        android:key="pref_battery_saver_battery_mode"
         android:title="@string/pref_battery_saver_battery_title"
         android:summary="@string/pref_battery_saver_battery_summary"
         android:dependency="pref_battery_saver_enable"/>
@@ -84,7 +84,7 @@
         settings:unitsLeft=""
         settings:unitsRight="%"
         android:defaultValue="20"
-        android:dependency="pref_battery_saver_enable" />
+        android:dependency="pref_battery_saver_battery_mode" />
 
     <PreferenceCategory
             android:key="category_battery_saver_radio"
@@ -191,19 +191,19 @@
         android:dependency="pref_battery_saver_enable"/>
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="battery_saver_wifi_mode"
+        android:key="pref_battery_saver_wifi_mode"
         android:title="@string/pref_battery_saver_wifi_title"
         android:summary="@string/pref_battery_saver_wifi_summary"
         android:dependency="pref_battery_saver_enable"/>
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="battery_saver_sync_mode"
+        android:key="pref_battery_saver_sync_mode"
         android:title="@string/pref_battery_saver_sync_title"
         android:summary="@string/pref_battery_saver_sync_summary"
         android:dependency="pref_battery_saver_enable"/>
 
     <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="battery_saver_killall_mode"
+        android:key="pref_battery_saver_killall_mode"
         android:title="@string/pref_battery_saver_killall_title"
         android:summary="@string/pref_battery_saver_killall_summary"
         android:dependency="pref_battery_saver_enable"/>

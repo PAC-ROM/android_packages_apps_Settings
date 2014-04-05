@@ -1314,11 +1314,11 @@
     <string name="pref_battery_saver_ignore_locked_title">Ignore while locked</string>
     <string name="pref_battery_saver_ignore_locked_summary">When screen turns on, power saving mode won\'t be deactivated until keyguard is unlocked</string>
     <string name="pref_battery_saver_mode_change_delay_title">Change mode delay</string>
-    <string name="pref_battery_saver_mode_change_delay_summary">Delays changing of power saving mode</string>
+    <string name="pref_battery_saver_mode_change_delay_summary">Delays changing of power saving mode \nby specified number of seconds</string>
     <string name="pref_battery_saver_battery_title">When battery low</string>
     <string name="pref_battery_saver_battery_summary">Activate power saving mode when battery low</string>
     <string name="pref_battery_saver_mode_battery_level_title">Battery level</string>
-    <string name="pref_battery_saver_mode_battery_level_summary">Activate power saving mode or changing screen brightness by specified battery level</string>
+    <string name="pref_battery_saver_mode_battery_level_summary">Activate power saving mode or changing \nscreen brightness by specified battery level</string>
     <string name="pref_battery_saver_bluetooth_title">Disable bluetooth</string>
     <string name="pref_battery_saver_bluetooth_summary">Disable bluetooth connection when power saving activated</string>
     <string name="pref_battery_saver_data_title">Disable mobile data</string>
@@ -1345,7 +1345,7 @@
     <string name="battery_saver_mode_core">Core</string>
     <string name="battery_saver_cpu_mode_title">Activate CPU power saving mode</string>
     <string name="pref_battery_saver_cpu_warning_title">Attention:</string>
-    <string name="pref_battery_saver_cpu_warning_summary">we never can guarantee this will work on device</string>
+    <string name="pref_battery_saver_cpu_warning_summary">We cannot guarantee if this will work.</string>
     <string name="pref_battery_saver_network_title">Smart network change</string>
     <string name="pref_battery_saver_network_summary">Allow changing network to normal mode with specific interval time after screen turn off and power saving mode enabled</string>
     <string name="pref_battery_saver_nosignal_title">Smart network signal</string>
