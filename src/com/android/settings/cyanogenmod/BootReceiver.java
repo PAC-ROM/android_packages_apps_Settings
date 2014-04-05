@@ -31,7 +31,6 @@ import com.android.settings.hardware.DisplayColor;
 import com.android.settings.hardware.DisplayGamma;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.location.LocationSettings;
-import com.android.settings.vanir.BatterySaverHelper;
 
 import java.util.Arrays;
 import java.util.List;
@@ -53,8 +52,6 @@ public class BootReceiver extends BroadcastReceiver {
                 SystemProperties.set(KSM_SETTINGS_PROP, "false");
             }
         }
-
-            BatterySaverHelper.scheduleService(ctx);
 
         /* Restore the hardware tunable values */
         DisplayColor.restore(ctx);
