@@ -47,9 +47,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_ENABLE_CAMERA = "keyguard_enable_camera";
     private static final String KEY_LOCKSCREEN_GLOWPAD_DOUBLETAP = "glowpad_doubletap_option";
     private static final String KEY_LOCKSCREEN_GLOWPAD = "glowpad_doubletap";
+    private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
+    private CheckBoxPreference mEnableModLock;
     private ListPreference mGlowpadOption;
     private CheckBoxPreference mGlowpadDoubletap;
     private ListPreference mBatteryStatus;
@@ -77,6 +79,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Find preferences
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
+
+        mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
+        if (mEnableModLock != null) {
+            mEnableModLock.setOnPreferenceChangeListener(this);
+        }
 
         mBatteryStatus = (ListPreference) findPreference(KEY_BATTERY_STATUS);
         if (mBatteryStatus != null) {
@@ -108,6 +115,19 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (mLockUtils.isSecure()) {
             checkDisabledByPolicy(mEnableCameraWidget,
                     DevicePolicyManager.KEYGUARD_DISABLE_SECURE_CAMERA);
+        }
+
+        boolean canEnableModLockscreen = false;
+        final Bundle keyguard_metadata = Utils.getApplicationMetadata(
+                getActivity(), "com.android.keyguard");
+        if (keyguard_metadata != null) {
+            canEnableModLockscreen = keyguard_metadata.getBoolean(
+                    "com.cyanogenmod.keyguard", false);
+        }
+
+        if (mEnableModLock != null && !canEnableModLockscreen) {
+            generalCategory.removePreference(mEnableModLock);
+            mEnableModLock = null;
         }
 
         // Remove cLock settings item if not installed
@@ -142,6 +162,14 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
                     Settings.System.LOCKSCREEN_BATTERY_VISIBILITY, 0);
             mBatteryStatus.setValueIndex(batteryStatus);
             mBatteryStatus.setSummary(mBatteryStatus.getEntries()[batteryStatus]);
+        }
+
+        // Update mod lockscreen status
+        if (mEnableModLock != null) {
+            ContentResolver cr = getActivity().getContentResolver();
+            boolean checked = Settings.System.getInt(
+                    cr, Settings.System.LOCKSCREEN_MODLOCK_ENABLED, 1) == 1;
+            mEnableModLock.setChecked(checked);
         }
 
     }
@@ -180,7 +208,12 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             Settings.System.putString(cr, Settings.System.LOCKSCREEN_GLOWPAD_DOUBLETAP_OPTION, (String) objValue);
             mGlowpadOption.setSummary(mGlowpadOption.getEntries()[index]);
             return true;
+        } else if (preference == mEnableModLock) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(cr, Settings.System.LOCKSCREEN_MODLOCK_ENABLED, value ? 1 : 0);
+            return true;
         }
+
         return false;
     }
 

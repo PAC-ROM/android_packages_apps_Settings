@@ -51,6 +51,10 @@
             android:fragment="com.android.settings.pac.LockscreenStyle"
             android:title="@string/lockscreen_style_title"/>
 
+        <CheckBoxPreference
+            android:key="lockscreen_modlock_enabled"
+            android:title="@string/lockscreen_enable_modlock_title" />
+
     </PreferenceCategory>
 
     <PreferenceScreen
