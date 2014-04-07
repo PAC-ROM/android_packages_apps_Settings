@@ -259,6 +259,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                     getPreferenceScreen().removePreference(pref);
                 }
             }
+            mRingtonePreference = null;
         }
 
         mRingtoneLookupRunnable = new Runnable() {
