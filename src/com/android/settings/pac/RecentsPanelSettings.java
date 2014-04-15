@@ -50,6 +50,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private static final String RECENTS_USE_SLIM = "recents_use_slim";
     private static final String RECENT_PANEL_LEFTY_MODE = "recent_panel_lefty_mode";
     private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
+    private static final String RECENT_PANEL_EXPANDED_MODE = "recent_panel_expanded_mode";
 
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -63,6 +64,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mRecentsUseSlim;
     private CheckBoxPreference mRecentPanelLeftyMode;
     private ListPreference mRecentPanelScale;
+    private ListPreference mRecentPanelExpandedMode;
     private ListPreference mRecentClearAllPosition;
     private Preference mOmniSwitchSettings;
     private Preference mRamBar;
@@ -126,6 +128,12 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         final int recentScale = Settings.System.getInt(getContentResolver(),
                 Settings.System.RECENT_PANEL_SCALE_FACTOR, 100);
         mRecentPanelScale.setValue(recentScale + "");
+
+        mRecentPanelExpandedMode = (ListPreference) findPreference(RECENT_PANEL_EXPANDED_MODE);
+        mRecentPanelExpandedMode.setOnPreferenceChangeListener(this);
+        final int recentExpandedMode = Settings.System.getInt(getContentResolver(),
+        Settings.System.RECENT_PANEL_EXPANDED_MODE, 0);
+        mRecentPanelExpandedMode.setValue(recentExpandedMode + "");
 
         mRamBar = findPreference(KEY_RECENTS_RAM_BAR);
         mRamBar.setEnabled(!useOmniSwitch && !useSlimRecents);
@@ -195,6 +203,10 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(getContentResolver(),
                     Settings.System.RECENT_PANEL_GRAVITY,
                     ((Boolean) newValue) ? Gravity.LEFT : Gravity.RIGHT);
+        } else if (preference == mRecentPanelExpandedMode) {
+            int value = Integer.parseInt((String) newValue);
+                    Settings.System.putInt(getContentResolver(),
+                    Settings.System.RECENT_PANEL_EXPANDED_MODE, value);
         } else {
             return false;
         }
