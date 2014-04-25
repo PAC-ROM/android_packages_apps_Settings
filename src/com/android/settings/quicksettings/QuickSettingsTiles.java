@@ -17,9 +17,7 @@
 package com.android.settings.quicksettings;
 
 import android.app.AlertDialog;
-
 import android.app.Fragment;
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -103,15 +101,9 @@ public class QuickSettingsTiles extends Fragment {
         if (cellGap != 0) {
             mDragView.setCellGap(cellGap);
         }
-        ContentResolver resolver = getActivity().getContentResolver();
-        boolean mSmallIcons = Settings.System.getIntForUser(resolver,
-                Settings.System.QUICK_SETTINGS_SMALL_ICONS, 0, UserHandle.USER_CURRENT) == 1;
         int columnCount = Settings.System.getIntForUser(getActivity().getContentResolver(),
                 Settings.System.QUICK_TILES_PER_ROW, 3,
                 UserHandle.USER_CURRENT);
-        if (mSmallIcons) {
-            columnCount = getItemFromSystemUi("quick_settings_num_columns_small", "integer");
-        }
         // do not allow duplication on tablets or any device which do not have
         // flipsettings
         boolean duplicateOnLandScape = Settings.System.getIntForUser(

@@ -58,7 +58,6 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     private static final String PREF_FLIP_QS_TILES = "flip_qs_tiles";
     private static final String PREF_TILES_PER_ROW = "tiles_per_row";
     private static final String PREF_TILES_PER_ROW_DUPLICATE_LANDSCAPE = "tiles_per_row_duplicate_landscape";
-    private static final String QS_SMALL_ICONS = "qs_small_icons";
 
     private MultiSelectListPreference mRingMode;
     private ListPreference mNetworkMode;
