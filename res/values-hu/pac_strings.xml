@@ -105,6 +105,18 @@
     <string name="lock_numpad_random_always">Mindig</string>
     <string name="lock_numpad_random_on_request">Kérésre</string>
 
+    <!-- Shake to secure -->
+    <string name="shake_to_secure_title">Zárképernyő rázása a biztonság engedélyezéséhez</string>
+    <string name="shake_to_secure_summary">A biztonság kikapcsolásra kerül minden sikeres feloldás után</string>
+    <string name="shake_to_secure_dlg_title">Figyelem:</string>
+    <string name="shake_to_secure_dlg_message">A készülék nem biztonságos, amíg határozottan nem rázza, engedélyezve az ideiglenes biztonsági zárat. Ha biztomságos: amennyiben a készüléket sikeresen feloldotta, nem lesz biztonságos, amíg meg nem rázza újra.</string>
+    <string name="shake_secure_timeout_title">Automatikus biztonság</string>
+    <string name="shake_secure_timeout_disabled">Ne legyen automatikus biztonság</string>
+    <string name="shake_secure_timeout_1min">1 perc a képernyő kikapcsolása után</string>
+    <string name="shake_secure_timeout_5min">5 perc a képernyő kikapcsolása után</string>
+    <string name="shake_secure_timeout_10min">10 perc a képernyő kikapcsolása után</string>
+    <string name="shake_secure_timeout_30min">30 perc a képernyő kikapcsolása után</string>
+
     <!-- Lock before unlock -->
     <string name="lock_before_unlock_title">Csúszka mutatása a biztonsági feloldó előtt</string>
     <string name="lock_before_unlock_summary">Csúszka zárképernyő mutatása a biztonsági feloldási mechanizmus előtt</string>
@@ -903,6 +915,15 @@
     <!-- Performance control -->
     <string name="performance_settings">Teljesítmény szabályozás</string>
 
+    <!-- Sound themes -->
+    <string name="sound_packages_title">Hang csomagok</string>
+    <string name="install_sound_pack_title">Hang csomag telepítése</string>
+    <string name="install_sound_pack_summary">Új hang csomag telepítése a belső tárhely SoundPacks könyvtárába</string>
+    <string name="select_sound_pack_title">Hang csomag kiválasztása</string>
+    <string name="select_sound_pack_summary">Válaszd ki melyik legyen az aktív hang csomag</string>
+    <string name="default_sound_pack">Alapértelmezett (Rendszer)</string>
+    <string name="error_pack_install">A hang csomag telepítésekor hiba lépett fel</string>
+
     <!-- Navigation bar -->
     <string name="enable_navigation_bar_title">Navigációs sáv engedélyezése</string>
     <string name="enable_navigation_bar_summary">Engedélyezi a képernyőn megjelenő navigációs sávot</string>
@@ -980,31 +1001,6 @@
     <string name="progressbar_color_4_title">Szín4</string>
     <string name="sample_progressbar_text">Folyamatjelző sáv előnézet:</string>
     <string name="progressbar_reset_message">Folyamatjező sáv alapértékek visszaállítása?</string>
-
-    <!-- Screen state service -->
-    <string name="screen_state_toggles_summary">@null</string>
-    <string name="screen_state_toggles_title">Lebegő műveletek</string>
-    <string name="screen_state_toggles_enable_title">Enedélyezés</string>
-    <string name="screen_state_toggles_enable_summary">A műveletek a képernyő kikapcsolásakor lépnek érvénybe. A képernyő bekapcsolásakor visszavált az előző állapotra.</string>
-    <string name="screen_state_toggles_mobile_title">Mobil hálózatok</string>
-    <string name="screen_state_toggles_location_title">Helymeghatározás</string>
-    <string name="screen_state_toggles_twog">Váltás 2G-re</string>
-    <string name="screen_state_toggles_twog_summary">Képernyő kikapcsolásakor 2G hálózatra vált</string>
-    <string name="screen_state_toggles_gps">GPS kikapcsolása</string>
-    <string name="screen_state_toggles_gps_summary">Képernyő kikapcsolásakor a GPS alapú helymeghatározás kikapcsolásra kerül</string>
-    <string name="screen_state_toggles_mobile_data">Hálózati adatforgalom kikapcsolása</string>
-    <string name="screen_state_toggles_mobile_data_summary">Képernyő kikacsolásakor a hálózati adatforgalmat kikapcsolja</string>
-
-    <!-- Wakelock blocker -->
-    <string name="wakelock_blocker_header_summary">@null</string>
-    <string name="wakelock_blocker">Wakelock Blokkoló</string>
-    <string name="wakelock_blocker_title">Engedélyezés</string>
-    <string name="wakelock_blocker_summary">Blokkolás aktiválása a megjelölt wakelock-okra</string>
-    <string name="wakelock_blocker_save">Mentés</string>
-    <string name="wakelock_list_header">Meglévő wakelock-ok</string>
-    <string name="wakelock_blocker_reload">Újratöltés</string>
-    <string name="wakelock_blocker_warning_title">Óvatosan járj el</string>
-    <string name="wakelock_blocker_warning">A wakelock-ok blokkolása instabilitáshoz, összeomláshoz vagy adatvesztéshez vezethet.</string>
 
     <!-- Lockscreen background -->
     <string name="lockscreen_background">Háttér</string>
@@ -1263,6 +1259,8 @@
     <string name="shortcuts_color_mode_title">Ikon szín mód</string>
     <string name="shortcuts_color_mode_summary">Parancsikonok színének megváltoztatása</string>
 
+    <string name="notification_light_screenon_title">Engedélyezve bekapcsolt képernyőnél is</string>
+
     <!-- Notification drawer settings -->
     <string name="notification_hide_carrier_title">Szolgáltató nevének elrejtése</string>
     <string name="notification_shortcuts_settings_title">Parancsikonok</string>
@@ -1286,5 +1284,30 @@
 
     <string name="navigation_bar_menu_force">Menü megjelenítés kényszerítése</string>
     <string name="navigation_bar_menu_force_summary">A menü gomb(ok) mindig látható(ak)</string>
+
+    <!-- On-The-Go Mode -->
+    <string name="title_tile_onthego">Útközben</string>
+    <string name="power_menu_onthego_title">Útközben üzemmód</string>
+    <string name="power_menu_onthego_summary">Minden ablak alatt a kamera képének mutatása</string>
+
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker_header_summary">@null</string>
+    <string name="wakelock_blocker">Wakelock Blokkoló</string>
+    <string name="wakelock_blocker_title">Engedélyezés</string>
+    <string name="wakelock_blocker_summary">Blokkolás aktiválása a megjelölt wakelock-okra</string>
+    <string name="wakelock_blocker_save">Mentés</string>
+    <string name="wakelock_list_header">Meglévő wakelock-ok</string>
+    <string name="wakelock_blocker_reload">Újratöltés</string>
+    <string name="wakelock_blocker_warning_title">Óvatosan járj el</string>
+    <string name="wakelock_blocker_warning">A wakelock-ok blokkolása instabilitáshoz, összeomláshoz vagy adatvesztéshez vezethet.</string>
+
+    <!-- Notification Panel Shortcuts -->
+    <string name="notification_bar_shortcuts">Fejléc hivatkozások</string>
+    <string name="clock_shortcut_title">Idő</string>
+    <string name="calendar_shortcut_title">Dátum</string>
+    <string name="default_shortcut">Alapértelmezett</string>
+
+    <!-- Lockscreen rotation -->
+    <string name="display_lockscreen_rotation_title">Zárképernyő</string>
 
 </resources>
