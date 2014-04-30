@@ -1034,4 +1034,6 @@ two in order to insert additional control points. \'Remove\' deletes the selecte
     <string name="background_result_not_successful">Background not changed</string>
     <string name="setting_lockscreen_background">Applying background</string>
 
+    <!-- Bluetooth accept all Filestypes -->
+    <string name="bluetooth_accept_all_files">Accept all file types</string>
 </resources>
