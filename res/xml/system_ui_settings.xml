@@ -165,6 +165,15 @@
 
     </PreferenceCategory>
 
+    <!-- Device Specific Touchscreen gestures. Avoid duplicating CMHW functionality, please -->
+    <Preference
+        android:key="touch_screen_gesture_settings">
+        <intent
+            android:action="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS"
+            android:targetPackage="com.cyanogenmod.settings.device"
+            android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
+    </Preference>
+
     <!-- Expanded Desktop Category -->
     <PreferenceCategory
             android:key="expanded_desktop_category"
@@ -189,15 +198,6 @@
                 android:defaultValue="false" />
 
     </PreferenceCategory>
-
-    <!-- Device Specific Touchscreen gestures. Avoid duplicating CMHW functionality, please -->
-    <Preference
-        android:key="touch_screen_gesture_settings">
-        <intent
-            android:action="com.cyanogenmod.action.LAUNCH_TOUCHSCREEN_GESTURE_SETTINGS"
-            android:targetPackage="com.cyanogenmod.settings.device"
-            android:targetClass="com.cyanogenmod.settings.device.TouchscreenGestureSettings" />
-    </Preference>
 
     <!-- Navigation Bar Category -->
     <PreferenceCategory
