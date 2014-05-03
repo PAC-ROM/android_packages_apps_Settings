@@ -1303,6 +1303,10 @@
     <string name="clock_use_second">Use second clock</string>
     <string name="clock_use_second_summary">Show second in clock</string>
 
+    <!-- Fast Charge Tile -->
+    <string name="title_tile_fast_charge">Fast charge</string>
+
     <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
+
 </resources>

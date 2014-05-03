@@ -26,6 +26,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
 import static com.android.internal.util.cm.QSConstants.TILE_CPUFREQ;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
+import static com.android.internal.util.cm.QSConstants.TILE_FASTCHARGE;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
@@ -34,6 +35,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_MUSIC;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKADB;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
+import static com.android.internal.util.cm.QSConstants.TILE_ONTHEGO;
 import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_PERFORMANCE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
@@ -48,7 +50,6 @@ import static com.android.internal.util.cm.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
 import static com.android.internal.util.cm.QSConstants.TILE_QUICKRECORD;
-import static com.android.internal.util.cm.QSConstants.TILE_ONTHEGO;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -167,6 +168,9 @@ public class QuickSettingsUtil {
                 TILE_ONTHEGO, R.string.title_tile_onthego,
                 "com.android.systemui:drawable/ic_qs_onthego"));
         registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_FASTCHARGE, R.string.title_tile_fast_charge,
+                "com.android.systemui:drawable/ic_qs_fcharge_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_CPUFREQ, R.string.title_tile_cpufreq,
                 "com.android.systemui:drawable/ic_qs_cpufreq"));
     }
@@ -229,6 +233,11 @@ public class QuickSettingsUtil {
         // Don't show the performance profiles tile if is not available for the device
         if (!QSUtils.deviceSupportsPerformanceProfiles(context)) {
             removeTile(TILE_PERFORMANCE_PROFILE);
+        }
+
+        // only if kernel supports this
+        if (!QSUtils.deviceSupportsFastcharge()) {
+            removeTile(TILE_FASTCHARGE);
         }
 
         // Don't show the CPUFreq tile if the kernel doesn't support this
