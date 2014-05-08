@@ -23,5 +23,4 @@
         android:entryValues="@array/theme_auto_mode_values"
         android:title="@string/theme_auto_mode_title"
         android:dialogTitle="@string/theme_auto_mode_title" />
-
 </PreferenceScreen>
