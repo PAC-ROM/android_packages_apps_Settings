@@ -76,7 +76,7 @@
     <item>Συνδρομή 3</item>
   </string-array>
   <string-array name="screen_color_setting">
-    <item>Τυπικό</item>
+    <item>Κανονικό</item>
     <item>Ζωντανό</item>
     <item>Προσαρμοσμένο</item>
   </string-array>

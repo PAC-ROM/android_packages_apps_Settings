@@ -76,7 +76,7 @@
     <item>Abbonamento 3</item>
   </string-array>
   <string-array name="screen_color_setting">
-    <item>Predefinito</item>
+    <item>Standard</item>
     <item>Vivido</item>
     <item>Personalizzato</item>
   </string-array>

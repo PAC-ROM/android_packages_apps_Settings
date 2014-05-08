@@ -34,14 +34,7 @@
   <string name="sel_sub_summary">בחר את הרשמותיך</string>
   <string name="select_subscription">בחר הרשמה</string>
   <string name="no_sim_info">מידע על כרטיס SIM אינו נגיש.\nאין גישה לתפריט</string>
-  <string name="multi_sim_settings_title">הגדרות לכרטיסי SIM</string>
-  <string name="multi_sim_settings_summary">הגדר כרטיסי SIM לקול, מידע ו-SMS</string>
-  <string name="voice_title">קול/USSD/MMI</string>
-  <string name="voice_summary">הגדר הרשמה לשיחות קוליות</string>
-  <string name="data_title">שיחות נתונים</string>
-  <string name="data_summary">הגדר הרשמה לשיחות נתונים</string>
-  <string name="sms_title">SMS</string>
-  <string name="sms_summary">הגדר הרשמה לשליחת SMS</string>
+  <string name="subs_settings">מצב הרשמה</string>
   <string name="set_data_subscription_progress">הגדרות להרשמת נתונים\u2026</string>
   <string name="set_dds_success">הרשמת נתונים הוגדרה בהצלחה</string>
   <string name="set_dds_failed">שגיאה בהגדרת הרשמת נתונים. הסר את כל חיבורי הרשת ונסה שוב.</string>
@@ -75,7 +68,7 @@
   </string-array>
   <string-array name="screen_color_setting">
     <item>רגיל</item>
-    <item>Vivid</item>
+    <item>חי</item>
     <item>מותאם אישית</item>
   </string-array>
 </resources>
