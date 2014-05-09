@@ -58,7 +58,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ListPreference mGlowpadOption;
     private CheckBoxPreference mGlowpadDoubletap;
     private ListPreference mBatteryStatus;
-    private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
+    private Preference mLockscreenTargets;
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
