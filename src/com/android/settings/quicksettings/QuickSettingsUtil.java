@@ -24,6 +24,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_BLUETOOTH;
 import static com.android.internal.util.cm.QSConstants.TILE_BRIGHTNESS;
 import static com.android.internal.util.cm.QSConstants.TILE_CAMERA;
 import static com.android.internal.util.cm.QSConstants.TILE_COMPASS;
+import static com.android.internal.util.cm.QSConstants.TILE_CPUFREQ;
 import static com.android.internal.util.cm.QSConstants.TILE_DELIMITER;
 import static com.android.internal.util.cm.QSConstants.TILE_EXPANDEDDESKTOP;
 import static com.android.internal.util.cm.QSConstants.TILE_GPS;
@@ -92,6 +93,9 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_COMPASS, R.string.title_tile_compass,
                 "com.android.systemui:drawable/ic_qs_compass_on"));
+        registerTile(new QuickSettingsUtil.TileInfo(
+                TILE_CPUFREQ, R.string.title_tile_cpufreq,
+                "com.android.systemui:drawable/ic_qs_cpufreq"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_HEADS_UP, R.string.title_tile_heads_up,
                 "com.android.systemui:drawable/ic_qs_heads_up_on"));
@@ -226,6 +230,10 @@ public class QuickSettingsUtil {
         // Don't show the Compass tile if the device has no orientation sensor
         if (!QSUtils.deviceSupportsCompass(context)) {
             removeTile(TILE_COMPASS);
+        }
+        // Don't show the CPUFreq tile if the kernel doesn't support this
+        if (!QSUtils.deviceSupportsCPUFreq()) {
+            removeTile(TILE_CPUFREQ);
         }
     }
 
