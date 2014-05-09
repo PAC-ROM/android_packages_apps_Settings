@@ -49,6 +49,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private static final String KEY_LOCKSCREEN_GLOWPAD = "glowpad_doubletap";
     private static final String KEY_ENABLE_MAXIMIZE_WIGETS = "lockscreen_maximize_widgets";
     private static final String KEY_LOCKSCREEN_MODLOCK_ENABLED = "lockscreen_modlock_enabled";
+    private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
 
     private CheckBoxPreference mEnableKeyguardWidgets;
     private CheckBoxPreference mEnableCameraWidget;
@@ -57,6 +58,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
     private ListPreference mGlowpadOption;
     private CheckBoxPreference mGlowpadDoubletap;
     private ListPreference mBatteryStatus;
+    private static final String KEY_LOCKSCREEN_TARGETS = "lockscreen_targets";
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockUtils;
@@ -82,6 +84,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         mEnableKeyguardWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_WIDGETS);
         mEnableCameraWidget = (CheckBoxPreference) findPreference(KEY_ENABLE_CAMERA);
         mEnableMaximizeWidgets = (CheckBoxPreference) findPreference(KEY_ENABLE_MAXIMIZE_WIGETS);
+        mLockscreenTargets = findPreference(KEY_LOCKSCREEN_TARGETS);
 
         mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
         if (mEnableModLock != null) {
@@ -189,6 +192,9 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         }
         if (mEnableMaximizeWidgets != null) {
             mEnableMaximizeWidgets.setEnabled(enabled);
+        }
+        if (mLockscreenTargets != null) {
+            mLockscreenTargets.setEnabled(enabled);
         }
     }
 
