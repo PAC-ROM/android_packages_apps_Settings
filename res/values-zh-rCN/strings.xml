@@ -368,6 +368,8 @@
     <string name="unlock_set_unlock_pin_summary" msgid="907878650556383388">"中高等安全性"</string>
     <string name="unlock_set_unlock_password_title" msgid="8775603825675090937">"密码"</string>
     <string name="unlock_set_unlock_password_summary" msgid="8856220848940929546">"高安全性"</string>
+    <string name="unlock_set_unlock_gesture_title">手势</string>
+    <string name="unlock_set_unlock_gesture_summary">低安全性，实验性</string>
     <string name="unlock_set_unlock_disabled_summary" msgid="2120729867788851674">"此选项已被管理员、加密策略或凭据存储停用"</string>
     <string name="unlock_set_unlock_mode_off" msgid="5881952274566013651">"无"</string>
     <string name="unlock_set_unlock_mode_none" msgid="5660014471997663139">"滑动"</string>
@@ -688,6 +690,13 @@
     <string name="all_volume_title" msgid="4296957391257836961">"音量"</string>
     <string name="musicfx_title" msgid="3415566786340790345">"音乐效果"</string>
     <string name="ring_volume_title" msgid="7938706566797464165">"铃声音量"</string>
+    <string name="volume_steps_alarm_title">音量阶梯：闹钟</string>
+    <string name="volume_steps_dtmf_title">音量阶梯：双音多频</string>
+    <string name="volume_steps_music_title">音量阶梯：音乐</string>
+    <string name="volume_steps_notification_title">音量阶梯：通知</string>
+    <string name="volume_steps_ring_title">音量阶梯：铃声</string>
+    <string name="volume_steps_system_title">音量阶梯：系统</string>
+    <string name="volume_steps_voice_call_title">音量阶梯：语音呼叫</string>
     <string name="vibrate_in_silent_title" msgid="3897968069156767036">"静音时振动"</string>
     <string name="notification_sound_title" msgid="5137483249425507572">"默认通知提示音"</string>
     <string name="notification_pulse_title" msgid="1247988024534030629">"收到通知时指示灯闪烁"</string>
@@ -704,6 +713,8 @@
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"锁屏提示音"</string>
     <string name="haptic_feedback_enable_title" msgid="2438293710530828760">"触摸时振动"</string>
     <string name="audio_record_proc_title" msgid="4271091199976457534">"降噪"</string>
+    <string name="camera_sounds_title">相机快门声</string>
+    <string name="camera_sounds_summary">警告：在一些地区禁用相机快门声是非法的！</string>
     <string name="volume_media_description" msgid="7949355934788807863">"音乐、视频、游戏和其他媒体"</string>
     <string name="volume_ring_description" msgid="5936851631698298989">"铃声和通知"</string>
     <string name="volume_notification_description" msgid="5810902320215328321">"通知"</string>
@@ -1868,7 +1879,8 @@
     <string name="data_usage_auto_sync_on_dialog" product="default" msgid="2374996799819303283">"您在网络上对您的帐户进行的所有更改都会自动同步到您的手机。\n\n有些帐户还可以将您在手机上进行的所有更改自动同步到网络上。这就是 Google 帐户的精彩之处。\n\n要选择每个帐户中要同步哪些类型的信息，请转到“设置 &gt; 帐户”。"</string>
     <string name="data_usage_auto_sync_off_dialog_title" msgid="9013139130490125793">"要关闭自动同步数据功能吗？"</string>
     <string name="data_usage_auto_sync_off_dialog" msgid="4744145757533455623">"这样可以节省数据流量和电池电量，但您需要手动同步每个帐户才能获得最新信息，并且在有更新时不会收到通知。"</string>
-    <string name="data_usage_cycle_editor_title" msgid="1373797281540188533">"使用情况周期重置日期"</string>
+    <string name="data_usage_cycle_editor_title" msgid="1373797281540188533">"使用情况周期重置周期"</string>
+    <string name="data_usage_lengths_spinner_subtitle">周期长度：</string>
     <string name="data_usage_cycle_editor_subtitle" msgid="5512903797979928416">"日期："</string>
     <string name="data_usage_cycle_editor_positive" msgid="8821760330497941117">"确定"</string>
     <string name="data_usage_warning_editor_title" msgid="3704136912240060339">"设置流量使用量警告"</string>

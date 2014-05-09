@@ -105,6 +105,18 @@
     <string name="lock_numpad_random_always">始终</string>
     <string name="lock_numpad_random_on_request">根据要求</string>
 
+    <!-- Shake to secure -->
+    <string name="shake_to_secure_title">摇晃锁屏以启用安全保护</string>
+    <string name="shake_to_secure_summary">每次成功解锁后将禁用安全保护</string>
+    <string name="shake_to_secure_dlg_title">警告：</string>
+    <string name="shake_to_secure_dlg_message">您的设备将是不安全的，直到您明确地摇晃以启用临时安全锁。一次保护：如果您的设备成功解锁 ，它将变得不安全直到您再次摇晃。</string>
+    <string name="shake_secure_timeout_title">自动重新保护</string>
+    <string name="shake_secure_timeout_disabled">从不自动保护</string>
+    <string name="shake_secure_timeout_1min">屏幕关闭后 1 分钟</string>
+    <string name="shake_secure_timeout_5min">屏幕关闭后 5 分钟</string>
+    <string name="shake_secure_timeout_10min">屏幕关闭后 10 分钟</string>
+    <string name="shake_secure_timeout_30min">屏幕关闭后 30 分钟</string>
+
     <!-- Lock before unlock -->
     <string name="lock_before_unlock_title">安全解锁之前显示滑块</string>
     <string name="lock_before_unlock_summary">安全解锁机制之前显示锁屏滑块</string>
@@ -166,7 +178,7 @@
     <string name="weather_refresh_interval_minutes">分钟</string>
     <string name="weather_use_celcius">公制单位</string>
     <string name="weather_use_celcius_summary">启用此项将以摄氏显示温度，而不是华氏，以公里每小时显示风速，而不是英里每小时。</string>
-    <string name="weather_statusbar_style">状态栏天气风格</string>
+    <string name="weather_statusbar_style">状态栏天气样式</string>
     <string name="title_weather_longclick">天气面板长按动作</string>
     <string name="title_weather_shortclick">天气面板短按动作</string>
     <string name="update">更新天气面板</string>
@@ -191,56 +203,49 @@
     <string name="weather_2">飓风</string>
     <string name="weather_3">强雷暴</string>
     <string name="weather_4">雷暴</string>
-    <string name="weather_5">混合雨雪</string>
-    <string name="weather_6">混合雨和雨夹雪</string>
-    <string name="weather_7">混合雨雪冰冻</string>
+    <string name="weather_5">雨夹雪</string>
+    <string name="weather_6">混合雨和冻雨</string>
+    <string name="weather_7">混合雪和冻雨</string>
     <string name="weather_8">冻毛毛雨</string>
     <string name="weather_9">毛毛雨</string>
-    <string name="weather_10">冻雨</string>
+    <string name="weather_10">冰雨</string>
     <string name="weather_11">阵雨</string>
     <string name="weather_12">阵雨</string>
-    <string name="weather_13">雪阵</string>
-    <string name="weather_14">小阵雪</string>
+    <string name="weather_13">飘雪</string>
+    <string name="weather_14">小雪</string>
     <string name="weather_15">吹雪</string>
     <string name="weather_16">雪</string>
     <string name="weather_17">冰雹</string>
-    <string name="weather_18">雨雪</string>
+    <string name="weather_18">冻雨</string>
     <string name="weather_19">沙尘</string>
-    <string name="weather_20">雾</string>
-    <string name="weather_21">霾</string>
-    <string name="weather_22">烟</string>
-    <string name="weather_23">大风</string>
-    <string name="weather_24">有风</string>
-    <string name="weather_25">寒冷</string>
+    <string name="weather_20">多雾</string>
+    <string name="weather_21">阴霾</string>
+    <string name="weather_22">烟雾</string>
+    <string name="weather_23">强风</string>
+    <string name="weather_24">大风</string>
+    <string name="weather_25">冷</string>
     <string name="weather_26">多云</string>
-    <!-- mostly cloudy (night) -->
     <string name="weather_27">大部多云</string>
-    <!-- mostly cloudy (day) -->
     <string name="weather_28">大部多云</string>
-    <!-- partly cloudy (night) -->
-    <string name="weather_29">晴间多云</string>
-    <!-- partly cloudy (day) -->
-    <string name="weather_30">晴间多云</string>
-    <!-- clear (night) -->
-    <string name="weather_31">晴朗</string>
-    <string name="weather_32">晴朗</string>
-    <!-- fair (night) -->
-    <string name="weather_33">中等</string>
-    <!-- fair (day) -->
-    <string name="weather_34">中等</string>
-    <string name="weather_35">混合雨和冰雹</string>
-    <string name="weather_36">炎热</string>
-    <string name="weather_37">局部风暴</string>
-    <string name="weather_38">零星雷雨</string>
-    <string name="weather_39">零星雷雨</string>
+    <string name="weather_29">局部多云</string>
+    <string name="weather_30">局部多云</string>
+    <string name="weather_31">晴天</string>
+    <string name="weather_32">晴天</string>
+    <string name="weather_33">晴天积云</string>
+    <string name="weather_34">晴天积云</string>
+    <string name="weather_35">雨夹冰雹</string>
+    <string name="weather_36">热</string>
+    <string name="weather_37">局部雷暴雨</string>
+    <string name="weather_38">局部雷雨</string>
+    <string name="weather_39">局部雷雨</string>
     <string name="weather_40">零星阵雨</string>
     <string name="weather_41">大雪</string>
     <string name="weather_42">零星阵雪</string>
-    <string name="weather_43">零星阵雪</string>
+    <string name="weather_43">大雪</string>
     <string name="weather_44">晴间多云</string>
     <string name="weather_45">雷阵雨</string>
     <string name="weather_46">阵雪</string>
-    <string name="weather_47">局部风暴</string>
+    <string name="weather_47">局部雷阵雨</string>
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
@@ -253,8 +258,8 @@
     <string name="pa_version">ParanoidAndroid 版本</string>
     <string name="pa_version_default">未知</string>
 
-    <string name="custom_statusbar_header_title">情境相关的通知面板顶部</string>
-    <string name="custom_statusbar_header_summary">根据当前日期和时间设置通知面板顶部背景图像</string>
+    <string name="custom_statusbar_header_title">情境相关的顶部</string>
+    <string name="custom_statusbar_header_summary">根据当前日期和时间设置顶部背景</string>
 
     <!-- Display : Rotation -->
     <string name="display_rotation_title">旋转</string>
@@ -450,14 +455,14 @@
     <string name="ps_touch">启用/禁用触摸屏调整</string>
     <string name="pt_minfree">启用最小空闲内存</string>
     <string name="ps_minfree">启用/禁用最小空闲内存调整</string>
-    <string name="pt_gpurender">启用GPU 渲染器</string>
+    <string name="pt_gpurender">启用 GPU 渲染器</string>
     <string name="ps_gpurender">启用/禁用 GPU 渲染调整</string>
     <string name="pt_sleepers">启用睡眠</string>
     <string name="ps_sleepers">启用/禁用睡眠调整</string>
     <string name="pt_journalism">启用 journalism</string>
     <string name="ps_journalism">启用/禁用 journalism 调整</string>
     <string name="pt_sqlite3">启用 sqlite3</string>
-    <string name="ps_sqlite3">启用/禁用sqlite3 调整</string>
+    <string name="ps_sqlite3">启用/禁用 sqlite3 调整</string>
     <string name="pt_wifisleep">启用 WiFi 睡眠</string>
     <string name="ps_wifisleep">启用/禁用 WiFi 睡眠调整</string>
     <string name="pt_iostats">启用 iostats</string>
@@ -483,7 +488,7 @@
     <string name="propmodder_title">Build.prop 修改</string>
     <string name="propmodder_switches">开关</string>
     <string name="buildprop_title">build.prop 修改 (需要重新启动)</string>
-    <string name="buildprop_settings_warning">这些设置完全是用于测试与实验。这里的改变将直接影响系统性能，并可能导致系统不稳定、数据丢失与硬件损伤。\n\n如果您更改了这里的设置，我们请求您不要向我们提交错误报告。</string>
+    <string name="buildprop_settings_warning">这些设置完全是用于测试与实验。这里的改变将直接影响系统性能，并可能导致系统不稳定、数据丢失与硬件损伤。\n\n如果您更改了这里的设置，我们请求您不要提交错误报告。</string>
     <string name="nonprop_cat_title">涉及 init.d 的脚本</string>
     <string name="pref_wifi_scan_interval_title">WiFi 扫描间隔</string>
     <string name="pref_wifi_scan_interval_summary">没有保存的接入点可用时，WiFi 扫描的间隔时间</string>
@@ -506,7 +511,7 @@
     <string name="showbuild_version">版本</string>
     <string name="showbuild_label">我们应该看一下，因为了解就成功了一半</string>
     <string name="pref_fast_up_title">HSUPA 上传速度破解</string>
-    <string name="pref_fast_up_summary">*警告* 如果您更改此值将添加所需的值到你的 build.prop ，如果他们不存在</string>
+    <string name="pref_fast_up_summary">*警告* 如果您更改此值将添加所需的值到 build.prop ，如果它们不存在</string>
     <string name="pref_fast_up_alt_summary">显示快速高达： %s</string>
     <string name="pref_prox_delay_title">距离感应器延时</string>
     <string name="pref_prox_delay_summary">当您在通话屏幕关闭时，该设备远离你的脸，这个延迟值控制多久屏幕前开启</string>
@@ -632,20 +637,20 @@
     <string name="ga_gestures_error_loading">无法识别 %s。请确保你有足够的可用存储。</string>
 
     <!-- Identicons -->
-    <string name="identicons_title">Identicons</string>
-    <string name="identicons_enabled_title">Identicons</string>
-    <string name="identicons_enabled_summary">创建新联系人时使用 Identicon 作为默认图片</string>
-    <string name="identicons_style_title">Identicon 样式</string>
-    <string name="identicons_style_summary">选择使用的 Identicon 样式</string>
-    <string name="identicons_create_title">创建 Identicon</string>
-    <string name="identicons_create_summary">为没有照片的联系人创建 Identicon</string>
-    <string name="identicons_creation_service_running_title">正在创建 Identicon</string>
+    <string name="identicons_title">识别图标</string>
+    <string name="identicons_enabled_title">识别图标</string>
+    <string name="identicons_enabled_summary">创建新联系人时使用识别图标作为默认图片</string>
+    <string name="identicons_style_title">识别图标样式</string>
+    <string name="identicons_style_summary">选择使用的识别图标样式</string>
+    <string name="identicons_create_title">创建识别图标</string>
+    <string name="identicons_create_summary">为没有照片的联系人创建识别图标</string>
+    <string name="identicons_creation_service_running_title">正在创建识别图标</string>
     <string name="identicons_creation_service_running_summary"></string>
     <string name="identicons_creation_service_contact_summary">正在处理 %s</string>
     <string name="identicons_creation_service_contact_summary_finishing">即将完成...</string>
     <string name="identicons_remove_title">移除 Identicon</string>
-    <string name="identicons_remove_summary">为已有一套图标的联系人移除 Identicon </string>
-    <string name="identicons_remove_service_running_title">正在移除 Identicon</string>
+    <string name="identicons_remove_summary">为已有一套图标的联系人移除识别图标</string>
+    <string name="identicons_remove_service_running_title">正在移除识别图标</string>
     <string name="identicons_remove_service_running_summary"></string>
     <string name="identicons_remove_service_contact_summary">正在处理照片 %1$d/%2$d</string>
     <string name="identicons_remove_service_contact_summary_finishing">即将完成...</string>
@@ -656,7 +661,7 @@
     <string name="identicons_style_dotmatrix">点阵</string>
 
     <!-- Themes -->
-    <string name="theme_settings_title">酷黑 PAC</string>
+    <string name="theme_settings_title">PAC 酷黑</string>
     <string name="theme_auto_mode_title">切换主题</string>
     <string name="theme_auto_mode_off">手动</string>
     <string name="theme_auto_mode_lightsensor">随着光照条件而改变</string>
@@ -673,10 +678,10 @@
     <string name="voicemail_breath_summary">在状态栏给语音邮件提醒带来呼吸效果</string>
 
     <!-- Custom Carrier Label Options -->
-    <string name="notification_carrier_label_title">运营商名称</string>
-    <string name="notification_custom_carrier_label_title">自定义运营商名称</string>
-    <string name="notification_custom_carrier_label_explain">请输入新的名称。输入一个空名称以恢复到默认名称。</string>
-    <string name="notification_custom_carrier_label_notset">目前没有设置自定义名称</string>
+    <string name="carrier_label_title">运营商名称</string>
+    <string name="custom_carrier_label_title">自定义运营商名称</string>
+    <string name="custom_carrier_label_explain">请输入新的名称。输入一个空名称以恢复到默认名称。</string>
+    <string name="custom_carrier_label_notset">目前没有设置自定义名称</string>
 
     <!-- Battery Bar -->
     <string name="status_bar_battery_cat_title">电池</string>
@@ -699,6 +704,7 @@
     <string name="notification_background_default_wallpaper">默认背景</string>
     <string name="notification_drawer_custom_background_dialog_title">选择颜色</string>
     <string name="notif_wallpaper_alpha_title">背景透明度</string>
+    <string name="notif_alpha_title">通知透明度</string>
 
     <!-- Nav Ring Targets -->
     <string name="category_navbar">导航栏</string>
@@ -771,32 +777,33 @@
     <string name="general">通用</string>
     <string name="layout">布局</string>
     <string name="privacy">隐私</string>
-    <string name="Lockscreen_notifications_header">锁屏通知</string>
     <string name="lockscreen_notifications">锁屏通知</string>
     <string name="lockscreen_notifications_summary">在锁屏界面显示未处理的通知</string>
     <string name="pocket_mode">口袋模式</string>
-    <string name="pocket_mode_summary">从口袋中拿出设备时显示未读通知。当设备放入口袋是关闭屏幕。</string>
+    <string name="pocket_mode_summary">从口袋中拿出设备时显示未读通知，当设备放入口袋时关闭屏幕</string>
     <string name="show_always">始终显示</string>
-    <string name="show_always_summary">从口袋中拿出设备时始终执行开启屏幕，无论有没有未读通知。</string>
-    <string name="hide_low_priority">隐藏低优先级</string>
-    <string name="hide_low_priority_summary">隐藏如 Google 即时天气等低优先级通知。</string>
-    <string name="hide_non_clearable">隐藏不可清除</string>
+    <string name="show_always_summary">从口袋中拿出设备时总是开启屏幕，即使没有未处理的通知</string>
+    <string name="hide_low_priority">隐藏低优先级通知</string>
+    <string name="hide_low_priority_summary">隐藏如 Google 即时天气等低优先级通知</string>
+    <string name="hide_non_clearable">隐藏不可清除通知</string>
     <string name="hide_non_clearable_summary">隐藏所有不可清除的通知</string>
     <string name="dismiss_all">允许撤销所有通知</string>
-    <string name="dismiss_all_summary">允许撤销所有的包括不可清除的通知，当然只是从锁屏界面消失，通知面板依然存在通知。</string>
+    <string name="dismiss_all_summary">允许撤销所有的包括不可清除的通知，当然它们只是在锁屏中隐藏，通知面板中依然存在</string>
     <string name="expanded_view">通知视图扩展</string>
-    <string name="expanded_view_summary">锁屏通知可能时允许展开显示</string>
-    <string name="force_expanded_view">强制显示扩展</string>
-    <string name="force_expanded_view_summary">默认直接显示扩展通知。但你仍能够切换到普通视图。</string>
+    <string name="expanded_view_summary">长按在正常和扩展视图中切换。扩展视图有时会显示更多的隐私信息，所以您可以禁用它。</string>
+    <string name="force_expanded_view">强制扩展视图</string>
+    <string name="force_expanded_view_summary">默认显示扩展通知。您仍能够在扩展和正常视图中切换。</string>
     <string name="wake_on_notification">通知唤醒</string>
-    <string name="wake_on_notification_summary">收到新的通知时唤醒设备</string>
+    <string name="wake_on_notification_summary">收到新通知时唤醒设备</string>
     <string name="notifications_height">通知计数</string>
     <string name="notifications_height_summary">即时显示通知数量</string>
-    <string name="offset_top">偏移到屏幕上方：</string>
+    <string name="offset_top">到屏幕上方的偏移：</string>
     <string name="privacy_mode">隐私模式</string>
-    <string name="privacy_mode_summary">禁用通知从正在显示的和撤销的。通常只会看到你的通知图标。</string>
-    <string name="excluded_apps_title">例外应用</string>
-    <string name="excluded_apps_summary">例外的应用将不会显示在锁屏通知中</string>
+    <string name="privacy_mode_summary">禁用通知显示和清除，通常只会看到通知图标</string>
+    <string name="dynamic_width">动态宽度</string>
+    <string name="dynamic_width_summary">设置通知动态宽度，所以它们只使用真正需要的空间</string>
+    <string name="excluded_apps_title">排除应用</string>
+    <string name="excluded_apps_summary">排除的应用将不会显示在锁屏通知中</string>
     <string name="notification_color">通知的背景颜色</string>
 
     <!-- Partition Info -->
@@ -929,17 +936,6 @@
     <string name="progressbar_color_4_title">颜色 4</string>
     <string name="sample_progressbar_text">进度条预览：</string>
     <string name="progressbar_reset_message">重置进度条样式到默认值？</string>
-
-    <!-- Lockscreen background -->
-    <string name="lockscreen_background">背景</string>
-    <string name="lockscreen_background_style_title">锁屏背景样式</string>
-    <string name="background_color_fill_title">背景颜色</string>
-    <string name="background_default">默认锁屏背景</string>
-    <string name="background_color_fill">颜色填充</string>
-    <string name="background_wallpaper">自定义背景</string>
-    <string name="transparency">背景透明度</string>
-    <string name="background_result_successful">背景已更改</string>
-    <string name="background_result_not_successful">背景未更改</string>
 
     <!-- ADB Paranoia settings -->
     <string name="adb_paranoid">ADB 偏执模式</string>
@@ -1230,75 +1226,22 @@
     <string name="wakelock_blocker_warning_title">请谨慎前进</string>
     <string name="wakelock_blocker_warning">拦截唤醒锁可能导致不稳定，崩溃或数据丢失。</string>
 
-    <!-- Battery saver mode -->
-    <string name="unit_sec">秒</string>
-    <string name="network_lte">LTE (推荐)</string>
-    <string name="network_4G">4G (推荐)</string>
-    <string name="network_3G_only">仅 3G</string>
-    <string name="network_3G_auto">2G/3G 自动</string>
-    <string name="network_3G">首选 2G/3G</string>
-    <string name="network_2G">仅 2G</string>
-    <string name="network_1x">1x</string>
-    <string name="network_global">全局</string>
-    <string name="battery_saver_action_undefined">未定义</string>
-    <string name="battery_saver_title">节电模式</string>
-    <string name="pref_battery_saver_enable_title">节电</string>
-    <string name="pref_battery_saver_enable_summary">依据移动数据和 Wi-Fi 连接状态自动管理电池用量和切换网络到用户自定义的省电模式或正常模式</string>
-    <string name="pref_battery_saver_normal_mode_title">正常网络模式</string>
-    <string name="pref_battery_saver_power_saving_mode_title">节能网络模式</string>
-    <string name="pref_battery_saver_screen_off_title">屏幕关闭时</string>
-    <string name="pref_battery_saver_screen_off_summary">当屏幕关闭时启动省电模式</string>
-    <string name="pref_battery_saver_ignore_locked_title">锁定时忽略</string>
-    <string name="pref_battery_saver_ignore_locked_summary">当屏幕开启时，省电模式不会停用直到锁屏被解锁</string>
-    <string name="pref_battery_saver_mode_change_delay_title">更改模式延迟</string>
-    <string name="pref_battery_saver_mode_change_delay_summary">延迟几秒钟改变省电模式</string>
-    <string name="pref_battery_saver_battery_title">电量低时</string>
-    <string name="pref_battery_saver_battery_summary">当电量低时启动省电模式</string>
-    <string name="pref_battery_saver_mode_battery_level_title">电量</string>
-    <string name="pref_battery_saver_mode_battery_level_summary">在特定的电量时启动省电模式或改变屏幕亮度</string>
-    <string name="pref_battery_saver_bluetooth_title">禁用蓝牙</string>
-    <string name="pref_battery_saver_bluetooth_summary">省电开启时禁用蓝牙连接</string>
-    <string name="pref_battery_saver_data_title">禁用移动数据</string>
-    <string name="pref_battery_saver_data_summary">省电开启时禁用移动数据连接</string>
-    <string name="pref_battery_saver_location_title">禁用 GPS</string>
-    <string name="pref_battery_saver_location_summary">省电开启时禁用 GPS 连接</string>
-    <string name="pref_battery_saver_enable_no_mobiledata_summary">将自动管理电池用量到用户自定义</string>
-    <string name="pref_battery_saver_wifi_title">禁用 Wi-Fi</string>
-    <string name="pref_battery_saver_wifi_summary">省电开启时禁用 Wi-Fi 连接</string>
-    <string name="pref_battery_saver_led_title">禁用 LED</string>
-    <string name="pref_battery_saver_led_summary">省电开启时禁用 LED 通知</string>
-    <string name="pref_battery_saver_vibrate_title">禁用震动</string>
-    <string name="pref_battery_saver_vibrate_summary">省电开启时禁用震动</string>
-    <string name="pref_battery_saver_brightness_title">亮度模式</string>
-    <string name="pref_battery_saver_brightness_summary">当电量低时启动亮度等级改变</string>
-    <string name="pref_battery_saver_mode_brightness_level_title">亮度等级</string>
-    <string name="pref_battery_saver_mode_brightness_level_summary">省电开启时改变亮度等级</string>
-    <string name="pref_battery_saver_cpu_title">CPU 节能模式</string>
-    <string name="pref_battery_saver_cpu_summary">将自动切换最大 CPU 频率到用户自定义的省电模式</string>
-    <string name="battery_saver_mode_current_speed">当前速度</string>
-    <string name="battery_saver_mode_current_max">最大速度：</string>
-    <string name="battery_saver_mode_cpu_info_list_header">核心状态</string>
-    <string name="battery_saver_mode_cpu_speed_header">核心限制</string>
-    <string name="battery_saver_mode_core_offline">下线</string>
-    <string name="battery_saver_mode_core">核心</string>
-    <string name="battery_saver_cpu_mode_title">启动 CPU 节能模式</string>
-    <string name="pref_battery_saver_cpu_warning_title">注意：</string>
-    <string name="pref_battery_saver_cpu_warning_summary">我们不能保证会起作用。</string>
-    <string name="pref_battery_saver_network_title">智能网络更改</string>
-    <string name="pref_battery_saver_network_summary">屏幕关闭并启用省电模式时，特定时间间隔后允许切换网络到正常模式</string>
-    <string name="pref_battery_saver_nosignal_title">智能网络信号</string>
-    <string name="pref_battery_saver_nosignal_summary">无网络信号 5 分钟后启动飞行模式</string>
-    <string name="pref_battery_saver_sync_title">禁用同步</string>
-    <string name="pref_battery_saver_sync_summary">省电开启时禁用同步连接</string>
-    <string name="pref_battery_saver_killall_title">结束所有任务</string>
-    <string name="pref_battery_saver_killall_summary">省电开启时允许结束所有任务</string>
-    <string name="pref_battery_saver_toast_title">显示提醒</string>
-    <string name="pref_battery_saver_toast_summary">当省电模式改变设备配置时，允许显示提醒</string>
-    <string name="battery_saver_battery_title">电池选项</string>
-    <string name="battery_saver_radio_title">无线选项</string>
-    <string name="battery_saver_network_title">其它网络设置</string>
-    <string name="battery_saver_network_gsm_title">GSM 网络</string>
-    <string name="battery_saver_network_cdma_title">CDMA 网络</string>
-    <string name="battery_saver_system_title">系统选项</string>
+    <!-- Notification Panel Shortcuts -->
+    <string name="notification_bar_shortcuts">顶部快捷方式</string>
+    <string name="clock_shortcut_title">时间</string>
+    <string name="calendar_shortcut_title">日期</string>
+    <string name="default_shortcut">默认</string>
 
+    <!-- Lockscreen rotation -->
+    <string name="display_lockscreen_rotation_title">锁屏</string>
+
+    <!-- Statusbar Second Clock -->
+    <string name="clock_use_second">使用秒钟</string>
+    <string name="clock_use_second_summary">时钟显示秒</string>
+
+    <!-- Fast Charge Tile -->
+    <string name="title_tile_fast_charge">快速充电</string>
+
+    <!-- CPUFreq Tile -->
+    <string name="title_tile_cpufreq">CPU 频率</string>
 </resources>
