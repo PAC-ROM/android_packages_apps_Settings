@@ -112,6 +112,17 @@
         android:fragment="com.android.settings.cyanogenmod.SystemUiSettings"
         android:title="@string/system_settings_title" />
 
+    <!-- PAC Console -->
+    <header
+        android:id="@+id/pac_console"
+        android:title="@string/pac_console_title"
+        android:icon="@drawable/ic_settings_pacstats">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.pac.console"
+            android:targetClass="com.pac.console.PacConsole" />
+    </header>
+
     <!-- DEVICE -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
