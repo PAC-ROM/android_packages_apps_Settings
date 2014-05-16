@@ -173,6 +173,9 @@
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
 
+    <!-- QS and navring last app -->
+    <string name="navring_action_last_app">Last app</string>
+
     <!-- QS and navring Power menu -->
     <string name="title_tile_power">Power Menu</string>
     <string name="navring_action_power_menu">Power menu</string>
