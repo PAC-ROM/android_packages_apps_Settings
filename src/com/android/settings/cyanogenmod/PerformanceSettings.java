@@ -19,18 +19,15 @@ package com.android.settings.cyanogenmod;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.content.ContentResolver;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PowerManager;
 import android.os.SystemProperties;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.text.TextUtils;
@@ -44,10 +41,6 @@ import com.android.settings.SettingsPreferenceFragment;
 public class PerformanceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "PerformanceSettings";
-
-    private static final String CATEGORY_PROFILES = "perf_profile_prefs";
-    private static final String CATEGORY_SYSTEM = "perf_system_prefs";
-    private static final String CATEGORY_GRAPHICS = "perf_graphics_prefs";
 
     private static final String PERF_PROFILE_PREF = "pref_perf_profile";
     private static final String USE_16BPP_ALPHA_PREF = "pref_use_16bpp_alpha";
@@ -77,8 +70,6 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
 
     private AlertDialog alertDialog;
 
-    private PowerManager mPowerManager;
-
     private class PerformanceProfileObserver extends ContentObserver {
         public PerformanceProfileObserver(Handler handler) {
             super(handler);
@@ -94,8 +85,6 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mPowerManager = (PowerManager) getSystemService(Context.POWER_SERVICE);
-
         mPerfProfileDefaultEntry = getString(
                 com.android.internal.R.string.config_perf_profile_default_entry);
         mPerfProfileEntries = getResources().getStringArray(
@@ -107,11 +96,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
-        PreferenceCategory category = (PreferenceCategory) prefSet.findPreference(CATEGORY_PROFILES);
-
         mPerfProfilePref = (ListPreference)prefSet.findPreference(PERF_PROFILE_PREF);
-        if (mPerfProfilePref != null && !mPowerManager.hasPowerProfiles()) {
-            prefSet.removePreference(category);
+        String perfProfileProp = getString(com.android.internal.R.string.config_perf_profile_prop);
+        if (mPerfProfilePref != null && TextUtils.isEmpty(perfProfileProp)) {
+            prefSet.removePreference(mPerfProfilePref);
             mPerfProfilePref = null;
         } else {
             mPerformanceProfileObserver = new PerformanceProfileObserver(new Handler());
@@ -127,8 +115,6 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
                 SystemProperties.get(SCROLLINGCACHE_PERSIST_PROP, SCROLLINGCACHE_DEFAULT)));
         mScrollingCachePref.setOnPreferenceChangeListener(this);
 
-        category = (PreferenceCategory) prefSet.findPreference(CATEGORY_GRAPHICS);
-
         mUse16bppAlphaPref = (CheckBoxPreference) prefSet.findPreference(USE_16BPP_ALPHA_PREF);
         String use16bppAlpha = SystemProperties.get(USE_16BPP_ALPHA_PROP, "0");
         mUse16bppAlphaPref.setChecked("1".equals(use16bppAlpha));
@@ -138,7 +124,7 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
             String forceHighendGfx = SystemProperties.get(FORCE_HIGHEND_GFX_PERSIST_PROP, "false");
             mForceHighEndGfx.setChecked("true".equals(forceHighendGfx));
         } else {
-            category.removePreference(findPreference(FORCE_HIGHEND_GFX_PREF));
+            prefSet.removePreference(findPreference(FORCE_HIGHEND_GFX_PREF));
         }
 
         /* Display the warning dialog */
@@ -162,8 +148,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
         if (mPerfProfilePref != null) {
             setCurrentValue();
             ContentResolver resolver = getActivity().getContentResolver();
-            resolver.registerContentObserver(Settings.Secure.getUriFor(
-                    Settings.Secure.PERFORMANCE_PROFILE), false, mPerformanceProfileObserver);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.PERFORMANCE_PROFILE), false, mPerformanceProfileObserver);
         }
     }
 
@@ -195,7 +181,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (newValue != null) {
             if (preference == mPerfProfilePref) {
-                mPowerManager.setPowerProfile(String.valueOf(newValue));
+                Settings.System.putString(getActivity().getContentResolver(),
+                        Settings.System.PERFORMANCE_PROFILE, String.valueOf(newValue));
                 setCurrentPerfProfileSummary();
                 return true;
             } else if (preference == mScrollingCachePref) {
@@ -207,7 +194,7 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
     }
 
     private void setCurrentPerfProfileSummary() {
-        String value = mPowerManager.getPowerProfile();
+        String value = getCurrentPerformanceProfile();
         String summary = "";
         int count = mPerfProfileValues.length;
         for (int i = 0; i < count; i++) {
@@ -223,7 +210,17 @@ public class PerformanceSettings extends SettingsPreferenceFragment implements
     }
 
     private void setCurrentValue() {
-        mPerfProfilePref.setValue(mPowerManager.getPowerProfile());
+        String value = getCurrentPerformanceProfile();
+        mPerfProfilePref.setValue(value);
         setCurrentPerfProfileSummary();
+    }
+
+    private String getCurrentPerformanceProfile() {
+        String value = Settings.System.getString(getActivity().getContentResolver(),
+                Settings.System.PERFORMANCE_PROFILE);
+        if (TextUtils.isEmpty(value)) {
+            value = mPerfProfileDefaultEntry;
+        }
+        return value;
     }
 }
