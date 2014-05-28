@@ -35,4 +35,15 @@
         android:title="@string/recents_panel_settings_title"
         android:icon="@drawable/ic_settings_recents" />
 
+    <PreferenceCategory
+        android:key="pie_navigation"
+        android:title="@string/pie_navigation_title">
+
+        <PreferenceScreen
+            android:key="pie_settings"
+            android:fragment="com.android.settings.slim.PieControl"
+            android:title="@string/pie_control_title" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
