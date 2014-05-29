@@ -24,6 +24,7 @@ import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -41,6 +42,8 @@ import android.view.WindowManagerGlobal;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+
+import com.android.internal.util.slim.SlimActions;
 
 import org.cyanogenmod.hardware.KeyDisabler;
 
@@ -119,6 +122,26 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     // Enable/disable nav bar
     private CheckBoxPreference mEnableNavigationBar;
 
+    private SettingsObserver mSettingsObserver = new SettingsObserver(new Handler());
+    private final class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+            ContentResolver resolver = getActivity().getContentResolver();
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.NAVIGATION_BAR_SHOW), false, this,
+                    UserHandle.USER_ALL);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            super.onChange(selfChange);
+            updateSettings();
+        }
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -179,7 +202,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         mEnableNavigationBar.setChecked(enableNavigationBar);
         mEnableNavigationBar.setOnPreferenceChangeListener(this);
 
-        updateNavbarPreferences(enableNavigationBar);
+        updateSettings();
 
         // Only visible on devices that does not have a navigation bar already,
         // and don't even try unless the existing keys can be disabled
@@ -364,6 +387,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     @Override
     public void onResume() {
         super.onResume();
+        updateSettings();
+        mSettingsObserver.observe();
 
         // Power button ends calls.
         if (mPowerEndCall != null) {
@@ -384,6 +409,21 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                 (incallHomeBehavior == Settings.Secure.RING_HOME_BUTTON_BEHAVIOR_ANSWER);
             mHomeAnswerCall.setChecked(homeButtonAnswersCall);
         }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        getActivity().getContentResolver().unregisterContentObserver(mSettingsObserver);
+    }
+
+    private void updateSettings() {
+        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVIGATION_BAR_SHOW,
+                SlimActions.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
+        mEnableNavigationBar.setChecked(enableNavigationBar);
+
+        updateNavbarPreferences(enableNavigationBar);
     }
 
     private ListPreference initActionList(String key, int value) {
