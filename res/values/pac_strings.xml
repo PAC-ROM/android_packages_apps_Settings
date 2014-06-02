@@ -36,6 +36,7 @@
     <string name="default_string">Default</string>
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
+    <string name="attention">Attention</string>
 
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Advanced options</string>
@@ -355,6 +356,9 @@
 
     <!-- Power menu nav bar -->
     <string name="power_menu_navbar_title">Navigation bar</string>
+    <string name="navigation_bar_warning_no_navigation_present">No other navigation is currently enabled. Turning off the navigation bar can result in an unusable device. Do you want to enable pie controls instead?</string>
+    <string name="pie_warning_no_navigation_present">No other navigation is currently enabled. Turning off pie controls can result in an unusable device. Do you want to enable navigation bar instead?</string>
+    <string name="pie_trigger_warning">Minimum one of the main triggers (bottom, left or right) needs to be enabled.</string>
 
     <!-- QS and navring last app -->
     <string name="navring_action_last_app">Last app</string>
