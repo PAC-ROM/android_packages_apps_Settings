@@ -24,4 +24,14 @@
     <string name="flip_qs_tiles_title">Flip tiles</string>
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
+    <!-- PAC Version -->
+    <string name="pac_version">PAC version</string>
+    <string name="pac_version_default">Unknown</string>
+
+    <string name="aokp_version">AOKP version</string>
+    <string name="aokp_version_default">Unknown</string>
+
+    <string name="pa_version">ParanoidAndroid version</string>
+    <string name="pa_version_default">Unknown</string>
+
 </resources>

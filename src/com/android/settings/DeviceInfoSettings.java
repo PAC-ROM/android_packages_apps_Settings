@@ -80,6 +80,9 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
     private static final String KEY_CM_STATS = "cmstats";
     private static final String KEY_CM_CHANGELOG = "changelog";
     private static final String KEY_CM_CONTRIBUTORS = "contributor_cloud";
+    private static final String KEY_AOKP_VERSION = "aokp_version";
+    private static final String KEY_PA_VERSION = "pa_version";
+    private static final String KEY_PAC_VERSION = "pac_version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     long[] mHits = new long[3];
@@ -112,6 +115,12 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         setValueSummary(KEY_MOD_VERSION, "ro.cm.display.version");
         findPreference(KEY_MOD_VERSION).setEnabled(true);
         setValueSummary(KEY_MOD_BUILD_DATE, "ro.build.date");
+        setValueSummary(KEY_AOKP_VERSION, "ro.aokp.version");
+        findPreference(KEY_AOKP_VERSION).setEnabled(true);
+        setValueSummary(KEY_PAC_VERSION, "ro.pac.version");
+        findPreference(KEY_PAC_VERSION).setEnabled(true);
+        setValueSummary(KEY_PA_VERSION, "ro.pa.version");
+        findPreference(KEY_PA_VERSION).setEnabled(true);
 
         if (!SELinux.isSELinuxEnabled()) {
             String status = getResources().getString(R.string.selinux_status_disabled);
