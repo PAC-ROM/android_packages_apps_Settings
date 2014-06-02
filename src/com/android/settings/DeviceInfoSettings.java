@@ -77,6 +77,9 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
     private static final String KEY_DEVICE_MEMORY = "device_memory";
     private static final String KEY_CM_UPDATES = "cm_updates";
     private static final String KEY_STATUS = "status_info";
+    private static final String KEY_CM_STATS = "cmstats";
+    private static final String KEY_CM_CHANGELOG = "changelog";
+    private static final String KEY_CM_CONTRIBUTORS = "contributor_cloud";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
     long[] mHits = new long[3];
@@ -201,6 +204,12 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         // Remove regulatory information if not enabled.
         removePreferenceIfBoolFalse(KEY_REGULATORY_INFO,
                 R.bool.config_show_regulatory_info);
+
+        // Remove CM Changelog, Contributors and Stats
+        removePreference(KEY_CM_CHANGELOG);
+        removePreference(KEY_CM_CONTRIBUTORS);
+        removePreference(KEY_CM_STATS);
+
     }
 
     @Override
