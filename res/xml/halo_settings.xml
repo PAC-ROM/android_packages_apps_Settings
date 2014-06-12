@@ -53,7 +53,7 @@ limitations under the License.
         android:summary="@string/halo_notification_msgbox_summary"
         android:defaultValue="true" />
 
-    <ListPreference  
+    <ListPreference
         android:key="halo_msgbox_animation"
         android:dialogTitle="@string/halo_msgbox_animation_title"
         android:title="@string/halo_msgbox_animation_title"
@@ -70,6 +70,12 @@ limitations under the License.
         android:key="halo_unlock_ping"
         android:title="@string/halo_unlock_ping_title"
         android:summary="@string/halo_unlock_ping_summary"
+        android:defaultValue="false" />
+
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="halo_notify_silent"
+        android:title="@string/halo_notify_silent_title"
+        android:summary="@string/halo_notify_silent_summary"
         android:defaultValue="false" />
 
 </PreferenceScreen>
