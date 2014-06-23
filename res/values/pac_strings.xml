@@ -1309,4 +1309,7 @@
     <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
 
+    <!-- Screenshot Tile -->
+    <string name="title_tile_screenshot">Screenshot</string>
+
 </resources>
