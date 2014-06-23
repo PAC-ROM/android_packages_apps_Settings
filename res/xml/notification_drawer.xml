@@ -124,4 +124,9 @@
         android:entryValues="@array/heads_up_time_out_values"
         android:persistent="false" />
 
+    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+        android:key="heads_up_floating_window"
+        android:title="@string/heads_up_floating_window"
+        android:defaultValue="true" />
+
 </PreferenceScreen>

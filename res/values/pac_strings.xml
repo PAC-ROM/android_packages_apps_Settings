@@ -530,6 +530,7 @@
     <string name="heads_up_time_out_10sec">10 seconds</string>
     <string name="heads_up_time_out_never">Never</string>
     <string name="heads_up_switch_label">Enable heads up notification</string>
+    <string name="heads_up_floating_window">Launch in floating window</string>
 
     <!--Blacklist-->
     <string name="blacklist_button_title">Blacklist</string>
