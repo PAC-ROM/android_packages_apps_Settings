@@ -17,7 +17,7 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-   <!-- PAC Console -->
+    <!-- PAC Console -->
     <string name="pac_console_title">PAC Console</string>
 
     <!-- QuickSettings fliptiles -->
@@ -33,5 +33,12 @@
 
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
+
+    <!-- Lockscreen See Through -->
+    <string name="see_through_title">See through</string>
+    <string name="see_through_summary">Shows the content behind your lockscreen</string>
+
+    <!-- Categories -->
+    <string name="misc_category">Misc</string>
 
 </resources>

@@ -85,4 +85,16 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory
+        android:title="@string/misc_category"
+        android:key="lockscreen_misc_category" >
+
+        <!-- See Through -->
+        <com.android.settings.pac.SystemSettingCheckBoxPreference
+            android:key="lockscreen_see_through"
+            android:title="@string/see_through_title"
+            android:summary="@string/see_through_summary" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>
