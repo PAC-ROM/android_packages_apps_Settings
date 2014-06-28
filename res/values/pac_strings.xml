@@ -17,12 +17,29 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Categories -->
+    <string name="misc_category">Misc</string>
+
+    <!-- Color Picker -->
+    <string name="dialog_color_picker">Color Picker</string>
+    <string name="press_color_to_apply">Press on color below to apply</string>
+    <string name="arrow_right">→</string>
+    <string name="arrow_down">↓</string>
+    <string name="hex">Hex:</string>
+    <string name="hex_hint">#ff000000</string>
+    <string name="set">Set</string>
+    <string name="color_default">Default</string>
+
+    <!-- General strings -->
+    <string name="ok">OK</string>
+    <string name="reset">Reset</string>
+
+    <!-- Lockscreen See Through -->
+    <string name="see_through_title">See through</string>
+    <string name="see_through_summary">Shows the content behind your lockscreen</string>
+
     <!-- PAC Console -->
     <string name="pac_console_title">PAC Console</string>
-
-    <!-- QuickSettings fliptiles -->
-    <string name="flip_qs_tiles_title">Flip tiles</string>
-    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
     <!-- PAC Version -->
     <string name="pac_version">PAC version</string>
@@ -34,11 +51,8 @@
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
 
-    <!-- Lockscreen See Through -->
-    <string name="see_through_title">See through</string>
-    <string name="see_through_summary">Shows the content behind your lockscreen</string>
-
-    <!-- Categories -->
-    <string name="misc_category">Misc</string>
+    <!-- QuickSettings fliptiles -->
+    <string name="flip_qs_tiles_title">Flip tiles</string>
+    <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
 </resources>
