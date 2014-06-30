@@ -411,8 +411,14 @@ public class Settings extends PreferenceActivity
     @Override
     public void onPause() {
         super.onPause();
-        mSearchBar.clearFocus();
-        mSearchItem.collapseActionView();
+
+        if (mSearchBar != null) {
+            mSearchBar.clearFocus();
+        }
+
+        if (mSearchItem != null) {
+            mSearchItem.collapseActionView();
+        }
 
         unregisterReceiver(mBatteryInfoReceiver);
 
