@@ -84,14 +84,13 @@
                 android:icon="@drawable/ic_settings_home"
                 />
 
-        <!-- Status bar -->
+        <!-- PAC Settings -->
         <dashboard-tile
-                android:id="@+id/status_bar_settings"
-                android:title="@string/status_bar_title"
-                android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
-                android:icon="@drawable/ic_settings_home"
+                android:id="@+id/pac_settings"
+                android:title="@string/pac_settings_title"
+                android:fragment="com.android.settings.pac.PacUiSettings"
+                android:icon="@drawable/ic_pac_settings_interface"
                 />
-
 
     </dashboard-category>
 
@@ -106,8 +105,6 @@
                 android:fragment="com.android.settings.ButtonSettings"
                 android:icon="@drawable/ic_settings_buttons"
                 />
-
-
 
         <!-- Display -->
         <dashboard-tile
