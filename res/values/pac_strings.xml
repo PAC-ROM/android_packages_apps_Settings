@@ -86,6 +86,9 @@
     <!-- PAC Console -->
     <string name="pac_console_title">PAC Console</string>
 
+    <!-- PAC Settings screens  -->
+    <string name="interface_settings_title">PAC Settings</string>
+
     <!-- PAC Version -->
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
@@ -99,5 +102,8 @@
     <!-- QuickSettings fliptiles -->
     <string name="flip_qs_tiles_title">Flip tiles</string>
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
+
+    <!-- Settings main menu category heading. Rom (Launcher, Themes, System). [CHAR LIMIT=40] -->
+    <string name="header_category_rom_settings">Advanced settings</string>
 
 </resources>

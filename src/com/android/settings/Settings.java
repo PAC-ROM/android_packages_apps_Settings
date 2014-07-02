@@ -105,6 +105,7 @@ import com.android.settings.location.LocationSettings;
 import com.android.settings.net.MobileDataEnabler;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
+import com.android.settings.pac.PacUiSettings;
 import com.android.settings.print.PrintJobSettingsFragment;
 import com.android.settings.print.PrintServiceSettingsFragment;
 import com.android.settings.print.PrintSettingsFragment;
@@ -203,6 +204,7 @@ public class Settings extends PreferenceActivity
             R.id.status_bar_settings,
             R.id.notification_bar_settings,
             R.id.lock_screen_settings,
+            R.id.pac_ui_settings,
             R.id.privacy_settings_cyanogenmod,
             R.id.button_settings
     };
@@ -491,6 +493,7 @@ public class Settings extends PreferenceActivity
         ApnSettings.class.getName(),
         HomeSettings.class.getName(),
         LockscreenInterface.class.getName(),
+        PacUiSettings.class.getName(),
         StatusBar.class.getName(),
         NotificationDrawer.class.getName(),
         ButtonSettings.class.getName(),

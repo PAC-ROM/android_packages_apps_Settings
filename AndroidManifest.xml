@@ -1763,6 +1763,26 @@
             android:theme="@style/CryptKeeperBlankTheme"
         />
 
+        <!-- PAC-Rom activities Start -->
+        <activity android:name="Settings$PACSettingsActivity"
+                android:label="@string/interface_settings_title"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.pac.PacUiSettings" />
+            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
+                android:resource="@+id/pac_ui_settings" />
+        </activity>
+
+        <activity
+            android:name=".pac.lsn.LockscreenNotifications"
+            android:label="@string/Lockscreen_notifications_header" >
+        </activity>
+
         <!-- CyanogenMod activities Start -->
         <activity android:name="Settings$QuickSettingsConfigActivity"
                 android:label="@string/tile_picker_title"
@@ -2159,11 +2179,6 @@
             android:exported="false"
             android:name=".cyanogenmod.LtoService">
         </service>
-
-        <activity
-            android:name=".pac.lsn.LockscreenNotifications"
-            android:label="@string/Lockscreen_notifications_header" >
-        </activity>
 
         <service android:name=".search.SearchPopulator"/>
 
