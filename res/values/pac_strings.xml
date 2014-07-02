@@ -16,6 +16,9 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- PAC Settings screens  -->
+    <string name="pac_settings_title">PAC Settings</string>
+
     <!-- PAC Version -->
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
