@@ -76,7 +76,7 @@ public class SystemUiSettings extends SettingsPreferenceFragment  implements
                 getPreferenceScreen(), KEY_SCREEN_GESTURE_SETTINGS);
 
         int expandedDesktopValue = Settings.System.getInt(getContentResolver(),
-                Settings.System.EXPANDED_DESKTOP_STYLE, 0);
+                Settings.System.EXPANDED_DESKTOP_STYLE, 2);
 
         try {
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar();
