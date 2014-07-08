@@ -45,6 +45,10 @@
     <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
 
+    <!-- Forcing expanded notifications -->
+    <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
+    <string name="force_expanded_notifications_summary">Available only for apps that support expanded notifications</string>
+
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
