@@ -327,7 +327,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         if (mTapToWake != null) {
-            mTapToWake.setChecked(TapToWake.isEnabled());
+            final SharedPreferences prefs =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+            mTapToWake.setChecked(prefs.getBoolean(KEY_TAP_TO_WAKE, true));
         }
 
         // Default value for wake-on-plug behavior from config.xml
@@ -491,6 +493,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     mWakeWhenPluggedOrUnplugged.isChecked() ? 1 : 0);
             return true;
         } else if (preference == mTapToWake) {
+            final SharedPreferences prefs =
+                    PreferenceManager.getDefaultSharedPreferences(getActivity());
+            prefs.edit().putBoolean(KEY_TAP_TO_WAKE, mTapToWake.isChecked()).commit();
             return TapToWake.setEnabled(mTapToWake.isChecked());
         } else if (preference == mLockScreenRotation) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_ROTATION,
