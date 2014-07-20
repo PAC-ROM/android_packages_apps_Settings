@@ -49,6 +49,13 @@
             android:persistent="false"
             android:dependency="recents_use_slim" />
 
+    <CheckBoxPreference
+            android:key="recent_panel_show_topmost"
+            android:title="@string/recent_panel_show_topmost_title"
+            android:summary="@string/recent_panel_show_topmost_summary"
+            android:persistent="false"
+            android:dependency="recents_use_slim" />
+
     <PreferenceCategory
             android:key="category_omniswitch"
             android:title="@string/omniswitch_category"/>

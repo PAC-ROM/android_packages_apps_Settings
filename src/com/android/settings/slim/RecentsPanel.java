@@ -57,6 +57,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private static final String RECENTS_USE_SLIM = "recents_use_slim";
     private static final String RECENT_PANEL_LEFTY_MODE = "recent_panel_lefty_mode";
     private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
+    private static final String RECENT_PANEL_SHOW_TOPMOST = "recent_panel_show_topmost";
 
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -69,6 +70,7 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
     private CheckBoxPreference mRecentsUseOmniSwitch;
     private CheckBoxPreference mRecentsUseSlim;
     private CheckBoxPreference mRecentPanelLeftyMode;
+    private CheckBoxPreference mRecentsShowTopmost;
     private ListPreference mRecentPanelScale;
     private ListPreference mRecentClearAllPosition;
     private Preference mOmniSwitchSettings;
@@ -121,6 +123,12 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
         mRecentsUseSlim.setOnPreferenceChangeListener(this);
         mRecentsUseSlim.setEnabled(!useOmniSwitch);
 
+        boolean enableRecentsShowTopmost = Settings.System.getInt(getContentResolver(),
+                                      Settings.System.RECENT_PANEL_SHOW_TOPMOST, 0) == 1;
+        mRecentsShowTopmost = (CheckBoxPreference) findPreference(RECENT_PANEL_SHOW_TOPMOST);
+        mRecentsShowTopmost.setChecked(enableRecentsShowTopmost);
+        mRecentsShowTopmost.setOnPreferenceChangeListener(this);
+
         mRecentPanelLeftyMode = (CheckBoxPreference) findPreference(RECENT_PANEL_LEFTY_MODE);
         mRecentPanelLeftyMode.setOnPreferenceChangeListener(this);
 
@@ -156,6 +164,11 @@ public class RecentsPanel extends SettingsPreferenceFragment implements OnPrefer
             return true;
         } else if (preference == mRecentClearAllPosition) {
             Settings.System.putString(getContentResolver(), Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, (String) newValue);
+            return true;
+        } else if (preference == mRecentsShowTopmost) {
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.RECENT_PANEL_SHOW_TOPMOST,
+                    ((Boolean) newValue) ? 1 : 0);
             return true;
         } else if (preference == mRecentsUseOmniSwitch) {
             boolean omniSwitchEnabled = (Boolean) newValue;
