@@ -19,6 +19,7 @@ import android.os.Message;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.MediaStore;
@@ -30,7 +31,7 @@ import com.android.settings.R;
 import java.util.List;
 
 public class RecentsPanelSettings extends SettingsPreferenceFragment implements
-        Preference.OnPreferenceChangeListener {
+        OnPreferenceChangeListener {
     private static final String TAG = "RecentsPanelSettings";
 
     private static final String RECENT_MENU_CLEAR_ALL = "recent_menu_clear_all";
@@ -61,7 +62,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        return true;
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
