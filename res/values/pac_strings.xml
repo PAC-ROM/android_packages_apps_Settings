@@ -84,6 +84,8 @@
     <string name="see_through_summary">Shows the content behind your lockscreen, your data may be visible to those around you</string>
 
     <!-- Navigation bar -->
+    <string name="navbar_enable_bar">Enable navigation bar</string>
+    <string name="navbar_enable_bar_summary">Enable the navigation bar</string>
     <string name="navbar_style_dimen_title">Dimensions</string>
     <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
