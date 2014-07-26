@@ -37,6 +37,12 @@
             android:fragment="com.android.settings.headsup.HeadsUpSettings"
             android:title="@string/category_heads_up" />
 
+    <CheckBoxPreference
+        android:key="custom_status_bar_header"
+        android:title="@string/custom_statusbar_header_title"
+        android:summary="@string/custom_statusbar_header_summary"
+        android:defaultValue="false" />
+
     <PreferenceCategory
         android:title="@string/category_quick_access" >
 
