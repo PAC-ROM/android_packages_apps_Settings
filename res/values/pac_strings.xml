@@ -124,6 +124,10 @@
     <string name="navigation_bar_size_42_dp">42 dp</string>
     <string name="navigation_bar_size_0_dp">0 dp (off)</string>
 
+    <!-- Notification Header -->
+    <string name="custom_statusbar_header_title">Contextual notification header</string>
+    <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
+
     <!-- PAC Console -->
     <string name="pac_console_title">PAC Console</string>
 
@@ -179,9 +183,5 @@
     <string name="ram_bar_reset">Reset</string>
     <string name="ram_bar_reset_message">Reset RAM bar style to default?</string>
     <string name="ram_bar_settings_category">Ram Bar Settings</string>
-
-    <!-- Notification Header -->
-    <string name="custom_statusbar_header_title">Contextual notification panel header</string>
-    <string name="custom_statusbar_header_summary">Sets the background of the notification panel header to an image based on the current date and time</string>
 
 </resources>
