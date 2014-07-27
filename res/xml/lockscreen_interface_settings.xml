@@ -108,11 +108,6 @@
             android:summary="@string/see_through_summary" />
 
         <!-- Blur Effect -->
-        <CheckBoxPreference
-            android:key="lockscreen_blur_behind"
-            android:title="@string/blur_behind_title"
-            android:summary="@string/blur_behind_summary" />
-
         <SeekBarPreference
             android:key="lockscreen_blur_radius"
             android:title="@string/blur_radius_title"

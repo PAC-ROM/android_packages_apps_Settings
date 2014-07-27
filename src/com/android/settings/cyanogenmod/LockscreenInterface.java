@@ -62,7 +62,6 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
     // PAC-Rom additions
     private CheckBoxPreference mSeeThrough;
-    private CheckBoxPreference mBlurBehind;
     private SeekBarPreference mBlurRadius;
     private CheckBoxPreference mLockBeforeUnlock;
 
@@ -93,15 +92,11 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
 
         // Lockscreen see through
         mSeeThrough = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_SEE_THROUGH);
-        mBlurBehind = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_BLUR_BEHIND);
-        mBlurBehind.setChecked(Settings.System.getInt(getContentResolver(),
-                       Settings.System.LOCKSCREEN_BLUR_BEHIND, 0) == 1);
-        mBlurBehind.setEnabled(mSeeThrough.isChecked());
         mBlurRadius = (SeekBarPreference) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
         mBlurRadius.setProgress(Settings.System.getInt(getContentResolver(),
                        Settings.System.LOCKSCREEN_BLUR_RADIUS, 12));
         mBlurRadius.setOnPreferenceChangeListener(this);
-        mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
+        mBlurRadius.setEnabled(mSeeThrough.isChecked());
 
         mEnableModLock = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_MODLOCK_ENABLED);
         if (mEnableModLock != null) {
@@ -232,12 +227,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         } else if (preference == mSeeThrough) {
             Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
                     mSeeThrough.isChecked() ? 1 : 0);
-            mBlurBehind.setEnabled(mSeeThrough.isChecked());
-            mBlurRadius.setEnabled(mBlurBehind.isChecked() && mBlurBehind.isEnabled());
-        } else if (preference == mBlurBehind) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_BEHIND,
-                    mBlurBehind.isChecked() ? 1 : 0);
-            mBlurRadius.setEnabled(mBlurBehind.isChecked());
+            mBlurRadius.setEnabled(mSeeThrough.isChecked());
         } else if (preference == mLockBeforeUnlock) {
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.LOCK_BEFORE_UNLOCK,
                     mLockBeforeUnlock.isChecked() ? 1 : 0);
