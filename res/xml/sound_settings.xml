@@ -36,48 +36,6 @@
             android:entryValues="@array/ring_mode_values" />
 
     <ListPreference
-            android:key="volume_steps_alarm"
-            android:title="@string/volume_steps_alarm_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-    <ListPreference
-            android:key="volume_steps_dtmf"
-            android:title="@string/volume_steps_dtmf_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-    <ListPreference
-            android:key="volume_steps_music"
-            android:title="@string/volume_steps_music_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-     <ListPreference
-            android:key="volume_steps_notification"
-            android:title="@string/volume_steps_notification_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-     <ListPreference
-            android:key="volume_steps_ring"
-            android:title="@string/volume_steps_ring_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-     <ListPreference
-            android:key="volume_steps_system"
-            android:title="@string/volume_steps_system_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-     <ListPreference
-            android:key="volume_steps_voice_call"
-            android:title="@string/volume_steps_voice_call_title"
-            android:entries="@array/volume_steps_entries"
-            android:entryValues="@array/volume_steps_entries" />
-
-    <ListPreference
             android:key="volume_overlay"
             android:title="@string/volume_overlay_title"
             android:entries="@array/volume_overlay_entries"
@@ -86,6 +44,13 @@
     <PreferenceCategory
             android:key="category_automation_effects"
             android:title="@string/automation_effects_title"/>
+
+    <!-- Volume steps -->
+    <PreferenceScreen
+            android:key="volume_steps"
+            android:fragment="com.android.settings.pac.VolumeSteps"
+            android:summary="@string/volume_steps_summary"
+            android:title="@string/volume_steps_title" />
 
     <!-- Quiet hours -->
     <PreferenceScreen
