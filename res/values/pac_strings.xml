@@ -29,9 +29,8 @@
     <string name="set">Set</string>
     <string name="color_default">Default</string>
 
-    <!-- Quick Tiles -->
+    <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
-    <string name="title_tile_music">Music</string>
 
     <!-- General strings -->
     <string name="ok">OK</string>

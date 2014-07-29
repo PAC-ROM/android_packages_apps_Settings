@@ -32,11 +32,9 @@ import static com.android.internal.util.cm.QSConstants.TILE_HEADS_UP;
 import static com.android.internal.util.cm.QSConstants.TILE_LOCKSCREEN;
 import static com.android.internal.util.cm.QSConstants.TILE_LTE;
 import static com.android.internal.util.cm.QSConstants.TILE_MOBILEDATA;
-import static com.android.internal.util.cm.QSConstants.TILE_MUSIC;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKADB;
 import static com.android.internal.util.cm.QSConstants.TILE_NETWORKMODE;
 import static com.android.internal.util.cm.QSConstants.TILE_NFC;
-import static com.android.internal.util.cm.QSConstants.TILE_POWER;
 import static com.android.internal.util.cm.QSConstants.TILE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_PERFORMANCE_PROFILE;
 import static com.android.internal.util.cm.QSConstants.TILE_QUIETHOURS;
@@ -50,6 +48,7 @@ import static com.android.internal.util.cm.QSConstants.TILE_USER;
 import static com.android.internal.util.cm.QSConstants.TILE_VOLUME;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFI;
 import static com.android.internal.util.cm.QSConstants.TILE_WIFIAP;
+import static com.android.internal.util.cm.QSConstants.TILE_POWER;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -164,9 +163,6 @@ public class QuickSettingsUtil {
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_WIFIAP, R.string.title_tile_wifiap,
                 "com.android.systemui:drawable/ic_qs_wifi_ap_on"));
-        registerTile(new QuickSettingsUtil.TileInfo(
-                TILE_MUSIC, R.string.title_tile_music,
-                "com.android.systemui:drawable/ic_qs_media_play"));
         registerTile(new QuickSettingsUtil.TileInfo(
                 TILE_NETWORKADB, R.string.title_tile_network_adb,
                 "com.android.systemui:drawable/ic_qs_network_adb_off"));
