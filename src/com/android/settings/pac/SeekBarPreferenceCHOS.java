@@ -1,4 +1,4 @@
-package com.android.settings.crdroid;
+package com.android.settings.pac;
 
 import android.content.Context;
 import android.content.res.TypedArray;
