@@ -42,7 +42,8 @@
         <PreferenceScreen
             android:key="pie_settings"
             android:fragment="com.android.settings.slim.PieControl"
-            android:title="@string/pie_control_title" />
+            android:title="@string/pie_control_title"
+            android:icon="@drawable/ic_settings_pie" />
 
     </PreferenceCategory>
 
