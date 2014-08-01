@@ -52,10 +52,10 @@ public class ProgressBar extends SettingsPreferenceFragment implements
 
     private CheckBoxPreference mprogressbar_mirror;
     private CheckBoxPreference mprogressbar_reverse;
-    private SeekBarPreference mprogressbar_speed;
-    private SeekBarPreference mprogressbar_width;
-    private SeekBarPreference mprogressbar_length;
-    private SeekBarPreference mprogressbar_count;
+    private SeekBarPreferenceCHOS mprogressbar_speed;
+    private SeekBarPreferenceCHOS mprogressbar_width;
+    private SeekBarPreferenceCHOS mprogressbar_length;
+    private SeekBarPreferenceCHOS mprogressbar_count;
     private ColorPickerPreference mprogressbar_color_1;
     private ColorPickerPreference mprogressbar_color_2;
     private ColorPickerPreference mprogressbar_color_3;
@@ -83,24 +83,24 @@ public class ProgressBar extends SettingsPreferenceFragment implements
         mprogressbar_mirror.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_MIRROR, 0) == 1);
 
         mprogressbar_reverse = (CheckBoxPreference) findPreference(PROGRESSBAR_REVERSE);
-        mprogressbar_mirror.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_REVERSE, 0) == 1);
+        mprogressbar_reverse.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_REVERSE, 0) == 1);
 
-        mprogressbar_speed = (SeekBarPreference) findPreference(PROGRESSBAR_SPEED);
+        mprogressbar_speed = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_SPEED);
         mprogressbar_speed.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.PROGRESSBAR_SPEED, 4));
         mprogressbar_speed.setOnPreferenceChangeListener(this);
 
-        mprogressbar_width = (SeekBarPreference) findPreference(PROGRESSBAR_WIDTH);
+        mprogressbar_width = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_WIDTH);
         mprogressbar_width.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.PROGRESSBAR_WIDTH, 4));
         mprogressbar_width.setOnPreferenceChangeListener(this);
 
-        mprogressbar_length = (SeekBarPreference) findPreference(PROGRESSBAR_LENGTH);
+        mprogressbar_length = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_LENGTH);
         mprogressbar_length.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.PROGRESSBAR_LENGTH, 10));
         mprogressbar_length.setOnPreferenceChangeListener(this);
 
-        mprogressbar_count = (SeekBarPreference) findPreference(PROGRESSBAR_COUNT);
+        mprogressbar_count = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_COUNT);
         mprogressbar_count.setValue(Settings.System.getInt(getContentResolver(),
                 Settings.System.PROGRESSBAR_COUNT, 6));
         mprogressbar_count.setOnPreferenceChangeListener(this);
