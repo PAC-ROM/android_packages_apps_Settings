@@ -46,6 +46,7 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
 
     private static final String TAG = "NavBarStyleDimen";
     private static final String PREF_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
+    private static final String PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String PREF_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
     private static final String KEY_DIMEN_OPTIONS = "navbar_dimen";
 
@@ -54,6 +55,7 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
     private static final int DLG_RESET = 0;
 
     ListPreference mNavigationBarHeight;
+    ListPreference mNavigationBarHeightLandcape;
     ListPreference mNavigationBarWidth;
 
     @Override
@@ -68,6 +70,15 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
         mNavigationBarHeight =
             (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT);
         mNavigationBarHeight.setOnPreferenceChangeListener(this);
+
+        mNavigationBarHeightLandcape =
+            (ListPreference) findPreference(PREF_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
+        if (DeviceUtils.isPhone(getActivity())) {
+            prefSet.removePreference(mNavigationBarHeightLandcape);
+            mNavigationBarHeightLandcape = null;
+        } else {
+            mNavigationBarHeightLandcape.setOnPreferenceChangeListener(this);
+        }
 
         mNavigationBarWidth =
             (ListPreference) findPreference(PREF_NAVIGATION_BAR_WIDTH);
@@ -92,6 +103,18 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
                     / getResources().getDisplayMetrics().density);
         }
         mNavigationBarHeight.setValue(String.valueOf(navigationBarHeight));
+
+        if (mNavigationBarHeightLandcape == null) {
+            return;
+        }
+        int navigationBarHeightLandcape = Settings.System.getInt(getContentResolver(),
+                            Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
+        if (navigationBarHeightLandcape == -2) {
+            navigationBarHeightLandcape = (int) (getResources().getDimension(
+                    com.android.internal.R.dimen.navigation_bar_height_landscape)
+                    / getResources().getDisplayMetrics().density);
+        }
+        mNavigationBarHeightLandcape.setValue(String.valueOf(navigationBarHeightLandcape));
 
         if (mNavigationBarWidth == null) {
             return;
@@ -137,6 +160,12 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
             String newVal = (String) newValue;
             Settings.System.putInt(getContentResolver(),
                     Settings.System.NAVIGATION_BAR_HEIGHT,
+                    Integer.parseInt(newVal));
+            return true;
+        } else if (preference == mNavigationBarHeightLandcape) {
+            String newVal = (String) newValue;
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
                     Integer.parseInt(newVal));
             return true;
         }
