@@ -457,6 +457,8 @@
     <string name="pie_disable_ime_triggers_title">Reduce trigger size on keyboard</string>
     <string name="pie_disable_ime_triggers_summary">Reduces left and right trigger size if keyboard is active</string>
     <string name="attention">Attention</string>
+    <string name="pie_trigger_sensitivity_title">Set the trigger sensitivity"</string>
+    <string name="pie_trigger_sensitivity_summary">Reduce or increase the trigger sensitivity</string>
 
     <!-- QuickSettings: Smart Pulldown -->
     <string name="smart_pulldown_title">Smart pulldown</string>

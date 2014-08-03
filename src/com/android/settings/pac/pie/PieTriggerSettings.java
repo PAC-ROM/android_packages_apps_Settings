@@ -32,6 +32,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.pac.utils.SeekBarPreferenceCham;
 
 public class PieTriggerSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -42,6 +43,7 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
     private static final int DEFAULT_POSITION = 1 << 0;
 
     private static final String PREF_PIE_DISABLE_IME_TRIGGERS = "pie_disable_ime_triggers";
+    private static final String PIE_TRIGGER_SENSITIVITY = "pie_trigger_sensitivity";
 
     private static final String[] TRIGGER = {
         "pie_control_trigger_left",
@@ -52,6 +54,7 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
 
     private SwitchPreference[] mTrigger = new SwitchPreference[4];
     private SwitchPreference mDisableImeTriggers;
+    private SeekBarPreferenceCham mSensitivity;
 
     private ContentObserver mPieTriggerObserver = new ContentObserver(new Handler()) {
         @Override
@@ -75,6 +78,12 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
 
         mDisableImeTriggers = (SwitchPreference) findPreference(PREF_PIE_DISABLE_IME_TRIGGERS);
         mDisableImeTriggers.setOnPreferenceChangeListener(this);
+
+        mSensitivity = (SeekBarPreferenceCham) findPreference(PIE_TRIGGER_SENSITIVITY);
+        int value = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_TRIGGER_SENSITIVITY, 8);
+        mSensitivity.setValue(value);
+        mSensitivity.setOnPreferenceChangeListener(this);
     }
 
     @Override
@@ -85,6 +94,10 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.PIE_IME_CONTROL,
                     (Boolean) newValue ? 1 : 0);
+        } else if (preference == mSensitivity) {
+            int val = ((Integer) newValue);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_TRIGGER_SENSITIVITY, val);
         } else {
             for (int i = 0; i < mTrigger.length; i++) {
                 boolean checked = preference == mTrigger[i]
