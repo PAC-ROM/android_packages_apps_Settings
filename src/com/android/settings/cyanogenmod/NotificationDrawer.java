@@ -43,6 +43,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
     private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
     private static final String PREF_HEADS_UP_SHOW_UPDATE = "heads_up_show_update";
+    private static final String PREF_HEADS_UP_GRAVITY = "heads_up_gravity";
 
     private ListPreference mCollapseOnDismiss;
     private ListPreference mHeadsUpSnoozeTime;
@@ -51,6 +52,7 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
     private CheckBoxPreference mFullScreenDetection;
     private CheckBoxPreference mHeadsUpExpanded;
     private CheckBoxPreference mHeadsUpShowUpdates;
+    private CheckBoxPreference mHeadsUpGravity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +90,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         mHeadsUpShowUpdates.setChecked(Settings.System.getIntForUser(getContentResolver(),
                 Settings.System.HEADS_UP_SHOW_UPDATE, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsUpShowUpdates.setOnPreferenceChangeListener(this);
+
+        mHeadsUpGravity = (CheckBoxPreference) findPreference(PREF_HEADS_UP_GRAVITY);
+        mHeadsUpGravity.setChecked(Settings.System.getIntForUser(getContentResolver(),
+                Settings.System.HEADS_UP_GRAVITY_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpGravity.setOnPreferenceChangeListener(this);
 
         mHeadsUpSnoozeTime = (ListPreference) findPreference(PREF_HEADS_UP_SNOOZE_TIME);
         mHeadsUpSnoozeTime.setOnPreferenceChangeListener(this);
@@ -152,6 +159,11 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         } else if (preference == mHeadsUpShowUpdates) {
             Settings.System.putIntForUser(getContentResolver(),
                     Settings.System.HEADS_UP_SHOW_UPDATE,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mHeadsUpGravity) {
+            Settings.System.putIntForUser(getContentResolver(),
+                    Settings.System.HEADS_UP_GRAVITY_BOTTOM,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         }
