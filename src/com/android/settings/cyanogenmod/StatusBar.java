@@ -97,9 +97,17 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarClockStyle.setSummary(mStatusBarClockStyle.getEntry());
         mStatusBarClockStyle.setOnPreferenceChangeListener(this);
 
-        mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY);
         mStatusBarNetworkStats = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS);
         mStatusBarNetStatsUpdate = (ListPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS_UPDATE);
+
+        mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
+
+        long statsUpdate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+        mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
+        mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
+        mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
 
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
@@ -169,14 +177,6 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     public void onPause() {
         super.onPause();
         getContentResolver().unregisterContentObserver(mSettingsObserver);
-        mStatusBarNetworkStats.setChecked((Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
-
-        long statsUpdate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
-        mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
-        mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
-        mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
     }
 
     @Override
