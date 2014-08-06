@@ -531,4 +531,8 @@
     <string name="heads_up_time_out_never">Never</string>
     <string name="heads_up_switch_label">Enable heads up notification</string>
 
+    <!--Blacklist-->
+    <string name="blacklist_button_title">Blacklist</string>
+    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
+
 </resources>
