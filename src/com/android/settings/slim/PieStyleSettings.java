@@ -141,15 +141,15 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
     }
 
     private void resetToDefault() {
-        Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.PIE_BACKGROUND_COLOR, -2);
-        Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.PIE_SNAP_COLOR, -2);
-        Settings.System.putInt(getActivity().getContentResolver(),
-                Settings.System.PIE_TEXT_COLOR, -2);
+        Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.PIE_BACKGROUND_COLOR, -2);
+        Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.PIE_SNAP_COLOR, -2);
+        Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.PIE_TEXT_COLOR, -2);
 
-        Settings.System.putFloat(getActivity().getContentResolver(),
-                Settings.System.PIE_BACKGROUND_ALPHA, 0.3f);
+        Settings.PAC.putFloat(getActivity().getContentResolver(),
+                Settings.PAC.PIE_BACKGROUND_ALPHA, 0.3f);
     }
 
     @Override
@@ -160,16 +160,16 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
         if (preference == mPieBackgroundAlpha) {
             float val = Float.parseFloat((String) newValue);
             Log.e("R", "value: " + val / 100);
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                    Settings.System.PIE_BACKGROUND_ALPHA,
+            Settings.PAC.putFloat(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_BACKGROUND_ALPHA,
                     val / 100);
             return true;
         } else if (preference == mPieControlSize) {
             float val = Float.parseFloat((String) newValue);
             float value = (val * ((PIE_CONTROL_SIZE_MAX - PIE_CONTROL_SIZE_MIN) /
                 100)) + PIE_CONTROL_SIZE_MIN;
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                    Settings.System.PIE_SIZE,
+            Settings.PAC.putFloat(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_SIZE,
                     value);
             return true;
         } else if (preference == mPieBackgroundColor) {
@@ -177,40 +177,40 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_BACKGROUND_COLOR, intHex);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_BACKGROUND_COLOR, intHex);
             return true;
         } else if (preference == mPieTextColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_TEXT_COLOR, intHex);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_TEXT_COLOR, intHex);
             return true;
         } else if (preference == mPieSnapColor) {
             String hex = ColorPickerPreference.convertToARGB(
                     Integer.valueOf(String.valueOf(newValue)));
             preference.setSummary(hex);
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_SNAP_COLOR, intHex);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_SNAP_COLOR, intHex);
             return true;
         } else if (preference == mShowText) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_SHOW_TEXT, (Boolean) newValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_SHOW_TEXT, (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mShowBackground) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_SHOW_BACKGROUND, (Boolean) newValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_SHOW_BACKGROUND, (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mShowSnap) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_SHOW_SNAP, (Boolean) newValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_SHOW_SNAP, (Boolean) newValue ? 1 : 0);
             return true;
         } else if (preference == mMirrorRightPie) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_MIRROR_RIGHT,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_MIRROR_RIGHT,
                     (Boolean) newValue ? 1 : 0);
            return true;
         }
@@ -228,8 +228,8 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
         String hexColor;
         int intColor;
 
-        intColor = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_BACKGROUND_COLOR, -2);
+        intColor = Settings.PAC.getInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_BACKGROUND_COLOR, -2);
         if (intColor == -2) {
             intColor = mSystemUiResources.getColor(
                     mSystemUiResources.getIdentifier(
@@ -241,8 +241,8 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
         }
         mPieBackgroundColor.setNewPreviewColor(intColor);
 
-        intColor = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_SNAP_COLOR, -2);
+        intColor = Settings.PAC.getInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_SNAP_COLOR, -2);
         if (intColor == -2) {
             intColor = mSystemUiResources.getColor(
                     mSystemUiResources.getIdentifier(
@@ -254,8 +254,8 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
         }
         mPieSnapColor.setNewPreviewColor(intColor);
 
-        intColor = Settings.System.getInt(getActivity().getContentResolver(),
-                    Settings.System.PIE_TEXT_COLOR, -2);
+        intColor = Settings.PAC.getInt(getActivity().getContentResolver(),
+                    Settings.PAC.PIE_TEXT_COLOR, -2);
         if (intColor == -2) {
             intColor = mSystemUiResources.getColor(
                     mSystemUiResources.getIdentifier(
@@ -267,37 +267,37 @@ public class PieStyleSettings extends SettingsPreferenceFragment implements
         }
         mPieTextColor.setNewPreviewColor(intColor);
 
-        mShowSnap.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_SHOW_SNAP, 1) == 1);
+        mShowSnap.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_SHOW_SNAP, 1) == 1);
 
-        mShowText.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_SHOW_TEXT, 1) == 1);
+        mShowText.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_SHOW_TEXT, 1) == 1);
 
-        mShowBackground.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_SHOW_BACKGROUND, 1) == 1);
+        mShowBackground.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_SHOW_BACKGROUND, 1) == 1);
 
-        mMirrorRightPie.setChecked(Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.PIE_MIRROR_RIGHT, 1) == 1);
+        mMirrorRightPie.setChecked(Settings.PAC.getInt(getActivity().getContentResolver(),
+                Settings.PAC.PIE_MIRROR_RIGHT, 1) == 1);
 
         float defaultAlpha;
         try{
-            defaultAlpha = Settings.System.getFloat(getActivity()
-                     .getContentResolver(), Settings.System.PIE_BACKGROUND_ALPHA);
+            defaultAlpha = Settings.PAC.getFloat(getActivity()
+                     .getContentResolver(), Settings.PAC.PIE_BACKGROUND_ALPHA);
         } catch (Exception e) {
             defaultAlpha = 0.3f;
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                Settings.System.PIE_BACKGROUND_ALPHA, defaultAlpha);
+            Settings.PAC.putFloat(getActivity().getContentResolver(),
+                Settings.PAC.PIE_BACKGROUND_ALPHA, defaultAlpha);
         }
         mPieBackgroundAlpha.setInitValue((int) (defaultAlpha * 100));
 
         float controlSize;
         try{
-            controlSize = Settings.System.getFloat(getActivity()
-                    .getContentResolver(), Settings.System.PIE_SIZE);
+            controlSize = Settings.PAC.getFloat(getActivity()
+                    .getContentResolver(), Settings.PAC.PIE_SIZE);
         } catch (Exception e) {
             controlSize = PIE_CONTROL_SIZE_DEFAULT;
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                Settings.System.PIE_SIZE, controlSize);
+            Settings.PAC.putFloat(getActivity().getContentResolver(),
+                Settings.PAC.PIE_SIZE, controlSize);
         }
         float controlSizeValue = ((controlSize - PIE_CONTROL_SIZE_MIN) /
                     ((PIE_CONTROL_SIZE_MAX - PIE_CONTROL_SIZE_MIN) / 100)) / 100;

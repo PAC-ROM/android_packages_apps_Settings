@@ -102,8 +102,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
         mNotificationWallpaperLandscape.setOnPreferenceChangeListener(this);
 
         mForceExpanded = (CheckBoxPreference) prefSet.findPreference(FORCE_EXPANDED_NOTIFICATIONS);
-        mForceExpanded.setChecked((Settings.System.getInt(resolver,
-                Settings.System.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
+        mForceExpanded.setChecked((Settings.PAC.getInt(resolver,
+                Settings.PAC.FORCE_EXPANDED_NOTIFICATIONS, 0) == 1));
 
         if (!DeviceUtils.isPhone(mActivity)) {
             prefSet.removePreference(mNotificationWallpaperLandscape);
@@ -111,24 +111,24 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
 
         float transparency;
         try{
-            transparency = Settings.System.getFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA);
+            transparency = Settings.PAC.getFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_BACKGROUND_ALPHA);
         } catch (Exception e) {
             transparency = 0;
-            Settings.System.putFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA, 0.1f);
+            Settings.PAC.putFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_BACKGROUND_ALPHA, 0.1f);
         }
         mWallpaperAlpha = (SeekBarPreference) findPreference(PREF_NOTIFICATION_WALLPAPER_ALPHA);
         mWallpaperAlpha.setInitValue((int) (transparency * 100));
         mWallpaperAlpha.setOnPreferenceChangeListener(this);
 
         try{
-            transparency = Settings.System.getFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_ALPHA);
+            transparency = Settings.PAC.getFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_ALPHA);
         } catch (Exception e) {
             transparency = 0;
-            Settings.System.putFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_ALPHA, 0.0f);
+            Settings.PAC.putFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_ALPHA, 0.0f);
         }
         mNotificationAlpha = (SeekBarPreference) findPreference(PREF_NOTIFICATION_ALPHA);
         mNotificationAlpha.setInitValue((int) (transparency * 100));
@@ -147,8 +147,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
 
     private void updateCustomBackgroundSummary() {
         int resId;
-        String value = Settings.System.getString(getContentResolver(),
-                Settings.System.NOTIFICATION_BACKGROUND);
+        String value = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.NOTIFICATION_BACKGROUND);
         if (value == null) {
             resId = R.string.notification_background_default_wallpaper;
             mNotificationWallpaper.setValueIndex(2);
@@ -164,8 +164,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
         }
         mNotificationWallpaper.setSummary(getResources().getString(resId));
 
-        value = Settings.System.getString(getContentResolver(),
-                Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE);
+        value = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.NOTIFICATION_BACKGROUND_LANDSCAPE);
         if (value == null) {
             resId = R.string.notification_background_default_wallpaper;
             mNotificationWallpaperLandscape.setValueIndex(1);
@@ -177,8 +177,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
     }
 
     public void deleteWallpaper(boolean orientation) {
-        String path = Settings.System.getString(getContentResolver(),
-                Settings.System.NOTIFICATION_BACKGROUND);
+        String path = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.NOTIFICATION_BACKGROUND);
         if (path != null && !path.startsWith("color=")) {
             File wallpaperToDelete = new File(Uri.parse(path).getPath());
 
@@ -188,8 +188,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
             }
         }
 
-        path = Settings.System.getString(getContentResolver(),
-                Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE);
+        path = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.NOTIFICATION_BACKGROUND_LANDSCAPE);
         if (path != null) {
             File wallpaperToDelete = new File(Uri.parse(path).getPath());
 
@@ -198,8 +198,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
                 wallpaperToDelete.delete();
             }
             if (orientation) {
-                Settings.System.putString(getContentResolver(),
-                    Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE, null);
+                Settings.PAC.putString(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_BACKGROUND_LANDSCAPE, null);
             }
         }
     }
@@ -222,11 +222,11 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
                 image.setReadable(true, false);
 
                 if (requestCode == REQUEST_PICK_WALLPAPER) {
-                    Settings.System.putString(getContentResolver(),
-                        Settings.System.NOTIFICATION_BACKGROUND, path);
+                    Settings.PAC.putString(getContentResolver(),
+                        Settings.PAC.NOTIFICATION_BACKGROUND, path);
                 } else {
-                    Settings.System.putString(getContentResolver(),
-                        Settings.System.NOTIFICATION_BACKGROUND_LANDSCAPE, path);
+                    Settings.PAC.putString(getContentResolver(),
+                        Settings.PAC.NOTIFICATION_BACKGROUND_LANDSCAPE, path);
                 }
             }
         } else {
@@ -272,8 +272,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
         ContentResolver resolver = getActivity().getContentResolver();
         if  (preference == mForceExpanded) {
             boolean checked = ((CheckBoxPreference)preference).isChecked();
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.FORCE_EXPANDED_NOTIFICATIONS, checked ? 1:0);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.FORCE_EXPANDED_NOTIFICATIONS, checked ? 1:0);
         }
         return true;
     }
@@ -281,13 +281,13 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mWallpaperAlpha) {
             float valNav = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_BACKGROUND_ALPHA, valNav / 100);
+            Settings.PAC.putFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_BACKGROUND_ALPHA, valNav / 100);
             return true;
         } else if (preference == mNotificationAlpha) {
             float valNav = Float.parseFloat((String) newValue);
-            Settings.System.putFloat(getContentResolver(),
-                    Settings.System.NOTIFICATION_ALPHA, valNav / 100);
+            Settings.PAC.putFloat(getContentResolver(),
+                    Settings.PAC.NOTIFICATION_ALPHA, valNav / 100);
             return true;
         }else if (preference == mNotificationWallpaper) {
             int indexOf = mNotificationWallpaper.findIndexOfValue(newValue.toString());
@@ -304,8 +304,8 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
                 case 2:
                     deleteWallpaper(false);
                     deleteWallpaper(true);
-                    Settings.System.putString(getContentResolver(),
-                            Settings.System.NOTIFICATION_BACKGROUND, null);
+                    Settings.PAC.putString(getContentResolver(),
+                            Settings.PAC.NOTIFICATION_BACKGROUND, null);
                     updateCustomBackgroundSummary();
                     break;
             }
@@ -354,9 +354,9 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
             switch (id) {
                 case DLG_PICK_COLOR:
                     final ColorPickerView colorView = new ColorPickerView(getOwner().mActivity);
-                    String currentColor = Settings.System.getString(
+                    String currentColor = Settings.PAC.getString(
                             getOwner().getContentResolver(),
-                            Settings.System.NOTIFICATION_BACKGROUND);
+                            Settings.PAC.NOTIFICATION_BACKGROUND);
                     if (currentColor != null && currentColor.startsWith("color=")) {
                         int color = Color.parseColor(currentColor.substring("color=".length()));
                         colorView.setColor(color);
@@ -372,9 +372,9 @@ public class NotificationDrawerStyle extends SettingsPreferenceFragment implemen
                         public void onClick(DialogInterface dialog, int which) {
                             getOwner().deleteWallpaper(false);
                             getOwner().deleteWallpaper(true);
-                            Settings.System.putString(
+                            Settings.PAC.putString(
                                 getOwner().getContentResolver(),
-                                Settings.System.NOTIFICATION_BACKGROUND,
+                                Settings.PAC.NOTIFICATION_BACKGROUND,
                                 "color=" + String.format("#%06X",
                                 (0xFFFFFF & colorView.getColor())));
                             getOwner().updateCustomBackgroundSummary();

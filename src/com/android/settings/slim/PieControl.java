@@ -55,8 +55,8 @@ public class PieControl extends SettingsPreferenceFragment
 
         void observe() {
             ContentResolver resolver = getActivity().getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.PIE_CONTROLS), false, this,
+            resolver.registerContentObserver(Settings.PAC.getUriFor(
+                    Settings.PAC.PIE_CONTROLS), false, this,
                     UserHandle.USER_ALL);
         }
 
@@ -90,21 +90,21 @@ public class PieControl extends SettingsPreferenceFragment
                 showDialogInner(DLG_NAVIGATION_WARNING);
                 return true;
             }
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_CONTROLS, (Boolean) newValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_CONTROLS, (Boolean) newValue ? 1 : 0);
         } else if (preference == mPieMenuDisplay) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_MENU, Integer.parseInt((String) newValue));
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_MENU, Integer.parseInt((String) newValue));
         }
         return true;
     }
 
     private void updateSettings() {
-        mPieMenuDisplay.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_MENU,
+        mPieMenuDisplay.setValue(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_MENU,
                 2) + "");
-        mPieControl.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_CONTROLS, 0) == 1);
+        mPieControl.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_CONTROLS, 0) == 1);
     }
 
     @Override
@@ -157,10 +157,10 @@ public class PieControl extends SettingsPreferenceFragment
                     .setPositiveButton(R.string.dlg_ok,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.PIE_CONTROLS, 0);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_SHOW, 1);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.PIE_CONTROLS, 0);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.NAVIGATION_BAR_SHOW, 1);
 
                         }
                     })

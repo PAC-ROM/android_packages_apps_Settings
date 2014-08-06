@@ -71,18 +71,18 @@ public class Halo extends SettingsPreferenceFragment
         mHaloState.setOnPreferenceChangeListener(this);
 
         mHaloHide = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_HIDE);
-        mHaloHide.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_HIDE, 0) == 1);
+        mHaloHide.setChecked(Settings.PAC.getInt(mContext.getContentResolver(),
+                Settings.PAC.HALO_HIDE, 0) == 1);
 
         int isLowRAM = (!ActivityManager.isLowRamDeviceStatic()) ? 0 : 1;
         mHaloPause = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_PAUSE);
-        mHaloPause.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_PAUSE, isLowRAM) == 1);
+        mHaloPause.setChecked(Settings.PAC.getInt(mContext.getContentResolver(),
+                Settings.PAC.HALO_PAUSE, isLowRAM) == 1);
 
         mHaloSize = (ListPreference) prefSet.findPreference(KEY_HALO_SIZE);
         try {
-            float haloSize = Settings.System.getFloat(mContext.getContentResolver(),
-                    Settings.System.HALO_SIZE, 1.0f);
+            float haloSize = Settings.PAC.getFloat(mContext.getContentResolver(),
+                    Settings.PAC.HALO_SIZE, 1.0f);
             mHaloSize.setValue(String.valueOf(haloSize));
         } catch(Exception ex) {
             // So what
@@ -90,17 +90,17 @@ public class Halo extends SettingsPreferenceFragment
         mHaloSize.setOnPreferenceChangeListener(this);
 
         mHaloMsgBox = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_MSGBOX);
-        mHaloMsgBox.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_MSGBOX, 1) == 1);
+        mHaloMsgBox.setChecked(Settings.PAC.getInt(mContext.getContentResolver(),
+                Settings.PAC.HALO_MSGBOX, 1) == 1);
 
         mHaloUnlockPing = (CheckBoxPreference) prefSet.findPreference(KEY_HALO_UNLOCK_PING);
-        mHaloUnlockPing.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.HALO_UNLOCK_PING, 0) == 1);
+        mHaloUnlockPing.setChecked(Settings.PAC.getInt(mContext.getContentResolver(),
+                Settings.PAC.HALO_UNLOCK_PING, 0) == 1);
 
         mHaloNotifyCount = (ListPreference) prefSet.findPreference(KEY_HALO_NOTIFY_COUNT);
         try {
-            int haloCounter = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.HALO_NOTIFY_COUNT, 4);
+            int haloCounter = Settings.PAC.getInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_NOTIFY_COUNT, 4);
             mHaloNotifyCount.setValue(String.valueOf(haloCounter));
         } catch(Exception ex) {
             // fail...
@@ -109,8 +109,8 @@ public class Halo extends SettingsPreferenceFragment
 
         mHaloMsgAnimate = (ListPreference) prefSet.findPreference(KEY_HALO_MSGBOX_ANIMATION);
         try {
-            int haloMsgAnimation = Settings.System.getInt(mContext.getContentResolver(),
-                    Settings.System.HALO_MSGBOX_ANIMATION, 2);
+            int haloMsgAnimation = Settings.PAC.getInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_MSGBOX_ANIMATION, 2);
             mHaloMsgAnimate.setValue(String.valueOf(haloMsgAnimation));
         } catch(Exception ex) {
             // fail...
@@ -130,20 +130,20 @@ public class Halo extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mHaloHide) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_HIDE, mHaloHide.isChecked()
+            Settings.PAC.putInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_HIDE, mHaloHide.isChecked()
                     ? 1 : 0);
         } else if (preference == mHaloPause) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_PAUSE, mHaloPause.isChecked()
+            Settings.PAC.putInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_PAUSE, mHaloPause.isChecked()
                     ? 1 : 0);
         } else if (preference == mHaloMsgBox) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_MSGBOX, mHaloMsgBox.isChecked()
+            Settings.PAC.putInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_MSGBOX, mHaloMsgBox.isChecked()
                     ? 1 : 0);
         } else if (preference == mHaloUnlockPing) {
-            Settings.System.putInt(mContext.getContentResolver(),
-                    Settings.System.HALO_UNLOCK_PING, mHaloUnlockPing.isChecked()
+            Settings.PAC.putInt(mContext.getContentResolver(),
+                    Settings.PAC.HALO_UNLOCK_PING, mHaloUnlockPing.isChecked()
                     ? 1 : 0);
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -152,8 +152,8 @@ public class Halo extends SettingsPreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mHaloSize) {
             float haloSize = Float.valueOf((String) newValue);
-            Settings.System.putFloat(getActivity().getContentResolver(),
-                    Settings.System.HALO_SIZE, haloSize);
+            Settings.PAC.putFloat(getActivity().getContentResolver(),
+                    Settings.PAC.HALO_SIZE, haloSize);
             return true;
         } else if (preference == mHaloState) {
             boolean state = Integer.valueOf((String) newValue) == 1;
@@ -165,13 +165,13 @@ public class Halo extends SettingsPreferenceFragment
             return true;
         } else if (preference == mHaloMsgAnimate) {
             int haloMsgAnimation = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HALO_MSGBOX_ANIMATION, haloMsgAnimation);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.HALO_MSGBOX_ANIMATION, haloMsgAnimation);
             return true;
         } else if (preference == mHaloNotifyCount) {
             int haloNotifyCount = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.HALO_NOTIFY_COUNT, haloNotifyCount);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.HALO_NOTIFY_COUNT, haloNotifyCount);
             return true;
         }
         return false;

@@ -93,8 +93,8 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
         // Lockscreen see through
         mSeeThrough = (CheckBoxPreference) findPreference(KEY_LOCKSCREEN_SEE_THROUGH);
         mBlurRadius = (SeekBarPreference) findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
-        mBlurRadius.setProgress(Settings.System.getInt(getContentResolver(),
-                       Settings.System.LOCKSCREEN_BLUR_RADIUS, 12));
+        mBlurRadius.setProgress(Settings.PAC.getInt(getContentResolver(),
+                       Settings.PAC.LOCKSCREEN_BLUR_RADIUS, 12));
         mBlurRadius.setOnPreferenceChangeListener(this);
         mBlurRadius.setEnabled(mSeeThrough.isChecked());
 
@@ -225,7 +225,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             mLockUtils.setCameraEnabled(mEnableCameraWidget.isChecked());
             return true;
         } else if (preference == mSeeThrough) {
-            Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_SEE_THROUGH,
+            Settings.PAC.putInt(getContentResolver(), Settings.PAC.LOCKSCREEN_SEE_THROUGH,
                     mSeeThrough.isChecked() ? 1 : 0);
             mBlurRadius.setEnabled(mSeeThrough.isChecked());
         } else if (preference == mLockBeforeUnlock) {
@@ -254,7 +254,7 @@ public class LockscreenInterface extends SettingsPreferenceFragment implements
             updateAvailableModLockPreferences();
             return true;
         } else if (preference == mBlurRadius) {
-               Settings.System.putInt(getContentResolver(), Settings.System.LOCKSCREEN_BLUR_RADIUS, (Integer)objValue);
+               Settings.PAC.putInt(getContentResolver(), Settings.PAC.LOCKSCREEN_BLUR_RADIUS, (Integer)objValue);
             return true;
         }
 

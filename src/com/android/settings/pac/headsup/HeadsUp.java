@@ -57,24 +57,24 @@ public class HeadsUp extends SettingsPreferenceFragment implements
         PackageManager pm = getPackageManager();
 
         mHeadsUpExpanded = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXPANDED);
-        mHeadsUpExpanded.setChecked(Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.HEADS_UP_EXPANDED, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpExpanded.setChecked(Settings.PAC.getIntForUser(getContentResolver(),
+                Settings.PAC.HEADS_UP_EXPANDED, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsUpExpanded.setOnPreferenceChangeListener(this);
 
         mHeadsUpShowUpdates = (CheckBoxPreference) findPreference(PREF_HEADS_UP_SHOW_UPDATE);
-        mHeadsUpShowUpdates.setChecked(Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.HEADS_UP_SHOW_UPDATE, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpShowUpdates.setChecked(Settings.PAC.getIntForUser(getContentResolver(),
+                Settings.PAC.HEADS_UP_SHOW_UPDATE, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsUpShowUpdates.setOnPreferenceChangeListener(this);
 
         mHeadsUpGravity = (CheckBoxPreference) findPreference(PREF_HEADS_UP_GRAVITY);
-        mHeadsUpGravity.setChecked(Settings.System.getIntForUser(getContentResolver(),
-                Settings.System.HEADS_UP_GRAVITY_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsUpGravity.setChecked(Settings.PAC.getIntForUser(getContentResolver(),
+                Settings.PAC.HEADS_UP_GRAVITY_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsUpGravity.setOnPreferenceChangeListener(this);
 
         mHeadsUpSnoozeTime = (ListPreference) findPreference(PREF_HEADS_UP_SNOOZE_TIME);
         mHeadsUpSnoozeTime.setOnPreferenceChangeListener(this);
-        int headsUpSnoozeTime = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_SNOOZE_TIME, DEFAULT_TIME_HEADS_UP_SNOOZE);
+        int headsUpSnoozeTime = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.HEADS_UP_SNOOZE_TIME, DEFAULT_TIME_HEADS_UP_SNOOZE);
         mHeadsUpSnoozeTime.setValue(String.valueOf(headsUpSnoozeTime));
         updateHeadsUpSnoozeTimeSummary(headsUpSnoozeTime);
 
@@ -89,8 +89,8 @@ public class HeadsUp extends SettingsPreferenceFragment implements
                     "com.android.systemui:integer/heads_up_notification_decay", null, null));
         mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
         mHeadsUpTimeOut.setOnPreferenceChangeListener(this);
-        int headsUpTimeOut = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
+        int headsUpTimeOut = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
         mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
         updateHeadsUpTimeOutSummary(headsUpTimeOut);
     }
@@ -98,31 +98,31 @@ public class HeadsUp extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mHeadsUpSnoozeTime) {
             int headsUpSnoozeTime = Integer.valueOf((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_SNOOZE_TIME,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.HEADS_UP_SNOOZE_TIME,
                     headsUpSnoozeTime);
             updateHeadsUpSnoozeTimeSummary(headsUpSnoozeTime);
             return true;
         } else if (preference == mHeadsUpTimeOut) {
             int headsUpTimeOut = Integer.valueOf((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_NOTIFCATION_DECAY,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.HEADS_UP_NOTIFCATION_DECAY,
                     headsUpTimeOut);
             updateHeadsUpTimeOutSummary(headsUpTimeOut);
             return true;
         } else if (preference == mHeadsUpExpanded) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.HEADS_UP_EXPANDED,
+            Settings.PAC.putIntForUser(getContentResolver(),
+                    Settings.PAC.HEADS_UP_EXPANDED,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mHeadsUpShowUpdates) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.HEADS_UP_SHOW_UPDATE,
+            Settings.PAC.putIntForUser(getContentResolver(),
+                    Settings.PAC.HEADS_UP_SHOW_UPDATE,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         } else if (preference == mHeadsUpGravity) {
-            Settings.System.putIntForUser(getContentResolver(),
-                    Settings.System.HEADS_UP_GRAVITY_BOTTOM,
+            Settings.PAC.putIntForUser(getContentResolver(),
+                    Settings.PAC.HEADS_UP_GRAVITY_BOTTOM,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         }

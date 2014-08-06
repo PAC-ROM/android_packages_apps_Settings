@@ -84,9 +84,9 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         boolean useOmniSwitch = false;
         boolean useSlimRecents = false;
 
-        useOmniSwitch = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH, 0) == 1
+        useOmniSwitch = Settings.PAC.getInt(getContentResolver(), Settings.PAC.RECENTS_USE_OMNISWITCH, 0) == 1
                             && isOmniSwitchServiceRunning();
-        useSlimRecents = Settings.System.getInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM, 0) == 1;
+        useSlimRecents = Settings.PAC.getInt(getContentResolver(), Settings.PAC.RECENTS_USE_SLIM, 0) == 1;
 
         // OmniSwitch
         mRecentsUseOmniSwitch = (CheckBoxPreference) prefSet.findPreference(RECENTS_USE_OMNISWITCH);
@@ -99,12 +99,12 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
         // Default recents
         mRecentClearAll = (CheckBoxPreference) prefSet.findPreference(RECENT_MENU_CLEAR_ALL);
-        mRecentClearAll.setChecked(Settings.System.getInt(resolver,
-            Settings.System.SHOW_CLEAR_RECENTS_BUTTON, 1) == 1);
+        mRecentClearAll.setChecked(Settings.PAC.getInt(resolver,
+            Settings.PAC.SHOW_CLEAR_RECENTS_BUTTON, 1) == 1);
         mRecentClearAll.setOnPreferenceChangeListener(this);
         mRecentClearAll.setEnabled(!useOmniSwitch && !useSlimRecents);
         mRecentClearAllPosition = (ListPreference) prefSet.findPreference(RECENT_MENU_CLEAR_ALL_LOCATION);
-        String recentClearAllPosition = Settings.System.getString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION);
+        String recentClearAllPosition = Settings.PAC.getString(resolver, Settings.PAC.CLEAR_RECENTS_BUTTON_LOCATION);
         if (recentClearAllPosition != null) {
              mRecentClearAllPosition.setValue(recentClearAllPosition);
         }
@@ -117,8 +117,8 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         mRecentsUseSlim.setOnPreferenceChangeListener(this);
         mRecentsUseSlim.setEnabled(!useOmniSwitch);
 
-        boolean enableRecentsShowTopmost = Settings.System.getInt(getContentResolver(),
-        Settings.System.RECENT_PANEL_SHOW_TOPMOST, 0) == 1;
+        boolean enableRecentsShowTopmost = Settings.PAC.getInt(getContentResolver(),
+        Settings.PAC.RECENT_PANEL_SHOW_TOPMOST, 0) == 1;
         mRecentsShowTopmost = (CheckBoxPreference) findPreference(RECENT_PANEL_SHOW_TOPMOST);
         mRecentsShowTopmost.setChecked(enableRecentsShowTopmost);
         mRecentsShowTopmost.setOnPreferenceChangeListener(this);
@@ -129,18 +129,18 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         mRecentPanelScale = (ListPreference) findPreference(RECENT_PANEL_SCALE);
         mRecentPanelScale.setOnPreferenceChangeListener(this);
 
-        final boolean recentLeftyMode = Settings.System.getInt(getContentResolver(),
-                Settings.System.RECENT_PANEL_GRAVITY, Gravity.RIGHT) == Gravity.LEFT;
+        final boolean recentLeftyMode = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.RECENT_PANEL_GRAVITY, Gravity.RIGHT) == Gravity.LEFT;
         mRecentPanelLeftyMode.setChecked(recentLeftyMode);
 
-        final int recentScale = Settings.System.getInt(getContentResolver(),
-                Settings.System.RECENT_PANEL_SCALE_FACTOR, 100);
+        final int recentScale = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.RECENT_PANEL_SCALE_FACTOR, 100);
         mRecentPanelScale.setValue(recentScale + "");
 
         mRecentPanelExpandedMode = (ListPreference) findPreference(RECENT_PANEL_EXPANDED_MODE);
         mRecentPanelExpandedMode.setOnPreferenceChangeListener(this);
-        final int recentExpandedMode = Settings.System.getInt(getContentResolver(),
-        Settings.System.RECENT_PANEL_EXPANDED_MODE, 0);
+        final int recentExpandedMode = Settings.PAC.getInt(getContentResolver(),
+        Settings.PAC.RECENT_PANEL_EXPANDED_MODE, 0);
         mRecentPanelExpandedMode.setValue(recentExpandedMode + "");
 
         mRecentRamBar = findPreference(RECENT_RAM_BAR);
@@ -162,10 +162,10 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         ContentResolver resolver = getActivity().getContentResolver();
         if (preference == mRecentClearAll) {
             boolean value = (Boolean) objValue;
-            Settings.System.putInt(resolver, Settings.System.SHOW_CLEAR_RECENTS_BUTTON, value ? 1 : 0);
+            Settings.PAC.putInt(resolver, Settings.PAC.SHOW_CLEAR_RECENTS_BUTTON, value ? 1 : 0);
         } else if (preference == mRecentClearAllPosition) {
             String value = (String) objValue;
-            Settings.System.putString(resolver, Settings.System.CLEAR_RECENTS_BUTTON_LOCATION, value);
+            Settings.PAC.putString(resolver, Settings.PAC.CLEAR_RECENTS_BUTTON_LOCATION, value);
         } else if (preference == mRecentsUseOmniSwitch) {
             boolean omniSwitchEnabled = (Boolean) objValue;
 
@@ -174,7 +174,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
                 openOmniSwitchFirstTimeWarning();
             }
 
-            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_OMNISWITCH, omniSwitchEnabled ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(), Settings.PAC.RECENTS_USE_OMNISWITCH, omniSwitchEnabled ? 1 : 0);
 
             // Update OmniSwitch UI components
             mRecentsUseOmniSwitch.setChecked(omniSwitchEnabled);
@@ -190,7 +190,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         } else if (preference == mRecentsUseSlim) {
             boolean useSlimRecents = (Boolean) objValue;
 
-            Settings.System.putInt(getContentResolver(), Settings.System.RECENTS_USE_SLIM,
+            Settings.PAC.putInt(getContentResolver(), Settings.PAC.RECENTS_USE_SLIM,
                     useSlimRecents ? 1 : 0);
 
             // Give user information that Slim Recents needs restart SystemUI
@@ -205,19 +205,19 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
             mRecentClearAllPosition.setEnabled(!useSlimRecents);
         } else if (preference == mRecentPanelScale) {
             int value = Integer.parseInt((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.RECENT_PANEL_SCALE_FACTOR, value);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_PANEL_SCALE_FACTOR, value);
         } else if (preference == mRecentPanelLeftyMode) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.RECENT_PANEL_GRAVITY,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_PANEL_GRAVITY,
                     ((Boolean) objValue) ? Gravity.LEFT : Gravity.RIGHT);
         } else if (preference == mRecentPanelExpandedMode) {
             int value = Integer.parseInt((String) objValue);
-                    Settings.System.putInt(getContentResolver(),
-                    Settings.System.RECENT_PANEL_EXPANDED_MODE, value);
+                    Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_PANEL_EXPANDED_MODE, value);
         } else if (preference == mRecentsShowTopmost) {
-                    Settings.System.putInt(getContentResolver(),
-                    Settings.System.RECENT_PANEL_SHOW_TOPMOST,
+                    Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_PANEL_SHOW_TOPMOST,
                     ((Boolean) objValue) ? 1 : 0);
         } else {
             return false;
@@ -259,8 +259,8 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateRamBarStatus() {
-        int ramBarMode = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.RECENTS_RAM_BAR_MODE, 0);
+        int ramBarMode = Settings.PAC.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.PAC.RECENTS_RAM_BAR_MODE, 0);
         if (ramBarMode != 0)
             mRecentRamBar.setSummary(getResources().getString(R.string.ram_bar_color_enabled));
         else
