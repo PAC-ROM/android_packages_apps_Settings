@@ -531,6 +531,7 @@
     <string name="heads_up_time_out_never">Never</string>
     <string name="heads_up_switch_label">Enable heads up notification</string>
     <string name="heads_up_floating_window">Launch in floating window</string>
+    <string name="heads_up_whitelist_title">Whitelist apps</string>
 
     <!--Blacklist-->
     <string name="blacklist_button_title">Blacklist</string>

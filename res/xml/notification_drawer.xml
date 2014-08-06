@@ -40,7 +40,7 @@
 
     <PreferenceScreen
         android:key="heads_up"
-        android:fragment="com.android.settings.pac.HeadsUp"
+        android:fragment="com.android.settings.pac.headsup.HeadsUp"
         android:title="@string/heads_up_title" />
 
     <CheckBoxPreference
