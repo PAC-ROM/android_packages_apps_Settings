@@ -70,6 +70,14 @@
                 android:layout_marginTop="4dip"
                 android:text="@string/privacy_guard_switch_label" />
 
+            <!-- Enable heads up for an application -->
+            <CheckBox android:id="@+id/heads_up_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginTop="4dip"
+                android:text="@string/heads_up_switch_label" />
+
         </LinearLayout>
 
         <TextView
@@ -347,7 +355,7 @@
             android:layout_marginTop="8dip"
             android:text="@string/auto_launch_label" />
 
-        <RelativeLayout 
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
