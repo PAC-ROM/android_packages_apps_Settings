@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac;
+package com.android.settings.pac.headsup;
 
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
