@@ -20,10 +20,10 @@
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
     <PreferenceScreen
-         android:fragment="com.android.settings.pac.NotificationDrawerStyle"
-         android:key="notification_style"
-         android:title="@string/notification_style_title"
-         android:summary="@string/notification_style_summary" />
+        android:fragment="com.android.settings.pac.NotificationDrawerStyle"
+        android:key="notification_style"
+        android:title="@string/notification_style_title"
+        android:summary="@string/notification_style_summary" />
 
     <ListPreference
         android:key="notification_drawer_collapse_on_dismiss"
@@ -37,6 +37,11 @@
         android:key="quick_settings_panel"
         android:fragment="com.android.settings.quicksettings.QuickSettings"
         android:title="@string/quick_settings_panel_title" />
+
+    <PreferenceScreen
+        android:key="heads_up"
+        android:fragment="com.android.settings.pac.HeadsUp"
+        android:title="@string/heads_up_title" />
 
     <CheckBoxPreference
         android:key="custom_status_bar_header"
@@ -85,48 +90,5 @@
             <extra android:name="config_ribbon" android:value="true" />
         </PreferenceScreen>
     </PreferenceCategory>
-
-    <PreferenceCategory
-        android:title="@string/heads_up_title" />
-
-    <CheckBoxPreference
-        android:key="heads_up_expanded"
-        android:title="@string/heads_up_expanded_title"
-        android:summary="@string/heads_up_expanded_summary"
-        android:persistent="false"
-        android:defaultValue="false" />
-
-    <CheckBoxPreference
-        android:key="heads_up_show_update"
-        android:title="@string/heads_up_show_updates_title"
-        android:summary="@string/heads_up_show_updates_summary"
-        android:persistent="false"
-        android:defaultValue="false" />
-
-    <CheckBoxPreference
-        android:key="heads_up_gravity"
-        android:title="@string/heads_up_gravity_title"
-        android:summary="@string/heads_up_gravity_summary"
-        android:persistent="false"
-        android:defaultValue="false" />
-
-    <ListPreference
-        android:key="heads_up_snooze_time"
-        android:title="@string/heads_up_snooze_title"
-        android:entries="@array/heads_up_snooze_entries"
-        android:entryValues="@array/heads_up_snooze_values"
-        android:persistent="false" />
-
-    <ListPreference
-        android:key="heads_up_time_out"
-        android:title="@string/heads_up_time_out_title"
-        android:entries="@array/heads_up_time_out_entries"
-        android:entryValues="@array/heads_up_time_out_values"
-        android:persistent="false" />
-
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-        android:key="heads_up_floating_window"
-        android:title="@string/heads_up_floating_window"
-        android:defaultValue="true" />
 
 </PreferenceScreen>
