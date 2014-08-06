@@ -150,7 +150,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
         updateBatteryBarOptions();
-        enableStatusBarBatteryDependents(mStatusBarBattery.getValue());
+        enableStatusBarBatteryDependents();
 
         mSettingsObserver = new ContentObserver(new Handler()) {
             @Override
@@ -188,7 +188,7 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.System.putInt(resolver, Settings.System.STATUS_BAR_BATTERY, batteryStyle);
             mStatusBarBattery.setSummary(mStatusBarBattery.getEntries()[index]);
 
-            enableStatusBarBatteryDependents((String) newValue);
+            enableStatusBarBatteryDependents();
             return true;
         } else if (preference == mStatusBarCmSignal) {
             int signalStyle = Integer.valueOf((String) newValue);
@@ -271,10 +271,15 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         }
     }
 
-    private void enableStatusBarBatteryDependents(String value) {
-        boolean enabled = !(value.equals(STATUS_BAR_STYLE_TEXT)
-                || value.equals(STATUS_BAR_STYLE_HIDDEN));
-        mStatusBarBatteryShowPercent.setEnabled(enabled);
+    private void enableStatusBarBatteryDependents() {
+        if (Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_BATTERY, 0) == 4 ||
+            Settings.System.getInt(getActivity().getContentResolver(),
+                Settings.System.STATUS_BAR_BATTERY, 0) == 6) {
+            mStatusBarBatteryShowPercent.setEnabled(false);
+        } else {
+            mStatusBarBatteryShowPercent.setEnabled(true);
+        }
     }
 
     private void updateBatteryBarOptions() {
