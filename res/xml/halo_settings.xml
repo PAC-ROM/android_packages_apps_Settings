@@ -17,6 +17,11 @@ limitations under the License.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/halo_settings_title">
 
+    <com.android.settings.pac.PacSettingCheckBoxPreference
+        android:key="halo_active"
+        android:title="@string/halo_activate_title"
+        android:defaultValue="false" />
+
     <ListPreference
         android:key="halo_state"
         android:dialogTitle="@string/halo_state_title"
