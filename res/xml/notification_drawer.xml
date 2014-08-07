@@ -25,13 +25,6 @@
         android:title="@string/notification_style_title"
         android:summary="@string/notification_style_summary" />
 
-    <ListPreference
-        android:key="notification_drawer_collapse_on_dismiss"
-        android:title="@string/notification_drawer_collapse_on_dismiss_title"
-        android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
-        android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
-        android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
-
     <PreferenceScreen
         settings:includeXmlForSearch="@xml/quick_settings_panel"
         android:key="quick_settings_panel"
@@ -39,9 +32,21 @@
         android:title="@string/quick_settings_panel_title" />
 
     <PreferenceScreen
+        android:key="halo_settings"
+        android:fragment="com.android.settings.pac.Halo"
+        android:title="@string/halo_settings_title" />
+
+    <PreferenceScreen
         android:key="heads_up"
         android:fragment="com.android.settings.pac.headsup.HeadsUp"
         android:title="@string/heads_up_title" />
+
+    <ListPreference
+        android:key="notification_drawer_collapse_on_dismiss"
+        android:title="@string/notification_drawer_collapse_on_dismiss_title"
+        android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
+        android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
+        android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
     <CheckBoxPreference
         android:key="custom_status_bar_header"
