@@ -100,10 +100,10 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarNetworkStats = (CheckBoxPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS);
         mStatusBarNetStatsUpdate = (ListPreference) prefSet.findPreference(STATUS_BAR_NETWORK_STATS_UPDATE);
 
-        mStatusBarNetworkStats.setChecked((Settings.System.getInt(resolver, Settings.System.STATUS_BAR_NETWORK_STATS, 0) == 1));
+        mStatusBarNetworkStats.setChecked((Settings.PAC.getInt(resolver, Settings.PAC.STATUS_BAR_NETWORK_STATS, 0) == 1));
 
-        long statsUpdate = Settings.System.getInt(getActivity().getApplicationContext().getContentResolver(),
-                Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
+        long statsUpdate = Settings.PAC.getInt(getActivity().getApplicationContext().getContentResolver(),
+                Settings.PAC.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, 500);
         mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
         mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
         mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
@@ -125,27 +125,27 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
 
         mBatteryBar = (ListPreference) findPreference(PREF_BATT_BAR);
         mBatteryBar.setOnPreferenceChangeListener(this);
-        mBatteryBar.setValue((Settings.System.getInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR, 0)) + "");
+        mBatteryBar.setValue((Settings.PAC.getInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR, 0)) + "");
         mBatteryBar.setSummary(mBatteryBar.getEntry());
 
         mBatteryBarStyle = (ListPreference) findPreference(PREF_BATT_BAR_STYLE);
         mBatteryBarStyle.setOnPreferenceChangeListener(this);
-        mBatteryBarStyle.setValue((Settings.System.getInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_STYLE, 0)) + "");
+        mBatteryBarStyle.setValue((Settings.PAC.getInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_STYLE, 0)) + "");
         mBatteryBarStyle.setSummary(mBatteryBarStyle.getEntry());
 
         mBatteryBarColor = (ColorPickerPreference) findPreference(PREF_BATT_BAR_COLOR);
         mBatteryBarColor.setOnPreferenceChangeListener(this);
         int defaultColor = 0xffffffff;
-        int intColor = Settings.System.getInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_COLOR, defaultColor);
+        int intColor = Settings.PAC.getInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_COLOR, defaultColor);
         String hexColor = String.format("#%08x", (0xffffffff & intColor));
         mBatteryBarColor.setSummary(hexColor);
 
         mBatteryBarChargingAnimation = (CheckBoxPreference) findPreference(PREF_BATT_ANIMATE);
-        mBatteryBarChargingAnimation.setChecked(Settings.System.getInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_ANIMATE, 0) == 1);
+        mBatteryBarChargingAnimation.setChecked(Settings.PAC.getInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_ANIMATE, 0) == 1);
 
         mBatteryBarThickness = (ListPreference) findPreference(PREF_BATT_BAR_WIDTH);
         mBatteryBarThickness.setOnPreferenceChangeListener(this);
-        mBatteryBarThickness.setValue((Settings.System.getInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_THICKNESS, 1)) + "");
+        mBatteryBarThickness.setValue((Settings.PAC.getInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_THICKNESS, 1)) + "");
         mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntry());
 
         updateBatteryBarOptions();
@@ -207,33 +207,33 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             preference.setSummary(hex);
 
             int intHex = ColorPickerPreference.convertToColorInt(hex);
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.STATUSBAR_BATTERY_BAR_COLOR, intHex);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.STATUSBAR_BATTERY_BAR_COLOR, intHex);
             return true;
         } else if (preference == mBatteryBar) {
             int val = Integer.valueOf((String) newValue);
             int index = mBatteryBar.findIndexOfValue((String) newValue);
-            Settings.System.putInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR, val);
+            Settings.PAC.putInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR, val);
             mBatteryBar.setSummary(mBatteryBar.getEntries()[index]);
             updateBatteryBarOptions();
             return true;
         } else if (preference == mBatteryBarStyle) {
             int val = Integer.valueOf((String) newValue);
             int index = mBatteryBarStyle.findIndexOfValue((String) newValue);
-            Settings.System.putInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_STYLE, val);
+            Settings.PAC.putInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_STYLE, val);
             mBatteryBarStyle.setSummary(mBatteryBarStyle.getEntries()[index]);
             return true;
         } else if (preference == mBatteryBarThickness) {
             int val = Integer.valueOf((String) newValue);
             int index = mBatteryBarThickness.findIndexOfValue((String) newValue);
-            Settings.System.putInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_THICKNESS, val);
+            Settings.PAC.putInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_THICKNESS, val);
             mBatteryBarThickness.setSummary(mBatteryBarThickness.getEntries()[index]);
             return true;
         } else if (preference == mStatusBarNetStatsUpdate) {
             long updateInterval = Long.valueOf((String) newValue);
             int index = mStatusBarNetStatsUpdate.findIndexOfValue((String) newValue);
-            Settings.System.putLong(getActivity().getApplicationContext().getContentResolver(),
-                    Settings.System.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
+            Settings.PAC.putLong(getActivity().getApplicationContext().getContentResolver(),
+                    Settings.PAC.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
             mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntries()[index]);
             return true;
         }
@@ -245,11 +245,11 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         boolean value;
         if (preference == mStatusBarNetworkStats) {
             value = mStatusBarNetworkStats.isChecked();
-            Settings.System.putInt(resolver, Settings.System.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
+            Settings.PAC.putInt(resolver, Settings.PAC.STATUS_BAR_NETWORK_STATS, value ? 1 : 0);
             return true;
         } else if (preference == mBatteryBarChargingAnimation) {
             value = mBatteryBarChargingAnimation.isChecked();
-            Settings.System.putInt(resolver, Settings.System.STATUSBAR_BATTERY_BAR_ANIMATE, value ? 1 : 0);
+            Settings.PAC.putInt(resolver, Settings.PAC.STATUSBAR_BATTERY_BAR_ANIMATE, value ? 1 : 0);
             return true;
         }
         return false;
@@ -281,8 +281,8 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     }
 
     private void updateBatteryBarOptions() {
-        if (Settings.System.getInt(getActivity().getContentResolver(),
-               Settings.System.STATUSBAR_BATTERY_BAR, 0) == 0) {
+        if (Settings.PAC.getInt(getActivity().getContentResolver(),
+               Settings.PAC.STATUSBAR_BATTERY_BAR, 0) == 0) {
             mBatteryBarStyle.setEnabled(false);
             mBatteryBarThickness.setEnabled(false);
             mBatteryBarChargingAnimation.setEnabled(false);

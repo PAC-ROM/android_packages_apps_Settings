@@ -60,18 +60,18 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
         updateCollapseBehaviourSummary(collapseBehaviour);
 
         mStatusBarCustomHeader = (CheckBoxPreference) findPreference(STATUS_BAR_CUSTOM_HEADER);
-        mStatusBarCustomHeader.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
+        mStatusBarCustomHeader.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.STATUS_BAR_CUSTOM_HEADER, 0) == 1);
         mStatusBarCustomHeader.setOnPreferenceChangeListener(this);
 
         mFullScreenDetection = (CheckBoxPreference) findPreference(SWIPE_TO_SWITCH_SCREEN_DETECTION);
-        mFullScreenDetection.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.SWIPE_TO_SWITCH_SCREEN_DETECTION, 0) == 1);
+        mFullScreenDetection.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.SWIPE_TO_SWITCH_SCREEN_DETECTION, 0) == 1);
         mFullScreenDetection.setOnPreferenceChangeListener(this);
 
         mShowWifiName = (CheckBoxPreference) findPreference(PREF_NOTIFICATION_SHOW_WIFI_SSID);
-        mShowWifiName.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
+        mShowWifiName.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NOTIFICATION_SHOW_WIFI_SSID, 0) == 1);
         mShowWifiName.setOnPreferenceChangeListener(this);
 
     }
@@ -85,18 +85,18 @@ public class NotificationDrawer extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mStatusBarCustomHeader) {
             boolean value = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                Settings.PAC.STATUS_BAR_CUSTOM_HEADER, value ? 1 : 0);
             return true;
         } else if (preference == mFullScreenDetection) {
             boolean value = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.SWIPE_TO_SWITCH_SCREEN_DETECTION, value ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                Settings.PAC.SWIPE_TO_SWITCH_SCREEN_DETECTION, value ? 1 : 0);
             return true;
         } else if (preference == mShowWifiName) {
             boolean value = (Boolean) objValue;
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.NOTIFICATION_SHOW_WIFI_SSID, value ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                Settings.PAC.NOTIFICATION_SHOW_WIFI_SSID, value ? 1 : 0);
             return true;
         }
 

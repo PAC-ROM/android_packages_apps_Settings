@@ -95,8 +95,8 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateDimensionValues() {
-        int navigationBarHeight = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_HEIGHT, -2);
+        int navigationBarHeight = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_HEIGHT, -2);
         if (navigationBarHeight == -2) {
             navigationBarHeight = (int) (getResources().getDimension(
                     com.android.internal.R.dimen.navigation_bar_height)
@@ -107,8 +107,8 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
         if (mNavigationBarHeightLandcape == null) {
             return;
         }
-        int navigationBarHeightLandcape = Settings.System.getInt(getContentResolver(),
-                            Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
+        int navigationBarHeightLandcape = Settings.PAC.getInt(getContentResolver(),
+                            Settings.PAC.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
         if (navigationBarHeightLandcape == -2) {
             navigationBarHeightLandcape = (int) (getResources().getDimension(
                     com.android.internal.R.dimen.navigation_bar_height_landscape)
@@ -119,8 +119,8 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
         if (mNavigationBarWidth == null) {
             return;
         }
-        int navigationBarWidth = Settings.System.getInt(getContentResolver(),
-                            Settings.System.NAVIGATION_BAR_WIDTH, -2);
+        int navigationBarWidth = Settings.PAC.getInt(getContentResolver(),
+                            Settings.PAC.NAVIGATION_BAR_WIDTH, -2);
         if (navigationBarWidth == -2) {
             navigationBarWidth = (int) (getResources().getDimension(
                     com.android.internal.R.dimen.navigation_bar_width)
@@ -152,20 +152,20 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mNavigationBarWidth) {
             String newVal = (String) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_WIDTH,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.NAVIGATION_BAR_WIDTH,
                     Integer.parseInt(newVal));
             return true;
         } else if (preference == mNavigationBarHeight) {
             String newVal = (String) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.NAVIGATION_BAR_HEIGHT,
                     Integer.parseInt(newVal));
             return true;
         } else if (preference == mNavigationBarHeightLandcape) {
             String newVal = (String) newValue;
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.NAVIGATION_BAR_HEIGHT_LANDSCAPE,
                     Integer.parseInt(newVal));
             return true;
         }
@@ -209,10 +209,10 @@ public class NavbarDimenSettings extends SettingsPreferenceFragment implements
                     .setPositiveButton(R.string.dlg_ok,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_HEIGHT, -2);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_WIDTH, -2);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.NAVIGATION_BAR_HEIGHT, -2);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.NAVIGATION_BAR_WIDTH, -2);
                             getOwner().updateDimensionValues();
                         }
                     })

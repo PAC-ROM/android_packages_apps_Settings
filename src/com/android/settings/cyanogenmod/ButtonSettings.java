@@ -137,8 +137,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
 
         void observe() {
             ContentResolver resolver = getActivity().getContentResolver();
-            resolver.registerContentObserver(Settings.System.getUriFor(
-                    Settings.System.NAVIGATION_BAR_SHOW), false, this,
+            resolver.registerContentObserver(Settings.PAC.getUriFor(
+                    Settings.PAC.NAVIGATION_BAR_SHOW), false, this,
                     UserHandle.USER_ALL);
         }
 
@@ -204,8 +204,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // overriding overlays
         boolean hasNavBarByDefault = getResources().getBoolean(
                   com.android.internal.R.bool.config_showNavigationBar);
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                  Settings.System.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
+        boolean enableNavigationBar = Settings.PAC.getInt(getContentResolver(),
+                  Settings.PAC.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
         mEnableNavigationBar.setChecked(enableNavigationBar);
         mEnableNavigationBar.setOnPreferenceChangeListener(this);
 
@@ -362,8 +362,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         try {
             // Only show the navigation bar category on devices that has a navigation bar
             // unless we are forcing it via development settings
-            boolean forceNavbar = android.provider.Settings.System.getInt(getContentResolver(),
-                    android.provider.Settings.System.NAVIGATION_BAR_SHOW, 0) == 1;
+            boolean forceNavbar = android.provider.Settings.PAC.getInt(getContentResolver(),
+                    android.provider.Settings.PAC.NAVIGATION_BAR_SHOW, 0) == 1;
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
 
@@ -425,8 +425,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateSettings() {
-        boolean enableNavigationBar = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW,
+        boolean enableNavigationBar = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_SHOW,
                 SlimActions.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
         mEnableNavigationBar.setChecked(enableNavigationBar);
 
@@ -497,8 +497,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     showDialogInner(DLG_NAVIGATION_WARNING);
                 return true;
             }
-            Settings.System.putInt(getActivity().getContentResolver(),
-                    Settings.System.NAVIGATION_BAR_SHOW,
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.NAVIGATION_BAR_SHOW,
                     ((Boolean) newValue) ? 1 : 0);
             updateNavbarPreferences((Boolean) newValue);
           return true;
@@ -512,8 +512,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         final int defaultBrightness = context.getResources().getInteger(
                 com.android.internal.R.integer.config_buttonBrightnessSettingDefault);
 
-        Settings.System.putInt(context.getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, enabled ? 1 : 0);
+        Settings.PAC.putInt(context.getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_SHOW, enabled ? 1 : 0);
         KeyDisabler.setActive(enabled);
 
         /* Save/restore button timeouts to disable them in softkey mode */
@@ -539,8 +539,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateDisableNavkeysOption() {
-        boolean enabled = Settings.System.getInt(getActivity().getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, 0) != 0;
+        boolean enabled = Settings.PAC.getInt(getActivity().getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_SHOW, 0) != 0;
 
         mEnableNavigationBar.setChecked(enabled);
 
@@ -584,8 +584,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return;
         }
 
-        writeDisableNavkeysOption(context, Settings.System.getInt(context.getContentResolver(),
-                Settings.System.NAVIGATION_BAR_SHOW, 0) != 0);
+        writeDisableNavkeysOption(context, Settings.PAC.getInt(context.getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_SHOW, 0) != 0);
     }
 
 
@@ -674,10 +674,10 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     .setPositiveButton(R.string.dlg_ok,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.PIE_CONTROLS, 1);
-                            Settings.System.putInt(getActivity().getContentResolver(),
-                                    Settings.System.NAVIGATION_BAR_SHOW, 0);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.PIE_CONTROLS, 1);
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.NAVIGATION_BAR_SHOW, 0);
                             getOwner().updateNavbarPreferences(false);
                         }
                     })

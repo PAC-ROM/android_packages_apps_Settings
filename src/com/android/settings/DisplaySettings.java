@@ -156,8 +156,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         try {
             // Only show the navigation bar category on devices that has a navigation bar
             // unless we are forcing it via development settings
-            boolean forceNavbar = android.provider.Settings.System.getInt(getContentResolver(),
-                    android.provider.Settings.System.NAVIGATION_BAR_SHOW, 0) == 1;
+            boolean forceNavbar = android.provider.Settings.PAC.getInt(getContentResolver(),
+                    android.provider.Settings.PAC.NAVIGATION_BAR_SHOW, 0) == 1;
             boolean hasNavBar = WindowManagerGlobal.getWindowManagerService().hasNavigationBar()
                     || forceNavbar;
 

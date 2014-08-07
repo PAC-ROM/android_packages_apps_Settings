@@ -80,48 +80,48 @@ public class ProgressBar extends SettingsPreferenceFragment implements
         addPreferencesFromResource(R.xml.progressbar);
 
         mprogressbar_mirror = (CheckBoxPreference) findPreference(PROGRESSBAR_MIRROR);
-        mprogressbar_mirror.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_MIRROR, 0) == 1);
+        mprogressbar_mirror.setChecked(Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_MIRROR, 0) == 1);
 
         mprogressbar_reverse = (CheckBoxPreference) findPreference(PROGRESSBAR_REVERSE);
-        mprogressbar_reverse.setChecked(Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_REVERSE, 0) == 1);
+        mprogressbar_reverse.setChecked(Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_REVERSE, 0) == 1);
 
         mprogressbar_speed = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_SPEED);
-        mprogressbar_speed.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.PROGRESSBAR_SPEED, 4));
+        mprogressbar_speed.setValue(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PROGRESSBAR_SPEED, 4));
         mprogressbar_speed.setOnPreferenceChangeListener(this);
 
         mprogressbar_width = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_WIDTH);
-        mprogressbar_width.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.PROGRESSBAR_WIDTH, 4));
+        mprogressbar_width.setValue(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PROGRESSBAR_WIDTH, 4));
         mprogressbar_width.setOnPreferenceChangeListener(this);
 
         mprogressbar_length = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_LENGTH);
-        mprogressbar_length.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.PROGRESSBAR_LENGTH, 10));
+        mprogressbar_length.setValue(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PROGRESSBAR_LENGTH, 10));
         mprogressbar_length.setOnPreferenceChangeListener(this);
 
         mprogressbar_count = (SeekBarPreferenceCHOS) findPreference(PROGRESSBAR_COUNT);
-        mprogressbar_count.setValue(Settings.System.getInt(getContentResolver(),
-                Settings.System.PROGRESSBAR_COUNT, 6));
+        mprogressbar_count.setValue(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PROGRESSBAR_COUNT, 6));
         mprogressbar_count.setOnPreferenceChangeListener(this);
 
         mprogressbar_color_1 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_1);
-        int intColor1 = Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_1, defaultColorOne);
+        int intColor1 = Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_1, defaultColorOne);
         mprogressbar_color_1.setNewPreviewColor(intColor1);
         mprogressbar_color_1.setOnPreferenceChangeListener(this);
 
         mprogressbar_color_2 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_2);
-        int intColor2 = Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_2, defaultColorTwo);
+        int intColor2 = Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_2, defaultColorTwo);
         mprogressbar_color_2.setNewPreviewColor(intColor2);
         mprogressbar_color_2.setOnPreferenceChangeListener(this);
 
         mprogressbar_color_3 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_3);
-        int intColor3 = Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_3, defaultColorThree);
+        int intColor3 = Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_3, defaultColorThree);
         mprogressbar_color_3.setNewPreviewColor(intColor3);
         mprogressbar_color_3.setOnPreferenceChangeListener(this);
 
         mprogressbar_color_4 = (ColorPickerPreference) findPreference(PROGRESSBAR_COLOR_4);
-        int intColor4 = Settings.System.getInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_4, defaultColorFour);
+        int intColor4 = Settings.PAC.getInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_4, defaultColorFour);
         mprogressbar_color_4.setNewPreviewColor(intColor4);
         mprogressbar_color_4.setOnPreferenceChangeListener(this);
 
@@ -160,16 +160,16 @@ public class ProgressBar extends SettingsPreferenceFragment implements
     }
 
     private void ProgressBarColorReset() {
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_MIRROR, 0);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_REVERSE, 0);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_SPEED, 4);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_WIDTH, 4);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_LENGTH, 10);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COUNT, 6);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_1, defaultColorOne);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_2, defaultColorTwo);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_3, defaultColorThree);
-        Settings.System.putInt(getContentResolver(), Settings.System.PROGRESSBAR_COLOR_4, defaultColorFour);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_MIRROR, 0);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_REVERSE, 0);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_SPEED, 4);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_WIDTH, 4);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_LENGTH, 10);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COUNT, 6);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_1, defaultColorOne);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_2, defaultColorTwo);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_3, defaultColorThree);
+        Settings.PAC.putInt(getContentResolver(), Settings.PAC.PROGRESSBAR_COLOR_4, defaultColorFour);
 
         mprogressbar_mirror.setChecked(false);
         mprogressbar_reverse.setChecked(false);
@@ -193,13 +193,13 @@ public class ProgressBar extends SettingsPreferenceFragment implements
         boolean value;
         if (preference == mprogressbar_mirror) {
             value = mprogressbar_mirror.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_MIRROR, value ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_MIRROR, value ? 1 : 0);
             return true;
         } else if (preference == mprogressbar_reverse) {
             value = mprogressbar_reverse.isChecked();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_REVERSE, value ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_REVERSE, value ? 1 : 0);
             return true;
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -209,43 +209,43 @@ public class ProgressBar extends SettingsPreferenceFragment implements
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mprogressbar_speed) {
             int speed = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_SPEED, speed);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_SPEED, speed);
             return true;
         } else if ( preference == mprogressbar_width) {
             int width = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.PROGRESSBAR_WIDTH, width);
+            Settings.PAC.putInt(getContentResolver(),
+                Settings.PAC.PROGRESSBAR_WIDTH, width);
             return true;
         } else if ( preference == mprogressbar_length) {
             int length = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_LENGTH, length);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_LENGTH, length);
             return true;
         } else if ( preference == mprogressbar_count) {
             int count = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_COUNT, count);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_COUNT, count);
             return true;
         } else if ( preference == mprogressbar_color_1) {
             int color1 = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_COLOR_1, color1);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_COLOR_1, color1);
             return true;
         } else if ( preference == mprogressbar_color_2) {
             int color2 = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_COLOR_2, color2);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_COLOR_2, color2);
             return true;
         } else if ( preference == mprogressbar_color_3) {
             int color3 = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_COLOR_3, color3);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_COLOR_3, color3);
             return true;
         } else if ( preference == mprogressbar_color_4) {
             int color4 = ((Integer)newValue).intValue();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PROGRESSBAR_COLOR_4, color4);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PROGRESSBAR_COLOR_4, color4);
             return true;
         }
         return false;

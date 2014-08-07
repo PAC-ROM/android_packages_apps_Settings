@@ -42,7 +42,7 @@ public class PowerMenu extends SettingsPreferenceFragment {
         findPreference(Settings.System.POWER_MENU_PROFILES_ENABLED).setEnabled(
                 Settings.System.getInt(resolver, Settings.System.SYSTEM_PROFILES_ENABLED, 1) != 0);
 
-        findPreference(Settings.System.POWER_MENU_NAV_BAR_ENABLED).setEnabled(true);
+        findPreference(Settings.PAC.POWER_MENU_NAV_BAR_ENABLED).setEnabled(true);
 
         if (!UserHandle.MU_ENABLED || !UserManager.supportsMultipleUsers()) {
             getPreferenceScreen().removePreference(

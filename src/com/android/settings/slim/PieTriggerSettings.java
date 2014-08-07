@@ -82,8 +82,8 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
         int triggerSlots = 0;
         int counter = 0;
         if (preference == mDisableImeTriggers) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_IME_CONTROL,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_IME_CONTROL,
                     (Boolean) newValue ? 1 : 0);
         } else {
             for (int i = 0; i < mTrigger.length; i++) {
@@ -100,8 +100,8 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
                 showDialogInner(DLG_WARNING);
                 return true;
             }
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.PIE_GRAVITY, triggerSlots);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.PIE_GRAVITY, triggerSlots);
         }
         updatePieTriggers();
         return true;
@@ -112,7 +112,7 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
         super.onResume();
 
         getContentResolver().registerContentObserver(
-                Settings.System.getUriFor(Settings.System.PIE_GRAVITY), true,
+                Settings.PAC.getUriFor(Settings.PAC.PIE_GRAVITY), true,
                 mPieTriggerObserver);
 
         updatePieTriggers();
@@ -125,8 +125,8 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
     }
 
     private void updatePieTriggers() {
-        int triggerSlots = Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_GRAVITY, DEFAULT_POSITION);
+        int triggerSlots = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_GRAVITY, DEFAULT_POSITION);
 
         for (int i = 0; i < mTrigger.length; i++) {
             if ((triggerSlots & (0x01 << i)) != 0) {
@@ -136,8 +136,8 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
             }
         }
 
-        mDisableImeTriggers.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.PIE_IME_CONTROL, 1) == 1);
+        mDisableImeTriggers.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.PIE_IME_CONTROL, 1) == 1);
     }
 
     private void showDialogInner(int id) {

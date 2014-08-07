@@ -116,8 +116,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         }
 
         mFlipQsTiles = (CheckBoxPreference) findPreference(PREF_FLIP_QS_TILES);
-        mFlipQsTiles.setChecked(Settings.System.getInt(resolver,
-                Settings.System.QUICK_SETTINGS_TILES_FLIP, 0) == 1);
+        mFlipQsTiles.setChecked(Settings.PAC.getInt(resolver,
+                Settings.PAC.QUICK_SETTINGS_TILES_FLIP, 0) == 1);
 
         // Add the network mode preference
         mNetworkMode = (ListPreference) prefSet.findPreference(EXP_NETWORK_MODE);
@@ -190,8 +190,8 @@ public class QuickSettings extends SettingsPreferenceFragment implements
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         ContentResolver resolver = getContentResolver();
         if (preference == mFlipQsTiles) {
-            Settings.System.putInt(resolver,
-                    Settings.System.QUICK_SETTINGS_TILES_FLIP,
+            Settings.PAC.putInt(resolver,
+                    Settings.PAC.QUICK_SETTINGS_TILES_FLIP,
                     ((CheckBoxPreference) preference).isChecked() ? 1 : 0);
             return true;
         }

@@ -57,24 +57,24 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
 
         mDisableFullscreenKeyboard =
             (CheckBoxPreference) findPreference(PREF_DISABLE_FULLSCREEN_KEYBOARD);
-        mDisableFullscreenKeyboard.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
+        mDisableFullscreenKeyboard.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DISABLE_FULLSCREEN_KEYBOARD, 0) == 1);
         mDisableFullscreenKeyboard.setOnPreferenceChangeListener(this);
 
         mKeyboardRotationToggle = (CheckBoxPreference) findPreference(KEYBOARD_ROTATION_TOGGLE);
-        mKeyboardRotationToggle.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
+        mKeyboardRotationToggle.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.KEYBOARD_ROTATION_TIMEOUT, 0) > 0);
         mKeyboardRotationToggle.setOnPreferenceChangeListener(this);
 
         mKeyboardRotationTimeout = (ListPreference) findPreference(KEYBOARD_ROTATION_TIMEOUT);
         mKeyboardRotationTimeout.setOnPreferenceChangeListener(this);
-        updateRotationTimeout(Settings.System.getInt(
-                getContentResolver(), Settings.System.KEYBOARD_ROTATION_TIMEOUT,
+        updateRotationTimeout(Settings.PAC.getInt(
+                getContentResolver(), Settings.PAC.KEYBOARD_ROTATION_TIMEOUT,
                 KEYBOARD_ROTATION_TIMEOUT_DEFAULT));
 
         mShowEnterKey = (CheckBoxPreference) findPreference(SHOW_ENTER_KEY);
-        mShowEnterKey.setChecked(Settings.System.getInt(getContentResolver(),
-                Settings.System.FORMAL_TEXT_INPUT, 0) == 1);
+        mShowEnterKey.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.FORMAL_TEXT_INPUT, 0) == 1);
         mShowEnterKey.setOnPreferenceChangeListener(this);
     }
 
@@ -108,27 +108,27 @@ public class InputMethodsSettings extends SettingsPreferenceFragment implements
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         if (preference == mDisableFullscreenKeyboard) {
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.DISABLE_FULLSCREEN_KEYBOARD,  (Boolean) objValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.DISABLE_FULLSCREEN_KEYBOARD,  (Boolean) objValue ? 1 : 0);
             return true;
         } else if (preference == mKeyboardRotationToggle) {
             boolean isAutoRotate = (Settings.System.getInt(getContentResolver(),
                         Settings.System.ACCELEROMETER_ROTATION, 0) == 1);
             if (isAutoRotate && mKeyboardRotationToggle.isChecked())
                 mKeyboardRotationDialog();
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.KEYBOARD_ROTATION_TIMEOUT,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.KEYBOARD_ROTATION_TIMEOUT,
                     (Boolean) objValue ? KEYBOARD_ROTATION_TIMEOUT_DEFAULT : 0);
             updateRotationTimeout(KEYBOARD_ROTATION_TIMEOUT_DEFAULT);
             return true;
         } else if (preference == mShowEnterKey) {
-            Settings.System.putInt(getContentResolver(),
-                Settings.System.FORMAL_TEXT_INPUT, (Boolean) objValue ? 1 : 0);
+            Settings.PAC.putInt(getContentResolver(),
+                Settings.PAC.FORMAL_TEXT_INPUT, (Boolean) objValue ? 1 : 0);
             return true;
         } else if (preference == mKeyboardRotationTimeout) {
             int timeout = Integer.parseInt((String) objValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.KEYBOARD_ROTATION_TIMEOUT, timeout);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.KEYBOARD_ROTATION_TIMEOUT, timeout);
             updateRotationTimeout(timeout);
             return true;
         }
