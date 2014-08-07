@@ -1797,6 +1797,18 @@
                 android:value="com.android.settings.pac.RamBar" />
         </activity>
 
+        <activity android:name="Settings$HaloActivity"
+                android:label="@string/title_tile_halo"
+                android:taskAffinity=""
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.pac.Halo" />
+        </activity>
+
         <activity android:name=".pac.Halo" />
 
         <!-- PAC-Rom activities End -->
