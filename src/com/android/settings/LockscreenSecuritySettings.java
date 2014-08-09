@@ -56,11 +56,6 @@ public class LockscreenSecuritySettings extends RestrictedSettingsFragment
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_IMPROVE_REQUEST = 124;
     private static final int CONFIRM_EXISTING_FOR_BIOMETRIC_WEAK_LIVELINESS_OFF = 125;
 
-    // PAC-Rom Additions
-    private static final String LOCKSCREEN_QUICK_UNLOCK_CONTROL = "quick_unlock_control";
-    private static final String CATEGORY_ADDITIONAL = "additional_options";
-    private static final String LOCK_NUMPAD_RANDOM = "lock_numpad_random";
-
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
 
@@ -74,8 +69,6 @@ public class LockscreenSecuritySettings extends RestrictedSettingsFragment
     private CheckBoxPreference mVisibleDots;
 
     private CheckBoxPreference mPowerButtonInstantlyLocks;
-
-    private ListPreference mLockNumpadRandom;
 
     public LockscreenSecuritySettings() {
         super(null /* Don't ask for restrictions pin on creation. */);
@@ -157,16 +150,6 @@ public class LockscreenSecuritySettings extends RestrictedSettingsFragment
         // lock instantly on power key press
         mPowerButtonInstantlyLocks = (CheckBoxPreference) root.findPreference(
                 KEY_POWER_INSTANTLY_LOCKS);
-
-        // Lock Numpad Random
-        mLockNumpadRandom = (ListPreference) root.findPreference(LOCK_NUMPAD_RANDOM);
-        if (mLockNumpadRandom != null) {
-            mLockNumpadRandom.setValue(String.valueOf(
-                    Settings.Secure.getInt(getContentResolver(),
-                    Settings.Secure.LOCK_NUMPAD_RANDOM, 0)));
-            mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
-            mLockNumpadRandom.setOnPreferenceChangeListener(this);
-        }
 
         // don't display visible pattern if biometric and backup is not pattern
         if (resid == R.xml.security_settings_biometric_weak &&
@@ -375,12 +358,6 @@ public class LockscreenSecuritySettings extends RestrictedSettingsFragment
                 Log.e("SecuritySettings", "could not persist lockAfter timeout setting", e);
             }
             updateLockAfterPreferenceSummary();
-        } else if (preference == mLockNumpadRandom) {
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.LOCK_NUMPAD_RANDOM,
-                    Integer.valueOf((String) value));
-            mLockNumpadRandom.setValue(String.valueOf(value));
-            mLockNumpadRandom.setSummary(mLockNumpadRandom.getEntry());
         }
         return true;
     }
