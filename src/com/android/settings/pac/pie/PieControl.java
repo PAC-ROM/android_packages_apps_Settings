@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim;
+package com.android.settings.pac.pie;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -31,7 +31,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-import com.android.internal.util.slim.SlimActions;
+import com.android.internal.util.pac.SlimActions;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;

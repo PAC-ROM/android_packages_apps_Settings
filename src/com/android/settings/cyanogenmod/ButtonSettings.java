@@ -48,7 +48,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 
-import com.android.internal.util.slim.SlimActions;
+import com.android.internal.util.pac.SlimActions;
 
 import org.cyanogenmod.hardware.KeyDisabler;
 

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim;
+package com.android.settings.pac.pie;
 
 import android.app.AlertDialog;
 import android.app.Dialog;

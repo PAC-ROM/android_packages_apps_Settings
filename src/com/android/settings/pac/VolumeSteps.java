@@ -29,7 +29,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.internal.util.crdroid.DeviceUtils;
+import com.android.internal.util.pac.DeviceUtils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;

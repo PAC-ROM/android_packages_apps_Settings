@@ -24,25 +24,25 @@
 
     <PreferenceScreen
             android:key="pie_button"
-            android:fragment="com.android.settings.slim.dslv.ButtonsListViewSettings"
+            android:fragment="com.android.settings.pac.dslv.ButtonsListViewSettings"
             android:title="@string/pie_button"
             android:dependency="pie_control">
         <extra android:name="buttonMode" android:value="1" />
         <extra android:name="maxAllowedButtons" android:value="5" />
         <extra android:name="disableDeleteLastEntry" android:value="true" />
-        <extra android:name="fragment" android:value="com.android.settings.slim.fragments.PieButtonFragment" />
+        <extra android:name="fragment" android:value="com.android.settings.pac.pie.fragments.PieButtonFragment" />
     </PreferenceScreen>
 
 
     <PreferenceScreen
         android:key="pie_style"
-        android:fragment="com.android.settings.slim.PieStyleSettings"
+        android:fragment="com.android.settings.pac.pie.PieStyleSettings"
         android:title="@string/pie_style"
         android:dependency="pie_control" />
 
     <PreferenceScreen
         android:key="pie_trigger"
-        android:fragment="com.android.settings.slim.PieTriggerSettings"
+        android:fragment="com.android.settings.pac.pie.PieTriggerSettings"
         android:title="@string/pie_control_trigger_positions"
         android:dependency="pie_control" />
 

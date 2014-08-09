@@ -1,4 +1,4 @@
-package com.android.settings.cyanogenmod.fragments;
+package com.android.settings.pac;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -125,7 +125,7 @@ public class WakeLockBlocker extends SettingsPreferenceFragment {
                             mAlertShown = true;
                         }
 
-                        Settings.System.putInt(mContext.getContentResolver(), Settings.System.WAKELOCK_BLOCKING_ENABLED,
+                        Settings.PAC.putInt(mContext.getContentResolver(), Settings.PAC.WAKELOCK_BLOCKING_ENABLED,
                                 checked?1:0);
 
                         updateSwitches();
@@ -149,13 +149,13 @@ public class WakeLockBlocker extends SettingsPreferenceFragment {
     }
 
     private boolean isFirstEnable() {
-        return Settings.System.getString(mContext.getContentResolver(),
-                Settings.System.WAKELOCK_BLOCKING_ENABLED) == null;
+        return Settings.PAC.getString(mContext.getContentResolver(),
+                Settings.PAC.WAKELOCK_BLOCKING_ENABLED) == null;
     }
 
     private void updateSwitches() {
-        mBlockerEnabled.setChecked(Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.WAKELOCK_BLOCKING_ENABLED, 0)==1?true:false);
+        mBlockerEnabled.setChecked(Settings.PAC.getInt(mContext.getContentResolver(),
+                Settings.PAC.WAKELOCK_BLOCKING_ENABLED, 0)==1?true:false);
 
         mEnabled = mBlockerEnabled.isChecked();
         //mWakeLockList.setEnabled(mEnabled);
@@ -180,8 +180,8 @@ public class WakeLockBlocker extends SettingsPreferenceFragment {
     }
 
     private void updateBlockedWakeLocksList() {
-        String blockedWakelockList = Settings.System.getString(mContext.getContentResolver(),
-                Settings.System.WAKELOCK_BLOCKING_LIST);
+        String blockedWakelockList = Settings.PAC.getString(mContext.getContentResolver(),
+                Settings.PAC.WAKELOCK_BLOCKING_LIST);
 
         mBlockedWakeLocks = new ArrayList<String>();
 
@@ -215,8 +215,8 @@ public class WakeLockBlocker extends SettingsPreferenceFragment {
             buffer.deleteCharAt(buffer.length() - 1);
         }
         Log.d("maxwen", buffer.toString());
-        Settings.System.putString(mContext.getContentResolver(),
-                Settings.System.WAKELOCK_BLOCKING_LIST, buffer.toString());
+        Settings.PAC.putString(mContext.getContentResolver(),
+                Settings.PAC.WAKELOCK_BLOCKING_LIST, buffer.toString());
     }
 
     private void reload(){

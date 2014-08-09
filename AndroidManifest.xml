@@ -1811,6 +1811,14 @@
 
         <activity android:name=".pac.Halo" />
 
+        <activity
+            android:name=".pac.WakeLockBlocker"
+            android:label="@string/wakelock_blocker" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
         <!-- PAC-Rom activities End -->
 
         <!-- CyanogenMod activities Start -->
@@ -1924,14 +1932,6 @@
         <activity android:name=".cyanogenmod.ContributorsCloud" />
 
         <activity android:name=".cyanogenmod.LockscreenInterface" />
-
-        <activity
-            android:name=".cyanogenmod.fragments.WakeLockBlocker"
-            android:label="@string/wakelock_blocker" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
 
         <activity android:name=".notificationlight.NotificationLightSettings" />
 

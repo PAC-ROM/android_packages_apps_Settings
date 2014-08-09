@@ -16,6 +16,10 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!--Blacklist-->
+    <string name="blacklist_button_title">Blacklist</string>
+    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
+
     <!-- Battery Bar -->
     <string name="battery_bar">Battery bar location</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
@@ -54,6 +58,82 @@
     <string name="reset">Reset</string>
     <string name="attention">Attention</string>
 
+    <!-- Halo -->
+    <string name="halo_settings_title">Halo</string>
+    <string name="halo_activate_title">Activate Halo</string>
+    <string name="halo_behavior_title">Halo Behavior</string>
+    <string name="halo_hide_title">Hide Halo after activity</string>
+    <string name="halo_hide_summary">Halo will appear for incoming tasks and scroll out of sight after a while</string>
+    <string name="halo_state_title">Halo policy</string>
+    <string name="halo_state_summary">Enables black/white listing notifications</string>
+    <string name="halo_state_black">Black list</string>
+    <string name="halo_state_white">White list</string>
+    <string name="halo_pause_title">Pause active app</string>
+    <string name="halo_pause_summary">When opening an app with Halo the underlying app will get paused</string>
+    <string name="halo_notification_msgbox_title">Enable message pop-up</string>
+    <string name="halo_notification_msgbox_summary">Show message box for incoming notifications</string>
+    <string name="halo_unlock_ping_title">Ping on unlock</string>
+    <string name="halo_unlock_ping_summary">Halo will ping when device is unlocked if new notifications were received</string>
+
+    <string name="halo_size_title">Halo size</string>
+    <string name="halo_size_summary">Defines how big Halo is going to be</string>
+    <string name="halo_size_miniscule">Miniscule</string>
+    <string name="halo_size_small">Small</string>
+    <string name="halo_size_default">Normal (default)</string>
+    <string name="halo_size_large">Large</string>
+    <string name="halo_size_gigantic">Gigantic</string>
+    <string name="halo_size_monster">Monster</string>
+
+    <string name="halo_notification_count_title">Notification count</string>
+    <string name="halo_notification_count_summary">Display notification counts on Halo</string>
+    <string name="halo_notification_count_none">None</string>
+    <string name="halo_notification_count_total">Total</string>
+    <string name="halo_notification_count_individual">Per app</string>
+    <string name="halo_notification_count_both">Both</string>
+
+    <string name="halo_msgbox_animation_title">Message box animation</string>
+    <string name="halo_msgbox_animation_summary">Halo message box animation for incoming notifications</string>
+    <string name="halo_msgbox_animation_none">None</string>
+    <string name="halo_msgbox_animation_flip">Flip</string>
+
+    <string name="halo_notify_silent_title">Ping on silent notification</string>
+    <string name="halo_notify_silent_summary">Halo will ping when silent notifications are received</string>
+
+    <!-- Halo Tile -->
+    <string name="title_tile_halo">Halo</string>
+
+    <!-- Label for are-halo-notifications-allowed checkbox in app details [CHAR LIMIT=20] -->
+    <string name="app_halo_label_black">Blacklist from HALO</string>
+    <string name="app_halo_label_white">Whitelist from HALO</string>
+
+    <!-- Heads up -->
+    <string name="heads_up_title">Heads up notification</string>
+    <string name="heads_up_expanded_title">Always expanded</string>
+    <string name="heads_up_expanded_summary">Show heads up notification always expanded</string>
+    <string name="heads_up_show_updates_title">Show updates</string>
+    <string name="heads_up_show_updates_summary">Show updates from pending background notifications as heads up</string>
+    <string name="heads_up_gravity_title">Show at the bottom</string>
+    <string name="heads_up_gravity_summary">Show heads up notification at the bottom of the screen</string>
+    <string name="heads_up_snooze_title">Snooze timer</string>
+    <string name="heads_up_snooze_summary">If snooze button is pressed disable heads up for <xliff:g id="number">%d</xliff:g> minutes.</string>
+    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled.</string>
+    <string name="heads_up_snooze_3min">3 minutes</string>
+    <string name="heads_up_snooze_5min">5 minutes</string>
+    <string name="heads_up_snooze_10min">10 minutes</string>
+    <string name="heads_up_snooze_15min">15 minutes</string>
+    <string name="heads_up_snooze_20min">20 minutes</string>
+    <string name="heads_up_time_out_title">Time out</string>
+    <string name="heads_up_time_out_summary">Heads up notification will show up for <xliff:g id="number">%d</xliff:g> seconds.</string>
+    <string name="heads_up_time_out_never_summary">Heads up notification will show till it is dismissed.</string>
+    <string name="heads_up_time_out_4sec">4 seconds</string>
+    <string name="heads_up_time_out_6sec">6 seconds</string>
+    <string name="heads_up_time_out_8sec">8 seconds</string>
+    <string name="heads_up_time_out_10sec">10 seconds</string>
+    <string name="heads_up_time_out_never">Never</string>
+    <string name="heads_up_switch_label">Enable heads up notification</string>
+    <string name="heads_up_floating_window">Launch in floating window</string>
+    <string name="heads_up_whitelist_title">Whitelist apps</string>
+
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Advanced options</string>
     <string name="disable_fullscreen_keyboard_title">Disable fullscreen keyboard</string>
@@ -65,6 +145,32 @@
     <string name="keyboard_rotation_dialog">Note: This feature forces auto-rotate to turn on temporarily while the keyboard is out.  It has no effect when auto-rotate is already enabled.</string>
     <string name="show_enter_key_title">Show enter key</string>
     <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
+
+    <!-- ListView animation -->
+    <string name="bars_and_menus_category_system_title">System</string>
+    <string name="listview_animation_header">List Animation</string>
+    <string name="listview_animation_title">ListView Animation</string>
+    <string name="listview_off">Off</string>
+    <string name="listview_wave_left">Wave (Left)</string>
+    <string name="listview_wave_right">Wave (Right)</string>
+    <string name="listview_alpha">Alpha</string>
+    <string name="listview_scale">Scale</string>
+    <string name="listview_stack_top">Stack (Top)</string>
+    <string name="listview_stack_bottom">Stack (Bottom)</string>
+    <string name="listview_unfold">Unfold</string>
+    <string name="listview_fold">Fold</string>
+    <string name="listview_translate_left">Translate (Left)</string>
+    <string name="listview_translate_right">Translate (Right)</string>
+
+    <!-- ListView interpolator -->
+    <string name="listview_interpolator_title">ListView Interpolator</string>
+    <string name="listview_accelerate_interpolator">Accelerate</string>
+    <string name="listview_decelerate_interpolator">Decelerate</string>
+    <string name="listview_accelerate_decelerate_interpolator">Accelerate/Decelerate</string>
+    <string name="listview_anticipate_interpolator">Anticipate</string>
+    <string name="listview_overshoot_interpolator">Overshoot</string>
+    <string name="listview_anticipate_overshoot_interpolator">Anticipate/Overshoot</string>
+    <string name="listview_bounce_interpolator">Bounce</string>
 
     <!-- Lock before unlock -->
     <string name="lock_before_unlock_title">Show slider before secure unlock</string>
@@ -164,6 +270,15 @@
     <string name="recent_long_press_qs_panel">QS panel</string>
     <string name="recent_long_press_power_menu">Power menu</string>
 
+    <!-- Network stats -->
+    <string name="status_bar_network_title">Network traffic</string>
+    <string name="status_bar_show_network_stats_title">Show network speeds</string>
+    <string name="status_bar_network_stats_update_title">Update frequency</string>
+
+    <!-- Notification Drawer - Swipe to Switch full screen detection-->
+    <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
+    <string name="summary_full_screen_swipe">Use full screen detection for swipe to switch, not just the bottom bar</string>
+
     <!-- Notification drawer background -->
     <string name="notification_style_title">Background style</string>
     <string name="notification_style_summary">Change your notification drawer background style</string>
@@ -206,6 +321,14 @@
 
     <string name="pa_version">ParanoidAndroid version</string>
     <string name="pa_version_default">Unknown</string>
+
+    <!-- Performance Settings : Scrolling Cache -->
+    <string name="pref_scrollingcache_title">Scrolling cache</string>
+    <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
+    <string name="pref_scrollingcache_force_enable">Force enable</string>
+    <string name="pref_scrollingcache_default_enable">Default enable</string>
+    <string name="pref_scrollingcache_default_disable">Default disable</string>
+    <string name="pref_scrollingcache_force_disable">Force disable</string>
 
     <!-- Pie Control -->
     <string name="pie_navigation_title">Pie navigation</string>
@@ -416,19 +539,6 @@
     <string name="recent_clear_all_button_location_bottom_left">Bottom left</string>
     <string name="recent_clear_all_button_location_bottom_right">Bottom right</string>
 
-    <!-- Network stats -->
-    <string name="status_bar_network_title">Network traffic</string>
-    <string name="status_bar_show_network_stats_title">Show network speeds</string>
-    <string name="status_bar_network_stats_update_title">Update frequency</string>
-
-    <!-- Notification Drawer - Swipe to Switch full screen detection-->
-    <string name="title_full_screen_swipe">Swipe-to-Switch detection</string>
-    <string name="summary_full_screen_swipe">Use full screen detection for swipe to switch, not just the bottom bar</string>
-
-    <!-- Show wifi network name in notification drawer-->
-    <string name="notification_show_wifi_ssid_title">Show Wifi network name</string>
-    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected Wifi network</string>
-
     <!-- Recents Ram Bar -->
     <string name="ram_bar">Recents RAM bar</string>
     <string name="ram_bar_note_title">Note</string>
@@ -453,6 +563,10 @@
 
     <!-- Settings main menu category heading. Rom (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_rom_settings">Advanced settings</string>
+
+    <!-- Show wifi network name in notification drawer-->
+    <string name="notification_show_wifi_ssid_title">Show Wifi network name</string>
+    <string name="notification_show_wifi_ssid_summary">Display the name of the currently connected Wifi network</string>
 
     <!-- Slim Recents -->
     <string name="slim_recents_category">Slim Recents</string>
@@ -509,120 +623,6 @@
     <string name="volume_steps_15">15</string>
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
-
-    <!-- Heads up -->
-    <string name="heads_up_title">Heads up notification</string>
-    <string name="heads_up_expanded_title">Always expanded</string>
-    <string name="heads_up_expanded_summary">Show heads up notification always expanded</string>
-    <string name="heads_up_show_updates_title">Show updates</string>
-    <string name="heads_up_show_updates_summary">Show updates from pending background notifications as heads up</string>
-    <string name="heads_up_gravity_title">Show at the bottom</string>
-    <string name="heads_up_gravity_summary">Show heads up notification at the bottom of the screen</string>
-    <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary">If snooze button is pressed disable heads up for <xliff:g id="number">%d</xliff:g> minutes.</string>
-    <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled.</string>
-    <string name="heads_up_snooze_3min">3 minutes</string>
-    <string name="heads_up_snooze_5min">5 minutes</string>
-    <string name="heads_up_snooze_10min">10 minutes</string>
-    <string name="heads_up_snooze_15min">15 minutes</string>
-    <string name="heads_up_snooze_20min">20 minutes</string>
-    <string name="heads_up_time_out_title">Time out</string>
-    <string name="heads_up_time_out_summary">Heads up notification will show up for <xliff:g id="number">%d</xliff:g> seconds.</string>
-    <string name="heads_up_time_out_never_summary">Heads up notification will show till it is dismissed.</string>
-    <string name="heads_up_time_out_4sec">4 seconds</string>
-    <string name="heads_up_time_out_6sec">6 seconds</string>
-    <string name="heads_up_time_out_8sec">8 seconds</string>
-    <string name="heads_up_time_out_10sec">10 seconds</string>
-    <string name="heads_up_time_out_never">Never</string>
-    <string name="heads_up_switch_label">Enable heads up notification</string>
-    <string name="heads_up_floating_window">Launch in floating window</string>
-    <string name="heads_up_whitelist_title">Whitelist apps</string>
-
-    <!--Blacklist-->
-    <string name="blacklist_button_title">Blacklist</string>
-    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
-
-    <!-- Halo -->
-    <string name="halo_settings_title">Halo</string>
-    <string name="halo_activate_title">Activate Halo</string>
-    <string name="halo_behavior_title">Halo Behavior</string>
-    <string name="halo_hide_title">Hide Halo after activity</string>
-    <string name="halo_hide_summary">Halo will appear for incoming tasks and scroll out of sight after a while</string>
-    <string name="halo_state_title">Halo policy</string>
-    <string name="halo_state_summary">Enables black/white listing notifications</string>
-    <string name="halo_state_black">Black list</string>
-    <string name="halo_state_white">White list</string>
-    <string name="halo_pause_title">Pause active app</string>
-    <string name="halo_pause_summary">When opening an app with Halo the underlying app will get paused</string>
-    <string name="halo_notification_msgbox_title">Enable message pop-up</string>
-    <string name="halo_notification_msgbox_summary">Show message box for incoming notifications</string>
-    <string name="halo_unlock_ping_title">Ping on unlock</string>
-    <string name="halo_unlock_ping_summary">Halo will ping when device is unlocked if new notifications were received</string>
-
-    <string name="halo_size_title">Halo size</string>
-    <string name="halo_size_summary">Defines how big Halo is going to be</string>
-    <string name="halo_size_miniscule">Miniscule</string>
-    <string name="halo_size_small">Small</string>
-    <string name="halo_size_default">Normal (default)</string>
-    <string name="halo_size_large">Large</string>
-    <string name="halo_size_gigantic">Gigantic</string>
-    <string name="halo_size_monster">Monster</string>
-
-    <string name="halo_notification_count_title">Notification count</string>
-    <string name="halo_notification_count_summary">Display notification counts on Halo</string>
-    <string name="halo_notification_count_none">None</string>
-    <string name="halo_notification_count_total">Total</string>
-    <string name="halo_notification_count_individual">Per app</string>
-    <string name="halo_notification_count_both">Both</string>
-
-    <string name="halo_msgbox_animation_title">Message box animation</string>
-    <string name="halo_msgbox_animation_summary">Halo message box animation for incoming notifications</string>
-    <string name="halo_msgbox_animation_none">None</string>
-    <string name="halo_msgbox_animation_flip">Flip</string>
-
-    <string name="halo_notify_silent_title">Ping on silent notification</string>
-    <string name="halo_notify_silent_summary">Halo will ping when silent notifications are received</string>
-
-    <!-- Halo Tile -->
-    <string name="title_tile_halo">Halo</string>
-
-    <!-- Label for are-halo-notifications-allowed checkbox in app details [CHAR LIMIT=20] -->
-    <string name="app_halo_label_black">Blacklist from HALO</string>
-    <string name="app_halo_label_white">Whitelist from HALO</string>
-
-    <!-- ListView animation -->
-    <string name="bars_and_menus_category_system_title">System</string>
-    <string name="listview_animation_header">List Animation</string>
-    <string name="listview_animation_title">ListView Animation</string>
-    <string name="listview_off">Off</string>
-    <string name="listview_wave_left">Wave (Left)</string>
-    <string name="listview_wave_right">Wave (Right)</string>
-    <string name="listview_alpha">Alpha</string>
-    <string name="listview_scale">Scale</string>
-    <string name="listview_stack_top">Stack (Top)</string>
-    <string name="listview_stack_bottom">Stack (Bottom)</string>
-    <string name="listview_unfold">Unfold</string>
-    <string name="listview_fold">Fold</string>
-    <string name="listview_translate_left">Translate (Left)</string>
-    <string name="listview_translate_right">Translate (Right)</string>
-
-    <!-- ListView interpolator -->
-    <string name="listview_interpolator_title">ListView Interpolator</string>
-    <string name="listview_accelerate_interpolator">Accelerate</string>
-    <string name="listview_decelerate_interpolator">Decelerate</string>
-    <string name="listview_accelerate_decelerate_interpolator">Accelerate/Decelerate</string>
-    <string name="listview_anticipate_interpolator">Anticipate</string>
-    <string name="listview_overshoot_interpolator">Overshoot</string>
-    <string name="listview_anticipate_overshoot_interpolator">Anticipate/Overshoot</string>
-    <string name="listview_bounce_interpolator">Bounce</string>
-
-    <!-- Performance Settings : Scrolling Cache -->
-    <string name="pref_scrollingcache_title">Scrolling cache</string>
-    <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
-    <string name="pref_scrollingcache_force_enable">Force enable</string>
-    <string name="pref_scrollingcache_default_enable">Default enable</string>
-    <string name="pref_scrollingcache_default_disable">Default disable</string>
-    <string name="pref_scrollingcache_force_disable">Force disable</string>
 
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_header_summary">@null</string>

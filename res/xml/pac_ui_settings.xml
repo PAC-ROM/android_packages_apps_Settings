@@ -37,15 +37,14 @@
 
     <PreferenceScreen
         android:key="pie_settings"
-        android:fragment="com.android.settings.slim.PieControl"
+        android:fragment="com.android.settings.pac.pie.PieControl"
         android:title="@string/pie_control_title"
         android:icon="@drawable/ic_settings_pie" />
 
-        <PreferenceScreen
-            android:key="progressbar_settings"
-            android:fragment="com.android.settings.pac.ProgressBar"
-            android:title="@string/progressbar_title" >
-        </PreferenceScreen>
+    <PreferenceScreen
+        android:key="progressbar_settings"
+        android:fragment="com.android.settings.pac.ProgressBar"
+        android:title="@string/progressbar_title" />
 
     <PreferenceScreen
         android:key="@+id/animation_settings"
@@ -54,8 +53,9 @@
 
     <PreferenceScreen
         android:key="wakelock_blocker"
-        android:fragment="com.android.settings.cyanogenmod.fragments.WakeLockBlocker"
+        android:fragment="com.android.settings.pac.WakeLockBlocker"
         android:title="@string/wakelock_blocker"
-        android:summary="@string/wakelock_blocker_header_summary" />
+        android:summary="@string/wakelock_blocker_header_summary"
+        android:icon="@drawable/ic_wakelock_blocker" />
 
 </PreferenceScreen>

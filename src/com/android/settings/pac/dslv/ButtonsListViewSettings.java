@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.dslv;
+package com.android.settings.pac.dslv;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -53,18 +53,18 @@ import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.android.internal.util.slim.ButtonConfig;
-import com.android.internal.util.slim.ButtonsConstants;
-import com.android.internal.util.slim.ButtonsHelper;
-import com.android.internal.util.slim.ImageHelper;
-import com.android.internal.util.slim.DeviceUtils;
-import com.android.internal.util.slim.DeviceUtils.FilteredDeviceFeaturesArray;
+import com.android.internal.util.pac.ButtonConfig;
+import com.android.internal.util.pac.ButtonsConstants;
+import com.android.internal.util.pac.ButtonsHelper;
+import com.android.internal.util.pac.ImageHelper;
+import com.android.internal.util.pac.DeviceUtils;
+import com.android.internal.util.pac.DeviceUtils.FilteredDeviceFeaturesArray;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.slim.dslv.DragSortListView;
-import com.android.settings.slim.dslv.DragSortController;
-import com.android.settings.slim.util.ShortcutPickerHelper;
+import com.android.settings.pac.dslv.DragSortListView;
+import com.android.settings.pac.dslv.DragSortController;
+import com.android.settings.pac.util.ShortcutPickerHelper;
 
 import java.io.File;
 import java.io.IOException;

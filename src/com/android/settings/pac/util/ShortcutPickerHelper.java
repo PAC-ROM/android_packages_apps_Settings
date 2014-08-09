@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.slim.util;
+package com.android.settings.pac.util;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -28,7 +28,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 
-import com.android.internal.util.slim.AppHelper;
+import com.android.internal.util.pac.AppHelper;
 
 import java.util.ArrayList;
 
