@@ -195,6 +195,7 @@
 
     <!-- PAC Settings screens  -->
     <string name="interface_settings_title">PAC Settings</string>
+    <string name="animation_settings_title">Custom Animations</string>
 
     <!-- PAC Version -->
     <string name="pac_version">PAC version</string>
@@ -591,7 +592,7 @@
 
     <!-- ListView animation -->
     <string name="bars_and_menus_category_system_title">System</string>
-    <string name="listview_animation_header">Animation</string>
+    <string name="listview_animation_header">List Animation</string>
     <string name="listview_animation_title">ListView Animation</string>
     <string name="listview_off">Off</string>
     <string name="listview_wave_left">Wave (Left)</string>

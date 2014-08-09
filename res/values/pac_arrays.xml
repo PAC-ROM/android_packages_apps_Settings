@@ -89,6 +89,160 @@
         <item>3</item>
     </string-array>
 
+    <!-- Halo -->
+    <string-array name="entries_halo_state">
+        <item>@string/halo_state_black</item>
+        <item>@string/halo_state_white</item>
+    </string-array>
+
+    <string-array name="values_halo_state" translatable="false">
+        <item>1</item>
+        <item>0</item>
+    </string-array>
+
+    <string-array name="entries_halo_size">
+        <item>@string/halo_size_miniscule</item>
+        <item>@string/halo_size_small</item>
+        <item>@string/halo_size_default</item>
+        <item>@string/halo_size_large</item>
+        <item>@string/halo_size_gigantic</item>
+        <item>@string/halo_size_monster</item>
+    </string-array>
+
+    <string-array name="values_halo_size" translatable="false">
+        <item>0.6</item>
+        <item>0.8</item>
+        <item>1.0</item>
+        <item>1.2</item>
+        <item>1.4</item>
+        <item>1.6</item>
+    </string-array>
+
+    <string-array name="entries_halo_notification_count">
+        <item>@string/halo_notification_count_none</item>
+        <item>@string/halo_notification_count_total</item>
+        <item>@string/halo_notification_count_individual</item>
+        <item>@string/halo_notification_count_both</item>
+    </string-array>
+
+    <string-array name="values_halo_notification_count">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="entries_halo_msgbox_animation">
+        <item>@string/halo_msgbox_animation_none</item>
+        <item>@string/halo_msgbox_animation_flip</item>
+    </string-array>
+
+    <string-array name="values_halo_msgbox_animation">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <!-- Heads up -->
+    <string-array name="heads_up_snooze_entries">
+        <item>@string/disabled</item>
+        <item>@string/heads_up_snooze_3min</item>
+        <item>@string/heads_up_snooze_5min</item>
+        <item>@string/heads_up_snooze_10min</item>
+        <item>@string/heads_up_snooze_15min</item>
+        <item>@string/heads_up_snooze_20min</item>
+    </string-array>
+
+    <string-array name="heads_up_snooze_values" translatable="false">
+        <item>0</item>
+        <item>180000</item>
+        <item>300000</item>
+        <item>600000</item>
+        <item>900000</item>
+        <item>1200000</item>
+    </string-array>
+
+    <string-array name="heads_up_time_out_entries">
+        <item>@string/heads_up_time_out_never</item>
+        <item>@string/heads_up_time_out_4sec</item>
+        <item>@string/heads_up_time_out_6sec</item>
+        <item>@string/heads_up_time_out_8sec</item>
+        <item>@string/heads_up_time_out_10sec</item>
+    </string-array>
+
+    <string-array name="heads_up_time_out_values" translatable="false">
+        <item>0</item>
+        <item>4000</item>
+        <item>6000</item>
+        <item>8000</item>
+        <item>10000</item>
+    </string-array>
+
+    <!-- Listview animation -->
+    <string-array name="listview_animation_entries">
+        <item>@string/listview_off</item>
+        <item>@string/listview_wave_left</item>
+        <item>@string/listview_wave_right</item>
+        <item>@string/listview_scale</item>
+        <item>@string/listview_alpha</item>
+        <item>@string/listview_stack_top</item>
+        <item>@string/listview_stack_bottom</item>
+        <item>@string/listview_unfold</item>
+        <item>@string/listview_fold</item>
+        <item>@string/listview_translate_left</item>
+        <item>@string/listview_translate_right</item>
+    </string-array>
+
+    <string-array name="listview_animation_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+
+    <!-- Listview Interpolator -->
+    <string-array name="listview_interpolator_entries">
+        <item>@string/listview_off</item>
+        <item>@string/listview_accelerate_interpolator</item>
+        <item>@string/listview_decelerate_interpolator</item>
+        <item>@string/listview_accelerate_decelerate_interpolator</item>
+        <item>@string/listview_anticipate_interpolator</item>
+        <item>@string/listview_overshoot_interpolator</item>
+        <item>@string/listview_anticipate_overshoot_interpolator</item>
+        <item>@string/listview_bounce_interpolator</item>
+    </string-array>
+
+    <string-array name="listview_interpolator_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </string-array>
+
+    <string-array name="entries_scrollingcache" translatable="false">
+        <item>@string/pref_scrollingcache_force_enable</item>
+        <item>@string/pref_scrollingcache_default_enable</item>
+        <item>@string/pref_scrollingcache_default_disable</item>
+        <item>@string/pref_scrollingcache_force_disable</item>
+    </string-array>
+
+    <string-array name="values_scrollingcache" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
     <!-- Low battery warning policy -->
     <string-array name="pref_low_battery_warning_policy_entries">
         <item>@string/low_battery_warning_policy_popup_sound</item>
@@ -473,160 +627,6 @@
         <item>@string/volume_steps_15</item>
         <item>@string/volume_steps_7</item>
         <item>@string/volume_steps_5</item>
-    </string-array>
-
-    <!-- Heads up -->
-    <string-array name="heads_up_snooze_entries">
-        <item>@string/disabled</item>
-        <item>@string/heads_up_snooze_3min</item>
-        <item>@string/heads_up_snooze_5min</item>
-        <item>@string/heads_up_snooze_10min</item>
-        <item>@string/heads_up_snooze_15min</item>
-        <item>@string/heads_up_snooze_20min</item>
-    </string-array>
-
-    <string-array name="heads_up_snooze_values" translatable="false">
-        <item>0</item>
-        <item>180000</item>
-        <item>300000</item>
-        <item>600000</item>
-        <item>900000</item>
-        <item>1200000</item>
-    </string-array>
-
-    <string-array name="heads_up_time_out_entries">
-        <item>@string/heads_up_time_out_never</item>
-        <item>@string/heads_up_time_out_4sec</item>
-        <item>@string/heads_up_time_out_6sec</item>
-        <item>@string/heads_up_time_out_8sec</item>
-        <item>@string/heads_up_time_out_10sec</item>
-    </string-array>
-
-    <string-array name="heads_up_time_out_values" translatable="false">
-        <item>0</item>
-        <item>4000</item>
-        <item>6000</item>
-        <item>8000</item>
-        <item>10000</item>
-    </string-array>
-
-    <!-- Halo -->
-    <string-array name="entries_halo_state">
-        <item>@string/halo_state_black</item>
-        <item>@string/halo_state_white</item>
-    </string-array>
-
-    <string-array name="values_halo_state" translatable="false">
-        <item>1</item>
-        <item>0</item>
-    </string-array>
-
-    <string-array name="entries_halo_size">
-        <item>@string/halo_size_miniscule</item>
-        <item>@string/halo_size_small</item>
-        <item>@string/halo_size_default</item>
-        <item>@string/halo_size_large</item>
-        <item>@string/halo_size_gigantic</item>
-        <item>@string/halo_size_monster</item>
-    </string-array>
-
-    <string-array name="values_halo_size" translatable="false">
-        <item>0.6</item>
-        <item>0.8</item>
-        <item>1.0</item>
-        <item>1.2</item>
-        <item>1.4</item>
-        <item>1.6</item>
-    </string-array>
-
-    <string-array name="entries_halo_notification_count">
-        <item>@string/halo_notification_count_none</item>
-        <item>@string/halo_notification_count_total</item>
-        <item>@string/halo_notification_count_individual</item>
-        <item>@string/halo_notification_count_both</item>
-    </string-array>
-
-    <string-array name="values_halo_notification_count">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
-
-    <string-array name="entries_halo_msgbox_animation">
-        <item>@string/halo_msgbox_animation_none</item>
-        <item>@string/halo_msgbox_animation_flip</item>
-    </string-array>
-
-    <string-array name="values_halo_msgbox_animation">
-        <item>1</item>
-        <item>2</item>
-    </string-array>
-
-    <!-- Listview animation -->
-    <string-array name="listview_animation_entries">
-        <item>@string/listview_off</item>
-        <item>@string/listview_wave_left</item>
-        <item>@string/listview_wave_right</item>
-        <item>@string/listview_scale</item>
-        <item>@string/listview_alpha</item>
-        <item>@string/listview_stack_top</item>
-        <item>@string/listview_stack_bottom</item>
-        <item>@string/listview_unfold</item>
-        <item>@string/listview_fold</item>
-        <item>@string/listview_translate_left</item>
-        <item>@string/listview_translate_right</item>
-    </string-array>
-
-    <string-array name="listview_animation_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-        <item>10</item>
-    </string-array>
-
-    <!-- Listview Interpolator -->
-    <string-array name="listview_interpolator_entries">
-        <item>@string/listview_off</item>
-        <item>@string/listview_accelerate_interpolator</item>
-        <item>@string/listview_decelerate_interpolator</item>
-        <item>@string/listview_accelerate_decelerate_interpolator</item>
-        <item>@string/listview_anticipate_interpolator</item>
-        <item>@string/listview_overshoot_interpolator</item>
-        <item>@string/listview_anticipate_overshoot_interpolator</item>
-        <item>@string/listview_bounce_interpolator</item>
-    </string-array>
-
-    <string-array name="listview_interpolator_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-    </string-array>
-
-    <string-array name="entries_scrollingcache" translatable="false">
-        <item>@string/pref_scrollingcache_force_enable</item>
-        <item>@string/pref_scrollingcache_default_enable</item>
-        <item>@string/pref_scrollingcache_default_disable</item>
-        <item>@string/pref_scrollingcache_force_disable</item>
-    </string-array>
-
-    <string-array name="values_scrollingcache" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
     </string-array>
 
 </resources>
