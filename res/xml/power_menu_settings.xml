@@ -34,7 +34,7 @@
         android:title="@string/power_menu_expanded_desktop"
         android:defaultValue="false" />
 
-    <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
+    <com.android.settings.pac.PacSettingCheckBoxPreference
         android:key="power_menu_nav_bar_enabled"
         android:title="@string/power_menu_navbar_title"
         android:defaultValue="false" />
