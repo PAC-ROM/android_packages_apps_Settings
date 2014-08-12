@@ -645,17 +645,8 @@
         <item>15</item>
      </string-array>
 
-    <!-- Volume step options. -->
-    <string-array name="volume_steps_entries" translatable="false">
-        <item>@string/volume_steps_60</item>
-        <item>@string/volume_steps_45</item>
-        <item>@string/volume_steps_30</item>
-        <item>@string/volume_steps_15</item>
-        <item>@string/volume_steps_7</item>
-        <item>@string/volume_steps_5</item>
-    </string-array>
-
-    <!-- List of user selectable networks to override defaults where necessary.
+     <!-- User Selectable Tether Networks:
+         List of user selectable networks to override defaults where necessary.
          In some instances default tether networks conflict with other routed
          networks, e.g., OpenVPN routed setups. This allows the user to select
          other networks to override the defaults built in to either config.xml
@@ -684,5 +675,17 @@
         <item>10.210.22.0/24</item>
         <item>10.210.23.0/24</item>
     </string-array>
+
+    <!-- Volume step options. -->
+    <string-array name="volume_steps_entries" translatable="false">
+        <item>@string/volume_steps_60</item>
+        <item>@string/volume_steps_45</item>
+        <item>@string/volume_steps_30</item>
+        <item>@string/volume_steps_15</item>
+        <item>@string/volume_steps_7</item>
+        <item>@string/volume_steps_5</item>
+    </string-array>
+
+    <!-- You better not add new string-arrays here, organize them alphabetically! -->
 
 </resources>

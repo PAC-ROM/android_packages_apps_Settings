@@ -54,7 +54,7 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
         mListViewAnimation = (ListPreference) findPreference(KEY_LISTVIEW_ANIMATION);
         if (mListViewAnimation != null) {
            int listViewAnimation = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.LISTVIEW_ANIMATION, 1);
+                    Settings.PAC.LISTVIEW_ANIMATION, 0);
            mListViewAnimation.setSummary(mListViewAnimation.getEntry());
            mListViewAnimation.setValue(String.valueOf(listViewAnimation));
         }
@@ -63,7 +63,7 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
         mListViewInterpolator = (ListPreference) findPreference(KEY_LISTVIEW_INTERPOLATOR);
         if (mListViewInterpolator != null) {
            int listViewInterpolator = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.LISTVIEW_INTERPOLATOR, 1);
+                    Settings.PAC.LISTVIEW_INTERPOLATOR, 0);
            mListViewInterpolator.setSummary(mListViewInterpolator.getEntry());
            mListViewInterpolator.setValue(String.valueOf(listViewInterpolator));
         }
