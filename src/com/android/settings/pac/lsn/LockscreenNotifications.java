@@ -110,7 +110,7 @@ public class LockscreenNotifications extends SettingsPreferenceFragment implemen
 
         mDynamicWidth = (CheckBoxPreference) prefs.findPreference(KEY_DYNAMIC_WIDTH);
         mDynamicWidth.setChecked(Settings.PAC.getInt(cr,
-                    Settings.PAC.LOCKSCREEN_NOTIFICATIONS_DYNAMIC_WIDTH, 0) == 1);
+                    Settings.PAC.LOCKSCREEN_NOTIFICATIONS_DYNAMIC_WIDTH, 1) == 1);
         mDynamicWidth.setEnabled(mLockscreenNotifications.isChecked());
 
         mExpandedView = (CheckBoxPreference) prefs.findPreference(KEY_EXPANDED_VIEW);
