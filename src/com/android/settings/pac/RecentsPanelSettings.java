@@ -36,6 +36,8 @@ import java.util.List;
 import com.android.settings.pac.util.Helpers;
 import com.android.internal.util.pac.OmniSwitchConstants;
 
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
+
 public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
     private static final String TAG = "RecentsPanelSettings";
@@ -52,6 +54,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private static final String RECENT_PANEL_LEFTY_MODE = "recent_panel_lefty_mode";
     private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
     private static final String RECENT_PANEL_EXPANDED_MODE = "recent_panel_expanded_mode";
+    private static final String RECENT_PANEL_BG_COLOR = "recent_panel_bg_color";
 
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -65,6 +68,7 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mRecentsUseSlim;
     private CheckBoxPreference mRecentsShowTopmost;
     private CheckBoxPreference mRecentPanelLeftyMode;
+    private ColorPickerPreference mRecentPanelBgColor;
     private ListPreference mRecentPanelScale;
     private ListPreference mRecentPanelExpandedMode;
     private ListPreference mRecentClearAllPosition;
@@ -72,6 +76,8 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private Preference mRecentRamBar;
 
     private boolean mOmniSwitchStarted;
+
+    private static final int DEFAULT_BACKGROUND_COLOR = 0x00ffffff;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -83,6 +89,9 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
         boolean useOmniSwitch = false;
         boolean useSlimRecents = false;
+
+        int intColor;
+        String hexColor;
 
         useOmniSwitch = Settings.PAC.getInt(getContentResolver(), Settings.PAC.RECENTS_USE_OMNISWITCH, 0) == 1
                             && isOmniSwitchServiceRunning();
@@ -143,6 +152,16 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         Settings.PAC.RECENT_PANEL_EXPANDED_MODE, 0);
         mRecentPanelExpandedMode.setValue(recentExpandedMode + "");
 
+        // Recent panel background color
+        mRecentPanelBgColor = (ColorPickerPreference) findPreference(RECENT_PANEL_BG_COLOR);
+        mRecentPanelBgColor.setOnPreferenceChangeListener(this);
+        intColor = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.RECENT_PANEL_BG_COLOR, 0x00ffffff);
+        hexColor = String.format("#%08x", (0x00ffffff & intColor));
+        mRecentPanelBgColor.setSummary(hexColor);
+        mRecentPanelBgColor.setNewPreviewColor(intColor);
+
+        // Ram Bar
         mRecentRamBar = findPreference(RECENT_RAM_BAR);
         mRecentRamBar.setEnabled(!useOmniSwitch && !useSlimRecents);
         updateRamBarStatus();
@@ -219,6 +238,13 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
                     Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.RECENT_PANEL_SHOW_TOPMOST,
                     ((Boolean) objValue) ? 1 : 0);
+        } else if (preference == mRecentPanelBgColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_PANEL_BG_COLOR, intHex);
         } else {
             return false;
         }
