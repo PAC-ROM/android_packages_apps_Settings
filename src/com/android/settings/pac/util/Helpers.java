@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileInputStream;
+import java.util.Date;
 import java.util.Properties;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -21,10 +24,10 @@ public class Helpers {
     private static final String TAG = "Helpers";
 
     /**
-* Checks device for SuperUser permission
-*
-* @return If SU was granted or denied
-*/
+     * Checks device for SuperUser permission
+     *
+     * @return If SU was granted or denied
+     */
     public static boolean checkSu() {
         if (!new File("/system/bin/su").exists()
                 && !new File("/system/xbin/su").exists()) {
@@ -48,10 +51,10 @@ public class Helpers {
     }
 
     /**
-* Checks to see if Busybox is installed in "/system/"
-*
-* @return If busybox exists
-*/
+     * Checks to see if Busybox is installed in "/system/"
+     *
+     * @return If busybox exists
+     */
     public static boolean checkBusybox() {
         if (!new File("/system/bin/busybox").exists()
                 && !new File("/system/xbin/busybox").exists()) {
@@ -154,11 +157,11 @@ public class Helpers {
     }
 
     /**
-* Long toast message
-*
-* @param c Application Context
-* @param msg Message to send
-*/
+     * Long toast message
+     *
+     * @param c Application Context
+     * @param msg Message to send
+     */
     public static void msgLong(final Context c, final String msg) {
         if (c != null && msg != null) {
             Toast.makeText(c, msg.trim(), Toast.LENGTH_LONG).show();
@@ -166,11 +169,11 @@ public class Helpers {
     }
 
     /**
-* Short toast message
-*
-* @param c Application Context
-* @param msg Message to send
-*/
+     * Short toast message
+     *
+     * @param c Application Context
+     * @param msg Message to send
+     */
     public static void msgShort(final Context c, final String msg) {
         if (c != null && msg != null) {
             Toast.makeText(c, msg.trim(), Toast.LENGTH_SHORT).show();
@@ -178,11 +181,11 @@ public class Helpers {
     }
 
     /**
-* Long toast message
-*
-* @param c Application Context
-* @param msg Message to send
-*/
+     * Long toast message
+     *
+     * @param c Application Context
+     * @param msg Message to send
+     */
     public static void sendMsg(final Context c, final String msg) {
         if (c != null && msg != null) {
             msgLong(c, msg);
@@ -209,12 +212,12 @@ public class Helpers {
     }
 
     /*
-* Find value of build.prop item (/system can be ro or rw)
-*
-* @param prop /system/build.prop property name to find value of
-*
-* @returns String value of @param:prop
-*/
+     * Find value of build.prop item (/system can be ro or rw)
+     *
+     * @param prop /system/build.prop property name to find value of
+     *
+     * @returns String value of @param:prop
+     */
     public static String findBuildPropValueOf(String prop) {
         String mBuildPath = "/system/build.prop";
         String DISABLE = "disable";
@@ -237,5 +240,44 @@ public class Helpers {
         } else {
             return DISABLE;
         }
+    }
+
+    /**
+     * Checks device for network connectivity
+     *
+     * @return If the device has data connectivity
+     */
+    public static boolean isNetworkAvailable(Context context) {
+        boolean state = false;
+        if (context != null) {
+            ConnectivityManager cm =
+                    (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo netInfo = cm.getActiveNetworkInfo();
+            if (netInfo != null && netInfo.isConnected()) {
+                Log.i(TAG, "The device currently has data connectivity");
+                state = true;
+            } else {
+                Log.i(TAG, "The device does not currently have data connectivity");
+                state = false;
+            }
+        }
+        return state;
+    }
+
+    /**
+     * Return a timestamp
+     *
+     * @param context Application Context
+     */
+    @SuppressWarnings("UnnecessaryFullyQualifiedName")
+    public static String getTimestamp(Context context) {
+        String timestamp = "unknown";
+        Date now = new Date();
+        java.text.DateFormat dateFormat = android.text.format.DateFormat.getDateFormat(context);
+        java.text.DateFormat timeFormat = android.text.format.DateFormat.getTimeFormat(context);
+        if (dateFormat != null && timeFormat != null) {
+            timestamp = dateFormat.format(now) + ' ' + timeFormat.format(now);
+        }
+        return timestamp;
     }
 }

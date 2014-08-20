@@ -15,7 +15,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.settings.R;
-import com.android.settings.aokp.util.Helpers;
+import com.android.settings.pac.util.Helpers;
 
 import org.w3c.dom.Document;
 
