@@ -19,10 +19,10 @@
     <!-- App sidebar -->
     <string name="app_sidebar_title">Appbar</string>
     <string name="app_sidebar_enable_title">Enable Appbar</string>
-    <string name="app_sidebar_enable_summaryOn">\@appbar is enabled</string>
-    <string name="app_sidebar_enable_summaryOff">\@appbar is disabled</string>
+    <string name="app_sidebar_enable_summaryOn">Appbar is enabled</string>
+    <string name="app_sidebar_enable_summaryOff">Apbar is disabled</string>
     <string name="app_sidebar_setup_items_title">Setup Appbar content</string>
-    <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the @ppbar</string>
+    <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the appbar</string>
     <string name="app_sidebar_transparency_title">Appbar transparency</string>
     <string name="app_sidebar_transparency_summary">Adjust the Appbar transparency level</string>
     <string name="app_sidebar_position_title">Appbar position</string>
@@ -33,7 +33,7 @@
     <string name="app_sidebar_hide_labels_summary">Hide Appbar icon labels</string>
     <string name="tab_category">Visible Tab</string>
     <string name="use_tab_title">Display tab</string>
-    <string name="use_tab_summary">Display a visible tab on the side which will display the \@appbar when touched.</string>
+    <string name="use_tab_summary">Display a visible tab on the side which will display the appbar when touched.</string>
     <string name="tab_position_title">Tab location</string>
     <string name="tab_position_summary">Display the tab on the top, middle, or bottom on the side of the screen.</string>
     <string name="tab_size_title">Tab size</string>
@@ -556,7 +556,7 @@
     <string name="flip_qs_tiles_summary">Flips the tiles on touch</string>
 
     <!--  Recents clear all -->
-    <string name="recents_panel_settings_title" >Recents panel settings</string>
+    <string name="recents_panel_settings_title" >Recents Panel Settings</string>
     <string name="show_recent_clear_all_button_title">Show clear all button</string>
     <string name="show_recent_clear_all_button_summary">Tick to show or untick to hide the clear all button within the recent applications screen</string>
     <string name="recent_clear_all_button_location_title">Clear all button position</string>
