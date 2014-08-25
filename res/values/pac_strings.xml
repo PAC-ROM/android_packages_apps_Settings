@@ -458,12 +458,6 @@
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
 
-    <string name="aokp_version">AOKP version</string>
-    <string name="aokp_version_default">Unknown</string>
-
-    <string name="pa_version">ParanoidAndroid version</string>
-    <string name="pa_version_default">Unknown</string>
-
     <!-- Performance Settings : Scrolling Cache -->
     <string name="pref_scrollingcache_title">Scrolling cache</string>
     <string name="pref_scrollingcache_summary">Scrolling cache may improve scrolling performance at the cost of memory</string>
