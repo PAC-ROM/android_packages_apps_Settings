@@ -209,6 +209,8 @@
     <string name="heads_up_switch_label">Enable heads up notification</string>
     <string name="heads_up_floating_window">Launch in floating window</string>
     <string name="heads_up_whitelist_title">Whitelist apps</string>
+    <!-- Heads-up disable on lockscreen -->
+    <string name="heads_up_exclude_from_lock_screen">Disable on lockscreen</string>
 
     <!-- Keyboard and Input ASS methods  -->
     <string name="title_keyboard_input">Advanced options</string>
