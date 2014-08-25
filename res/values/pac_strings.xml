@@ -20,7 +20,7 @@
     <string name="app_sidebar_title">Appbar</string>
     <string name="app_sidebar_enable_title">Enable Appbar</string>
     <string name="app_sidebar_enable_summaryOn">Appbar is enabled</string>
-    <string name="app_sidebar_enable_summaryOff">Apbar is disabled</string>
+    <string name="app_sidebar_enable_summaryOff">Appbar is disabled</string>
     <string name="app_sidebar_setup_items_title">Setup Appbar content</string>
     <string name="app_sidebar_setup_items_summary">Add, remove, and position items in the appbar</string>
     <string name="app_sidebar_transparency_title">Appbar transparency</string>
