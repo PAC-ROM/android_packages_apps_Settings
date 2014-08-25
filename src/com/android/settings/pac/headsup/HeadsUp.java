@@ -41,12 +41,14 @@ public class HeadsUp extends SettingsPreferenceFragment implements
     private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
     private static final String PREF_HEADS_UP_SHOW_UPDATE = "heads_up_show_update";
     private static final String PREF_HEADS_UP_GRAVITY = "heads_up_gravity";
+    private static final String PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN = "heads_up_exclude_from_lock_screen";
 
     private ListPreference mHeadsUpSnoozeTime;
     private ListPreference mHeadsUpTimeOut;
     private CheckBoxPreference mHeadsUpExpanded;
     private CheckBoxPreference mHeadsUpShowUpdates;
     private CheckBoxPreference mHeadsUpGravity;
+    private CheckBoxPreference mHeadsExcludeFromLockscreen;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,6 +72,11 @@ public class HeadsUp extends SettingsPreferenceFragment implements
         mHeadsUpGravity.setChecked(Settings.PAC.getIntForUser(getContentResolver(),
                 Settings.PAC.HEADS_UP_GRAVITY_BOTTOM, 0, UserHandle.USER_CURRENT) == 1);
         mHeadsUpGravity.setOnPreferenceChangeListener(this);
+
+        mHeadsExcludeFromLockscreen = (CheckBoxPreference) findPreference(PREF_HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN);
+        mHeadsExcludeFromLockscreen.setChecked(Settings.PAC.getIntForUser(getContentResolver(),
+                Settings.PAC.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN, 0, UserHandle.USER_CURRENT) == 1);
+        mHeadsExcludeFromLockscreen.setOnPreferenceChangeListener(this);
 
         mHeadsUpSnoozeTime = (ListPreference) findPreference(PREF_HEADS_UP_SNOOZE_TIME);
         mHeadsUpSnoozeTime.setOnPreferenceChangeListener(this);
@@ -123,6 +130,11 @@ public class HeadsUp extends SettingsPreferenceFragment implements
         } else if (preference == mHeadsUpGravity) {
             Settings.PAC.putIntForUser(getContentResolver(),
                     Settings.PAC.HEADS_UP_GRAVITY_BOTTOM,
+                    (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        } else if (preference == mHeadsExcludeFromLockscreen) {
+            Settings.PAC.putIntForUser(getContentResolver(),
+                    Settings.PAC.HEADS_UP_EXCLUDE_FROM_LOCK_SCREEN,
                     (Boolean) objValue ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
         }
