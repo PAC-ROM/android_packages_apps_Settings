@@ -26,7 +26,7 @@ public class WeatherInfo {
         this.temp = temp + "°" + temp_unit;
         this.temp_unit = temp_unit;
         this.humidity = humidity + "%";
-        this.wind = wind_dir + " " + trimSpeed(wind) + speed_unit;
+        this.wind = wind_dir + " 0" + speed_unit;
         this.speed_unit = speed_unit;
         this.low = low + "°" + temp_unit;
         this.high = high + "°" + temp_unit;
@@ -70,9 +70,5 @@ public class WeatherInfo {
             return mContext.getResources().getString(R.string.direction_north_west);
         else
             return "";
-    }
-
-    private String trimSpeed(String speed) {
-        return String.valueOf(Math.round(Float.parseFloat(speed)));
     }
 }
