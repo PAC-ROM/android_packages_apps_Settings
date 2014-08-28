@@ -43,8 +43,15 @@
     <PreferenceScreen
         android:key="@+id/gesture_anywhere"
         android:fragment="com.android.settings.pac.gestureanywhere.GestureAnywhereSettings"
-        android:icon="@drawable/ic_settings_gesture_anywhere"
-        android:title="@string/gesture_anywhere_title" />
+        android:title="@string/gesture_anywhere_title"
+        android:icon="@drawable/ic_settings_gesture_anywhere" />
+
+    <!-- Init.D -->
+    <PreferenceScreen
+        android:id="@+id/initD"
+        android:fragment="com.android.settings.pac.InitD"
+        android:title="@string/init_d_title"
+        android:icon="@drawable/ic_settings_init" />
 
     <!-- PAC Console -->
     <PreferenceScreen
@@ -76,6 +83,6 @@
         android:key="@+id/wakelock_blocker"
         android:fragment="com.android.settings.pac.WakeLockBlocker"
         android:title="@string/wakelock_blocker"
-        android:icon="@drawable/ic_wakelock_blocker" />
+        android:icon="@drawable/ic_settings_wakelock_blocker" />
 
 </PreferenceScreen>
