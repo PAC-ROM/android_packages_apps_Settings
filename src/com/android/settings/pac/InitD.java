@@ -40,7 +40,7 @@ public class InitD extends SettingsPreferenceFragment {
     private static final int DIALOG_INIT_D_ERROR = 0;
 
     private static final String INIT_D = "/system/etc/init.d";
-    private static final String INIT_D_CFG = "/system/etc/init.d.cfg";
+    private static final String INIT_D_CFG = "/data/local/init.d.cfg";
 
     private static final String KEY_ZIPALIGN_APKS = "zipalign_apks";
     private static final String KEY_FIX_PERMISSIONS = "fix_permissions";
@@ -197,10 +197,12 @@ public class InitD extends SettingsPreferenceFragment {
     }
 
     private void updateShellVariable(String key, String value) {
+        CMDProcessor.CommandResult CRr;
         CMDProcessor.SH shell = new CMDProcessor().su;
-        shell.runWaitFor("busybox mount -o remount,rw /system");
-        shell.runWaitFor("busybox sed -i 's|" + key + "=.*|" + key + "=" + value + "|' " + INIT_D_CFG);
-        shell.runWaitFor("busybox mount -o remount,ro /system");
+
+        CRr = shell.runWaitFor("busybox sed -i 's|" + key + "=.*|" + key + "=" + value + "|' " + INIT_D_CFG);
+        Log.d(TAG, "Update Value - "+CRr.exit_value+" - "+CRr.stdout+" - "+CRr.stderr);
+
         mShellVariables.put(key, value);
     }
 
