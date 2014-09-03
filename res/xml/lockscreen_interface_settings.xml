@@ -105,6 +105,7 @@
         <com.android.settings.pac.PacSettingCheckBoxPreference
             android:key="battery_around_lockscreen_ring"
             android:title="@string/battery_around_lockscreen_ring"
+            android:summary="@string/battery_around_lockscreen_ring_summary"
             android:defaultValue="false" />
 
         <!-- See Through -->

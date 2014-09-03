@@ -385,6 +385,7 @@
 
     <!-- Lockscreen battery ring -->
     <string name="battery_around_lockscreen_ring">Battery around unlock ring</string>
+    <string name="battery_around_lockscreen_ring_summary">Shows the battery level around the unlock ring</string>
 
     <!-- Lockscreen blur -->
     <string name="blur_radius_title">Blur Radius</string>

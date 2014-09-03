@@ -19,16 +19,24 @@
     android:title="@string/notification_drawer_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="weather"
-        android:fragment="com.android.settings.pac.Weather"
-        android:title="@string/title_weather"/>
+    <ListPreference
+        android:key="notification_drawer_collapse_on_dismiss"
+        android:title="@string/notification_drawer_collapse_on_dismiss_title"
+        android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
+        android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
+        android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
 
     <PreferenceScreen
-        settings:includeXmlForSearch="@xml/quick_settings_panel"
-        android:key="quick_settings_panel"
-        android:fragment="com.android.settings.quicksettings.QuickSettings"
-        android:title="@string/quick_settings_panel_title" />
+        android:fragment="com.android.settings.pac.NotificationDrawerStyle"
+        android:key="notification_style"
+        android:title="@string/notification_style_title"
+        android:summary="@string/notification_style_summary" />
+
+    <CheckBoxPreference
+        android:key="custom_status_bar_header"
+        android:title="@string/custom_statusbar_header_title"
+        android:summary="@string/custom_statusbar_header_summary"
+        android:defaultValue="false" />
 
     <PreferenceScreen
         android:key="halo_settings"
@@ -41,23 +49,10 @@
         android:title="@string/heads_up_title" />
 
     <PreferenceScreen
-        android:fragment="com.android.settings.pac.NotificationDrawerStyle"
-        android:key="notification_style"
-        android:title="@string/notification_style_title"
-        android:summary="@string/notification_style_summary" />
-
-    <ListPreference
-        android:key="notification_drawer_collapse_on_dismiss"
-        android:title="@string/notification_drawer_collapse_on_dismiss_title"
-        android:dialogTitle="@string/notification_drawer_collapse_on_dismiss_title"
-        android:entries="@array/notification_drawer_collapse_on_dismiss_entries"
-        android:entryValues="@array/notification_drawer_collapse_on_dismiss_values" />
-
-    <CheckBoxPreference
-        android:key="custom_status_bar_header"
-        android:title="@string/custom_statusbar_header_title"
-        android:summary="@string/custom_statusbar_header_summary"
-        android:defaultValue="false" />
+        settings:includeXmlForSearch="@xml/quick_settings_panel"
+        android:key="quick_settings_panel"
+        android:fragment="com.android.settings.quicksettings.QuickSettings"
+        android:title="@string/quick_settings_panel_title" />
 
     <CheckBoxPreference
         android:key="full_swipe_to_switch_detection"
@@ -70,6 +65,11 @@
         android:title="@string/notification_show_wifi_ssid_title"
         android:summary="@string/notification_show_wifi_ssid_summary"
         android:defaultValue="false" />
+
+    <PreferenceScreen
+        android:key="weather"
+        android:fragment="com.android.settings.pac.Weather"
+        android:title="@string/title_weather"/>
 
     <PreferenceCategory
         android:title="@string/category_quick_access" >
