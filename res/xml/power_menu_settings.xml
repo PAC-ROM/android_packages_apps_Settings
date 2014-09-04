@@ -30,7 +30,7 @@
         android:defaultValue="false" />
 
     <com.android.settings.pac.PacSettingCheckBoxPreference
-        android:key="screen_recorder_record_audio"
+        android:key="power_menu_screenrecord_enabled"
         android:title="@string/power_menu_screenrecord_title"
         android:defaultValue="false" />
 
