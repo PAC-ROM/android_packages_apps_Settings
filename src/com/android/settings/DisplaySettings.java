@@ -652,6 +652,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 Log.e(TAG, "could not persist screen animation style setting", e);
             }
         }
+
         return true;
     }
 
