@@ -43,10 +43,10 @@ import java.util.List;
 import java.util.Set;
 
 /**
-* A preference that lists installed applications, with icons, as a multi choice list.
-*
-* @author Clark Scheff
-*/
+ * A preference that lists installed applications, with icons, as a multi choice list.
+ *
+ * @author Clark Scheff
+ */
 public class AppMultiSelectListPreference extends DialogPreference {
     private final List<MyApplicationInfo> mPackageInfoList = new ArrayList<MyApplicationInfo>();
     private CharSequence[] mEntries;
@@ -89,11 +89,11 @@ public class AppMultiSelectListPreference extends DialogPreference {
     }
 
     /**
-* Sets the value of the key. This should contain entries in
-* {@link #getEntryValues()}.
-*
-* @param values The values to set for the key.
-*/
+     * Sets the value of the key. This should contain entries in
+     * {@link #getEntryValues()}.
+     *
+     * @param values The values to set for the key.
+     */
     public void setValues(Set<String> values) {
         mValues.clear();
         mValues.addAll(values);
@@ -101,19 +101,23 @@ public class AppMultiSelectListPreference extends DialogPreference {
         persistStringSet(values);
     }
 
+    public void setClearValues() {
+        mValues.clear();
+    }
+
     /**
-* Retrieves the current value of the key.
-*/
+     * Retrieves the current value of the key.
+     */
     public Set<String> getValues() {
         return mValues;
     }
 
     /**
-* Returns the index of the given value (in the entry values array).
-*
-* @param value The value whose index should be returned.
-* @return The index of the value, or -1 if not found.
-*/
+     * Returns the index of the given value (in the entry values array).
+     *
+     * @param value The value whose index should be returned.
+     * @return The index of the value, or -1 if not found.
+     */
     public int findIndexOfValue(String value) {
         if (value != null && mEntryValues != null) {
             for (int i = mEntryValues.length - 1; i >= 0; i--) {

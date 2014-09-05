@@ -41,6 +41,7 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.animation_settings);
 
+        PreferenceScreen prefSet = getPreferenceScreen();
     }
 
     @Override

@@ -45,6 +45,7 @@
     </declare-styleable>
 
     <declare-styleable name="SeekBarPreference">
+        <attr name="interval" format="integer" />
         <attr name="minimun" format="integer" />
         <attr name="unitsLeft" format="string|reference" />
         <attr name="unitsRight" format="string|reference" />

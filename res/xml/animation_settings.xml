@@ -19,4 +19,29 @@
         android:title="@string/animation_settings_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <PreferenceScreen
+        android:key="interface_animation_system"
+        android:fragment="com.android.settings.pac.SystemAnimationInterfaceSettings"
+        android:title="@string/bars_and_menus_category_system_title" />
+
+    <PreferenceScreen
+        android:key="interface_animation_listview"
+        android:fragment="com.android.settings.pac.ListViewAnimationInterfaceSettings"
+        android:title="@string/listview_title" />
+
+    <PreferenceScreen
+        android:key="interface_animation_scroll"
+        android:fragment="com.android.settings.pac.ScrollAnimationInterfaceSettings"
+        android:title="@string/scrolling_title" />
+
+    <PreferenceScreen
+        android:key="interface_animation_keyboard"
+        android:fragment="com.android.settings.pac.KeyboardAnimationInterfaceSettings"
+        android:title="@string/ime_animation_title" />
+
+    <PreferenceScreen
+        android:key="interface_animation_toast"
+        android:fragment="com.android.settings.pac.ToastAnimationInterfaceSettings"
+        android:title="@string/toast_animation_title" />
+
 </PreferenceScreen>
