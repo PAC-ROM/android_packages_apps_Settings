@@ -60,7 +60,7 @@
             settings:unitsRight="* 15ms"
             android:defaultValue="0" />
 
-        <com.android.settings.pac.TestKeyboard
+        <com.android.settings.pac.animations.TestKeyboard
             android:key="anim_ime_test"
             hint="@string/ime_animation_test_title" />
 

@@ -16,7 +16,7 @@
  *
  */
 
-package com.android.settings.pac;
+package com.android.settings.pac.animations;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -63,10 +63,6 @@ public class ToastAnimationInterfaceSettings extends SettingsPreferenceFragment 
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mToastTestAnimation) {
-            Toast.makeText(mContext, mContext.getString(R.string.toast_test_animation), Toast.LENGTH_SHORT).show();
-            return true;
-        }
         // If we didn't handle it, let preferences handle it.
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
@@ -79,6 +75,7 @@ public class ToastAnimationInterfaceSettings extends SettingsPreferenceFragment 
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.ANIMATION_TOAST, val);
             mToastAnimation.setSummary(mToastAnimation.getEntries()[index]);
+            Toast.makeText(mContext, mContext.getString(R.string.toast_test_animation), Toast.LENGTH_SHORT).show();
         } else {
             return false;
         }

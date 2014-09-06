@@ -16,7 +16,7 @@
  *
  */
 
-package com.android.settings.pac;
+package com.android.settings.pac.animations;
 
 import android.app.AlertDialog;
 import android.content.ContentResolver;

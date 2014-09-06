@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac;
+package com.android.settings.pac.animations;
 
 import android.app.AlertDialog;
 import android.content.Context;

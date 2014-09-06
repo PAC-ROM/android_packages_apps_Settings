@@ -27,8 +27,4 @@
         android:entryValues="@array/anim_controls_values"
         android:persistent="false" />
 
-    <Preference
-        android:key="toast_test_animation"
-        android:title="@string/toast_test_animation" />
-
 </PreferenceScreen>

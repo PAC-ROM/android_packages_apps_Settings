@@ -63,7 +63,7 @@
             settings:unitsRight="* 15ms"
             android:defaultValue="0" />
 
-        <com.android.settings.pac.TestListView
+        <com.android.settings.pac.animations.TestListView
             android:summary="@string/listview_test_summary"
             android:title="@string/listview_test" />
 
