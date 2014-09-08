@@ -70,26 +70,10 @@
                 android:title="@string/navigation_bar_title" />
 
         <PreferenceScreen
-                android:key="navbar_dimen_settings"
-                android:fragment="com.android.settings.pac.NavbarDimenSettings"
-                android:title="@string/navbar_style_dimen_title" />
-
-        <PreferenceScreen
                 android:key="navigation_ring"
                 android:fragment="com.android.settings.cyanogenmod.NavRing"
                 android:title="@string/navigation_ring_title" />
 
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="navigation_bar_left"
-                android:title="@string/navigation_bar_left_title"
-                android:summary="@string/navigation_bar_left_summary"
-                android:defaultValue="false" />
-
-        <com.android.settings.cyanogenmod.SystemSettingCheckBoxPreference
-                android:key="navigation_bar_dpad_keys"
-                android:title="@string/navigation_bar_arrow_keys_title"
-                android:summary="@string/navigation_bar_arrow_keys_summary"
-                android:defaultValue="false" />
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -46,9 +46,10 @@ import java.util.ArrayList;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.cyanogenmod.ShortcutPickHelper;
+import com.android.settings.pac.widgets.ShortcutPickerHelper;
+import com.android.settings.pac.widgets.ShortcutPickerHelper.OnPickListener;
 
-public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements ShortcutPickHelper.OnPickListener {
+public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements OnPickListener {
 
     private static final String TAG = ArrangeNavbarFragment.class.getSimpleName();
 
@@ -61,7 +62,7 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
 
     private ArrayList<AwesomeButtonInfo> mNavButtons = new ArrayList<AwesomeButtonInfo>();
 
-    private ShortcutPickHelper mPicker;
+    private ShortcutPickerHelper mPicker;
     private int mTargetIndex = 0;
     private int mTarget = 0;
     DialogConstant mActionTypeToChange;
@@ -161,11 +162,9 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
                     mActionCodes[i]);
         }
 
-        mPicker = new ShortcutPickHelper(getActivity(), this);
+        mPicker = new ShortcutPickerHelper(this, this);
         readUserConfig();
     }
-
-
 
     @Override
     public void onResume() {
@@ -284,13 +283,7 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
         DialogConstant dConstant = funcFromString(uri);
         switch (dConstant) {
             case CUSTOM_APP:
-                final String label = getResources().getString(R.string.lockscreen_target_empty);
-                final ShortcutIconResource iconResource =
-                        ShortcutIconResource.fromContext(getActivity(), android.R.drawable.ic_delete);
-                mPicker.pickShortcut(
-                        new String[] { label },
-                        new ShortcutIconResource[] { iconResource },
-                        getId());
+                mPicker.pickShortcut();
                 break;
             case SHORT_ACTION:
             case LONG_ACTION:
@@ -394,7 +387,8 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
     }
 
     @Override
-    public void shortcutPicked(String uri, String friendlyName, boolean isApplication) {
+    public void shortcutPicked(String uri, String friendlyName, Bitmap bmp,
+                               boolean isApplication) {
         switch (mActionTypeToChange) {
             case SHORT_ACTION:
                 mSelectedButton.singleAction = uri;
@@ -415,7 +409,12 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if ((requestCode == REQUEST_PICK_CUSTOM_ICON)
+            if (requestCode == ShortcutPickerHelper.REQUEST_PICK_SHORTCUT
+                    || requestCode == ShortcutPickerHelper.REQUEST_PICK_APPLICATION
+                    || requestCode == ShortcutPickerHelper.REQUEST_CREATE_SHORTCUT) {
+                mPicker.onActivityResult(requestCode, resultCode, data);
+
+            } else if ((requestCode == REQUEST_PICK_CUSTOM_ICON)
                     || (requestCode == REQUEST_PICK_LANDSCAPE_ICON)) {
 
                 String iconName = getIconFileName(mNavButtons.indexOf(mSelectedButton));
@@ -477,10 +476,9 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
 
                 saveUserConfig();
                 mAdapter.notifyDataSetChanged();
-            } else if (requestCode != Activity.RESULT_CANCELED
-                    && resultCode != Activity.RESULT_CANCELED) {
-                mPicker.onActivityResult(requestCode, resultCode, data);
             }
+        } else if (resultCode == Activity.RESULT_CANCELED && data != null) {
+
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

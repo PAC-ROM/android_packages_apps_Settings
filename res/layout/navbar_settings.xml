@@ -5,5 +5,64 @@
             android:layout_height="match_parent">
 
     <LinearLayout style="@style/settingsFragmentStyle">
+
+        <com.android.settings.pac.CheckboxSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_bar_left"
+            android:title="@string/navigation_bar_left_title"
+            android:summary="@string/navigation_bar_left_summary"
+            android:key="navigation_bar_left"
+            android:defaultValue="false"
+            table="system"
+            />
+
+        <com.android.settings.pac.CheckboxSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_bar_dpad_keys"
+            android:title="@string/navigation_bar_arrow_keys_title"
+            android:summary="@string/navigation_bar_arrow_keys_summary"
+            android:key="navigation_bar_dpad_keys"
+            android:defaultValue="false"
+            table="system"
+            />
+
+        <com.android.settings.pac.SingleChoiceSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_bar_height"
+            android:title="@string/navigation_bar_height_title"
+            android:summary="@string/navigation_bar_height_summary"
+            android:key="navigation_bar_height"
+            android:entries="@array/navigation_bar_height_entries"
+            android:entryValues="@array/navigation_bar_height"
+            android:defaultValue="48"
+            />
+
+        <com.android.settings.pac.SingleChoiceSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_bar_height_landscape"
+            android:title="@string/navigation_bar_height_landscape_title"
+            android:summary="@string/navigation_bar_height_landscape_summary"
+            android:key="navigation_bar_height_landscape"
+            android:entries="@array/navigation_bar_height_entries_landscape"
+            android:entryValues="@array/navigation_bar_height_landscape"
+            android:defaultValue="48"
+            />
+
+        <com.android.settings.pac.SingleChoiceSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_bar_width"
+            android:title="@string/navigation_bar_width_title"
+            android:summary="@string/navigation_bar_width_summary"
+            android:key="navigation_bar_width"
+            android:entries="@array/navigation_bar_width_entries"
+            android:entryValues="@array/navigation_bar_width"
+            android:defaultValue="42"
+            />
+
     </LinearLayout>
 </ScrollView>
