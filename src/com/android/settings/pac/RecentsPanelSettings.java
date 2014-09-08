@@ -55,6 +55,8 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private static final String RECENT_PANEL_SCALE = "recent_panel_scale";
     private static final String RECENT_PANEL_EXPANDED_MODE = "recent_panel_expanded_mode";
     private static final String RECENT_PANEL_BG_COLOR = "recent_panel_bg_color";
+    private static final String RECENT_CARD_BG_COLOR = "recent_card_bg_color";
+    private static final String RECENT_CARD_TEXT_COLOR = "recent_card_text_color";
 
     // Package name of the omnniswitch app
     public static final String OMNISWITCH_PACKAGE_NAME = "org.omnirom.omniswitch";
@@ -69,6 +71,8 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
     private CheckBoxPreference mRecentsShowTopmost;
     private CheckBoxPreference mRecentPanelLeftyMode;
     private ColorPickerPreference mRecentPanelBgColor;
+    private ColorPickerPreference mRecentCardBgColor;
+    private ColorPickerPreference mRecentCardTextColor;
     private ListPreference mRecentPanelScale;
     private ListPreference mRecentPanelExpandedMode;
     private ListPreference mRecentClearAllPosition;
@@ -161,6 +165,27 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
         mRecentPanelBgColor.setSummary(hexColor);
         mRecentPanelBgColor.setNewPreviewColor(intColor);
 
+        // Recent card background color
+        mRecentCardBgColor =
+                (ColorPickerPreference) findPreference(RECENT_CARD_BG_COLOR);
+        mRecentCardBgColor.setOnPreferenceChangeListener(this);
+        final int intColorCard = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.RECENT_CARD_BG_COLOR, 0x00ffffff);
+        String hexColorCard = String.format("#%08x", (0x00ffffff & intColorCard));
+        mRecentCardBgColor.setSummary(hexColorCard);
+        mRecentCardBgColor.setNewPreviewColor(intColorCard);
+
+        // Recent card text color
+        mRecentCardTextColor =
+               (ColorPickerPreference) findPreference(RECENT_CARD_TEXT_COLOR);
+        mRecentCardTextColor.setOnPreferenceChangeListener(this);
+        final int intColorText = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.RECENT_CARD_TEXT_COLOR, 0x00ffffff);
+        String hexColorText = String.format("#%08x", (0x00ffffff & intColorText));
+        mRecentCardTextColor.setSummary(hexColorText);
+        mRecentCardTextColor.setNewPreviewColor(intColorText);
+
+
         // Ram Bar
         mRecentRamBar = findPreference(RECENT_RAM_BAR);
         mRecentRamBar.setEnabled(!useOmniSwitch && !useSlimRecents);
@@ -205,7 +230,6 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
 
             // Update Slim recents UI components
             mRecentsUseSlim.setEnabled(!omniSwitchEnabled);
-            return true;
         } else if (preference == mRecentsUseSlim) {
             boolean useSlimRecents = (Boolean) objValue;
 
@@ -245,6 +269,20 @@ public class RecentsPanelSettings extends SettingsPreferenceFragment implements
             int intHex = ColorPickerPreference.convertToColorInt(hex);
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.RECENT_PANEL_BG_COLOR, intHex);
+        } else if (preference == mRecentCardBgColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_CARD_BG_COLOR, intHex);
+        } else if (preference == mRecentCardTextColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.RECENT_CARD_TEXT_COLOR, intHex);
         } else {
             return false;
         }
