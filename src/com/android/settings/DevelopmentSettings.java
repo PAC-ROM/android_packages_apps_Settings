@@ -1641,7 +1641,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 mRootDialog = new AlertDialog.Builder(getActivity())
                         .setMessage(getResources().getString(R.string.root_access_warning_message))
                         .setTitle(R.string.root_access_warning_title)
-                        .setIconAttribute(android.R.attr.alertDialogIcon)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
                         .setPositiveButton(android.R.string.yes, this)
                         .setNegativeButton(android.R.string.no, this).show();
                 mRootDialog.setOnDismissListener(this);
