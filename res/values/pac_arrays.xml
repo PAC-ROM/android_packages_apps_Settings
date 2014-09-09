@@ -423,6 +423,18 @@
         <item>**icon**</item>
     </string-array>
 
+    <string-array name="navigation_bar_menu_entries" translatable="false">
+        <item>@string/menu_location_right</item>
+        <item>@string/menu_location_left</item>
+        <item>@string/menu_location_both</item>
+    </string-array>
+
+    <string-array name="navigation_bar_menu_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
     <!-- Network stats -->
     <string-array name="entries_status_bar_network_stats_update">
         <item>&#189; second</item>

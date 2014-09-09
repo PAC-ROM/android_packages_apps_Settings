@@ -529,6 +529,13 @@
     <string name="action_icon">Custom icon</string>
     <string name="choose_action_title">Choose action</string>
     <string name="choose_action_short_title">Choose short action</string>
+    <string name="menu_button_location">Menu button location</string>
+    <string name="menu_location_right">Right</string>
+    <string name="menu_location_left">Left</string>
+    <string name="menu_location_both">Both</string>
+
+    <string name="navigation_bar_menu_force">Force show menu</string>
+    <string name="navigation_bar_menu_force_summary">Always show the menu button(s)</string>
 
     <!-- Network stats -->
     <string name="status_bar_network_title">Network traffic</string>

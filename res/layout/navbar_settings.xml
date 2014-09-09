@@ -31,6 +31,28 @@
         <com.android.settings.pac.SingleChoiceSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/navigation_menu"
+            android:title="@string/menu_button_location"
+            android:key="navigation_menu"
+            android:entries="@array/navigation_bar_menu_entries"
+            android:entryValues="@array/navigation_bar_menu_values"
+            android:defaultValue="0"
+            table="system"
+            />
+
+        <com.android.settings.pac.CheckboxSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/navigation_menu_force"
+            android:title="@string/navigation_bar_menu_force"
+            android:summary="@string/navigation_bar_menu_force_summary"
+            android:key="navigation_menu_force"
+            android:defaultValue="false"
+            table="system" />
+
+        <com.android.settings.pac.SingleChoiceSetting
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_height"
             android:title="@string/navigation_bar_height_title"
             android:summary="@string/navigation_bar_height_summary"
@@ -38,6 +60,7 @@
             android:entries="@array/navigation_bar_height_entries"
             android:entryValues="@array/navigation_bar_height"
             android:defaultValue="48"
+            table="system"
             />
 
         <com.android.settings.pac.SingleChoiceSetting
@@ -50,6 +73,7 @@
             android:entries="@array/navigation_bar_height_entries_landscape"
             android:entryValues="@array/navigation_bar_height_landscape"
             android:defaultValue="48"
+            table="system"
             />
 
         <com.android.settings.pac.SingleChoiceSetting
@@ -62,6 +86,7 @@
             android:entries="@array/navigation_bar_width_entries"
             android:entryValues="@array/navigation_bar_width"
             android:defaultValue="42"
+            table="system"
             />
 
     </LinearLayout>
