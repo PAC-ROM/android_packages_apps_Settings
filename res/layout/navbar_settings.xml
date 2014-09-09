@@ -60,7 +60,7 @@
             android:entries="@array/navigation_bar_height_entries"
             android:entryValues="@array/navigation_bar_height"
             android:defaultValue="48"
-            table="system"
+            table="pac"
             />
 
         <com.android.settings.pac.SingleChoiceSetting
@@ -73,7 +73,7 @@
             android:entries="@array/navigation_bar_height_entries_landscape"
             android:entryValues="@array/navigation_bar_height_landscape"
             android:defaultValue="48"
-            table="system"
+            table="pac"
             />
 
         <com.android.settings.pac.SingleChoiceSetting
@@ -86,7 +86,7 @@
             android:entries="@array/navigation_bar_width_entries"
             android:entryValues="@array/navigation_bar_width"
             android:defaultValue="42"
-            table="system"
+            table="pac"
             />
 
     </LinearLayout>
