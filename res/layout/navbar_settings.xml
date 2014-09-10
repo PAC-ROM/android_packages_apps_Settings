@@ -25,7 +25,7 @@
             android:summary="@string/navigation_bar_arrow_keys_summary"
             android:key="navigation_bar_dpad_keys"
             android:defaultValue="false"
-            table="system"
+            table="pac"
             />
 
         <com.android.settings.pac.SingleChoiceSetting
@@ -37,7 +37,7 @@
             android:entries="@array/navigation_bar_menu_entries"
             android:entryValues="@array/navigation_bar_menu_values"
             android:defaultValue="0"
-            table="system"
+            table="pac"
             />
 
         <com.android.settings.pac.CheckboxSetting
@@ -48,7 +48,7 @@
             android:summary="@string/navigation_bar_menu_force_summary"
             android:key="navigation_menu_force"
             android:defaultValue="false"
-            table="system" />
+            table="pac" />
 
         <com.android.settings.pac.SingleChoiceSetting
             android:layout_width="match_parent"

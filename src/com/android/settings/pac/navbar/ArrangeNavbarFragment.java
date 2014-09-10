@@ -526,12 +526,12 @@ public class ArrangeNavbarFragment extends SettingsPreferenceFragment implements
                 s.append("|");
             }
         }
-        Settings.System.putString(getActivity().getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTONS, s.toString());
+        Settings.PAC.putString(getActivity().getContentResolver(), Settings.PAC.NAVIGATION_BAR_BUTTONS, s.toString());
     }
 
     private void readUserConfig() {
         mNavButtons.clear();
-        String buttons = Settings.System.getString(getActivity().getContentResolver(), Settings.System.NAVIGATION_BAR_BUTTONS);
+        String buttons = Settings.PAC.getString(getActivity().getContentResolver(), Settings.PAC.NAVIGATION_BAR_BUTTONS);
         if (buttons == null || buttons.isEmpty()) {
             // use default buttons
             mNavButtons.add(new AwesomeButtonInfo(
