@@ -123,7 +123,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     //private CheckBoxPreference mDisableNavigationKeys;
     private CheckBoxPreference mPowerEndCall;
     private CheckBoxPreference mHomeAnswerCall;
-    private CheckBoxPreference mNavigationBarLeftPref;
 
     private Handler mHandler;
 
@@ -197,9 +196,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
         // Force Navigation bar related options
         // mDisableNavigationKeys = (CheckBoxPreference) findPreference(DISABLE_NAV_KEYS);
         mEnableNavigationBar = (CheckBoxPreference) findPreference(ENABLE_NAV_BAR);
-
-        // Navigation bar left
-        mNavigationBarLeftPref = (CheckBoxPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
 
         // Booleans to enable/disable nav bar
         // overriding overlays
@@ -369,11 +365,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
                     || forceNavbar;
 
             if (hasNavBar) {
-                if (!Utils.isPhone(getActivity())) {
-                    PreferenceCategory navCategory =
-                            (PreferenceCategory) findPreference(CATEGORY_NAVBAR);
-                    navCategory.removePreference(mNavigationBarLeftPref);
-                }
+                // Do nothing
             } else {
                 // Hide navigation bar category
                 prefScreen.removePreference(findPreference(CATEGORY_NAVBAR));
