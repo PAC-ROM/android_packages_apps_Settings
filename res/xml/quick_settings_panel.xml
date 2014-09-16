@@ -74,8 +74,8 @@
             android:entries="@array/entries_screentimeout_widget"
             android:entryValues="@array/values_screentimeout_widget" />
 
-        <CheckBoxPreference
-            android:key="flip_qs_tiles"
+        <com.android.settings.pac.PacSettingCheckBoxPreference
+            android:key="quick_settings_tiles_flip"
             android:title="@string/flip_qs_tiles_title"
             android:summary="@string/flip_qs_tiles_summary" />
 
