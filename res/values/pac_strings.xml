@@ -195,6 +195,7 @@
     <string name="hex_hint">#ff000000</string>
     <string name="set">Set</string>
     <string name="color_default">Default</string>
+    <string name="reset_colors">Reset all colors to default?</string>
 
     <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
@@ -206,6 +207,7 @@
     <!-- General strings -->
     <string name="ok">OK</string>
     <string name="reset">Reset</string>
+    <string name="reset_default_message">Reset default</string>
     <string name="attention">Attention</string>
 
     <!-- Gesture Anywhere -->
@@ -253,12 +255,6 @@
     <string name="ga_gestures_rename_label">Gesture name</string>
     <!-- Message, displayed when the sdcard cannot be found, 1st parameter is the name of the file that stores the gestures.  CHAR LIMIT=80 -->
     <string name="ga_gestures_error_loading">Could not load %s. Make sure you have storage available.</string>
-
-    <!-- LockScreen GlowPad DoubleTap Option -->
-    <string name="lockscreen_glowpad_doubletap_checkbox_title">Glowpad Doubletap Gesture</string>
-    <string name="lockscreen_glowpad_doubletap_title">Glowpad Doubletap Option</string>
-    <string name="lockscreen_glowpad_doubletap_sleep">Sleep</string>
-    <string name="lockscreen_glowpad_doubletap_torch">Torch</string>
 
     <!-- Halo -->
     <string name="halo_settings_title">Halo</string>
@@ -339,6 +335,8 @@
     <string name="heads_up_whitelist_title">Whitelist apps</string>
     <!-- Heads-up disable on lockscreen -->
     <string name="heads_up_exclude_from_lock_screen">Disable on lockscreen</string>
+    <string name="heads_up_bg_color_title">Background color</string>
+    <string name="heads_up_text_color_title">Text color</string>
 
     <!-- IME Animation Controls -->
     <string name="ime_animation_title">Keyboard</string>
@@ -540,6 +538,12 @@
     <!-- Lockscreen blur -->
     <string name="blur_radius_title">Blur Radius</string>
     <string name="blur_radius_summary">Set the blur radius for the blur effect</string>
+
+    <!-- Lockscreen GlowPad DoubleTap Option -->
+    <string name="lockscreen_glowpad_doubletap_checkbox_title">Glowpad Doubletap Gesture</string>
+    <string name="lockscreen_glowpad_doubletap_title">Glowpad Doubletap Option</string>
+    <string name="lockscreen_glowpad_doubletap_sleep">Sleep</string>
+    <string name="lockscreen_glowpad_doubletap_torch">Torch</string>
 
     <!-- Lockscreen Notifications -->
     <!-- Categories -->
