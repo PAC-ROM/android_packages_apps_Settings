@@ -29,6 +29,7 @@ import android.os.*;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.widget.CompoundButton;
 import android.widget.Switch;
@@ -264,6 +265,10 @@ public class WifiApSettings extends SettingsPreferenceFragment implements
     public void onClick(DialogInterface dialogInterface, int button) {
         if (button == DialogInterface.BUTTON_POSITIVE) {
             mWifiConfig = mDialog.getConfig();
+
+            /* always set the tether network */
+            setWifiTetherNetwork();
+
             if (mWifiConfig != null) {
                 /**
                  * if soft AP is stopped, bring up
@@ -315,5 +320,12 @@ public class WifiApSettings extends SettingsPreferenceFragment implements
                     = ClientsList.get(true, WifiApSettings.this.getActivity());
             mHandler.obtainMessage(0, clients).sendToTarget();
         }
+    }
+
+    private void setWifiTetherNetwork() {
+        final Activity activity = getActivity();
+        String network = mDialog.getWifiTetherNetwork();
+        android.provider.Settings.Global.putString(activity.getApplicationContext().getContentResolver(),
+                android.provider.Settings.Global.TETHER_WIFI_NETWORK, network);
     }
 }
