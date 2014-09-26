@@ -177,6 +177,10 @@
     <string name="battery_bar_title">Battery Bar</string>
     <string name="status_bar_battery_cat_title">Battery</string>
 
+    <!-- Bypass insecure lockscreen with smart cover/keyboard -->
+    <string name="bypass_insecure_lockscreen_title">Bypass lock screen</string>
+    <string name="bypass_insecure_lockscreen_summary">Bypass insecure lock screen with smart covers</string>
+
     <!-- Categories and titles -->
     <string name="misc_category">Misc</string>
     <!-- Status bar -->

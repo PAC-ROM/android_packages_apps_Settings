@@ -29,6 +29,11 @@
             android:summary="@string/screen_security_summary">
         </PreferenceScreen>
 
+        <com.android.settings.pac.PacSettingCheckBoxPreference
+            android:key="bypass_insecure_lockscreen"
+            android:title="@string/bypass_insecure_lockscreen_title"
+            android:summary="@string/bypass_insecure_lockscreen_summary"/>
+
         <ListPreference
             android:key="lockscreen_battery_status"
             android:persistent="false"
