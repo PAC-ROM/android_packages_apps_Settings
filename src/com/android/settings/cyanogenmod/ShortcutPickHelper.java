@@ -286,7 +286,9 @@ public class ShortcutPickHelper {
     private String getFriendlyActivityName(Intent intent, boolean labelOnly) {
         ActivityInfo ai = intent.resolveActivityInfo(mPackageManager, PackageManager.GET_ACTIVITIES);
         String friendlyName = null;
-        if (ai != null) {
+        if (ai == null) {
+            friendlyName = mParent.getString(R.string.activity_not_found);
+        } else {
             friendlyName = ai.loadLabel(mPackageManager).toString();
             if (friendlyName == null && !labelOnly) {
                 friendlyName = ai.name;
