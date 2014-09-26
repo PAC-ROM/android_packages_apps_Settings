@@ -256,6 +256,8 @@
 
     <!-- Halo -->
     <string name="halo_settings_title">Halo</string>
+    <string name="halo_app_title">Manage pinned applications</string>
+    <string name="halo_app_summary">Launch additional apps in Halo</string>
     <string name="halo_activate_title">Activate Halo</string>
     <string name="halo_behavior_title">Halo Behavior</string>
     <string name="halo_hide_title">Hide Halo after activity</string>

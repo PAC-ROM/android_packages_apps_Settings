@@ -22,6 +22,17 @@ limitations under the License.
         android:title="@string/halo_activate_title"
         android:defaultValue="false" />
 
+    <!-- Halo App -->
+    <PreferenceScreen
+        android:id="@+id/halo_app"
+        android:title="@string/halo_app_title"
+        android:summary="@string/halo_app_summary">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.paranoid.halo"
+            android:targetClass="com.paranoid.halo.MainActivity" />
+    </PreferenceScreen>
+
     <ListPreference
         android:key="halo_state"
         android:dialogTitle="@string/halo_state_title"
