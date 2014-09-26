@@ -303,7 +303,7 @@
     <string name="app_halo_label_white">Whitelist from HALO</string>
 
     <!-- Heads up -->
-    <string name="heads_up_title">Heads up notification</string>
+    <string name="heads_up_title">Heads Up Notification</string>
     <string name="heads_up_expanded_title">Always expanded</string>
     <string name="heads_up_expanded_summary">Show heads up notification always expanded</string>
     <string name="heads_up_show_updates_title">Show updates</string>

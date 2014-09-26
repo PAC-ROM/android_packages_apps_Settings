@@ -39,16 +39,6 @@
         android:defaultValue="false" />
 
     <PreferenceScreen
-        android:key="halo_settings"
-        android:fragment="com.android.settings.pac.Halo"
-        android:title="@string/halo_settings_title" />
-
-    <PreferenceScreen
-        android:key="heads_up"
-        android:fragment="com.android.settings.pac.headsup.HeadsUp"
-        android:title="@string/heads_up_title" />
-
-    <PreferenceScreen
         settings:includeXmlForSearch="@xml/quick_settings_panel"
         android:key="quick_settings_panel"
         android:fragment="com.android.settings.quicksettings.QuickSettings"

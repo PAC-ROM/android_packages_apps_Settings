@@ -53,6 +53,20 @@
         android:title="@string/gesture_anywhere_title"
         android:icon="@drawable/ic_settings_gesture_anywhere" />
 
+    <!-- Halo -->
+    <PreferenceScreen
+        android:key="@+id/halo_settings"
+        android:fragment="com.android.settings.pac.Halo"
+        android:title="@string/halo_settings_title"
+        android:icon="@drawable/ic_settings_halo" />
+
+    <!-- Heads Up -->
+    <PreferenceScreen
+        android:key="heads_up"
+        android:fragment="com.android.settings.pac.headsup.HeadsUp"
+        android:title="@string/heads_up_title"
+        android:icon="@drawable/ic_settings_heads_up" />
+
     <!-- Init.D -->
     <PreferenceScreen
         android:id="@+id/initD"
