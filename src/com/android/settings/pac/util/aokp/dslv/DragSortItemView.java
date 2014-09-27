@@ -1,13 +1,14 @@
-/*
+/**
+ * A subclass of the Android ListView component that enables drag
+ * and drop re-ordering of list items.
+ *
  * Copyright 2012 Carl Bauer
- * Copyright (C) 2013 SlimRoms Project
- * This code has been modified. Portions copyright (C) 2012, ParanoidAndroid Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,7 +17,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac.dslv;
+package com.android.settings.pac.util.aokp.dslv;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -50,10 +51,10 @@ public class DragSortItemView extends ViewGroup {
 
         // always init with standard ListView layout params
         setLayoutParams(new AbsListView.LayoutParams(
-                ViewGroup.LayoutParams.FILL_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
+                LayoutParams.FILL_PARENT,
+                LayoutParams.WRAP_CONTENT));
 
-        //setClipChildren(true);
+        setClipChildren(true);
     }
 
     public void setGravity(int gravity) {
@@ -103,7 +104,7 @@ public class DragSortItemView extends ViewGroup {
         }
 
         if (heightMode == MeasureSpec.UNSPECIFIED) {
-            ViewGroup.LayoutParams lp = getLayoutParams();
+            LayoutParams lp = getLayoutParams();
 
             if (lp.height > 0) {
                 height = lp.height;

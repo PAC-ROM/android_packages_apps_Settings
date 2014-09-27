@@ -24,7 +24,7 @@
 
     <PreferenceScreen
             android:key="pie_button"
-            android:fragment="com.android.settings.pac.dslv.ButtonsListViewSettings"
+            android:fragment="com.android.settings.pac.util.slim.dslv.ButtonsListViewSettings"
             android:title="@string/pie_button"
             android:dependency="pie_control">
         <extra android:name="buttonMode" android:value="1" />

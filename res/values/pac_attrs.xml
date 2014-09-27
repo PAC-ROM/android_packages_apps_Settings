@@ -23,7 +23,11 @@
         <attr name="floatBackgroundColor" format="color" />
         <attr name="removeMode">
             <enum name="clickRemove" value="0" />
-            <enum name="flingRemove" value="1" />
+            <enum name="flingRight" value="1" />
+            <enum name="flingLeft" value="2" />
+            <enum name="slideRight" value="3" />
+            <enum name="slideLeft" value="4" />
+            <enum name="flingRemove" value="5" />
         </attr>
         <attr name="trackDragSort" format="boolean"/>
         <attr name="floatAlpha" format="float"/>

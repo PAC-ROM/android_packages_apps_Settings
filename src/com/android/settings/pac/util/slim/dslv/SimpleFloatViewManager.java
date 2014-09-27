@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac.dslv;
+package com.android.settings.pac.util.slim.dslv;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;

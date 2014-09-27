@@ -33,7 +33,7 @@
     <com.android.settings.pac.widgets.CategorySeparator
             style="@style/defaultSize"/>
 
-    <com.mobeta.android.dslv.DragSortListView
+    <com.android.settings.pac.util.aokp.dslv.DragSortListView
             android:id="@android:id/list"
             android:layout_width="match_parent"
             android:layout_height="0dp"

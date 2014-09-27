@@ -25,7 +25,7 @@
 
     <PreferenceScreen
             android:key="pie_button_second_layer"
-            android:fragment="com.android.settings.pac.dslv.ButtonsListViewSettings"
+            android:fragment="com.android.settings.pac.util.slim.dslv.ButtonsListViewSettings"
             android:title="@string/pie_button_second_layer"
             android:summary="@string/pie_button_second_layer_summary">
         <extra android:name="buttonMode" android:value="2" />

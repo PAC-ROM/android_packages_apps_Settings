@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac.dslv;
+package com.android.settings.pac.util.slim.dslv;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -62,8 +62,8 @@ import com.android.internal.util.pac.DeviceUtils.FilteredDeviceFeaturesArray;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
-import com.android.settings.pac.dslv.DragSortListView;
-import com.android.settings.pac.dslv.DragSortController;
+import com.android.settings.pac.util.slim.dslv.DragSortListView;
+import com.android.settings.pac.util.slim.dslv.DragSortController;
 import com.android.settings.pac.util.ShortcutPickerHelper;
 
 import java.io.File;

@@ -1,14 +1,13 @@
-/**
- * A subclass of the Android ListView component that enables drag
- * and drop re-ordering of list items.
- *
+/*
  * Copyright 2012 Carl Bauer
+ * Copyright (C) 2013 SlimRoms Project
+ * This code has been modified. Portions copyright (C) 2012, ParanoidAndroid Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ *      http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.mobeta.android.dslv;
+package com.android.settings.pac.util.slim.dslv;
 
 import android.content.Context;
 import android.view.Gravity;
@@ -36,8 +35,8 @@ import android.util.Log;
  * the width MeasureSpec given to ItemView is passed directly
  * to the child, and the ItemView measured width is set to the
  * child's measured width). The height of ItemView can be anything;
- * the 
- * 
+ * the
+ *
  *
  * The purpose of this class is to optimize slide
  * shuffle animations.
@@ -51,10 +50,10 @@ public class DragSortItemView extends ViewGroup {
 
         // always init with standard ListView layout params
         setLayoutParams(new AbsListView.LayoutParams(
-                LayoutParams.FILL_PARENT,
-                LayoutParams.WRAP_CONTENT));
+                ViewGroup.LayoutParams.FILL_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        setClipChildren(true);
+        //setClipChildren(true);
     }
 
     public void setGravity(int gravity) {
@@ -81,11 +80,11 @@ public class DragSortItemView extends ViewGroup {
     }
 
     /**
-     * 
+     *
      */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        
+
         int height = MeasureSpec.getSize(heightMeasureSpec);
         int width = MeasureSpec.getSize(widthMeasureSpec);
 
@@ -104,7 +103,7 @@ public class DragSortItemView extends ViewGroup {
         }
 
         if (heightMode == MeasureSpec.UNSPECIFIED) {
-            LayoutParams lp = getLayoutParams();
+            ViewGroup.LayoutParams lp = getLayoutParams();
 
             if (lp.height > 0) {
                 height = lp.height;

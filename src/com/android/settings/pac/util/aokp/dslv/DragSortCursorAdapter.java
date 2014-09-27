@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package com.mobeta.android.dslv;
+package com.android.settings.pac.util.aokp.dslv;
 
 import java.util.ArrayList;
 
@@ -54,7 +54,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements Dra
     private SparseIntArray mListMapping = new SparseIntArray();
 
     private ArrayList<Integer> mRemovedCursorPositions = new ArrayList<Integer>();
-    
+
     public DragSortCursorAdapter(Context context, Cursor c) {
         super(context, c);
     }
@@ -146,7 +146,7 @@ public abstract class DragSortCursorAdapter extends CursorAdapter implements Dra
             }
             mListMapping.put(to, cursorFrom);
 
-            cleanMapping();        
+            cleanMapping();
             notifyDataSetChanged();
         }
     }

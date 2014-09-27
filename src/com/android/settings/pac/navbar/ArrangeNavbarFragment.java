@@ -35,8 +35,6 @@ import com.android.internal.util.pac.AwesomeConstants.AwesomeConstant;
 import com.android.internal.util.pac.NavBarHelpers;
 import com.google.android.apps.dashclock.ui.DragGripView;
 import com.google.android.apps.dashclock.ui.SwipeDismissListViewTouchListener;
-import com.mobeta.android.dslv.DragSortController;
-import com.mobeta.android.dslv.DragSortListView;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,6 +44,8 @@ import java.util.ArrayList;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.pac.util.aokp.dslv.DragSortController;
+import com.android.settings.pac.util.aokp.dslv.DragSortListView;
 import com.android.settings.pac.widgets.ShortcutPickerHelper;
 import com.android.settings.pac.widgets.ShortcutPickerHelper.OnPickListener;
 

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-package com.mobeta.android.dslv;
+package com.android.settings.pac.util.aokp.dslv;
 
 import android.graphics.Bitmap;
 import android.graphics.Point;
