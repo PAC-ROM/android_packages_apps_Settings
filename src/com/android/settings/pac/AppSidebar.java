@@ -29,7 +29,7 @@ import android.provider.Settings;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.SeekBarPreferenceCHOS;
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 
 public class AppSidebar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, Preference.OnPreferenceClickListener {

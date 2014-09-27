@@ -31,7 +31,7 @@
             android:summaryOff="@string/animation_no_scroll_summary_off"
             android:summaryOn="@string/animation_no_scroll_summary_on" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="animation_fling_velocity"
             android:persistent="false"
             android:title="@string/animation_fling_velocity_title"
@@ -44,7 +44,7 @@
             android:defaultValue="8000"
             android:dependency="animation_no_scroll" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="animation_scroll_friction"
             android:persistent="false"
             android:title="@string/animation_scroll_friction_title"
@@ -57,7 +57,7 @@
             android:defaultValue="150"
             android:dependency="animation_no_scroll" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="animation_overscroll_distance"
             android:persistent="false"
             android:title="@string/animation_overscroll_distance_title"
@@ -70,7 +70,7 @@
             android:defaultValue="0"
             android:dependency="animation_no_scroll" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="animation_overfling_distance"
             android:persistent="false"
             android:title="@string/animation_overfling_distance_title"

@@ -35,7 +35,7 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
 import com.android.settings.pac.lsn.AppMultiSelectListPreference;
-import com.android.settings.pac.SeekBarPreferenceCHOS;
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 
 import com.android.internal.util.pac.DeviceUtils;
 

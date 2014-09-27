@@ -17,7 +17,7 @@ limitations under the License.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
         android:title="@string/halo_settings_title">
 
-    <com.android.settings.pac.PacSettingCheckBoxPreference
+    <com.android.settings.pac.util.PacSettingCheckBoxPreference
         android:key="halo_active"
         android:title="@string/halo_activate_title"
         android:defaultValue="false" />
@@ -88,7 +88,7 @@ limitations under the License.
         android:summary="@string/halo_unlock_ping_summary"
         android:defaultValue="false" />
 
-    <com.android.settings.pac.PacSettingCheckBoxPreference
+    <com.android.settings.pac.util.PacSettingCheckBoxPreference
         android:key="halo_notify_silent"
         android:title="@string/halo_notify_silent_title"
         android:summary="@string/halo_notify_silent_summary"

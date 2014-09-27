@@ -111,7 +111,7 @@
             android:defaultValue="0"
             android:title="@string/wallpaper_intra_close_title" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="animation_duration"
             android:persistent="false"
             android:title="@string/animation_duration_title"

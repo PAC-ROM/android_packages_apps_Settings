@@ -1,4 +1,4 @@
-package com.android.settings.pac;
+package com.android.settings.pac.util.slim;
 
 import android.content.Context;
 import android.content.SharedPreferences;

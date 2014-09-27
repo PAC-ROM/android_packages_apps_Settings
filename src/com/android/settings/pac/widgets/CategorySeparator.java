@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.android.settings.R;
-import com.android.settings.pac.BaseSetting;
+import com.android.settings.pac.util.aokp.BaseSetting;
 
 /**
  * Created by roman on 12/16/13.

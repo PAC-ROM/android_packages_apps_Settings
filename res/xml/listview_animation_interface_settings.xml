@@ -51,7 +51,7 @@
             android:persistent="false"
             android:defaultValue="0" />
 
-        <com.android.settings.pac.SeekBarPreferenceCHOS
+        <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="listview_anim_duration"
             android:persistent="false"
             android:title="@string/listview_duration_title"

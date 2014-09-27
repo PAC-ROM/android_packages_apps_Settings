@@ -31,9 +31,10 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 import com.android.settings.R;
-import net.margaritov.preference.colorpicker.ColorPickerPreference;
 import com.android.settings.SettingsPreferenceFragment;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class ProgressBar extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {

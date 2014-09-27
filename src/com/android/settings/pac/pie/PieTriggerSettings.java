@@ -30,7 +30,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.settings.pac.SeekBarPreferenceCHOS;
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 

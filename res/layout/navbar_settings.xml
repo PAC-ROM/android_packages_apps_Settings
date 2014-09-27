@@ -6,7 +6,7 @@
 
     <LinearLayout style="@style/settingsFragmentStyle">
 
-        <com.android.settings.pac.CheckboxSetting
+        <com.android.settings.pac.util.aokp.CheckboxSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_left"
@@ -17,7 +17,7 @@
             table="system"
             />
 
-        <com.android.settings.pac.CheckboxSetting
+        <com.android.settings.pac.util.aokp.CheckboxSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_dpad_keys"
@@ -28,7 +28,7 @@
             table="pac"
             />
 
-        <com.android.settings.pac.SingleChoiceSetting
+        <com.android.settings.pac.util.aokp.SingleChoiceSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_menu"
@@ -40,7 +40,7 @@
             table="pac"
             />
 
-        <com.android.settings.pac.CheckboxSetting
+        <com.android.settings.pac.util.aokp.CheckboxSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_menu_force"
@@ -50,7 +50,7 @@
             android:defaultValue="false"
             table="pac" />
 
-        <com.android.settings.pac.SingleChoiceSetting
+        <com.android.settings.pac.util.aokp.SingleChoiceSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_height"
@@ -63,7 +63,7 @@
             table="pac"
             />
 
-        <com.android.settings.pac.SingleChoiceSetting
+        <com.android.settings.pac.util.aokp.SingleChoiceSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_height_landscape"
@@ -76,7 +76,7 @@
             table="pac"
             />
 
-        <com.android.settings.pac.SingleChoiceSetting
+        <com.android.settings.pac.util.aokp.SingleChoiceSetting
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/navigation_bar_width"

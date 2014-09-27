@@ -29,7 +29,7 @@
             android:summary="@string/screen_security_summary">
         </PreferenceScreen>
 
-        <com.android.settings.pac.PacSettingCheckBoxPreference
+        <com.android.settings.pac.util.PacSettingCheckBoxPreference
             android:key="bypass_insecure_lockscreen"
             android:title="@string/bypass_insecure_lockscreen_title"
             android:summary="@string/bypass_insecure_lockscreen_summary"/>
@@ -107,7 +107,7 @@
         android:key="lockscreen_misc_category" >
 
         <!-- Battery around unlock ring -->
-        <com.android.settings.pac.PacSettingCheckBoxPreference
+        <com.android.settings.pac.util.PacSettingCheckBoxPreference
             android:key="battery_around_lockscreen_ring"
             android:title="@string/battery_around_lockscreen_ring"
             android:summary="@string/battery_around_lockscreen_ring_summary"

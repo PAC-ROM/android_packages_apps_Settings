@@ -43,7 +43,7 @@ import com.android.internal.util.pac.DeviceUtils;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.SeekBarPreference;
+import com.android.settings.pac.util.slim.SeekBarPreference;
 
 import java.io.File;
 

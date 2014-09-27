@@ -37,7 +37,7 @@ import android.view.MenuItem;
 import android.util.Log;
 import android.text.TextUtils;
 
-import com.android.settings.pac.SeekBarPreferenceCHOS;
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
 

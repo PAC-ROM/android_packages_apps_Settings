@@ -1,4 +1,4 @@
-package com.android.settings.pac;
+package com.android.settings.pac.util.aokp;
 
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
