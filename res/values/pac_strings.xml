@@ -182,6 +182,8 @@
     <string name="misc_category">Misc</string>
     <!-- Status bar -->
     <string name="status_bar_general_title">General</string>
+    <!-- Clock -->
+    <string name="status_bar_clock_cat_title">Clock</string>
 
     <!-- Color Picker -->
     <string name="dialog_color_picker">Color picker</string>
@@ -275,7 +277,6 @@
     <string name="halo_notification_msgbox_summary">Show message box for incoming notifications</string>
     <string name="halo_unlock_ping_title">Ping on unlock</string>
     <string name="halo_unlock_ping_summary">Halo will ping when device is unlocked if new notifications were received</string>
-
     <string name="halo_size_title">Halo size</string>
     <string name="halo_size_summary">Defines how big Halo is going to be</string>
     <string name="halo_size_miniscule">Miniscule</string>
@@ -284,19 +285,16 @@
     <string name="halo_size_large">Large</string>
     <string name="halo_size_gigantic">Gigantic</string>
     <string name="halo_size_monster">Monster</string>
-
     <string name="halo_notification_count_title">Notification count</string>
     <string name="halo_notification_count_summary">Display notification counts on Halo</string>
     <string name="halo_notification_count_none">None</string>
     <string name="halo_notification_count_total">Total</string>
     <string name="halo_notification_count_individual">Per app</string>
     <string name="halo_notification_count_both">Both</string>
-
     <string name="halo_msgbox_animation_title">Message box animation</string>
     <string name="halo_msgbox_animation_summary">Halo message box animation for incoming notifications</string>
     <string name="halo_msgbox_animation_none">None</string>
     <string name="halo_msgbox_animation_flip">Flip</string>
-
     <string name="halo_notify_silent_title">Ping on silent notification</string>
     <string name="halo_notify_silent_summary">Halo will ping when silent notifications are received</string>
 
@@ -1022,6 +1020,10 @@
     <string name="progressbar_color_4_title">Color4</string>
     <string name="sample_progressbar_text">ProgressBar : preview</string>
     <string name="progressbar_reset_message">Reset progress bar style to default?</string>
+
+    <!-- Statusbar clock on lockscreen -->
+    <string name="status_bar_show_clock_lockscreen_title">Statusbar clock</string>
+    <string name="status_bar_show_clock_lockscreen_summary">Show clock in statusbar while on lockscreen.</string>
 
     <!-- Toast Animations -->
     <string name="toast_animation_title">Toast animation</string>
