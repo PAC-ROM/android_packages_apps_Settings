@@ -25,7 +25,7 @@
             android:key="notification_light_pulse"
             android:title="@string/notification_light_title" />
 
-        <com.android.settings.pac.PacSettingCheckBoxPreference
+        <com.android.settings.pac.util.PacSettingCheckBoxPreference
             android:key="screen_on_notification_led"
             android:title="@string/notification_light_screenon_title"
             android:dependency="notification_light_pulse"
