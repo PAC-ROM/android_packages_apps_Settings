@@ -556,6 +556,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
            off if enabling */
         if (backlight != null) {
             backlight.setEnabled(!enabled);
+            backlight.updateSummary();
         }
 
         /* Toggle hardkey control availability depending on navbar state */
