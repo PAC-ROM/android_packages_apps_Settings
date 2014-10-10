@@ -175,11 +175,13 @@
   <string name="hex_hint">#ff000000</string>
   <string name="set">Establecer</string>
   <string name="color_default">Por defecto</string>
+  <string name="reset_colors">¿Restablecer todos los colores por defecto?</string>
   <string name="title_tile_cpufreq">Frecuencia de CPU</string>
   <string name="force_expanded_notifications_title">Forzar vista de notificaciones expandidas</string>
   <string name="force_expanded_notifications_summary">Sólo está disponible para aplicaciones que soportan las notificaciones ampliadas</string>
   <string name="ok">Aceptar</string>
   <string name="reset">Reajustar</string>
+  <string name="reset_default_message">Restablecer por defecto</string>
   <string name="attention">Atención</string>
   <string name="gesture_anywhere_title">Gesto en cualquier lugar</string>
   <string name="gesture_anywhere_enabled_title">Gesto en cualquier lugar</string>
@@ -207,10 +209,6 @@
   <string name="ga_gestures_rename_title">Cambiar el nombre del gesto</string>
   <string name="ga_gestures_rename_label">Nombre del gesto</string>
   <string name="ga_gestures_error_loading">No se pudo cargar %s. Asegúrese de que tiene espacio de almacenamiento disponible.</string>
-  <string name="lockscreen_glowpad_doubletap_checkbox_title">Gesto de doble toque</string>
-  <string name="lockscreen_glowpad_doubletap_title">Opcion de doble toque</string>
-  <string name="lockscreen_glowpad_doubletap_sleep">Suspender</string>
-  <string name="lockscreen_glowpad_doubletap_torch">Linterna</string>
   <string name="halo_settings_title">Halo</string>
   <string name="halo_app_title">Administrar aplicaciones ancladas</string>
   <string name="halo_app_summary">Lanzar aplicaciones adicionales en Halo</string>
@@ -278,6 +276,8 @@
   <string name="heads_up_floating_window">Lanzar en ventana flotante</string>
   <string name="heads_up_whitelist_title">Lista blanca de las aplicaciones</string>
   <string name="heads_up_exclude_from_lock_screen">Deshabilitar en lockscreen</string>
+  <string name="heads_up_bg_color_title">Color de fondo</string>
+  <string name="heads_up_text_color_title">Color del texto</string>
   <string name="ime_animation_title">Teclado</string>
   <string name="ime_animation_test_title">Test de animación IME aquí</string>
   <string name="ime_enter_animation_title">Animación de Entrada</string>
@@ -428,6 +428,10 @@
   <string name="battery_around_lockscreen_ring_summary">Muestra el nivel de batería alrededor del anillo de desbloqueo</string>
   <string name="blur_radius_title">Radio de desenfoque</string>
   <string name="blur_radius_summary">Establece el radio de desenfoque para el efecto de desenfoque</string>
+  <string name="lockscreen_glowpad_doubletap_checkbox_title">Gesto de doble toque</string>
+  <string name="lockscreen_glowpad_doubletap_title">Opcion de doble toque</string>
+  <string name="lockscreen_glowpad_doubletap_sleep">Suspender</string>
+  <string name="lockscreen_glowpad_doubletap_torch">Linterna</string>
   <string name="general">General</string>
   <string name="layout">Diseño</string>
   <string name="privacy">Privacidad</string>
