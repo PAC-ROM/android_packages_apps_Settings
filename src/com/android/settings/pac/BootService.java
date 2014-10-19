@@ -1,4 +1,4 @@
-package com.android.settings.cyanogenmod;
+package com.android.settings.pac;
 
 import android.app.Notification;
 import android.app.NotificationManager;

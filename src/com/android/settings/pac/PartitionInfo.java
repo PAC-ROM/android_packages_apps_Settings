@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.pac;
 
 import android.content.ComponentName;
 import android.content.Intent;
@@ -22,6 +22,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StatFs;
 import android.os.SystemClock;
 import android.os.SystemProperties;
@@ -42,26 +43,21 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.android.settings.R;
+
 public class PartitionInfo extends PreferenceActivity {
     private static final String TAG = "PartitionInfo";
     private static final String SYSTEM_PART_SIZE = "system_part_info";
     private static final String DATA_PART_SIZE = "data_part_info";
     private static final String CACHE_PART_SIZE = "cache_part_info";
-    private static final String SDCARDFAT_PART_SIZE = "sdcard_part_info_fat";
-    private static final String SDCARDEXT_PART_SIZE = "sdcard_part_info_ext";
 
     private Preference mSystemPartSize;
     private Preference mDataPartSize;
     private Preference mCachePartSize;
-    private Preference mSDCardPartFATSize;
-    private Preference mSDCardPartEXTSize;
-    private Preference mDeviceName;
-
-    private boolean extfsIsMounted = false;
 
     @Override
-    protected void onCreate(Bundle icicle) {
-        super.onCreate(icicle);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.partition_info);
 
@@ -70,27 +66,11 @@ public class PartitionInfo extends PreferenceActivity {
         mSystemPartSize        = (Preference) prefSet.findPreference(SYSTEM_PART_SIZE);
         mDataPartSize          = (Preference) prefSet.findPreference(DATA_PART_SIZE);
         mCachePartSize         = (Preference) prefSet.findPreference(CACHE_PART_SIZE);
-        mSDCardPartFATSize     = (Preference) prefSet.findPreference(SDCARDFAT_PART_SIZE);
-        mSDCardPartEXTSize     = (Preference) prefSet.findPreference(SDCARDEXT_PART_SIZE);
 
-        if (fileExists("/dev/block/mmcblk0p2") == true) {
-        Log.i(TAG, "sd: ext partition mounted");
-            extfsIsMounted = true;
-    } else {
-            Log.i(TAG, "sd: ext partition not mounted");
-    }
         try {
-            mSystemPartSize.setSummary(ObtainFSPartSize    ("/system"));
-            mDataPartSize.setSummary(ObtainFSPartSize      ("/data"));
-            mCachePartSize.setSummary(ObtainFSPartSize     ("/cache"));
-            mSDCardPartFATSize.setSummary(ObtainFSPartSize ("/storage/sdcard0"));
-
-            if (extfsIsMounted == true) {
-                mSDCardPartEXTSize.setSummary(ObtainFSPartSize ("/storage/sdcard1"));
-            } else {
-                mSDCardPartEXTSize.setEnabled(false);
-            }
-
+            mSystemPartSize.setSummary(ObtainFSPartSize    (Environment.getRootDirectory().getAbsolutePath()));
+            mDataPartSize.setSummary(ObtainFSPartSize      (Environment.getDataDirectory().getAbsolutePath()));
+            mCachePartSize.setSummary(ObtainFSPartSize     (Environment.getDownloadCacheDirectory().getAbsolutePath()));
         } catch (IllegalArgumentException e) {
           e.printStackTrace();
         }
