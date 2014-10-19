@@ -162,10 +162,6 @@
     <!-- Art Runtime -->
     <string name="custom_runtime_warning_message_pac">ART is not officially supported by PAC-Man ROMs as it is highly experimental and has the potential to cause instability, crashes, data loss or prevent the proper boot of your device. Visit &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; for more information.&lt;br/&gt;&lt;br/&gt;We request you do not file bug reports if you have enabled ART as your runtime.&lt;br/&gt;&lt;br/&gt;Are you sure you want to reboot to change runtime from <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> to <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
 
-    <!--Blacklist-->
-    <string name="blacklist_button_title">Blacklist</string>
-    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
-
     <!-- Battery Bar -->
     <string name="battery_bar">Battery bar location</string>
     <string name="battery_bar_animate_summary">The charging animation may result in a poor user experience. Enable at your own discretion.</string>
@@ -199,6 +195,10 @@
 
     <!-- CPUFreq Tile -->
     <string name="title_tile_cpufreq">CPUFreq</string>
+
+    <!-- Floating Window blacklist -->
+    <string name="floating_blacklist_label">Blacklist from Floating Mode</string>
+    <string name="floating_whitelist_label">Whitelist from Floating Mode</string>
 
     <!-- Forcing expanded notifications -->
     <string name="force_expanded_notifications_title">Force Expanded Notifications</string>
