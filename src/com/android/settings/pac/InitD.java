@@ -42,32 +42,32 @@ public class InitD extends SettingsPreferenceFragment {
     private static final String INIT_D = "/system/etc/init.d";
     private static final String INIT_D_CFG = "/data/local/init.d.cfg";
 
-    private static final String KEY_ZIPALIGN_APKS = "zipalign_apks";
-    private static final String KEY_FIX_PERMISSIONS = "fix_permissions";
-    private static final String KEY_ENABLE_SYSCTL = "enable_sysctl";
-    private static final String KEY_CLEAR_DATA_CACHE = "clear_data_cache";
-    private static final String KEY_ENABLE_CRON = "enable_cron";
-    private static final String KEY_FILE_SYSTEM_SPEEDUPS = "file_system_speedups";
-    private static final String KEY_INIT_D_CREDITS = "init_d_credits";
+    private static final String KEY_ZIPALIGN = "zipalign";
+    private static final String KEY_SYSCTL = "sysctl";
+    private static final String KEY_SETRENICE = "setrenice";
+    private static final String KEY_FILESYSTEM = "filesystem";
+    private static final String KEY_FREEMEM = "freemem";
+    private static final String KEY_CACHE = "cache";
+    private static final String KEY_PERMISSIONS = "permissions";
+    private static final String KEY_KERNEL = "kernel";
+    private static final String KEY_CRON = "cron";
+    private static final String KEY_SDBOOST = "sdboost";
+    private static final String KEY_AHEAD = "ahead";
     private static final String KEY_BATTERY = "battery";
     private static final String KEY_TOUCH = "touch";
-    private static final String KEY_GPURENDER = "gpurender";
+    private static final String KEY_VM = "vm";
+    private static final String KEY_NET = "net";
     private static final String KEY_SLEEPERS = "sleepers";
     private static final String KEY_JOURNALISM = "journalism";
-    private static final String KEY_SQLITE3 = "sqlite3";
+    private static final String KEY_SQLITE = "sqlite";
     private static final String KEY_WIFISLEEP = "wifisleep";
     private static final String KEY_IOSTATS = "iostats";
-    private static final String KEY_SETRENICE = "setrenice";
-    private static final String KEY_TWEAKS = "tweaks";
-    private static final String KEY_SPEEDY_MODIFIED = "speedy_modified";
-    private static final String KEY_LOOPY_SMOOTHNESS_TWEAK = "loopy_smoothness_tweak";
 
     private static final String[] KEYS = {
-        KEY_ZIPALIGN_APKS, KEY_FIX_PERMISSIONS, KEY_ENABLE_SYSCTL,
-        KEY_CLEAR_DATA_CACHE, KEY_ENABLE_CRON, KEY_FILE_SYSTEM_SPEEDUPS,
-        KEY_BATTERY, KEY_TOUCH, KEY_GPURENDER, KEY_SLEEPERS, KEY_JOURNALISM,
-        KEY_SQLITE3, KEY_WIFISLEEP, KEY_IOSTATS, KEY_SETRENICE, KEY_TWEAKS,
-        KEY_SPEEDY_MODIFIED, KEY_LOOPY_SMOOTHNESS_TWEAK
+        KEY_ZIPALIGN, KEY_SYSCTL, KEY_SETRENICE, KEY_FILESYSTEM, KEY_FREEMEM,
+        KEY_CACHE, KEY_PERMISSIONS, KEY_KERNEL, KEY_CRON, KEY_SDBOOST, KEY_AHEAD,
+        KEY_BATTERY, KEY_TOUCH, KEY_VM, KEY_NET, KEY_SLEEPERS, KEY_JOURNALISM,
+        KEY_SQLITE, KEY_WIFISLEEP, KEY_IOSTATS
     };
 
     private HashMap<String, String> mShellVariables;

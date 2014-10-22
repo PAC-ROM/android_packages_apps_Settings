@@ -4,34 +4,59 @@
     <PreferenceCategory android:title="@string/pt_general" >
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="zipalign_apks"
-            android:summary="@string/ps_zipalign_apks"
-            android:title="@string/pt_zipalign_apks" />
+            android:key="zipalign"
+            android:summary="@string/ps_zipalign"
+            android:title="@string/pt_zipalign" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="fix_permissions"
-            android:summary="@string/ps_fix_permissions"
-            android:title="@string/pt_fix_permissions" />
+            android:key="sysctl"
+            android:summary="@string/ps_sysctl"
+            android:title="@string/pt_sysctl" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="enable_sysctl"
-            android:summary="@string/ps_enable_sysctl"
-            android:title="@string/pt_enable_sysctl" />
+            android:key="setrenice"
+            android:summary="@string/ps_setrenice"
+            android:title="@string/pt_setrenice" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="clear_data_cache"
-            android:summary="@string/ps_clear_data_cache"
-            android:title="@string/pt_clear_data_cache" />
+            android:key="filesystem"
+            android:summary="@string/ps_filesystem"
+            android:title="@string/pt_filesystem" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="enable_cron"
-            android:summary="@string/ps_enable_cron"
-            android:title="@string/pt_enable_cron" />
+            android:key="freemem"
+            android:summary="@string/ps_freemem"
+            android:title="@string/pt_freemem" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="file_system_speedups"
-            android:summary="@string/ps_file_system_speedups"
-            android:title="@string/pt_file_system_speedups" />
+            android:key="cache"
+            android:summary="@string/ps_cache"
+            android:title="@string/pt_cache" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="permissions"
+            android:summary="@string/ps_permissions"
+            android:title="@string/pt_permissions" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="kernel"
+            android:summary="@string/ps_kernel"
+            android:title="@string/pt_kernel" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="cron"
+            android:summary="@string/ps_cron"
+            android:title="@string/pt_cron" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="sdboost"
+            android:summary="@string/ps_sdboost"
+            android:title="@string/pt_sdboost" />
+        <EditTextPreference
+            android:defaultValue="2048"
+            android:dialogTitle="@string/pt_ahead"
+            android:key="ahead"
+            android:title="@string/pt_ahead" />
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="battery"
@@ -44,9 +69,14 @@
             android:title="@string/pt_touch" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="gpurender"
-            android:summary="@string/ps_gpurender"
-            android:title="@string/pt_gpurender" />
+            android:key="vm"
+            android:summary="@string/ps_vm"
+            android:title="@string/pt_vm" />
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="net"
+            android:summary="@string/ps_net"
+            android:title="@string/pt_net" />
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="sleepers"
@@ -59,9 +89,9 @@
             android:title="@string/pt_journalism" />
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="sqlite3"
-            android:summary="@string/ps_sqlite3"
-            android:title="@string/pt_sqlite3" />
+            android:key="sqlite"
+            android:summary="@string/ps_sqlite"
+            android:title="@string/pt_sqlite" />
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="wifisleep"
@@ -72,26 +102,6 @@
             android:key="iostats"
             android:summary="@string/ps_iostats"
             android:title="@string/pt_iostats" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="setrenice"
-            android:summary="@string/ps_setrenice"
-            android:title="@string/pt_setrenice" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="tweaks"
-            android:summary="@string/ps_tweaks"
-            android:title="@string/pt_tweaks" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="speedy_modified"
-            android:summary="@string/ps_speedy_modified"
-            android:title="@string/pt_speedy_modified" />
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="loopy_smoothness_tweak"
-            android:summary="@string/ps_loopy_smoothness_tweak"
-            android:title="@string/pt_loopy_smoothness_tweak" />
     </PreferenceCategory>
 
 </PreferenceScreen>
