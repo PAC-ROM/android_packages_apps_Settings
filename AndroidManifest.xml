@@ -2256,6 +2256,13 @@
 
         <service android:name="com.brewcrewfoo.performance.service.BootService"/>
 
+        <receiver android:name="com.brewcrewfoo.performance.service.PowerConnectionReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".applications.ProtectedAppsActivity"
                   android:label="@string/protected_apps"
                   android:excludeFromRecents="true"
