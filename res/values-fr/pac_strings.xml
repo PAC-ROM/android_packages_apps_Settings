@@ -17,24 +17,30 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="ad_settings_title">Active Display</string>
-  <string name="ad_settings_summary">Modifier les paramètres d\'ActiveDisplay</string>
+  <string name="ad_settings_summary">Modifier les paramètres d\'Active Display</string>
   <string name="ad_enable_title">Activer</string>
   <string name="ad_enable_summary_on">Active Display activé</string>
   <string name="ad_enable_summary_off">Active Display désactivé</string>
   <string name="ad_bypass_title">Outrepasser l\'écran de verrouillage</string>
   <string name="ad_text_title">Texte de la notification</string>
+  <string name="ad_text_summary">Affiche la notification autour de l\'anneau</string>
   <string name="ad_content_title">Vue de notification personnalisée</string>
+  <string name="ad_content_summary">Utiliser le style de notification Active Display</string>
   <string name="ad_annoying_title">Notification moins fréquente</string>
   <string name="ad_annoying_summary">Limiter les notifications à une par période</string>
   <string name="ad_double_tap_title">Appui double pour mettre en veille</string>
   <string name="ad_double_tap_summary">Éteindre l\'écran avec un double appui</string>
+  <string name="ad_shake_event_settings_title">Paramétres de secousses</string>
   <string name="ad_shake_event_title">Secouer pour réafficher</string>
   <string name="ad_shake_event_summary">Secouer l\'appareil pour réafficher les notifications</string>
   <string name="ad_shake_force_title">Événement par défaut</string>
   <string name="ad_shake_threshold_title">Intensité</string>
+  <string name="ad_shake_threshold_summary">Intensité de secousse pour afficher la notification</string>
   <string name="ad_shake_timeout_title">Délais</string>
   <string name="ad_shake_quiet_hours_title">Outrepasser les heures silencieuse</string>
+  <string name="ad_shake_long_threshold_title">Intervalle</string>
   <string name="ad_shake_long_threshold_summary">Temps minimum entre deux secousses consécutives</string>
+  <string name="ad_all_notifications_title">Notifications en cours</string>
   <string name="ad_all_notifications_summary">Afficher les applications permanentes</string>
   <string name="ad_hide_low_priority_title">Cacher les applications de basse priorité</string>
   <string name="ad_hide_low_priority_summary">Cacher les applications marquées comme moins prioritaires</string>
@@ -134,8 +140,6 @@
  Voir : &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; pour de plus amples informations.&lt;br/&gt;&lt;br/&gt;
 Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
 .&lt;br/&gt;&lt;br/&gt;Êtes vous sûr de vouloir redémarrer pour passer de  <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> à <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="blacklist_button_title">Liste noire</string>
-  <string name="floating_blacklist_label">La liste noire de Mode Flottant</string>
   <string name="battery_bar">Emplacement du Battery bar</string>
   <string name="battery_bar_animate_summary">L\'animation de chargement peut entraîner une médiocre expérience utilisateur . Activez à votre goût.</string>
   <string name="battery_bar_animate_title">Animation de charge</string>
@@ -154,6 +158,7 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="color_default">Par défaut</string>
   <string name="reset_colors">Réinitialiser toutes les couleurs par défaut ?</string>
   <string name="title_tile_cpufreq">Fréq. CPU</string>
+  <string name="floating_blacklist_label">La liste noire de Mode Flottant</string>
   <string name="force_expanded_notifications_title">Forcer les notifications étendues</string>
   <string name="force_expanded_notifications_summary">Disponible uniquement pour les applications supportant les notifications étendues</string>
   <string name="ok">OK</string>
@@ -161,6 +166,7 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="reset_default_message">Rétablir les valeurs par défaut</string>
   <string name="attention">Attention</string>
   <string name="gesture_anywhere_position_title">Emplacement</string>
+  <string name="gesture_anywhere_gestures_title">Gestes</string>
   <string name="ga_button_reload">Actualiser</string>
   <string name="ga_button_discard">Rejeter</string>
   <string name="ga_button_done">Terminé</string>

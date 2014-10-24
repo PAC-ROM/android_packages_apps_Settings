@@ -26,7 +26,7 @@
   <string name="ad_text_title">Treść powiadomienia</string>
   <string name="ad_text_summary">Pokaż treść powiadomienia wokół pierścienia</string>
   <string name="ad_content_title">Niestandardowy wygląd powiadomień</string>
-  <string name="ad_content_summary">Użyj stylu Active Display dla poiwiadomień</string>
+  <string name="ad_content_summary">Użyj Active Display dla powiadomień</string>
   <string name="ad_annoying_title">Rzadsze powiadomienia</string>
   <string name="ad_annoying_summary">Ogranicz powiadomienia w danym okresie czasu</string>
   <string name="ad_double_tap_title">Dwukrotnie stuknij, by uśpić</string>
@@ -152,8 +152,6 @@
   <string name="trigger_bottom_title">Wysokość</string>
   <string name="trigger_bottom_summary">Dopasuj wysokość pola aktywacji.</string>
   <string name="custom_runtime_warning_message_pac">ART nie jest wspierany przez CyanogenMod. To ustawienie jest eksperymentalne i może powodować braki stabilności, błędy w działaniu niektórych aplikacji, utratę danych lub spowodować brak możliwości włączenia urządzenia. Po więcej informacji odwiedź &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;.&lt;br/&gt;&lt;br/&gt;Prosimy o nieprzesyłanie raportów o błędach jeśli ART jest aktywowany.&lt;br/&gt;&lt;br/&gt;Czy jesteś pewien, że chcesz zrestartować urządzenie w celu zmiany <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> na <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="blacklist_button_title">Czarna lista</string>
-  <string name="floating_blacklist_label">Czarna lista trybu okienkowego</string>
   <string name="battery_bar">Pozycja</string>
   <string name="battery_bar_animate_summary">Animacja ładowania może powodować problemy podczas korzystania z urządzenia. Włącz na własną odpowiedzialność.</string>
   <string name="battery_bar_animate_title">Animacja ładowania</string>
@@ -173,6 +171,8 @@
   <string name="color_default">Domyślne</string>
   <string name="reset_colors">Zresetować kolory do domyślnych?</string>
   <string name="title_tile_cpufreq">Częstotliwość CPU</string>
+  <string name="floating_blacklist_label">Czarna lista trybu okienkowego</string>
+  <string name="floating_whitelist_label">Dozwolone dla trybu okienek</string>
   <string name="force_expanded_notifications_title">Wymuś rozwinięte powiadomienia</string>
   <string name="force_expanded_notifications_summary">Dostępne dla aplikacji, które obsługują rozwijane powiadomienia.</string>
   <string name="ok">OK</string>
@@ -540,6 +540,12 @@
   <string name="animation_settings_title">Niestandardowe animacje</string>
   <string name="pac_version">Wersja PAC</string>
   <string name="pac_version_default">Nieznana wersja</string>
+  <string name="partition_info_category">Dodatkowe Partycje</string>
+  <string name="partition_info_title">Użycie</string>
+  <string name="partition_info_system">/system</string>
+  <string name="partition_info_data">/data</string>
+  <string name="partition_info_cache">/cache</string>
+  <string name="partition_info_used_of">wykorzystane z</string>
   <string name="pie_navigation_title">Wysuwana nawigacja PIE</string>
   <string name="pie_control_title">Wysuwane przyciski nawigacji</string>
   <string name="pie_control_summary">Włącz kontrolę PIE.</string>
@@ -863,8 +869,8 @@
   <string name="show_cpu_info">Pokaż informacje o CPU</string>
   <string name="show_cpu_info_summary">Nakładka na ekran pokazująca obecne zużycie CPU.</string>
   <string name="tether_usb_network_summary">Naciśnij, aby zmienić śieć USB</string>
-  <string name="tether_usb_network_text">Udostępnianie internetu przez USB</string>
-  <string name="tether_user_network_default">Użyj standardowych</string>
+  <string name="tether_usb_network_text">Tethering przez USB</string>
+  <string name="tether_user_network_default">Standardowy</string>
   <string name="tether_wifi_network_text">WIFI Hotspot</string>
   <string name="volume_steps_title">Poziomy głośności</string>
   <string name="volume_steps_summary">Kontrola głośności dla konkretnych strumieni dźwięku</string>

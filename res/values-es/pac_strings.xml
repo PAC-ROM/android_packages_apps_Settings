@@ -152,8 +152,6 @@
   <string name="trigger_bottom_title">Altura de gatillo</string>
   <string name="trigger_bottom_summary">Ajustar la altura del área gatillo</string>
   <string name="custom_runtime_warning_message_pac">ART no está soportado oficialmente por PAC-Man ROMs Este ajuste ha sido incluido solamente para fines experimentales y puede causar inestabilidad, bloqueos, pérdida de datos e incluso impedir el correcto inicio del dispositivo. Para más información visita &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt;&lt;br/&gt;&lt;br/&gt;Te pedimos que no envíes archivos de informe de errores si has habilitado ART.&lt;br/&gt;&lt;br/&gt;¿Estás seguro de que quieres reiniciar para cambiar el tiempo de ejecución de <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> a <xliff:g id="new" example="libart.so">%2$s</xliff:g>?</string>
-  <string name="blacklist_button_title">Lista negra</string>
-  <string name="floating_blacklist_label">Lista negra del modo flotante</string>
   <string name="battery_bar">Ubicación de la barra de batería</string>
   <string name="battery_bar_animate_summary">La animación de carga puede resultar en una mala experiencia de usuario. Habilitar a su propia discreción.</string>
   <string name="battery_bar_animate_title">Animación de carga</string>
@@ -177,6 +175,8 @@
   <string name="color_default">Por defecto</string>
   <string name="reset_colors">¿Restablecer todos los colores por defecto?</string>
   <string name="title_tile_cpufreq">Frecuencia de CPU</string>
+  <string name="floating_blacklist_label">Lista negra del modo flotante</string>
+  <string name="floating_whitelist_label">Lista blanca de Modo Flotante</string>
   <string name="force_expanded_notifications_title">Forzar vista de notificaciones expandidas</string>
   <string name="force_expanded_notifications_summary">Sólo está disponible para aplicaciones que soportan las notificaciones ampliadas</string>
   <string name="ok">Aceptar</string>
@@ -546,6 +546,12 @@
   <string name="animation_settings_title">Animaciones personalizadas</string>
   <string name="pac_version">Versión de PAC</string>
   <string name="pac_version_default">Desconocido</string>
+  <string name="partition_info_category">Particiones Adicionales</string>
+  <string name="partition_info_title">Uso</string>
+  <string name="partition_info_system">/system</string>
+  <string name="partition_info_data">/data</string>
+  <string name="partition_info_cache">/cache</string>
+  <string name="partition_info_used_of">Sin usar</string>
   <string name="pie_navigation_title">Navegación Pie</string>
   <string name="pie_control_title">Pie</string>
   <string name="pie_control_summary">Habilitar controles Pie</string>

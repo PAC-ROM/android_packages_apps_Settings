@@ -152,8 +152,6 @@
   <string name="trigger_bottom_title">Indítási magasság</string>
   <string name="trigger_bottom_summary">Indítási terület magasságának beállítása</string>
   <string name="custom_runtime_warning_message_pac">A PAC-Man ROM nem támogatja az ART futtatási környezetet. Ez a beállítás csak kísérleti jelleggel van jelen a rendszerben. Instabilitást, rendszerösszeomlást, adatvesztést okozhat, vagy akár elindíthatatlanná teheti az eszközt. Látogasson el az &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; oldalra a további információkért. &lt;br/&gt;&lt;br/&gt;Kérjük, ne küldjön hibabejelentést, amennyiben az ART futtatási környezet engedélyezve van. &lt;br/&gt;&lt;br/&gt;Biztosan újra kívánja indítani az eszközt és a jelenlegi futtatót, <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>-ról <xliff:g id="new" example="libart.so">%2$s</xliff:g>-ra cserélni?</string>
-  <string name="blacklist_button_title">Tiltólista</string>
-  <string name="floating_blacklist_label">Lebegő mód tiltólista</string>
   <string name="battery_bar">Akkumulátorsáv helye</string>
   <string name="battery_bar_animate_summary">A töltési animáció rossz felhasználói élményt okozhat. Saját belátása szerint engedélyezze.</string>
   <string name="battery_bar_animate_title">Töltési animáció</string>
@@ -177,6 +175,8 @@
   <string name="color_default">Alapértelmezett</string>
   <string name="reset_colors">Visszaállítja az összes színt alapértelmezettre?</string>
   <string name="title_tile_cpufreq">CPU frekvencia</string>
+  <string name="floating_blacklist_label">Lebegő mód tiltólista</string>
+  <string name="floating_whitelist_label">Lebegő mód engedélyezőlista</string>
   <string name="force_expanded_notifications_title">Kiterjesztett értesítések kényszerítése</string>
   <string name="force_expanded_notifications_summary">Csak azon alkalmazások esetén, melyek támogatják ezt a funkciót</string>
   <string name="ok">OK</string>
@@ -546,6 +546,12 @@
   <string name="animation_settings_title">Egyedi animációk</string>
   <string name="pac_version">PAC verzió</string>
   <string name="pac_version_default">Ismeretlen</string>
+  <string name="partition_info_category">További partíciók</string>
+  <string name="partition_info_title">Használat</string>
+  <string name="partition_info_system">/system</string>
+  <string name="partition_info_data">/data</string>
+  <string name="partition_info_cache">/cache</string>
+  <string name="partition_info_used_of">használva ennyiből:</string>
   <string name="pie_navigation_title">Pie navigáció</string>
   <string name="pie_control_title">Pie</string>
   <string name="pie_control_summary">Pie vezérlők engedélyezése</string>

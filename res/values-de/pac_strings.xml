@@ -153,8 +153,6 @@
   <string name="trigger_bottom_summary">Höhe des Auslösebereichs anpassen</string>
   <string name="custom_runtime_warning_message_pac">ART wird von PAC-Man ROMs nicht unterstützt. Diese Einstellung ist experimentell und nur für Entwickler gedacht. Sie kann zu Instabilitäten, Abstürzen oder Datenverlust führen oder verhindern, dass Ihr Gerät startet. Besuchen Sie &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; für mehr Informationen.&lt;br/&gt;&lt;br/&gt;Melden Sie keine Fehler, wenn Sie ART als Laufzeitumgebung aktiviert haben.&lt;br/&gt;&lt;br/&gt;Sind Sie sicher, dass Sie das Gerät neu starten wollen, um die Laufzeitumgebung von <xliff:g id="old" example="libdvm.so">%1$s</xliff:g>
 auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
-  <string name="blacklist_button_title">Sperrliste</string>
-  <string name="floating_blacklist_label">für \"Floating-Modus\" blockieren</string>
   <string name="battery_bar">Position der Akkuanzeige</string>
   <string name="battery_bar_animate_summary">Die Ladeanimation kann Probleme verursachen. Aktivierung auf eigene Verantwortung!</string>
   <string name="battery_bar_animate_title">Ladeanimation</string>
@@ -178,6 +176,7 @@ auf <xliff:g id="new" example="libart.so">%2$s</xliff:g> zu ändern?</string>
   <string name="color_default">Standard</string>
   <string name="reset_colors">Reset alle Farben auf die Standard?</string>
   <string name="title_tile_cpufreq">CPU-Frequenz</string>
+  <string name="floating_blacklist_label">für \"Floating-Modus\" blockieren</string>
   <string name="force_expanded_notifications_title">Erweiterte Benachrichtigungen erzwingen</string>
   <string name="force_expanded_notifications_summary">Nur für Apps verfügbar, die erweiterte Benachrichtigungen unterstützen</string>
   <string name="ok">Ok</string>

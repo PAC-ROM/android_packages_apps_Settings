@@ -152,8 +152,6 @@
   <string name="trigger_bottom_title">触发区域高度</string>
   <string name="trigger_bottom_summary">调整触发器区域的高度</string>
   <string name="custom_runtime_warning_message_pac">ART 不被 PAC-Man ROMs 所官方支持。此设置仅用于实验，有可能造成不稳定、死机、数据丢失或导致您的设备不能正常开机。请访问 &lt;a href=\"http://source.android.com/devices/tech/dalvik/art.html\"&gt;Introducing ART&lt;/a&gt; 查看更多信息。&lt;br/&gt;&lt;br/&gt;如果你启用 ART 作为你的运行环境，我们请求你不要发送错误报告给我们。&lt;br/&gt;&lt;br/&gt;你要重启设备将运行环境从 <xliff:g id="old" example="libdvm.so">%1$s</xliff:g> 改为 <xliff:g id="new" example="libart.so">%2$s</xliff:g> 吗?</string>
-  <string name="blacklist_button_title">黑名单</string>
-  <string name="floating_blacklist_label">添加至悬浮模式黑名单</string>
   <string name="battery_bar">电量条位置</string>
   <string name="battery_bar_animate_summary">充电动画可能会降低用户体验，请酌情使用。</string>
   <string name="battery_bar_animate_title">充电动画</string>
@@ -173,6 +171,8 @@
   <string name="color_default">默认</string>
   <string name="reset_colors">重置所有颜色为默认值吗？</string>
   <string name="title_tile_cpufreq">CPU 频率</string>
+  <string name="floating_blacklist_label">添加至悬浮模式黑名单</string>
+  <string name="floating_whitelist_label">悬浮模式白名单</string>
   <string name="force_expanded_notifications_title">强制扩展通知</string>
   <string name="force_expanded_notifications_summary">仅可用于支持扩展通知的应用</string>
   <string name="ok">确定</string>
@@ -223,7 +223,7 @@
   <string name="halo_unlock_ping_title">解锁时出现</string>
   <string name="halo_unlock_ping_summary">设备处于解锁状态时，如果收到新通知 Halo 将出现。</string>
   <string name="halo_size_title">Halo 大小</string>
-  <string name="halo_size_summary">设置Halo的大小</string>
+  <string name="halo_size_summary">设置 Halo 的大小</string>
   <string name="halo_size_miniscule">微小</string>
   <string name="halo_size_small">小</string>
   <string name="halo_size_default">普通 (默认)</string>
@@ -237,19 +237,19 @@
   <string name="halo_notification_count_individual">单应用</string>
   <string name="halo_notification_count_both">两者</string>
   <string name="halo_msgbox_animation_title">消息框动画</string>
-  <string name="halo_msgbox_animation_summary">接入通知时Halo消息框的动画</string>
+  <string name="halo_msgbox_animation_summary">接入通知时 Halo 消息框动画</string>
   <string name="halo_msgbox_animation_none">无</string>
   <string name="halo_msgbox_animation_flip">倒转</string>
   <string name="halo_notify_silent_title">静默通知时提示</string>
-  <string name="halo_notify_silent_summary">收到静默通知时Halo菜单将提示</string>
+  <string name="halo_notify_silent_summary">收到静默通知时 Halo 菜单将提示</string>
   <string name="title_tile_halo">Halo</string>
-  <string name="app_halo_label_black">HALO的黑名单</string>
-  <string name="app_halo_label_white">HALO的白名单</string>
+  <string name="app_halo_label_black">HALO 的黑名单</string>
+  <string name="app_halo_label_white">HALO 的白名单</string>
   <string name="heads_up_title">浮动通知</string>
   <string name="heads_up_expanded_title">总是扩展</string>
-  <string name="heads_up_expanded_summary">显示heads up通知时自动展开</string>
+  <string name="heads_up_expanded_summary">显示浮动通知时自动展开</string>
   <string name="heads_up_show_updates_title">显示更新</string>
-  <string name="heads_up_show_updates_summary">把即将出现的通知当作heads up来显示</string>
+  <string name="heads_up_show_updates_summary">将进行中通知的更新作为浮动通知显示</string>
   <string name="heads_up_gravity_title">在底部显示</string>
   <string name="heads_up_gravity_summary">在屏幕底部显示浮动通知</string>
   <string name="heads_up_snooze_title">暂停计时器</string>
@@ -262,7 +262,7 @@
   <string name="heads_up_snooze_20min">20 分钟</string>
   <string name="heads_up_time_out_title">超时</string>
   <string name="heads_up_time_out_summary">浮动通知将显示 <xliff:g id="number">%d</xliff:g> 秒。</string>
-  <string name="heads_up_time_out_never_summary">heads up消息将一直显示直到用户清除</string>
+  <string name="heads_up_time_out_never_summary">浮动通知将一直显示直到被清除。</string>
   <string name="heads_up_time_out_4sec">4 秒</string>
   <string name="heads_up_time_out_6sec">6 秒</string>
   <string name="heads_up_time_out_8sec">8 秒</string>
@@ -540,6 +540,12 @@
   <string name="animation_settings_title">自定义动画</string>
   <string name="pac_version">PAC 版本</string>
   <string name="pac_version_default">未知</string>
+  <string name="partition_info_category">附加分区</string>
+  <string name="partition_info_title">统计</string>
+  <string name="partition_info_system">/system</string>
+  <string name="partition_info_data">/data</string>
+  <string name="partition_info_cache">/cache</string>
+  <string name="partition_info_used_of">已使用</string>
   <string name="pie_navigation_title">Pie 导航</string>
   <string name="pie_control_title">Pie</string>
   <string name="pie_control_summary">启用 Pie 控制</string>
