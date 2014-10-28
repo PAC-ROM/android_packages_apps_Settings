@@ -24,6 +24,7 @@ import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
@@ -33,6 +34,7 @@ import android.telephony.MSimTelephonyManager;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
+import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
@@ -57,11 +59,20 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private static final String STATUS_BAR_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_STYLE_TEXT = "6";
 
+    private static final String TINTED_STATUSBAR = "tinted_statusbar";
+    private static final String TINTED_STATUSBAR_OPTION = "tinted_statusbar_option";
+    private static final String TINTED_STATUSBAR_FILTER = "status_bar_tinted_filter";
+    private static final String TINTED_STATUSBAR_TRANSPARENT = "tinted_statusbar_transparent";
+    private static final String TINTED_NAVBAR_TRANSPARENT = "tinted_navbar_transparent";
+    private static final String CATEGORY_TINTED = "category_tinted_statusbar";
+
     private ListPreference mStatusBarClockStyle;
     private ListPreference mStatusBarBattery;
     private ListPreference mBatteryBar;
     private ListPreference mBatteryBarStyle;
     private ListPreference mBatteryBarThickness;
+    private ListPreference mTintedStatusbar;
+    private ListPreference mTintedStatusbarOption;
     private CheckBoxPreference mBatteryBarChargingAnimation;
     private ColorPickerPreference mBatteryBarColor;
     private SystemSettingCheckBoxPreference mStatusBarBatteryShowPercent;
@@ -69,6 +80,9 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
     private CheckBoxPreference mStatusBarBrightnessControl;
     private ListPreference mStatusBarNetStatsUpdate;
     private CheckBoxPreference mStatusBarNetworkStats;
+    private CheckBoxPreference mTintedStatusbarFilter;
+    private SeekBarPreferenceCHOS mTintedStatusbarTransparency;
+    private SeekBarPreferenceCHOS mTintedNavbarTransparency;
 
     private ContentObserver mSettingsObserver;
 
@@ -107,6 +121,28 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
         mStatusBarNetStatsUpdate.setValue(String.valueOf(statsUpdate));
         mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntry());
         mStatusBarNetStatsUpdate.setOnPreferenceChangeListener(this);
+
+        final PreferenceCategory tintedCategory =
+                     (PreferenceCategory) prefSet.findPreference(CATEGORY_TINTED);
+
+        mTintedStatusbar = (ListPreference) findPreference(TINTED_STATUSBAR);
+        int tintedStatusbar = Settings.PAC.getInt(resolver,
+                    Settings.PAC.STATUS_BAR_TINTED_COLOR, 0);
+        mTintedStatusbar.setValue(String.valueOf(tintedStatusbar));
+        mTintedStatusbar.setSummary(mTintedStatusbar.getEntry());
+        mTintedStatusbar.setOnPreferenceChangeListener(this);
+
+        mTintedStatusbarFilter = (CheckBoxPreference) findPreference(TINTED_STATUSBAR_FILTER);
+        mTintedStatusbarFilter.setEnabled(tintedStatusbar != 0);
+
+        mTintedStatusbarTransparency = (SeekBarPreferenceCHOS) findPreference(TINTED_STATUSBAR_TRANSPARENT);
+        mTintedStatusbarTransparency.setValue(Settings.System.getInt(resolver,
+                Settings.PAC.STATUS_BAR_TINTED_STATBAR_TRANSPARENT, 100));
+        mTintedStatusbarTransparency.setEnabled(tintedStatusbar != 0);
+        mTintedStatusbarTransparency.setOnPreferenceChangeListener(this);
+
+        mTintedStatusbarOption = (ListPreference) findPreference(TINTED_STATUSBAR_OPTION);
+        mTintedNavbarTransparency = (SeekBarPreferenceCHOS) findPreference(TINTED_NAVBAR_TRANSPARENT);
 
         int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
@@ -162,6 +198,27 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
                 onChange(selfChange, null);
             }
         };
+        boolean hasNavBarByDefault = getResources().getBoolean(
+                  com.android.internal.R.bool.config_showNavigationBar);
+        boolean enableNavigationBar = Settings.PAC.getInt(getContentResolver(),
+                  Settings.PAC.NAVIGATION_BAR_SHOW, hasNavBarByDefault ? 1 : 0) == 1;
+
+        if (!hasNavBarByDefault && !enableNavigationBar) {
+            tintedCategory.removePreference(mTintedStatusbarOption);
+            tintedCategory.removePreference(mTintedNavbarTransparency);
+        } else {
+            int tintedStatusbarOption = Settings.PAC.getInt(resolver,
+                    Settings.PAC.STATUS_BAR_TINTED_OPTION, 0);
+            mTintedStatusbarOption.setValue(String.valueOf(tintedStatusbarOption));
+            mTintedStatusbarOption.setSummary(mTintedStatusbarOption.getEntry());
+            mTintedStatusbarOption.setEnabled(tintedStatusbar != 0);
+            mTintedStatusbarOption.setOnPreferenceChangeListener(this);
+
+            mTintedNavbarTransparency.setValue(Settings.PAC.getInt(resolver,
+                    Settings.PAC.STATUS_BAR_TINTED_NAVBAR_TRANSPARENT, 100));
+            mTintedNavbarTransparency.setEnabled(tintedStatusbar != 0);
+            mTintedNavbarTransparency.setOnPreferenceChangeListener(this);
+        }
     }
 
     @Override
@@ -235,6 +292,36 @@ public class StatusBar extends SettingsPreferenceFragment implements OnPreferenc
             Settings.PAC.putLong(getActivity().getApplicationContext().getContentResolver(),
                     Settings.PAC.STATUS_BAR_NETWORK_STATS_UPDATE_INTERVAL, updateInterval);
             mStatusBarNetStatsUpdate.setSummary(mStatusBarNetStatsUpdate.getEntries()[index]);
+            return true;
+        } else if (preference == mTintedStatusbar) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mTintedStatusbar.findIndexOfValue((String) newValue);
+            Settings.PAC.putInt(resolver,
+                Settings.PAC.STATUS_BAR_TINTED_COLOR, val);
+            mTintedStatusbar.setSummary(mTintedStatusbar.getEntries()[index]);
+            if (mTintedStatusbarOption != null) {
+                mTintedStatusbarOption.setEnabled(val != 0);
+            }
+            mTintedStatusbarFilter.setEnabled(val != 0);
+            mTintedStatusbarTransparency.setEnabled(val != 0);
+            if (mTintedNavbarTransparency != null) {
+                mTintedNavbarTransparency.setEnabled(val != 0);
+            }
+        } else if (preference == mTintedStatusbarOption) {
+            int val = Integer.parseInt((String) newValue);
+            int index = mTintedStatusbarOption.findIndexOfValue((String) newValue);
+            Settings.PAC.putInt(resolver,
+                Settings.PAC.STATUS_BAR_TINTED_OPTION, val);
+            mTintedStatusbarOption.setSummary(mTintedStatusbarOption.getEntries()[index]);
+        } else if (preference == mTintedStatusbarTransparency) {
+            int val = ((Integer)newValue).intValue();
+            Settings.PAC.putInt(resolver,
+                    Settings.PAC.STATUS_BAR_TINTED_STATBAR_TRANSPARENT, val);
+            return true;
+        } else if (preference == mTintedNavbarTransparency) {
+            int val = ((Integer)newValue).intValue();
+            Settings.PAC.putInt(resolver,
+                    Settings.PAC.STATUS_BAR_TINTED_NAVBAR_TRANSPARENT, val);
             return true;
         }
         return false;

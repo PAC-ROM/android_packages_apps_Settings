@@ -863,6 +863,25 @@
         <item>10.210.23.0/24</item>
     </string-array>
 
+    <!-- Tinted Statusbar -->
+    <string-array name="tinted_statusbar_entries" translatable="false">
+        <item>@string/tinted_statusbar_off</item>
+        <item>@string/tinted_statusbar_actionbar</item>
+        <item>@string/tinted_statusbar_system</item>
+    </string-array>
+
+    <string-array name="tinted_statusbar_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="tinted_statusbar_option_entries" translatable="false">
+        <item>@string/tinted_statusbar_statusbar</item>
+        <item>@string/tinted_statusbar_navbar</item>
+        <item>@string/tinted_statusbar_all</item>
+    </string-array>
+
     <!-- Toast Animations -->
     <string-array name="toast_animation_entries" translatable="false">
         <item>@string/toast_none_animation</item>
