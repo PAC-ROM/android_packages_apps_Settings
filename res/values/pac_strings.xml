@@ -1026,8 +1026,8 @@
     <string name="status_bar_show_clock_lockscreen_summary">Show clock in statusbar while on lockscreen.</string>
 
     <!-- Tinted statusbar -->
-    <string name="tinted_statusbar_title">Colors</string>
-    <string name="title_tinted_statusbar">Dynamic color change</string>
+    <string name="tinted_statusbar_title">Dynamic Statusbar Colors</string>
+    <string name="title_tinted_statusbar">Dynamic color mode</string>
     <string name="title_tinted_statusbar_option">Apply color to</string>
     <string name="tinted_statusbar_off">Disabled</string>
     <string name="tinted_statusbar_actionbar">Action bar color</string>

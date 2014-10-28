@@ -53,6 +53,13 @@
         android:title="@string/progressbar_title"
         android:icon="@drawable/ic_settings_progressbar" />
 
+    <!-- Dynamic/Tinted Statusbar Settings -->
+    <PreferenceScreen
+        android:key="@+id/tinted_statusbar"
+        android:fragment="com.android.settings.pac.TintedStatusbar"
+        android:title="@string/tinted_statusbar_title"
+        android:icon="@drawable/ic_settings_tinted_statusbar" />
+
     <!-- Gesture Anywhere -->
     <PreferenceScreen
         android:id="@+id/gesture_anywhere"
