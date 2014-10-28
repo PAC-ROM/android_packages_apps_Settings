@@ -1041,6 +1041,8 @@
     <string name="tinted_statusbar_filter_summary">Enable using reverse color</string>
     <string name="tinted_statusbar_transparent_title">Status bar opacity</string>
     <string name="tinted_navbar_transparent_title">Navigation bar opacity</string>
+    <string name="tinted_statusbar_full_mode_title">Notification drawer color</string>
+    <string name="tinted_statusbar_full_mode_summary">Apply current color to notification drawer</string>
 
     <!-- Toast Animations -->
     <string name="toast_animation_title">Toast animation</string>

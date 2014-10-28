@@ -56,13 +56,13 @@ public class TintedStatusbar extends SettingsPreferenceFragment implements
     private static final String TINTED_STATUSBAR_FILTER = "status_bar_tinted_filter";
     private static final String TINTED_STATUSBAR_TRANSPARENT = "tinted_statusbar_transparent";
     private static final String TINTED_NAVBAR_TRANSPARENT = "tinted_navbar_transparent";
-    //private static final String TINTED_FULL_MODE = "status_bar_tinted_full_mode";
+    private static final String TINTED_FULL_MODE = "status_bar_tinted_full_mode";
     private static final String CATEGORY_TINTED = "category_tinted_statusbar";
 
     private ListPreference mTintedStatusbar;
     private ListPreference mTintedStatusbarOption;
     private CheckBoxPreference mTintedStatusbarFilter;
-    //private CheckBoxPreference mTintedFullMode;
+    private CheckBoxPreference mTintedFullMode;
     private SeekBarPreferenceCHOS mTintedStatusbarTransparency;
     private SeekBarPreferenceCHOS mTintedNavbarTransparency;
 
@@ -91,9 +91,9 @@ public class TintedStatusbar extends SettingsPreferenceFragment implements
 
         int tintedStatusbarOption = getTintedStatusbarOption(resolver);
 
-        //mTintedFullMode = (CheckBoxPreference) findPreference(TINTED_FULL_MODE);
-        //mTintedFullMode.setEnabled((tintedStatusbar == 2) &&
-        //               (tintedStatusbarOption == 0 || tintedStatusbarOption == 2));
+        mTintedFullMode = (CheckBoxPreference) findPreference(TINTED_FULL_MODE);
+        mTintedFullMode.setEnabled((tintedStatusbar == 2) &&
+                       (tintedStatusbarOption == 0 || tintedStatusbarOption == 2));
 
         mTintedStatusbarTransparency = (SeekBarPreferenceCHOS) findPreference(TINTED_STATUSBAR_TRANSPARENT);
         mTintedStatusbarTransparency.setValue(Settings.PAC.getInt(resolver,
@@ -139,9 +139,9 @@ public class TintedStatusbar extends SettingsPreferenceFragment implements
                 mTintedStatusbarOption.setEnabled(val != 0);
             }
             mTintedStatusbarFilter.setEnabled(val != 0);
-            //mTintedFullMode.setEnabled((val == 2) &&
-            //                 ((getTintedStatusbarOption(resolver) == 0) ||
-            //                  (getTintedStatusbarOption(resolver) == 2)));
+            mTintedFullMode.setEnabled((val == 2) &&
+                             ((getTintedStatusbarOption(resolver) == 0) ||
+                              (getTintedStatusbarOption(resolver) == 2)));
             mTintedStatusbarTransparency.setEnabled(val != 0);
             if (mTintedNavbarTransparency != null) {
                 mTintedNavbarTransparency.setEnabled(val != 0);
@@ -152,8 +152,8 @@ public class TintedStatusbar extends SettingsPreferenceFragment implements
             Settings.PAC.putInt(resolver,
                 Settings.PAC.STATUS_BAR_TINTED_OPTION, val);
             mTintedStatusbarOption.setSummary(mTintedStatusbarOption.getEntries()[index]);
-            //mTintedFullMode.setEnabled((getTintedStatusbarColor(resolver) == 2) &&
-            //                 ((val == 0) || (val == 2)));
+            mTintedFullMode.setEnabled((getTintedStatusbarColor(resolver) == 2) &&
+                             ((val == 0) || (val == 2)));
         } else if (preference == mTintedStatusbarTransparency) {
             int val = ((Integer)newValue).intValue();
             Settings.PAC.putInt(resolver,

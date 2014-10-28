@@ -41,10 +41,10 @@
             android:title="@string/tinted_statusbar_filter_title"
             android:summary="@string/tinted_statusbar_filter_summary" />
 
-        <!--<com.android.settings.pac.util.PacSettingCheckBoxPreference
+        <com.android.settings.pac.util.PacSettingCheckBoxPreference
             android:key="status_bar_tinted_full_mode"
             android:title="@string/tinted_statusbar_full_mode_title"
-            android:summary="@string/tinted_statusbar_full_mode_summary" />-->
+            android:summary="@string/tinted_statusbar_full_mode_summary" />
 
         <com.android.settings.pac.util.SeekBarPreferenceCHOS
             android:key="tinted_statusbar_transparent"
