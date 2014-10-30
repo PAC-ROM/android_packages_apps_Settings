@@ -26,7 +26,8 @@ limitations under the License.
     <PreferenceScreen
         android:id="@+id/halo_app"
         android:title="@string/halo_app_title"
-        android:summary="@string/halo_app_summary">
+        android:summary="@string/halo_app_summary"
+        android:dependency="halo_active" >
         <intent
             android:action="android.intent.action.MAIN"
             android:targetPackage="com.paranoid.halo"
@@ -39,7 +40,8 @@ limitations under the License.
         android:title="@string/halo_state_title"
         android:summary="@string/halo_state_summary"
         android:entries="@array/entries_halo_state"
-        android:entryValues="@array/values_halo_state" />
+        android:entryValues="@array/values_halo_state"
+        android:dependency="halo_active" />
 
     <ListPreference
         android:key="halo_size"
@@ -47,13 +49,15 @@ limitations under the License.
         android:title="@string/halo_size_title"
         android:summary="@string/halo_size_summary"
         android:entries="@array/entries_halo_size"
-        android:entryValues="@array/values_halo_size" />
+        android:entryValues="@array/values_halo_size"
+        android:dependency="halo_active" />
 
     <CheckBoxPreference
         android:key="halo_hide"
         android:title="@string/halo_hide_title"
         android:summary="@string/halo_hide_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        android:dependency="halo_active" />
 
     <ListPreference
         android:key="halo_notify_count"
@@ -61,13 +65,15 @@ limitations under the License.
         android:title="@string/halo_notification_count_title"
         android:summary="@string/halo_notification_count_summary"
         android:entries="@array/entries_halo_notification_count"
-        android:entryValues="@array/values_halo_notification_count" />
+        android:entryValues="@array/values_halo_notification_count"
+        android:dependency="halo_active" />
 
     <CheckBoxPreference
         android:key="halo_msgbox"
         android:title="@string/halo_notification_msgbox_title"
         android:summary="@string/halo_notification_msgbox_summary"
-        android:defaultValue="true" />
+        android:defaultValue="true"
+        android:dependency="halo_active" />
 
     <ListPreference
         android:key="halo_msgbox_animation"
@@ -75,23 +81,27 @@ limitations under the License.
         android:title="@string/halo_msgbox_animation_title"
         android:summary="@string/halo_msgbox_animation_summary"
         android:entries="@array/entries_halo_msgbox_animation"
-        android:entryValues="@array/values_halo_msgbox_animation" />
+        android:entryValues="@array/values_halo_msgbox_animation"
+        android:dependency="halo_active" />
 
     <CheckBoxPreference
         android:key="halo_pause"
         android:title="@string/halo_pause_title"
-        android:summary="@string/halo_pause_summary" />
+        android:summary="@string/halo_pause_summary"
+        android:dependency="halo_active" />
 
     <CheckBoxPreference
         android:key="halo_unlock_ping"
         android:title="@string/halo_unlock_ping_title"
         android:summary="@string/halo_unlock_ping_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        android:dependency="halo_active" />
 
     <com.android.settings.pac.util.PacSettingCheckBoxPreference
         android:key="halo_notify_silent"
         android:title="@string/halo_notify_silent_title"
         android:summary="@string/halo_notify_silent_summary"
-        android:defaultValue="false" />
+        android:defaultValue="false"
+        android:dependency="halo_active" />
 
 </PreferenceScreen>
