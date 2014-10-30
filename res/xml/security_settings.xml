@@ -20,6 +20,12 @@
         android:title="@string/security_settings_title">
 
     <PreferenceScreen
+            android:key="screen_security"
+            android:fragment="com.android.settings.LockscreenSecuritySettings"
+            android:title="@string/screen_security_category"
+            android:summary="@string/screen_security_summary"/>
+
+    <PreferenceScreen
             android:fragment="com.android.settings.OwnerInfoSettings"
             android:key="owner_info_settings"
             android:title="@string/owner_info_settings_title"
