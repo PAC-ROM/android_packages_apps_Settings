@@ -42,7 +42,6 @@ public class InitD extends SettingsPreferenceFragment {
     private static final String INIT_D = "/system/etc/init.d";
     private static final String INIT_D_CFG = "/data/local/init.d.cfg";
 
-    private static final String KEY_ZIPALIGN = "zipalign";
     private static final String KEY_SYSCTL = "sysctl";
     private static final String KEY_SETRENICE = "setrenice";
     private static final String KEY_FILESYSTEM = "filesystem";
@@ -64,7 +63,7 @@ public class InitD extends SettingsPreferenceFragment {
     private static final String KEY_IOSTATS = "iostats";
 
     private static final String[] KEYS = {
-        KEY_ZIPALIGN, KEY_SYSCTL, KEY_SETRENICE, KEY_FILESYSTEM, KEY_FREEMEM,
+        KEY_SYSCTL, KEY_SETRENICE, KEY_FILESYSTEM, KEY_FREEMEM,
         KEY_CACHE, KEY_PERMISSIONS, KEY_KERNEL, KEY_CRON, KEY_SDBOOST, KEY_AHEAD,
         KEY_BATTERY, KEY_TOUCH, KEY_VM, KEY_NET, KEY_SLEEPERS, KEY_JOURNALISM,
         KEY_SQLITE, KEY_WIFISLEEP, KEY_IOSTATS

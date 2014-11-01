@@ -350,8 +350,6 @@
     <string name="init_d_title">Init.d</string>
     <string name="app_name">Init.d tweaks</string>
     <string name="pt_general">General</string>
-    <string name="pt_zipalign">Zipalign Apps</string>
-    <string name="ps_zipalign">Zipalign any unaligned apps on each boot</string>
     <string name="pt_sysctl">Sysctl</string>
     <string name="ps_sysctl">Enable sysctl on each boot</string>
     <string name="pt_setrenice">Setrenice</string>

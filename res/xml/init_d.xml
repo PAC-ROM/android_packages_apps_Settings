@@ -4,11 +4,6 @@
     <PreferenceCategory android:title="@string/pt_general" >
         <CheckBoxPreference
             android:defaultValue="true"
-            android:key="zipalign"
-            android:summary="@string/ps_zipalign"
-            android:title="@string/pt_zipalign" />
-        <CheckBoxPreference
-            android:defaultValue="true"
             android:key="sysctl"
             android:summary="@string/ps_sysctl"
             android:title="@string/pt_sysctl" />
