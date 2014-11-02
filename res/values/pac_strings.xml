@@ -17,7 +17,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- Active Display Notifications -->
-    <string name="ad_settings_title">Active Display</string>
+    <string name="ad_settings_title">Active display</string>
     <string name="ad_settings_summary">Change active display settings</string>
     <string name="ad_enable_title">Enable</string>
     <string name="ad_enable_summary_on">Active display enabled</string>
@@ -1024,7 +1024,7 @@
     <string name="status_bar_show_clock_lockscreen_summary">Show clock in statusbar while on lockscreen.</string>
 
     <!-- Tinted statusbar -->
-    <string name="tinted_statusbar_title">Dynamic Statusbar Colors</string>
+    <string name="tinted_statusbar_title">Dynamic statusbar colors</string>
     <string name="title_tinted_statusbar">Dynamic color mode</string>
     <string name="title_tinted_statusbar_option">Apply color to</string>
     <string name="tinted_statusbar_off">Disabled</string>
@@ -1081,7 +1081,7 @@
 
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_header_summary">@null</string>
-    <string name="wakelock_blocker">Wakelock Blocker</string>
+    <string name="wakelock_blocker">Wakelock blocker</string>
     <string name="wakelock_blocker_title">Enable</string>
     <string name="wakelock_blocker_summary">Activate blocking for checked wakelocks</string>
     <string name="wakelock_blocker_save">Save</string>
