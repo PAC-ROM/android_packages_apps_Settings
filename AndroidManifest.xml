@@ -1797,24 +1797,30 @@
                 android:resource="@+id/pac_ui_settings" />
         </activity>
 
-        <activity
-            android:name=".pac.lsn.LockscreenNotifications"
-            android:label="@string/Lockscreen_notifications_header" >
-        </activity>
+        <!-- Active Display -->
+        <activity android:name=".pac.ActiveDisplaySettings" />
 
-        <activity android:name=".pac.RamBar" />
+        <!-- Animation Settings -->
+        <activity android:name=".pac.AnimationSettings" />
+        <activity android:name=".pac.animations.KeyboardAnimationInterfaceSettings" />
+        <activity android:name=".pac.animations.ListViewAnimationInterfaceSettings" />
+        <activity android:name=".pac.animations.ScrollAnimationInterfaceSettings" />
+        <activity android:name=".pac.animations.SystemAnimationInterfaceSettings" />
+        <activity android:name=".pac.animations.ToastAnimationInterfaceSettings" />
 
-        <!-- Pseudo-activity used to provide an intent-filter entry point to ass display rotation config -->
-        <activity android:name="Settings$ASSRamBarActivity"
-                android:label="@string/ram_bar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.pac.RamBar" />
-        </activity>
+        <!-- App Sidebar -->
+        <activity android:name=".pac.AppSidebar" />
 
+        <!-- Boot Service (PAC) -->
+        <service android:name=".pac.BootService" />
+
+        <!-- Gesture Anywhere -->
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereSettings" />
+
+        <!-- Halo -->
+        <activity android:name=".pac.Halo" />
         <activity android:name="Settings$HaloActivity"
                 android:label="@string/title_tile_halo"
                 android:taskAffinity=""
@@ -1827,8 +1833,75 @@
                 android:value="com.android.settings.pac.Halo" />
         </activity>
 
-        <activity android:name=".pac.Halo" />
+        <!-- Heads Up -->
+        <activity android:name=".pac.headsup.HeadsUp" />
 
+        <!-- Init.D -->
+        <activity android:name=".pac.InitD" />
+
+        <!-- Input Methods Settings -->
+        <activity android:name=".pac.InputMethodsSettings" />
+
+        <!-- Lockscreen Notifications -->
+        <activity
+            android:name=".pac.lsn.LockscreenNotifications"
+            android:label="@string/Lockscreen_notifications_header" >
+        </activity>
+
+        <!-- Nav Bar -->
+        <activity android:name=".pac.navbar.ArrangeNavbarFragment" />
+        <activity android:name=".pac.navbar.NavbarSettingsFragment" />
+        <activity android:name=".pac.navbar.NavbarTabHostFragment" />
+
+        <!-- Notification Drawer Style -->
+        <activity android:name=".pac.NotificationDrawerStyle" />
+
+        <!-- Partition Info -->
+        <activity android:name=".pac.PartitionInfo"
+                android:label="@string/partition_info_title">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+            </intent-filter>
+        </activity>
+
+        <!-- Pie -->
+        <activity android:name=".pac.pie.fragments.PieButtonFragment" />
+        <activity android:name=".pac.pie.PieButtonStyleSettings" />
+        <activity android:name=".pac.pie.PieControl" />
+        <activity android:name=".pac.pie.PieStyleSettings" />
+        <activity android:name=".pac.pie.PieTriggerSettings" />
+
+
+        <!-- Progress Bar -->
+        <activity android:name=".pac.ProgressBar" />
+
+        <!-- Ram bar -->
+        <activity android:name=".pac.RamBar" />
+        <activity android:name="Settings$ASSRamBarActivity"
+                android:label="@string/ram_bar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+                android:value="com.android.settings.pac.RamBar" />
+        </activity>
+
+        <!-- Recents Panel Settings -->
+        <activity android:name=".pac.RecentsPanelSettings" />
+
+        <!-- Screen Recorder -->
+        <activity android:name=".pac.ScreenRecorderSettings" />
+
+        <!-- Tinted Status Bar -->
+        <activity android:name=".pac.TintedStatusBar" />
+
+        <!-- Volume Step -->
+        <activity android:name=".pac.VolumeSteps" />
+
+        <!-- Wakelock Blocker -->
         <activity
             android:name=".pac.WakeLockBlocker"
             android:label="@string/wakelock_blocker" >
@@ -1837,12 +1910,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".pac.AppSidebar" />
-
-        <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
-
-        <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
-
+        <!-- Weather -->
         <activity
             android:name=".pac.Weather"
             android:label="@string/title_weather" >
@@ -1859,20 +1927,8 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".pac.BootService"/>
-
         <service android:name=".pac.weather.WeatherRefreshService" />
-
         <service android:name=".pac.weather.WeatherService" />
-
-        <activity android:name=".pac.PartitionInfo"
-                android:label="@string/partition_info_title">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.VOICE_LAUNCH" />
-            </intent-filter>
-        </activity>
         <!-- PAC-Rom activities/services End -->
 
         <!-- CyanogenMod activities Start -->
