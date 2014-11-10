@@ -15,4 +15,27 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_sidebar_title">Appbar</string>
+  <string name="app_sidebar_enable_title">Appbar inschakelen</string>
+  <string name="app_sidebar_enable_summaryOn">Appbar is ingeschakeld</string>
+  <string name="app_sidebar_enable_summaryOff">Appbar is uitgeschakeld</string>
+  <string name="app_sidebar_setup_items_title">Configureer inhoud</string>
+  <string name="app_sidebar_setup_items_summary">Toevoegen, verwijderen en rangschikken van items in de appbar</string>
+  <string name="app_sidebar_transparency_title">Appbar transparantheid</string>
+  <string name="app_sidebar_transparency_summary">Wijzig het transparantheidslevel van de Appbar</string>
+  <string name="app_sidebar_position_title">Appbar positie</string>
+  <string name="app_sidebar_position_summary">Plaats de Appbar aan de linker- of rechterkant van het scherm</string>
+  <string name="app_sidebar_position_left">Links</string>
+  <string name="app_sidebar_position_right">Rechts</string>
+  <string name="app_sidebar_hide_labels_title">Verberg labels</string>
+  <string name="app_sidebar_hide_labels_summary">Verberg Appbar labels</string>
+  <string name="misc_category">Overig</string>
+  <string name="title_tile_cpufreq">CPUFreq</string>
+  <string name="force_expanded_notifications_title">Forceer Uitgebreide Notificaties</string>
+  <string name="force_expanded_notifications_summary">Enkel beschikbaar voor apps die uitgebreide notificaties ondersteunen</string>
+  <string name="ok">OK</string>
+  <string name="reset">Herstel</string>
+  <string name="halo_settings_title">Halo</string>
+  <string name="halo_activate_title">Activeer Halo</string>
+</resources>

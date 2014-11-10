@@ -22,6 +22,7 @@
   <string name="ad_enable_summary_on">Active Display activé</string>
   <string name="ad_enable_summary_off">Active Display désactivé</string>
   <string name="ad_bypass_title">Outrepasser l\'écran de verrouillage</string>
+  <string name="ad_bypass_summary">Mode poche vous permettra de lancer le lockscreen lorsque aucune notification n\'existe pas et l\'écran de verrouillage sécurisé activé</string>
   <string name="ad_text_title">Texte de la notification</string>
   <string name="ad_text_summary">Affiche la notification autour de l\'anneau</string>
   <string name="ad_content_title">Vue de notification personnalisée</string>
@@ -34,6 +35,7 @@
   <string name="ad_shake_event_title">Secouer pour réafficher</string>
   <string name="ad_shake_event_summary">Secouer l\'appareil pour réafficher les notifications</string>
   <string name="ad_shake_force_title">Événement par défaut</string>
+  <string name="ad_shake_force_summary">Après réception Active Display ne se lancera pas jusqu\'à la secousse</string>
   <string name="ad_shake_threshold_title">Intensité</string>
   <string name="ad_shake_threshold_summary">Intensité de secousse pour afficher la notification</string>
   <string name="ad_shake_timeout_title">Délais</string>
@@ -152,6 +154,7 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="bypass_insecure_lockscreen_title">Contourner l\'écran de verrouillage</string>
   <string name="misc_category">Divers</string>
   <string name="status_bar_general_title">Général</string>
+  <string name="status_bar_clock_cat_title">Horloge</string>
   <string name="dialog_color_picker">Sélecteur de couleur</string>
   <string name="press_color_to_apply">Appuyer sur la couleur ci-dessous pour l\'appliquer</string>
   <string name="set">Définir</string>
@@ -205,7 +208,6 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="title_tile_halo">Halo</string>
   <string name="app_halo_label_black">Liste noire de HALO</string>
   <string name="app_halo_label_white">Liste blanche de HALO</string>
-  <string name="heads_up_title">Notifications flottantes</string>
   <string name="heads_up_expanded_title">Toujours étendu</string>
   <string name="heads_up_expanded_summary">Affiche toujours les notifications flottantes en mode étendu</string>
   <string name="heads_up_show_updates_title">Afficher les mises à jour</string>
@@ -225,8 +227,5 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="heads_up_time_out_10sec">10 secondes</string>
   <string name="heads_up_time_out_never">Jamais</string>
   <string name="init_d_title">Init.d</string>
-  <string name="app_name">Configuration du Init.d</string>
   <string name="pt_general">Général</string>
-  <string name="pt_zipalign_apks">Optimisation des applications</string>
-  <string name="ps_zipalign_apks">Optimiser toutes les applications détériorées à chaque démarrage</string>
 </resources>

@@ -15,4 +15,37 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_sidebar_title">Панель програм</string>
+  <string name="app_sidebar_enable_title">Увімкнути панель програм</string>
+  <string name="app_sidebar_enable_summaryOn">Панель програм увімкнено</string>
+  <string name="app_sidebar_enable_summaryOff">Панель програм вимкнено</string>
+  <string name="app_sidebar_setup_items_title">Налаштувати зміст панелі програм</string>
+  <string name="app_sidebar_setup_items_summary">Додати, видалити, та розташувати елементи в панелі програм</string>
+  <string name="app_sidebar_transparency_title">Прозорість панелі програм</string>
+  <string name="app_sidebar_transparency_summary">Встановити прозорість панелі програм</string>
+  <string name="app_sidebar_position_title">Позиція панелі програм</string>
+  <string name="app_sidebar_position_summary">Розташуйте панель програм на лівій або правій частині екрана</string>
+  <string name="app_sidebar_position_left">Ліворуч</string>
+  <string name="app_sidebar_position_right">Праворуч</string>
+  <string name="app_sidebar_hide_labels_title">Сховати підписи значків</string>
+  <string name="app_sidebar_hide_labels_summary">Сховати підписи елементів панелі програм</string>
+  <string name="tab_category">Видима Вкладка</string>
+  <string name="use_tab_title">Показувати вкладку</string>
+  <string name="use_tab_summary">Показивати видиму вкладку на стороні, яка буде відображати панель програм при дотику.</string>
+  <string name="tab_position_title">Розташування вкладки</string>
+  <string name="tab_position_summary">Відображати вкладку зверху, посередені або знизу збоку екрана.</string>
+  <string name="tab_size_title">Розмір вкладки</string>
+  <string name="tab_size_summary">Змінити розмір видимої вкладки.</string>
+  <string name="trigger_category">Область тригера</string>
+  <string name="trigger_width_title">Ширина тригера</string>
+  <string name="trigger_width_summary">Відрегулюйте ширину області тригера</string>
+  <string name="trigger_top_title">Положення тригера</string>
+  <string name="trigger_top_summary">Відрегулюйте вертикальну позицію площі тригера</string>
+  <string name="trigger_bottom_title">Висота тригера</string>
+  <string name="trigger_bottom_summary">Відрегулюйте висоту області тригера</string>
+  <string name="battery_bar">Розташування значка акумулятора</string>
+  <string name="battery_bar_animate_summary">Зміна анімації заряджання може призвести до негативних вражень від використання. Використовуйте на власний розсуд.</string>
+  <string name="battery_bar_animate_title">Анімація заряджання</string>
+  <string name="floating_blacklist_label">Чорний список від плаваючого режиму</string>
+</resources>
