@@ -23,6 +23,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -40,6 +41,7 @@ import android.text.TextUtils;
 import com.android.settings.pac.util.SeekBarPreferenceCHOS;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
@@ -51,8 +53,11 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
     private static final String ANIMATION_OVERFLING_DISTANCE = "animation_overfling_distance";
     private static final float MULTIPLIER_SCROLL_FRICTION = 10000f;
     private static final String ANIMATION_NO_SCROLL = "animation_no_scroll";
+    private static final String OVERSCROLL_GLOW_COLOR = "overscroll_glow_color";
 
     private static final int MENU_RESET = Menu.FIRST;
+
+    static final int DEFAULT_OVERSCROLL_COLOR = 0xffffffff;
 
     private ContentResolver mResolver;
     private Context mContext;
@@ -62,6 +67,7 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
     private SeekBarPreferenceCHOS mAnimationOverScroll;
     private SeekBarPreferenceCHOS mAnimationOverFling;
     private SwitchPreference mAnimNoScroll;
+    private ColorPickerPreference mOverScrollGlowColor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -100,6 +106,13 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
         mAnimationOverFling = (SeekBarPreferenceCHOS) prefSet.findPreference(ANIMATION_OVERFLING_DISTANCE);
         mAnimationOverFling.setValue(defaultOverFling);
         mAnimationOverFling.setOnPreferenceChangeListener(this);
+
+        mOverScrollGlowColor = (ColorPickerPreference) findPreference(OVERSCROLL_GLOW_COLOR);
+        mOverScrollGlowColor.setOnPreferenceChangeListener(this);
+        int defaultColor = Color.rgb(255, 255, 255);
+        int intColor = Settings.PAC.getInt(mResolver,
+                Settings.PAC.OVERSCROLL_GLOW_COLOR, defaultColor);
+        mOverScrollGlowColor.setNewPreviewColor(intColor);
 
         setHasOptionsMenu(true);
 
@@ -142,6 +155,7 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
         mAnimationScroll.setValue((int) (ViewConfiguration.DEFAULT_SCROLL_FRICTION * MULTIPLIER_SCROLL_FRICTION));
         mAnimationOverScroll.setValue(ViewConfiguration.DEFAULT_OVERSCROLL_DISTANCE);
         mAnimationOverFling.setValue(ViewConfiguration.DEFAULT_OVERFLING_DISTANCE);
+        mOverScrollGlowColor.setNewPreviewColor(DEFAULT_OVERSCROLL_COLOR);
         mAnimNoScroll.setChecked(false);
     }
 
@@ -151,6 +165,8 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
                    Settings.PAC.CUSTOM_SCROLL_FRICTION, ViewConfiguration.DEFAULT_SCROLL_FRICTION);
         setProperVal(mAnimationOverScroll, ViewConfiguration.DEFAULT_OVERSCROLL_DISTANCE);
         setProperVal(mAnimationOverFling, ViewConfiguration.DEFAULT_OVERFLING_DISTANCE);
+        Settings.PAC.putInt(mResolver,
+                   Settings.PAC.OVERSCROLL_GLOW_COLOR, DEFAULT_OVERSCROLL_COLOR);
         setProperVal(mAnimNoScroll, 0);
     }
 
@@ -184,6 +200,13 @@ public class ScrollAnimationInterfaceSettings extends SettingsPreferenceFragment
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.CUSTOM_OVERFLING_DISTANCE,
                     val);
+        } else if (preference == mOverScrollGlowColor) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                    Settings.PAC.OVERSCROLL_GLOW_COLOR, intHex);
         } else {
             return false;
         }

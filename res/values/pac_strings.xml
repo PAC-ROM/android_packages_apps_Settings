@@ -965,6 +965,7 @@
     <string name="animation_no_scroll_title">Customizing scroll</string>
     <string name="animation_no_scroll_summary_on">Enabled</string>
     <string name="animation_no_scroll_summary_off">Disabled</string>
+    <string name="overscroll_glow_title">Overscroll Color</string>
 
     <!-- Settings main menu category heading. Rom (Launcher, Themes, System). [CHAR LIMIT=40] -->
     <string name="header_category_rom_settings">Advanced settings</string>
