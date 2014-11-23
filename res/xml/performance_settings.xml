@@ -52,6 +52,16 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+        android:key="performance_controls_advanced"
+        android:title="@string/performance_controls_advanced">
+
+        <PreferenceScreen
+            android:key="performance_controls"
+            android:fragment="com.brewcrewfoo.performance.activities.MainActivity"
+            android:title="@string/performance_controls" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="perf_graphics_prefs"
         android:title="@string/graphics_title">
 

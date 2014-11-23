@@ -141,6 +141,10 @@
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
 
+    <!-- PerformanceControl -->
+    <string name="performance_controls">Performance</string>
+    <string name="performance_controls_advanced">Advanced Controls</string>
+
     <!-- QuickSettings: Quick Pulldown -->
     <string name="title_quick_pulldown">Quick pulldown</string>
     <string name="summary_quick_pulldown">%1$s edge of the status bar pulls down Quick Settings</string>
