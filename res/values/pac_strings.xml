@@ -20,4 +20,10 @@
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
 
+    <!-- Notifications on keyguard -->
+    <string name="app_notification_show_on_keyguard_title">Show on lockscreen</string>
+    <string name="app_notification_show_on_keyguard_summary">Show notifications from this app on the lockscreen</string>
+    <string name="app_notification_no_ongoing_on_keyguard_title">Disable ongoing on lockscreen</string>
+    <string name="app_notification_no_ongoing_on_keyguard_summary">Never show ongoing notifications from this app on the lockscreen</string>
+
 </resources>
