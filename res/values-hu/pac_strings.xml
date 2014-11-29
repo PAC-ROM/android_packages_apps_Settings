@@ -796,6 +796,7 @@
   <string name="animation_no_scroll_title">Görgetés testreszabása</string>
   <string name="animation_no_scroll_summary_on">Engedélyezve</string>
   <string name="animation_no_scroll_summary_off">Letiltva</string>
+  <string name="overscroll_glow_title">Túlgörgetés színe</string>
   <string name="header_category_rom_settings">Speciális beállítások</string>
   <string name="use_custom_app_title">Egyedi alkalmazás használata</string>
   <string name="use_custom_app_summary">Egyedi alkalmazás használata a legutóbbi alkalmazások párbeszéd ablakban</string>
@@ -854,6 +855,8 @@
   <string name="tinted_statusbar_filter_summary">Engedélyezi a fordított szín használatát</string>
   <string name="tinted_statusbar_transparent_title">Állapotsáv átlátszósága</string>
   <string name="tinted_navbar_transparent_title">Navigációs sáv átlátszósága</string>
+  <string name="tinted_statusbar_full_mode_title">Értesítési fiók színe</string>
+  <string name="tinted_statusbar_full_mode_summary">Az aktuális szín alkalmazása az értesítési fiókra</string>
   <string name="toast_animation_title">Buborékszöveg animáció</string>
   <string name="toast_choose_animation">Válasszon animációt</string>
   <string name="toast_none_animation">Nincs</string>

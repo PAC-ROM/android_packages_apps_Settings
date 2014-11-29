@@ -796,6 +796,7 @@
   <string name="animation_no_scroll_title">Personalización del desplazamiento</string>
   <string name="animation_no_scroll_summary_on">Habilitado</string>
   <string name="animation_no_scroll_summary_off">Desabilitado</string>
+  <string name="overscroll_glow_title">Desplazamiento en color</string>
   <string name="header_category_rom_settings">Ajustes avanzados</string>
   <string name="use_custom_app_title">Uso de aplicaciones personalizadas</string>
   <string name="use_custom_app_summary">Uso de aplicaciones personalizadas en lugar del reciente diálogo de aplicaciones</string>
@@ -854,6 +855,8 @@
   <string name="tinted_statusbar_filter_summary">Habilita la utilización de color inverso</string>
   <string name="tinted_statusbar_transparent_title">Opacidad de barra de estado</string>
   <string name="tinted_navbar_transparent_title">Opacidad de barra de navegación</string>
+  <string name="tinted_statusbar_full_mode_title">Color del cajón de las notificación</string>
+  <string name="tinted_statusbar_full_mode_summary">Aplique el tinte actual al cajón de notificaciones</string>
   <string name="toast_animation_title">Animaciones de tostadas</string>
   <string name="toast_choose_animation">Elija Animación</string>
   <string name="toast_none_animation">Nignuno</string>
