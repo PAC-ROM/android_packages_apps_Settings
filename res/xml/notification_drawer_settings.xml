@@ -24,6 +24,12 @@
         android:entryValues="@array/quick_pulldown_values"
         android:persistent="false" />
 
+    <SwitchPreference
+        android:key="block_on_secure_keyguard"
+        android:title="@string/block_on_secure_keyguard_title"
+        android:summary="@string/block_on_secure_keyguard_summary"
+        android:persistent="false" />
+
     <ListPreference
         android:key="smart_pulldown"
         android:title="@string/smart_pulldown_title"

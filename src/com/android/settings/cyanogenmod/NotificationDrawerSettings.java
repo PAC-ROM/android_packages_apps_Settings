@@ -23,6 +23,7 @@ import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 
 import android.provider.SearchIndexableResource;
@@ -32,6 +33,8 @@ import com.android.settings.cyanogenmod.qs.QSTiles;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
+import com.android.internal.widget.LockPatternUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,9 +42,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
         Preference.OnPreferenceChangeListener {
     private static final String QUICK_PULLDOWN = "quick_pulldown";
     private static final String SMART_PULLDOWN = "smart_pulldown";
+    private static final String BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
 
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
+    private SwitchPreference mBlockOnSecureKeyguard;
     private Preference mQSTiles;
 
     @Override
@@ -74,6 +79,17 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
                 Settings.PAC.QS_SMART_PULLDOWN, 0, UserHandle.USER_CURRENT);
         mSmartPulldown.setValue(String.valueOf(smartPulldown));
         updateSmartPulldownSummary(smartPulldown);
+
+        final LockPatternUtils lockPatternUtils = new LockPatternUtils(getActivity());
+        mBlockOnSecureKeyguard = (SwitchPreference) findPreference(BLOCK_ON_SECURE_KEYGUARD);
+        if (lockPatternUtils.isSecure()) {
+            mBlockOnSecureKeyguard.setChecked(Settings.Secure.getInt(getContentResolver(),
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD, 1) == 1);
+            mBlockOnSecureKeyguard.setOnPreferenceChangeListener(this);
+        } else {
+            prefSet.removePreference(mBlockOnSecureKeyguard);
+        }
+
     }
 
     @Override
@@ -99,6 +115,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
             Settings.PAC.putIntForUser(resolver, Settings.PAC.QS_SMART_PULLDOWN,
                     smartPulldown, UserHandle.USER_CURRENT);
             updateSmartPulldownSummary(smartPulldown);
+            return true;
+        } else if (preference == mBlockOnSecureKeyguard) {
+            Settings.Secure.putInt(getContentResolver(),
+                    Settings.Secure.STATUS_BAR_LOCKED_ON_SECURE_KEYGUARD,
+                    (Boolean) newValue ? 1 : 0);
             return true;
         }
         return false;
