@@ -24,6 +24,11 @@
         android:summary="@string/status_bar_toggle_brightness_summary"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="clock_style_pref"
+        android:fragment="com.android.settings.pac.StatusBarClockStyle"
+        android:title="@string/status_bar_clock_title" />
+
     <ListPreference
         android:key="quick_pulldown"
         android:title="@string/title_quick_pulldown"
