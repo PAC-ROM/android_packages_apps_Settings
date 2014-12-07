@@ -36,6 +36,17 @@
     </PreferenceCategory>
 
     <PreferenceCategory
+            android:key="navigation_bar"
+            android:title="@string/navigation_bar_category" >
+
+        <PreferenceScreen
+                android:key="navbar_dimensions"
+                android:fragment="com.android.settings.pac.NavBarDimensions"
+                android:title="@string/navigation_bar_dimensions_title" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
         android:key="home_key"
         android:title="@string/hardware_keys_home_key_title" >
 
