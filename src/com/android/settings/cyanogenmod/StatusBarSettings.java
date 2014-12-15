@@ -41,10 +41,12 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
+    private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
 
     private ListPreference mStatusBarBattery;
     private ListPreference mQuickPulldown;
     private SwitchPreference mBlockOnSecureKeyguard;
+    private PreferenceScreen mClockStyle;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -84,11 +86,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             prefSet.removePreference(mBlockOnSecureKeyguard);
         }
 
+        mClockStyle = (PreferenceScreen) prefSet.findPreference(KEY_STATUS_BAR_CLOCK);
+        updateClockStyleDescription();
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        updateClockStyleDescription();
     }
 
     @Override
@@ -130,6 +136,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                     ? (isRtl ? R.string.quick_pulldown_right : R.string.quick_pulldown_left)
                     : (isRtl ? R.string.quick_pulldown_left : R.string.quick_pulldown_right));
             mQuickPulldown.setSummary(res.getString(R.string.summary_quick_pulldown, direction));
+        }
+    }
+
+    private void updateClockStyleDescription() {
+        if (mClockStyle == null) {
+            return;
+        }
+        if (Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.STATUS_BAR_CLOCK, 1) == 1) {
+            mClockStyle.setSummary(getString(R.string.enabled));
+        } else {
+            mClockStyle.setSummary(getString(R.string.disabled));
         }
     }
 }
