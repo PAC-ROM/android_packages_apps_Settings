@@ -19,12 +19,20 @@
     android:title="@string/pac_settings_title"
     xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
+    <!-- Buttons settings -->
+    <PreferenceScreen
+        android:key="button_settings"
+        android:title="@string/button_pref_title"
+        android:fragment="com.android.settings.ButtonSettings"
+        android:icon="@drawable/ic_settings_buttons"
+        />
+
     <!-- Status bar -->
     <PreferenceScreen
-            android:key="status_bar_settings"
-            android:title="@string/status_bar_title"
-            android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
-            android:icon="@drawable/ic_settings_home"
-            />
+        android:key="status_bar_settings"
+        android:title="@string/status_bar_title"
+        android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
+        android:icon="@drawable/ic_settings_home"
+        />
 
 </PreferenceScreen>
