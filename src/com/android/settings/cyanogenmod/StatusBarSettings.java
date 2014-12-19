@@ -17,24 +17,19 @@ package com.android.settings.cyanogenmod;
 
 import android.content.ContentResolver;
 import android.content.res.Resources;
-import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
 //import android.telephony.MSimTelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 
 import com.android.internal.widget.LockPatternUtils;
 
@@ -43,7 +38,6 @@ import java.util.Locale;
 public class StatusBarSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener {
 
-    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
     private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
@@ -52,6 +46,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String TAG = "StatusBar";
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
+    private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
 
     private static final String STATUS_BAR_BATTERY_STYLE_HIDDEN = "4";
     private static final String STATUS_BAR_BATTERY_STYLE_TEXT = "6";
@@ -75,12 +70,14 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
 
-        int batteryStyle = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_BATTERY_STYLE, 0);
+        int batteryStyle = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_BATTERY_STYLE, 0);
         mStatusBarBattery.setValue(String.valueOf(batteryStyle));
         mStatusBarBattery.setSummary(mStatusBarBattery.getEntry());
         mStatusBarBattery.setOnPreferenceChangeListener(this);
 
-        int batteryShowPercent = Settings.System.getInt(resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
+        int batteryShowPercent = Settings.System.getInt(resolver,
+                Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
         mStatusBarBatteryShowPercent.setValue(String.valueOf(batteryShowPercent));
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
@@ -140,7 +137,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             int index = mStatusBarBatteryShowPercent.findIndexOfValue((String) newValue);
             Settings.System.putInt(
                     resolver, Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, batteryShowPercent);
-            mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntries()[index]);
+            mStatusBarBatteryShowPercent.setSummary(
+                    mStatusBarBatteryShowPercent.getEntries()[index]);
             return true;
         } else if (preference == mQuickPulldown) {
             int statusQuickPulldown = Integer.valueOf((String) newValue);
