@@ -74,8 +74,15 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
     private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
+    private static final String KEY_DEVICE_CODENAME = "device_codename";
+    private static final String KEY_DEVICE_CHIPSET = "device_chipset";
+    private static final String KEY_DEVICE_CPU_INFO = "device_cpu_info";
     private static final String KEY_DEVICE_CPU = "device_cpu";
+    private static final String KEY_DEVICE_GPU = "device_gpu";
     private static final String KEY_DEVICE_MEMORY = "device_memory";
+    private static final String KEY_DEVICE_REAR_CAMERA = "device_rear_camera";
+    private static final String KEY_DEVICE_FRONT_CAMERA = "device_front_camera";
+    private static final String KEY_DEVICE_SCREEN_RESOLUTION = "device_screen_resolution";
     private static final String KEY_STATUS = "status_info";
     private static final String KEY_CM_STATS = "cmstats";
     private static final String KEY_CM_CHANGELOG = "changelog";
@@ -147,6 +154,21 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         } else {
             getPreferenceScreen().removePreference(findPreference(KEY_DEVICE_MEMORY));
         }
+
+        addStringPreference(KEY_DEVICE_CODENAME,
+                SystemProperties.get("ro.product.device", null));
+        addStringPreference(KEY_DEVICE_CPU_INFO,
+                SystemProperties.get("ro.device.cpu_info", null));
+        addStringPreference(KEY_DEVICE_CHIPSET,
+                SystemProperties.get("ro.device.chipset", null));
+        addStringPreference(KEY_DEVICE_GPU,
+                SystemProperties.get("ro.device.gpu", null));
+        addStringPreference(KEY_DEVICE_FRONT_CAMERA,
+                SystemProperties.get("ro.device.front_cam", null));
+        addStringPreference(KEY_DEVICE_REAR_CAMERA,
+                SystemProperties.get("ro.device.rear_cam", null));
+        addStringPreference(KEY_DEVICE_SCREEN_RESOLUTION,
+                SystemProperties.get("ro.device.screen_res", null));
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
@@ -485,6 +507,14 @@ public class DeviceInfoSettings extends RestrictedSettingsFragment {
         } catch (IOException e) {}
 
         return result;
+    }
+
+    private void addStringPreference(String key, String value) {
+        if (value != null) {
+            setStringSummary(key, value);
+        } else {
+            getPreferenceScreen().removePreference(findPreference(key));
+        }
     }
 
     private boolean removePreferenceIfPackageNotInstalled(Preference preference) {
