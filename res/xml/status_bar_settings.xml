@@ -61,6 +61,11 @@
         android:summary="@string/status_bar_ticker_summary"
         android:defaultValue="true" />
 
+    <PreferenceScreen
+        android:key="traffic"
+        android:title="@string/traffic_category"
+        android:fragment="com.android.settings.pac.NetworkTraffic" />
+
     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
         android:key="status_bar_show_weather"
         android:title="@string/status_bar_show_weather_title"
