@@ -25,6 +25,14 @@ Branch: refs/heads/pac-4.4
 Code-Review+2: Lokesh Chamane <lokesh.c703@gmail.com>
 Verified+1: Lokesh Chamane <lokesh.c703@gmail.com>
 Submitted-by: Lokesh Chamane <lokesh.c703@gmail.com>
+Submitted-at: Mon, 27 Oct 2014 22:44:43 -0500
+Reviewed-on: http://review.pac-rom.com/2320
+Project: android_packages_apps_Settings
+Branch: refs/heads/pac-4.4
+
+Code-Review+2: Lokesh Chamane <lokesh.c703@gmail.com>
+Verified+1: Lokesh Chamane <lokesh.c703@gmail.com>
+Submitted-by: Lokesh Chamane <lokesh.c703@gmail.com>
 Submitted-at: Mon, 27 Oct 2014 23:44:43 -0400
 Reviewed-on: http://review.pac-rom.com/2320
 Project: android_packages_apps_Settings
