@@ -96,4 +96,49 @@
                 android:persistent="false" />
     </PreferenceCategory>
 
+    <PreferenceCategory
+            android:title="@string/volume_steps_title"/>
+
+    <!-- Volume steps: Alarm -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_alarm"
+            android:title="@string/volume_steps_alarm_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: DTMF -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_dtmf"
+            android:title="@string/volume_steps_dtmf_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: Music -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_music"
+            android:title="@string/volume_steps_music_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: Notification -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_notification"
+            android:title="@string/volume_steps_notification_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: Ringer -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_ring"
+            android:title="@string/volume_steps_ring_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: System -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_system"
+            android:title="@string/volume_steps_system_title"
+            android:persistent="false" />
+
+    <!-- Volume steps: Voice Call -->
+    <com.android.settings.notification.DropDownPreference
+            android:key="volume_steps_voice_call"
+            android:title="@string/volume_steps_voice_call_title"
+            android:persistent="false" />
+
 </PreferenceScreen>
