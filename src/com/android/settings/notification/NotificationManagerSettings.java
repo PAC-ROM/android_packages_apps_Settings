@@ -18,6 +18,7 @@ package com.android.settings.notification;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.preference.Preference;
 import android.preference.PreferenceCategory;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
@@ -41,6 +42,7 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
     private boolean mSecure;
     private int mLockscreenSelectedValue;
     private DropDownPreference mLockscreen;
+    private Preference mHeadsUp;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -48,6 +50,9 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.notification_manager_settings);
         mSecure = new LockPatternUtils(getActivity()).isSecure();
         initLockscreenNotifications();
+
+        // Heads-up
+        mHeadsUp = findPreference(Settings.System.HEADS_UP_NOTIFICATION);
     }
 
     // === Lockscreen (public / private) notifications ===
@@ -85,6 +90,16 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        boolean headsUpEnabled = Settings.System.getInt(
+                getContentResolver(), Settings.System.HEADS_UP_NOTIFICATION, 1) != 0;
+        mHeadsUp.setSummary(headsUpEnabled
+                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
     }
 
     private void updateLockscreenNotifications() {

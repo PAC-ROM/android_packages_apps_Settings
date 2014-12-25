@@ -28,6 +28,12 @@
             android:title="@string/app_notifications_title"
             android:fragment="com.android.settings.notification.NotificationAppList" />
 
+    <!-- Heads up notifications -->
+    <Preference
+            android:key="heads_up_enabled"
+            android:title="@string/category_heads_up"
+            android:fragment="com.android.settings.pac.HeadsUpSettings" />
+
     <!-- Notification access -->
     <Preference
             android:key="manage_notification_access"
