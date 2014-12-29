@@ -111,6 +111,14 @@
             android:defaultValue="0"
             android:title="@string/wallpaper_intra_close_title" />
 
+        <ListPreference
+            android:key="task_open_behind"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_open_behind_title" />
+
         <com.android.settings.pac.utils.SeekBarPreferenceCham
             android:key="animation_duration"
             android:persistent="false"

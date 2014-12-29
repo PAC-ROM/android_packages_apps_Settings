@@ -57,6 +57,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
     private static final String WALLPAPER_CLOSE = "wallpaper_close";
     private static final String WALLPAPER_INTRA_OPEN = "wallpaper_intra_open";
     private static final String WALLPAPER_INTRA_CLOSE = "wallpaper_intra_close";
+    private static final String TASK_OPEN_BEHIND = "task_open_behind";
 
     private static final int MENU_RESET = Menu.FIRST;
 
@@ -73,6 +74,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
     private ListPreference mWallpaperClose;
     private ListPreference mWallpaperIntraOpen;
     private ListPreference mWallpaperIntraClose;
+    private ListPreference mTaskOpenBehind;
     private SwitchPreference mAnimNoOverride;
     private SeekBarPreferenceCham mAnimationDuration;
 
@@ -193,6 +195,15 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraClose.setEntries(mAnimationsStrings);
         mWallpaperIntraClose.setEntryValues(mAnimationsNum);
 
+        mTaskOpenBehind = (ListPreference) prefSet.findPreference(TASK_OPEN_BEHIND);
+        mTaskOpenBehind.setOnPreferenceChangeListener(this);
+        if (getProperVal(mTaskOpenBehind) != null) {
+             mTaskOpenBehind.setValue(getProperVal(mTaskOpenBehind));
+             mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
+        }
+        mTaskOpenBehind.setEntries(mAnimationsStrings);
+        mTaskOpenBehind.setEntryValues(mAnimationsNum);
+
         int defaultDuration = Settings.PAC.getInt(mResolver,
                 Settings.PAC.ANIMATION_CONTROLS_DURATION, 0);
         mAnimationDuration = (SeekBarPreferenceCham) prefSet.findPreference(ANIMATION_DURATION);
@@ -246,6 +257,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperClose.setValue("0");
         mWallpaperIntraOpen.setValue("0");
         mWallpaperIntraClose.setValue("0");
+        mTaskOpenBehind.setValue("0");
         mAnimationDuration.setValue(0);
         mAnimNoOverride.setChecked(false);
     }
@@ -271,6 +283,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraOpen.setSummary(getProperSummary(mWallpaperIntraOpen));
         setProperVal(mWallpaperIntraClose, 0);
         mWallpaperIntraClose.setSummary(getProperSummary(mWallpaperIntraClose));
+        setProperVal(mTaskOpenBehind, 0);
+        mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
         setProperVal(mAnimationDuration, 0);
         setProperVal(mAnimNoOverride, 0);
     }
@@ -335,6 +349,11 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[9], val);
             mWallpaperIntraClose.setSummary(getProperSummary(mWallpaperIntraClose));
+        } else if (preference == mTaskOpenBehind) {
+            int val = Integer.parseInt((String) objValue);
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[10], val);
+            mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
         } else if (preference == mAnimationDuration) {
             int val = ((Integer)objValue).intValue();
             Settings.PAC.putInt(mResolver,
@@ -368,6 +387,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[8];
         } else if (preference == mWallpaperIntraClose) {
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[9];
+        } else if (preference == mTaskOpenBehind) {
+            mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[10];
         }
 
         Settings.PAC.putInt(mResolver, mString, val);
@@ -395,6 +416,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[8];
         } else if (preference == mWallpaperIntraClose) {
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[9];
+        } else if (preference == mTaskOpenBehind) {
+            mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[10];
         }
 
         String mNum = Settings.PAC.getString(mResolver, mString);
@@ -423,6 +446,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[8];
         } else if (preference == mWallpaperIntraClose) {
             mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[9];
+        } else if (preference == mTaskOpenBehind) {
+            mString = Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[10];
         }
 
         return Settings.PAC.getString(mResolver, mString);

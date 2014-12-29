@@ -69,6 +69,7 @@
     <string name="wallpaper_close_title">Launch From Homescreen Animation</string>
     <string name="wallpaper_intra_open_title">Recents Page Open Animation</string>
     <string name="wallpaper_intra_close_title">Recents Page Close Animation</string>
+    <string name="task_open_behind_title">Task open behind animation</string>
     <string name="animation_duration_title">Animation Duration</string>
     <string name="animation_no_override_title">Prevent App Overrides</string>
     <string name="animation_no_override_summary_on">Prevent apps from overriding transitions.</string>
