@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2014 The Dirty Unicorns Project
+ * This code has been modified. Portions copyright (C) 2014 The PAC-ROM Project.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,6 +19,8 @@ package com.android.settings.pac;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.TrafficStats;
@@ -60,6 +63,7 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     private SeekBarPreferenceCham mNetTrafficAutohideThreshold;
 
     private static final int MENU_RESET = Menu.FIRST;
+    private static final int DLG_RESET = 0;
     private static final int DEFAULT_TRAFFIC_COLOR = 0xffffffff;
 
     private int mNetTrafficVal;
@@ -126,6 +130,8 @@ public class NetworkTraffic extends SettingsPreferenceFragment
             mNetTrafficPeriod.setSummary(mNetTrafficPeriod.getEntry());
             mNetTrafficPeriod.setOnPreferenceChangeListener(this);
         }
+
+        setHasOptionsMenu(true);
     }
 
     private void updateNetworkTrafficState(int mIndex) {
@@ -145,9 +151,14 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         menu.add(0, MENU_RESET, 0, R.string.network_traffic_color_reset)
-                .setIcon(R.drawable.ic_settings_backup)
+                .setIcon(R.drawable.ic_menu_reset)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
@@ -155,30 +166,63 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case MENU_RESET:
-                resetToDefault();
+                showDialogInner(DLG_RESET);
                 return true;
-            default:
+             default:
                 return super.onContextItemSelected(item);
         }
     }
 
-    private void resetToDefault() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-        alertDialog.setTitle(R.string.network_traffic_color_reset);
-        alertDialog.setMessage(R.string.network_traffic_color_reset_message);
-        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                NetworkTrafficColorReset();
+    private void showDialogInner(int id) {
+        DialogFragment newFragment = MyAlertDialogFragment.newInstance(id);
+        newFragment.setTargetFragment(this, 0);
+        newFragment.show(getFragmentManager(), "dialog " + id);
+    }
+
+    public static class MyAlertDialogFragment extends DialogFragment {
+
+        public static MyAlertDialogFragment newInstance(int id) {
+            MyAlertDialogFragment frag = new MyAlertDialogFragment();
+            Bundle args = new Bundle();
+            args.putInt("id", id);
+            frag.setArguments(args);
+            return frag;
+        }
+
+        NetworkTraffic getOwner() {
+            return (NetworkTraffic) getTargetFragment();
+        }
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            int id = getArguments().getInt("id");
+            switch (id) {
+                case DLG_RESET:
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(R.string.network_traffic_color_reset)
+                    .setMessage(R.string.network_traffic_color_reset_message)
+                    .setNegativeButton(R.string.cancel, null)
+                    .setPositiveButton(R.string.dlg_ok,
+                        new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            Settings.PAC.putInt(getActivity().getContentResolver(),
+                                    Settings.PAC.NETWORK_TRAFFIC_COLOR, DEFAULT_TRAFFIC_COLOR);
+
+                            getOwner().NetworkTrafficColorReset();
+                        }
+                    })
+                    .create();
             }
-        });
-        alertDialog.setNegativeButton(R.string.cancel, null);
-        alertDialog.create().show();
+            throw new IllegalArgumentException("unknown id " + id);
+        }
+
+        @Override
+        public void onCancel(DialogInterface dialog) {
+
+        }
     }
 
     private void NetworkTrafficColorReset() {
-        Settings.PAC.putInt(getContentResolver(),
-                Settings.PAC.NETWORK_TRAFFIC_COLOR, DEFAULT_TRAFFIC_COLOR);
-
         mNetTrafficColor.setNewPreviewColor(DEFAULT_TRAFFIC_COLOR);
         String hexColor = String.format("#%08x", (0xffffffff & DEFAULT_TRAFFIC_COLOR));
         mNetTrafficColor.setSummary(hexColor);
