@@ -24,6 +24,7 @@ import android.preference.Preference;
 import android.preference.TwoStatePreference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings.Global;
+import android.provider.Settings.PAC;
 import android.provider.Settings.System;
 
 import com.android.settings.SettingsPreferenceFragment;
@@ -32,6 +33,7 @@ import com.android.settings.SettingsPreferenceFragment;
 public class SettingPref {
     public static final int TYPE_GLOBAL = 1;
     public static final int TYPE_SYSTEM = 2;
+    public static final int TYPE_PAC = 3;
 
     protected final int mType;
     private final String mKey;
@@ -125,6 +127,8 @@ public class SettingPref {
                 return Global.getUriFor(setting);
             case TYPE_SYSTEM:
                 return System.getUriFor(setting);
+            case TYPE_PAC:
+                return PAC.getUriFor(setting);
         }
         throw new IllegalArgumentException();
     }
@@ -135,6 +139,8 @@ public class SettingPref {
                 return Global.putInt(cr, setting, value);
             case TYPE_SYSTEM:
                 return System.putInt(cr, setting, value);
+            case TYPE_PAC:
+                return PAC.putInt(cr, setting, value);
         }
         throw new IllegalArgumentException();
     }
@@ -145,6 +151,8 @@ public class SettingPref {
                 return Global.getInt(cr, setting, def);
             case TYPE_SYSTEM:
                 return System.getInt(cr, setting, def);
+            case TYPE_PAC:
+                return PAC.getInt(cr, setting, def);
         }
         throw new IllegalArgumentException();
     }
