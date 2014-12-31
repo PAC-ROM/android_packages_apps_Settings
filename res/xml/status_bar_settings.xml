@@ -62,7 +62,7 @@
         android:defaultValue="true" />
 
     <PreferenceScreen
-        android:key="traffic"
+        android:key="network_traffic"
         android:title="@string/traffic_category"
         android:fragment="com.android.settings.pac.NetworkTraffic" />
 

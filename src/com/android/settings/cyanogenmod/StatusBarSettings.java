@@ -45,6 +45,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String KEY_STATUS_BAR_CLOCK = "clock_style_pref";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
+    private static final String KEY_NETWORK_TRAFFIC_STATUS = "network_traffic";
 
     private static final String TAG = "StatusBar";
 
@@ -61,6 +62,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private SwitchPreference mBlockOnSecureKeyguard;
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
+    private PreferenceScreen mNetworkTraffic;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -133,12 +135,15 @@ public class StatusBarSettings extends SettingsPreferenceFragment
                 Settings.PAC.STATUS_BAR_TICKER_ENABLED, tickerEnabled ? 1 : 0) == 1);
         mTicker.setOnPreferenceChangeListener(this);
 
+        mNetworkTraffic = (PreferenceScreen) prefSet.findPreference(KEY_NETWORK_TRAFFIC_STATUS);
+        updateNetworkTrafficDescription();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         updateClockStyleDescription();
+        updateNetworkTrafficDescription();
     }
 
     @Override
@@ -238,6 +243,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mClockStyle.setSummary(getString(R.string.enabled));
         } else {
             mClockStyle.setSummary(getString(R.string.disabled));
+        }
+    }
+
+    private void updateNetworkTrafficDescription() {
+        if (mNetworkTraffic == null) {
+            return;
+        }
+        if (Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NETWORK_TRAFFIC_STATE, 1) != 0) {
+            mNetworkTraffic.setSummary(getString(R.string.enabled));
+        } else {
+            mNetworkTraffic.setSummary(getString(R.string.disabled));
         }
     }
 
