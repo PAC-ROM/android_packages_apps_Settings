@@ -24,13 +24,6 @@
             android:key="category_system"
             android:title="@string/bars_and_menus_category_system_title">
 
-        <SwitchPreference
-            android:key="animation_no_override"
-            android:persistent="false"
-            android:title="@string/animation_no_override_title"
-            android:summaryOff="@string/animation_no_override_summary_off"
-            android:summaryOn="@string/animation_no_override_summary_on" />
-
         <ListPreference
             android:key="activity_open"
             android:persistent="false"

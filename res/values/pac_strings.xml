@@ -71,9 +71,6 @@
     <string name="wallpaper_intra_close_title">Recents Page Close Animation</string>
     <string name="task_open_behind_title">Task open behind animation</string>
     <string name="animation_duration_title">Animation Duration</string>
-    <string name="animation_no_override_title">Prevent App Overrides</string>
-    <string name="animation_no_override_summary_on">Prevent apps from overriding transitions.</string>
-    <string name="animation_no_override_summary_off">Apps can overriding transitions.</string>
 
     <!-- Animation Strings -->
     <string name="animation_default">Default</string>

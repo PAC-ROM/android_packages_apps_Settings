@@ -28,7 +28,6 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,7 +51,6 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
     private static final String TASK_MOVE_TO_FRONT = "task_move_to_front";
     private static final String TASK_MOVE_TO_BACK = "task_move_to_back";
     private static final String ANIMATION_DURATION = "animation_duration";
-    private static final String ANIMATION_NO_OVERRIDE = "animation_no_override";
     private static final String WALLPAPER_OPEN = "wallpaper_open";
     private static final String WALLPAPER_CLOSE = "wallpaper_close";
     private static final String WALLPAPER_INTRA_OPEN = "wallpaper_intra_open";
@@ -75,7 +73,6 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
     private ListPreference mWallpaperIntraOpen;
     private ListPreference mWallpaperIntraClose;
     private ListPreference mTaskOpenBehind;
-    private SwitchPreference mAnimNoOverride;
     private SeekBarPreferenceCham mAnimationDuration;
 
     private int[] mAnimations;
@@ -99,11 +96,6 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             mAnimationsStrings[i] = AwesomeAnimationHelper.getProperName(mContext.getResources(), mAnimations[i]);
             mAnimationsNum[i] = String.valueOf(mAnimations[i]);
         }
-
-        mAnimNoOverride = (SwitchPreference) prefSet.findPreference(ANIMATION_NO_OVERRIDE);
-        mAnimNoOverride.setChecked(Settings.PAC.getInt(mResolver,
-                Settings.PAC.ANIMATION_CONTROLS_NO_OVERRIDE, 0) == 1);
-        mAnimNoOverride.setOnPreferenceChangeListener(this);
 
         mActivityOpenPref = (ListPreference) prefSet.findPreference(ACTIVITY_OPEN);
         mActivityOpenPref.setOnPreferenceChangeListener(this);
@@ -259,7 +251,6 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraClose.setValue("0");
         mTaskOpenBehind.setValue("0");
         mAnimationDuration.setValue(0);
-        mAnimNoOverride.setChecked(false);
     }
 
     private void resetAllSettings() {
@@ -286,7 +277,6 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         setProperVal(mTaskOpenBehind, 0);
         mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
         setProperVal(mAnimationDuration, 0);
-        setProperVal(mAnimNoOverride, 0);
     }
 
     @Override
@@ -296,10 +286,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mAnimNoOverride) {
-            boolean value = (Boolean) objValue;
-            Settings.PAC.putInt(mResolver, Settings.PAC.ANIMATION_CONTROLS_NO_OVERRIDE, value ? 1 : 0);
-        } else if (preference == mActivityOpenPref) {
+        if (preference == mActivityOpenPref) {
             int val = Integer.parseInt((String) objValue);
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[0], val);
