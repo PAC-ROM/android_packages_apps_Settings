@@ -248,4 +248,5 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         } else {
             mStatusBarBatteryShowPercent.setEnabled(true);
         }
+    }
 }
