@@ -352,6 +352,9 @@
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
     <string name="network_traffic_color_style">Color style</string>
 
+    <!-- OmniSwitch Recents -->
+    <string name="hardware_keys_action_omniswitch">OmniSwitch recents</string>
+
     <!-- PAC Settings screens  -->
     <string name="pac_settings_title">PAC Settings</string>
 

@@ -102,6 +102,7 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
     private static final int ACTION_LAUNCH_CAMERA = 6;
     private static final int ACTION_SLEEP = 7;
     private static final int ACTION_LAST_APP = 8;
+    private static final int ACTION_OMNISWITCH = 9;
 
     // Masks for checking presence of hardware keys.
     // Must match values in frameworks/base/core/res/res/values/config.xml
@@ -303,14 +304,14 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             int defaultLongPressAction = res.getInteger(
                     com.android.internal.R.integer.config_longPressOnHomeBehavior);
             if (defaultLongPressAction < ACTION_NOTHING ||
-                    defaultLongPressAction > ACTION_LAST_APP) {
+                    defaultLongPressAction > ACTION_OMNISWITCH) {
                 defaultLongPressAction = ACTION_NOTHING;
             }
 
             int defaultDoubleTapAction = res.getInteger(
                     com.android.internal.R.integer.config_doubleTapOnHomeBehavior);
             if (defaultDoubleTapAction < ACTION_NOTHING ||
-                    defaultDoubleTapAction > ACTION_LAST_APP) {
+                    defaultDoubleTapAction > ACTION_OMNISWITCH) {
                 defaultDoubleTapAction = ACTION_NOTHING;
             }
 
