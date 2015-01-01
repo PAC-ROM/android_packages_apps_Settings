@@ -28,6 +28,7 @@ import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -44,6 +45,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SystemAnimationInterfaceSettings";
 
+    private static final String ANIMATION_CONTROLS_EXIT_ONLY = "animation_controls_exit_only";
+    private static final String ANIMATION_CONTROLS_REVERSE_EXIT = "animation_controls_reverse_exit";
     private static final String ACTIVITY_OPEN = "activity_open";
     private static final String ACTIVITY_CLOSE = "activity_close";
     private static final String TASK_OPEN = "task_open";
@@ -62,6 +65,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
     private ContentResolver mResolver;
     private Context mContext;
 
+    private SwitchPreference mAnimExitOnly;
+    private SwitchPreference mAnimReverseExit;
     private ListPreference mActivityOpenPref;
     private ListPreference mActivityClosePref;
     private ListPreference mTaskOpenPref;
@@ -96,6 +101,16 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
             mAnimationsStrings[i] = AwesomeAnimationHelper.getProperName(mContext.getResources(), mAnimations[i]);
             mAnimationsNum[i] = String.valueOf(mAnimations[i]);
         }
+
+        mAnimExitOnly = (SwitchPreference) findPreference(ANIMATION_CONTROLS_EXIT_ONLY);
+        mAnimExitOnly.setChecked(Settings.PAC.getInt(mResolver,
+                Settings.PAC.ANIMATION_CONTROLS_EXIT_ONLY, 0) == 1);
+        mAnimExitOnly.setOnPreferenceChangeListener(this);
+
+        mAnimReverseExit = (SwitchPreference) findPreference(ANIMATION_CONTROLS_REVERSE_EXIT);
+        mAnimReverseExit.setChecked(Settings.PAC.getInt(mResolver,
+                Settings.PAC.ANIMATION_CONTROLS_REVERSE_EXIT, 0) == 1);
+        mAnimReverseExit.setOnPreferenceChangeListener(this);
 
         mActivityOpenPref = (ListPreference) prefSet.findPreference(ACTIVITY_OPEN);
         mActivityOpenPref.setOnPreferenceChangeListener(this);
@@ -203,7 +218,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mAnimationDuration.setOnPreferenceChangeListener(this);
 
         setHasOptionsMenu(true);
-
+        updateRevExitAnim();
     }
 
     @Override
@@ -251,6 +266,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraClose.setValue("0");
         mTaskOpenBehind.setValue("0");
         mAnimationDuration.setValue(0);
+        mAnimExitOnly.setChecked(false);
+        mAnimReverseExit.setChecked(false);
     }
 
     private void resetAllSettings() {
@@ -277,6 +294,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         setProperVal(mTaskOpenBehind, 0);
         mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
         setProperVal(mAnimationDuration, 0);
+        setProperVal(mAnimExitOnly, 0);
+        setProperVal(mAnimReverseExit, 0);
     }
 
     @Override
@@ -286,7 +305,18 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object objValue) {
-        if (preference == mActivityOpenPref) {
+        if (preference == mAnimExitOnly) {
+            boolean value = (Boolean) objValue;
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ANIMATION_CONTROLS_EXIT_ONLY,
+                    value ? 1 : 0);
+            updateRevExitAnim();
+        } else if (preference == mAnimReverseExit) {
+            boolean value = (Boolean) objValue;
+            Settings.PAC.putInt(mResolver,
+                    Settings.PAC.ANIMATION_CONTROLS_REVERSE_EXIT,
+                    value ? 1 : 0);
+        } else if (preference == mActivityOpenPref) {
             int val = Integer.parseInt((String) objValue);
             Settings.PAC.putInt(mResolver,
                     Settings.PAC.ACTIVITY_ANIMATION_CONTROLS[0], val);
@@ -438,6 +468,13 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         }
 
         return Settings.PAC.getString(mResolver, mString);
+    }
+
+    private void updateRevExitAnim() {
+        boolean enabled = Settings.PAC.getInt(mResolver,
+                Settings.PAC.ANIMATION_CONTROLS_EXIT_ONLY, 0) == 1;
+
+        mAnimReverseExit.setEnabled(!enabled);
     }
 
 }
