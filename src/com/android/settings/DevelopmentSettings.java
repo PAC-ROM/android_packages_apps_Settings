@@ -215,7 +215,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private PreferenceScreen mPassword;
     private String mDebugApp;
     private Preference mDebugAppPref;
-    
     private SwitchPreference mWaitForDebugger;
     private SwitchPreference mVerifyAppsOverUsb;
     private SwitchPreference mWifiDisplayCertification;
