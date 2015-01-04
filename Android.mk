@@ -27,7 +27,9 @@ LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
 LOCAL_AAPT_INCLUDE_ALL_RESOURCES := true
 
-LOCAL_AAPT_FLAGS += --extra-packages com.brewcrewfoo.performance --auto-add-overlay
+LOCAL_AAPT_FLAGS +=  --auto-add-overlay --extra-packages com.brewcrewfoo.performance
+
+LOCAL_SRC_FILES += $(call all-java-files-under, ../PerformanceControl/src)
 
 LOCAL_RESOURCE_DIR += packages/apps/PerformanceControl/res
 
