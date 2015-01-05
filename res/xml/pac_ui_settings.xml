@@ -27,6 +27,14 @@
         android:icon="@drawable/ic_settings_animations"
         />
 
+    <!-- App Circle sidebar -->
+    <PreferenceScreen
+        android:key="app_circle_bar"
+        android:title="@string/app_circle_bar_title"
+        android:fragment="com.android.settings.pac.AppCircleBar"
+        android:icon="@drawable/ic_settings_appcirclebar"
+        />
+
     <!-- Buttons settings -->
     <PreferenceScreen
         android:key="button_settings"
