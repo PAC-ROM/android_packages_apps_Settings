@@ -2193,6 +2193,8 @@
             </intent-filter>
         </activity>
 
+        <!-- Start of PAC Activities -->
+
         <!-- PerformanceControl activities -->
         <activity android:name="com.brewcrewfoo.performance.activities.MainActivity"/>
         <activity android:name="com.brewcrewfoo.performance.activities.PCSettings"/>
@@ -2224,5 +2226,10 @@
             </intent-filter>
         </receiver>
 
+        <!-- Gesture anywhere -->
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
+        <!-- End of PAC Activities -->
     </application>
 </manifest>

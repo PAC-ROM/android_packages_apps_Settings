@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    Copyright (C) 2014 The PAC-ROM Project
+    Copyright (C) 2015 The PAC-ROM Project
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,11 +16,8 @@
 -->
 <resources>
 
-    <!-- DSLV colors -->
-    <color name="dslv_icon_dark">#ff009688</color>
-    <color name="dslv_float_cackground_color">#ffe1e1e0</color>
-
-    <!-- Gesture Anywhere -->
-    <color name="ga_gesture_color">#FF07998B</color>
+    <dimen name="ga_gesture_thumbnail_inset">8dip</dimen>
+    <dimen name="ga_gesture_thumbnail_size">64dip</dimen>
+    <dimen name="shortcut_picker_left_padding">70dip</dimen>
 
 </resources>
