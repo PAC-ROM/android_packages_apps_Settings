@@ -16,6 +16,17 @@
 -->
 <resources>
 
+    <!-- Gesture Anywhere -->
+    <string-array name="gesture_anywhere_position_entries" translatable="false">
+        <item>@string/gesture_anywhere_position_left</item>
+        <item>@string/gesture_anywhere_position_right</item>
+    </string-array>
+
+    <string-array name="gesture_anywhere_position_values" translatable="false">
+        <item>3</item>
+        <item>5</item>
+    </string-array>
+
     <!-- Navigation bar custom dimensions -->
     <string-array name="navigation_bar_height_entries" translatable="false">
         <item>@string/navigation_bar_size_56_dp</item>

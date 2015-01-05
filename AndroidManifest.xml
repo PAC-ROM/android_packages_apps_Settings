@@ -2297,5 +2297,12 @@
             </intent-filter>
         </activity>
 
+        <!-- Start of PAC Activities -->
+
+        <!-- Gesture anywhere -->
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
+        <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
+
+        <!-- End of PAC Activities -->
     </application>
 </manifest>
