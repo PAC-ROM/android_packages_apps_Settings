@@ -46,6 +46,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
     private static final String KEY_STATUS_BAR_TICKER = "status_bar_ticker_enabled";
     private static final String KEY_NETWORK_TRAFFIC_STATUS = "network_traffic";
+    private static final String KEY_BATTERY_BAR_STATUS = "battery_bar";
 
     private static final String TAG = "StatusBar";
 
@@ -63,6 +64,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private PreferenceScreen mClockStyle;
     private SwitchPreference mTicker;
     private PreferenceScreen mNetworkTraffic;
+    private PreferenceScreen mBatteryBar;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -137,6 +139,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mNetworkTraffic = (PreferenceScreen) prefSet.findPreference(KEY_NETWORK_TRAFFIC_STATUS);
         updateNetworkTrafficDescription();
+
+        mBatteryBar = (PreferenceScreen) prefSet.findPreference(KEY_BATTERY_BAR_STATUS);
+        updateBatteryBarDescription();
+
     }
 
     @Override
@@ -144,6 +150,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         super.onResume();
         updateClockStyleDescription();
         updateNetworkTrafficDescription();
+        updateBatteryBarDescription();
     }
 
     @Override
@@ -255,6 +262,18 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             mNetworkTraffic.setSummary(getString(R.string.enabled));
         } else {
             mNetworkTraffic.setSummary(getString(R.string.disabled));
+        }
+    }
+
+    private void updateBatteryBarDescription() {
+        if (mBatteryBar == null) {
+            return;
+        }
+        if (Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.STATUSBAR_BATTERY_BAR, 1) != 0) {
+            mBatteryBar.setSummary(getString(R.string.enabled));
+        } else {
+            mBatteryBar.setSummary(getString(R.string.disabled));
         }
     }
 
