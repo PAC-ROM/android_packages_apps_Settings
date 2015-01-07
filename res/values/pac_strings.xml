@@ -361,6 +361,12 @@
     <string name="shortcuts_icon_picker_twitter">Twitter</string>
     <string name="shortcuts_icon_picker_unlock">Unlock</string>
 
+    <!-- Status bar categories -->
+    <string name="battery_category">Battery</string>
+    <string name="clock_category">Clock</string>
+    <string name="general_category">General</string>
+    <string name="network_traffic_category">Network Traffic</string>
+
     <!-- Status bar | Clock -->
     <string name="status_bar_clock">Clock and date</string>
     <string name="status_bar_clock_title">Clock and date style</string>
