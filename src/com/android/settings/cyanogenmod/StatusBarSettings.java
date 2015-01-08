@@ -270,7 +270,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
             return;
         }
         if (Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.STATUSBAR_BATTERY_BAR, 1) != 0) {
+                Settings.PAC.STATUSBAR_BATTERY_BAR, 0) != 0) {
             mBatteryBar.setSummary(getString(R.string.enabled));
         } else {
             mBatteryBar.setSummary(getString(R.string.disabled));
