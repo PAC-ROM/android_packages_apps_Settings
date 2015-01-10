@@ -205,7 +205,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mTaskOpenBehind.setEntryValues(mAnimationsNum);
 
         int defaultDuration = Settings.PAC.getInt(mResolver,
-                Settings.PAC.ANIMATION_CONTROLS_DURATION, 0);
+                Settings.PAC.ANIMATION_CONTROLS_DURATION, 25);
         mAnimationDuration = (SeekBarPreferenceCham) prefSet.findPreference(ANIMATION_DURATION);
         mAnimationDuration.setValue(defaultDuration);
         mAnimationDuration.setOnPreferenceChangeListener(this);
@@ -258,7 +258,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraOpen.setValue("0");
         mWallpaperIntraClose.setValue("0");
         mTaskOpenBehind.setValue("0");
-        mAnimationDuration.setValue(0);
+        mAnimationDuration.setValue(25);
         mAnimNoOverride.setChecked(false);
     }
 
@@ -285,7 +285,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraClose.setSummary(getProperSummary(mWallpaperIntraClose));
         setProperVal(mTaskOpenBehind, 0);
         mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
-        setProperVal(mAnimationDuration, 0);
+        setProperVal(mAnimationDuration, 25);
         setProperVal(mAnimNoOverride, 0);
     }
 
