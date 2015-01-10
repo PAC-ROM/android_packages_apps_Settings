@@ -212,7 +212,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mTaskOpenBehind.setEntryValues(mAnimationsNum);
 
         int defaultDuration = Settings.PAC.getInt(mResolver,
-                Settings.PAC.ANIMATION_CONTROLS_DURATION, 0);
+                Settings.PAC.ANIMATION_CONTROLS_DURATION, 25);
         mAnimationDuration = (SeekBarPreferenceCham) prefSet.findPreference(ANIMATION_DURATION);
         mAnimationDuration.setValue(defaultDuration);
         mAnimationDuration.setOnPreferenceChangeListener(this);
@@ -223,8 +223,8 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.reset)
-                .setIcon(R.drawable.ic_settings_backup) // use the backup icon
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(R.drawable.ic_navbar_restore)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
@@ -241,7 +241,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
 
     private void resetToDefault() {
         AlertDialog.Builder alertDialog  = new AlertDialog.Builder(getActivity());
-        alertDialog.setTitle(R.string.reset);
+        alertDialog.setTitle(R.string.profile_reset_title);
         alertDialog.setMessage(R.string.animation_settings_reset_message);
         alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -265,7 +265,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraOpen.setValue("0");
         mWallpaperIntraClose.setValue("0");
         mTaskOpenBehind.setValue("0");
-        mAnimationDuration.setValue(0);
+        mAnimationDuration.setValue(25);
         mAnimExitOnly.setChecked(false);
         mAnimReverseExit.setChecked(false);
     }
@@ -293,7 +293,7 @@ public class SystemAnimationInterfaceSettings extends SettingsPreferenceFragment
         mWallpaperIntraClose.setSummary(getProperSummary(mWallpaperIntraClose));
         setProperVal(mTaskOpenBehind, 0);
         mTaskOpenBehind.setSummary(getProperSummary(mTaskOpenBehind));
-        setProperVal(mAnimationDuration, 0);
+        setProperVal(mAnimationDuration, 25);
         setProperVal(mAnimExitOnly, 0);
         setProperVal(mAnimReverseExit, 0);
     }

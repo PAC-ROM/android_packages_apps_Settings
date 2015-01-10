@@ -98,7 +98,7 @@ public class ListViewAnimationInterfaceSettings extends SettingsPreferenceFragme
         mListViewInterpolator.setOnPreferenceChangeListener(this);
 
         int listviewDuration = Settings.PAC.getInt(mResolver,
-                Settings.PAC.LISTVIEW_DURATION, 0);
+                Settings.PAC.LISTVIEW_DURATION, 25);
         mListViewDuration = (SeekBarPreferenceCham) prefSet.findPreference(LISTVIEW_ANIM_DURATION);
         mListViewDuration.setValue(listviewDuration);
         mListViewDuration.setOnPreferenceChangeListener(this);
@@ -114,8 +114,8 @@ public class ListViewAnimationInterfaceSettings extends SettingsPreferenceFragme
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.reset)
-                .setIcon(R.drawable.ic_settings_backup) // use the backup icon
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(R.drawable.ic_navbar_restore)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
     }
 
@@ -132,7 +132,7 @@ public class ListViewAnimationInterfaceSettings extends SettingsPreferenceFragme
 
     private void resetToDefault() {
         AlertDialog.Builder alertDialog  = new AlertDialog.Builder(getActivity());
-        alertDialog.setTitle(R.string.reset);
+        alertDialog.setTitle(R.string.profile_reset_title);
         alertDialog.setMessage(R.string.animation_settings_reset_message);
         alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -145,14 +145,14 @@ public class ListViewAnimationInterfaceSettings extends SettingsPreferenceFragme
     }
 
     private void resetAllValues() {
-        mListViewDuration.setValue(0);
+        mListViewDuration.setValue(25);
         mListViewAnimation.setValue("0");
         mListViewInterpolator.setValue("0");
         mListViewCache.setValue("0");
     }
 
     private void resetAllSettings() {
-        setProperVal(mListViewDuration, 0);
+        setProperVal(mListViewDuration, 25);
         setProperVal(mListViewAnimation, 0);
         mListViewAnimation.setSummary(getListAnimationName(0));
         setProperVal(mListViewInterpolator, 0);
