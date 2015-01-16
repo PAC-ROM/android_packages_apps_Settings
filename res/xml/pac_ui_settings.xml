@@ -52,7 +52,7 @@
         />
 
     <!-- Notification drawer -->
-        <dashboard-tile
+    <PreferenceScreen
         android:key="notification_drawer_settings"
         android:title="@string/notification_drawer_title"
         android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
