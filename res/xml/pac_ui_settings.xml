@@ -51,6 +51,14 @@
         android:icon="@drawable/ic_settings_gestureanywhere"
         />
 
+    <!-- Notification drawer -->
+        <dashboard-tile
+        android:key="notification_drawer_settings"
+        android:title="@string/notification_drawer_title"
+        android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
+        android:icon="@drawable/ic_settings_notification_drawer"
+        />
+
     <!-- Status bar -->
     <PreferenceScreen
         android:key="status_bar_settings"
