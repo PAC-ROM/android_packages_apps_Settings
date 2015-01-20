@@ -325,6 +325,15 @@
   <string name="dt_init_d_error">Błąd init.d</string>
   <string name="dm_init_d_error">Wygląda na to, że plik init.d nie jest prawidłowo skonfigurowany. Proszę skontaktować się z twórcą ROMu dla Twojego urządzenia.</string>
   <string name="db_exit">Wyjście</string>
+  <string name="gpu_info">GPU</string>
+  <string name="cpu_info">Procesor</string>
+  <string name="cpu_type">Typ procesora</string>
+  <string name="hardware_info">Informacje o sprzęcie</string>
+  <string name="device_chipset">Chipset</string>
+  <string name="device_codename">Nazwa kodowa urządzenia</string>
+  <string name="device_rear_camera">Tylna kamera</string>
+  <string name="device_front_camera">Przednia kamera</string>
+  <string name="device_screen_resolution">Rozdzielczość ekranu</string>
   <string name="title_keyboard_input">Zaawansowane opcje</string>
   <string name="disable_fullscreen_keyboard_title">Wyłącz pełnoekranową klawiaturę</string>
   <string name="disable_fullscreen_keyboard_summary">Nie wyświetlaj klawiatury na pełnym ekranie w poziomej orientacji.</string>
@@ -513,6 +522,7 @@
   <string name="custom_statusbar_header_title">Kontekstowy nagłówek panelu powiadomień</string>
   <string name="custom_statusbar_header_summary">Ustawia tło nagłówka panelu powiadomień na obraz pasujący do obecnej daty i godziny.</string>
   <string name="notification_light_screenon_title">Włącz, gdy ekran podświetlony</string>
+  <string name="status_bar_ticker_title">Ikona powiadomień</string>
   <string name="status_bar_ticker_summary">Animacja tekstu powiadomienia na pasku stanu</string>
   <string name="omniswitch_category">OmniSwitch</string>
   <string name="recents_use_omniswitch_title">Używaj dla ostatnich aplikacji</string>
@@ -790,6 +800,7 @@
   <string name="animation_no_scroll_title">Dostosowywanie przewijania</string>
   <string name="animation_no_scroll_summary_on">Włączono</string>
   <string name="animation_no_scroll_summary_off">Wyłączono</string>
+  <string name="overscroll_glow_title">Kolor przewijania</string>
   <string name="header_category_rom_settings">Zaawansowane ustawienia</string>
   <string name="use_custom_app_title">Użyj niestandardowej aplikacji</string>
   <string name="use_custom_app_summary">Użyj własnej aplikacji zamiast okna ostatnich aplikacji</string>
@@ -848,6 +859,8 @@
   <string name="tinted_statusbar_filter_summary">Włącz odwrócone kolory</string>
   <string name="tinted_statusbar_transparent_title">Przeźroczystość paska stanu</string>
   <string name="tinted_navbar_transparent_title">Przeźroczystość paska nawigacji</string>
+  <string name="tinted_statusbar_full_mode_title">Kolor panelu powiadomień</string>
+  <string name="tinted_statusbar_full_mode_summary">Zastosuj bieżący kolor dla panelu powiadomień</string>
   <string name="toast_animation_title">Animacje dymka z komunikatami</string>
   <string name="toast_choose_animation">Wybierz animację</string>
   <string name="toast_none_animation">Brak</string>
@@ -874,6 +887,8 @@
   <string name="tether_wifi_network_text">WIFI Hotspot</string>
   <string name="volume_steps_title">Poziomy głośności</string>
   <string name="volume_steps_summary">Kontrola głośności dla konkretnych strumieni dźwięku</string>
+  <string name="volume_steps_60">60</string>
+  <string name="volume_steps_45">45</string>
   <string name="wakelock_blocker_header_summary">@null</string>
   <string name="wakelock_blocker">Blokowanie przebudzeń</string>
   <string name="wakelock_blocker_title">Włącz</string>

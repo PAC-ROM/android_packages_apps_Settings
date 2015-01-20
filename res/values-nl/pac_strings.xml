@@ -16,6 +16,20 @@
   limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="animation_fade">Vervagen</string>
+  <string name="animation_slide_right">Rechts inschuiven</string>
+  <string name="animation_slide_left">Links inschuiven</string>
+  <string name="animation_slide_right_no_fade">Rechts inschuiven (geen vervaging)</string>
+  <string name="animation_slide_left_no_fade">Links inschuiven (geen vervaging)</string>
+  <string name="animation_slide_up">Van onder inschuiven</string>
+  <string name="animation_slide_down">Van boven inschuiven</string>
+  <string name="animation_translucent">Doorschijnend</string>
+  <string name="animation_grow_shrink">Ingroeien (van boven)</string>
+  <string name="animation_grow_shrink_center">Ingroeien (vanuit het midden)</string>
+  <string name="animation_grow_shrink_bottom">Ingroeien (van onder)</string>
+  <string name="animation_grow_shrink_left">Ingroeien (van links)</string>
+  <string name="animation_grow_shrink_right">Ingroeien (van Rechts)</string>
+  <string name="animation_random">Willekeurig</string>
   <string name="app_sidebar_title">Appbar</string>
   <string name="app_sidebar_enable_title">Appbar inschakelen</string>
   <string name="app_sidebar_enable_summaryOn">Appbar is ingeschakeld</string>
@@ -36,6 +50,16 @@
   <string name="force_expanded_notifications_summary">Enkel beschikbaar voor apps die uitgebreide notificaties ondersteunen</string>
   <string name="ok">OK</string>
   <string name="reset">Herstel</string>
+  <string name="ga_rename_action">OK</string>
   <string name="halo_settings_title">Halo</string>
   <string name="halo_activate_title">Activeer Halo</string>
+  <string name="title_tile_halo">Halo</string>
+  <string name="menu_location_right">Rechts</string>
+  <string name="menu_location_left">Links</string>
+  <string name="shortcut_action_reset">Herstel</string>
+  <string name="ram_bar_reset">Herstel</string>
+  <string name="power_menu_screenrecord_title">Scherm opnemen</string>
+  <string name="toast_fade_animation">Vervagen</string>
+  <string name="toast_Translucent_animation">Doorschijnend</string>
+  <string name="toast_Random_animation">Willekeurig</string>
 </resources>

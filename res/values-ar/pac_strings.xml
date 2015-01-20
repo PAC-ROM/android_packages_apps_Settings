@@ -15,4 +15,18 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"/>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="animation_fade">التلاشي</string>
+  <string name="animation_slide_right">انزلاق إلى اليمين</string>
+  <string name="animation_slide_left">انزلاق إلى اليسار</string>
+  <string name="animation_slide_right_no_fade">انزلاق إلى اليمين (بدون تلاشي)</string>
+  <string name="animation_slide_left_no_fade">انزلاق إلى اليسار (بدون تلاشي)</string>
+  <string name="animation_slide_up">انزلاق إلى الأسفل</string>
+  <string name="animation_slide_down">الانزلاق إلى الأعلى</string>
+  <string name="animation_translucent">شبه شفاف</string>
+  <string name="animation_random">عشوائى</string>
+  <string name="power_menu_screenrecord_title">تسجيل الشاشة</string>
+  <string name="toast_fade_animation">التلاشي</string>
+  <string name="toast_Translucent_animation">شبه شفاف</string>
+  <string name="toast_Random_animation">عشوائى</string>
+</resources>

@@ -16,6 +16,14 @@
   limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="animation_fade">Затухання</string>
+  <string name="animation_slide_right">Зсунути праворуч</string>
+  <string name="animation_slide_left">Зсунути ліворуч</string>
+  <string name="animation_slide_right_no_fade">Зсунути праворуч (без затухання)</string>
+  <string name="animation_slide_left_no_fade">Зсунути ліворуч (без затухання)</string>
+  <string name="animation_slide_up">Зсунути вниз</string>
+  <string name="animation_slide_down">Зсунути вверх</string>
+  <string name="animation_translucent">Прозорість</string>
   <string name="app_sidebar_title">Панель програм</string>
   <string name="app_sidebar_enable_title">Увімкнути панель програм</string>
   <string name="app_sidebar_enable_summaryOn">Панель програм увімкнено</string>
@@ -48,4 +56,8 @@
   <string name="battery_bar_animate_summary">Зміна анімації заряджання може призвести до негативних вражень від використання. Використовуйте на власний розсуд.</string>
   <string name="battery_bar_animate_title">Анімація заряджання</string>
   <string name="floating_blacklist_label">Чорний список від плаваючого режиму</string>
+  <string name="menu_location_right">Праворуч</string>
+  <string name="menu_location_left">Ліворуч</string>
+  <string name="toast_fade_animation">Затухання</string>
+  <string name="toast_Translucent_animation">Прозорість</string>
 </resources>

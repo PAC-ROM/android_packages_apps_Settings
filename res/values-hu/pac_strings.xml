@@ -330,6 +330,15 @@
   <string name="dt_init_d_error">Init.d hiba</string>
   <string name="dm_init_d_error">Úgy tűnik az init.d nincs rendesen beállítva. Kérjük, forduljon a ROM fejlesztőjéhez.</string>
   <string name="db_exit">Kilépés</string>
+  <string name="gpu_info">GPU</string>
+  <string name="cpu_info">CPU</string>
+  <string name="cpu_type">CPU típusa</string>
+  <string name="hardware_info">Hardver információ</string>
+  <string name="device_chipset">Chipset</string>
+  <string name="device_codename">Készülék kódneve</string>
+  <string name="device_rear_camera">Hátsó kamera</string>
+  <string name="device_front_camera">Elülső kamera</string>
+  <string name="device_screen_resolution">Képernyő felbontás</string>
   <string name="title_keyboard_input">Speciális beállítások</string>
   <string name="disable_fullscreen_keyboard_title">Teljes képernyős billentyűzet letiltása</string>
   <string name="disable_fullscreen_keyboard_summary">A fekvő billentyűzet soha nem foglalja el a teljes képernyőt</string>

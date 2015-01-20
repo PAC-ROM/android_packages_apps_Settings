@@ -330,6 +330,15 @@
   <string name="dt_init_d_error">Init.d error</string>
   <string name="dm_init_d_error">Al Parecer init.d no está configurado correctamente. Por favor, póngase en contacto con su desarrollador de la ROM.</string>
   <string name="db_exit">Salir</string>
+  <string name="gpu_info">Procesador Gráfico</string>
+  <string name="cpu_info">Procesador</string>
+  <string name="cpu_type">Tipo de Procesador</string>
+  <string name="hardware_info">Información del hardware</string>
+  <string name="device_chipset">Chipset</string>
+  <string name="device_codename">Nombre clave del dispositivo</string>
+  <string name="device_rear_camera">Cámara trasera</string>
+  <string name="device_front_camera">Cámara frontal</string>
+  <string name="device_screen_resolution">Resolución de la pantalla</string>
   <string name="title_keyboard_input">Opciones avanzadas</string>
   <string name="disable_fullscreen_keyboard_title">Desactivar el teclado en pantalla completa</string>
   <string name="disable_fullscreen_keyboard_summary">Teclado horizontal, nunca ocupara toda la pantalla</string>

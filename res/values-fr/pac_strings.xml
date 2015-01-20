@@ -325,7 +325,9 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="lockgesture_settings_enable_summary">Vous devez dessiner le geste pour déverrouiller l\'écran</string>
   <string name="lockgesture_settings_enable_visible_pattern_title">Rendre le geste visible</string>
   <string name="lockgesture_settings_enable_power_button_instantly_locks">Le bouton [Power] verrouille instantanément</string>
+  <string name="lockgesture_settings_change_lock_pattern">Modifier le geste de déverrouillage</string>
   <string name="lockgesture_too_many_failed_confirmation_attempts_footer">Réessayer dans <xliff:g id="number">%d</xliff:g> secondes.</string>
+  <string name="general">Général</string>
   <string name="show_always">Toujours afficher</string>
   <string name="show_always_summary">Allume toujours l\'écran lorsque l\'appareil est sorti de votre poche, même s\'il n\'y à pas de notifications en attente</string>
   <string name="hide_low_priority">Masquer les applications de basse priorité</string>
@@ -363,4 +365,28 @@ Nous vous demandons de ne plus nous signaler de bugues si vous utilisez ART.
   <string name="action_double">Action double appui</string>
   <string name="action_icon">Icône personnalisé</string>
   <string name="choose_action_title">Sélectionner une action</string>
+  <string name="menu_location_right">Droite</string>
+  <string name="menu_location_left">Gauche</string>
+  <string name="menu_location_both">Les deux</string>
+  <string name="default_string">Par défaut</string>
+  <string name="shortcut_action_none">Aucune</string>
+  <string name="shortcut_action_reset">Réinitialiser</string>
+  <string name="icon_default">Par défaut</string>
+  <string name="shortcuts_icon_picker_battery">Batterie</string>
+  <string name="icon_default">Par défaut</string>
+  <string name="ram_bar_none">Aucune</string>
+  <string name="ram_bar_reset">Réinitialiser</string>
+  <string name="power_menu_screenrecord_title">Enregistrement vidéo de l\'écran</string>
+  <string name="recent_panel_expanded_mode_never">Jamais</string>
+  <string name="tinted_statusbar_all">Les deux</string>
+  <string name="toast_none_animation">Aucune</string>
+  <string name="toast_default_animation">Par défaut</string>
+  <string name="toast_fade_animation">Fondu</string>
+  <string name="toast_Translucent_animation">Translucide</string>
+  <string name="toast_Random_animation">Aléatoire</string>
+  <string name="wakelock_blocker_reload">Actualiser</string>
+  <string name="off">Désactiver</string>
+  <string name="time_3_minutes">3 minutes</string>
+  <string name="time_5_minutes">5 minutes</string>
+  <string name="time_10_minutes">10 minutes</string>
 </resources>
