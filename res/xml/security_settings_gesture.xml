@@ -28,6 +28,11 @@
             android:summary="@string/unlock_set_unlock_mode_gesture"
             android:persistent="false"/>
 
+        <PreferenceScreen
+            android:key="lockscreen_shortcuts_settings"
+            android:fragment="com.android.settings.cyanogenmod.LockscreenShortcuts"
+            android:title="@string/lockscreen_targets_message" />
+
         <SwitchPreference
             android:key="visiblegesture"
             android:title="@string/lockgesture_settings_enable_visible_pattern_title"/>
