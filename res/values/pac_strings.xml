@@ -22,7 +22,7 @@
 
     <!-- Animation Controls -->
     <string name="animation_settings_reset_message">Reset all animation settings to default?</string>
-    <string name="animation_settings_title">Animation Controls</string>
+    <string name="animation_settings_title">Animation controls</string>
     <string name="activity_open_title">Open In-App Activity Animation</string>
     <string name="activity_close_title">Close In-App Activity Animation</string>
     <string name="task_open_title">Launch From In App Animation</string>
@@ -161,7 +161,7 @@
     <string name="app_notification_enable_heads_up_title">Show heads up</string>
     <string name="app_notification_enable_heads_up_summary">Show notifications from this app as heads up</string>
     <string name="heads_up_snooze_title">Snooze timer</string>
-    <string name="heads_up_snooze_summary">Swiping up on the heads up notification will snooze it, snooze heads up for <xliff:g id="number">%d</xliff:g> minutes</string>
+    <string name="heads_up_snooze_summary">Swiping up on the heads up notification will snooze it for <xliff:g id="number">%d</xliff:g> minutes</string>
     <string name="heads_up_snooze_disabled_summary">Snooze timer is disabled</string>
     <string name="heads_up_snooze_3min">3 minutes</string>
     <string name="heads_up_snooze_5min">5 minutes</string>
@@ -369,7 +369,7 @@
     <string name="app_notification_no_ongoing_on_keyguard_summary">Never show ongoing notifications from this app on the lockscreen</string>
 
     <!-- PAC Settings screens  -->
-    <string name="pac_settings_title">PAC Settings</string>
+    <string name="pac_settings_title">PAC settings</string>
 
     <!-- PAC Version -->
     <string name="pac_version">PAC version</string>
