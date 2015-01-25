@@ -126,6 +126,13 @@
     <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
 
+    <!--Status bar date -->
+    <string name="status_bar_date_title">Date style</string>
+    <string name="status_bar_date_none">Hidden (default)</string>
+    <string name="status_bar_date_small">Small</string>
+    <string name="status_bar_date_normal">Normal</string>
+    <string name="status_bar_date_format_title">Date format</string>
+
     <!-- Wakelock blocker -->
     <string name="wakelock_blocker_title">Wakelock blocker</string>
     <string name="wakelock_blocker_summary">Block system wakelocks</string>
