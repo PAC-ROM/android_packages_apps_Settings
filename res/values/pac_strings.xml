@@ -462,7 +462,6 @@
     <string name="qs_four_columns_title">Show four tiles per row</string>
     <string name="qs_screenshot_tile">Screenshot</string>
     <string name="qs_sync_tile">Sync</string>
-    <string name="qs_usb_tether_tile">USB Tethering</string>
     <string name="qs_screenrecord_tile">Screen record</string>
 
     <!-- Scrolling cache -->
