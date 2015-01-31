@@ -157,6 +157,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_brightness_auto_off";
                 stringId = R.string.qs_brightness_tile;
                 break;
+            case QSConstants.TILE_USB_TETHER:
+                resourceName = "ic_qs_usb_tether_on";
+                stringId = R.string.qs_tile_usb_tether;
+                break;
             default:
                 return null;
         }
