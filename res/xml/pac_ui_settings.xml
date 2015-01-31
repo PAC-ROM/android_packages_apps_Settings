@@ -48,7 +48,7 @@
         android:key="gesture_anywhere"
         android:title="@string/gesture_anywhere_title"
         android:fragment="com.android.settings.pac.gestureanywhere.GestureAnywhereSettings"
-        android:icon="@drawable/ic_settings_gestureanywhere"
+        android:icon="@drawable/ic_settings_gestures"
         />
 
     <!-- Notification drawer -->
