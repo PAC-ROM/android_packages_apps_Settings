@@ -14,12 +14,11 @@
  * limitations under the License.
  */
 
-package com.android.settings.notification;
+package com.android.settings;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
@@ -38,6 +37,7 @@ import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceCategory;
 import android.preference.SeekBarVolumizer;
+import android.preference.SwitchPreference;
 import android.preference.TwoStatePreference;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
@@ -45,11 +45,12 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.util.Log;
 
-import android.widget.SeekBar;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.R;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
+import com.android.settings.hardware.VibratorIntensity;
+import com.android.settings.notification.DropDownPreference;
+import com.android.settings.notification.IncreasingRingVolumePreference;
+import com.android.settings.notification.NotificationAccessSettings;
+import com.android.settings.notification.VolumeSeekBarPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -57,10 +58,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class NotificationSettings extends SettingsPreferenceFragment implements Indexable {
-    private static final String TAG = "NotificationSettings";
+public class SoundSettings extends SettingsPreferenceFragment implements Indexable {
+    private static final String TAG = SoundSettings.class.getSimpleName();
 
-    private static final String KEY_SOUND = "sound";
+    private static final String KEY_SOUND = "sounds";
+    private static final String KEY_VOLUMES = "volumes";
+    private static final String KEY_VIBRATE = "vibrate";
     private static final String KEY_MEDIA_VOLUME = "media_volume";
     private static final String KEY_ALARM_VOLUME = "alarm_volume";
     private static final String KEY_RING_VOLUME = "ring_volume";
@@ -71,13 +74,10 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private static final String KEY_VIBRATE_WHEN_RINGING = "vibrate_when_ringing";
     private static final String KEY_NOTIFICATION = "notification";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
-    private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
     private static final String KEY_NOTIFICATION_ACCESS = "manage_notification_access";
     private static final String KEY_INCREASING_RING_VOLUME = "increasing_ring_volume";
-    private static final String KEY_NOTIFICATION_LIGHT = "notification_light";
-    private static final String KEY_BATTERY_LIGHT = "battery_light";
-    private static final String PREF_HEADS_UP_SNOOZE_TIME = "heads_up_snooze_time";
-    private static final String PREF_HEADS_UP_TIME_OUT = "heads_up_time_out";
+    private static final String KEY_VIBRATION_INTENSITY = "vibration_intensity";
+
 
     private static final int SAMPLE_CUTOFF = 2000;  // manually cap sample playback at 2 seconds
 
@@ -105,14 +105,8 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
     private Preference mPhoneRingtonePreference;
     private Preference mNotificationRingtonePreference;
     private TwoStatePreference mVibrateWhenRinging;
-    private TwoStatePreference mNotificationPulse;
-    private DropDownPreference mLockscreen;
     private Preference mNotificationAccess;
-    private boolean mSecure;
-    private int mLockscreenSelectedValue;
-
-    private ListPreference mHeadsUpSnoozeTime;
-    private ListPreference mHeadsUpTimeOut;
+    private SwitchPreference mVolumeLinkNotificationSwitch;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -120,82 +114,40 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mContext = getActivity();
         mPM = mContext.getPackageManager();
         mVoiceCapable = Utils.isVoiceCapable(mContext);
-        mSecure = new LockPatternUtils(getActivity()).isSecure();
 
         mVibrator = (Vibrator) getActivity().getSystemService(Context.VIBRATOR_SERVICE);
         if (mVibrator != null && !mVibrator.hasVibrator()) {
             mVibrator = null;
         }
 
-        addPreferencesFromResource(R.xml.notification_settings);
+        addPreferencesFromResource(R.xml.sounds);
 
-        final PreferenceCategory sound = (PreferenceCategory) findPreference(KEY_SOUND);
+        final PreferenceCategory volumes = (PreferenceCategory) findPreference(KEY_VOLUMES);
+        final PreferenceCategory sounds = (PreferenceCategory) findPreference(KEY_SOUND);
+        final PreferenceCategory vibrate = (PreferenceCategory) findPreference(KEY_VIBRATE);
         initVolumePreference(KEY_MEDIA_VOLUME, AudioManager.STREAM_MUSIC);
         initVolumePreference(KEY_ALARM_VOLUME, AudioManager.STREAM_ALARM);
 
         if (mVoiceCapable) {
             mRingPreference =
                     initVolumePreference(KEY_RING_VOLUME, AudioManager.STREAM_RING);
+            mVolumeLinkNotificationSwitch = (SwitchPreference)
+                    volumes.findPreference(KEY_VOLUME_LINK_NOTIFICATION);
         } else {
-            sound.removePreference(sound.findPreference(KEY_RING_VOLUME));
-            sound.removePreference(sound.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
+            volumes.removePreference(volumes.findPreference(KEY_RING_VOLUME));
+            volumes.removePreference(volumes.findPreference(KEY_VOLUME_LINK_NOTIFICATION));
         }
 
-        initRingtones(sound);
-        initVibrateWhenRinging(sound);
-        initIncreasingRing(sound);
+        if (!VibratorIntensity.isSupported()) {
+            removePreference(KEY_VIBRATION_INTENSITY);
+        }
 
-        final PreferenceCategory notification = (PreferenceCategory)
-                findPreference(KEY_NOTIFICATION);
-        initPulse(notification);
-        initLockscreenNotifications(notification);
+        initRingtones(sounds);
+        initIncreasingRing(sounds);
+        initVibrateWhenRinging(vibrate);
 
         mNotificationAccess = findPreference(KEY_NOTIFICATION_ACCESS);
         refreshNotificationListeners();
-
-        Resources systemUiResources;
-        try {
-            systemUiResources =
-                    getPackageManager().getResourcesForApplication("com.android.systemui");
-        } catch (Exception e) {
-            return;
-        }
-
-        mHeadsUpSnoozeTime = (ListPreference) findPreference(PREF_HEADS_UP_SNOOZE_TIME);
-        mHeadsUpSnoozeTime.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                int headsUpSnoozeTime = Integer.valueOf((String) newValue);
-                updateHeadsUpSnoozeTimeSummary(headsUpSnoozeTime);
-                return Settings.PAC.putInt(getContentResolver(),
-                        Settings.PAC.HEADS_UP_SNOOZE_TIME,
-                        headsUpSnoozeTime);
-            }
-        });
-        final int defaultSnoozeTime = systemUiResources.getInteger(systemUiResources.getIdentifier(
-                    "com.android.systemui:integer/heads_up_snooze_time", null, null));
-        final int headsUpSnoozeTime = Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.HEADS_UP_SNOOZE_TIME, defaultSnoozeTime);
-        mHeadsUpSnoozeTime.setValue(String.valueOf(headsUpSnoozeTime));
-        updateHeadsUpSnoozeTimeSummary(headsUpSnoozeTime);
-
-        mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
-        mHeadsUpTimeOut.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
-            @Override
-            public boolean onPreferenceChange(Preference preference, Object newValue) {
-                int headsUpTimeOut = Integer.valueOf((String) newValue);
-                updateHeadsUpTimeOutSummary(headsUpTimeOut);
-                return Settings.PAC.putInt(getContentResolver(),
-                        Settings.PAC.HEADS_UP_NOTIFCATION_DECAY,
-                        headsUpTimeOut);
-            }
-        });
-        final int defaultTimeOut = systemUiResources.getInteger(systemUiResources.getIdentifier(
-                    "com.android.systemui:integer/heads_up_notification_decay", null, null));
-        final int headsUpTimeOut = Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
-        mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
-        updateHeadsUpTimeOutSummary(headsUpTimeOut);
     }
 
     @Override
@@ -214,28 +166,11 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mSettingsObserver.register(false);
     }
 
-    private void updateHeadsUpSnoozeTimeSummary(int value) {
-        String summary = value != 0
-                ? getResources().getString(R.string.heads_up_snooze_summary, value / 60 / 1000)
-                : getResources().getString(R.string.heads_up_snooze_disabled_summary);
-        mHeadsUpSnoozeTime.setSummary(summary);
-    }
-
-    private void updateHeadsUpTimeOutSummary(int value) {
-        String summary = getResources().getString(R.string.heads_up_time_out_summary,
-                value / 1000);
-        if (value == 0) {
-            mHeadsUpTimeOut.setSummary(
-                    getResources().getString(R.string.heads_up_time_out_never_summary));
-        } else {
-            mHeadsUpTimeOut.setSummary(summary);
-        }
-    }
-
     // === Volumes ===
 
     private VolumeSeekBarPreference initVolumePreference(String key, int stream) {
         final VolumeSeekBarPreference volumePref = (VolumeSeekBarPreference) findPreference(key);
+        if (volumePref == null) return null;
         volumePref.setCallback(mVolumeCallback);
         volumePref.setStream(stream);
         return volumePref;
@@ -365,7 +300,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         mIncreasingRingVolume = (IncreasingRingVolumePreference)
                 root.findPreference(KEY_INCREASING_RING_VOLUME);
 
-        if (mIncreasingRing == null || mIncreasingRingVolume == null || !mVoiceCapable) {
+        if (!mVoiceCapable) {
             if (mIncreasingRing != null) {
                 root.removePreference(mIncreasingRing);
                 mIncreasingRing = null;
@@ -375,7 +310,9 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 mIncreasingRingVolume = null;
             }
         } else {
-            mIncreasingRingVolume.setCallback(mIncreasingRingVolumeCallback);
+            if (mIncreasingRingVolume != null) {
+                mIncreasingRingVolume.setCallback(mIncreasingRingVolumeCallback);
+            }
         }
     }
 
@@ -411,81 +348,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                 Settings.System.VIBRATE_WHEN_RINGING, 0) != 0);
     }
 
-    // === Pulse notification light ===
-
-    private void initPulse(PreferenceCategory parent) {
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveNotificationLed)) {
-            parent.removePreference(parent.findPreference(KEY_NOTIFICATION_LIGHT));
-        }
-        if (!getResources().getBoolean(
-                com.android.internal.R.bool.config_intrusiveBatteryLed)
-                || UserHandle.myUserId() != UserHandle.USER_OWNER) {
-            parent.removePreference(parent.findPreference(KEY_BATTERY_LIGHT));
-        }
-    }
-
-    private void updatePulse() {
-        if (mNotificationPulse == null) {
-            return;
-        }
-        try {
-            mNotificationPulse.setChecked(Settings.System.getInt(getContentResolver(),
-                    Settings.System.NOTIFICATION_LIGHT_PULSE) == 1);
-        } catch (Settings.SettingNotFoundException snfe) {
-            Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
-        }
-    }
-
-    // === Lockscreen (public / private) notifications ===
-
-    private void initLockscreenNotifications(PreferenceCategory parent) {
-        mLockscreen = (DropDownPreference) parent.findPreference(KEY_LOCK_SCREEN_NOTIFICATIONS);
-        if (mLockscreen == null) {
-            Log.i(TAG, "Preference not found: " + KEY_LOCK_SCREEN_NOTIFICATIONS);
-            return;
-        }
-
-        mLockscreen.addItem(R.string.lock_screen_notifications_summary_show,
-                R.string.lock_screen_notifications_summary_show);
-        if (mSecure) {
-            mLockscreen.addItem(R.string.lock_screen_notifications_summary_hide,
-                    R.string.lock_screen_notifications_summary_hide);
-        }
-        mLockscreen.addItem(R.string.lock_screen_notifications_summary_disable,
-                R.string.lock_screen_notifications_summary_disable);
-        updateLockscreenNotifications();
-        mLockscreen.setCallback(new DropDownPreference.Callback() {
-            @Override
-            public boolean onItemSelected(int pos, Object value) {
-                final int val = (Integer) value;
-                if (val == mLockscreenSelectedValue) {
-                    return true;
-                }
-                final boolean enabled = val != R.string.lock_screen_notifications_summary_disable;
-                final boolean show = val == R.string.lock_screen_notifications_summary_show;
-                Settings.Secure.putInt(getContentResolver(),
-                        Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS, show ? 1 : 0);
-                Settings.Secure.putInt(getContentResolver(),
-                        Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, enabled ? 1 : 0);
-                mLockscreenSelectedValue = val;
-                return true;
-            }
-        });
-    }
-
-    private void updateLockscreenNotifications() {
-        if (mLockscreen == null) {
-            return;
-        }
-        final boolean enabled = getLockscreenNotificationsEnabled();
-        final boolean allowPrivate = !mSecure || getLockscreenAllowPrivateNotifications();
-        mLockscreenSelectedValue = !enabled ? R.string.lock_screen_notifications_summary_disable :
-                allowPrivate ? R.string.lock_screen_notifications_summary_show :
-                R.string.lock_screen_notifications_summary_hide;
-        mLockscreen.setSelectedValue(mLockscreenSelectedValue);
-    }
-
     private void updateNotificationPreferenceState() {
         mNotificationPreference = initVolumePreference(KEY_NOTIFICATION_VOLUME,
                 AudioManager.STREAM_NOTIFICATION);
@@ -495,20 +357,12 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
                     Settings.Secure.VOLUME_LINK_NOTIFICATION, 1) == 1;
 
             if (mNotificationPreference != null) {
-                boolean show = !enabled;
-                mNotificationPreference.setEnabled(show);
+                mNotificationPreference.setEnabled(!enabled);
+            }
+            if (mVolumeLinkNotificationSwitch != null){
+                mVolumeLinkNotificationSwitch.setChecked(enabled);
             }
         }
-    }
-
-    private boolean getLockscreenNotificationsEnabled() {
-        return Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.LOCK_SCREEN_SHOW_NOTIFICATIONS, 0) != 0;
-    }
-
-    private boolean getLockscreenAllowPrivateNotifications() {
-        return Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.LOCK_SCREEN_ALLOW_PRIVATE_NOTIFICATIONS, 0) != 0;
     }
 
     // === Notification listeners ===
@@ -569,12 +423,6 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
             if (VIBRATE_WHEN_RINGING_URI.equals(uri)) {
                 updateVibrateWhenRinging();
             }
-            if (NOTIFICATION_LIGHT_PULSE_URI.equals(uri)) {
-                updatePulse();
-            }
-            if (LOCK_SCREEN_PRIVATE_URI.equals(uri) || LOCK_SCREEN_SHOW_URI.equals(uri)) {
-                updateLockscreenNotifications();
-            }
             if (VOLUME_LINK_NOTIFICATION_URI.equals(uri)) {
                 updateNotificationPreferenceState();
             }
@@ -618,7 +466,7 @@ public class NotificationSettings extends SettingsPreferenceFragment implements 
         public List<SearchIndexableResource> getXmlResourcesToIndex(
                 Context context, boolean enabled) {
             final SearchIndexableResource sir = new SearchIndexableResource(context);
-            sir.xmlResId = R.xml.notification_settings;
+            sir.xmlResId = R.xml.sounds;
             return Arrays.asList(sir);
         }
 
