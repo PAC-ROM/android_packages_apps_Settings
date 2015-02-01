@@ -157,6 +157,7 @@
 
     <!-- QuickSettings: Tiles -->
     <string name="qs_screenshot_tile">Screenshot</string>
+    <string name="qs_sync_tile">Sync</string>
 
     <!-- Status bar categories -->
     <string name="battery_category">Battery</string>
