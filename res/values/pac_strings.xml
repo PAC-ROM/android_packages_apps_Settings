@@ -156,6 +156,7 @@
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
 
     <!-- QuickSettings: Tiles -->
+    <string name="qs_brightness_tile">Brightness</string>
     <string name="qs_four_columns_title">Show four tiles per row</string>
     <string name="qs_screenshot_tile">Screenshot</string>
     <string name="qs_sync_tile">Sync</string>
