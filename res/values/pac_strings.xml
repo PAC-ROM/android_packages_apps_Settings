@@ -155,6 +155,9 @@
     <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
 
+    <!-- QuickSettings: Tiles -->
+    <string name="qs_screenshot_tile">Screenshot</string>
+
     <!-- Status bar categories -->
     <string name="battery_category">Battery</string>
     <string name="clock_category">Clock</string>
