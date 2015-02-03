@@ -561,10 +561,6 @@
     <string name="clock_date_format_custom">Custom java format</string>
     <string name="status_bar_clock_style_reset_message">Reset clock color?</string>
 
-    <!-- Status bar ticker -->
-    <string name="status_bar_ticker_title">Notification Ticker</string>
-    <string name="status_bar_ticker_summary">Notification text animation in the statusbar</string>
-
     <!-- Toast Animations -->
     <string name="toast_animation_title">Toast Animation</string>
     <string name="toast_choose_animation">Choose Animation</string>
