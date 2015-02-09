@@ -520,16 +520,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         task.execute();
     }
 
-    private static boolean isTapToWakeSupported() {
-        try {
-            return TapToWake.isSupported();
-        } catch (NoClassDefFoundError e) {
-            // Hardware abstraction framework not installed
-            return false;
-        }
-    }
-
-
     // === Pulse notification light ===
 
     private void initPulse(PreferenceCategory parent) {
