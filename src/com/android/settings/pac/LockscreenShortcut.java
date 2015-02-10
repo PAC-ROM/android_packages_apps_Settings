@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 Slimroms
+ * Copyright (C) 2015 The PAC-ROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,16 +16,15 @@
 
 package com.android.settings.pac;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.SwitchPreference;
+import android.preference.PreferenceCategory;
+import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -33,49 +32,20 @@ import com.android.settings.SettingsPreferenceFragment;
 public class LockscreenShortcut extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS =
-            "lockscreen_shortcuts_longpress";
-
-    private SwitchPreference mLockscreenShortcutsLongpress;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.lockscreen_shortcut_fragment);
-
-        PreferenceScreen prefSet = getPreferenceScreen();
-
-        mLockscreenShortcutsLongpress = (SwitchPreference) findPreference(
-                PREF_LOCKSCREEN_SHORTCUTS_LONGPRESS);
-        mLockscreenShortcutsLongpress.setChecked(Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.LOCKSCREEN_SHORTCUTS_LONGPRESS, 1) == 1);
-        mLockscreenShortcutsLongpress.setOnPreferenceChangeListener(this);
-
-        setHasOptionsMenu(false);
+        addPreferencesFromResource(R.xml.lockscreen_shortcut_settings);
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater,
-            ViewGroup container, Bundle savedInstanceState) {
-        final View view = super.onCreateView(inflater, container, savedInstanceState);
-        final ListView list = (ListView) view.findViewById(android.R.id.list);
-        // our container already takes care of the padding
-        if (list != null) {
-            int paddingTop = list.getPaddingTop();
-            int paddingBottom = list.getPaddingBottom();
-            list.setPadding(0, paddingTop, 0, paddingBottom);
-        }
-        return view;
+    public void onResume() {
+        super.onResume();
     }
 
-    @Override
-    public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (preference == mLockscreenShortcutsLongpress) {
-            Settings.PAC.putInt(getContentResolver(),
-                    Settings.PAC.LOCKSCREEN_SHORTCUTS_LONGPRESS,
-                    (Boolean) newValue ? 1 : 0);
-        }
-        return true;
+    public boolean onPreferenceChange(Preference preference, Object objValue) {
+        return false;
     }
+
 }

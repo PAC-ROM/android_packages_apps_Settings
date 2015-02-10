@@ -299,19 +299,21 @@
     <string name="unlock_set_unlock_gesture_title">Gesture</string>
     <!-- Title for preference that guides the user through creating an unlock gesture [CHAR LIMIT=45] -->
     <string name="unlock_set_unlock_gesture_summary">Low security, experimental</string>
-    <!-- Summary for "Configure lockscreen" when security gesture is enabled [CHAR LIMIT=45] -->
+    <!-- Summary for "Configure lock screen" when security gesture is enabled [CHAR LIMIT=45] -->
     <string name="unlock_set_unlock_mode_gesture">Gesture</string>
 
-    <!-- Lockscreen pin shuffle -->
+    <!-- Lock screen pin shuffle -->
     <string name="lock_numpad_random_title">Change the order of PIN pad numbers</string>
     <string name="lock_numpad_random_dialog_title">PIN pad random order</string>
     <string name="lock_numpad_random_off">Disabled</string>
     <string name="lock_numpad_random_always">Always</string>
     <string name="lock_numpad_random_on_request">On request</string>
 
-    <!-- Lockscreen Shortcuts -->
-    <string name="lockscreen_shortcuts_title">Shortcuts</string>
-    <string name="lockscreen_shortcuts_summary">View or change custom lock screen shortcuts</string>
+    <!-- Lock screen Shortcuts -->
+    <string name="cm_lockscreen_title">Bottom corners shortcuts</string>
+    <string name="cm_lockscreen_summary">View or change the bottom corners lockscreen shortcuts</string>
+    <string name="slim_lockscreen_title">Center shortcut</string>
+    <string name="slim_lockscreen_summary">View or change the lock screen center shortcuts</string>
     <string name="lockscreen_shorcuts_longpress_title">Shortcuts longpress</string>
     <string name="lockscreen_shorcuts_longpress_summary">Open custom lock screen shortcuts on longpress</string>
 
@@ -385,8 +387,8 @@
     <string name="quick_pulldown_off">Off</string>
     <string name="quick_pulldown_left">Left</string>
     <string name="quick_pulldown_right">Right</string>
-    <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
-    <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
+    <string name="block_on_secure_keyguard_title">Disable on lock screen</string>
+    <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lock screen</string>
 
     <!-- QuickSettings: Smart Pulldown -->
     <string name="smart_pulldown_title">Smart pulldown</string>
@@ -426,7 +428,7 @@
     <string name="select_custom_app_title">Select custom application</string>
     <string name="group_applications">Applications</string>
 
-    <!-- Slim lockscreen shortcuts -->
+    <!-- Slim lock screen shortcuts -->
     <string name="shortcut_action_none">None</string>
     <string name="shortcut_action_app">Custom app</string>
     <string name="shortcut_action_home">Home</string>
