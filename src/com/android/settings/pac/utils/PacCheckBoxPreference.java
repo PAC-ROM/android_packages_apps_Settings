@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.pac.util;
+package com.android.settings.pac.utils;
 
 import android.content.Context;
 import android.preference.CheckBoxPreference;

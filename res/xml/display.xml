@@ -79,11 +79,10 @@
                 android:entryValues="@array/screen_timeout_values" />
 
         <!-- Doze // Ambient display -->
-        <SwitchPreference
-                android:key="doze"
+        <PreferenceScreen
+                android:key="doze_fragment"
                 android:title="@string/doze_title"
-                android:summary="@string/doze_summary"
-                android:persistent="false" />
+                android:fragment="com.android.settings.pac.AmbientSettings" />
 
         <!-- Cast screen -->
         <PreferenceScreen
