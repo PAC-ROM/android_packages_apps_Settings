@@ -321,7 +321,6 @@
     <string name="navigation_bar_category">Navigation bar</string>
 
     <!-- Navigation Bar Dimensions -->
-    <string name="navigation_bar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navigation_bar_dimensions_title">Dimensions</string>
     <string name="navigation_bar_dimensions_summary">Change the dimensions of the navigation bar</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
@@ -330,7 +329,10 @@
     <string name="navigation_bar_height_landscape_summary">Navigation bar height while in landscape</string>
     <string name="navigation_bar_width_title">Navigation bar width</string>
     <string name="navigation_bar_width_summary">Navigation bar height if the bar is along a side</string>
+    <string name="navigation_bar_size_56_dp">56 dp</string>
+    <string name="navigation_bar_size_52_dp">52 dp</string>
     <string name="navigation_bar_size_48_dp_default">48 dp (default)</string>
+    <string name="navigation_bar_size_48_dp">48 dp</string>
     <string name="navigation_bar_size_44_dp">44 dp</string>
     <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
     <string name="navigation_bar_size_42_dp">42 dp</string>
