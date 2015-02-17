@@ -242,7 +242,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
-        if (mDozeCategory != null && isDozeAvailable(activity)) {
+        if (mDozeCategory != null && mDozePreference != null
+                && isDozeAvailable(activity)) {
             mDozePreference.setOnPreferenceChangeListener(this);
             // Doze timeout
             mDozeTimeout = (SlimSeekBarPreference) findPreference(KEY_DOZE_TIMEOUT);
