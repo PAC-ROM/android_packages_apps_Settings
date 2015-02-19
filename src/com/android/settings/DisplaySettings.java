@@ -107,7 +107,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
     private static final String KEY_DOZE_TIMEOUT = "doze_timeout";
-    private static final String KEY_DOZE_CATEGORY = "category_doze_options";
 
     private FontDialogPreference mFontSizePref;
     private PreferenceScreen mDisplayRotationPreference;
@@ -163,10 +162,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 findPreference(KEY_CATEGORY_INTERFACE);
         PreferenceCategory calibrationPrefs = (PreferenceCategory)
                 findPreference(KEY_CATEGORY_CALIBRATION);
-        PreferenceCategory mDozeCategory = (PreferenceCategory)
-                findPreference(KEY_DOZE_CATEGORY);
-
-        PreferenceScreen prefSet = getPreferenceScreen();
 
         mDisplayRotationPreference = (PreferenceScreen) findPreference(KEY_DISPLAY_ROTATION);
         mAccelerometer = (SwitchPreference) findPreference(DisplayRotation.KEY_ACCELEROMETER);
@@ -242,8 +237,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         }
 
         mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
-        if (mDozeCategory != null && mDozePreference != null
-                && isDozeAvailable(activity)) {
+        if (mDozePreference != null && isDozeAvailable(activity)) {
             mDozePreference.setOnPreferenceChangeListener(this);
             // Doze timeout
             mDozeTimeout = (SlimSeekBarPreference) findPreference(KEY_DOZE_TIMEOUT);
@@ -256,9 +250,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 mDozeTimeout.setOnPreferenceChangeListener(this);
             }
         } else {
-            if (displayPrefs != null && mDozeCategory != null) {
-                displayPrefs.removePreference(mDozeCategory);
-            }
+            removePreference(KEY_DOZE);
+            removePreference(KEY_DOZE_TIMEOUT);
         }
 
         mTapToWake = (SwitchPreference) findPreference(KEY_TAP_TO_WAKE);
@@ -835,7 +828,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                     }
                     if (!isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
-                        result.add(KEY_DOZE_TIMEOUT);
                     }
                     return result;
                 }
