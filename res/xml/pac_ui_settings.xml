@@ -24,7 +24,7 @@
         android:key="animation_settings"
         android:title="@string/animation_settings_title"
         android:fragment="com.android.settings.pac.AnimationSettings"
-        android:icon="@drawable/ic_settings_animations"
+        android:icon="@drawable/ic_animations"
         />
 
     <!-- App Circle sidebar -->
@@ -32,7 +32,7 @@
         android:key="app_circle_bar"
         android:title="@string/app_circle_bar_title"
         android:fragment="com.android.settings.pac.AppCircleBar"
-        android:icon="@drawable/ic_settings_appcirclebar"
+        android:icon="@drawable/ic_appcirclebar"
         />
 
     <!-- Buttons settings -->
@@ -72,7 +72,7 @@
         android:key="wakelock_blocker"
         android:title="@string/wakelock_blocker_title"
         android:fragment="com.android.settings.pac.WakeLockBlocker"
-        android:icon="@drawable/ic_settings_wakelock_blocker"
+        android:icon="@drawable/ic_wakelock_blocker"
         />
 
 </PreferenceScreen>
