@@ -42,7 +42,7 @@ import android.widget.Button;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.utils.PacCheckBoxPreference;
+import com.android.settings.pac.utils.PacSwitchPreference;
 import com.android.settings.pac.sensor.ShakeSensorManager;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private ListPreference mDozePulseVisible;
     private ListPreference mDozePulseOut;
     private ListPreference mDozeShakeThreshold;
-    private PacCheckBoxPreference mDozeTimeMode;
+    private PacSwitchPreference mDozeTimeMode;
     private ShakeSensorManager mShakeSensorManager;
     private AlertDialog mDialog;
     private Button mShakeFoundButton;
@@ -100,7 +100,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             mDozeListMode = (ListPreference) findPreference(KEY_DOZE_LIST_MODE);
             mDozeListMode.setOnPreferenceChangeListener(this);
 
-            mDozeTimeMode = (PacCheckBoxPreference) findPreference(KEY_DOZE_TIME_MODE);
+            mDozeTimeMode = (PacSwitchPreference) findPreference(KEY_DOZE_TIME_MODE);
 
             mDozeShakeThreshold = (ListPreference) findPreference(KEY_DOZE_SHAKE_THRESHOLD);
             mDozeShakeThreshold.setOnPreferenceChangeListener(this);
