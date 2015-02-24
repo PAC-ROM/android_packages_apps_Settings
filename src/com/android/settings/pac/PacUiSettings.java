@@ -34,9 +34,6 @@ public class PacUiSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String TAG = "PACSettings";
-    private static final String BUTTON_SETTINGS = "button_settings";
-
-    private PreferenceScreen mButtonSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,13 +41,6 @@ public class PacUiSettings extends SettingsPreferenceFragment implements
 
         addPreferencesFromResource(R.xml.pac_ui_settings);
 
-        mButtonSettings = (PreferenceScreen) findPreference(BUTTON_SETTINGS);
-
-        boolean hasDeviceKeys = getResources().getInteger(
-                com.android.internal.R.integer.config_deviceHardwareKeys) != 0;
-        if (!hasDeviceKeys) {
-            getPreferenceScreen().removePreference(mButtonSettings);
-        }
     }
 
     @Override
