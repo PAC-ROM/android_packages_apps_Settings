@@ -27,7 +27,6 @@ import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
 import android.provider.SearchIndexableResource;
 import com.android.settings.R;
@@ -40,18 +39,15 @@ import com.android.settings.search.Indexable;
 import com.android.internal.widget.LockPatternUtils;
 
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.List;
 
 public class NotificationDrawerSettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener, Indexable {
 
     private static final String PREF_QUICK_SETTINGS_ORDER = "qs_order";
-    private static final String PREF_QUICK_PULLDOWN = "quick_pulldown";
     private static final String PREF_BLOCK_ON_SECURE_KEYGUARD = "block_on_secure_keyguard";
     private static final String PREF_SMART_PULLDOWN = "smart_pulldown";
 
-    private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     private SwitchPreference mBlockOnSecureKeyguard;
     private Preference mQSTiles;
@@ -67,16 +63,8 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
         // Quick Settings Panel
         mQSTiles = (PreferenceScreen) findPreference(PREF_QUICK_SETTINGS_ORDER);
 
-        // Quick Pulldown and Smart Pulldown
-        mQuickPulldown = (ListPreference) findPreference(PREF_QUICK_PULLDOWN);
+        // Smart Pulldown
         mSmartPulldown = (ListPreference) findPreference(PREF_SMART_PULLDOWN);
-
-        // Quick Pulldown
-        mQuickPulldown.setOnPreferenceChangeListener(this);
-        int statusQuickPulldown = Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.STATUS_BAR_QUICK_QS_PULLDOWN, 1);
-        mQuickPulldown.setValue(String.valueOf(statusQuickPulldown));
-        updateQuickPulldownSummary(statusQuickPulldown);
 
         // Smart Pulldown
         mSmartPulldown.setOnPreferenceChangeListener(this);
@@ -109,14 +97,7 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         ContentResolver resolver = getActivity().getContentResolver();
-        if (preference == mQuickPulldown) {
-            int statusQuickPulldown = Integer.valueOf((String) newValue);
-            Settings.PAC.putInt(getContentResolver(),
-                    Settings.PAC.STATUS_BAR_QUICK_QS_PULLDOWN,
-                    statusQuickPulldown);
-            updateQuickPulldownSummary(statusQuickPulldown);
-            return true;
-        } else if (preference == mSmartPulldown) {
+        if (preference == mSmartPulldown) {
             int smartPulldown = Integer.valueOf((String) newValue);
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.QS_SMART_PULLDOWN,
@@ -154,22 +135,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment
             // Remove title capitalized formatting
             type = type.toLowerCase();
             mSmartPulldown.setSummary(res.getString(R.string.smart_pulldown_summary, type));
-        }
-    }
-
-    private void updateQuickPulldownSummary(int value) {
-        Resources res = getResources();
-
-        if (value == 0) {
-            // quick pulldown deactivated
-            mQuickPulldown.setSummary(res.getString(R.string.quick_pulldown_off));
-        } else {
-            Locale l = Locale.getDefault();
-            boolean isRtl = TextUtils.getLayoutDirectionFromLocale(l) == View.LAYOUT_DIRECTION_RTL;
-            String direction = res.getString(value == 2
-                    ? (isRtl ? R.string.quick_pulldown_right : R.string.quick_pulldown_left)
-                    : (isRtl ? R.string.quick_pulldown_left : R.string.quick_pulldown_right));
-            mQuickPulldown.setSummary(res.getString(R.string.summary_quick_pulldown, direction));
         }
     }
 
