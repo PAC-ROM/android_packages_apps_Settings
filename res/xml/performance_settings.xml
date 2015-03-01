@@ -46,13 +46,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:key="performance_controls_advanced"
-        android:title="@string/performance_controls_advanced">
-
-        <PreferenceScreen
-            android:key="performance_controls"
-            android:fragment="com.brewcrewfoo.performance.activities.MainActivity"
-            android:title="@string/performance_controls" />
+        android:key="performance_advanced"
+        android:title="@string/performance_advanced">
 
         <ListPreference
             android:key="pref_scrollingcache"
