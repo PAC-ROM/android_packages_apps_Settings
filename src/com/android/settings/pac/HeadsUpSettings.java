@@ -78,13 +78,13 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private Preference mAddDndPref;
     private Preference mAddBlacklistPref;
 
+    private Context mContext;
     private String mDndPackageList;
     private String mBlacklistPackageList;
     private Map<String, Package> mDndPackages;
     private Map<String, Package> mBlacklistPackages;
 
     private BaseSystemSettingSwitchBar mEnabledSwitch;
-    private boolean mLastEnabledState;
 
     private ViewGroup mPrefsContainer;
     private View mDisabledText;
@@ -92,6 +92,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mContext = getActivity();
         // Get launch-able applications
         addPreferencesFromResource(R.xml.heads_up_settings);
         mPackageManager = getPackageManager();
@@ -154,7 +155,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         super.onStart();
         final SettingsActivity activity = (SettingsActivity) getActivity();
         mEnabledSwitch = new BaseSystemSettingSwitchBar(activity, activity.getSwitchBar(),
-                Settings.PAC.HEADS_UP_NOTIFICATION, true, this);
+                Settings.PAC.HEADS_UP_USER_ENABLED, true, this);
     }
 
     @Override
@@ -432,17 +433,27 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         Settings.PAC.putString(getContentResolver(), setting, value);
     }
 
+    private boolean getUserHeadsUpState() {
+         return Settings.PAC.getIntForUser(mContext.getContentResolver(),
+                Settings.PAC.HEADS_UP_USER_ENABLED,
+                Settings.PAC.HEADS_UP_USER_ON,
+                UserHandle.USER_CURRENT) != 0;
+    }
+
+    private void setUserHeadsUpState(int val) {
+         Settings.PAC.putIntForUser(mContext.getContentResolver(),
+                Settings.PAC.HEADS_UP_USER_ENABLED,
+                val, UserHandle.USER_CURRENT);
+    }
+
     private void updateEnabledState() {
-        boolean enabled = Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.HEADS_UP_NOTIFICATION, 1) != 0;
-        mPrefsContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
-        mDisabledText.setVisibility(enabled ? View.GONE : View.VISIBLE);
+        mPrefsContainer.setVisibility(getUserHeadsUpState() ? View.VISIBLE : View.GONE);
+        mDisabledText.setVisibility(getUserHeadsUpState() ? View.GONE : View.VISIBLE);
     }
 
     @Override
     public void onEnablerChanged(boolean isEnabled) {
-        mLastEnabledState = Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.HEADS_UP_NOTIFICATION, 1) != 0;
+        setUserHeadsUpState(getUserHeadsUpState() ? 1 : 0);
         updateEnabledState();
     }
 
