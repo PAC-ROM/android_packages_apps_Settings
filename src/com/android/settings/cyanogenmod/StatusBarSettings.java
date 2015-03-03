@@ -26,6 +26,7 @@ import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -92,6 +93,10 @@ public class StatusBarSettings extends SettingsPreferenceFragment
 
         mBatteryBar = (PreferenceScreen) findPreference(KEY_BATTERY_BAR_STATUS);
         updateBatteryBarDescription();
+
+        if (TelephonyManager.getDefault().getPhoneCount() <= 1) {
+            removePreference(Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
+        }
 
     }
 
