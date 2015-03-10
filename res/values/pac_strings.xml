@@ -122,9 +122,6 @@
     <string name="trigger_bottom_title">Trigger height</string>
     <string name="trigger_bottom_summary">Adjust the height of the trigger area</string>
 
-    <!-- Battery bar -->
-    <string name="status_bar_battery_style_bar">Bar</string>
-
     <!-- ChaOS Seekbar -->
     <string name="seekbar_default">Default</string>
 
@@ -427,6 +424,10 @@
     <string name="use_custom_app_summary">Use custom application instead of the recent applications dialog</string>
     <string name="select_custom_app_title">Select custom application</string>
     <string name="group_applications">Applications</string>
+
+    <!-- Status bar - Battery -->
+    <string name="status_bar_battery_style_bar">Bar</string>
+    <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
 
     <!-- Status bar date -->
     <string name="status_bar_date_title">Date</string>
