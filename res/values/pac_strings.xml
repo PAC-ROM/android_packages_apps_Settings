@@ -23,6 +23,14 @@
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
 
+    <!-- QuickSettings: Smart Pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">No dismissable</string>
+    <string name="smart_pulldown_persistent">No persistent</string>
+    <string name="smart_pulldown_all">No dismissable or persistent</string>
+
     <!-- Navigation Bar Dimensions -->
     <string name="navigation_bar_dimensions_title">Dimensions</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
