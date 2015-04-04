@@ -17,8 +17,6 @@
 package com.android.settings.pac;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
@@ -59,7 +57,6 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     private CheckBoxPreference mNetTrafficAutohide;
     private SeekBarPreferenceCham mNetTrafficAutohideThreshold;
 
-    private static final int MENU_RESET = Menu.FIRST;
     private static final int DEFAULT_TRAFFIC_COLOR = 0xffffffff;
 
     private int mNetTrafficVal;
@@ -142,46 +139,6 @@ public class NetworkTraffic extends SettingsPreferenceFragment
             mNetTrafficAutohide.setEnabled(true);
             mNetTrafficAutohideThreshold.setEnabled(true);
         }
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        menu.add(0, MENU_RESET, 0, R.string.network_traffic_color_reset)
-                .setIcon(R.drawable.ic_settings_backup)
-                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case MENU_RESET:
-                resetToDefault();
-                return true;
-            default:
-                return super.onContextItemSelected(item);
-        }
-    }
-
-    private void resetToDefault() {
-        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-        alertDialog.setTitle(R.string.network_traffic_color_reset);
-        alertDialog.setMessage(R.string.network_traffic_color_reset_message);
-        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int id) {
-                NetworkTrafficColorReset();
-            }
-        });
-        alertDialog.setNegativeButton(R.string.cancel, null);
-        alertDialog.create().show();
-    }
-
-    private void NetworkTrafficColorReset() {
-        Settings.PAC.putInt(getContentResolver(),
-                Settings.PAC.NETWORK_TRAFFIC_COLOR, DEFAULT_TRAFFIC_COLOR);
-
-        mNetTrafficColor.setNewPreviewColor(DEFAULT_TRAFFIC_COLOR);
-        String hexColor = String.format("#%08x", (0xffffffff & DEFAULT_TRAFFIC_COLOR));
-        mNetTrafficColor.setSummary(hexColor);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
