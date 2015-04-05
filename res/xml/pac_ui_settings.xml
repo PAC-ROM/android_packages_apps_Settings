@@ -42,7 +42,6 @@
             android:title="@string/notification_drawer_title"
             android:fragment="com.android.settings.cyanogenmod.NotificationDrawerSettings"
             android:icon="@drawable/ic_settings_notification_drawer"
-            settings:advanced="true"
             />
 
     <!-- Notification manager -->
@@ -59,7 +58,13 @@
             android:title="@string/status_bar_title"
             android:fragment="com.android.settings.cyanogenmod.StatusBarSettings"
             android:icon="@drawable/ic_settings_extdesk_hidenavbar"
-            settings:advanced="true"
+            />
+
+    <!-- Wakelock blocker -->
+    <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:fragment="com.android.settings.pac.WakeLockBlocker"
             />
 
 </PreferenceScreen>
