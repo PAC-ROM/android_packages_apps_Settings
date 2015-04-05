@@ -65,4 +65,9 @@
         android:summary="@string/status_bar_notif_count_summary"
         android:defaultValue="false" />
 
+    <PreferenceScreen
+        android:key="traffic"
+        android:title="@string/traffic_category"
+        android:fragment="com.android.settings.pac.NetworkTraffic" />
+
 </PreferenceScreen>
