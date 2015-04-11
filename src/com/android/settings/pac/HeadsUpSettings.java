@@ -108,8 +108,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
                     "com.android.systemui:integer/heads_up_notification_decay", null, null));
         mHeadsUpTimeOut = (ListPreference) findPreference(PREF_HEADS_UP_TIME_OUT);
         mHeadsUpTimeOut.setOnPreferenceChangeListener(this);
-        int headsUpTimeOut = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
+        int headsUpTimeOut = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.HEADS_UP_NOTIFCATION_DECAY, defaultTimeOut);
         mHeadsUpTimeOut.setValue(String.valueOf(headsUpTimeOut));
         updateHeadsUpTimeOutSummary(headsUpTimeOut);
 
@@ -154,7 +154,7 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         super.onStart();
         final SettingsActivity activity = (SettingsActivity) getActivity();
         mEnabledSwitch = new BaseSystemSettingSwitchBar(activity, activity.getSwitchBar(),
-                Settings.System.HEADS_UP_NOTIFICATION, true, this);
+                Settings.PAC.HEADS_UP_NOTIFICATION, true, this);
     }
 
     @Override
@@ -310,8 +310,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mHeadsUpTimeOut) {
             int headsUpTimeOut = Integer.valueOf((String) newValue);
-            Settings.System.putInt(getContentResolver(),
-                    Settings.System.HEADS_UP_NOTIFCATION_DECAY,
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.HEADS_UP_NOTIFCATION_DECAY,
                     headsUpTimeOut);
             updateHeadsUpTimeOutSummary(headsUpTimeOut);
             return true;
@@ -375,10 +375,10 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
     private boolean parsePackageList() {
         boolean parsed = false;
 
-        final String dndString = Settings.System.getString(getContentResolver(),
-                Settings.System.HEADS_UP_CUSTOM_VALUES);
-        final String blacklistString = Settings.System.getString(getContentResolver(),
-                Settings.System.HEADS_UP_BLACKLIST_VALUES);
+        final String dndString = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.HEADS_UP_CUSTOM_VALUES);
+        final String blacklistString = Settings.PAC.getString(getContentResolver(),
+                Settings.PAC.HEADS_UP_BLACKLIST_VALUES);
 
         if (!TextUtils.equals(mDndPackageList, dndString)) {
             mDndPackageList = dndString;
@@ -414,8 +414,8 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
 
     private void savePackageList(boolean preferencesUpdated, Map<String,Package> map) {
         String setting = map == mDndPackages
-                ? Settings.System.HEADS_UP_CUSTOM_VALUES
-                : Settings.System.HEADS_UP_BLACKLIST_VALUES;
+                ? Settings.PAC.HEADS_UP_CUSTOM_VALUES
+                : Settings.PAC.HEADS_UP_BLACKLIST_VALUES;
 
         List<String> settings = new ArrayList<String>();
         for (Package app : map.values()) {
@@ -423,26 +423,26 @@ public class HeadsUpSettings extends SettingsPreferenceFragment
         }
         final String value = TextUtils.join("|", settings);
         if (preferencesUpdated) {
-            if (TextUtils.equals(setting, Settings.System.HEADS_UP_CUSTOM_VALUES)) {
+            if (TextUtils.equals(setting, Settings.PAC.HEADS_UP_CUSTOM_VALUES)) {
                 mDndPackageList = value;
             } else {
                 mBlacklistPackageList = value;
             }
         }
-        Settings.System.putString(getContentResolver(), setting, value);
+        Settings.PAC.putString(getContentResolver(), setting, value);
     }
 
     private void updateEnabledState() {
-        boolean enabled = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_NOTIFICATION, 1) != 0;
+        boolean enabled = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.HEADS_UP_NOTIFICATION, 1) != 0;
         mPrefsContainer.setVisibility(enabled ? View.VISIBLE : View.GONE);
         mDisabledText.setVisibility(enabled ? View.GONE : View.VISIBLE);
     }
 
     @Override
     public void onEnablerChanged(boolean isEnabled) {
-        mLastEnabledState = Settings.System.getInt(getContentResolver(),
-                Settings.System.HEADS_UP_NOTIFICATION, 1) != 0;
+        mLastEnabledState = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.HEADS_UP_NOTIFICATION, 1) != 0;
         updateEnabledState();
     }
 
