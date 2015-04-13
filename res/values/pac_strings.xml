@@ -155,6 +155,12 @@
     <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
 
+    <!-- Status bar categories -->
+    <string name="battery_category">Battery</string>
+    <string name="clock_category">Clock</string>
+    <string name="general_category">General</string>
+    <string name="network_traffic_category">Network Traffic</string>
+
     <!--Status bar date -->
     <string name="status_bar_date_title">Date</string>
     <string name="status_bar_date_none">Hidden (default)</string>
