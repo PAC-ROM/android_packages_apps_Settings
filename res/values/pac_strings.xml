@@ -94,21 +94,6 @@
     <string name="heads_up_time_out_10sec">10 seconds</string>
     <string name="heads_up_time_out_never">Never</string>
 
-    <!-- PAC Settings screens  -->
-    <string name="pac_settings_title">PAC Settings</string>
-
-    <!-- PAC Version -->
-    <string name="pac_version">PAC version</string>
-    <string name="pac_version_default">Unknown</string>
-
-    <!-- QuickSettings: Smart Pulldown -->
-    <string name="smart_pulldown_title">Smart pulldown</string>
-    <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
-    <string name="smart_pulldown_off">Off</string>
-    <string name="smart_pulldown_dismissable">No dismissable</string>
-    <string name="smart_pulldown_persistent">No persistent</string>
-    <string name="smart_pulldown_all">No dismissable or persistent</string>
-
     <!-- Navigation Bar Dimensions -->
     <string name="navigation_bar_dimensions_title">Dimensions</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
@@ -151,6 +136,21 @@
     <string name="network_traffic_autohide_threshold">Inactivity threshold</string>
     <string name="network_traffic_color_style">Color style</string>
 
+    <!-- PAC Settings screens  -->
+    <string name="pac_settings_title">PAC Settings</string>
+
+    <!-- PAC Version -->
+    <string name="pac_version">PAC version</string>
+    <string name="pac_version_default">Unknown</string>
+
+    <!-- QuickSettings: Smart Pulldown -->
+    <string name="smart_pulldown_title">Smart pulldown</string>
+    <string name="smart_pulldown_summary">Open Quick Settings when there are %1$s notifications present</string>
+    <string name="smart_pulldown_off">Off</string>
+    <string name="smart_pulldown_dismissable">No dismissable</string>
+    <string name="smart_pulldown_persistent">No persistent</string>
+    <string name="smart_pulldown_all">No dismissable or persistent</string>
+
     <!-- QuickSettings: Quick Pulldown -->
     <string name="block_on_secure_keyguard_title">Disable on lockscreen</string>
     <string name="block_on_secure_keyguard_summary">Disable quick settings on secure lockscreen</string>
@@ -167,7 +167,7 @@
     <string name="general_category">General</string>
     <string name="network_traffic_category">Network Traffic</string>
 
-    <!--Status bar date -->
+    <!-- Status bar date -->
     <string name="status_bar_date_title">Date</string>
     <string name="status_bar_date_none">Hidden (default)</string>
     <string name="status_bar_date_small">Small</string>
@@ -187,15 +187,6 @@
     <string name="tether_user_network_default">Use System Default</string>
     <string name="tether_wifi_network_text">WiFi Tether Network</string>
 
-    <!-- Wakelock blocker -->
-    <string name="wakelock_blocker_title">Wakelock blocker</string>
-    <string name="wakelock_blocker_summary">Block system wakelocks</string>
-    <string name="wakelock_blocker_save">Save</string>
-    <string name="wakelock_list_header">Available wakelocks</string>
-    <string name="wakelock_blocker_reload">Reload</string>
-    <string name="wakelock_blocker_warning_title">Proceed with caution</string>
-    <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss</string>
-
     <!-- Volume Steps -->
     <string name="volume_steps_60">60</string>
     <string name="volume_steps_45">45</string>
@@ -204,21 +195,23 @@
     <string name="volume_steps_7">7</string>
     <string name="volume_steps_5">5</string>
 
-    <!-- Volume step options. -->
+    <!-- Volume step options -->
     <string name="volume_steps_title">Volume steps</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_alarm_title">Volume steps: Alarm</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_dtmf_title">Volume steps: DTMF</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_music_title">Volume steps: Music</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_notification_title">Volume steps: Notification</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_ring_title">Volume steps: Ringer</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_system_title">Volume steps: System</string>
-    <!-- Sound settings screen, setting option name -->
     <string name="volume_steps_voice_call_title">Volume steps: Voice Call</string>
+
+    <!-- Wakelock blocker -->
+    <string name="wakelock_blocker_title">Wakelock blocker</string>
+    <string name="wakelock_blocker_summary">Block system wakelocks</string>
+    <string name="wakelock_blocker_save">Save</string>
+    <string name="wakelock_list_header">Available wakelocks</string>
+    <string name="wakelock_blocker_reload">Reload</string>
+    <string name="wakelock_blocker_warning_title">Proceed with caution</string>
+    <string name="wakelock_blocker_warning">Blocking wakelocks have the potential to cause instability, crashes or data loss</string>
 
 </resources>
