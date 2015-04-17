@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">Soronként négy csempe megjelenítése</string>
   <string name="qs_screenshot_tile">Képernyőmentés</string>
   <string name="qs_sync_tile">Szinkronizálás</string>
-  <string name="qs_usb_tether_tile">USB megosztás</string>
   <string name="qs_screenrecord_tile">Képernyő felvétel</string>
   <string name="pref_scrollingcache_title">Görgetési gyorsítótár</string>
   <string name="pref_scrollingcache_summary">A görgetési gyorsítótár javíthatja a görgetési teljesítményt a memória terhére</string>

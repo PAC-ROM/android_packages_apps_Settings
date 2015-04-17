@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">Voir l\'établissement de quatre tuiles par rang</string>
   <string name="qs_screenshot_tile">Capture d\'écran</string>
   <string name="qs_sync_tile">Synchronisation</string>
-  <string name="qs_usb_tether_tile">Partage de connexion par USB</string>
   <string name="qs_screenrecord_tile">Enregistrement vidéo de l\'écran</string>
   <string name="pref_scrollingcache_title">Cache du défilement</string>
   <string name="pref_scrollingcache_summary">Défilement cache peut améliorer les performances de défilement sur le coût de la mémoire</string>

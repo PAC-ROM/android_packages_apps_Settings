@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">Ukázat čtyři dlaždice na řádek</string>
   <string name="qs_screenshot_tile">Screenshot</string>
   <string name="qs_sync_tile">Synch.</string>
-  <string name="qs_usb_tether_tile">USB tethering</string>
   <string name="qs_screenrecord_tile">Záznam displeje</string>
   <string name="pref_scrollingcache_title">Cache pro posun</string>
   <string name="pref_scrollingcache_summary">Cache pro posun může zlepšit výkon na úkor úbytku paměti</string>
