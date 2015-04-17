@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">每行显示四个瓷块</string>
   <string name="qs_screenshot_tile">屏幕截图</string>
   <string name="qs_sync_tile">同步</string>
-  <string name="qs_usb_tether_tile">USB 网络共享</string>
   <string name="qs_screenrecord_tile">屏幕录像</string>
   <string name="pref_scrollingcache_title">滚动缓存</string>
   <string name="pref_scrollingcache_summary">滚动缓以消耗更多内为代价提高滚动性能</string>

@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">Zeigen vier Kacheln pro Zeile</string>
   <string name="qs_screenshot_tile">Screenshot</string>
   <string name="qs_sync_tile">Synchronisierung</string>
-  <string name="qs_usb_tether_tile">USB-Tethering</string>
   <string name="qs_screenrecord_tile">Bildschirmrekorder</string>
   <string name="pref_scrollingcache_title">Scrolling-Cache</string>
   <string name="pref_scrollingcache_summary">Scrolling cache kann auf Kosten des Arbeitsspeichers die Scrollleistung verbessern</string>

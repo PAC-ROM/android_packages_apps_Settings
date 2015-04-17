@@ -328,7 +328,6 @@
   <string name="qs_four_columns_title">Exibir quatro itens por linha</string>
   <string name="qs_screenshot_tile">Screenshot</string>
   <string name="qs_sync_tile">Sincronização</string>
-  <string name="qs_usb_tether_tile">Pareamento USB</string>
   <string name="qs_screenrecord_tile">Gravação de tela</string>
   <string name="pref_scrollingcache_title">Cache de rolagem</string>
   <string name="pref_scrollingcache_summary">O cache de rolagem pode melhorar a performance de rolagem ao custo de memória</string>
