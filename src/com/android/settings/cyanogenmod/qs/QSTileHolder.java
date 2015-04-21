@@ -165,6 +165,10 @@ public class QSTileHolder {
                 resourceName = "ic_qs_doze";
                 stringId = R.string.qs_ambient_display_tile;
                 break;
+            case QSConstants.TILE_HEADS_UP:
+                resourceName = "ic_qs_heads_up_on";
+                stringId = R.string.qs_tile_heads_up;
+                break;
             default:
                 return null;
         }
