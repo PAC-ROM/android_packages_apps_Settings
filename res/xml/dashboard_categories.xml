@@ -135,7 +135,7 @@
                 android:id="@+id/sound_settings"
                 android:title="@string/category_sounds"
                 android:fragment="com.android.settings.SoundSettings"
-                android:icon="@drawable/ic_settings_notifications"
+                android:icon="@drawable/ic_settings_sounds"
                 />
 
         <!-- Display & lights -->
