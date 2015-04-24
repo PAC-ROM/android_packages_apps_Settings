@@ -324,7 +324,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private void updateDozeOptions() {
         if (mDozePulseIn != null) {
             final int statusDozePulseIn = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.DOZE_PULSE_DURATION_IN, 1000);
+                    Settings.PAC.DOZE_PULSE_DURATION_IN, 900);
             mDozePulseIn.setValue(String.valueOf(statusDozePulseIn));
             int index = mDozePulseIn.findIndexOfValue(String.valueOf(statusDozePulseIn));
             if (index != -1) {
@@ -342,7 +342,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
         }
         if (mDozePulseOut != null) {
             final int statusDozePulseOut = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.DOZE_PULSE_DURATION_OUT, 1000);
+                    Settings.PAC.DOZE_PULSE_DURATION_OUT, 600);
             mDozePulseOut.setValue(String.valueOf(statusDozePulseOut));
             int index = mDozePulseOut.findIndexOfValue(String.valueOf(statusDozePulseOut));
             if (index != -1) {

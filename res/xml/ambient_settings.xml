@@ -76,8 +76,8 @@
                           android:dependency="doze_overwrite_value" />
 
                     <ListPreference
-                          android:entries="@array/doze_pulse_duration_in_entries"
-                          android:entryValues="@array/doze_pulse_duration_in_values"
+                          android:entries="@array/doze_pulse_duration_out_entries"
+                          android:entryValues="@array/doze_pulse_duration_out_values"
                           android:key="doze_pulse_out"
                           android:title="@string/doze_pulse_duration_out_title"
                           android:summary="@string/doze_pulse_duration_out_summary"
