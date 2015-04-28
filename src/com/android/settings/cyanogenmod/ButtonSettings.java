@@ -513,7 +513,8 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, 0);
         } else {
-            int oldBright = prefs.getInt("pre_navbar_button_backlight", defaultBrightness);
+            int oldBright = prefs.getInt(ButtonBacklightBrightness.KEY_BUTTON_BACKLIGHT,
+                    defaultBrightness);
             Settings.System.putInt(context.getContentResolver(),
                     Settings.System.BUTTON_BRIGHTNESS, oldBright);
         }
@@ -588,16 +589,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             mEnableNavigationBar.setEnabled(false);
 
             mNavigationPreferencesCat.setEnabled(false);
-
-            if (mEnableNavigationBar.isChecked()) {
-                // enabling virtual nav keys, back it up lights setting
-                final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(
-                        getActivity());
-                int currentBrightness = Settings.System.getInt(getActivity().getContentResolver(),
-                        Settings.System.BUTTON_BRIGHTNESS, -1);
-                prefs.edit().putInt("pre_navbar_button_backlight", currentBrightness).apply();
-            }
-
             writeDisableNavkeysOption(getActivity(), mEnableNavigationBar.isChecked());
             updateDisableNavkeysOption();
             mHandler.postDelayed(new Runnable() {
