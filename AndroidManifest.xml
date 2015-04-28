@@ -2346,20 +2346,6 @@
         <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
-        <!-- Ambient display settings activity. -->
-        <activity android:name="Settings$AmbientDisplaySettingsActivity"
-                android:label="@string/doze_title"
-                android:excludeFromRecents="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
-                android:value="com.android.settings.pac.AmbientSettings" />
-            <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
-                android:resource="@id/display_and_lights_settings" />
-        </activity>
-
         <!-- End of PAC Activities -->
     </application>
 </manifest>
