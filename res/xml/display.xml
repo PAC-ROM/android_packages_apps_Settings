@@ -58,10 +58,11 @@
                 settings:advanced="false"/>
 
         <!-- Doze // Ambient display -->
-        <PreferenceScreen
-                android:key="doze_fragment"
+        <SwitchPreference
+                android:key="doze"
                 android:title="@string/doze_title"
-                android:fragment="com.android.settings.pac.AmbientSettings" />
+                android:summary="@string/doze_summary"
+                android:persistent="false" />
 
         <!-- Lift to wake -->
         <SwitchPreference
