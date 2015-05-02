@@ -27,6 +27,8 @@ import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
+import android.preference.SwitchPreference;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
@@ -58,6 +60,8 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private static final String STATUS_BAR_DATE_FORMAT = "status_bar_date_format";
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_SHOW_EMPTY_SIMS = "status_bar_show_empty_sims";
+    private static final String GENERAL_OPTIONS = "general_options";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
@@ -73,6 +77,7 @@ public class StatusBarSettings extends SettingsPreferenceFragment
     private ListPreference mStatusBarDateFormat;
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
+    private SwitchPreference mStatusBarMSims;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -90,6 +95,9 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         mStatusBarBattery = (ListPreference) findPreference(STATUS_BAR_BATTERY_STYLE);
         mStatusBarBatteryShowPercent =
                 (ListPreference) findPreference(STATUS_BAR_SHOW_BATTERY_PERCENT);
+
+        PreferenceCategory generalPrefs = (PreferenceCategory)
+                findPreference(GENERAL_OPTIONS);
 
         int clockStyle = Settings.System.getInt(resolver,
                 Settings.System.STATUS_BAR_CLOCK, 1);
@@ -142,8 +150,11 @@ public class StatusBarSettings extends SettingsPreferenceFragment
         enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
 
+        mStatusBarMSims = (SwitchPreference) findPreference(STATUS_BAR_SHOW_EMPTY_SIMS);
         if (TelephonyManager.getDefault().getPhoneCount() <= 1) {
             removePreference(Settings.System.STATUS_BAR_MSIM_SHOW_EMPTY_ICONS);
+            generalPrefs.removePreference(mStatusBarMSims);
+
         }
     }
 

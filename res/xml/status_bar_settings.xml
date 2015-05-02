@@ -81,6 +81,7 @@
 
     <!-- General -->
     <PreferenceCategory
+        android:key="general_options"
         android:title="@string/general_category">
 
         <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
