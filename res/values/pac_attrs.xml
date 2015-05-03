@@ -17,7 +17,8 @@
 <resources>
 
     <!-- For SeekBarPreferenceCham -->
-    <declare-styleable name="SeekBarPreference">
+    <declare-styleable name="SeekBarPreferenceCham">
+        <attr name="defaultVal" format="integer" />
         <attr name="maximum" format="integer" />
         <attr name="minimum" format="integer" />
         <attr name="unitsLeft" format="string" />

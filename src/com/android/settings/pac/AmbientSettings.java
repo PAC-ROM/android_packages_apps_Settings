@@ -43,7 +43,9 @@ import android.widget.Button;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.pac.utils.PacSwitchPreference;
+import com.android.settings.pac.utils.SeekBarPreferenceCham;
 import com.android.settings.pac.sensor.ShakeSensorManager;
+import com.android.settings.Utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,8 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE = "doze";
     private static final String KEY_DOZE_OVERWRITE_VALUE = "doze_overwrite_value";
     private static final String KEY_DOZE_PULSE_IN = "doze_pulse_in";
+    private static final String KEY_DOZE_PULSE_IN_PICKUP = "doze_pulse_in_pickup";
+    private static final String KEY_DOZE_PULSE_IN_INTENT = "doze_pulse_in_intent";
     private static final String KEY_DOZE_PULSE_VISIBLE = "doze_pulse_visible";
     private static final String KEY_DOZE_PULSE_OUT = "doze_pulse_out";
     private static final String KEY_DOZE_LIST_MODE = "doze_list_mode";
@@ -68,9 +72,11 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private int mOldAccValue;
     private SwitchPreference mDozePreference;
     private ListPreference mDozeListMode;
-    private ListPreference mDozePulseIn;
-    private ListPreference mDozePulseVisible;
-    private ListPreference mDozePulseOut;
+    private SeekBarPreferenceCham mDozePulseIn;
+    private SeekBarPreferenceCham mDozePulseInPickup;
+    private SeekBarPreferenceCham mDozePulseInIntent;
+    private SeekBarPreferenceCham mDozePulseVisible;
+    private SeekBarPreferenceCham mDozePulseOut;
     private ListPreference mDozeShakeThreshold;
     private PacSwitchPreference mDozeTimeMode;
     private ShakeSensorManager mShakeSensorManager;
@@ -87,13 +93,34 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
         mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
         mDozePreference.setOnPreferenceChangeListener(this);
 
-        mDozePulseIn = (ListPreference) findPreference(KEY_DOZE_PULSE_IN);
+        mDozePulseIn = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_IN);
+        int dozePulseIn = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DOZE_PULSE_DURATION_IN, 900);
+        mDozePulseIn.setValue(dozePulseIn / 1);
         mDozePulseIn.setOnPreferenceChangeListener(this);
 
-        mDozePulseVisible = (ListPreference) findPreference(KEY_DOZE_PULSE_VISIBLE);
+        mDozePulseInPickup = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_IN_PICKUP);
+        int dozePulseInPickup = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DOZE_PULSE_DURATION_IN_PICKUP, 300);
+        mDozePulseInPickup.setValue(dozePulseInPickup / 1);
+        mDozePulseInPickup.setOnPreferenceChangeListener(this);
+
+        mDozePulseInIntent = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_IN_INTENT);
+        int dozePulseInIntent = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DOZE_PULSE_DURATION_IN_INTENT, 300);
+        mDozePulseInIntent.setValue(dozePulseInIntent / 1);
+        mDozePulseInIntent.setOnPreferenceChangeListener(this);
+
+        mDozePulseVisible = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_VISIBLE);
+        int dozePulseVisible = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DOZE_PULSE_DURATION_IN, 3000);
+        mDozePulseVisible.setValue(dozePulseVisible / 1);
         mDozePulseVisible.setOnPreferenceChangeListener(this);
 
-        mDozePulseOut = (ListPreference) findPreference(KEY_DOZE_PULSE_OUT);
+        mDozePulseOut = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_OUT);
+        int dozePulseOut = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.DOZE_PULSE_DURATION_IN, 600);
+        mDozePulseOut.setValue(dozePulseOut / 1);
         mDozePulseOut.setOnPreferenceChangeListener(this);
 
         if (isAccelerometerAvailable(activity)) {
@@ -121,15 +148,6 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
         boolean useAccelerometer = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_dozeUseAccelerometer);
         return useAccelerometer;
-    }
-
-    private static boolean isDozeAvailable(Context context) {
-        String name = Build.IS_DEBUGGABLE ? SystemProperties.get("debug.doze.component") : null;
-        if (TextUtils.isEmpty(name)) {
-            name = context.getResources().getString(
-                    com.android.internal.R.string.config_dozeComponent);
-        }
-        return !TextUtils.isEmpty(name);
     }
 
     private void updateDozeListMode() {
@@ -324,30 +342,28 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private void updateDozeOptions() {
         if (mDozePulseIn != null) {
             final int statusDozePulseIn = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.DOZE_PULSE_DURATION_IN, 1000);
-            mDozePulseIn.setValue(String.valueOf(statusDozePulseIn));
-            int index = mDozePulseIn.findIndexOfValue(String.valueOf(statusDozePulseIn));
-            if (index != -1) {
-                mDozePulseIn.setSummary(mDozePulseIn.getEntries()[index]);
-            }
+                    Settings.PAC.DOZE_PULSE_DURATION_IN, 900);
+            mDozePulseIn.setValue(statusDozePulseIn);
+        }
+        if (mDozePulseInPickup != null) {
+            final int statusDozePulseInPickup = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DOZE_PULSE_DURATION_IN_PICKUP, 300);
+            mDozePulseInPickup.setValue(statusDozePulseInPickup);
+        }
+        if (mDozePulseInIntent != null) {
+            final int statusDozePulseInIntent = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DOZE_PULSE_DURATION_IN_INTENT, 300);
+            mDozePulseInIntent.setValue(statusDozePulseInIntent);
         }
         if (mDozePulseVisible != null) {
             final int statusDozePulseVisible = Settings.PAC.getInt(getContentResolver(),
                     Settings.PAC.DOZE_PULSE_DURATION_VISIBLE, 3000);
-            mDozePulseVisible.setValue(String.valueOf(statusDozePulseVisible));
-            int index = mDozePulseVisible.findIndexOfValue(String.valueOf(statusDozePulseVisible));
-            if (index != -1) {
-                mDozePulseVisible.setSummary(mDozePulseVisible.getEntries()[index]);
-            }
+            mDozePulseVisible.setValue(statusDozePulseVisible);
         }
         if (mDozePulseOut != null) {
             final int statusDozePulseOut = Settings.PAC.getInt(getContentResolver(),
-                    Settings.PAC.DOZE_PULSE_DURATION_OUT, 1000);
-            mDozePulseOut.setValue(String.valueOf(statusDozePulseOut));
-            int index = mDozePulseOut.findIndexOfValue(String.valueOf(statusDozePulseOut));
-            if (index != -1) {
-               mDozePulseOut.setSummary(mDozePulseOut.getEntries()[index]);
-            }
+                    Settings.PAC.DOZE_PULSE_DURATION_OUT, 600);
+            mDozePulseOut.setValue(statusDozePulseOut);
         }
         if (mDozeShakeThreshold != null) {
             mAccValue = Settings.PAC.getInt(getContentResolver(),
@@ -401,23 +417,27 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putInt(getContentResolver(), Settings.Secure.DOZE_ENABLED, value ? 1 : 0);
         }
         if (preference == mDozePulseIn) {
-            int dozePulseIn = Integer.parseInt((String)objValue);
-            int index = mDozePulseIn.findIndexOfValue((String) objValue);
-            mDozePulseIn.setSummary(mDozePulseIn.getEntries()[index]);
+            int dozePulseIn = (Integer) objValue;
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.DOZE_PULSE_DURATION_IN, dozePulseIn);
         }
+        if (preference == mDozePulseInPickup) {
+            int dozePulseInPickup = (Integer) objValue;
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.DOZE_PULSE_DURATION_IN_PICKUP, dozePulseInPickup);
+        }
+        if (preference == mDozePulseInIntent) {
+            int dozePulseInIntent = (Integer) objValue;
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.DOZE_PULSE_DURATION_IN_INTENT, dozePulseInIntent);
+        }
         if (preference == mDozePulseVisible) {
-            int dozePulseVisible = Integer.parseInt((String)objValue);
-            int index = mDozePulseVisible.findIndexOfValue((String) objValue);
-            mDozePulseVisible.setSummary(mDozePulseVisible.getEntries()[index]);
+            int dozePulseVisible = (Integer) objValue;
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.DOZE_PULSE_DURATION_VISIBLE, dozePulseVisible);
         }
         if (preference == mDozePulseOut) {
-            int dozePulseOut = Integer.parseInt((String)objValue);
-            int index = mDozePulseOut.findIndexOfValue((String) objValue);
-            mDozePulseOut.setSummary(mDozePulseOut.getEntries()[index]);
+            int dozePulseOut = (Integer) objValue;
             Settings.PAC.putInt(getContentResolver(),
                     Settings.PAC.DOZE_PULSE_DURATION_OUT, dozePulseOut);
         }
@@ -461,7 +481,7 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
                 @Override
                 public List<String> getNonIndexableKeys(Context context) {
                     ArrayList<String> result = new ArrayList<String>();
-                    if (!isDozeAvailable(context)) {
+                    if (!Utils.isDozeAvailable(context)) {
                         result.add(KEY_DOZE);
                         result.add(KEY_DOZE_LIST_MODE);
                         result.add(KEY_DOZE_TIME_MODE);

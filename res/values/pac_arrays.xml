@@ -17,46 +17,6 @@
 <resources>
 
     <!-- Ambient Display -->
-    <string-array name="doze_pulse_duration_in_entries" translatable="false">
-        <item>@string/twohundred_ms</item>
-        <item>@string/fivehundred_ms</item>
-        <item>@string/one_second_default</item>
-        <item>@string/onehalf_second</item>
-        <item>@string/two_second</item>
-    </string-array>
-
-    <string-array name="doze_pulse_duration_in_values" translatable="false">
-        <item>200</item>
-        <item>500</item>
-        <item>1000</item>
-        <item>1500</item>
-        <item>2000</item>
-    </string-array>
-
-    <string-array name="doze_pulse_duration_visible_entries" translatable="false">
-        <item>@string/one_second</item>
-        <item>@string/onehalf_second</item>
-        <item>@string/two_second</item>
-        <item>@string/twohalf_second</item>
-        <item>@string/three_second_default</item>
-        <item>@string/threehalf_second</item>
-        <item>@string/four_second</item>
-        <item>@string/fourhalf_second</item>
-        <item>@string/five_second</item>
-    </string-array>
-
-    <string-array name="doze_pulse_duration_visible_values" translatable="false">
-        <item>1000</item>
-        <item>1500</item>
-        <item>2000</item>
-        <item>2500</item>
-        <item>3000</item>
-        <item>3500</item>
-        <item>4000</item>
-        <item>4500</item>
-        <item>5000</item>
-    </string-array>
-
     <string-array name="doze_shake_acc_threshold_entries" translatable="false">
         <item>@string/veryeasy_shake</item>
         <item>@string/easy_shake</item>
