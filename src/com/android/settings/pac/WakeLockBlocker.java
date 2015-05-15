@@ -16,37 +16,19 @@
 
 package com.android.settings.pac;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.PowerManager;
-import android.util.Log;
-import android.view.View;
-import android.view.ViewGroup;
-import android.preference.PreferenceFragment;
-import android.view.LayoutInflater;
-import android.widget.Switch;
-import android.widget.ListView;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.AdapterView;
 import android.provider.Settings;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-
-import java.util.List;
-import java.util.Iterator;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Collections;
-
+import android.util.Log;
+import android.view.*;
+import android.widget.*;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+
+import java.util.*;
 
 public class WakeLockBlocker extends SettingsPreferenceFragment {
 

@@ -29,7 +29,6 @@ import android.provider.Settings;
 import android.provider.SearchIndexableResource;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.cyanogenmod.qs.QSTiles;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -47,14 +46,11 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     private ListPreference mQuickPulldown;
     private ListPreference mSmartPulldown;
     private SwitchPreference mBlockOnSecureKeyguard;
-    private Preference mQSTiles;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.notification_drawer_settings);
-
-        mQSTiles = findPreference("qs_order");
     }
 
     @Override
@@ -95,10 +91,6 @@ public class NotificationDrawerSettings extends SettingsPreferenceFragment imple
     @Override
     public void onResume() {
         super.onResume();
-
-        int qsTileCount = QSTiles.determineTileCount(getActivity());
-        mQSTiles.setSummary(getResources().getQuantityString(R.plurals.qs_tiles_summary,
-                    qsTileCount, qsTileCount));
     }
 
     @Override

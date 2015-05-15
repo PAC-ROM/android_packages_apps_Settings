@@ -16,7 +16,6 @@
 
 package com.android.settings.pac;
 
-import android.app.Activity;
 import android.content.res.Resources;
 import android.net.TrafficStats;
 import android.os.Bundle;
@@ -24,18 +23,11 @@ import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.pac.utils.SeekBarPreferenceCham;
-
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class NetworkTraffic extends SettingsPreferenceFragment

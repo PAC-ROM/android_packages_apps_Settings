@@ -94,7 +94,6 @@ import com.android.settings.lockscreen.LockScreenSettings;
 import com.android.settings.notification.NotificationAppList;
 import com.android.settings.notification.NotificationManagerSettings;
 import com.android.settings.notification.OtherSoundSettings;
-import com.android.settings.pac.PacUiSettings;
 import com.android.settings.profiles.NFCProfileTagCallback;
 import com.android.settings.profiles.ProfilesSettings;
 import com.android.settings.quicklaunch.QuickLaunchSettings;

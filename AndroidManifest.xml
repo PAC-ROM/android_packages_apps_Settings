@@ -2185,8 +2185,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".cyanogenmod.PerformanceSettings" />
-
         <receiver android:name=".widget.SettingsAppWidgetProvider"
                 android:label="@string/gadget_title"
                 android:exported="false"
@@ -2337,6 +2335,8 @@
         <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
         <activity android:name=".pac.AppSidebar" />
+
+        <activity android:name=".pac.PACSettings" />
 
         <!-- End of PAC Activities -->
     </application>

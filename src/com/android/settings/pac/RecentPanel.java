@@ -16,34 +16,21 @@
 
 package com.android.settings.pac;
 
-import android.app.ActivityManager;
 import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.ContentResolver;
 import android.content.DialogInterface;
-import android.database.ContentObserver;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
-import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
-import android.provider.Settings.SettingNotFoundException;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MenuInflater;
-
+import android.view.MenuItem;
 import com.android.settings.DialogCreatable;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
+import com.android.settings.pac.utils.SeekBarPreferenceCham;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class RecentPanel extends SettingsPreferenceFragment implements DialogCreatable,

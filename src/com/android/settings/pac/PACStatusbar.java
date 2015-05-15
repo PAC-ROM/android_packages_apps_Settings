@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014-2015 The PAC-ROM Project
+ * Copyright (C) 2015 The PAC-ROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,31 +16,23 @@
 
 package com.android.settings.pac;
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
-import android.provider.Settings;
-import android.util.Log;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
-public class PacUiSettings extends SettingsPreferenceFragment implements
+public class PACStatusbar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
-    private static final String TAG = "PACSettings";
+    private static final String TAG = "PACStatusbar";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        addPreferencesFromResource(R.xml.pac_ui_settings);
-
+        addPreferencesFromResource(R.xml.pac_statusbar);
     }
 
     @Override
@@ -48,8 +40,17 @@ public class PacUiSettings extends SettingsPreferenceFragment implements
         super.onResume();
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
     public boolean onPreferenceChange(Preference preference, Object objValue) {
         return false;
     }
-
 }

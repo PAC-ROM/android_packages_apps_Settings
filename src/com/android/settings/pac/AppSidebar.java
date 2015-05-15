@@ -19,14 +19,9 @@ package com.android.settings.pac;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import android.preference.CheckBoxPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
+import android.preference.*;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
 import android.provider.Settings;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.pac.utils.SeekBarPreferenceCham;

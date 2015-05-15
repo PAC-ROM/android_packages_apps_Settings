@@ -23,7 +23,6 @@ import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import com.android.settings.R;
 
 public class TestListView extends DialogPreference {

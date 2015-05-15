@@ -53,6 +53,9 @@ import com.android.settings.wifi.AdvancedWifiSettings;
 import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.pac.AmbientSettings;
+import com.android.settings.pac.PACBattery;
+import com.android.settings.pac.PACClockSetting;
+import com.android.settings.pac.PACQuickSetting;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -310,6 +313,27 @@ public final class SearchIndexableResources {
                         NO_DATA_RES_ID,
                         com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
                         R.drawable.ic_settings_privacy));
+
+        sResMap.put(PACBattery.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(PACBattery.class.getName()),
+                        R.xml.pac_battery,
+                        PACBattery.class.getName(),
+                        R.drawable.ic_settings_battery));
+
+        sResMap.put(PACClockSetting.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(PACClockSetting.class.getName()),
+                        R.xml.pac_clock_settings,
+                        PACClockSetting.class.getName(),
+                        R.drawable.ic_settings_clock));
+
+        sResMap.put(PACQuickSetting.class.getName(),
+                new SearchIndexableResource(
+                        Ranking.getRankForClassName(PACQuickSetting.class.getName()),
+                        R.xml.pac_quicksettings,
+                        PACQuickSetting.class.getName(),
+                        R.drawable.ic_settings_quicksettings));
     }
 
     private SearchIndexableResources() {

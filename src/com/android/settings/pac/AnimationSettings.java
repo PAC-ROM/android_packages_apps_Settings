@@ -20,27 +20,22 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
-
+import com.android.internal.util.pac.AwesomeAnimationHelper;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.pac.utils.AppMultiSelectListPreference;
 import com.android.settings.pac.utils.SeekBarPreferenceCham;
-import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.R;
-
-import com.android.internal.util.pac.AwesomeAnimationHelper;
 
 import java.util.Arrays;
 import java.util.HashSet;

@@ -17,7 +17,6 @@
 package com.android.settings.pac;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -28,11 +27,9 @@ import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-
+import com.android.internal.util.cm.ScreenType;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-
-import com.android.internal.util.cm.ScreenType;
 
 public class NavBarDimensions extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {

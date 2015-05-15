@@ -16,7 +16,6 @@
 
 package com.android.settings.pac;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -24,34 +23,25 @@ import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
-import android.preference.PreferenceActivity;
-import android.preference.PreferenceGroup;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceGroup;
 import android.provider.Settings;
 import android.text.TextUtils;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Switch;
-
 import com.android.internal.util.cm.ScreenType;
-
 import com.android.settings.R;
+import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.Utils;
 import com.android.settings.cyanogenmod.PackageListAdapter;
 import com.android.settings.cyanogenmod.PackageListAdapter.PackageItem;
-import com.android.settings.SettingsActivity;
 import com.android.settings.pac.utils.PacSwitchBar;
 
 import java.util.ArrayList;

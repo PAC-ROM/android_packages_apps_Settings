@@ -14,16 +14,14 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
 
-    <!-- Gesture Anywhere -->
-    <color name="ga_gesture_color">#FF07998B</color>
-
-    <!-- DSLV colors -->
-    <color name="dslv_icon_dark">#ff009688</color>
-    <color name="dslv_float_cackground_color">#ffe1e1e0</color>
-
-    <!-- Icon color hack for themes -->
-    <color name="icon_tint_color">@*android:color/material_deep_teal_500</color>
-
-</resources>
+    <path
+        android:fillColor="#009688"
+        android:pathData="M14.8,3.9V1.7H9.3v2.3H6v18.4H18V3.9H14.8z
+M16.7,9.8H7.4V5.1h3.3V3.1h2.7v1.9h3.4V9.8z" />
+</vector>

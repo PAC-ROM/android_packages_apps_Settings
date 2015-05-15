@@ -38,13 +38,11 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
     private static final String TAG = NotificationManagerSettings.class.getSimpleName();
 
     private static final String KEY_LOCK_SCREEN_NOTIFICATIONS = "lock_screen_notifications";
-    private static final String KEY_HEADS_UP_SETTINGS = "heads_up_enabled";
 
     private Context mContext;
     private boolean mSecure;
     private int mLockscreenSelectedValue;
     private DropDownPreference mLockscreen;
-    private Preference mHeadsUp;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -53,9 +51,6 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
         addPreferencesFromResource(R.xml.notification_manager_settings);
         mSecure = new LockPatternUtils(getActivity()).isSecure();
         initLockscreenNotifications();
-
-        // Heads-up
-        mHeadsUp = findPreference(KEY_HEADS_UP_SETTINGS);
     }
 
     // === Lockscreen (public / private) notifications ===
@@ -98,15 +93,6 @@ public class NotificationManagerSettings extends SettingsPreferenceFragment
     @Override
     public void onResume() {
         super.onResume();
-
-        mHeadsUp.setSummary(getUserHeadsUpState()
-                ? R.string.summary_heads_up_enabled : R.string.summary_heads_up_disabled);
-    }
-
-    private boolean getUserHeadsUpState() {
-         return Settings.PAC.getInt(mContext.getContentResolver(),
-                Settings.PAC.HEADS_UP_USER_ENABLED,
-                Settings.PAC.HEADS_UP_USER_ON) != 0;
     }
 
     private void updateLockscreenNotifications() {

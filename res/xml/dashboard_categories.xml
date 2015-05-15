@@ -104,7 +104,7 @@
         <dashboard-tile
                 android:id="@+id/pac_settings"
                 android:title="@string/pac_settings_title"
-                android:fragment="com.android.settings.pac.PacUiSettings"
+                android:fragment="com.android.settings.pac.PACSettings"
                 android:icon="@drawable/ic_pac_settings"
                 />
 

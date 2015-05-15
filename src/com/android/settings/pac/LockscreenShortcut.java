@@ -18,15 +18,14 @@ package com.android.settings.pac;
 
 import android.os.Bundle;
 import android.preference.Preference;
-import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
