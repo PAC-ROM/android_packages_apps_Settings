@@ -149,10 +149,6 @@ public class QSTileHolder {
                 resourceName = "ic_qs_screenshot";
                 stringId = R.string.qs_screenshot_tile;
                 break;
-            case QSConstants.TILE_SYNC:
-                resourceName = "ic_qs_sync_on";
-                stringId = R.string.qs_sync_tile;
-                break;
             case QSConstants.TILE_BRIGHTNESS:
                 resourceName = "ic_qs_brightness_auto_off";
                 stringId = R.string.qs_brightness_tile;
@@ -168,6 +164,10 @@ public class QSTileHolder {
             case QSConstants.TILE_AMBIENT_DISPLAY:
                 resourceName = "ic_qs_ambientdisplay_on";
                 stringId = R.string.qs_tile_ambient_display;
+                break;
+            case QSConstants.TILE_SYNC:
+                resourceName = "ic_qs_sync_on";
+                stringId = R.string.qs_tile_sync;
                 break;
             default:
                 return null;
