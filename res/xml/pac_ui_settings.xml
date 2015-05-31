@@ -76,6 +76,13 @@
             android:icon="@drawable/ic_settings_notifications"
             />
 
+    <!-- Slim recents -->
+    <PreferenceScreen
+            android:id="@+id/recent_panel"
+            android:fragment="com.android.settings.pac.RecentPanel"
+            android:title="@string/recent_panel_category"
+            />
+
     <!-- Status bar -->
     <PreferenceScreen
             android:id="@+id/status_bar_settings"
