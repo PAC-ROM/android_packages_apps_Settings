@@ -47,6 +47,12 @@
             android:summary="@string/status_bar_show_weather_summary"
             android:defaultValue="true" />
 
+        <com.android.settings.pac.utils.PacSwitchPreference
+            android:key="enable_task_manager"
+            android:title="@string/task_manager_title"
+            android:summary="@string/task_manager_summary"
+            android:defaultValue="false" />
+
     </PreferenceCategory>
 
     <!-- Quick Settings Panel -->

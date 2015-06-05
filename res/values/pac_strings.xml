@@ -324,6 +324,10 @@
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
 
+    <!-- Task Manager -->
+    <string name="task_manager_title">Task Manager</string>
+    <string name="task_manager_summary">Show the task manager button above the Quick Settings Panel</string>
+
     <!-- User Selectable Tether Networks-->
     <string name="tether_usb_network_summary">Press to change USB Network</string>
     <string name="tether_usb_network_text">USB Tether Network</string>
