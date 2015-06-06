@@ -1,5 +1,5 @@
-/**
- * Copyright (C) 2014 The PAC-ROM Project
+/*
+ * Copyright (C) 2014-2015 The PAC-ROM Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

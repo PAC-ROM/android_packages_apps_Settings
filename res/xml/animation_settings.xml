@@ -18,19 +18,193 @@
         android:title="@string/animation_settings_title"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <PreferenceScreen
-        android:key="interface_animation_system"
-        android:fragment="com.android.settings.pac.SystemAnimationInterfaceSettings"
-        android:title="@string/bars_and_menus_category_system_title" />
+    <PreferenceCategory
+            android:key="category_system"
+            android:title="@string/system_anim_title">
 
-    <PreferenceScreen
-        android:key="interface_animation_listview"
-        android:fragment="com.android.settings.pac.ListViewAnimationInterfaceSettings"
-        android:title="@string/listview_title" />
+        <SwitchPreference
+            android:key="animation_controls_exit_only"
+            android:title="@string/animation_exit_only_title"
+            android:summary="@string/animation_exit_only_title"
+            android:defaultValue="false" />
 
-    <PreferenceScreen
-        android:key="interface_animation_toast"
-        android:fragment="com.android.settings.pac.ToastAnimationInterfaceSettings"
-        android:title="@string/toast_animation_title" />
+        <SwitchPreference
+            android:key="animation_controls_reverse_exit"
+            android:title="@string/animation_reverse_exit_title"
+            android:summary="@string/animation_reverse_exit_title"
+            android:defaultValue="false" />
+
+        <ListPreference
+            android:key="activity_open"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/activity_open_title" />
+
+        <ListPreference
+            android:key="activity_close"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/activity_close_title" />
+
+        <ListPreference
+            android:key="task_open"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_open_title" />
+
+        <ListPreference
+            android:key="task_close"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_close_title" />
+
+        <ListPreference
+            android:key="task_move_to_front"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_move_to_front_title" />
+
+        <ListPreference
+            android:key="task_move_to_back"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_move_to_back_title" />
+
+        <ListPreference
+            android:key="wallpaper_open"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/wallpaper_open_title" />
+
+        <ListPreference
+            android:key="wallpaper_close"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/wallpaper_close_title" />
+
+        <ListPreference
+            android:key="wallpaper_intra_open"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/wallpaper_intra_open_title" />
+
+        <ListPreference
+            android:key="wallpaper_intra_close"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/wallpaper_intra_close_title" />
+
+        <ListPreference
+            android:key="task_open_behind"
+            android:persistent="false"
+            android:entries="@array/anim_controls_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:defaultValue="0"
+            android:title="@string/task_open_behind_title" />
+
+        <com.android.settings.pac.utils.SeekBarPreferenceCham
+            android:key="animation_duration"
+            android:persistent="false"
+            android:title="@string/animation_duration_title"
+            android:summary="@string/animation_duration_summary"
+            android:max="100"
+            settings:min="0"
+            settings:interval="1"
+            settings:unitsLeft=""
+            settings:unitsRight="* 15ms"
+            android:defaultValue="0" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="category_system_listview"
+            android:title="@string/listview_title">
+
+        <ListPreference
+            android:key="listview_animation"
+            android:dialogTitle="@string/listview_animation_title"
+            android:title="@string/listview_animation_title"
+            android:entries="@array/listview_animation_entries"
+            android:entryValues="@array/listview_animation_values"
+            android:persistent="false"
+            android:defaultValue="0" />
+
+         <ListPreference
+            android:key="listview_interpolator"
+            android:dialogTitle="@string/listview_interpolator_title"
+            android:title="@string/listview_interpolator_title"
+            android:entries="@array/listview_interpolator_entries"
+            android:entryValues="@array/listview_interpolator_values"
+            android:persistent="false"
+            android:defaultValue="0" />
+
+         <ListPreference
+            android:key="listview_cache"
+            android:dialogTitle="@string/listview_cache_title"
+            android:title="@string/listview_cache_title"
+            android:entries="@array/listview_cache_entries"
+            android:entryValues="@array/listview_cache_values"
+            android:persistent="false"
+            android:defaultValue="0" />
+
+        <com.android.settings.pac.TestListView
+            android:summary="@string/listview_test_summary"
+            android:title="@string/listview_test" />
+
+        <com.android.settings.pac.utils.AppMultiSelectListPreference
+            android:key="listview_blacklist"
+            android:persistent="false"
+            android:title="@string/listview_blacklist_title"
+            android:summary="@string/listview_blacklist_summary" />
+
+        <com.android.settings.pac.utils.SeekBarPreferenceCham
+            android:key="listview_anim_duration"
+            android:persistent="false"
+            android:title="@string/listview_duration_title"
+            android:summary="@string/animation_duration_summary"
+            android:max="100"
+            settings:min="0"
+            settings:interval="1"
+            settings:unitsLeft=""
+            settings:unitsRight="* 15ms"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+            android:key="category_system_toast"
+            android:title="@string/toast_animation_title">
+
+        <ListPreference
+            android:key="toast_animation"
+            android:title="@string/toast_choose_animation"
+            android:entries="@array/toast_animation_entries"
+            android:entryValues="@array/anim_controls_values"
+            android:persistent="false" />
+
+        <Preference
+            android:key="toast_test_animation"
+            android:title="@string/toast_test_animation" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
