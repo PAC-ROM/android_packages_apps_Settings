@@ -159,7 +159,7 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
     private void resetToDefault() {
         AlertDialog.Builder alertDialog  = new AlertDialog.Builder(getActivity());
         alertDialog.setTitle(R.string.profile_reset_title);
-        alertDialog.setMessage(R.string.animation_settings_reset_message);
+        alertDialog.setMessage(R.string.navigation_bar_dimensions_reset_message);
         alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Settings.PAC.putInt(getActivity().getContentResolver(),
