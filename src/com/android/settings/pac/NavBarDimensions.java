@@ -16,13 +16,18 @@
 
 package com.android.settings.pac;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
@@ -35,6 +40,8 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
     private static final String LIST_NAVIGATION_BAR_HEIGHT = "navigation_bar_height";
     private static final String LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE = "navigation_bar_height_landscape";
     private static final String LIST_NAVIGATION_BAR_WIDTH = "navigation_bar_width";
+
+    private static final int MENU_RESET = Menu.FIRST;
 
     ListPreference mNavigationBarHeight;
     ListPreference mNavigationBarHeightLandcape;
@@ -56,7 +63,6 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
         mNavigationBarHeightLandcape = (ListPreference) findPreference(LIST_NAVIGATION_BAR_HEIGHT_LANDSCAPE);
         if (ScreenType.isPhone(getActivity())) {
             prefSet.removePreference(mNavigationBarHeightLandcape);
-            mNavigationBarHeightLandcape = null;
         } else {
             mNavigationBarHeightLandcape.setOnPreferenceChangeListener(this);
         }
@@ -64,12 +70,12 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
         mNavigationBarWidth = (ListPreference) findPreference(LIST_NAVIGATION_BAR_WIDTH);
         if (!ScreenType.isPhone(getActivity())) {
             prefSet.removePreference(mNavigationBarWidth);
-            mNavigationBarWidth = null;
         } else {
             mNavigationBarWidth.setOnPreferenceChangeListener(this);
         }
 
         updateDimension();
+        setHasOptionsMenu(true);
     }
 
     private void updateDimension() {
@@ -82,9 +88,6 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
         }
         mNavigationBarHeight.setValue(String.valueOf(navigationBarHeight));
 
-        if (mNavigationBarHeightLandcape == null) {
-            return;
-        }
         int navigationBarHeightLandcape = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
         if (navigationBarHeightLandcape == -2) {
@@ -94,9 +97,6 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
         }
         mNavigationBarHeightLandcape.setValue(String.valueOf(navigationBarHeightLandcape));
 
-        if (mNavigationBarWidth == null) {
-            return;
-        }
         int navigationBarWidth = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_WIDTH, -2);
         if (navigationBarWidth == -2) {
@@ -138,4 +138,40 @@ public class NavBarDimensions extends SettingsPreferenceFragment implements
         updateDimension();
     }
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(com.android.internal.R.drawable.ic_menu_refresh)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetToDefault();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void resetToDefault() {
+        AlertDialog.Builder alertDialog  = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(R.string.profile_reset_title);
+        alertDialog.setMessage(R.string.animation_settings_reset_message);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Settings.PAC.putInt(getActivity().getContentResolver(),
+                        Settings.PAC.NAVIGATION_BAR_HEIGHT, -2);
+                Settings.PAC.putInt(getActivity().getContentResolver(),
+                        Settings.PAC.NAVIGATION_BAR_HEIGHT_LANDSCAPE, -2);
+                Settings.PAC.putInt(getActivity().getContentResolver(),
+                        Settings.PAC.NAVIGATION_BAR_WIDTH, -2);
+                updateDimension();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
+    }
 }

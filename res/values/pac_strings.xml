@@ -311,6 +311,7 @@
     <string name="unlock_set_unlock_mode_gesture">Gesture</string>
 
     <!-- Navigation Bar Dimensions -->
+    <string name="navigation_bar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navigation_bar_dimensions_title">Dimensions</string>
     <string name="navigation_bar_height_title">Navigation bar height</string>
     <string name="navigation_bar_height_summary">Navigation bar height while in portrait</string>
