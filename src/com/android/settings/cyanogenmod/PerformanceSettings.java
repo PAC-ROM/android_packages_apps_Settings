@@ -21,6 +21,8 @@ import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.SharedPreferences;
 import android.database.ContentObserver;
 import android.net.Uri;
@@ -50,6 +52,8 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
     private static final String CATEGORY_GRAPHICS = "perf_graphics_prefs";
 
     private static final String CATEGORY_PROCESSOR = "processor";
+    private static final String CATEGORY_IOSCHEDUlER = "ioscheduler";
+    private static final String CATEGORY_KERNEL_ADIUTOR = "kernel_adiutor";
 
     private static final String FORCE_HIGHEND_GFX_PREF = "pref_force_highend_gfx";
     private static final String FORCE_HIGHEND_GFX_PERSIST_PROP = "persist.sys.force_highendgfx";
@@ -58,6 +62,10 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
     private static final String KEY_DRAGONS_ARE_AWESOME = "pref_dragons_awesome";
 
     private SwitchPreference mForceHighEndGfx;
+    private PreferenceScreen mProcessor;
+    private PreferenceScreen mIOScheduler;
+    private PreferenceScreen mKernelAdiutor;
+    private PreferenceCategory mSystemCategory;
 
     private AlertDialog mAlertDialog;
 
@@ -78,6 +86,11 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
 
         PreferenceScreen prefSet = getPreferenceScreen();
 
+        mProcessor = (PreferenceScreen) prefSet.findPreference(CATEGORY_PROCESSOR);
+        mIOScheduler = (PreferenceScreen) prefSet.findPreference(CATEGORY_IOSCHEDUlER);
+        mKernelAdiutor = (PreferenceScreen) prefSet.findPreference(CATEGORY_KERNEL_ADIUTOR);
+        mSystemCategory = (PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM);
+
         // 1. always show performance profiles, if available on this device
         // 2. only show system / graphics options if dev mode enabled
         // 3. never show individual processor control if profiles enabled
@@ -86,13 +99,24 @@ public class PerformanceSettings extends SettingsPreferenceFragment {
         if (!mPowerManager.hasPowerProfiles()) {
             prefSet.removePreference(category);
         } else {
-            ((PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM)).removePreference(
-                    prefSet.findPreference(CATEGORY_PROCESSOR));
+            mSystemCategory.removePreference(mProcessor);
         }
 
-        category = (PreferenceCategory) prefSet.findPreference(CATEGORY_SYSTEM);
+        boolean supported = false;
+        try {
+            supported = (getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0).versionCode >= 96);
+        } catch (PackageManager.NameNotFoundException e) {
+        }
+
+        if (!supported) {
+            mSystemCategory.removePreference(mKernelAdiutor);
+        } else {
+            mSystemCategory.removePreference(mProcessor);
+            mSystemCategory.removePreference(mIOScheduler);
+        }
+
         if (!showAdvancedPerfSettings()) {
-            prefSet.removePreference(category);
+            prefSet.removePreference(mSystemCategory);
         }
 
         category = (PreferenceCategory) prefSet.findPreference(CATEGORY_GRAPHICS);

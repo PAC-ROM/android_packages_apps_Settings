@@ -206,6 +206,9 @@
     <string name="heads_up_time_out_10sec">10 seconds</string>
     <string name="heads_up_time_out_never">Never</string>
 
+    <!-- Kernel Adiutor -->
+    <string name="advanced_options">Advanced options</string>
+
     <!-- ListView animation -->
     <string name="listview_title">ListView</string>
     <string name="listview_animation_title">ListView Animation</string>
