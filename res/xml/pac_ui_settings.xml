@@ -81,6 +81,7 @@
             android:id="@+id/recent_panel"
             android:fragment="com.android.settings.pac.RecentPanel"
             android:title="@string/recent_panel_category"
+            android:icon="@drawable/ic_settings_recents"
             />
 
     <!-- Status bar -->
