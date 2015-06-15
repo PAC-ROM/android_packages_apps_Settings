@@ -59,7 +59,7 @@
     <!-- Animation Controls -->
     <string name="system_anim_title">System</string>
     <string name="animation_settings_reset_message">Reset all animation settings to default?</string>
-    <string name="animation_settings_title">Animation Controls</string>
+    <string name="animation_settings_title">Animation controls</string>
     <string name="animation_exit_only_title">Enter only animation</string>
     <string name="animation_reverse_exit_title">Reverse exit animation</string>
     <string name="activity_open_title">Open In-App Activity Animation</string>
@@ -139,9 +139,9 @@
     <string name="color_default">Default</string>
 
     <!-- Gesture Anywhere -->
-    <string name="gesture_anywhere_title">Gesture Anywhere</string>
-    <string name="gesture_anywhere_enabled_title">Gesture Anywhere</string>
-    <string name="gesture_anywhere_enabled_summary">Enable the Gesture Anywhere feature</string>
+    <string name="gesture_anywhere_title">Gesture anywhere</string>
+    <string name="gesture_anywhere_enabled_title">Gesture anywhere</string>
+    <string name="gesture_anywhere_enabled_summary">Enable the Gesture anywhere feature</string>
     <string name="gesture_anywhere_position_title">Location</string>
     <string name="gesture_anywhere_position_left">Left edge</string>
     <string name="gesture_anywhere_position_right">Right edge</string>
