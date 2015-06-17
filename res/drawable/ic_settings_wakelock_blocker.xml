@@ -14,7 +14,22 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
 
-<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
-        android:src="@drawable/ic_wakelock_blocker"
-        android:tint="@*android:color/material_deep_teal_500"/>
+    <path
+        android:fillColor="#009688"
+        android:pathData="M12,21.5c-2.7,0-5.1-1.1-6.8-2.9v4.7h13.7v-4.7C17.1,20.4,14.7,21.5,12,21.5z" />
+    <path
+        android:fillColor="#009688"
+        android:pathData="M12,3.3c-4.8,0-8.7,3.9-8.7,8.8c0,4.8,3.9,8.7,8.7,8.7c4.8,0,8.8-3.9,8.8-8.7C20.8,7.2,16.8,3.3,12,3.3z
+M11.9,18.7c-3.6,0-6.6-3-6.6-6.7c0-1.8,0.7-3.4,1.8-4.6l8.1,10.4C14.2,18.3,13.1,18.7,11.9,18.7z
+M16.9,16.3L8.8,6
+c0.9-0.5,2-0.8,3.1-0.8c3.6,0,6.6,3,6.6,6.7C18.5,13.6,17.9,15.1,16.9,16.3z" />
+    <path
+        android:fillColor="#009688"
+        android:pathData="M12,2.5c2.7,0,5.1,1.1,6.8,2.9V0.7H5.2v4.7C6.9,3.6,9.3,2.5,12,2.5z" />
+</vector>
