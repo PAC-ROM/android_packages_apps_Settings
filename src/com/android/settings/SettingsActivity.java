@@ -1263,14 +1263,16 @@ public class SettingsActivity extends Activity
                         removeTile = true;
                     }
                 } else if (id == R.id.performance_settings) {
-                    final boolean forceHide =
-                            getResources().getBoolean(R.bool.config_hidePerformanceSettings);
-                    if (forceHide ||
-                            !(pm.hasPowerProfiles() || (showDev && !Build.TYPE.equals("user")))) {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("com.grarak.kerneladiutor", 0).versionCode >= 96);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+
+                    if (!supported) {
                         removeTile = true;
                     }
                 } else if (id == R.id.supersu_settings) {
-                    // Embedding into Settings is supported from SuperSU v1.85 and up
                     boolean supported = false;
                     try {
                         supported = (getPackageManager().getPackageInfo("eu.chainfire.supersu", 0).versionCode >= 185);
