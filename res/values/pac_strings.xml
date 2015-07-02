@@ -543,10 +543,6 @@
     <!-- SuperSU -->
     <string name="supersu_title">SuperSU</string>
 
-    <!-- Task Manager -->
-    <string name="task_manager_title">Task Manager</string>
-    <string name="task_manager_summary">Show the task manager button above the Quick Settings Panel</string>
-
     <!-- Toast Animations -->
     <string name="toast_animation_title">Toast</string>
     <string name="toast_choose_animation">Choose Animation</string>
