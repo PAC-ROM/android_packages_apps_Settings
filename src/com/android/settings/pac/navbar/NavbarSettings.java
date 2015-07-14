@@ -24,14 +24,15 @@ import android.content.ContentResolver;
 import android.content.DialogInterface;
 import android.database.ContentObserver;
 import android.os.Bundle;
-import android.preference.SwitchPreference;
 import android.os.Handler;
 import android.os.UserHandle;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
+import android.preference.SlimSeekBarPreference;
 import android.provider.Settings;
 import com.android.internal.util.pac.DeviceUtils;
 import com.android.internal.util.pac.Action;
@@ -53,6 +54,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String NAVIGATION_BAR_IME_ARROWS = "navigation_bar_ime_arrows";
     private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
     private static final String KEY_NAVIGATION_BAR_RING = "navigation_bar_ring";
+    private static final String DIM_NAV_BUTTONS = "dim_nav_buttons";
+    private static final String DIM_NAV_BUTTONS_TIMEOUT = "dim_nav_buttons_timeout";
+    private static final String DIM_NAV_BUTTONS_ALPHA = "dim_nav_buttons_alpha";
+    private static final String DIM_NAV_BUTTONS_ANIMATE = "dim_nav_buttons_animate";
+    private static final String DIM_NAV_BUTTONS_ANIMATE_DURATION = "dim_nav_buttons_animate_duration";
 
     private static final int DLG_NAVIGATION_WARNING = 0;
 
@@ -70,6 +76,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private SwitchPreference mNavigationBarImeArrows;
     private SwitchPreference mNavigationBarLeftPref;
     private PreferenceScreen mNavigationBarRing;
+    private SwitchPreference mDimNavButtons;
+    private SlimSeekBarPreference mDimNavButtonsTimeout;
+    private SlimSeekBarPreference mDimNavButtonsAlpha;
+    private SwitchPreference mDimNavButtonsAnimate;
+    private SlimSeekBarPreference mDimNavButtonsAnimateDuration;
 
     private SettingsObserver mSettingsObserver = new SettingsObserver(new Handler());
     private final class SettingsObserver extends ContentObserver {
@@ -134,6 +145,33 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavigationBarImeArrows = (SwitchPreference) findPreference(NAVIGATION_BAR_IME_ARROWS);
         mNavigationBarImeArrows.setOnPreferenceChangeListener(this);
 
+        mDimNavButtons = (SwitchPreference) findPreference(DIM_NAV_BUTTONS);
+        mDimNavButtons.setOnPreferenceChangeListener(this);
+
+        mDimNavButtonsTimeout = (SlimSeekBarPreference) findPreference(DIM_NAV_BUTTONS_TIMEOUT);
+        mDimNavButtonsTimeout.setDefault(3000);
+        mDimNavButtonsTimeout.isMilliseconds(true);
+        mDimNavButtonsTimeout.setInterval(1);
+        mDimNavButtonsTimeout.minimumValue(100);
+        mDimNavButtonsTimeout.multiplyValue(100);
+        mDimNavButtonsTimeout.setOnPreferenceChangeListener(this);
+
+        mDimNavButtonsAlpha = (SlimSeekBarPreference) findPreference(DIM_NAV_BUTTONS_ALPHA);
+        mDimNavButtonsAlpha.setDefault(50);
+        mDimNavButtonsAlpha.setInterval(1);
+        mDimNavButtonsAlpha.setOnPreferenceChangeListener(this);
+
+        mDimNavButtonsAnimate = (SwitchPreference) findPreference(DIM_NAV_BUTTONS_ANIMATE);
+        mDimNavButtonsAnimate.setOnPreferenceChangeListener(this);
+
+        mDimNavButtonsAnimateDuration = (SlimSeekBarPreference) findPreference(DIM_NAV_BUTTONS_ANIMATE_DURATION);
+        mDimNavButtonsAnimateDuration.setDefault(2000);
+        mDimNavButtonsAnimateDuration.isMilliseconds(true);
+        mDimNavButtonsAnimateDuration.setInterval(1);
+        mDimNavButtonsAnimateDuration.minimumValue(100);
+        mDimNavButtonsAnimateDuration.multiplyValue(100);
+        mDimNavButtonsAnimateDuration.setOnPreferenceChangeListener(this);
+
         updateSettings();
     }
 
@@ -177,6 +215,36 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavigationBarImeArrows.setChecked(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_IME_ARROWS, 0) == 1);
 
+        if (mDimNavButtons != null) {
+            mDimNavButtons.setChecked(Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DIM_NAV_BUTTONS, 0) == 1);
+        }
+
+        if (mDimNavButtonsTimeout != null) {
+            final int dimTimeout = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DIM_NAV_BUTTONS_TIMEOUT, 3000);
+            // minimum 100 is 1 interval of the 100 multiplier
+            mDimNavButtonsTimeout.setInitValue((dimTimeout / 100) - 1);
+        }
+
+        if (mDimNavButtonsAlpha != null) {
+            int alphaScale = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DIM_NAV_BUTTONS_ALPHA, 50);
+            mDimNavButtonsAlpha.setInitValue(alphaScale);
+        }
+
+        if (mDimNavButtonsAnimate != null) {
+            mDimNavButtonsAnimate.setChecked(Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DIM_NAV_BUTTONS_ANIMATE, 0) == 1);
+        }
+
+        if (mDimNavButtonsAnimateDuration != null) {
+            final int animateDuration = Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.DIM_NAV_BUTTONS_ANIMATE_DURATION, 2000);
+            // minimum 100 is 1 interval of the 100 multiplier
+            mDimNavButtonsAnimateDuration.setInitValue((animateDuration / 100) - 1);
+        }
+
         updateNavbarPreferences(enableNavigationBar || disableHardwareKeys);
     }
 
@@ -194,6 +262,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mNavigationBarLeftPref.setEnabled(show);
         }
         mNavigationBarRing.setEnabled(show);
+        mDimNavButtons.setEnabled(show);
+        mDimNavButtonsTimeout.setEnabled(show);
+        mDimNavButtonsAlpha.setEnabled(show);
+        mDimNavButtonsAnimate.setEnabled(show);
+        mDimNavButtonsAnimateDuration.setEnabled(show);
     }
 
     @Override
@@ -234,6 +307,29 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.PAC.putInt(getActivity().getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_IME_ARROWS,
                     ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mDimNavButtons) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.DIM_NAV_BUTTONS,
+                    ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mDimNavButtonsTimeout) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.DIM_NAV_BUTTONS_TIMEOUT, Integer.parseInt((String) newValue));
+            return true;
+        } else if (preference == mDimNavButtonsAlpha) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.DIM_NAV_BUTTONS_ALPHA, Integer.parseInt((String) newValue));
+            return true;
+        } else if (preference == mDimNavButtonsAnimate) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.DIM_NAV_BUTTONS_ANIMATE,
+                    ((Boolean) newValue) ? 1 : 0);
+            return true;
+        } else if (preference == mDimNavButtonsAnimateDuration) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.DIM_NAV_BUTTONS_ANIMATE_DURATION,
+                Integer.parseInt((String) newValue));
             return true;
         }
         return false;
