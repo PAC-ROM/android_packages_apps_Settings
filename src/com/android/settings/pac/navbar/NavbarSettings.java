@@ -40,6 +40,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_BUTTON = "navbar_button_settings";
     private static final String PREF_STYLE_DIMEN = "navbar_style_dimen_settings";
     private static final String PREF_NAVIGATION_BAR_CAN_MOVE = "navbar_can_move";
+    private static final String NAVIGATION_BAR_IME_ARROWS = "navigation_bar_ime_arrows";
 
     private int mNavBarMenuDisplayValue;
 
@@ -49,6 +50,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     SwitchPreference mNavigationBarCanMove;
     PreferenceScreen mButtonPreference;
     PreferenceScreen mStyleDimenPreference;
+    SwitchPreference mNavigationBarImeArrows;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,6 +94,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 DeviceUtils.isPhone(getActivity()) ? 1 : 0) == 0);
         mNavigationBarCanMove.setOnPreferenceChangeListener(this);
 
+        mNavigationBarImeArrows = (SwitchPreference) findPreference(NAVIGATION_BAR_IME_ARROWS);
+        mNavigationBarImeArrows.setChecked(Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_IME_ARROWS, 0) == 1);
+        mNavigationBarImeArrows.setOnPreferenceChangeListener(this);
+
         updateNavbarPreferences(true);
     }
 
@@ -102,6 +109,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavigationBarCanMove.setEnabled(show);
         mMenuDisplayLocation.setEnabled(show
             && mNavBarMenuDisplayValue != 1);
+        mNavigationBarImeArrows.setEnabled(show);
     }
 
     @Override
@@ -126,6 +134,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.PAC.putInt(getActivity().getContentResolver(),
                     Settings.PAC.NAVIGATION_BAR_CAN_MOVE,
                     ((Boolean) newValue) ? 0 : 1);
+            return true;
+        } else if (preference == mNavigationBarImeArrows) {
+            Settings.PAC.putInt(getActivity().getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_IME_ARROWS,
+                    ((Boolean) newValue) ? 1 : 0);
             return true;
         }
         return false;
