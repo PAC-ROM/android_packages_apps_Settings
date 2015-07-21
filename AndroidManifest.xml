@@ -2362,13 +2362,32 @@
 
         <!-- Start of PAC Activities -->
 
-        <!-- Gesture anywhere -->
         <activity android:name=".pac.gestureanywhere.GestureAnywhereBuilderActivity" />
         <activity android:name=".pac.gestureanywhere.GestureAnywhereCreateGestureActivity" />
 
         <activity android:name=".pac.AppSidebar" />
 
         <activity android:name=".pac.PACSettings" />
+
+        <activity android:name=".pac.pacstats.PreviewActivity" />
+
+        <receiver
+            android:name=".pac.pacstats.ReportingServiceManager"
+            android:enabled="true"
+            android:exported="false"
+            android:label="ReportingServiceManager" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".pac.pacstats.ReportingService"
+            android:enabled="true"
+            android:exported="false"
+            android:label="ReportingService" >
+        </service>
 
         <!-- End of PAC Activities -->
     </application>

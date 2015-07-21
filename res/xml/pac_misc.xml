@@ -25,7 +25,14 @@
             android:title="@string/wakelock_blocker_title"
             android:fragment="com.android.settings.pac.WakeLockBlocker"
             android:layout="@layout/pac_wakelock_preference"
-            android:icon="@drawable/ic_settings_wakelock_blocker"
+            />
+
+    <!-- PAC Stats -->
+    <PreferenceScreen
+            android:key="pac_stats"
+            android:title="@string/pac_stats_title"
+            android:fragment="com.android.settings.pac.pacstats.PACStats"
+            android:layout="@layout/pac_stats_preference"
             />
 
 </PreferenceScreen>
