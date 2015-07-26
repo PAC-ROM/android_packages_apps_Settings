@@ -23,8 +23,6 @@
     <string name="doze_list_mode_summary">Option to configure doze mode</string>
     <string name="doze_pulse_title">Time settings</string>
     <string name="doze_pulse_duration_in_title">Fade in</string>
-    <string name="doze_pulse_duration_in_title_pickup">Fade in (Pickup)</string>
-    <string name="doze_pulse_duration_in_title_intent">Fade in (Intent)</string>
     <string name="doze_pulse_duration_in_summary"></string>
     <string name="doze_pulse_duration_visible_title">Visible duration</string>
     <string name="doze_pulse_duration_visible_summary"></string>

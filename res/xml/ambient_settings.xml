@@ -71,30 +71,6 @@
                 android:persistent="false" />
 
             <com.android.settings.pac.utils.SeekBarPreferenceCham
-                android:key="doze_pulse_in_pickup"
-                android:title="@string/doze_pulse_duration_in_title_pickup"
-                android:max="2000"
-                settings:minimum="100"
-                settings:defaultVal="300"
-                settings:interval="100"
-                settings:unitsLeft=""
-                settings:unitsRight=" ms"
-                android:dependency="doze_overwrite_value"
-                android:persistent="false" />
-
-            <com.android.settings.pac.utils.SeekBarPreferenceCham
-                android:key="doze_pulse_in_intent"
-                android:title="@string/doze_pulse_duration_in_title_intent"
-                android:max="2000"
-                settings:minimum="100"
-                settings:defaultVal="300"
-                settings:interval="100"
-                settings:unitsLeft=""
-                settings:unitsRight=" ms"
-                android:dependency="doze_overwrite_value"
-                android:persistent="false" />
-
-            <com.android.settings.pac.utils.SeekBarPreferenceCham
                 android:key="doze_pulse_visible"
                 android:title="@string/doze_pulse_duration_visible_title"
                 android:max="5000"
