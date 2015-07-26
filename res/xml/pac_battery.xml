@@ -33,4 +33,14 @@
         android:entries="@array/status_bar_battery_percentage_entries"
         android:entryValues="@array/status_bar_battery_percentage_values" />
 
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="status_bar_battery_bar_high"
+        android:title="@string/status_bar_battery_bar_high_color"
+        android:defaultValue="0xff99cc00" />
+
+    <net.margaritov.preference.colorpicker.ColorPickerPreference
+        android:key="status_bar_battery_bar_low"
+        android:title="@string/status_bar_battery_bar_low_color"
+        android:defaultValue="0xffff4444" />
+
 </PreferenceScreen>

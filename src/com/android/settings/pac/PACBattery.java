@@ -16,8 +16,10 @@
 
 package com.android.settings.pac;
 
+import android.app.AlertDialog;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -25,10 +27,14 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.SearchIndexableResource;
 import android.provider.Settings;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +46,20 @@ public class PACBattery extends SettingsPreferenceFragment implements
 
     private static final String STATUS_BAR_BATTERY_STYLE = "status_bar_battery_style";
     private static final String STATUS_BAR_SHOW_BATTERY_PERCENT = "status_bar_show_battery_percent";
+    private static final String STATUS_BAR_BATTERY_BAR_HIGH = "status_bar_battery_bar_high";
+    private static final String STATUS_BAR_BATTERY_BAR_LOW = "status_bar_battery_bar_low";
 
     private static final int STATUS_BAR_BATTERY_STYLE_HIDDEN = 4;
     private static final int STATUS_BAR_BATTERY_STYLE_TEXT = 6;
     private static final int STATUS_BAR_BATTERY_STYLE_BAR = 7;
 
+    private static final int MENU_RESET = Menu.FIRST;
+    private static final int DLG_RESET = 0;
+
     private ListPreference mStatusBarBattery;
     private ListPreference mStatusBarBatteryShowPercent;
+    private ColorPickerPreference mStatusBarBatteryBarHigh;
+    private ColorPickerPreference mStatusBarBatteryBarLow;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -70,13 +83,25 @@ public class PACBattery extends SettingsPreferenceFragment implements
                 Settings.System.STATUS_BAR_SHOW_BATTERY_PERCENT, 0);
         mStatusBarBatteryShowPercent.setValue(String.valueOf(batteryShowPercent));
         mStatusBarBatteryShowPercent.setSummary(mStatusBarBatteryShowPercent.getEntry());
-        enableStatusBarBatteryDependents(batteryStyle);
         mStatusBarBatteryShowPercent.setOnPreferenceChangeListener(this);
+
+        mStatusBarBatteryBarHigh =
+                (ColorPickerPreference) findPreference(STATUS_BAR_BATTERY_BAR_HIGH);
+        mStatusBarBatteryBarHigh.setOnPreferenceChangeListener(this);
+
+        mStatusBarBatteryBarLow =
+                (ColorPickerPreference) findPreference(STATUS_BAR_BATTERY_BAR_LOW);
+        mStatusBarBatteryBarLow.setOnPreferenceChangeListener(this);
+
+        updateColors();
+        enableStatusBarBatteryDependents(batteryStyle);
+        setHasOptionsMenu(true);
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        updateColors();
     }
 
     @Override
@@ -108,8 +133,38 @@ public class PACBattery extends SettingsPreferenceFragment implements
             mStatusBarBatteryShowPercent.setSummary(
                     mStatusBarBatteryShowPercent.getEntries()[index]);
             return true;
+        } else if (preference == mStatusBarBatteryBarHigh) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.BATTERY_BAR_HIGH_COLOR, intHex);
+            return true;
+        } else if (preference == mStatusBarBatteryBarLow) {
+            String hex = ColorPickerPreference.convertToARGB(
+                    Integer.valueOf(String.valueOf(objValue)));
+            preference.setSummary(hex);
+            int intHex = ColorPickerPreference.convertToColorInt(hex);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.BATTERY_BAR_LOW_COLOR, intHex);
+            return true;
         }
         return false;
+    }
+
+    private void updateColors() {
+        int highColor = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.BATTERY_BAR_HIGH_COLOR, 0xff99cc00);
+        String hexHighColor = String.format("#%08x", (0xff99cc00 & highColor));
+        mStatusBarBatteryBarHigh.setSummary(hexHighColor);
+        mStatusBarBatteryBarHigh.setNewPreviewColor(highColor);
+
+        int lowColor = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.BATTERY_BAR_LOW_COLOR, 0xffff4444);
+        String hexlowColor = String.format("#%08x", (0xffff4444 & lowColor));
+        mStatusBarBatteryBarLow.setSummary(hexlowColor);
+        mStatusBarBatteryBarLow.setNewPreviewColor(lowColor);
     }
 
     private void enableStatusBarBatteryDependents(int batteryIconStyle) {
@@ -120,6 +175,48 @@ public class PACBattery extends SettingsPreferenceFragment implements
         } else {
             mStatusBarBatteryShowPercent.setEnabled(true);
         }
+        if (batteryIconStyle == STATUS_BAR_BATTERY_STYLE_BAR) {
+            mStatusBarBatteryBarHigh.setEnabled(true);
+            mStatusBarBatteryBarLow.setEnabled(true);
+        } else {
+            mStatusBarBatteryBarHigh.setEnabled(false);
+            mStatusBarBatteryBarLow.setEnabled(false);
+        }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.add(0, MENU_RESET, 0, R.string.profile_reset_title)
+                .setIcon(com.android.internal.R.drawable.ic_menu_refresh)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_RESET:
+                resetToDefault();
+                return true;
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
+    private void resetToDefault() {
+        AlertDialog.Builder alertDialog  = new AlertDialog.Builder(getActivity());
+        alertDialog.setTitle(R.string.profile_reset_title);
+        alertDialog.setMessage(R.string.recent_panel_reset_message);
+        alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Settings.PAC.putInt(getActivity().getContentResolver(),
+                        Settings.PAC.BATTERY_BAR_HIGH_COLOR, 0xff99cc00);
+                Settings.PAC.putInt(getActivity().getContentResolver(),
+                        Settings.PAC.BATTERY_BAR_LOW_COLOR, 0xffff4444);
+                updateColors();
+            }
+        });
+        alertDialog.setNegativeButton(R.string.cancel, null);
+        alertDialog.create().show();
     }
 
     public static final Indexable.SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
