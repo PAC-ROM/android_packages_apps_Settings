@@ -524,8 +524,8 @@
     <!-- Status bar - Battery -->
     <string name="status_bar_battery_style_bar">Bar</string>
     <string name="status_bar_battery_style_dotted_circle">Dotted circle</string>
-    <string name="status_bar_battery_bar_high_color">High level color"</string>
-    <string name="status_bar_battery_bar_low_color">Low level color"</string>
+    <string name="status_bar_battery_bar_high_color">High level color</string>
+    <string name="status_bar_battery_bar_low_color">Low level color</string>
 
     <!-- Status bar date -->
     <string name="status_bar_date_title">Date</string>
