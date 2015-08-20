@@ -366,6 +366,10 @@
     <string name="network_traffic_color_reset">Reset color</string>
     <string name="network_traffic_color_reset_message">Reset network traffic color to default?</string>
 
+    <!-- Notification drawer header -->
+    <string name="status_bar_custom_header_title">Custom header image</string>
+    <string name="status_bar_custom_header_summary">Enable notification panel header image</string>
+
     <!-- OmniSwitch Recents -->
     <string name="hardware_keys_action_omniswitch">OmniSwitch recents</string>
     <string name="omniswitch_title">OmniSwitch</string>
