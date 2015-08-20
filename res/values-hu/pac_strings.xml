@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Szundi mód beállításának lehetősége</string>
   <string name="doze_pulse_title">Idő beállítások</string>
   <string name="doze_pulse_duration_in_title">Előtűnés</string>
-  <string name="doze_pulse_duration_in_title_pickup">Előtűnés (Felvétel)</string>
-  <string name="doze_pulse_duration_in_title_intent">Előtűnés (Szándék)</string>
   <string name="doze_pulse_duration_visible_title">Látható időtartam</string>
   <string name="doze_pulse_duration_out_title">Eltűnés</string>
   <string name="doze_pulse_on_notifications_title">Értesítésekre pulzál</string>
@@ -151,7 +149,7 @@
   <string name="trigger_bottom_title">Indítási magasság</string>
   <string name="trigger_bottom_summary">Indítási terület magasságának beállítása</string>
   <string name="picker_activities">Tevékenységek</string>
-  <string name="select_custom_app_title">Válasszon egyéni alkalmazást</string>
+  <string name="select_custom_app_title">Egyéni alkalmazás kiválasztása</string>
   <string name="select_custom_activity_title">Egyéni tevékenység választása</string>
   <string name="profile_applist_title">Alkalmazások</string>
   <string name="category_heads_up">Lebegő értesítések</string>
@@ -276,6 +274,8 @@
   <string name="network_traffic_autohide_summary">Rejtse el a forgalom indikátort, ha nincs tevékenység</string>
   <string name="network_traffic_autohide_threshold">Tétlenségi küszöb</string>
   <string name="network_traffic_color_style">Szín stílus</string>
+  <string name="network_traffic_color_reset">Szín visszaállítása</string>
+  <string name="network_traffic_color_reset_message">Hálózati forgalom színeinek visszaállítása alapértelmezettre?</string>
   <string name="hardware_keys_action_omniswitch">OmniSwitch előzmények</string>
   <string name="pac_settings_title">PAC beállítások</string>
   <string name="pac_settings_misc">Egyebek</string>
@@ -288,6 +288,24 @@
   <string name="pac_settings_battery">Akkumulátor beállítások</string>
   <string name="pac_version">PAC verzió</string>
   <string name="pac_version_default">Ismeretlen</string>
+  <string name="pac_stats_title">PAC Statisztika</string>
+  <string name="pac_stats_summary">Segítsen, hogy ez a ROM jobb legyen, és válassza a névtelen statisztikai adatok küldését</string>
+  <string name="pac_stats_warning_title">Leírás</string>
+  <string name="pac_stats_warning">A PAC Statisztika engedélyezésével lehetővé teszi a nem személyes adatok küldését a ROM fejlesztői felé, hogy
+        nyomon követhessék az egyedülálló telepítéseket a különböző eszközökön. Az elküldött információ egy egyedi azonosítót tartalmaz,
+        mely nem veszélyezteti a magán, vagy személyes adatait. Az adatok minden indításkor elküldésre kerülnek.\n\nAz elküldött adatok megtekintéséhez érintse meg: \"Adatok előnézete\".</string>
+  <string name="enable_reporting_title">Jelentések engedélyezése</string>
+  <string name="preview_data_title">Adatok előnézete</string>
+  <string name="view_stats_title">Statisztika megtekintése</string>
+  <string name="pac_learn_more">Tudjon meg többet</string>
+  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Tudjon meg többet&lt;/a&gt;</string>
+  <string name="preview_id_title">Egyedi azonosító</string>
+  <string name="preview_device_title">Eszköz</string>
+  <string name="preview_version_title">Verzió</string>
+  <string name="preview_country_title">Ország</string>
+  <string name="preview_carrier_title">Szolgáltató</string>
+  <string name="preview_romname_title">ROM neve</string>
+  <string name="preview_romversion_title">ROM verzió</string>
   <string name="performance_settings">Teljesítmény</string>
   <string name="smart_pulldown_title">Intelligens legördülő</string>
   <string name="smart_pulldown_summary">Nyissa meg a gyorsbeállításokat, amikor %1$s értesítés van jelen</string>
@@ -422,10 +440,12 @@
   <string name="animation_no_scroll_summary_off">Letiltva</string>
   <string name="use_custom_app_title">Egyéni alkalmazás használata</string>
   <string name="use_custom_app_summary">Egyéni alkalmazás használata a legutóbbi alkalmazások ablaka helyett</string>
-  <string name="select_custom_app_title">Válasszon egyéni alkalmazást</string>
+  <string name="select_custom_app_title">Egyéni alkalmazás kiválasztása</string>
   <string name="group_applications">Alkalmazások</string>
   <string name="status_bar_battery_style_bar">Bár</string>
   <string name="status_bar_battery_style_dotted_circle">Pontozott kör</string>
+  <string name="status_bar_battery_bar_high_color">Magas szint színe</string>
+  <string name="status_bar_battery_bar_low_color">Alacsony szint színe</string>
   <string name="status_bar_date_title">Dátum</string>
   <string name="status_bar_date_none">Rejtett (alapértelmezett)</string>
   <string name="status_bar_date_small">Kicsi</string>

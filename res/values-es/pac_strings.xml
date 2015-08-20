@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Configura el modo de la pantalla ambiente</string>
   <string name="doze_pulse_title">Ajustes de tiempo</string>
   <string name="doze_pulse_duration_in_title">Desvanecimiento de entrada</string>
-  <string name="doze_pulse_duration_in_title_pickup">Desvanecimiento (al recoger)</string>
-  <string name="doze_pulse_duration_in_title_intent">Desvanecimiento (sobre notificacion)</string>
   <string name="doze_pulse_duration_visible_title">Tiempo de visibilidad</string>
   <string name="doze_pulse_duration_out_title">Desvanecimiento de salida</string>
   <string name="doze_pulse_on_notifications_title">Pulso sobre notificaciones</string>
@@ -151,7 +149,7 @@
   <string name="trigger_bottom_title">Altura del gatillo</string>
   <string name="trigger_bottom_summary">Ajustar la altura de la zona del gatillo</string>
   <string name="picker_activities">Actividades</string>
-  <string name="select_custom_app_title">Seleccione la aplicación personalizada</string>
+  <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
   <string name="select_custom_activity_title">Seleccione actividad personalizada</string>
   <string name="profile_applist_title">Aplicaciones</string>
   <string name="category_heads_up">Notificaciones Heads up</string>
@@ -276,6 +274,8 @@
   <string name="network_traffic_autohide_summary">Ocultar el monitor de tráfico cuando no hay actividad</string>
   <string name="network_traffic_autohide_threshold">Límite de inactividad</string>
   <string name="network_traffic_color_style">Estilo de color</string>
+  <string name="network_traffic_color_reset">Restaurar color</string>
+  <string name="network_traffic_color_reset_message">¿Restablecer el color al predeterminado?</string>
   <string name="hardware_keys_action_omniswitch">Recientes OmniSwitch</string>
   <string name="pac_settings_title">Configuración de PAC</string>
   <string name="pac_settings_misc">Miscelaneos</string>
@@ -288,6 +288,22 @@
   <string name="pac_settings_battery">Opciones de batería</string>
   <string name="pac_version">Versión de PAC</string>
   <string name="pac_version_default">Desconocido</string>
+  <string name="pac_stats_title">Estadísticas de PAC</string>
+  <string name="pac_stats_summary">Ayuda a mejorar esta ROM, activando las estadísticas anónimas</string>
+  <string name="pac_stats_warning_title">Acerca de</string>
+  <string name="pac_stats_warning">Si usted activa las estadísticas de PAC, permite que información no personal sea enviada a los desarrolladores de la ROM para seguimiento de instalaciones únicas en dispositivos. La información presentada incluye un identificador único, que no comprometen su privacidad o datos de carácter personal. Los datos se somete durante cada boot.\n\nFor un ejemplo de los datos que es enviados, pulse en vista previa de datos.</string>
+  <string name="enable_reporting_title">Habilitar informes</string>
+  <string name="preview_data_title">Previsualizar datos</string>
+  <string name="view_stats_title">Ver estadísticas</string>
+  <string name="pac_learn_more">Más información</string>
+  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;más información&lt;/a&gt;</string>
+  <string name="preview_id_title">Identificador único</string>
+  <string name="preview_device_title">Dispositivo</string>
+  <string name="preview_version_title">Versión</string>
+  <string name="preview_country_title">País</string>
+  <string name="preview_carrier_title">Operadora móvil</string>
+  <string name="preview_romname_title">Nombre de la ROM</string>
+  <string name="preview_romversion_title">Versión de la ROM</string>
   <string name="performance_settings">Rendimiento</string>
   <string name="smart_pulldown_title">Despliegue Inteligente</string>
   <string name="smart_pulldown_summary">Abre el panel de Ajustes Rápidos cuando no hay notificaciones %1$s presentes</string>
@@ -422,10 +438,12 @@
   <string name="animation_no_scroll_summary_off">Deshabilitado</string>
   <string name="use_custom_app_title">Usar aplicación personalizada</string>
   <string name="use_custom_app_summary">Usar aplicación personalizada en vez del diálogo de aplicaciones recientes</string>
-  <string name="select_custom_app_title">Seleccione la aplicación personalizada</string>
+  <string name="select_custom_app_title">Seleccionar aplicación personalizada</string>
   <string name="group_applications">Aplicaciones</string>
   <string name="status_bar_battery_style_bar">Barras</string>
   <string name="status_bar_battery_style_dotted_circle">Circular punteado</string>
+  <string name="status_bar_battery_bar_high_color">Color de nivel alto</string>
+  <string name="status_bar_battery_bar_low_color">Color de nivel bajo</string>
   <string name="status_bar_date_title">Fecha</string>
   <string name="status_bar_date_none">Oculto (predeterminado)</string>
   <string name="status_bar_date_small">Pequeño</string>

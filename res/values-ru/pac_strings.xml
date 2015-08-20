@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Опция для настройки спящего режима</string>
   <string name="doze_pulse_title">Настройки времени</string>
   <string name="doze_pulse_duration_in_title">Появление</string>
-  <string name="doze_pulse_duration_in_title_pickup">Появление (Pickup)</string>
-  <string name="doze_pulse_duration_in_title_intent">Появление (Intent)</string>
   <string name="doze_pulse_duration_visible_title">Продолжительность</string>
   <string name="doze_pulse_duration_out_title">Исчезновение</string>
   <string name="doze_pulse_on_notifications_title">Пульсировать при уведомлениях</string>
@@ -154,7 +152,7 @@
   <string name="trigger_bottom_title">Высота области</string>
   <string name="trigger_bottom_summary">Отрегулируйте высоту области вызова</string>
   <string name="picker_activities">Активность</string>
-  <string name="select_custom_app_title">Выбрать свое приложение</string>
+  <string name="select_custom_app_title">Выберите пользовательское приложение</string>
   <string name="select_custom_activity_title">Выбрать пользовательское действие</string>
   <string name="profile_applist_title">Приложения</string>
   <string name="category_heads_up">Всплывающие уведомления</string>
@@ -288,6 +286,8 @@
   <string name="network_traffic_autohide_summary">Скрывать монитор трафика, когда передача данных не осуществляется</string>
   <string name="network_traffic_autohide_threshold">Порог неактивности</string>
   <string name="network_traffic_color_style">Цветовой стиль</string>
+  <string name="network_traffic_color_reset">Сбросить цвет</string>
+  <string name="network_traffic_color_reset_message">Сбросить цвет сетевого трафика?</string>
   <string name="hardware_keys_action_omniswitch">Недавние приложения OmniSwitch</string>
   <string name="omniswitch_title">OmniSwitch</string>
   <string name="pac_settings_title">Настройки PAC</string>
@@ -301,6 +301,25 @@
   <string name="pac_settings_battery">Параметры батареи</string>
   <string name="pac_version">Версия PAC</string>
   <string name="pac_version_default">Неизвестно</string>
+  <string name="pac_stats_title">PAC Stats</string>
+  <string name="pac_stats_summary">Помогите сделать эту прошивку лучше, отправляя анонимную статистику</string>
+  <string name="pac_stats_warning_title">О PAC Stats</string>
+  <string name="pac_stats_warning">Участие в PAC Stats разрешит отправлять данные, не являющиеся личными
+        разработчикам прошивки для отслеживания уникальных установок на устройствах. Отправленная информация включает уникальный идентификатор,
+        который не представляет опасности для ваших конфиденциальных или личных данных. Эти данные отправляются при каждой загрузке.\n\nДля примера отправляемых данных, нажмите на \"Предпросмотр данных\".</string>
+  <string name="enable_reporting_title">Включить передачу статистики</string>
+  <string name="preview_data_title">Предпросмотр данных</string>
+  <string name="preview_data_summary"> %s</string>
+  <string name="view_stats_title">Просмотреть статистику</string>
+  <string name="pac_learn_more">Узнать больше</string>
+  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Узнать больше&lt;/a&gt;</string>
+  <string name="preview_id_title">Уникальный ID</string>
+  <string name="preview_device_title">Устройство</string>
+  <string name="preview_version_title">Версия</string>
+  <string name="preview_country_title">Страна</string>
+  <string name="preview_carrier_title">Носитель</string>
+  <string name="preview_romname_title">Название прошивки</string>
+  <string name="preview_romversion_title">Версия прошивки</string>
   <string name="performance_settings">Производительность</string>
   <string name="smart_pulldown_title">Умные уведомления</string>
   <string name="smart_pulldown_summary">Открывать панель быстрых настроек при %1$s уведомлениях</string>
@@ -441,10 +460,12 @@
   <string name="animation_no_scroll_summary_off">Выключено</string>
   <string name="use_custom_app_title">Использовать пользовательское приложение</string>
   <string name="use_custom_app_summary">Использовать выбранное приложение вместо показа диалога недавних приложений</string>
-  <string name="select_custom_app_title">Выбрать свое приложение</string>
+  <string name="select_custom_app_title">Выберите пользовательское приложение</string>
   <string name="group_applications">Приложения</string>
   <string name="status_bar_battery_style_bar">Панель</string>
   <string name="status_bar_battery_style_dotted_circle">Пунктирный круг</string>
+  <string name="status_bar_battery_bar_high_color">Цвет высокого уровня заряда</string>
+  <string name="status_bar_battery_bar_low_color">Цвет низкого уровня заряда</string>
   <string name="status_bar_date_title">Дата</string>
   <string name="status_bar_date_none">Скрыта (по умолчанию)</string>
   <string name="status_bar_date_small">Маленькая</string>

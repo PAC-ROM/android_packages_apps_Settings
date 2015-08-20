@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Možnosti nastavení režimu Doze</string>
   <string name="doze_pulse_title">Nastavení času</string>
   <string name="doze_pulse_duration_in_title">Postupné zesílení</string>
-  <string name="doze_pulse_duration_in_title_pickup">Zesílení (Pickup)</string>
-  <string name="doze_pulse_duration_in_title_intent">Zesílení (záměr)</string>
   <string name="doze_pulse_duration_visible_title">Viditelné trvání</string>
   <string name="doze_pulse_duration_out_title">Postupné zeslabení</string>
   <string name="doze_pulse_on_notifications_title">Blikání při upozornění</string>
@@ -154,7 +152,7 @@
   <string name="trigger_bottom_title">Aktivační výška</string>
   <string name="trigger_bottom_summary">Upravte výšku aktivační oblasti</string>
   <string name="picker_activities">Aktivity</string>
-  <string name="select_custom_app_title">Zvolit vlastní aplikaci</string>
+  <string name="select_custom_app_title">Vyberte vlastní aplikaci</string>
   <string name="select_custom_activity_title">Zvolit vlastní aktivitu</string>
   <string name="profile_applist_title">Aplikace</string>
   <string name="category_heads_up">Plovoucí upozornění</string>
@@ -288,6 +286,8 @@
   <string name="network_traffic_autohide_summary">Skrýt indikátor datového provozu, pokud není žádná aktivita</string>
   <string name="network_traffic_autohide_threshold">Práh neaktivity</string>
   <string name="network_traffic_color_style">Barevný styl</string>
+  <string name="network_traffic_color_reset">Obnovit barvy</string>
+  <string name="network_traffic_color_reset_message">Obnovit původní barvu indikátoru síťové aktivity?</string>
   <string name="hardware_keys_action_omniswitch">Nedávné OmniSwitch</string>
   <string name="omniswitch_title">OmniSwitch</string>
   <string name="pac_settings_title">Nastavení PAC</string>
@@ -301,6 +301,23 @@
   <string name="pac_settings_battery">Nastavení baterie</string>
   <string name="pac_version">Verze PAC</string>
   <string name="pac_version_default">Neznámá</string>
+  <string name="pac_stats_title">PAC Statistiky</string>
+  <string name="pac_stats_summary">Vylepšit tuto ROM pomocí anonymní statistiky hlášení</string>
+  <string name="pac_stats_warning_title">Přečtěte si více</string>
+  <string name="pac_stats_warning">Přihlášení k PAC statistikám umožní odesílat ne-soukromá data vývojářům ROM, pro sledování instalací na různých zařízeních. Odeslané informace obsahují unikátní identifikátor, který nijak neohrožuje soukromá data. Data jsou odesílána při každém startu zařízení.\n\nNáhled odesílaných informací lze zobrazit pomocí tlačítka Náhled dat.</string>
+  <string name="enable_reporting_title">Povolit odesílání hlášení</string>
+  <string name="preview_data_title">Prohlédnout data</string>
+  <string name="preview_data_summary">%s</string>
+  <string name="view_stats_title">Zobrazit statistiky</string>
+  <string name="pac_learn_more">Další informace</string>
+  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Zjistit více&lt;/a&gt;</string>
+  <string name="preview_id_title">Unikátní ID</string>
+  <string name="preview_device_title">Zařízení</string>
+  <string name="preview_version_title">Verze</string>
+  <string name="preview_country_title">Země</string>
+  <string name="preview_carrier_title">Operátor</string>
+  <string name="preview_romname_title">Název ROM</string>
+  <string name="preview_romversion_title">Verze ROM</string>
   <string name="performance_settings">Výkon</string>
   <string name="smart_pulldown_title">Chytré rozbalení lišty</string>
   <string name="smart_pulldown_summary">Otevřít nabídku rychlého nastavení, když je přítomno %1$s upozornění</string>
@@ -441,10 +458,12 @@
   <string name="animation_no_scroll_summary_off">Zakázáno</string>
   <string name="use_custom_app_title">Použít vlastní aplikaci</string>
   <string name="use_custom_app_summary">Použít vlastní aplikace namísto dialogu nedávno použitých</string>
-  <string name="select_custom_app_title">Zvolit vlastní aplikaci</string>
+  <string name="select_custom_app_title">Vyberte vlastní aplikaci</string>
   <string name="group_applications">Aplikace</string>
   <string name="status_bar_battery_style_bar">Lišta</string>
   <string name="status_bar_battery_style_dotted_circle">Tečkovaný kruh</string>
+  <string name="status_bar_battery_bar_high_color">Barva vysoké úrovně</string>
+  <string name="status_bar_battery_bar_low_color">Barva nízké úrovně</string>
   <string name="status_bar_date_title">Datum</string>
   <string name="status_bar_date_none">Skryté (výchozí)</string>
   <string name="status_bar_date_small">Malý</string>

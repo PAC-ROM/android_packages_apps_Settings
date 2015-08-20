@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Параметр настроювання режиму сну</string>
   <string name="doze_pulse_title">Налаштування часу</string>
   <string name="doze_pulse_duration_in_title">Поява</string>
-  <string name="doze_pulse_duration_in_title_pickup">Зникнення (Pickup)</string>
-  <string name="doze_pulse_duration_in_title_intent">Зникнення (Intent)</string>
   <string name="doze_pulse_duration_visible_title">Видима затримка</string>
   <string name="doze_pulse_duration_out_title">Затухання</string>
   <string name="doze_pulse_on_notifications_title">Пульсувати при повідомленнях</string>
@@ -108,7 +106,7 @@
   <string name="trigger_width_title">Ширина тригера</string>
   <string name="trigger_width_summary">Відрегулюйте ширину області тригера</string>
   <string name="trigger_top_title">Положення тригера</string>
-  <string name="trigger_top_summary">Відрегулюйте вертикальну позицію області тригера</string>
+  <string name="trigger_top_summary">Відрегулюйте вертикальну позицію площі області виклику</string>
   <string name="trigger_bottom_title">Висота тригера</string>
   <string name="trigger_bottom_summary">Відрегулюйте висоту області тригера</string>
   <string name="seekbar_default">За замовчуванням</string>
@@ -147,11 +145,11 @@
   <string name="trigger_width_title">Ширина тригера</string>
   <string name="trigger_width_summary">Відрегулюйте ширину області тригера</string>
   <string name="trigger_top_title">Положення тригера</string>
-  <string name="trigger_top_summary">Відрегулюйте вертикальну позицію області тригера</string>
+  <string name="trigger_top_summary">Відрегулюйте вертикальну позицію площі області виклику</string>
   <string name="trigger_bottom_title">Висота тригера</string>
   <string name="trigger_bottom_summary">Відрегулюйте висоту області тригера</string>
   <string name="picker_activities">Активність</string>
-  <string name="select_custom_app_title">Вибрати власну програму</string>
+  <string name="select_custom_app_title">Вибрати користувацький додаток</string>
   <string name="select_custom_activity_title">Вибрати власну дію</string>
   <string name="profile_applist_title">Програми</string>
   <string name="category_heads_up">Спливаючі повідомлення</string>
@@ -422,7 +420,7 @@
   <string name="animation_no_scroll_summary_off">Вимкнено</string>
   <string name="use_custom_app_title">Використовувати власний додаток</string>
   <string name="use_custom_app_summary">Використовувати власний додаток, замість використання  діалогу з нещодавніми додатками</string>
-  <string name="select_custom_app_title">Вибрати власну програму</string>
+  <string name="select_custom_app_title">Вибрати користувацький додаток</string>
   <string name="group_applications">Додатки</string>
   <string name="status_bar_battery_style_bar">Панель</string>
   <string name="status_bar_battery_style_dotted_circle">Пунктирне коло</string>

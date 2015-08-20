@@ -22,8 +22,6 @@
   <string name="doze_list_mode_summary">Dozeモードの設定オプション</string>
   <string name="doze_pulse_title">時刻の設定</string>
   <string name="doze_pulse_duration_in_title">フェードイン</string>
-  <string name="doze_pulse_duration_in_title_pickup">フェードイン (ピックアップ)</string>
-  <string name="doze_pulse_duration_in_title_intent">フェードイン(インテント)</string>
   <string name="doze_pulse_duration_visible_title">表示時間を指定</string>
   <string name="doze_pulse_duration_out_title">フェードアウト</string>
   <string name="doze_pulse_on_notifications_title">パルスの通知</string>
@@ -152,7 +150,7 @@
   <string name="trigger_bottom_title">起動領域の高さ</string>
   <string name="trigger_bottom_summary">起動領域の高さを調整します</string>
   <string name="picker_activities">アクティビティ</string>
-  <string name="select_custom_app_title">カスタムのアプリを選択</string>
+  <string name="select_custom_app_title">カスタムアプリの選択</string>
   <string name="select_custom_activity_title">カスタムアクティビティを選択</string>
   <string name="profile_applist_title">アプリ</string>
   <string name="category_heads_up">Heads up通知</string>
@@ -286,6 +284,8 @@
   <string name="network_traffic_autohide_summary">データの送受信がない場合、通信量モニターを非表示にします。</string>
   <string name="network_traffic_autohide_threshold">非アクティブのしきい値</string>
   <string name="network_traffic_color_style">色のスタイル</string>
+  <string name="network_traffic_color_reset">色のリセット</string>
+  <string name="network_traffic_color_reset_message">ネットワーク通信量の色をデフォルトにリセットしますか？</string>
   <string name="hardware_keys_action_omniswitch">OmniSwitch 最近使用したアプリ</string>
   <string name="omniswitch_title">OmniSwitch</string>
   <string name="pac_settings_title">PAC設定</string>
@@ -299,6 +299,23 @@
   <string name="pac_settings_battery">バッテリーオプション</string>
   <string name="pac_version">PACバージョン</string>
   <string name="pac_version_default">不明</string>
+  <string name="pac_stats_title">PACの統計情報</string>
+  <string name="pac_stats_summary">匿名の統計情報の報告でこのROMが良くなるように支援します。</string>
+  <string name="pac_stats_warning_title">About</string>
+  <string name="pac_stats_warning">PACの統計情報の許可をすると、端末間のユニークインストール回数を調べるためにPACの開発者へ非個人情報の送信がされます。送信される情報にはユニークIDが含まれますが、プライバシーや個人データが危険にさらされることはありません。データはブート時に送信されます。\n\n送信されるデータの例は、「データをプレビュー」をタップして確認できます。</string>
+  <string name="enable_reporting_title">レポートを有効化</string>
+  <string name="preview_data_title">データのプレビュー</string>
+  <string name="preview_data_summary">%s</string>
+  <string name="view_stats_title">統計を表示</string>
+  <string name="pac_learn_more">詳細</string>
+  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;さらに詳しく&lt;/a&gt;</string>
+  <string name="preview_id_title">ユニークID</string>
+  <string name="preview_device_title">デバイス</string>
+  <string name="preview_version_title">バージョン </string>
+  <string name="preview_country_title">国</string>
+  <string name="preview_carrier_title">キャリア</string>
+  <string name="preview_romname_title">ROMの名前</string>
+  <string name="preview_romversion_title">ROMバージョン</string>
   <string name="performance_settings">パフォーマンス</string>
   <string name="smart_pulldown_title">スマートプルダウン</string>
   <string name="smart_pulldown_summary">%1$sの通知がある場合、クイック設定を開く</string>
@@ -439,10 +456,12 @@
   <string name="animation_no_scroll_summary_off">無効</string>
   <string name="use_custom_app_title">カスタムアプリを使用</string>
   <string name="use_custom_app_summary">最近のアプリダイアログの代わりにカスタムアプリを使用</string>
-  <string name="select_custom_app_title">カスタムのアプリを選択</string>
+  <string name="select_custom_app_title">カスタムアプリの選択</string>
   <string name="group_applications">アプリ</string>
   <string name="status_bar_battery_style_bar">棒グラフ</string>
   <string name="status_bar_battery_style_dotted_circle">点線の円</string>
+  <string name="status_bar_battery_bar_high_color">高レベルの色</string>
+  <string name="status_bar_battery_bar_low_color">低レベルの色</string>
   <string name="status_bar_date_title">日付</string>
   <string name="status_bar_date_none">非表示 (デフォルト)</string>
   <string name="status_bar_date_small">小</string>
