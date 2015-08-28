@@ -17,18 +17,15 @@
 package com.android.settings.pac.navbar;
 
 import android.os.Bundle;
-import android.preference.SwitchPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
 import android.provider.Settings;
-
 import com.android.internal.util.pac.DeviceUtils;
-
-import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 
 public class NavbarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -41,6 +38,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     private static final String PREF_STYLE_DIMEN = "navbar_style_dimen_settings";
     private static final String PREF_NAVIGATION_BAR_CAN_MOVE = "navbar_can_move";
     private static final String NAVIGATION_BAR_IME_ARROWS = "navigation_bar_ime_arrows";
+    private static final String KEY_NAVIGATION_BAR_LEFT = "navigation_bar_left";
 
     private int mNavBarMenuDisplayValue;
 
@@ -51,6 +49,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     PreferenceScreen mButtonPreference;
     PreferenceScreen mStyleDimenPreference;
     SwitchPreference mNavigationBarImeArrows;
+    SwitchPreference mNavigationBarLeftPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,6 +87,12 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mEnableNavigationBar.setChecked(enableNavigationBar);
             mEnableNavigationBar.setOnPreferenceChangeListener(this);
         }*/
+
+        mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
+        if (!DeviceUtils.isPhone(getActivity())) {
+            prefs.removePreference(mNavigationBarLeftPref);
+        }
+
         mNavigationBarCanMove = (SwitchPreference) findPreference(PREF_NAVIGATION_BAR_CAN_MOVE);
         mNavigationBarCanMove.setChecked(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_CAN_MOVE,
@@ -103,7 +108,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     }
 
     private void updateNavbarPreferences(boolean show) {
-        //mNavBarMenuDisplay.setEnabled(show);
+        mNavBarMenuDisplay.setEnabled(show);
         mButtonPreference.setEnabled(show);
         mStyleDimenPreference.setEnabled(show);
         mNavigationBarCanMove.setEnabled(show);
