@@ -71,7 +71,10 @@ public class GestureAnywhereBuilderActivity extends ListActivity
     // Type: long (id)
     private static final String GESTURES_INFO_ID = "gestures.info_id";
 
-    private final File mStoreFile = new File("/data/system", "ga_gestures");
+    private static final String gestureFile = "ga_gestures";
+    private final File gesturePath = new File(Environment.getExternalStorageDirectory() +
+                File.separator + ".pac" + File.separator + "gestureanywhere");
+    private final File mStoreFile = new File(gesturePath, gestureFile);
 
     private final Comparator<NamedGesture> mSorter = new Comparator<NamedGesture>() {
         public int compare(NamedGesture object1, NamedGesture object2) {
@@ -99,6 +102,10 @@ public class GestureAnywhereBuilderActivity extends ListActivity
 
         mAdapter = new GesturesAdapter(this);
         setListAdapter(mAdapter);
+
+        if (!gesturePath.exists()) {
+            gesturePath.mkdir();
+        }
 
         if (sStore == null) {
             sStore = GestureLibraries.fromFile(mStoreFile);
