@@ -16,6 +16,7 @@
 
 package com.android.settings.pac;
 
+import android.app.ActivityManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -28,11 +29,29 @@ public class PACNavigation extends SettingsPreferenceFragment implements
 
     private static final String TAG = "PACNavigation";
 
+    private static final String APP_SIDEBAR = "app_sidebar";
+    private static final String GESTURE_ANYWHERE = "gesture_anywhere";
+
+    private int mCurrentUserId = 0;
+    private PreferenceScreen mAppSidebar;
+    private PreferenceScreen mGestureAnywhere;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.pac_navigation);
+
+        PreferenceScreen prefs = getPreferenceScreen();
+
+        mAppSidebar = (PreferenceScreen) findPreference(APP_SIDEBAR);
+        mGestureAnywhere = (PreferenceScreen) findPreference(GESTURE_ANYWHERE);
+
+        mCurrentUserId = ActivityManager.getCurrentUser();
+        if (mCurrentUserId != 0) {
+            prefs.removePreference(mAppSidebar);
+            prefs.removePreference(mGestureAnywhere);
+        }
     }
 
     @Override

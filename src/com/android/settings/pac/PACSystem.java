@@ -16,6 +16,7 @@
 
 package com.android.settings.pac;
 
+import android.app.ActivityManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -28,11 +29,25 @@ public class PACSystem extends SettingsPreferenceFragment implements
 
     private static final String TAG = "PACSystem";
 
+    private static final String RECENT_PANEL = "recent_panel";
+
+    private int mCurrentUserId = 0;
+    private PreferenceScreen mRecentPanel;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.pac_system);
+
+        PreferenceScreen prefs = getPreferenceScreen();
+
+        mRecentPanel = (PreferenceScreen) findPreference(RECENT_PANEL);
+
+        mCurrentUserId = ActivityManager.getCurrentUser();
+        if (mCurrentUserId != 0) {
+            prefs.removePreference(mRecentPanel);
+        }
     }
 
     @Override
