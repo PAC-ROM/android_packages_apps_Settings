@@ -56,7 +56,7 @@
         settings:minimum="0"
         settings:defaultVal="0"
         settings:unitsLeft=""
-        settings:unitsRight="%"
+        settings:unitsRight=" %"
         android:defaultValue="0"
         android:dependency="sidebar_enable" />
 
@@ -67,12 +67,12 @@
         android:key="trigger_width"
         android:title="@string/trigger_width_title"
         android:summary="@string/trigger_width_summary"
-        android:defaultValue="4"
+        android:defaultValue="20"
         android:max="64"
         settings:minimum="4"
-        settings:defaultVal="4"
+        settings:defaultVal="20"
         settings:unitsLeft=""
-        settings:unitsRight="px"
+        settings:unitsRight=" px"
         android:dependency="sidebar_enable" />
 
     <com.android.settings.pac.utils.SeekBarPreferenceCham
@@ -80,11 +80,11 @@
         android:title="@string/trigger_top_title"
         android:summary="@string/trigger_top_summary"
         android:defaultValue="0"
-        android:max="99"
+        android:max="100"
         settings:minimum="0"
         settings:defaultVal="0"
         settings:unitsLeft=""
-        settings:unitsRight="%"
+        settings:unitsRight=" %"
         android:dependency="sidebar_enable" />
 
     <com.android.settings.pac.utils.SeekBarPreferenceCham
@@ -96,7 +96,7 @@
         settings:minimum="1"
         settings:defaultVal="100"
         settings:unitsLeft=""
-        settings:unitsRight="%"
+        settings:unitsRight=" %"
         android:dependency="sidebar_enable" />
 
 </PreferenceScreen>
