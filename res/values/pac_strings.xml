@@ -322,6 +322,7 @@
     <string name="navbar_style_dimen_title">Dimensions</string>
     <string name="navbar_button_title">Buttons</string>
     <string name="navbar_cat">Navigation bar</string>
+    <string name="navring_cat">Navigation ring</string>
     <string name="navbar_dimensions_reset_message">Reset all dimensions entries to default?</string>
     <string name="navbar_button_style_reset_message">Reset all style entries to default?</string>
     <string name="navigation_category">Navigation Bar</string>

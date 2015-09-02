@@ -326,14 +326,14 @@ public final class SearchIndexableResources {
                         Ranking.getRankForClassName(PACClockSetting.class.getName()),
                         R.xml.pac_clock_settings,
                         PACClockSetting.class.getName(),
-                        R.drawable.ic_settings_clock));
+                        R.drawable.ic_statusbarclock));
 
         sResMap.put(PACQuickSetting.class.getName(),
                 new SearchIndexableResource(
                         Ranking.getRankForClassName(PACQuickSetting.class.getName()),
                         R.xml.pac_quicksettings,
                         PACQuickSetting.class.getName(),
-                        R.drawable.ic_settings_quicksettings));
+                        R.drawable.ic_quicksettings));
     }
 
     private SearchIndexableResources() {

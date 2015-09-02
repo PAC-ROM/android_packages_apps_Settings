@@ -56,11 +56,10 @@
             android:dependency="use_slim_recents"
             android:key="recent_panel_scale"
             android:title="@string/recent_panel_scale_title"
-            android:max="100"
+            android:max="160"
             settings:minimum="60"
             settings:defaultVal="100"
-            settings:unitsLeft=""
-            settings:unitsRight=""/>
+            settings:interval="5" />
 
         <net.margaritov.preference.colorpicker.ColorPickerPreference
             android:dependency="use_slim_recents"
