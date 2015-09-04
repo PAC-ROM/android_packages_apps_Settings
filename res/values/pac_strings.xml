@@ -408,6 +408,9 @@
     <!-- Performance settings -->
     <string name="performance_settings">Performance</string>
 
+    <!-- Updater settings -->
+    <string name="updater_settings">ROM Updater</string>
+
     <!-- Pie Control -->
     <string name="pie_control_title">PIE</string>
     <string name="pie_control_summary">Enable pie controls</string>
