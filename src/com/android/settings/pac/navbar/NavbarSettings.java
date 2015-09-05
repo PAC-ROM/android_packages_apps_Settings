@@ -16,6 +16,7 @@
 
 package com.android.settings.pac.navbar;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
@@ -36,6 +37,7 @@ import com.android.internal.util.pac.DeviceUtils;
 import com.android.internal.util.pac.Action;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import cyanogenmod.hardware.CMHardwareManager;
 
 public class NavbarSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
@@ -56,16 +58,18 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
 
     private int mNavBarMenuDisplayValue;
 
-    ListPreference mMenuDisplayLocation;
-    ListPreference mNavBarMenuDisplay;
-    SwitchPreference mEnableNavigationBar;
-    SwitchPreference mDisableHardwareKeys;
-    SwitchPreference mNavigationBarCanMove;
-    PreferenceScreen mButtonPreference;
-    PreferenceScreen mStyleDimenPreference;
-    SwitchPreference mNavigationBarImeArrows;
-    SwitchPreference mNavigationBarLeftPref;
-    PreferenceScreen mNavigationBarRing;
+    private CMHardwareManager mHardware;
+
+    private ListPreference mMenuDisplayLocation;
+    private ListPreference mNavBarMenuDisplay;
+    private SwitchPreference mEnableNavigationBar;
+    private SwitchPreference mDisableHardwareKeys;
+    private SwitchPreference mNavigationBarCanMove;
+    private PreferenceScreen mButtonPreference;
+    private PreferenceScreen mStyleDimenPreference;
+    private SwitchPreference mNavigationBarImeArrows;
+    private SwitchPreference mNavigationBarLeftPref;
+    private PreferenceScreen mNavigationBarRing;
 
     private SettingsObserver mSettingsObserver = new SettingsObserver(new Handler());
     private final class SettingsObserver extends ContentObserver {
@@ -90,6 +94,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final Activity activity = getActivity();
+        mHardware = CMHardwareManager.getInstance(activity);
 
         // Load the preferences from an XML resource
         addPreferencesFromResource(R.xml.navbar_settings);
@@ -143,18 +150,19 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
 
         boolean enableNavigationBar = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_SHOW,
-                Action.isNavBarDefault(getActivity()) ? 1 : 0) == 1 ||
-                Settings.Secure.getInt(getContentResolver(),
+                Action.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
+
+        boolean disableHardwareKeys = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 1) == 1;
 
-        if (Action.isNavBarDefault(getActivity())) {
+        if (mHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
+            prefs.removePreference(mEnableNavigationBar);
+            mDisableHardwareKeys.setChecked(disableHardwareKeys);
+            mDisableHardwareKeys.setOnPreferenceChangeListener(this);
+        } else {
             prefs.removePreference(mDisableHardwareKeys);
             mEnableNavigationBar.setChecked(enableNavigationBar);
             mEnableNavigationBar.setOnPreferenceChangeListener(this);
-        } else {
-            prefs.removePreference(mEnableNavigationBar);
-            mDisableHardwareKeys.setChecked(enableNavigationBar);
-            mDisableHardwareKeys.setOnPreferenceChangeListener(this);
         }
 
         if (mNavigationBarCanMove != null) {
@@ -165,7 +173,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mNavigationBarImeArrows.setChecked(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NAVIGATION_BAR_IME_ARROWS, 0) == 1);
 
-        updateNavbarPreferences(enableNavigationBar);
+        updateNavbarPreferences(enableNavigationBar || disableHardwareKeys);
     }
 
     private void updateNavbarPreferences(boolean show) {
