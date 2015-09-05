@@ -1287,6 +1287,16 @@ public class SettingsActivity extends Activity
                     if (!supported) {
                         removeTile = true;
                     }
+                } else if (id == R.id.updater_settings) {
+                    boolean supported = false;
+                    try {
+                        supported = (getPackageManager().getPackageInfo("com.gocanarytel.updater", 0).versionCode >= 300);
+                    } catch (PackageManager.NameNotFoundException e) {
+                    }
+
+                    if (!supported) {
+                        removeTile = true;
+                    }
                 } else if (id == R.id.supersu_settings) {
                     boolean supported = false;
                     try {
