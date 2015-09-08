@@ -155,12 +155,16 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         boolean disableHardwareKeys = Settings.Secure.getInt(getContentResolver(),
                 Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 1) == 1;
 
-        if (mHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE)) {
-            prefs.removePreference(mEnableNavigationBar);
+        if (mHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE) &&
+                !Action.isNavBarDefault(getActivity())) {
             mDisableHardwareKeys.setChecked(disableHardwareKeys);
             mDisableHardwareKeys.setOnPreferenceChangeListener(this);
+            prefs.removePreference(mEnableNavigationBar);
         } else {
             prefs.removePreference(mDisableHardwareKeys);
+        }
+
+        if (mEnableNavigationBar != null) {
             mEnableNavigationBar.setChecked(enableNavigationBar);
             mEnableNavigationBar.setOnPreferenceChangeListener(this);
         }
