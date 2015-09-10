@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2013 The ChameleonOS Open Source Project
+ * This code has been modified. Portions copyright (C) 2015 The PAC-ROM Project.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.android.settings.pac.utils;
 
 import android.content.Context;
@@ -15,7 +32,7 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import com.android.settings.R;
 
-public class SeekBarPreferenceCham extends Preference implements OnSeekBarChangeListener {
+public class PacSeekBarPreference extends Preference implements OnSeekBarChangeListener {
 
     private final String TAG = getClass().getName();
 
@@ -35,12 +52,12 @@ public class SeekBarPreferenceCham extends Preference implements OnSeekBarChange
 
     private TextView mStatusText;
 
-    public SeekBarPreferenceCham(Context context, AttributeSet attrs) {
+    public PacSeekBarPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
         initPreference(context, attrs);
     }
 
-    public SeekBarPreferenceCham(Context context, AttributeSet attrs, int defStyle) {
+    public PacSeekBarPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initPreference(context, attrs);
     }
@@ -57,8 +74,7 @@ public class SeekBarPreferenceCham extends Preference implements OnSeekBarChange
         mMinValue = attrs.getAttributeIntValue(SETTINGS, "minimum", 0);
         mDefaultValue = attrs.getAttributeIntValue(SETTINGS, "defaultVal", -1);
         mUnitsLeft = getAttributeStringValue(attrs, SETTINGS, "unitsLeft", "");
-        String units = getAttributeStringValue(attrs, SETTINGS, "units", "");
-        mUnitsRight = getAttributeStringValue(attrs, SETTINGS, "unitsRight", units);
+        mUnitsRight = getAttributeStringValue(attrs, SETTINGS, "unitsRight", "");
         try {
             String newInterval = attrs.getAttributeValue(SETTINGS, "interval");
             if(newInterval != null)
@@ -130,7 +146,7 @@ public class SeekBarPreferenceCham extends Preference implements OnSeekBarChange
     }
 
     /**
-     * Update a SeekBarPreferenceCham view with our current state
+     * Update a PacSeekBarPreference view with our current state
      * @param view
      */
     protected void updateView(View view) {

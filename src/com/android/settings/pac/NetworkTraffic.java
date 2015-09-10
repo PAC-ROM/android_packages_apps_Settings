@@ -32,7 +32,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class NetworkTraffic extends SettingsPreferenceFragment
@@ -52,7 +52,7 @@ public class NetworkTraffic extends SettingsPreferenceFragment
     private ListPreference mNetTrafficUnit;
     private ListPreference mNetTrafficPeriod;
     private CheckBoxPreference mNetTrafficAutohide;
-    private SeekBarPreferenceCham mNetTrafficAutohideThreshold;
+    private PacSeekBarPreference mNetTrafficAutohideThreshold;
 
     private static final int MENU_RESET = Menu.FIRST;
     private static final int DEFAULT_TRAFFIC_COLOR = 0xffffffff;
@@ -84,7 +84,7 @@ public class NetworkTraffic extends SettingsPreferenceFragment
         mNetTrafficAutohide.setOnPreferenceChangeListener(this);
 
         mNetTrafficAutohideThreshold =
-            (SeekBarPreferenceCham) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
+            (PacSeekBarPreference) prefSet.findPreference(NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD);
         int netTrafficAutohideThreshold = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.NETWORK_TRAFFIC_AUTOHIDE_THRESHOLD, 10);
             mNetTrafficAutohideThreshold.setValue(netTrafficAutohideThreshold / 1);

@@ -45,10 +45,9 @@
         <attr name="useDefaultController" format="boolean" />
     </declare-styleable>
 
-    <!-- For SeekBarPreferenceCham -->
-    <declare-styleable name="SeekBarPreferenceCham">
+    <!-- For PacSeekBarPreference -->
+    <declare-styleable name="PacSeekBarPreference">
         <attr name="defaultVal" format="integer" />
-        <attr name="maximum" format="integer" />
         <attr name="minimum" format="integer" />
         <attr name="unitsLeft" format="string" />
         <attr name="unitsRight" format="string" />

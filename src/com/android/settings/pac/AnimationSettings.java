@@ -35,7 +35,7 @@ import com.android.internal.util.pac.AwesomeAnimationHelper;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.pac.utils.AppMultiSelectListPreference;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -86,8 +86,8 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
     private ListPreference mWallpaperIntraOpen;
     private ListPreference mWallpaperIntraClose;
     private ListPreference mTaskOpenBehind;
-    private SeekBarPreferenceCham mAnimationDuration;
-    private SeekBarPreferenceCham mListViewDuration;
+    private PacSeekBarPreference mAnimationDuration;
+    private PacSeekBarPreference mListViewDuration;
     private ListPreference mListViewAnimation;
     private ListPreference mListViewInterpolator;
     private ListPreference mListViewCache;
@@ -229,7 +229,7 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
 
         int defaultDuration = Settings.PAC.getInt(mResolver,
                 Settings.PAC.ANIMATION_CONTROLS_DURATION, 25);
-        mAnimationDuration = (SeekBarPreferenceCham) prefSet.findPreference(ANIMATION_DURATION);
+        mAnimationDuration = (PacSeekBarPreference) prefSet.findPreference(ANIMATION_DURATION);
         mAnimationDuration.setValue(defaultDuration);
         mAnimationDuration.setOnPreferenceChangeListener(this);
 
@@ -257,7 +257,7 @@ public class AnimationSettings extends SettingsPreferenceFragment  implements
 
         int listviewDuration = Settings.PAC.getInt(mResolver,
                 Settings.PAC.LISTVIEW_DURATION, 25);
-        mListViewDuration = (SeekBarPreferenceCham) prefSet.findPreference(LISTVIEW_ANIM_DURATION);
+        mListViewDuration = (PacSeekBarPreference) prefSet.findPreference(LISTVIEW_ANIM_DURATION);
         mListViewDuration.setValue(listviewDuration);
         mListViewDuration.setOnPreferenceChangeListener(this);
 

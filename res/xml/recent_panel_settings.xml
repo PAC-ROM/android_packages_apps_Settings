@@ -52,7 +52,7 @@
             android:summary="@string/recent_panel_show_topmost_summary"
             android:persistent="false" />
 
-        <com.android.settings.pac.utils.SeekBarPreferenceCham
+        <com.android.settings.pac.utils.PacSeekBarPreference
             android:dependency="use_slim_recents"
             android:key="recent_panel_scale"
             android:title="@string/recent_panel_scale_title"

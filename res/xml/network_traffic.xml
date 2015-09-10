@@ -55,13 +55,12 @@
         android:dependency="network_traffic_state"
         android:defaultValue="false" />
 
-    <com.android.settings.pac.utils.SeekBarPreferenceCham
+    <com.android.settings.pac.utils.PacSeekBarPreference
         android:key="network_traffic_autohide_threshold"
         android:title="@string/network_traffic_autohide_threshold"
         android:max="100"
         settings:minimum="0"
         settings:defaultVal="10"
-        settings:unitsLeft=""
         settings:unitsRight=" kB/s"
         android:dependency="network_traffic_autohide"
         android:persistent="false" />

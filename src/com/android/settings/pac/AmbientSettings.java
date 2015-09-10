@@ -35,7 +35,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.pac.sensor.ShakeSensorManager;
 import com.android.settings.pac.utils.PacSwitchPreference;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 
@@ -62,9 +62,9 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
     private int mOldAccValue;
     private SwitchPreference mDozePreference;
     private ListPreference mDozeListMode;
-    private SeekBarPreferenceCham mDozePulseIn;
-    private SeekBarPreferenceCham mDozePulseVisible;
-    private SeekBarPreferenceCham mDozePulseOut;
+    private PacSeekBarPreference mDozePulseIn;
+    private PacSeekBarPreference mDozePulseVisible;
+    private PacSeekBarPreference mDozePulseOut;
     private ListPreference mDozeShakeThreshold;
     private PacSwitchPreference mDozeTimeMode;
     private ShakeSensorManager mShakeSensorManager;
@@ -81,19 +81,19 @@ public class AmbientSettings extends SettingsPreferenceFragment implements
         mDozePreference = (SwitchPreference) findPreference(KEY_DOZE);
         mDozePreference.setOnPreferenceChangeListener(this);
 
-        mDozePulseIn = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_IN);
+        mDozePulseIn = (PacSeekBarPreference) findPreference(KEY_DOZE_PULSE_IN);
         int dozePulseIn = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.DOZE_PULSE_DURATION_IN, 900);
         mDozePulseIn.setValue(dozePulseIn / 1);
         mDozePulseIn.setOnPreferenceChangeListener(this);
 
-        mDozePulseVisible = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_VISIBLE);
+        mDozePulseVisible = (PacSeekBarPreference) findPreference(KEY_DOZE_PULSE_VISIBLE);
         int dozePulseVisible = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.DOZE_PULSE_DURATION_IN, 3000);
         mDozePulseVisible.setValue(dozePulseVisible / 1);
         mDozePulseVisible.setOnPreferenceChangeListener(this);
 
-        mDozePulseOut = (SeekBarPreferenceCham) findPreference(KEY_DOZE_PULSE_OUT);
+        mDozePulseOut = (PacSeekBarPreference) findPreference(KEY_DOZE_PULSE_OUT);
         int dozePulseOut = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.DOZE_PULSE_DURATION_IN, 600);
         mDozePulseOut.setValue(dozePulseOut / 1);

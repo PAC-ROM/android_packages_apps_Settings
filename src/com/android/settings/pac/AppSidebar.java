@@ -24,7 +24,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 
 public class AppSidebar extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener, Preference.OnPreferenceClickListener {
@@ -40,12 +40,12 @@ public class AppSidebar extends SettingsPreferenceFragment implements
     private static final String KEY_TRIGGER_BOTTOM = "trigger_bottom";
 
     private SwitchPreference mEnabledPref;
-    private SeekBarPreferenceCham mTransparencyPref;
+    private PacSeekBarPreference mTransparencyPref;
     private ListPreference mPositionPref;
     private CheckBoxPreference mHideLabelsPref;
-    private SeekBarPreferenceCham mTriggerWidthPref;
-    private SeekBarPreferenceCham mTriggerTopPref;
-    private SeekBarPreferenceCham mTriggerBottomPref;
+    private PacSeekBarPreference mTriggerWidthPref;
+    private PacSeekBarPreference mTriggerTopPref;
+    private PacSeekBarPreference mTriggerBottomPref;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,22 +69,22 @@ public class AppSidebar extends SettingsPreferenceFragment implements
         mPositionPref.setValue(String.valueOf(position));
         updatePositionSummary(position);
 
-        mTransparencyPref = (SeekBarPreferenceCham) findPreference(KEY_TRANSPARENCY);
+        mTransparencyPref = (PacSeekBarPreference) findPreference(KEY_TRANSPARENCY);
         mTransparencyPref.setValue(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.APP_SIDEBAR_TRANSPARENCY, 0));
         mTransparencyPref.setOnPreferenceChangeListener(this);
 
-        mTriggerWidthPref = (SeekBarPreferenceCham) findPreference(KEY_TRIGGER_WIDTH);
+        mTriggerWidthPref = (PacSeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
         mTriggerWidthPref.setValue(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.APP_SIDEBAR_TRIGGER_WIDTH, 10));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
-        mTriggerTopPref = (SeekBarPreferenceCham) findPreference(KEY_TRIGGER_TOP);
+        mTriggerTopPref = (PacSeekBarPreference) findPreference(KEY_TRIGGER_TOP);
         mTriggerTopPref.setValue(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.APP_SIDEBAR_TRIGGER_TOP, 0));
         mTriggerTopPref.setOnPreferenceChangeListener(this);
 
-        mTriggerBottomPref = (SeekBarPreferenceCham) findPreference(KEY_TRIGGER_BOTTOM);
+        mTriggerBottomPref = (PacSeekBarPreference) findPreference(KEY_TRIGGER_BOTTOM);
         mTriggerBottomPref.setValue(Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.APP_SIDEBAR_TRIGGER_HEIGHT, 100));
         mTriggerBottomPref.setOnPreferenceChangeListener(this);

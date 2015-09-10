@@ -30,7 +30,7 @@ import android.view.MenuItem;
 import com.android.settings.DialogCreatable;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 public class RecentPanel extends SettingsPreferenceFragment implements DialogCreatable,
@@ -56,7 +56,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
 
     private SwitchPreference mRecentsShowTopmost;
     private SwitchPreference mRecentPanelLeftyMode;
-    private SeekBarPreferenceCham mRecentPanelScale;
+    private PacSeekBarPreference mRecentPanelScale;
     private ListPreference mRecentPanelExpandedMode;
     private ColorPickerPreference mRecentPanelBgColor;
     private ColorPickerPreference mRecentCardBgColor;
@@ -259,7 +259,7 @@ public class RecentPanel extends SettingsPreferenceFragment implements DialogCre
         mRecentPanelLeftyMode.setOnPreferenceChangeListener(this);
 
         mRecentPanelScale =
-                (SeekBarPreferenceCham) findPreference(RECENT_PANEL_SCALE);
+                (PacSeekBarPreference) findPreference(RECENT_PANEL_SCALE);
         mRecentPanelScale.setValue(100);
         mRecentPanelScale.setOnPreferenceChangeListener(this);
 

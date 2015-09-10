@@ -32,7 +32,7 @@ import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.pac.utils.SeekBarPreferenceCham;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 
 public class PieTriggerSettings extends SettingsPreferenceFragment
         implements Preference.OnPreferenceChangeListener {
@@ -54,7 +54,7 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
 
     private SwitchPreference[] mTrigger = new SwitchPreference[4];
     private SwitchPreference mDisableImeTriggers;
-    private SeekBarPreferenceCham mSensitivity;
+    private PacSeekBarPreference mSensitivity;
 
     private ContentObserver mPieTriggerObserver = new ContentObserver(new Handler()) {
         @Override
@@ -79,7 +79,7 @@ public class PieTriggerSettings extends SettingsPreferenceFragment
         mDisableImeTriggers = (SwitchPreference) findPreference(PREF_PIE_DISABLE_IME_TRIGGERS);
         mDisableImeTriggers.setOnPreferenceChangeListener(this);
 
-        mSensitivity = (SeekBarPreferenceCham) findPreference(PIE_TRIGGER_SENSITIVITY);
+        mSensitivity = (PacSeekBarPreference) findPreference(PIE_TRIGGER_SENSITIVITY);
         int value = Settings.PAC.getInt(getContentResolver(),
                 Settings.PAC.PIE_TRIGGER_SENSITIVITY, 8);
         mSensitivity.setValue(value);

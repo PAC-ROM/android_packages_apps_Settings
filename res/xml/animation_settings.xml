@@ -122,7 +122,7 @@
             android:defaultValue="0"
             android:title="@string/task_open_behind_title" />
 
-        <com.android.settings.pac.utils.SeekBarPreferenceCham
+        <com.android.settings.pac.utils.PacSeekBarPreference
             android:key="animation_duration"
             android:persistent="false"
             android:title="@string/animation_duration_title"
@@ -130,8 +130,7 @@
             android:max="100"
             settings:min="0"
             settings:interval="1"
-            settings:unitsLeft=""
-            settings:unitsRight="* 15ms"
+            settings:unitsRight=" * 15ms"
             android:defaultValue="0" />
     </PreferenceCategory>
 
@@ -176,7 +175,7 @@
             android:title="@string/listview_blacklist_title"
             android:summary="@string/listview_blacklist_summary" />
 
-        <com.android.settings.pac.utils.SeekBarPreferenceCham
+        <com.android.settings.pac.utils.PacSeekBarPreference
             android:key="listview_anim_duration"
             android:persistent="false"
             android:title="@string/listview_duration_title"
@@ -184,10 +183,8 @@
             android:max="100"
             settings:min="0"
             settings:interval="1"
-            settings:unitsLeft=""
-            settings:unitsRight="* 15ms"
+            settings:unitsRight=" * 15ms"
             android:defaultValue="0" />
-
     </PreferenceCategory>
 
     <PreferenceCategory
