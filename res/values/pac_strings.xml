@@ -55,7 +55,8 @@
     <string name="pulse_only_mode">Pulse (default)</string>
 
     <!-- Animation Controls -->
-    <string name="system_anim_title">System</string>
+    <string name="system_animation_title">System animation</string>
+    <string name="system_animation_summary">Set up custom animations for the system</string>
     <string name="animation_settings_reset_message">Reset all animation settings to default?</string>
     <string name="animation_settings_title">Animation controls</string>
     <string name="animation_exit_only_title">Enter only animation</string>
@@ -215,8 +216,8 @@
     <string name="show_enter_key_summary">Force keyboard to show enter instead of emoticon key</string>
 
     <!-- ListView animation -->
-    <string name="listview_title">ListView</string>
-    <string name="listview_animation_title">ListView Animation</string>
+    <string name="listview_animation_title">ListView animation</string>
+    <string name="listview_animation_summary">Set up custom animations for the listview</string>
     <string name="listview_off">Off</string>
     <string name="listview_wave_left">Wave (Left)</string>
     <string name="listview_wave_right">Wave (Right)</string>
@@ -664,7 +665,8 @@
     <string name="supersu_title">SuperSU</string>
 
     <!-- Toast Animations -->
-    <string name="toast_animation_title">Toast</string>
+    <string name="toast_animation_title">Toast animation</string>
+    <string name="toast_animation_summary">Set up custom animations for the toast</string>
     <string name="toast_choose_animation">Choose Animation</string>
     <string name="toast_none_animation">None</string>
     <string name="toast_default_animation">Default</string>
