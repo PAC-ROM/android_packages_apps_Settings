@@ -58,7 +58,7 @@ import android.widget.Toast;
 
 import com.android.internal.util.pac.ActionChecker;
 import com.android.internal.util.pac.ActionConfig;
-import com.android.internal.util.pac.SlimActionConstants;
+import com.android.internal.util.pac.ActionConstants;
 import com.android.internal.util.pac.ActionHelper;
 import com.android.internal.util.pac.ImageHelper;
 import com.android.internal.util.pac.DeviceUtils;
@@ -153,9 +153,9 @@ public class ActionListViewSettings extends ListFragment implements
             public void remove(int which) {
                 ActionConfig item = mActionConfigsAdapter.getItem(which);
                 mActionConfigsAdapter.remove(item);
-                if (!ActionChecker.containsAction(mActivity, item, SlimActionConstants.ACTION_BACK)
+                if (!ActionChecker.containsAction(mActivity, item, ActionConstants.ACTION_BACK)
                         || !ActionChecker.containsAction(
-                        mActivity, item, SlimActionConstants.ACTION_HOME)) {
+                        mActivity, item, ActionConstants.ACTION_HOME)) {
                     mActionConfigsAdapter.insert(item, which);
                     showDialogInner(DLG_DELETION_NOT_ALLOWED, 0, false, false);
                 } else if (mDisableDeleteLastEntry && mActionConfigs.size() == 0) {
@@ -430,7 +430,7 @@ public class ActionListViewSettings extends ListFragment implements
                 deleteIconFileIfPresent(actionConfig, true);
                 actionConfig.setClickAction(action);
                 actionConfig.setClickActionDescription(description);
-                actionConfig.setIcon(SlimActionConstants.ICON_EMPTY);
+                actionConfig.setIcon(ActionConstants.ICON_EMPTY);
             }
         }
 
@@ -531,8 +531,8 @@ public class ActionListViewSettings extends ListFragment implements
         }
         ActionConfig actionConfig = new ActionConfig(
             action, description,
-            SlimActionConstants.ACTION_NULL, getResources().getString(R.string.shortcut_action_none),
-            SlimActionConstants.ICON_EMPTY);
+            ActionConstants.ACTION_NULL, getResources().getString(R.string.shortcut_action_none),
+            ActionConstants.ICON_EMPTY);
 
             mActionConfigsAdapter.add(actionConfig);
             showDisableMessage(false);
@@ -638,7 +638,7 @@ public class ActionListViewSettings extends ListFragment implements
             Drawable d = null;
             String iconUri = getItem(position).getIcon();
             if (iconUri == null) {
-                iconUri = SlimActionConstants.ICON_EMPTY;
+                iconUri = ActionConstants.ICON_EMPTY;
             }
             if (mActionMode == POWER_MENU_SHORTCUT) {
                 /* Disabled for now till slims power menu is back!!!!!!!!!!!!!!
@@ -656,9 +656,9 @@ public class ActionListViewSettings extends ListFragment implements
             }
 
             if (d != null) {
-                if ((iconUri.equals(SlimActionConstants.ICON_EMPTY) &&
+                if ((iconUri.equals(ActionConstants.ICON_EMPTY) &&
                         getItem(position).getClickAction().startsWith("**")) ||
-                    iconUri.startsWith(SlimActionConstants.SYSTEM_ICON_IDENTIFIER)) {
+                    iconUri.startsWith(ActionConstants.SYSTEM_ICON_IDENTIFIER)) {
                     d = ImageHelper.getColoredDrawable(d, getResources()
                             .getColor(R.color.dslv_icon_dark));
                 }
@@ -829,7 +829,7 @@ public class ActionListViewSettings extends ListFragment implements
 
                         for (int i = 0; i < getOwner().mActionDialogValues.length; i++) {
                             if (!getOwner().mActionDialogValues[i]
-                                    .equals(SlimActionConstants.ACTION_NULL)) {
+                                    .equals(ActionConstants.ACTION_NULL)) {
                                 finalEntriesList.add(getOwner().mActionDialogEntries[i]);
                                 finalValuesList.add(getOwner().mActionDialogValues[i]);
                             }
@@ -850,7 +850,7 @@ public class ActionListViewSettings extends ListFragment implements
                     .setItems(finalDialogEntries,
                         new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
-                            if (finalDialogValues[item].equals(SlimActionConstants.ACTION_APP)) {
+                            if (finalDialogValues[item].equals(ActionConstants.ACTION_APP)) {
                                 if (getOwner().mPicker != null) {
                                     getOwner().mPendingIndex = which;
                                     getOwner().mPendingLongpress = longpress;
@@ -880,7 +880,7 @@ public class ActionListViewSettings extends ListFragment implements
                             switch(which) {
                                 case 0: // Default
                                     getOwner().updateAction(null, null,
-                                        SlimActionConstants.ICON_EMPTY,
+                                        ActionConstants.ICON_EMPTY,
                                         getOwner().mPendingIndex, false);
                                     getOwner().mPendingIndex = -1;
                                     break;
@@ -974,7 +974,7 @@ public class ActionListViewSettings extends ListFragment implements
                 String name = icons.getString(position);
                 int separatorIndex = name.lastIndexOf(File.separator);
                 int periodIndex = name.lastIndexOf('.');
-                return SlimActionConstants.SYSTEM_ICON_IDENTIFIER
+                return ActionConstants.SYSTEM_ICON_IDENTIFIER
                     + name.substring(separatorIndex + 1, periodIndex);
             }
 
