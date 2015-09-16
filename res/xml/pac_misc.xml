@@ -19,20 +19,20 @@
         android:title="@string/pac_settings_misc"
         xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
 
-    <!-- Wakelock blocker -->
-    <PreferenceScreen
-            android:key="wakelock_blocker"
-            android:title="@string/wakelock_blocker_title"
-            android:fragment="com.android.settings.pac.WakeLockBlocker"
-            android:layout="@layout/pac_wakelock_preference"
-            />
-
     <!-- PAC Stats -->
     <PreferenceScreen
             android:key="pac_stats"
             android:title="@string/pac_stats_title"
             android:fragment="com.android.settings.pac.pacstats.PACStats"
             android:layout="@layout/pac_stats_preference"
+            />
+
+    <!-- Wakelock blocker -->
+    <PreferenceScreen
+            android:key="wakelock_blocker"
+            android:title="@string/wakelock_blocker_title"
+            android:fragment="com.android.settings.pac.WakeLockBlocker"
+            android:layout="@layout/pac_wakelock_preference"
             />
 
 </PreferenceScreen>

@@ -27,20 +27,20 @@
             android:layout="@layout/pac_notifdrawer_preference"
             />
 
-    <!-- Quick Settings Panel -->
-    <PreferenceScreen
-            android:key="notification_drawer_settings"
-            android:title="@string/qs_category_title"
-            android:fragment="com.android.settings.pac.PACQuickSetting"
-            android:layout="@layout/pac_quicksetting_preference"
-            />
-
     <!-- Notification manager -->
     <PreferenceScreen
             android:id="@+id/notification_manager"
             android:title="@string/notification_manager"
             android:fragment="com.android.settings.notification.NotificationManagerSettings"
             android:layout="@layout/pac_notifmanager_preference"
+            />
+
+    <!-- Quick Settings Panel -->
+    <PreferenceScreen
+            android:key="notification_drawer_settings"
+            android:title="@string/qs_category_title"
+            android:fragment="com.android.settings.pac.PACQuickSetting"
+            android:layout="@layout/pac_quicksetting_preference"
             />
 
 </PreferenceScreen>
