@@ -16,8 +16,8 @@
 
 package com.android.settings.pac;
 
-import android.app.ActivityManager;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
@@ -32,7 +32,6 @@ public class PACNavigation extends SettingsPreferenceFragment implements
     private static final String APP_SIDEBAR = "app_sidebar";
     private static final String GESTURE_ANYWHERE = "gesture_anywhere";
 
-    private int mCurrentUserId = 0;
     private PreferenceScreen mAppSidebar;
     private PreferenceScreen mGestureAnywhere;
 
@@ -47,8 +46,7 @@ public class PACNavigation extends SettingsPreferenceFragment implements
         mAppSidebar = (PreferenceScreen) findPreference(APP_SIDEBAR);
         mGestureAnywhere = (PreferenceScreen) findPreference(GESTURE_ANYWHERE);
 
-        mCurrentUserId = ActivityManager.getCurrentUser();
-        if (mCurrentUserId != 0) {
+        if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
             prefs.removePreference(mAppSidebar);
             prefs.removePreference(mGestureAnywhere);
         }

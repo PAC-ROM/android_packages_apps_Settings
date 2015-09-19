@@ -16,11 +16,12 @@
 
 package com.android.settings.pac;
 
-import android.app.ActivityManager;
 import android.os.Bundle;
+import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -31,7 +32,6 @@ public class PACSystem extends SettingsPreferenceFragment implements
 
     private static final String RECENT_PANEL = "recent_panel";
 
-    private int mCurrentUserId = 0;
     private PreferenceScreen mRecentPanel;
 
     @Override
@@ -44,9 +44,10 @@ public class PACSystem extends SettingsPreferenceFragment implements
 
         mRecentPanel = (PreferenceScreen) findPreference(RECENT_PANEL);
 
-        mCurrentUserId = ActivityManager.getCurrentUser();
-        if (mCurrentUserId != 0) {
+        if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
             prefs.removePreference(mRecentPanel);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.USE_SLIM_RECENTS, 0);
         }
     }
 
