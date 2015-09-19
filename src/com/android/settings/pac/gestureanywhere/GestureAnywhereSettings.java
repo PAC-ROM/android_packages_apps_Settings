@@ -70,7 +70,7 @@ public class GestureAnywhereSettings extends SettingsPreferenceFragment implemen
 
         mTriggerWidthPref = (PacSeekBarPreference) findPreference(KEY_TRIGGER_WIDTH);
         mTriggerWidthPref.setValue(Settings.PAC.getInt(getContentResolver(),
-                Settings.PAC.GESTURE_ANYWHERE_TRIGGER_WIDTH, 10));
+                Settings.PAC.GESTURE_ANYWHERE_TRIGGER_WIDTH, 20));
         mTriggerWidthPref.setOnPreferenceChangeListener(this);
 
         mTriggerTopPref = (PacSeekBarPreference) findPreference(KEY_TRIGGER_TOP);
