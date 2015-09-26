@@ -199,7 +199,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 1) == 1;
 
         if (mHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE) &&
-                !Action.isNavBarDefault(getActivity())) {
+                !Action.isNavBarDefault(getActivity()) &&
+                UserHandle.myUserId() == UserHandle.USER_OWNER) {
             mDisableHardwareKeys.setChecked(disableHardwareKeys);
             mDisableHardwareKeys.setOnPreferenceChangeListener(this);
             prefs.removePreference(mEnableNavigationBar);
