@@ -49,7 +49,6 @@
   <string name="pocket_only_mode">Карман</string>
   <string name="shake_pulse_mode">Встряхивание и пульсация</string>
   <string name="pulse_only_mode">Пульсация (по умолчанию)</string>
-  <string name="system_anim_title">Система</string>
   <string name="animation_settings_reset_message">Сбросить все настройки анимации к стандартным?</string>
   <string name="animation_settings_title">Управление анимацией</string>
   <string name="animation_exit_only_title">Только анимация входа</string>
@@ -182,8 +181,6 @@
   <string name="heads_up_time_out_8sec">8 секунд</string>
   <string name="heads_up_time_out_10sec">10 секунд</string>
   <string name="heads_up_time_out_never">Никогда</string>
-  <string name="listview_title">Список</string>
-  <string name="listview_animation_title">Анимация списков</string>
   <string name="listview_off">Выключено</string>
   <string name="listview_wave_left">Волна (Слева)</string>
   <string name="listview_wave_right">Волна (справа)</string>
@@ -256,10 +253,13 @@
   <string name="navigation_bar_size_40_dp">40 dp</string>
   <string name="navigation_bar_size_42_dp">42 dp</string>
   <string name="navigation_bar_size_0_dp">0 dp (выкл)</string>
+  <string name="navigation_menu_right">Справа</string>
+  <string name="navigation_menu_left">Слева</string>
   <string name="navigation_bar_height_title">Высота панели навигации</string>
   <string name="navigation_bar_height_landscape_title">Высота панели в ландшафтном режиме</string>
   <string name="navigation_bar_height_landscape_summary">Высота панели навигации в ландшафтном режиме.</string>
   <string name="navigation_bar_width_title">Ширина панели навигации</string>
+  <string name="default_string">По умолчанию</string>
   <string name="traffic_category">Индикаторы трафика</string>
   <string name="network_traffic_title">Сетевой трафик</string>
   <string name="show_network_traffic_state">Сетевой трафик в строке состояния</string>
@@ -365,6 +365,7 @@
   <string name="shortcut_action_help_main">Чтобы добавить %1$s, нажмите значок \"Добавить\".  Когда %1$s добавлено, выбором ряда можно изменить цель%2$s\n\nЧтобы удалить %1$s, сдвиньте ряд по горизонтали. Изменить порядок %1$s в списке можно вертикальным перетаскиванием якоря слева.\n\nЧтобы сбросить всё к значениям по умолчанию, нажмите значок \"Сбросить\".</string>
   <string name="shortcut_action_help_delete_last_entry">Удаление всех %1$s в списке отключит эту функцию.</string>
   <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Удаление всех %1$s из списка отключит второй слой.</string>
+  <string name="icon_color_mode_system_icons">Системные значки</string>
   <string name="shortcuts_applications">Приложения</string>
   <string name="shortcuts_select_custom_app_title">Выберите пользовательское приложение</string>
   <string name="shortcuts_icon_picker_type">Выберите тип значка:</string>
@@ -433,10 +434,15 @@
   <string name="shortcut_action_app">Пользовательское приложение</string>
   <string name="shortcut_action_home">Домой</string>
   <string name="shortcut_action_menu">Меню</string>
+  <string name="shortcut_action_menu_big">Меню</string>
+  <string name="shortcut_action_menu_big">Меню</string>
   <string name="shortcut_action_ime">Открыть переключатель IME</string>
   <string name="shortcut_action_power_menu">Меню кнопки выключения</string>
+  <string name="shortcut_action_smart">Умные уведомления</string>
   <string name="shortcut_action_recent">Открытые приложения</string>
   <string name="shortcut_action_power">Погасить экран</string>
+  <string name="shortcut_action_screenshot">Снимок экрана</string>
+  <string name="shortcut_action_assist">Поиск</string>
   <string name="shortcut_action_search">Поиск в приложении</string>
   <string name="shortcut_action_none">Ничего</string>
   <string name="battery_category">Батарея</string>
@@ -473,7 +479,6 @@
   <string name="status_bar_date_string_edittext_title">Введённое значение должно соответствовать DateFormat, например: ММ/dd/yy</string>
   <string name="status_bar_date_string_edittext_summary">Введите строку</string>
   <string name="supersu_title">SuperSU</string>
-  <string name="toast_animation_title">Всплывающее оповещение</string>
   <string name="toast_choose_animation">Выберите анимацию</string>
   <string name="toast_none_animation">Ничего</string>
   <string name="toast_default_animation">По умолчанию</string>

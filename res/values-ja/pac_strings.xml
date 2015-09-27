@@ -49,7 +49,8 @@
   <string name="pocket_only_mode">ポケット</string>
   <string name="shake_pulse_mode">シェイクとパルス</string>
   <string name="pulse_only_mode">パルス (デフォルト)</string>
-  <string name="system_anim_title">システム</string>
+  <string name="system_animation_title">システムアニメーション</string>
+  <string name="system_animation_summary">システムのカスタムアニメーションを設定する</string>
   <string name="animation_settings_reset_message">すべてのアニメーション設定をデフォルトにリセットしますか？</string>
   <string name="animation_settings_title">アニメーションコントロール</string>
   <string name="animation_exit_only_title">起動時</string>
@@ -191,8 +192,8 @@
   <string name="keyboard_rotation_dialog">この機能はキーボードが表示されている間、一時的に自動回転の有効化を強制します。自動回転が既に有効な場合、この機能は有効ではありません。</string>
   <string name="show_enter_key_title">Enterキーを表示する</string>
   <string name="show_enter_key_summary">Enterキーの代わりに顔文字キーを強制表示する</string>
-  <string name="listview_title">リストビュー</string>
-  <string name="listview_animation_title">リストビューアニメーション</string>
+  <string name="listview_animation_title">ListViewアニメーション</string>
+  <string name="listview_animation_summary">Listviewのカスタムアニメーションを設定する</string>
   <string name="listview_off">オフ</string>
   <string name="listview_wave_left">ウェーブ(左へ)</string>
   <string name="listview_wave_right">ウェーブ(右へ)</string>
@@ -328,6 +329,8 @@
   <string name="network_traffic_color_style">色のスタイル</string>
   <string name="network_traffic_color_reset">色のリセット</string>
   <string name="network_traffic_color_reset_message">ネットワーク通信量の色をデフォルトにリセットしますか？</string>
+  <string name="status_bar_custom_header_title">カスタムヘッダー画像</string>
+  <string name="status_bar_custom_header_summary">通知パネルのヘッダー画像を有効にする</string>
   <string name="hardware_keys_action_omniswitch">OmniSwitch 最近使用したアプリ</string>
   <string name="omniswitch_title">OmniSwitch</string>
   <string name="pac_settings_title">PAC設定</string>
@@ -439,6 +442,20 @@
   <string name="recent_panel_reset_message">全てのカラーをデフォルトにリセットしますか？</string>
   <string name="recent_panel_lefty_mode_title">左端に表示</string>
   <string name="recent_panel_lefty_mode_summary">画面左に最近使ったアプリパネルを表示</string>
+  <string name="dim_nav_buttons_category">薄暗い設定</string>
+  <string name="dim_nav_buttons_title">薄暗いボタンの後に非アクティブ</string>
+  <string name="dim_nav_buttons_summary">指定された時間ナビゲーションバーを操作していない時薄暗いナビゲーションバーボタンにする</string>
+  <string name="dim_nav_buttons_timeout_title">調光する前にタイムアウト</string>
+  <string name="dim_nav_buttons_timeout_summary">ボタンを薄暗く表示するまでの待機時間 (ミリ秒)</string>
+  <string name="dim_nav_buttons_alpha_title">薄暗いアルファ</string>
+  <string name="dim_nav_buttons_alpha_summary">アルファ値のボタンを薄暗い表示にする</string>
+  <string name="dim_nav_buttons_animate_title">薄暗いアニメーション</string>
+  <string name="dim_nav_buttons_animate_summary">アルファのフェードをアニメーション化します。</string>
+  <string name="dim_nav_buttons_animate_duration_title">アニメーション速度</string>
+  <string name="dim_nav_buttons_animate_duration_summary">アルファのアニメーション時間 (ミリ秒)</string>
+  <string name="dim_nav_buttons_touch_anywhere_title">画面全体のタッチのために聞きます</string>
+  <string name="dim_nav_buttons_touch_anywhere_summary_on">画面上どこでも触れると薄暗い表示を解除します</string>
+  <string name="dim_nav_buttons_touch_anywhere_summary_off">ナビゲーションバーに触れた時のみ薄暗い表示を解除します</string>
   <string name="shortcut_action_none">なし</string>
   <string name="shortcut_action_longpress">長押し:</string>
   <string name="shortcut_action_select_action_longpress">長押しの動作を選択:</string>
@@ -535,6 +552,7 @@
   <string name="shortcut_action_menu">メニュー</string>
   <string name="shortcut_action_kill">アプリを強制終了</string>
   <string name="shortcut_action_lastapp">直前のアプリ</string>
+  <string name="shortcut_action_menu_big">メニュー</string>
   <string name="shortcut_action_navbar">ナビゲーションバー</string>
   <string name="shortcut_action_notifications">通知</string>
   <string name="shortcut_action_menu_big">メニュー</string>
@@ -588,7 +606,8 @@
   <string name="status_bar_date_string_edittext_title">MM/dd/yyの形式でなければなりません
 </string>
   <string name="status_bar_date_string_edittext_summary">文字列を入力</string>
-  <string name="toast_animation_title">トースト</string>
+  <string name="toast_animation_title">トーストアニメーション</string>
+  <string name="toast_animation_summary">トーストのカスタムアニメーションを設定する</string>
   <string name="toast_choose_animation">アニメーションを選択</string>
   <string name="toast_none_animation">なし</string>
   <string name="toast_default_animation">デフォルト</string>

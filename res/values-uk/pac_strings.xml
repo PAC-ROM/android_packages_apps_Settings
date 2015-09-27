@@ -49,7 +49,6 @@
   <string name="pocket_only_mode">Кишеня</string>
   <string name="shake_pulse_mode">Струшування і пульсація</string>
   <string name="pulse_only_mode">Пульсація (за замовчуванням)</string>
-  <string name="system_anim_title">Система</string>
   <string name="animation_settings_reset_message">Скинути всі налаштування анімації до стандартних?</string>
   <string name="animation_settings_title">Керування анімацією</string>
   <string name="animation_exit_only_title">Тільки анімація входу</string>
@@ -179,8 +178,6 @@
   <string name="heads_up_time_out_8sec">8 секунд</string>
   <string name="heads_up_time_out_10sec">10 секунд</string>
   <string name="heads_up_time_out_never">Ніколи</string>
-  <string name="listview_title">Список</string>
-  <string name="listview_animation_title">Анімація списків</string>
   <string name="listview_off">Вимкнено</string>
   <string name="listview_wave_left">Хвиля (ліворуч)</string>
   <string name="listview_wave_right">Хвиля (праворуч)</string>
@@ -247,10 +244,13 @@
   <string name="navigation_bar_size_42_dp_default">42 dp (за замовчуванням)</string>
   <string name="navigation_bar_size_48_dp_default">48 dp (за замовчуванням)</string>
   <string name="navigation_bar_size_0_dp">0 dp (вимкнено)</string>
+  <string name="navigation_menu_right">Праворуч</string>
+  <string name="navigation_menu_left">Ліворуч</string>
   <string name="navigation_bar_height_title">Висота панелі навігації</string>
   <string name="navigation_bar_height_landscape_title">Висота панелі навігації в ландшафтному режимі</string>
   <string name="navigation_bar_height_landscape_summary">Висота панелі навігації в ландшафтному режимі.</string>
   <string name="navigation_bar_width_title">Ширина панелі навігації</string>
+  <string name="default_string">За замовчуванням</string>
   <string name="traffic_category">Індикатор трафіку</string>
   <string name="network_traffic_title">Трафік мережі</string>
   <string name="show_network_traffic_state">Монітор трафіку в статус барі</string>
@@ -334,6 +334,7 @@
   <string name="shortcut_action_help_main">Щоб додати %1$s, виберіть піктограму Додати. Після того, як %1$s додано, вибраний рядок змінить ціль%2$s\n\nЩоб видалити %1$s, проведіть пальцем по рядку горизонтально вправи чи вліво.  Змініть порядок %1$s в списку, пересунувши вертикально якір вліво.\n\nЩоб очистити значення, або скинути по замовчуванням - виберіть піктограму Скинути.</string>
   <string name="shortcut_action_help_delete_last_entry">Видалення кожного %1$s в списку повністю вимкне функцію.</string>
   <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Видалення кожного %1$s в списку повністю вимкне другий шар pie.</string>
+  <string name="icon_color_mode_system_icons">Системні іконки</string>
   <string name="shortcuts_applications">Програми</string>
   <string name="shortcuts_select_custom_app_title">Вибрати користувацький додаток</string>
   <string name="shortcuts_icon_picker_type">Виберіть тип піктограми:</string>
@@ -396,10 +397,15 @@
   <string name="shortcut_action_app">Користувацький додаток</string>
   <string name="shortcut_action_home">Домівка</string>
   <string name="shortcut_action_menu">Меню</string>
+  <string name="shortcut_action_menu_big">Меню</string>
+  <string name="shortcut_action_menu_big">Меню</string>
   <string name="shortcut_action_ime">Відкрити перемикач IME</string>
   <string name="shortcut_action_power_menu">Меню живлення</string>
+  <string name="shortcut_action_smart">Smart pulldown</string>
   <string name="shortcut_action_recent">Нещодавні</string>
   <string name="shortcut_action_power">Вимкнення екрана</string>
+  <string name="shortcut_action_screenshot">Скріншот</string>
+  <string name="shortcut_action_assist">Пошук</string>
   <string name="shortcut_action_search">Пошук у додатку</string>
   <string name="shortcut_action_none">Жодного</string>
   <string name="battery_category">Батарея</string>
@@ -433,7 +439,6 @@
   <string name="status_bar_date_format_custom">Користувацький java формат</string>
   <string name="status_bar_date_string_edittext_title">Має бути в форматі  ММ/ДД/РР</string>
   <string name="status_bar_date_string_edittext_summary">Введіть рядок</string>
-  <string name="toast_animation_title">Спливаюче оповіщення</string>
   <string name="toast_choose_animation">Вибрати анімацію</string>
   <string name="toast_none_animation">Жодного</string>
   <string name="toast_default_animation">За замовчуванням</string>

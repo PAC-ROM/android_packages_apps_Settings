@@ -49,7 +49,8 @@
   <string name="pocket_only_mode">Zseb</string>
   <string name="shake_pulse_mode">Rázás és pulzálás</string>
   <string name="pulse_only_mode">Pulzálás (alapértelmezett)</string>
-  <string name="system_anim_title">Rendszer</string>
+  <string name="system_animation_title">Rendszer animáció</string>
+  <string name="system_animation_summary">Rendszer egyedi animációinak beállítása</string>
   <string name="animation_settings_reset_message">Minden animációs beállítás visszaállítása az alapértelmezettre?</string>
   <string name="animation_settings_title">Animáció vezérlők</string>
   <string name="animation_exit_only_title">Csak belépési animáció</string>
@@ -190,8 +191,8 @@
   <string name="keyboard_rotation_dialog">Ezzel a funkcióval kényszeríthető az automatikus forgatás bekapcsolása, ha a billentyűzet megjelenik. Nincs hatása, ha az automatikus forgatás már engedélyezve van.</string>
   <string name="show_enter_key_title">Enter gomb mutatása</string>
   <string name="show_enter_key_summary">A billentyűzet kényszerítése az Enter gomb mutatására a hangulatjelek helyett</string>
-  <string name="listview_title">ListaNézet</string>
   <string name="listview_animation_title">ListaNézet animáció</string>
+  <string name="listview_animation_summary">ListaNézet egyedi animációinak beállítása</string>
   <string name="listview_off">Ki</string>
   <string name="listview_wave_left">Hullám (Balról)</string>
   <string name="listview_wave_right">Hullám (Jobbról)</string>
@@ -322,6 +323,8 @@ Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a men
   <string name="network_traffic_color_style">Szín stílus</string>
   <string name="network_traffic_color_reset">Szín visszaállítása</string>
   <string name="network_traffic_color_reset_message">Hálózati forgalom színeinek visszaállítása alapértelmezettre?</string>
+  <string name="status_bar_custom_header_title">Egyéni fejléc kép</string>
+  <string name="status_bar_custom_header_summary">Értesítési panel fejléc kép engedélyezése</string>
   <string name="hardware_keys_action_omniswitch">OmniSwitch előzmények</string>
   <string name="pac_settings_title">PAC beállítások</string>
   <string name="pac_settings_misc">Egyebek</string>
@@ -433,6 +436,20 @@ Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a men
   <string name="recent_panel_reset_message">Visszaállítja az összes színt alapértelmezettre?</string>
   <string name="recent_panel_lefty_mode_title">Bal oldalon jelenítse meg</string>
   <string name="recent_panel_lefty_mode_summary">Az előzmények panelt a bal oldalon jelenítse meg</string>
+  <string name="dim_nav_buttons_category">Halványítás beállítások</string>
+  <string name="dim_nav_buttons_title">Gombok halványítása inaktivitás után</string>
+  <string name="dim_nav_buttons_summary">Navigációs gombok halványítása miután egy megadott ideig nem lépett interakcióba vele</string>
+  <string name="dim_nav_buttons_timeout_title">Halványítás előtti időkorlát</string>
+  <string name="dim_nav_buttons_timeout_summary">Idő (ezredmásodpercben), amíg várjon, mielőtt halványítaná a gombokat</string>
+  <string name="dim_nav_buttons_alpha_title">Halványítás alfa</string>
+  <string name="dim_nav_buttons_alpha_summary">Gombok halványításának alfa értéke</string>
+  <string name="dim_nav_buttons_animate_title">Halványítási animáció</string>
+  <string name="dim_nav_buttons_animate_summary">Alfa halványítás animálása</string>
+  <string name="dim_nav_buttons_animate_duration_title">Animáció hossza</string>
+  <string name="dim_nav_buttons_animate_duration_summary">Alfa animáció időtartama (ezredmásodpercben)</string>
+  <string name="dim_nav_buttons_touch_anywhere_title">Érintések figyelése az egész képernyőn</string>
+  <string name="dim_nav_buttons_touch_anywhere_summary_on">Bárhol megérintve a képernyőt megszünteti a gombok halványítását</string>
+  <string name="dim_nav_buttons_touch_anywhere_summary_off">Csak a navigációs sáv megérintése szünteti meg a gombok halványítását</string>
   <string name="shortcut_action_none">Nincs</string>
   <string name="shortcut_action_longpress">Hosszan nyomva:</string>
   <string name="shortcut_action_select_action_longpress">Válasszon hosszan nyomva műveletet:</string>
@@ -523,6 +540,7 @@ Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a men
   <string name="shortcut_action_menu">Menü</string>
   <string name="shortcut_action_kill">Alkalmazás kilövése</string>
   <string name="shortcut_action_lastapp">Utolsó alkalmazás</string>
+  <string name="shortcut_action_menu_big">Menü</string>
   <string name="shortcut_action_navbar">Navigációs sáv</string>
   <string name="shortcut_action_notifications">Értesítések</string>
   <string name="shortcut_action_menu_big">Menü</string>
@@ -575,7 +593,8 @@ Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a men
   <string name="status_bar_date_format_custom">Egyéni java formátum</string>
   <string name="status_bar_date_string_edittext_title">DatumFormátum kell legyen pl. HH/nn/éé</string>
   <string name="status_bar_date_string_edittext_summary">Szöveg bevitel</string>
-  <string name="toast_animation_title">Buborékszöveg</string>
+  <string name="toast_animation_title">Buborékszöveg animáció</string>
+  <string name="toast_animation_summary">Buborékszöveg egyedi animációinak beállítása</string>
   <string name="toast_choose_animation">Válasszon animációt</string>
   <string name="toast_none_animation">Nincs</string>
   <string name="toast_default_animation">Alapértelmezett</string>
