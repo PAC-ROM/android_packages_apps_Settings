@@ -587,8 +587,6 @@ public class ButtonSettings extends SettingsPreferenceFragment implements
             return true;
         } else if (preference == mEnableNavigationBar) {
             mEnableNavigationBar.setEnabled(false);
-
-            mNavigationPreferencesCat.setEnabled(false);
             writeDisableNavkeysOption(getActivity(), mEnableNavigationBar.isChecked());
             updateDisableNavkeysOption();
             mHandler.postDelayed(new Runnable() {
