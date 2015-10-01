@@ -1473,8 +1473,8 @@
     <string name="enforce_read_external_summary" product="default" msgid="2750027486786530064">"Az alkalmazások kérjenek engedélyt az SD-kártya olvasására"</string>
     <string name="enforce_read_external_confirm_title" product="default" msgid="273220585729800783">"Védetté teszi az SD-kártyát?"</string>
     <string name="enforce_read_external_confirm_message" product="default" msgid="3858482712337574407">"Ha az SD-kártya védett, az alkalmazásoknak engedélyt kell kérniük a külső tárhelyen tárolt adatok olvasására.\n\nElőfordulhat, hogy egyes alkalmazások nem működnek addig, amíg a fejlesztők nem frissítik azokat."</string>
-    <string name="enable_terminal_title" msgid="95572094356054120">"Helyi végpont"</string>
-    <string name="enable_terminal_summary" msgid="67667852659359206">"Végalkalmazás engedélyezése a helyi rendszerhéj eléréséhez"</string>
+    <string name="enable_terminal_title" msgid="95572094356054120">"Helyi terminál"</string>
+    <string name="enable_terminal_summary" msgid="67667852659359206">"Terminál engedélyezése a helyi shell eléréséhez"</string>
     <string name="gadget_picker_title" msgid="98374951396755811">"Modul kiválasztása"</string>
     <string name="widget_picker_title" msgid="9130684134213467557">"Modul kiválasztása"</string>
     <string name="allow_bind_app_widget_activity_allow_bind_title" msgid="2538303018392590627">"Létrehozza a modult, és engedélyezi a hozzáférést?"</string>
