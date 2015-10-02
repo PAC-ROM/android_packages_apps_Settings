@@ -86,7 +86,7 @@
                     android:title="@string/title_pref_menu_location"
                     android:summary="@string/summary_pref_menu_location" />
 
-            <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
+            <SwitchPreference
                     android:key="navigation_bar_left"
                     android:title="@string/navigation_bar_left_title"
                     android:summary="@string/navigation_bar_left_summary"

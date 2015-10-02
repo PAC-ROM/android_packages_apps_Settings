@@ -139,7 +139,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         }
 
         mNavigationBarLeftPref = (SwitchPreference) findPreference(KEY_NAVIGATION_BAR_LEFT);
-        if (!DeviceUtils.isPhone(getActivity())) {
+        if (DeviceUtils.isPhone(getActivity())) {
+            mNavigationBarLeftPref.setOnPreferenceChangeListener(this);
+        } else {
             prefs.removePreference(mNavigationBarLeftPref);
             mNavigationBarLeftPref = null;
         }
@@ -178,6 +180,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mDimNavButtonsAnimateDuration.setOnPreferenceChangeListener(this);
 
         updateSettings();
+        updateNavigationBarCanMove();
+        updateNavigationBarLeft();
     }
 
     private void updateSettings() {
@@ -196,7 +200,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
                 Action.isNavBarDefault(getActivity()) ? 1 : 0) == 1;
 
         boolean disableHardwareKeys = Settings.Secure.getInt(getContentResolver(),
-                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 1) == 1;
+                Settings.Secure.DEV_FORCE_SHOW_NAVBAR, 0) == 1;
 
         if (mHardware.isSupported(CMHardwareManager.FEATURE_KEY_DISABLE) &&
                 !Action.isNavBarDefault(getActivity()) &&
@@ -281,6 +285,30 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mDimNavButtonsAnimateDuration.setEnabled(show);
     }
 
+    private void updateNavigationBarCanMove() {
+        boolean enable = Settings.PAC.getInt(getContentResolver(),
+                Settings.PAC.NAVIGATION_BAR_CAN_MOVE, 1) == 0;
+        if (enable) {
+            if (mNavigationBarLeftPref != null)
+                mNavigationBarLeftPref.setEnabled(false);
+        } else {
+            if (mNavigationBarLeftPref != null)
+                mNavigationBarLeftPref.setEnabled(true);
+        }
+    }
+
+    private void updateNavigationBarLeft() {
+        boolean enable = Settings.System.getInt(getContentResolver(),
+                Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 1) == 0;
+        if (enable) {
+            if (mNavigationBarCanMove != null)
+                mNavigationBarCanMove.setEnabled(false);
+        } else {
+            if (mNavigationBarCanMove != null)
+                mNavigationBarCanMove.setEnabled(true);
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference == mMenuDisplayLocation) {
@@ -314,6 +342,13 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             Settings.PAC.putInt(getActivity().getContentResolver(),
                     Settings.PAC.NAVIGATION_BAR_CAN_MOVE,
                     ((Boolean) newValue) ? 0 : 1);
+            updateNavigationBarCanMove();
+            return true;
+        } else if (preference == mNavigationBarLeftPref) {
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.NAVBAR_LEFT_IN_LANDSCAPE,
+                    ((Boolean) newValue) ? 0 : 1);
+            updateNavigationBarLeft();
             return true;
         } else if (preference == mNavigationBarImeArrows) {
             Settings.PAC.putInt(getActivity().getContentResolver(),
@@ -356,6 +391,8 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateSettings();
+        updateNavigationBarCanMove();
+        updateNavigationBarLeft();
         mSettingsObserver.observe();
     }
 
