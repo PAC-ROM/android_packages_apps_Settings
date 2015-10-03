@@ -294,6 +294,8 @@
 Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a menü gombokat.</string>
   <string name="navigation_bar_warning_no_navigation_present">Jelenleg nincs más navigáció engedélyezve. A navigációs sáv kikapcsolása a készülékét használhatatlanná teheti. Szeretné inkább a pie vezérlőt engedélyezni?</string>
   <string name="additional_options_title">További lehetőségek</string>
+  <string name="no_home_key">Nem jelölt ki gombot a \"Kezdőlap\" művelethez!\n\nKészüléke használhatatlanná válhat!</string>
+  <string name="no_back_key">Nem jelölt ki gombot a \"Vissza\" művelethez!\n\nKészüléke használhatatlanná válhat!</string>
   <string name="nav_bar_button_style">Gombok stílusa</string>
   <string name="nav_bar_button_style_summary">Navigációs sáv gombok stílusának módosítása</string>
   <string name="button_transparency_title">Gombok áttetszősége</string>

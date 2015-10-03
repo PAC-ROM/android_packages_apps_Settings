@@ -250,7 +250,6 @@
   <string name="navigation_bar_height_landscape_title">Висота панелі навігації в ландшафтному режимі</string>
   <string name="navigation_bar_height_landscape_summary">Висота панелі навігації в ландшафтному режимі.</string>
   <string name="navigation_bar_width_title">Ширина панелі навігації</string>
-  <string name="default_string">За замовчуванням</string>
   <string name="traffic_category">Індикатор трафіку</string>
   <string name="network_traffic_title">Трафік мережі</string>
   <string name="show_network_traffic_state">Монітор трафіку в статус барі</string>
@@ -404,7 +403,6 @@
   <string name="shortcut_action_smart">Smart pulldown</string>
   <string name="shortcut_action_recent">Нещодавні</string>
   <string name="shortcut_action_power">Вимкнення екрана</string>
-  <string name="shortcut_action_screenshot">Скріншот</string>
   <string name="shortcut_action_assist">Пошук</string>
   <string name="shortcut_action_search">Пошук у додатку</string>
   <string name="shortcut_action_none">Жодного</string>

@@ -293,6 +293,8 @@
   <string name="show_ime_arrows_summary">Mostrar las flechas de cursor izquierda/derecha en la barra de navegación mientras se escribe. La pulsación larga desplaza arriba/abajo.</string>
   <string name="navigation_bar_warning_no_navigation_present">No hay ninguna otra barra de navegación habilitada. Desactivando la barra de navegación puede dejar el dispositivo inusable. Activar controles PIE en su lugar?</string>
   <string name="additional_options_title">Opciones adicionales</string>
+  <string name="no_home_key">¡Ya no tiene ningún botón asignado a la acción \"Inicio\"!\n\n¡Esto puede inutilizar su dispositivo!</string>
+  <string name="no_back_key">¡Ya no tiene ningún botón asignado a la acción \"Regresar\"!\n\n¡Esto puede inutilizar su dispositivo!</string>
   <string name="nav_bar_button_style">Estilo de botón</string>
   <string name="nav_bar_button_style_summary">Cambia el estilo de los botones de la barra de navegación</string>
   <string name="button_transparency_title">Transparencia de los botones</string>

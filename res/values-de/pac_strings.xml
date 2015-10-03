@@ -75,6 +75,7 @@
   <string name="animation_slide_left_no_fade">Von links hereingleiten (ohne Verblassen)</string>
   <string name="animation_slide_up">Von unten hereingleiten</string>
   <string name="animation_slide_down">Von oben hereingleiten</string>
+  <string name="animation_translucent">Durchsichtig</string>
   <string name="animation_grow_shrink">Wachsen (Oben)</string>
   <string name="animation_grow_shrink_center">Wachsen (Mitte)</string>
   <string name="animation_grow_shrink_bottom">Wachsen (Unten)</string>
@@ -292,6 +293,8 @@
   <string name="show_ime_arrows_summary">Zeige linke und rechte Pfeiltasten in der Navigationsleiste beim Tippen. Diese gedrückt halten, um nach oben/unten zu navigieren. Der Schalter für die Eingabemethode und die Menütaste werden dadurch überschrieben.</string>
   <string name="navigation_bar_warning_no_navigation_present">Momentan ist keine andere Navigation aktiviert. Das Abschalten der Navigationsleiste kann zu einem unbrauchbaren Gerät führen. Willst du stattdessen die Pie-Steuerung aktivieren?</string>
   <string name="additional_options_title">Zusätzliche Optionen</string>
+  <string name="no_home_key">Es ist keine Taste mehr mit der \"Home\"-Funktion belegt!\n\nDies kann dein Gerät unbedienbar machen!</string>
+  <string name="no_back_key">Es ist keine Taste mehr mit der \"Zurück\"-Funktion belegt!\n\nDies kann dein Gerät unbedienbar machen!</string>
   <string name="nav_bar_button_style">Tastenlayout</string>
   <string name="nav_bar_button_style_summary">Navigationsleiste Tasten-Stil ändern</string>
   <string name="button_transparency_title">Transparenz der Tasten</string>
@@ -469,6 +472,7 @@
   <string name="shortcut_action_help_delete_last_entry">Löschen aller %1$s deaktiviert die Funktion.</string>
   <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Löschen aller %1$s aus der Liste deaktiviert die zweite PIE-Reihe vollständig.</string>
   <string name="icon_color_mode_all_icons">Alle Symbole</string>
+  <string name="icon_color_mode_system_icons">System Icons</string>
   <string name="icon_color_mode_system_custom_icons">System und eigene Symbole</string>
   <string name="shortcuts_applications">Anwendungen</string>
   <string name="shortcuts_select_custom_app_title">Wähle eine benutzerdefinierte Anwendung</string>
@@ -548,6 +552,7 @@
   <string name="shortcut_action_ring_silent">Klingeln/Lautlos</string>
   <string name="shortcut_action_ring_vib_silent">Klingeln/Vibrieren/Lautlos</string>
   <string name="shortcut_action_power">Bildschirm ausschalten</string>
+  <string name="shortcut_action_screenshot">Screenshot</string>
   <string name="shortcut_action_assist">Suche</string>
   <string name="shortcut_action_search">In Anwendung suchen</string>
   <string name="shortcut_action_theme_switch">Theme wechseln</string>
@@ -599,6 +604,7 @@
   <string name="toast_GrowFade_animation">Wachsen und Verblassen</string>
   <string name="toast_GrowFadeCenter_animation">Wachsen und Verblassen (Mitte)</string>
   <string name="toast_GrowFadeBottom_animation">Wachsen und Verblassen (Unten)</string>
+  <string name="toast_Translucent_animation">Durchsichtig</string>
   <string name="toast_Random_animation">Per Zufall</string>
   <string name="toast_test_animation">Teste Kurzzeit-Benachrichtigung</string>
   <string name="tether_usb_network_summary">Drücke um das USB-Netzwerk ändern</string>

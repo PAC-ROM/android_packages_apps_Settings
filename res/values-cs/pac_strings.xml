@@ -302,6 +302,8 @@
   <string name="show_ime_arrows_summary">Zobrazit levá a pravá kurzorová tlačítka v navigační liště při psaní. Procházení nahoru a dolů dlouhým stiskem. Potlačí přepínač klávesnice a tlačítka menu.</string>
   <string name="navigation_bar_warning_no_navigation_present">Žádná jiná navigace není momentálně povolena. Vypnutí navigačního panelu může způsobit nepoužitelnost zařízení. Přejete si místo toho povolit kruhové ovládání?</string>
   <string name="additional_options_title">Další možnosti</string>
+  <string name="no_home_key">Nemáte již žádné tlačítko přiřaditelné pro akci \"Domů\"!\n\nToto může učinit vaše zařízení nepoužitelným!</string>
+  <string name="no_back_key">Nemáte již žádné tlačítko přiřaditelné pro akci \"Zpět\"!\n\nToto může učinit vaše zařízení nepoužitelným!</string>
   <string name="nav_bar_button_style">Styl tlačítek</string>
   <string name="nav_bar_button_style_summary">Změnit styl tlačítek navigační lišty</string>
   <string name="button_transparency_title">Průhlednost tlačítek</string>

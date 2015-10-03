@@ -300,6 +300,16 @@
   <string name="show_ime_arrows_summary">入力中、ナビゲーションバーに左右のカーソル ボタンを表示します。長押しで、上/下に移動します。入力方法の切り替えとメニュー ボタンを上書きします。</string>
   <string name="navigation_bar_warning_no_navigation_present">その他のナビゲーションが現在有効でないです。ナビゲーション バーをオフにすると、デバイスが使用できなくなる可能性があります。代わりにPieコントロールを有効にしますか？</string>
   <string name="additional_options_title">追加オプション</string>
+  <string name="no_home_key">\"ホーム\"アクションに割り当てられたボタンがありません!\n\nこれはお使いのデバイスが使用できなくできます！
+
+
+
+コンテキスト|編集コンテキスト</string>
+  <string name="no_back_key">\"バック\"アクションに割り当てられたボタンがありません!\n\nこれはお使いのデバイスが使用できなくできます！
+
+
+
+コンテキスト|編集コンテキスト</string>
   <string name="nav_bar_button_style">ボタンのスタイル</string>
   <string name="nav_bar_button_style_summary">ナビゲーションバーのボタンのスタイルを変更します</string>
   <string name="button_transparency_title">ボタンの透明度</string>
