@@ -180,8 +180,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         mDimNavButtonsAnimateDuration.setOnPreferenceChangeListener(this);
 
         updateSettings();
-        updateNavigationBarCanMove();
-        updateNavigationBarLeft();
+
     }
 
     private void updateSettings() {
@@ -215,6 +214,11 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         if (mEnableNavigationBar != null) {
             mEnableNavigationBar.setChecked(enableNavigationBar);
             mEnableNavigationBar.setOnPreferenceChangeListener(this);
+        }
+
+        if (mNavigationBarLeftPref != null) {
+            mNavigationBarLeftPref.setChecked(Settings.System.getInt(getContentResolver(),
+                    Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1);
         }
 
         if (mNavigationBarCanMove != null) {
@@ -260,6 +264,9 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
             mDimNavButtonsAnimateDuration.setInitValue((animateDuration / 100) - 1);
         }
 
+        updateNavigationBarCanMove();
+        updateNavigationBarLeft();
+
         updateNavbarPreferences(enableNavigationBar || disableHardwareKeys);
     }
 
@@ -299,7 +306,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
 
     private void updateNavigationBarLeft() {
         boolean enable = Settings.System.getInt(getContentResolver(),
-                Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 1) == 0;
+                Settings.System.NAVBAR_LEFT_IN_LANDSCAPE, 0) == 1;
         if (enable) {
             if (mNavigationBarCanMove != null)
                 mNavigationBarCanMove.setEnabled(false);
@@ -347,7 +354,7 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
         } else if (preference == mNavigationBarLeftPref) {
             Settings.System.putInt(getActivity().getContentResolver(),
                     Settings.System.NAVBAR_LEFT_IN_LANDSCAPE,
-                    ((Boolean) newValue) ? 0 : 1);
+                    ((Boolean) newValue) ? 1 : 0);
             updateNavigationBarLeft();
             return true;
         } else if (preference == mNavigationBarImeArrows) {
@@ -391,8 +398,6 @@ public class NavbarSettings extends SettingsPreferenceFragment implements
     public void onResume() {
         super.onResume();
         updateSettings();
-        updateNavigationBarCanMove();
-        updateNavigationBarLeft();
         mSettingsObserver.observe();
     }
 
