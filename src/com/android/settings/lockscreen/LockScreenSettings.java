@@ -46,6 +46,7 @@ import com.android.settings.R;
 import com.android.settings.SecuritySettings;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.TrustAgentUtils;
+import com.android.settings.pac.utils.PacSeekBarPreference;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Index;
 import com.android.settings.search.Indexable;
@@ -89,6 +90,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private static final String TRUST_AGENT_CLICK_INTENT = "trust_agent_click_intent";
     private static final int CHANGE_TRUST_AGENT_SETTINGS = 126;
 
+    private static final String KEY_LOCKSCREEN_BLUR_RADIUS = "lockscreen_blur_radius";
+
     private Intent mTrustAgentClickIntent;
 
     private boolean mIsPrimary;
@@ -104,6 +107,8 @@ public class LockScreenSettings extends SettingsPreferenceFragment
     private SwitchPreference mDirectlyShow;
     private SwitchPreference mVisibleDots;
     private SwitchPreference mPowerButtonInstantlyLocks;
+
+    private PacSeekBarPreference mBlurRadius;
 
     private DevicePolicyManager mDPM;
 
@@ -256,6 +261,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             if (displayVisualizer != null) {
                 generalCategory.removePreference(displayVisualizer);
             }
+        }
+
+        // Blur radius
+        if (generalCategory != null) {
+            mBlurRadius = (PacSeekBarPreference)
+                    generalCategory.findPreference(KEY_LOCKSCREEN_BLUR_RADIUS);
+            mBlurRadius.setValue(Settings.PAC.getInt(getContentResolver(),
+                    Settings.PAC.LOCKSCREEN_BLUR_RADIUS, 14));
+            mBlurRadius.setOnPreferenceChangeListener(this);
         }
 
         // Trust Agent preferences
@@ -499,6 +513,10 @@ public class LockScreenSettings extends SettingsPreferenceFragment
             }
         } else if (KEY_POWER_INSTANTLY_LOCKS.equals(key)) {
             mLockPatternUtils.setPowerButtonInstantlyLocks((Boolean) value);
+        } else if (KEY_LOCKSCREEN_BLUR_RADIUS.equals(key)) {
+            int width = ((Integer) value);
+            Settings.PAC.putInt(getContentResolver(),
+                    Settings.PAC.LOCKSCREEN_BLUR_RADIUS, width);
         }
         return result;
     }

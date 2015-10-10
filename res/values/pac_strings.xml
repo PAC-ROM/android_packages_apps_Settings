@@ -288,6 +288,11 @@
     <string name="unlock_set_unlock_gesture_summary">Low security, experimental</string>
     <string name="unlock_set_unlock_mode_gesture">Gesture</string>
 
+    <!-- Lock screen see through -->
+    <string name="lockscreen_see_through_title">Lock screen blur</string>
+    <string name="lockscreen_see_through_summary">Blurs and displays the content behind your lock screen.</string>
+    <string name="lockscreen_blur_radius">Blur effect intensity</string>
+
     <!-- Navigation bar -->
     <string name="navigation_bar_size_42_dp_default">42 dp (default)</string>
     <string name="navigation_bar_size_36_dp">36 dp</string>

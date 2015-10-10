@@ -86,6 +86,22 @@
             android:title="@string/lockscreen_visualizer_title"
             android:defaultValue="true"
             settings:advanced="true"/>
+
+        <com.android.settings.pac.utils.PacSwitchPreference
+            android:key="lockscreen_see_through"
+            android:title="@string/lockscreen_see_through_title"
+            android:summary="@string/lockscreen_see_through_summary"
+            android:defaultValue="false" />
+
+        <com.android.settings.pac.utils.PacSeekBarPreference
+            android:key="lockscreen_blur_radius"
+            android:title="@string/lockscreen_blur_radius"
+            android:max="25"
+            settings:minimum="0"
+            settings:defaultVal="14"
+            settings:interval="1"
+            android:dependency="lockscreen_see_through" />
+
     </PreferenceCategory>
 
 </PreferenceScreen>
