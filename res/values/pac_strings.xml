@@ -16,6 +16,11 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
+    <!-- Navigation Bar -->
+    <!-- Double Tap to Sleep -->
+    <string name="double_tap_sleep_nav_bar_title">Double-tap to sleep</string>
+    <string name="double_tap_sleep_nav_bar_summary">Double tap the navigation bar to put the device to sleep</string>
+
     <!-- PAC Stats -->
     <string name="pac_stats_title">PAC-ROM statistics</string>
     <string name="pac_stats_summary">Help make PAC-ROM better by opting into anonymous statistics reporting</string>
