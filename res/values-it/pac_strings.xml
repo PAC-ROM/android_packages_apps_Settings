@@ -244,7 +244,7 @@
   <string name="lockgesture_settings_enable_title">Richiede un gesto</string>
   <string name="lockgesture_settings_enable_summary">Disegna una gesto per sbloccare lo schermo</string>
   <string name="lockgesture_settings_enable_visible_pattern_title">Rendi visibile il gesto</string>
-  <string name="lockgesture_settings_enable_power_button_instantly_locks">Pulsante di accensione si blocca istantaneamente</string>
+  <string name="lockgesture_settings_enable_power_button_instantly_locks">Il Pulsante di accensione blocca istantaneamente</string>
   <string name="lockgesture_settings_choose_lock_pattern">Imposta gesto di sblocco</string>
   <string name="lockgesture_settings_change_lock_pattern">Cambia gesto di sblocco</string>
   <string name="lockgesture_settings_help_how_to_record">Come disegnare un gesto di sblocco</string>
@@ -256,6 +256,9 @@
   <string name="unlock_set_unlock_gesture_title">Gesto</string>
   <string name="unlock_set_unlock_gesture_summary">Protezione bassa, sperimentale</string>
   <string name="unlock_set_unlock_mode_gesture">Gesto</string>
+  <string name="lockscreen_see_through_title">Sfocatura lockscreen</string>
+  <string name="lockscreen_see_through_summary">Sfoca e visualizza il contenuto dietro la lockscreen.</string>
+  <string name="lockscreen_blur_radius">Intensità dell\'effetto di sfocatura</string>
   <string name="navigation_bar_size_42_dp_default">42 dp (predefinito)</string>
   <string name="navigation_bar_size_48_dp_default">48 dp (predefinito)</string>
   <string name="navigation_bar_size_0_dp">0 dp (disabilitata)</string>
@@ -346,7 +349,6 @@
   <string name="preview_data_title">Anteprima dati</string>
   <string name="view_stats_title">Visualizza le statistiche</string>
   <string name="pac_learn_more">Per saperne di più</string>
-  <string name="main_link">&lt; a href = \"la http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\" &gt; ulteriori informazioni &lt; /a &gt;</string>
   <string name="preview_id_title">ID Univoco</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versione</string>
@@ -468,7 +470,7 @@
   <string name="shortcut_action_help_button">pulsante</string>
   <string name="shortcut_action_help_app">app</string>
   <string name="shortcut_action_help_icon">, mentre selezionando l\'icona, si apriranno le opzioni di personalizzazione</string>
-  <string name="shortcut_action_help_main">Per aggiungere un %1$s, seleziona Aggiung icona. Una volta che un %1$s viene aggiunto, la riga selezionata cambierà l\'obiettivo%2$s\n\nPer rimuovere un %1$s, scorri la riga orizzontalmente da sinistra a destra. Riordina un %1$s nella lista trascinando verticalmente l\'ancora sulla sinistra.\n\nPer cancellare o ripristinare ai predefiniti, seleziona l\'icona di Reset.</string>
+  <string name="shortcut_action_help_main">Per aggiungere un %1$s, seleziona Aggiungi icona. Una volta che un %1$s viene aggiunto, la riga selezionata cambierà l\'obiettivo%2$s\n\nPer rimuovere un %1$s, scorri la riga orizzontalmente da sinistra a destra. Riordina un %1$s nella lista trascinando verticalmente l\'ancora sulla sinistra.\n\nPer cancellare o ripristinare ai predefiniti, seleziona l\'icona di Reset.</string>
   <string name="shortcut_action_help_delete_last_entry">Rimuovere ogni %1$s nella lista disattiverà completamente la fuzione.</string>
   <string name="shortcut_action_help_pie_second_layer_delete_last_entry">Rimuovendo ogni %1$s dalla lista disattiverà il secondo livello della Pie.</string>
   <string name="icon_color_mode_all_icons">Tutte le icone</string>

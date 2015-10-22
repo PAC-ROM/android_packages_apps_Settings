@@ -346,7 +346,6 @@
   <string name="preview_data_title">Podgląd danych</string>
   <string name="view_stats_title">Zobacz statystyki</string>
   <string name="pac_learn_more">Więcej informacji</string>
-  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Dowiedz się więcej&lt;/a&gt;</string>
   <string name="preview_id_title">Unikalny ID</string>
   <string name="preview_device_title">Urządzenie</string>
   <string name="preview_version_title">Wersja</string>

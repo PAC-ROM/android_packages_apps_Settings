@@ -259,6 +259,9 @@
   <string name="unlock_set_unlock_gesture_title">Графический ключ</string>
   <string name="unlock_set_unlock_gesture_summary">Низкий уровень защиты (экспериментальная функция)</string>
   <string name="unlock_set_unlock_mode_gesture">Графический ключ</string>
+  <string name="lockscreen_see_through_title">Размытие экрана блокировки</string>
+  <string name="lockscreen_see_through_summary">Размывает и отображает контент позади экрана блокировки.</string>
+  <string name="lockscreen_blur_radius">Интенсивность эффекта размытия</string>
   <string name="navigation_bar_size_42_dp_default">42 dp (по умолчанию)</string>
   <string name="navigation_bar_size_36_dp">36 dp</string>
   <string name="navigation_bar_size_30_dp">30 dp</string>
@@ -359,7 +362,6 @@
   <string name="preview_data_summary"> %s</string>
   <string name="view_stats_title">Просмотреть статистику</string>
   <string name="pac_learn_more">Узнать больше</string>
-  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Узнать больше&lt;/a&gt;</string>
   <string name="preview_id_title">Уникальный ID</string>
   <string name="preview_device_title">Устройство</string>
   <string name="preview_version_title">Версия</string>

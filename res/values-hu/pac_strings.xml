@@ -256,6 +256,9 @@
   <string name="unlock_set_unlock_gesture_title">Gesztus</string>
   <string name="unlock_set_unlock_gesture_summary">Alacsony biztonsági szint, kísérleti</string>
   <string name="unlock_set_unlock_mode_gesture">Gesztus</string>
+  <string name="lockscreen_see_through_title">Zárolási képernyő elmosás</string>
+  <string name="lockscreen_see_through_summary">Elmossa és megjeleníti a zárolási képernyő mögötti tartalmat.</string>
+  <string name="lockscreen_blur_radius">Elmosási hatás intenzitása</string>
   <string name="navigation_bar_size_42_dp_default">42 dp (alapértelmezett)</string>
   <string name="navigation_bar_size_48_dp_default">48 dp (alapértelmezett)</string>
   <string name="navigation_bar_size_0_dp">0 dp (ki)</string>
@@ -349,7 +352,6 @@ Hosszan nyomva navigálhat fel és le. Felülbírálja az IME váltót és a men
   <string name="preview_data_title">Adatok előnézete</string>
   <string name="view_stats_title">Statisztika megtekintése</string>
   <string name="pac_learn_more">Tudjon meg többet</string>
-  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;Tudjon meg többet&lt;/a&gt;</string>
   <string name="preview_id_title">Egyedi azonosító</string>
   <string name="preview_device_title">Eszköz</string>
   <string name="preview_version_title">Verzió</string>

@@ -256,6 +256,9 @@
   <string name="unlock_set_unlock_gesture_title">Gesto</string>
   <string name="unlock_set_unlock_gesture_summary">Seguridad baja (experimental)</string>
   <string name="unlock_set_unlock_mode_gesture">Gesto</string>
+  <string name="lockscreen_see_through_title">Desenfoque en la pantalla de bloqueo</string>
+  <string name="lockscreen_see_through_summary">Muestra desenfoque detrás de la pantalla de bloqueo.</string>
+  <string name="lockscreen_blur_radius">Intensidad del efecto de desenfoque</string>
   <string name="navigation_bar_size_42_dp_default">42 dp (predeterminado)</string>
   <string name="navigation_bar_size_48_dp_default">48 dp (predeterminado)</string>
   <string name="navigation_bar_size_0_dp">0 dp (deshabilitado)</string>
@@ -346,7 +349,6 @@
   <string name="preview_data_title">Previsualizar datos</string>
   <string name="view_stats_title">Ver estadísticas</string>
   <string name="pac_learn_more">Más información</string>
-  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;más información&lt;/a&gt;</string>
   <string name="preview_id_title">Identificador único</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versión</string>

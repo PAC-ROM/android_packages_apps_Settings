@@ -293,6 +293,8 @@
   <string name="show_ime_arrows_summary">输入时在导航栏显示左右光标按钮。长按可上下导航。这将会覆盖输入法切换器和菜单按钮。</string>
   <string name="navigation_bar_warning_no_navigation_present">当前没有启用其他导航。关闭导航栏可能会导致设备不稳定。你想要启用派控件来代替吗？</string>
   <string name="additional_options_title">附加选项</string>
+  <string name="no_home_key">你没有给“主页”键设置键位! \n\n这会使您的设备无法正常使用 ！</string>
+  <string name="no_back_key">你没有给“返回”键设置键位! \n\n这会使您的设备无法正常使用 ！</string>
   <string name="nav_bar_button_style">按钮样式</string>
   <string name="nav_bar_button_style_summary">更改导航栏按钮的样式</string>
   <string name="button_transparency_title">按钮透明度</string>
@@ -344,7 +346,6 @@
   <string name="preview_data_title">预览数据</string>
   <string name="view_stats_title">查看统计信息</string>
   <string name="pac_learn_more">了解详情</string>
-  <string name="main_link">&lt;a href=\"http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\"&gt;了解更多&lt;/a&gt;</string>
   <string name="preview_id_title">设备唯一 ID</string>
   <string name="preview_device_title">设备</string>
   <string name="preview_version_title">版本</string>

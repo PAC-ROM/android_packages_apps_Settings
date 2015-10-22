@@ -21,5 +21,4 @@
   <string name="qs_screenshot_tile">Ekran Görüntüsü</string>
   <string name="qs_tile_reboot">Yeniden Başlat</string>
   <string name="shortcut_action_screenshot">Ekran Görüntüsü</string>
-  <string name="wakelock_blocker_save">kaydet</string>
 </resources>
