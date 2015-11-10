@@ -119,7 +119,7 @@
   <string name="gesture_anywhere_title">Gesto Ovunque</string>
   <string name="gesture_anywhere_enabled_title">Gesto Ovunque</string>
   <string name="gesture_anywhere_enabled_summary">Attiva la funzione \"Gesti Ovunque\"</string>
-  <string name="gesture_anywhere_position_title">Luogo</string>
+  <string name="gesture_anywhere_position_title">Posizione</string>
   <string name="gesture_anywhere_position_left">Bordo sinistro</string>
   <string name="gesture_anywhere_position_right">Bordo destro</string>
   <string name="gesture_anywhere_gestures_title">Gesti</string>
@@ -299,7 +299,7 @@
   <string name="no_home_key">Non hai nessun pulsante assegnato all\'azione \"Home\"!\n\nQuesta opzione può rendere il dispositivo inutilizzabile!</string>
   <string name="no_back_key">Non hai nessun pulsante assegnato all\'azione \"Indietro\"!\n\nQuesta opzione può rendere il dispositivo inutilizzabile!</string>
   <string name="nav_bar_button_style">Stile pulsante</string>
-  <string name="nav_bar_button_style_summary">Cambia stile tasti della barra di navigazione</string>
+  <string name="nav_bar_button_style_summary">Cambia lo stile dei tasti della barra di navigazione</string>
   <string name="button_transparency_title">Trasparenza pulsante</string>
   <string name="navigation_bar_icon_tint_title">Colore pulsante</string>
   <string name="nav_button_color_mode_title">Modalità colore</string>
@@ -349,6 +349,7 @@
   <string name="preview_data_title">Anteprima dati</string>
   <string name="view_stats_title">Visualizza le statistiche</string>
   <string name="pac_learn_more">Per saperne di più</string>
+  <string name="main_link">&lt; a href = \"la http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in\" &gt; ulteriori informazioni &lt; /a &gt;</string>
   <string name="preview_id_title">ID Univoco</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versione</string>
@@ -419,6 +420,7 @@
   <string name="qs_four_columns_title">Mostra quattro caselle per riga</string>
   <string name="qs_screenshot_tile">Cattura Schermo</string>
   <string name="qs_tile_reboot">Riavvia</string>
+  <string name="qs_tiles_vibrate_title">Vibrare al tocco</string>
   <string name="recent_panel_category">Pannello app recenti</string>
   <string name="use_slim_recents_title">Slim Recenti</string>
   <string name="show_running_tasks_title">Mostra solo le applicazioni in esecuzione</string>

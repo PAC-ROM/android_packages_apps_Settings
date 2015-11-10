@@ -362,6 +362,7 @@
   <string name="preview_data_summary"> %s</string>
   <string name="view_stats_title">Просмотреть статистику</string>
   <string name="pac_learn_more">Узнать больше</string>
+  <string name="main_link">&lt;a href=&quot;http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in&quot;&gt;Узнать больше&lt;/a&gt;</string>
   <string name="preview_id_title">Уникальный ID</string>
   <string name="preview_device_title">Устройство</string>
   <string name="preview_version_title">Версия</string>
@@ -432,6 +433,7 @@
   <string name="qs_four_columns_title">Показать четыре плитки в строке</string>
   <string name="qs_screenshot_tile">Снимок экрана</string>
   <string name="qs_tile_reboot">Перезагрузить</string>
+  <string name="qs_tiles_vibrate_title">Вибрировать при касании</string>
   <string name="recent_panel_category">Панель недавних приложений</string>
   <string name="use_slim_recents_title">Недавние приложения в тонком стиле</string>
   <string name="show_running_tasks_title">Показывать только запущенные приложения</string>

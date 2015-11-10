@@ -349,6 +349,7 @@
   <string name="preview_data_title">Previsualizar datos</string>
   <string name="view_stats_title">Ver estadísticas</string>
   <string name="pac_learn_more">Más información</string>
+  <string name="main_link">&lt;a href=&quot;http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in&quot;&gt;Mas Información&lt;/a&gt;</string>
   <string name="preview_id_title">Identificador único</string>
   <string name="preview_device_title">Dispositivo</string>
   <string name="preview_version_title">Versión</string>
@@ -419,6 +420,7 @@
   <string name="qs_four_columns_title">Mostrar cuatro controles por fila</string>
   <string name="qs_screenshot_tile">Captura de pantalla</string>
   <string name="qs_tile_reboot">Reiniciar</string>
+  <string name="qs_tiles_vibrate_title">Vibrar al tocarla</string>
   <string name="recent_panel_category">Panel de aplicaciones recientes</string>
   <string name="use_slim_recents_title">Recientes Slim</string>
   <string name="show_running_tasks_title">Sólo mostrar aplicaciones en ejecución</string>

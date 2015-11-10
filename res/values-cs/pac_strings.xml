@@ -360,6 +360,7 @@
   <string name="preview_data_summary">%s</string>
   <string name="view_stats_title">Zobrazit statistiky</string>
   <string name="pac_learn_more">Další informace</string>
+  <string name="main_link">&lt;a href=&quot;http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in&quot;&gt;Zjistit více&lt;/a&gt;</string>
   <string name="preview_id_title">Unikátní ID</string>
   <string name="preview_device_title">Zařízení</string>
   <string name="preview_version_title">Verze</string>
@@ -430,6 +431,7 @@
   <string name="qs_four_columns_title">Ukázat čtyři dlaždice na řádek</string>
   <string name="qs_screenshot_tile">Snímek displeje</string>
   <string name="qs_tile_reboot">Restart</string>
+  <string name="qs_tiles_vibrate_title">Vibrace při dotyku</string>
   <string name="recent_panel_category">Panel nedávných aplikací</string>
   <string name="use_slim_recents_title">Slim přepínač aplikací</string>
   <string name="show_running_tasks_title">Zobrazit pouze běžící aplikace</string>
