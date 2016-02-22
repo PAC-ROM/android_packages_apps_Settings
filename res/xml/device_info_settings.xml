@@ -21,10 +21,7 @@
         <PreferenceScreen android:key="system_update_settings"
                 android:title="@string/system_update_settings_list_item_title"
                 android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.intent.action.MAIN">
-                <categories android:name="android.settings.SYSTEM_UPDATE_SETTINGS" />
-                <categories android:name="com.android.settings.SHORTCUT" />
-            </intent>
+            <intent android:action="android.settings.SYSTEM_UPDATE_SETTINGS" />
         </PreferenceScreen>
 
         <PreferenceScreen android:key="additional_system_update_settings"
@@ -32,15 +29,6 @@
             <intent android:action="android.intent.action.MAIN"
                     android:targetPackage="@string/additional_system_update"
                     android:targetClass="@string/additional_system_update_menu" />
-        </PreferenceScreen>
-
-        <!-- CyanogenMod Updates -->
-        <PreferenceScreen android:key="cm_updates"
-                android:title="@string/cmupdate_settings_title"
-                android:summary="@string/system_update_settings_list_item_summary">
-            <intent android:action="android.intent.action.MAIN"
-                    android:targetPackage="com.cyanogenmod.updater"
-                    android:targetClass="com.cyanogenmod.updater.UpdatesSettings" />
         </PreferenceScreen>
 
         <!-- Device status - launches activity -->
@@ -76,12 +64,6 @@
                 android:title="@string/device_feedback">
         </PreferenceScreen>
 
-        <!-- Contributors cloud -->
-        <PreferenceScreen android:key="contributors_cloud"
-            android:title="@string/contributors_cloud_fragment_title"
-            android:fragment="com.android.settings.contributors.ContributorsCloudFragment" >
-        </PreferenceScreen>
-
         <!-- Device name -->
         <Preference android:key="device_name"
                 style="?android:preferenceInformationStyle"
@@ -99,18 +81,6 @@
                 style="?android:preferenceInformationStyle"
                 android:title="@string/firmware_version"
                 android:summary="@string/device_info_default"/>
-
-        <!-- Mod version -->
-        <Preference android:key="mod_version"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/mod_version"
-                android:summary="@string/mod_version_default" />
-
-        <!-- CyanogenMod API Version -->
-        <Preference android:key="mod_api_level"
-                style="?android:preferenceInformationStyle"
-                android:title="@string/mod_api_level"
-                android:summary="@string/mod_api_level_default" />
 
         <!-- Security patch level -->
         <Preference android:key="security_patch"

@@ -1,6 +1,5 @@
 /*
  * Copyright (C) 2008 The Android Open Source Project
- * Copyright (C) 2016 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -122,8 +121,6 @@ public class Settings extends SettingsActivity {
     public static class DisplayRotationActivity extends SettingsActivity { /* empty */ }
     public static class BlacklistSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ProfilesSettingsActivity extends SettingsActivity { /* empty */ }
-    public static class AnonymousStatsActivity extends Settings { /* empty */ }
-    public static class ContributorsCloudActivity extends SettingsActivity { /* empty */ }
     public static class SoundSettingsActivity extends SettingsActivity { /* empty */ }
     public static class LockScreenSettingsActivity extends SettingsActivity { /* empty */ }
     public static class LiveLockScreenSettingsActivity extends SettingsActivity { /* empty */ }

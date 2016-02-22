@@ -25,7 +25,6 @@ import android.preference.PreferenceManager;
 import com.android.settings.ButtonSettings;
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.contributors.ContributorsCloudFragment;
 import com.android.settings.hardware.VibratorIntensity;
 import com.android.settings.inputmethod.InputMethodAndLanguageSettings;
 import com.android.settings.location.LocationSettings;
@@ -47,9 +46,6 @@ public class BootReceiver extends BroadcastReceiver {
         }
 
         LocationSettings.restore(ctx);
-
-        // Extract the contributors database
-        ContributorsCloudFragment.extractContributorsCloudDatabase(ctx);
 
         DevelopmentSettings.initializeUpdateRecoveryOption();
     }

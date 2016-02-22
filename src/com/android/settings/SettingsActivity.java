@@ -82,7 +82,6 @@ import com.android.settings.applications.UsageAccessDetails;
 import com.android.settings.applications.WriteSettingsDetails;
 import com.android.settings.blacklist.BlacklistSettings;
 import com.android.settings.bluetooth.BluetoothSettings;
-import com.android.settings.contributors.ContributorsCloudFragment;
 import com.android.settings.cyanogenmod.DisplayRotation;
 import com.android.settings.cyanogenmod.LiveLockScreenSettings;
 import com.android.settings.cyanogenmod.WeatherServiceSettings;
@@ -378,7 +377,6 @@ public class SettingsActivity extends Activity
             com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
             BlacklistSettings.class.getName(),
             ProfilesSettings.class.getName(),
-            ContributorsCloudFragment.class.getName(),
             NotificationManagerSettings.class.getName(),
             LiveLockScreenSettings.class.getName(),
             WeatherServiceSettings.class.getName()
