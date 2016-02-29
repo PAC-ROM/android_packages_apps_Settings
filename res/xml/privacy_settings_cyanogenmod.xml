@@ -29,6 +29,14 @@
             android:summary="@string/blacklist_summary"
             android:fragment="com.android.settings.blacklist.BlacklistSettings" />
 
+        <!-- Anonymous statistics - (PACStats) -->
+        <PreferenceScreen
+            android:key="pacstats"
+            android:title="@string/pac_stats_title"
+            android:summary="@string/pac_stats_summary"
+            android:fragment="com.android.settings.pac.pacstats.PACStats" >
+        </PreferenceScreen>
+
         <!-- Protected Apps! -->
         <Preference
             android:key="protected_apps_manager"
