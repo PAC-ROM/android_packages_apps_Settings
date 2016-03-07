@@ -18,7 +18,7 @@
         android:title="@string/about_settings">
 
         <!-- PAC Logo -->
-        <PreferenceScreen android:key="pac_logo"
+        <com.android.settings.pac.ui.PacLogo android:key="pac_logo"
                 android:layout="@layout/pac_logo" />
 
         <!-- System update settings - launches activity -->

@@ -19,7 +19,8 @@
     android:layout_height="wrap_content"
     android:gravity="center" >
         <ImageView
+            android:id="@+id/iv_pac_logo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/pac_logo" />
+            android:layout_height="150dp"
+            android:src="@drawable/pac_logo_animation" />
 </LinearLayout>
