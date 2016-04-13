@@ -55,7 +55,6 @@ import com.android.settings.wifi.SavedAccessPointsWifiSettings;
 import com.android.settings.wifi.WifiSettings;
 
 import com.android.settings.ButtonSettings;
-import com.android.settings.cyanogenmod.StatusBarSettings;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -320,13 +319,6 @@ public final class SearchIndexableResources {
                         R.xml.button_settings,
                         ButtonSettings.class.getName(),
                         R.drawable.ic_settings_buttons));
-
-        sResMap.put(StatusBarSettings.class.getName(),
-                new SearchIndexableResource(
-                        Ranking.getRankForClassName(StatusBarSettings.class.getName()),
-                        R.xml.status_bar_settings,
-                        StatusBarSettings.class.getName(),
-                        R.drawable.ic_settings_statusbar));
 
         sResMap.put(com.android.settings.cyanogenmod.PrivacySettings.class.getName(),
                 new SearchIndexableResource(
