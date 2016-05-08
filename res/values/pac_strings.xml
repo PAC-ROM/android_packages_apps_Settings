@@ -36,4 +36,7 @@
     <string name="pac_version">PAC version</string>
     <string name="pac_version_default">Unknown</string>
 
+    <!-- SuperSU -->
+    <string name="supersu_title">SuperSU</string>
+
 </resources>
