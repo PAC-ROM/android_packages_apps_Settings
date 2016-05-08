@@ -28,12 +28,6 @@
             android:targetClass="com.android.systemui.tuner.TunerActivity$StatusBarIconActivity" />
     </PreferenceScreen>
 
-     <com.android.settings.cyanogenmod.SystemSettingSwitchPreference
-        android:key="status_bar_custom_header"
-        android:title="@string/status_bar_custom_header_title"
-        android:summary="@string/status_bar_custom_header_summary"
-        android:defaultValue="false"/>
-
     <ListPreference
         android:key="status_bar_clock"
         android:title="@string/status_bar_clock_style_title"
