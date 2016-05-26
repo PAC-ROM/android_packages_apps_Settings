@@ -93,6 +93,7 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
     private static final String KEY_MOD_VERSION = "mod_version";
     private static final String KEY_PAC_VERSION = "pac_version";
     private static final String KEY_MOD_BUILD_DATE = "build_date";
+    private static final String KEY_HW_VERSION = "hardware_version";
 
     static final int TAPS_TO_BE_A_DEVELOPER = 7;
 
@@ -222,6 +223,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment implements In
         // Remove CM Changelog, Contributors and Stats
         removePreference(KEY_MOD_VERSION);
 
+        removePreferenceIfBoolFalse(KEY_HW_VERSION,
+                !TextUtils.isEmpty(getResources().getString(R.string.hardware_version_value)));
     }
 
     @Override
