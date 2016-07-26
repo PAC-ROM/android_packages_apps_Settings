@@ -17,7 +17,13 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- PAC Stats -->
+  <string name="pac_stats_title">Statistiche PAC-ROM</string>
+  <string name="pac_stats_summary">Aiutaci a migliorare la PAC-ROM abilitando l\'invio delle statistiche anonime</string>
   <string name="pac_stats_warning_title">Altro</string>
+  <string name="pac_stats_warning">La scelta di inviare le Statistiche PAC anonime consentirà l\'invio di dati non personali agli sviluppatori
+        PAC per controllare il numero di installazioni uniche della ROM sui diversi dispositivi. Le informazioni inviate includono un identificativo
+        univoco che non compromette la tua privacy o i tuoi dati personali. I dati sono inviati una volta a settimana, durante l\'avvio.\n\n
+        Pervedere un esempio dei dati inviati premere su Anteprima dati.</string>
   <string name="enable_reporting_title">Attiva segnalazioni</string>
   <string name="preview_data_title">Anteprima dati</string>
   <string name="view_stats_title">Visualizza le statistiche</string>

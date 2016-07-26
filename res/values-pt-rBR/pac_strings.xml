@@ -17,9 +17,15 @@
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- PAC Stats -->
+  <string name="pac_stats_title">Estatísticas do PAC-ROM</string>
+  <string name="pac_stats_summary">Ajude a fazer esse PAC-ROMmelhor optando por enviar dados anônimos de uso</string>
   <string name="pac_stats_warning_title">Sobre</string>
+  <string name="pac_stats_warning">Optar por enviar estatísticas anonimas do PAC permitirá que dados não-pessoais sejam enviados para os
+        desenvolvedores do PAC-ROM para rastrear instalações únicas em dispositivos variados. As informações enviadas incluem um identificador único,
+        que não compromete sua privacidade ou dados pessoais. Os dados são enviados durante cada inicialização.\n\nPara um exemplo de dados que são enviados, toque em Pré-visualizar Dados.</string>
   <string name="enable_reporting_title">Habilitar relatório</string>
   <string name="preview_data_title">Pré-visualizar dados</string>
+  <string name="preview_data_summary">%s</string>
   <string name="view_stats_title">Ver estatísticas</string>
   <string name="pac_learn_more">Saiba Mais</string>
   <string name="main_link">&lt;a href=&quot;http://www.cyanogenmod.org/blog/cmstats-what-it-is-and-why-you-should-opt-in&quot;&gt;Learn More&lt;/a&gt;</string>
@@ -29,4 +35,5 @@
   <string name="pac_version">Versão do PAC</string>
   <string name="pac_version_default">Desconhecido</string>
   <!-- SuperSU -->
+  <string name="supersu_title">SuperSU</string>
 </resources>
