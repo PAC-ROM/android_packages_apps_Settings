@@ -16,6 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Navigation Bar -->
+  <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">ダブルタップでスリープ</string>
+  <string name="double_tap_sleep_nav_bar_summary">ナビゲーションバーをダブルタップして端末をスリープにする</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">PAC-ROMの統計情報</string>
   <string name="pac_stats_summary">匿名の統計情報を送信することで、PAC-ROMの改善に貢献することができます</string>

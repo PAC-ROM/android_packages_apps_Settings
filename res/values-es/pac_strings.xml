@@ -16,6 +16,10 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Navigation Bar -->
+  <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">Doble toque para apagar la pantalla</string>
+  <string name="double_tap_sleep_nav_bar_summary">Bloquear dispositivo mediante un doble toque sobre la barra de navegación</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">Estadísticas de la PAC-ROM</string>
   <string name="pac_stats_summary">Ayuda a mejorar esta ROM, activando las estadísticas anónimas</string>

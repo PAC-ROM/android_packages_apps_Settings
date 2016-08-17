@@ -16,6 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Navigation Bar -->
+  <!-- Double Tap to Sleep -->
   <!-- PAC Stats -->
   <string name="pac_stats_title">Estatísticas do PAC-ROM</string>
   <string name="pac_stats_summary">Ajude a fazer esse PAC-ROMmelhor optando por enviar dados anônimos de uso</string>

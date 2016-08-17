@@ -16,6 +16,8 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Navigation Bar -->
+  <!-- Double Tap to Sleep -->
   <!-- PAC Stats -->
   <string name="pac_stats_warning_title">Про</string>
   <string name="preview_romname_title">Назва прошивки</string>

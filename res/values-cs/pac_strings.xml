@@ -16,8 +16,13 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <!-- Navigation Bar -->
+  <!-- Double Tap to Sleep -->
   <!-- PAC Stats -->
+  <string name="pac_stats_title">Statistiky PAC-ROM</string>
+  <string name="pac_stats_summary">Vylepšit PAC-ROM pomocí hlášení anonymní statistiky</string>
   <string name="pac_stats_warning_title">Přečtěte si více</string>
+  <string name="pac_stats_warning">Přihlášení k PAC statistikám umožní odesílat ne-soukromá data vývojářům ROM, pro sledování instalací na různých zařízeních. Odeslané informace obsahují unikátní identifikátor, který nijak neohrožuje soukromá data. Data jsou odesílána při každém startu zařízení.\n\nNáhled odesílaných informací lze zobrazit pomocí tlačítka Náhled dat.</string>
   <string name="enable_reporting_title">Povolit odesílání hlášení</string>
   <string name="preview_data_title">Prohlédnout data</string>
   <string name="preview_data_summary">%s</string>
