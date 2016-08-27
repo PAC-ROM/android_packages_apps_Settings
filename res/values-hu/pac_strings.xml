@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Navigation Bar -->
   <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">Dupla érintésre alvás</string>
+  <string name="double_tap_sleep_nav_bar_summary">Érintsd meg kétszer a navigációs sávot a kijelző kikapcsolásához</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">PAC-ROM statisztika</string>
   <string name="pac_stats_summary">Segítsen, hogy a PAC-ROM jobb legyen, és válassza a névtelen statisztikai adatok küldését</string>

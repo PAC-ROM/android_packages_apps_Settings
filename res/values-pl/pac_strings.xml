@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Navigation Bar -->
   <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">Usypianie podwójnym dotknięciem</string>
+  <string name="double_tap_sleep_nav_bar_summary">Dwukrotne dotknięcie na pasku nawigacji usypia urządzenie</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">Statystyki PAC-ROM</string>
   <string name="pac_stats_summary">Pomóż udoskonalić PAC-ROM decydując się na raportowanie anonimowych statystyk</string>
