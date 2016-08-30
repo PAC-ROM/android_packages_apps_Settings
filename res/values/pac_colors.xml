@@ -17,7 +17,6 @@
 <resources>
 
     <!-- Pac Logo Swooosh Effect -->
-    <color name="pac_logo_black">#000000</color>
     <color name="pac_logo_red">#F34235</color>
     <color name="pac_logo_yellow">#FFC006</color>
     <color name="pac_logo_blue">#4184F3</color>
