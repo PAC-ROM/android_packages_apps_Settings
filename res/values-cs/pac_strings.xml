@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Navigation Bar -->
   <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">Uspat dvojitým stiskem</string>
+  <string name="double_tap_sleep_nav_bar_summary">Dvojí poklepání na stavovou lištu uvede zařízení do režimu spánku</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">Statistiky PAC-ROM</string>
   <string name="pac_stats_summary">Vylepšit PAC-ROM pomocí hlášení anonymní statistiky</string>

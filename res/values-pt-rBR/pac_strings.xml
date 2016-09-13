@@ -18,6 +18,8 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <!-- Navigation Bar -->
   <!-- Double Tap to Sleep -->
+  <string name="double_tap_sleep_nav_bar_title">Toque duplo para desligar a tela</string>
+  <string name="double_tap_sleep_nav_bar_summary">Toque duas vezes a barra de navegação para colocar o dispositivo para dormir</string>
   <!-- PAC Stats -->
   <string name="pac_stats_title">Estatísticas do PAC-ROM</string>
   <string name="pac_stats_summary">Ajude a fazer esse PAC-ROMmelhor optando por enviar dados anônimos de uso</string>
