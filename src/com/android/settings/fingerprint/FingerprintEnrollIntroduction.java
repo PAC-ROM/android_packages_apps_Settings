@@ -20,6 +20,7 @@ import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.provider.Settings.Global;
 import android.text.TextUtils;
 import android.view.View;
 
@@ -43,11 +44,10 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase {
         findViewById(R.id.cancel_button).setOnClickListener(this);
 
         final View learnMoreButton = findViewById(R.id.learn_more_button);
-        // If help url is not overlaid, remove the button.
-        if (TextUtils.isEmpty(getString(R.string.help_url_fingerprint))) {
+        learnMoreButton.setOnClickListener(this);
+        if (TextUtils.isEmpty(getString(R.string.help_url_fingerprint)) ||
+                Global.getInt(getContentResolver(), Global.DEVICE_PROVISIONED, 0) == 0) {
             learnMoreButton.setVisibility(View.GONE);
-        } else {
-            learnMoreButton.setOnClickListener(this);
         }
 
         final int passwordQuality = new ChooseLockSettingsHelper(this).utils()
@@ -100,7 +100,9 @@ public class FingerprintEnrollIntroduction extends FingerprintEnrollBase {
     private void launchFingerprintHelp() {
         Intent helpIntent = HelpUtils.getHelpIntent(this,
                 getString(R.string.help_url_fingerprint), getClass().getName());
-        startActivity(helpIntent);
+        if (helpIntent != null) {
+            startActivity(helpIntent);
+        }
     }
 
     @Override
